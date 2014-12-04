@@ -1,0 +1,14 @@
+<?php
+echo '<br><b>Available Ams Scheme Types</b><br><br>';
+$amsSchemeTypes = $this->amsSchemeTypes;
+foreach($amsSchemeTypes as $amsSchemeType)
+{?>
+	<a href = "<?php echo $this->url(array(
+						'controller' => 'amsscheme',
+						'action' => 'edit',
+						'id' => $amsSchemeType['scheme_type']));
+		?>">
+		<?php  echo $amsSchemeType['scheme_type'];?>
+	</a><br></br>
+<?php 
+}?>

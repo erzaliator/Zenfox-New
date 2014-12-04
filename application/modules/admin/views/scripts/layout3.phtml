@@ -1,0 +1,133 @@
+<?
+/**
+ * Main layout2 file. Modify this to alter whole look of the site
+ */
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<head>
+<link rel="shortcut icon" href="/images/rummy.tld/favicon.ico" mce_href="/images/rummy.tld/favicon.ico" type="image/x-icon"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Playdorm: The most fun dorm online</title>
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+<?$this->headLink()->appendStylesheet('/css/global.css') ?>
+
+<? /*admin page csss stylesheets------------------------------------*/?>
+<?$this->headLink()->appendStylesheet('/AdminLTE-master/css/AdminLTE.css') ?>
+<?$this->headLink()->appendStylesheet('/AdminLTE-master/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>
+<?$this->headLink()->appendStylesheet('/css/daterangepicker/daterangepicker-bs3.css') ?>
+<?$this->headLink()->appendStylesheet('/css/datepicker/datepicker3.css') ?>
+<?$this->headLink()->appendStylesheet('/css/jvectormap/jquery-jvectormap-1.2.2.css') ?>
+<?$this->headLink()->appendStylesheet('/css/morris/morris.css') ?>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<!-- Ionicons -->
+<link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+<?php /*Appending the files before echoing*/?>
+<? $this->headLink()->appendStylesheet('/SpryAssets/SpryAccordion.css') ?>
+<? $this->headLink()->appendStylesheet('/SpryAssets/SpryTabbedPanels.css') ?>
+<? $this->headLink()->appendStylesheet('/SpryAssets/SpryTabbedPanel.css') ?>
+<?php /*Echo the headlink after appending everything*/?>
+<?= $this->headLink()?>
+<?php /*Appending the files before echoing*/?>
+<? $this->headScript()->appendFile('/SpryAssets/SpryTabbedPanels.js') ?>
+<? $this->headScript()->appendFile('/SpryAssets/SpryTabbedPanel.js') ?>
+<? $this->headScript()->appendFile('/SpryAssets/SpryAccordion.js') ?>
+<? $this->headScript()->appendFile('/js/menu.js') ?>
+<? $this->headScript()->appendFile('/js/analyticsforms.js') ?>
+<? $this->headScript()->appendFile('/js/jquery.clockpick.js') ?>
+<? $this->headScript()->appendFile('/js/element.js') ?>
+<? //$this->headScript()->appendFile('/js/jquery-1.2.6.min.js') ?>
+<? //$this->headScript()->appendFile('js/jquery-leftNav.js') ?>
+</head>
+<body>
+<div id="mainDiv">
+  <div id="header">
+    <div class="logo"><a href="<?=$this->baseUrl() ?>">
+      <h2>Taashtime</h2>
+      </a></div>
+    <div class="commamdhed">Command Centre</div>
+    <div class="commandproimg"></div>
+    <div class="commandlogout">
+      <ul>
+        <li><a href="#">Login</a></li>
+        <li>|</li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class=" commandbdy">
+    
+
+    <!--___________________command-nav  commandtnav______________________________-->
+    <div class="commandtnav ">
+    
+      <ul>
+        <li><a href="#" class="active"><img src="/images/admin_playericon.png">Player</a></li>
+        <li><a href="#"><img src="/images/admin_gamemangeicon.png">Game Management</a></li>
+        <li><a href="#"><img src="/images/admin_financeicon.png">Finance</a></li>
+        <li><a href="#"><img src="/images/admin_analyticsicon.png">Analytics</a></li>
+        <li><a href="#"><img src="/images/admin_affilicon.png">Affiliates</a></li>
+      </ul>
+      </div>
+
+    <!--___________________command-nav______________________________-->
+	<div class="crumb">
+    <?php echo $this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0)->render(); ?>
+  </div>
+    <table cellpadding="0" cellspacing="0" width="100%" border="0" id="page-layout">
+      <tr>
+        <td valign="top" class="left-nav" >
+          <section class="sidebar">
+            <?php echo $this->navigation()->menu(); ?>
+          </section>
+        </td>
+        <td width="8px">&nbsp;</td>
+        <td class="body-content" valign="top">
+		<!-- div class="commandnavhed">Reconciliation Report </div-->
+		<div class="flash-messenger">
+            <h1></h1>
+            <?=$this->flashMessenger(); ?>
+          </div>
+          <div class="box-solid">
+
+            <?=$this->layout()->content ?></td>
+          </div>
+      </tr>
+    </table>
+  </div>
+  <!-- End Body -->
+</div>
+<!-- Including JQuery -->
+<?php
+ 
+    /*
+     * FIXME:: Set JQuery enabled in every view instead of in the layout
+         */
+    $this->JQuery()->enable();
+    if($this->JQuery()->isEnabled())
+    {
+        //TODO:: Change the ui css depending on the frontend
+        $this->JQuery()->setUiLocalPath($this->baseUrl()."/js/jquery-ui-1.8.10.custom.min.js")
+                        ->addStylesheet($this->baseUrl()."/js/jquery/css/custom-theme/jquery-ui.css");
+        echo $this->JQuery();
+        //echo $this->headMeta();
+    }
+
+  ?>
+<?php /*Echo the headscript after appending everything*/?>
+<?= $this->headScript()?>
+<?= $this->headMeta()?>
+<script type="text/javascript">
+<!--
+var TabbedPanels1 = new Spry.Widget.TabbedPanel("TabbedPanels1");
+var Accordion1 = new Spry.Widget.Accordion("Accordion1");
+//-->
+</script>
+</body>
+</html>

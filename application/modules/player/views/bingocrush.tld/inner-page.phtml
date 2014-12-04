@@ -1,0 +1,256 @@
+<?
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LanguageForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/CommentsForm.php';
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  <title>Playdorm: The most fun dorm online</title>
+	<?$this->headLink()->appendStylesheet('/css/playdorm/playdorm-style.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/playdorm/menu.css') ?> 
+	<?$this->headLink()->appendStylesheet('/css/playdorm/forms.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/playdorm/typography.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/playdorm/reset.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/playdorm/left_nav.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/playdorm/test.css') ?>
+  
+	<?php /*Appending the files before echoing*/?> 
+  <? $this->headLink()->appendStylesheet('/SpryAssets/SpryAccordion.css') ?>
+  <? $this->headLink()->appendStylesheet('/SpryAssets/SpryTabbedPanels.css') ?>
+  <? $this->headLink()->appendStylesheet('/SpryAssets/SpryTabbedPanel.css') ?>
+  <?php /*Echo the headlink after appending everything*/?>
+  <?= $this->headLink()?>
+ <?php /*Appending the files before echoing*/?>
+ <? $this->headScript()->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'); ?>
+  <? $this->headScript()->appendFile('/SpryAssets/SpryTabbedPanels.js') ?>
+  <? $this->headScript()->appendFile('/SpryAssets/SpryTabbedPanel.js') ?>
+  <? $this->headScript()->appendFile('/SpryAssets/SpryAccordion.js') ?>
+  <? $this->headScript()->appendFile('/js/menu.js') ?>
+  <? //$this->headScript()->appendFile('js/jquery-1.2.6.min.js') ?>
+  <? //$this->headScript()->appendFile('js/jquery-leftNav.js') ?>
+  <?= $this->headScript()?>
+  <?= $this->headMeta()?>
+</head>
+<body>     
+<div id="fb-root"></div>
+  <script src="/js/facebook.js"></script>
+  
+  <div id = "message_box">
+          <div class = "ui-widget-content ui-corner-all">
+<!--  <button id="close_message" type="button" style="float:center;cursor:pointer;height:27px;width:105px;)"><b><font color= #9370D8>Comments!</font></b></button>
+//-->
+
+<!-- p><a id="open_message" class="btn" style="color:white">Comments</a></p-->
+
+<!-- div id="close_strip" class ="ui-widget-header ui-helper-clearfix ui-corner-all" style="color:white"-->
+<!-- div id="close_message">
+<a class="ui-icon ui-icon-closethick" style="float:right;cursor:pointer"></a>
+</div -->
+<!-- span style="position:relative;left:48%">Comments
+</span-->
+<!--  /div-->
+
+          <?php
+         	$frontController = Zend_Controller_Front::getInstance();
+	  		$controller = $frontController->getRequest()->getControllerName();
+	  		if($controller != 'comments')
+	  		{
+	  			$form = new Player_CommentsForm();
+	  			//echo $form;
+	  			//echo $this->action('show', 'comments');
+	  		}
+//  		$commentsForm = new Player_CommentsForm();
+//  echo $commentsForm;
+  ?>
+  </div>
+  </div>
+  
+<div class="nav-bt-strip">&nbsp;</div>
+<div id="mainDiv">
+  <div id="header">
+    <div class="logo">
+      <a href="<?=$this->baseUrl() ?>"><h2>Playdorm</h2></a>
+    </div>
+    <?php
+        $form = new Player_LanguageForm();
+        echo $form;
+    ?>
+    <div class="toplinks">
+    <?php
+    $session = new Zend_Auth_Storage_Session();
+    $store = $session->read();
+    if($store)
+    {
+        ?>
+        <table cellpadding="0" cellspacing="0" width="100%" border="1">
+        <tr>
+            <th colspan="3">
+                <div class="userName">User Name :
+                <span>
+                <?php
+                $loginName = $store['authDetails'][0]['login'];
+                $cash = $store['authDetails'][0]['cash'];
+                $bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+                $loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+                echo $loginName;
+                ?></span></div>
+                <div class="logout">
+                <a href = "/auth/logout"><span>Logout</span></a></div>
+               
+            </th>
+        </tr>
+      
+        <tr class="balance-details">
+            <td align="center"><div>Balance</div><p>
+            <?php
+            $locale = Zend_Registry::get('Zend_Locale');
+            $currency = new Zend_Currency();
+            echo 'name->' . $currency->getShortName($cash, $locale);
+            if($cash)
+            {
+                echo $currency->setValue($cash);
+            }
+            else
+            {
+                echo $currency->setValue(0);
+            }
+            ?> </p></td>
+            <td align="center"><div>Bonus</div><p>
+            <?php
+            if($bonus)
+            {
+                echo $currency->setValue($bonus);
+            }
+            else
+            {
+                echo $currency->setValue(0);
+            }
+            ?> </p></td>
+            <td align="center"><div>Loyalty Points</div><p>
+            <?php
+            if($loyaltyPoints)
+            {
+                echo $loyaltyPoints;
+            }
+            else
+            {
+                echo '0';
+            }
+            ?></p></td>
+           
+        </tr>
+       
+        <tr>
+            <td colspan="3" style="background-color:transparent"><img src="/images/inner-user-bottom-strip.png" alt=""></td>
+        </tr>
+    </table>
+   
+        <?php
+    }
+    else
+    {
+        $loginForm = new Player_LoginForm();
+        $decorator = new Zenfox_DecoratorForm();
+        $loginForm->getElement('userName')->setAttrib('style', 'width:80px');
+        $loginForm->getElement('password')->setAttrib('style', 'width:80px');
+        $loginForm->getElement('userName')->setDecorators($decorator->openingTagDecorator);
+        $loginForm->getElement('password')->setDecorators($decorator->changeTagDecorator);
+        $loginForm->getElement('submit')->setDecorators($decorator->closingButtonTagDecorator);
+//        $loginForm->getElement('fgPassword')->setDecorators($decorator->linkDecorator);
+//        $loginForm->getElement('signup')->setDecorators($decorator->linkDecorator);
+        echo $loginForm;
+    }
+    ?>
+    </div>
+  </div>
+ 
+  <div class="crumb"><?php echo $this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0)->render();; ?> </div>
+  <table cellpadding="0" cellspacing="0" width="100%" border="0" id="page-layout">
+      <tr>
+          <td valign="top" class="left-nav">
+            <?php echo $this->navigation()->menu(); ?>
+        </td>
+          <td width="8px">&nbsp;</td>
+          <td class="body-content" valign="top"><div class="flash-messenger"><?=$this->flashMessenger(); ?></div><?=$this->layout()->content ?>
+          </td>
+      </tr>
+  </table>
+          
+ 
+
+<!-- Including JQuery -->
+  <?php
+ 
+    /*
+     * FIXME:: Set JQuery enabled in every view instead of in the layout
+         */
+    $this->JQuery()->enable();
+    if($this->JQuery()->isEnabled())
+    {
+        //TODO:: Change the ui css depending on the frontend
+        $this->JQuery()->setUiLocalPath($this->baseUrl()."/js/jquery/js/jquery-ui.js")
+                        ->addStylesheet($this->baseUrl()."/js/jquery/css/custom-theme/jquery-ui.css");
+        echo $this->JQuery();
+        //echo $this->headMeta();
+    }
+    $siteHttpUrl = "http://". $_SERVER['HTTP_HOST'];
+	$link = $siteHttpUrl . '/facebookauth/auth';
+	$facebookAuth = $frontController->getRequest()->getParam('facebookAuth');
+
+
+	if($facebookAuth)
+	{
+		?>
+					
+		<?php
+	}
+  ?>
+
+  <?php /*Echo the headscript after appending everything*/?>
+  
+<script type="text/javascript">
+<!--
+var TabbedPanels1 = new Spry.Widget.TabbedPanel("TabbedPanels1");
+var Accordion1 = new Spry.Widget.Accordion("Accordion1");
+//-->
+</script>
+<!-- End Body -->
+  <div id="footer">
+    <p>Playdrom</p>
+  </div>
+</div>
+<?php 
+/*
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.playdorm.com/" : "http://piwik.playdorm.com/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://piwik.playdorm.com/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tag -->
+*/
+?>
+
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?181uRzK3H7TO4l2xOLZRMPeFntzH8fDK';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->
+</body>
+</html>

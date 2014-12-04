@@ -1,0 +1,52 @@
+<?
+/**
+ * Main layout2 file. Modify this to alter whole look of the site
+ */
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Project Zenfox</title>
+  <?= $this->headLink()->appendStylesheet('/css/global.css') ?>
+</head>
+<body>
+
+<h1>Changed stuff</h1>
+
+<div id="header" style="background-color: #EEEEEE; height: 30px;">
+    <div id="header-logo" style="float: left">
+        <b>Project ZenFox</b>
+    </div>
+    <div id="header-navigation" style="float: right">
+        <!-- To keep urls consistent with the applications router (right now we
+             are using the default router), we will employ the use of the url
+             view helper
+             http://framework.zend.com/manual/en/zend.view.helpers.html
+             -->
+        <!--
+        <a href="<?= $this->url(
+            array('controller'=>'index', 'module'=>''),
+            'default', true) ?>">
+            Home</a>
+             -->
+    </div>
+</div>
+
+<!-- This next call will now include any content that was generated in the
+     dispatching of a controllers action (or series of actions).  -->
+<div id="header-navigation" style="float:left">
+	 <?= $this->navigation()->menu()?>
+</div>
+<?=$this->layout()->content ?>
+<?php //$this->jQuery()->setLocalPath("http://testingserver.tld/js/testing.js");
+$this->jQuery()->enable();
+echo $this->JQuery();?>
+
+
+<!-- If your application requires it, this would be a great place to put a
+     footer for all pages. -->
+
+</body>
+</html>

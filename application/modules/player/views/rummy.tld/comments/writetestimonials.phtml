@@ -1,0 +1,7 @@
+<?php
+echo $this->form;
+	if($this->link)
+	{
+		$this->headMeta()->appendHttpEquiv('Refresh',
+	                                   '1;URL=' . $this->link);
+	}

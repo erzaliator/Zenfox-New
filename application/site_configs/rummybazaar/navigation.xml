@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<nav>
+		<main>
+	    	<resource>player-index-index</resource>
+		   	<label>Home</label>
+        	<module>player</module>
+	    	<controller>index</controller>
+		   	<action>index</action>
+        </main>
+		<profile>
+            <label>My Profile</label>
+            <resource>player-auth-view</resource>
+            <module>player</module>
+            <controller>auth</controller>
+            <action>view</action>
+            <pages>
+ 	        	<view-profile>
+					<resource>player-auth-view</resource>
+					<label>My Profile</label>
+					<module>player</module>
+					<controller>auth</controller>
+					<action>view</action>
+                    <class>nav-sub</class>
+                </view-profile>
+                <edit-profile>
+					<resource>player-auth-edit</resource>
+					<label>Edit Profile</label>
+					<module>player</module>
+					<controller>auth</controller>
+					<action>edit</action>
+                    <class>nav-sub</class>
+                </edit-profile>
+                <reconcile>
+					<resource>player-reconciliation-index</resource>
+					<label>Transactions</label>
+					<module>player</module>
+					<controller>reconciliation</controller>
+					<action>index</action>
+                    <class>nav-sub</class>
+                </reconcile>                
+                <invite>
+					<resource>player-index-invite</resource>
+					<label>Invite</label>
+					<module>player</module>
+					<controller>index</controller>
+					<action>invite</action>
+                    <class>nav-sub</class>
+                </invite>
+            </pages>
+        </profile>
+        <play>
+            <label>Play Rummy</label>
+            <resource>player-game-index</resource>
+            <module>player</module>
+            <controller>game</controller>
+            <action>index</action>
+            
+        </play>
+        <tournament>
+            <label>Tournament</label>
+            <resource>player-tournament-list</resource>
+            <module>player</module>
+            <controller>tournament</controller>
+            <action>list</action>
+            
+		    <pages>
+				<tournament-index>
+					<label>Tournament</label>
+				    <resource>player-tournament-list</resource>
+		            <module>player</module>
+		            <controller>tournament</controller>
+		            <action>list</action>
+		            <class>nav-sub</class>
+				</tournament-index>
+				<teamRummy>
+					 <label>Team Rummy</label>
+		             <resource>player-leaderboard-registerplayer</resource>
+		            <module>player</module>
+		            <controller>leaderboard</controller>
+		            <action>registerplayer</action>
+		             <params>
+		            	<leaderboardId>1</leaderboardId>
+		        	</params>
+		            <class>nav-sub</class>
+				</teamRummy>
+		    </pages> 
+        </tournament>
+        <promotions>
+	    	<resource>player-promotions-index</resource>
+		   	<label>Offers</label>
+        	<module>player</module>
+	    	<controller>promotions</controller>
+		   	<action>index</action>
+            
+			<!-- <pages>
+				<index>
+            		<resource>player-promotions-index</resource>
+                    <label>Promotions</label>
+                    <module>player</module>
+                    <controller>promotions</controller>
+                    <action>index</action>
+                    <class>nav-sub</class>
+                </index>
+				<referfriend>
+	            	<resource>player-promotions-referfriend</resource>
+				   	<label>Refer A Friend</label>
+		        	<module>player</module>
+			    	<controller>promotions</controller>
+				   	<action>referfriend</action>
+		            <class>nav-sub</class>
+	            </referfriend>
+				<leaderboard>
+                	<resource>player-leaderboard-rummy</resource>
+                    <label>Leaderboard</label>
+                    <module>player</module>
+                    <controller>leaderboard</controller>
+                    <action>rummy</action>
+                    <class>nav-sub</class>
+                </leaderboard>
+				<teamRummy>
+			 		<label>Team Rummy</label>
+             		<resource>player-leaderboard-registerplayer</resource>
+            		<module>player</module>
+            		<controller>leaderboard</controller>
+            		<action>registerplayer</action>
+            		<params>
+            			<leaderboardId>1</leaderboardId>
+        			</params>
+            		<class>nav-sub</class>
+				</teamRummy>
+            </pages> -->
+        </promotions>
+        <banking>
+         	<label>Banking</label>
+            <resource>player-banking-detail</resource>
+            <module>player</module>
+            <controller>banking</controller>
+            <action>detail</action>
+            
+            <!-- <pages>
+            	<detail>
+            		<label>Detail</label>
+		            <resource>player-banking-detail</resource>
+		            <module>player</module>
+		            <controller>banking</controller>
+		            <action>detail</action>
+		            <class>nav-sub</class>
+            	</detail>
+            	<deposit>
+            		<label>Deposit</label>
+		            <resource>player-banking-deposit</resource>
+		            <module>player</module>
+		            <controller>banking</controller>
+		            <action>deposit</action>
+		            <class>nav-sub</class>
+            	</deposit>
+            	<withdrawal>
+            		<label>withdrawal</label>
+		            <resource>player-withdrawal-verification</resource>
+		            <module>player</module>
+		            <controller>withdrawal</controller>
+		            <action>verification</action>
+		            <class>nav-sub</class>
+            	</withdrawal>
+            </pages> -->
+        </banking>
+        <!-- <banking>
+            <label>Banking</label>
+            <resource>player-banking-deposit</resource>
+            <module>player</module>
+            <controller>banking</controller>
+            <action>deposit</action>
+            
+            <pages>
+                <fund-bonus>
+					<resource>player-banking-deposit</resource>
+					<label>Purchase</label>
+					<module>player</module>
+					<controller>banking</controller>
+					<action>deposit</action>
+                    <class>nav-sub</class>
+                </fund-bonus>
+				<withdrawal>
+                	<resource>player-withdrawal-verification</resource>
+                    <label>Withdrawal</label>
+                    <module>player</module>
+                    <controller>withdrawal</controller>
+                    <action>verification</action>
+                    <class>nav-sub</class>
+                </withdrawal>
+                <detail>
+                	<label>Detail</label>
+		            <resource>player-banking-detail</resource>
+		            <module>player</module>
+		            <controller>banking</controller>
+		            <action>detail</action>
+                </detail>
+            </pages>
+        </banking> -->
+		<howtoplay>
+			<label>Help</label>
+			<resource>player-faq-index</resource>
+			<module>player</module>
+			<controller>faq</controller>
+			<action>index</action>
+            
+            <!-- <pages>
+	            <faq>
+		        	<resource>player-faq-index</resource>
+		        	<label>FAQ</label>
+		        	<module>player</module>
+		        	<controller>faq</controller>
+		        	<action>index</action>
+		        	<class>nav-sub</class>
+		        </faq>
+            </pages> -->
+		</howtoplay>
+		<logout>
+            <label>Log Out</label>
+            <resource>player-auth-logout</resource>
+            <module>player</module>
+            <controller>auth</controller>
+            <action>logout</action>
+            
+        </logout>
+        <about-us>
+            <label>About Us</label>
+            <resource>player-content-about</resource>
+            <module>player</module>
+            <controller>content</controller>
+            <action>about</action>
+            <class>nav-hide</class>
+        </about-us>
+        <winners>
+            <label>Winners</label>
+            <resource>player-index-winner</resource>
+            <module>player</module>
+            <controller>index</controller>
+            <action>winner</action>
+            <class>nav-hide</class>
+        </winners>
+        <security>
+            <label>Security</label>
+            <resource>player-faq-security</resource>
+            <module>player</module>
+            <controller>faq</controller>
+            <action>security</action>
+            <class>nav-hide</class>
+        </security>
+        <contact>
+            <label>Contact Us</label>
+            <resource>player-content-contact</resource>
+            <module>player</module>
+            <controller>content</controller>
+            <action>contact</action>
+            <class>nav-hide</class>
+        </contact>
+        <privacy-policy>
+            <label>Privacy Policy</label>
+            <resource>player-content-privacypolicy</resource>
+            <module>player</module>
+            <controller>content</controller>
+            <action>privacypolicy</action>
+            <class>nav-hide</class>
+        </privacy-policy>
+        <terms>
+            <label>Terms &amp; Conditions</label>
+            <resource>player-content-terms</resource>
+            <module>player</module>
+            <controller>content</controller>
+            <action>terms</action>
+            <class>nav-hide</class>
+        </terms>
+	</nav>
+</config>

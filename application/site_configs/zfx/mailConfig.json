@@ -1,0 +1,16 @@
+{
+	"authentication":
+	{
+		"auth":"login",
+		"username":"noreply@playdorm.com",
+		"password":"2765V9",
+		"ssl":"tls",
+		"port":"587",
+		"smtp":"smtp.gmail.com"
+	},
+	"displayname":
+	{
+		"name":"Playdorm",
+		"email":"noreply@playdorm.com"
+	}
+}

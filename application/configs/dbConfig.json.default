@@ -1,0 +1,50 @@
+{
+    "server":
+        [
+            {
+                "type":"master",
+                "name":"master",
+                "ip":"127.0.0.1",
+                "port":3307,
+                "login":"web",
+                "password":"iiit123",
+                "dbtype":"mysql",
+                "dbname":"zenfox"
+            },
+            {
+                "type":"partition",
+                "name":"partition 1",
+                "ip":"127.0.0.1",
+                "port":3308,
+                "login":"web",
+                "password":"iiit123",
+                "dbtype":"mysql",
+                "dbname":"zenfox"
+            },
+            {
+                "type":"partition",
+                "name":"partition 2",
+                "ip":"127.0.0.1",
+                "port":3309,
+                "login":"web",
+                "password":"iiit123",
+                "dbtype":"mysql",
+                "dbname":"zenfox"
+            },
+            {
+                "type":"partition",
+                "name":"partition 3",
+                "ip":"127.0.0.1",
+                "port":3310,
+                "login":"web",
+                "password":"iiit123",
+                "dbtype":"mysql",
+                "dbname":"zenfox"
+            }
+        ],
+    "serverTypes":
+        {
+            "master":[0], 
+            "partition":[1,2,3]
+        }
+}

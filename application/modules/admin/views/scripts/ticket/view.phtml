@@ -1,0 +1,33 @@
+<?php echo $this->form;?>
+<?php
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $ticketDetails)
+		{
+			$ids = explode('-',$ticketDetails['Id']);
+			$ticketId = $ids[0];
+			$userId = $ids[1];
+			$linkArray[$ticketDetails['Id']] = array(
+										'controller' => 'ticket',
+										'action' => 'reply',
+										'ticket_id' => $ticketId,
+										'user_id' => $userId,
+										'userType' => $ticketDetails['User Type']);
+		}
+	}
+	$this->table($this->contents, array('Id'), $linkArray);
+	
+	echo $this->paginationControl(
+				$this->paginator,
+				'Sliding',
+				'ticket_paginator_control.phtml',
+				array(
+					'fromDate' => $this->fromDate,
+					'toDate' => $this->toDate,
+					'status' => $this->status));
+					//'ticketType' => $this->ticketType));
+}
+?>

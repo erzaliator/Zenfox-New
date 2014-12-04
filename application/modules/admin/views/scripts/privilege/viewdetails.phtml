@@ -1,0 +1,61 @@
+<a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a>
+<br></br><br></br>
+<b>Privilege Details</b>
+<br></br>
+<br></br>
+<table border='1'>
+<?php
+$privilege = $this->privilegeData;
+
+foreach($privilege as $key => $value)
+{
+	if($key != 'id' && $key != 'roleId' && $key != 'resourceId')
+	{?>
+		<tr>
+			<td>
+				<?=$key?>
+			</td>
+			<td>
+				<?php 
+				if($key == 'resourceName')
+				{?>
+					<a href = "<?php echo $this->url(array(
+								'controller' => 'resource',
+								'action' => viewdetails,
+								'id' => $privilege['resourceId']
+								));
+							?>">
+							<?php echo $privilege['resourceName']?></a>
+					
+				<?}
+				elseif($key == 'roleName')
+				{?>
+					<a href = "<?php echo $this->url(array(
+								'controller' => 'role',
+								'action' => viewdetails,
+								'id' => $privilege['roleId']
+								));
+							?>">
+							<?php echo $privilege['roleName']?></a>
+				<?}
+				else
+				{?>
+					<?= $value?>	
+				<?}?>
+			</td>
+		</tr>
+	<?php 
+	}
+}?>
+</table>
+
+<br></br>
+<br></br>
+
+<a href="<?php echo $this->url(array('controller' => 'privilege', 
+									'action' => 'edit',
+									'id' => $privilege['id']
+										)
+										);?>"
+										> edit</a>

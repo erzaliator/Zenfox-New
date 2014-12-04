@@ -1,0 +1,177 @@
+<?php
+                $frontendId = Zend_Registry::getInstance()->get('frontendId');
+                $session = new Zend_Auth_Storage_Session();
+                $store = $session->read();
+                $playerId = $store['id']?$store['id']:-1;
+                $frontendId = Zend_Registry::getInstance()->get('frontendId');
+                $session = new Zend_Auth_Storage_Session();
+                $store = $session->read();
+                $playerId = $store['id']?$store['id']:-1;
+
+//if($playerId>0)
+//{
+//Use Relative Path, Problem In Loading Game With HTTPS Header
+//$siteHttpUrl = "http://". $_SERVER['HTTP_HOST'];
+$siteHttpUrl = "";
+$attributes = array (
+        'width' => '100%',
+		'height' => '100%',
+		'resizable'=>'yes',
+		'scrollbars'=>'no',
+     );
+
+//OLD CODE START
+/*$chat = $siteHttpUrl. "/games/container/components/chat/chat.swf";
+//$games = $siteHttpUrl. "/games/container/components/games/games.swf";
+$winner = $siteHttpUrl. "/games/container/components/winner/winner.swf";
+$market = $siteHttpUrl. "/games/container/components/market/market.swf";
+$invitefriends = $siteHttpUrl. "/games/container/components/invitefriends/invitefriends.swf";
+$profile = $siteHttpUrl. "/games/container/components/profile/profile.swf";
+//$guide = $siteHttpUrl. "/games/container/components/guide/guide.swf";
+$machineId = $this->machineId;
+$flavour = $this->flavour;
+$amountType = $this->amountType;
+$swfFile = $siteHttpUrl . '/games/multi-player/rummy/indian-rummy/game.swf'; //$this->swfFile; //$siteHttpUrl . "/games/single-player/" . $flavour . "/" . $this->swfFile;
+$containerSwfFile = $siteHttpUrl . "/games/container/container.swf";
+$login = $this->login;
+$currency = $this->currency?$this->currency:"USD";
+$xmlConfig = $siteHttpUrl. "/games/container/config.txt";
+$gameConfig = $siteHttpUrl . '/games/multi-player/rummy/indian-rummy/config.txt';// .$this->configFile;//$siteHttpUrl . "/games/single-player/" . $flavour . "/" . $flavour . "_" . $machineId . ".txt";
+$guideConfig = $siteHttpUrl . '/' .$this->guideConfig;
+$sideSlide =  $siteHttpUrl . '/games/container/components/sideslide/sideslide.swf';
+*/
+//END
+
+//NEW CODE START
+$chat = $siteHttpUrl. $this->flashDir . "/container/components/chat/chat.swf";
+//$games = $siteHttpUrl. "/games/container/components/games/games.swf";
+$winner = $siteHttpUrl. $this->flashDir ."/container/components/winner/winner.swf";
+$settings = $siteHttpUrl. $this->flashDir . "/container/components/settings/settings.swf";
+$market = $siteHttpUrl. $this->flashDir ."/container/components/market/market.swf";
+$invitefriends = $siteHttpUrl. $this->flashDir ."/container/components/invitefriends/invitefriends.swf";
+$profile = $siteHttpUrl. $this->flashDir ."/container/components/profile/profile.swf";
+//$guide = $siteHttpUrl. "/games/container/components/guide/guide.swf";
+$machineId = $this->machineId;
+$flavour = $this->flavour;
+$amountType = $this->amountType;
+$swfFile = $siteHttpUrl . $this->flashDir .'/multi-player/rummy/indian-rummy/theme/blue-table/game.swf'; //$this->swfFile; //$siteHttpUrl . "/games/single-player/" . $flavour . "/" . $this->swfFile;
+$containerSwfFile = $siteHttpUrl . $this->flashDir . "/container/web-container.swf";
+$login = $this->login;
+$currency = $this->currency?$this->currency:"USD";
+$xmlConfig = $siteHttpUrl. $this->flashDir ."/container/config.txt";
+$gameConfig = $siteHttpUrl . $this->flashDir .'/multi-player/rummy/indian-rummy/config.txt';// .$this->configFile;//$siteHttpUrl . "/games/single-player/" . $flavour . "/" . $flavour . "_" . $machineId . ".txt";
+$guideConfig = $siteHttpUrl . '/' .$this->guideConfig;
+$sideSlide =  $siteHttpUrl . $this->flashDir .'/container/components/sideslide/sideslide.swf';
+$inviteFriends = $siteHttpUrl . $this->flashDir .'/container/components/invitefriends/invitefriends.swf';
+$audio = $siteHttpUrl . $this->flashDir .'/container/components/audiomanager/audiomanager.swf';
+//END
+
+
+$frontendId = Zend_Registry::getInstance()->get('frontendId');
+$locale = Zend_Registry::getInstance()->get('Zend_Locale');;
+$flashVarString = 'game_id='.$machineId.'&game_flavour='.$flavour.'&login='.$login.'|'.$machineId.'|'.$flavour.'&xml_config='.$xmlConfig.'&amount_type='.$amountType.'&currency='.$currency.'&frontend_id='.$frontendId.'&locale='.$locale.'&game_swf_path='.$swfFile.'&game_config='.$gameConfig.'&chat='.$chat.'&winner='.$winner.'&invitefriends='.$invitefriends.'&market='.$market.'&profile='.$profile.'&theme=blue_table';//.'&guide_config='.$guideConfig.'&guide='.$guide.'&sideslide='.$sideSlide;
+$params = array('FlashVars' => $flashVarString);
+//OLD CODE START
+//$passKey = md5($machineId . md5($this->phpsessid));
+/*if($flavour=='rummy_test')
+{
+	$flashVarString = 'game_id='.$machineId.'&game_flavour='.$flavour.'&login='.$login.'|'.$machineId.'|'.$flavour.'&pass_key='.$passKey.'&xml_config='.$xmlConfig.'&amount_type='.$amountType.'&currency='.$currency.'&frontend_id='.$frontendId.'&locale='.$locale.'&game_swf_path='."/games/multi-player/rummy/Rummy.swf".'&game_config='."/games/multi-player/rummy/GameConfig.txt".'&chat='.$chat;//.'&winner='.$winner;
+
+	//$containerSwfFile = $siteHttpUrl . "/games/multi-player/rummy/Container.swf";
+$params = array('FlashVars' => $flashVarString, 'SCALE' => 'default');
+}
+else
+{
+	$flashVarString = 'game_id='.$machineId.'&game_flavour='.$flavour.'&login='.$login.'|'.$machineId.'|'.$flavour.'&pass_key='.$passKey.'&xml_config='.$xmlConfig.'&amount_type='.$amountType.'&currency='.$currency.'&frontend_id='.$frontendId.'&locale='.$locale.'&game_swf_path='.$swfFile.'&game_config='.$gameConfig.'&chat='.$chat;
+$params = array('FlashVars' => $flashVarString);
+}*/
+//OLD CODE END
+//echo $this->htmlFlash($containerSwfFile,$attributes,$params);
+//}
+
+//BHARTHI CODE
+
+//$xmlConfig = "/games/container/config.txt";
+//$containerSwfFile = "/games/container/web-container.swf";
+//$login = $this->login;
+$machineId = $this->machineId;
+$flavour = $this->flavour;
+$amountType = $this->amountType;
+//$login = $login.'|'.$machineId.'|'.$flavour;
+
+if($login == 'guest')
+{
+	$login = $login.'|'.$machineId.'|'.$this->phpsessid;
+}
+else
+{
+	$login = $login.'|'.$machineId.'|'.$flavour;
+}
+
+$passKey = md5($machineId . md5($this->phpsessid));
+$seatIndex = $this->seatIndex;
+if($this->tabbed)
+{
+	echo "$";
+	$tabbedSettings = "flashvars.lobby_swf_path='/games/taashtime/container/components/lobby/rummy-lobby/lobby.swf';flashvars.lobby_config='/games/taashtime/container/components/lobby/rummy-lobby/lobby-config.txt';flashvars.open_popup='false';flashvars.user_name='"."$this->tabLoginName"."';flashvars.balance='"."$this->tabCash"."';flashvars.bonus='"."$this->tabBonus"."';";
+}
+
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>	 	
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<!--script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script-->
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<div id="flashContent">
+			<h1>You need at least Flash Player 10.0 to view this page.</h1>
+			<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+		</div>  
+		<script type="text/javascript">
+			//alert("Flashvars");
+			//Dynamic publishing with swfObject 
+			var params = {
+				  wmode: "transparent",
+				  allowfullscreen: "true"
+				};
+			var flashvars = {};
+			flashvars.game_id = '<?php echo $machineId; ?>';
+			flashvars.game_flavour = '<?php echo $flavour; ?>';
+			flashvars.login = '<?php echo $login; ?>';
+			flashvars.pass_key = '<?php echo $passKey; ?>';
+			flashvars.xml_config = '<?php echo $xmlConfig; ?>';
+			flashvars.game_config = '<?php echo $gameConfig; ?>';
+			flashvars.game_swf_path = '<?php echo $swfFile; ?>';
+			flashvars.amount_type = '<?php echo $amountType; ?>';
+			flashvars.seat_index = '<?php echo $seatIndex; ?>';
+			flashvars.settings = '<?php echo $settings;?>';
+			flashvars.winner = '<?php echo $winner; ?>';
+			<?php if($this->tabbed){echo $tabbedSettings;}?>
+			flashvars.currency = 'INR';
+			flashvars.frontend_id = '1';
+			flashvars.locale = 'en_IN';
+			//flashvars.invitefriends = '<?=$inviteFriends ?>';
+			flashvars.tournament = '<?php echo $this->tournament ?>';
+			flashvars.audio = '<?php echo $audio ?>';
+			flashvars.theme = 'blue_table';
+			//A 'name' attribute with the same value as the 'id' is REQUIRED for Chrome/Mozilla browsers
+			swfobject.embedSWF("<?php echo $containerSwfFile; ?>", "flashContent", "100%", "100%", "10.0", null,flashvars, params, {name:"flashContent"})
+			//swfobject.addParam("wmode", "transparent"); 			
+		</script>
+<!--		<h1>TaashTime</h1> -->
+
+<?php
+$trackerId = isset($_COOKIE['trackerId'])?$_COOKIE['trackerId']:null;
+if($trackerId && ($trackerId == 22))
+{
+	?>
+		<!--img src="http://direct.adohana.com/SL6Y" width="1" height="1" /-->
+	<?php
+}
+?>
+
+	</body>
+</html>
+

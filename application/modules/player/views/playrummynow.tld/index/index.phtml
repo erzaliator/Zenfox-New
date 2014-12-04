@@ -1,0 +1,89 @@
+<?php 
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')? Zend_Registry::getInstance()->get('webConfig'):'null';
+$viewDir = $webConfig['viewDir'];
+?>
+<div class="TTPlaynowmarg_t">
+	<div class="promo">
+	<!--img src="<?php //echo "/images/" . $viewDir. "/promo.png" ?> " alt="" width="410" height="330"></img-->
+
+	<!--<img src="<?php //echo "/images/" . $viewDir. "/promo.png" ?> " alt="" width="390" height="310"/>-->
+
+
+<div><div id="sliderban" >
+          <ul>
+            <li><a href=""><img src="/images/playrummynow/ttplayrummybanner.jpg" alt=""  width="500" border="0"  /></a></li>
+            <li><a href=""><img src="/images/playrummynow/ttplayrummybanner1.jpg" alt=""  width="500" border="0"  /></a></li>
+           
+          </ul>
+        </div>
+</div>
+	<!--	<a href ="/promotions"><img src="<?php echo "/images/ccl-banner.jpg" ?> " alt="" width="390" height="310"/></a>-->
+<!--	<form id='player-cricket-form' action="/index/index" method="post" class="zend_form"> -->
+		<?php
+		/*
+		if($this->noPlayerId)
+		{
+			$this->form->getElement('login')->addError('Please enter a username');
+			$this->form->getElement('password')->addError('Please enter the password');
+			$this->form->getElement('confirmPassword')->addError('Please enter the password');
+			$this->form->getElement('email')->addError('Please enter the email');
+			//print "<div>You need to be logged in to cast a vote. Please login or signup now to win exciting prizes at nationalrummy</div>";
+			print "<div id='error-message'>You need to be logged in to cast a vote. Please login or signup now to win exciting prizes at nationalrummy</div>";
+		}
+		if($this->noTeam)
+		{
+			print "<div id='error-message'>Please select a team.</div>";
+		}
+		if($this->voteCast)
+		{
+		?>
+			<div id='vote-message'>Your vote is casted</div>
+			<div align="center">
+			<p>
+				If your chosen team wins, you get Rs. 100. <br>Else you get Rs. 50.<br>
+				You can change your vote anytime before the match ends.<br>
+				Please <a href="/" alt="Re-cast your vote">Click Here</a> if you want to change your vote.
+			</p>
+			</div>
+		<?php 
+		}
+		else
+		{
+		?>
+		<div>Who will win today?</div>
+		<table>
+			<tr>
+				<td><label id="label-team-1"><?php echo $this->team_1_name;?></label></td>
+				<td><label id="label-team-2"><?php echo $this->team_2_name;?></label></td>
+			</tr>
+			<tr>
+				<td><img id="image-team-1" src="<?php echo $this->team_1_image;?>"/></td>
+				<td><img id="vs" src="/images/rummy.tld/vs.png"/></td>
+				<td><img id="image-team-2" src="<?php echo $this->team_2_image;?>"/></td>
+			</tr>
+			<tr>
+				<td><input id="radio-team-1" <?php echo $this->team_1_checked;?> type="radio" name="team" value="<?php echo $this->team_1_value;?>" /></td>
+				<td><input id="radio-team-2" <?php echo $this->team_2_checked;?> type="radio" name="team" value="<?php echo $this->team_2_value;?>" /></td>
+			</tr>
+		</table>
+		<div>Pick the winning team, earn Rs 100/-</div>
+		<input id ="cricket-form-submit" src="/images/rummy.tld/vote-now.png" type="image" name="submit"/>
+		<?php
+		}
+		*/
+		?>
+<!--	</form> -->
+	
+<?php	//echo $this->cricketForm; //<img src="<?php echo "/images/" . $viewDir. "/promo.png"" alt="" width="390" height="310">?>
+	</div>
+    <div class="reg" id="regForm">
+    	<strong><?php echo $this->heading?></strong>
+	    <?php
+	    echo $this->form;
+	    ?>
+    <!--div class="submit"><a href="#">Submit</a></div-->
+	</div>
+  
+<div id="break">&nbsp; &nbsp; 
+</div>
+

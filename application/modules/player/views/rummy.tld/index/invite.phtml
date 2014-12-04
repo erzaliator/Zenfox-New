@@ -1,0 +1,48 @@
+<?php
+if($this->form)
+{
+	?>
+	<script type="text/javascript" src="/importcontacts/js/popup.js"></script>
+   <script type="text/javascript" src="/importcontacts/js/importcontacts.js"></script>
+   
+   <link type="text/css" rel="stylesheet" href="/importcontacts/css/importcontacts.css"></link>
+	<div id = "invite-friends-form">
+		<div id="inner-box">
+        		<div class="invite-frnds">
+        	<h1>Invite Friends</h1>
+            
+            <p>Import Contacts From</p>
+            <center >  <div class="invite-img">
+          <img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/gmail.png" alt="gmail" onClick = "getimportcontactsForm('gmail')"  style="cursor:pointer;"/>
+             <img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/yahoo.png" alt="Yahoo" onClick = "getimportcontactsForm('yahoo')" style="cursor:pointer;"/></div></center>
+           <!-- img src="/importcontacts/images/facebook.png" alt="gmail" onClick = "getimportcontactsForm('facebook')" style="cursor:pointer;"/>
+            <img src="/importcontacts/images/hotmail.png" alt="gmail" onClick = "getimportcontactsForm('hotmail')" style="cursor:pointer;"/>
+            <img src="/importcontacts/images/rediff.png" alt="gmail" onClick = "getimportcontactsForm('rediff')" style="cursor:pointer;"/>
+            <img src="/importcontacts/images/twitter.png" alt="gmail" onClick = "getimportcontactsForm('twitter')" style="cursor:pointer;"/-->
+           
+            <!--invite-img-->
+        </div><!--invite-frnds-->
+	    <div class="ttdepolcont ttinvitebg ">
+	   
+	    <div class="ttgetfive">	    
+	    <img src="/css/rummy.tld/images/get_500.png" border="0" usemap="#invite-friend" />
+
+		<map name="invite-friend">
+		<area shape="rect" coords="418,54,471,70"  href="/content/terms" />
+		</map>
+	    
+	    </div>
+	   
+	    <div class="ttinvitebginn">
+	    
+		<?php
+		echo $this->form;
+		?>
+	    
+	    </div>
+	  
+		</div>
+	    </div>  
+	    </div>
+	    <?php 
+}

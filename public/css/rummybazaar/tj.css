@@ -1,0 +1,904 @@
+@charset "utf-8";
+/* CSS Document */
+*
+{
+	margin:0;
+	padding:0;	
+}
+@font-face
+{
+	font-family:QuorumITCbyBT;
+	src:url(fonts/QUORUML.TTF);	
+}
+body
+{
+	margin:0;
+	padding:0;
+	background:#bfbfbf;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight: normal;
+}
+body img{
+border:none;
+}
+
+.wrap
+{
+	width:1060px;
+	margin:0 auto;
+	position: relative;
+}
+.wrap-inner
+{
+	background:url(/images/rummybazaar/bg.png) repeat;
+	float:left;
+	width: 100%;
+}
+.header {
+width: 1034px;
+float: left;
+padding: 0px 13px;
+}
+div.logo {
+float: left;
+margin-top: 10px;
+}
+div.main-menu {
+float: left;
+width: 70%;
+background:url(/images/rummybazaar/home/home-page-new.png) no-repeat 0 0;
+padding: 29px 0 20px;
+padding-left: 82px;
+}
+div.main-menu > ul {
+list-style: none;
+float: left;
+}
+div.main-menu > ul > li {
+float: left;
+/*margin-right:15px;*/
+}
+div.main-menu > ul > li > a {
+text-decoration: none;
+color:#fff;
+padding: 0 15px 10px;
+}
+div.main-menu > ul > li > a#active,div.main-menu > ul > li > a:hover,div.sub-menu-home > ul > li > a.active,div.sub-menu-home > ul > li > a:hover {
+border-bottom:3px solid #ed1b24;
+padding-bottom:2px;
+}
+body > div > div > div.header > div.main-menu > a.login
+{
+	cursor:pointer;
+	background: #ed1b24;
+padding: 8px 19px;
+font-weight: 700;
+text-decoration: none;
+color: #fff;
+border-radius: 4px;
+font-size: 13px;
+}
+.home-featured {
+width: 100%;
+float: left;
+background:url(/images/rummybazaar/home/banner-bg.png) no-repeat;
+padding-bottom: 70px;
+position: relative;
+}
+div.home-featured-content
+{
+	width: 100%;
+float: left;
+}
+div.new-year {
+float: left;
+width: 220px;
+margin-left: 350px;
+}
+div.new-head {
+float: left;
+margin-top: 96px;
+margin-bottom: 30px;
+}
+div.new-head > p {
+font-size: 31px;
+color:#fff;
+margin-bottom: 0;
+font-weight: normal;
+font-family:QuorumITCbyBT;
+line-height: 30px;
+}
+div.new-head > p span{
+font-size: 56px;
+color:#fff;
+border:none;
+}
+div.new-head > small {
+font-size: 30px;
+color:#fff;
+font-family:QuorumITCbyBT;
+float: right;
+margin-right: 20px;
+}
+div.cash-price {
+float: left;
+}
+div.cash-price > small {
+font-size: 20px;
+color:#fff;
+margin-left: 40px;
+}
+div.cash-price > p {
+font-size: 28px;
+color:#fff;
+margin-bottom: 15px;
+}
+div.cash-price > p > span{
+font-size: 24px;
+}
+div.new-year > p.date{
+font-size: 17px;
+color:#fff;
+font-family:QuorumITCbyBT;
+float: right;
+margin-right:7px;
+}
+div.join-free {
+float: left;
+background:url(/images/rummybazaar/home/form-bg.png) no-repeat;
+width:382px;
+margin-top: 45px;
+padding: 35px 0 15px 40px;
+height:280px;
+}
+div.join-head {
+float: left;
+color: #fff;
+font-weight: 700;
+font-size: 20px;
+margin-bottom: 22px;
+}
+.input-feilds
+{
+	float:left;
+	padding-left: 15px;
+}
+.input-feilds input[type="text"], .input-feilds input[type="password"] {
+padding: 5px;
+border-radius: 4px;
+box-shadow: none;
+border: 1px solid #4c4748;
+background: #000;
+width: 318px;
+height: 25px;
+margin-bottom: 10px;
+color:#FFF;
+}
+div.checkbox
+{
+	float:left;
+	padding-left: 15px;
+}
+div.checkbox p
+{
+	color:#fff;
+	font-size:12px;
+	float:left;
+	width: 173px;
+	margin-left:5px;
+	margin-bottom: 7px;
+}
+div.checkbox p a
+{
+color:#ffb10b;
+text-decoration:none;
+}
+div.checkbox input[type="checkbox"]
+{
+	float:left;
+	margin-top:2px;
+}
+div.already
+{
+	float:left;
+	padding-left: 15px;
+	width: 85%;
+	margin-bottom: 25px;
+}
+div.already .member{
+color:#ed1b24;
+font-size: 14px;
+text-decoration:none;
+float:left;
+}
+div.already input[type="submit"], .zend_form > ul > li > input[type="submit"] {
+color: #010101;
+font-size: 16px;
+text-decoration: none;
+background: url(/images/rummybazaar/home/gray-join.png) no-repeat;
+float: right;
+padding: 7px 35px 10px 12px;
+cursor: pointer;
+border:none;
+}
+.zend_form > ul > li > input[type="submit"]{
+	padding: 7px 40px 10px 16px;
+	width: 120px;
+}
+div.buttons
+{
+	float: right;
+margin-top: 15px;
+margin-right: 70px;
+}
+.playnow
+{
+	background:url(/images/rummybazaar/home/playnow.png) no-repeat;
+padding: 20px 105px 20px 25px;
+text-decoration: none;
+color: #fff;
+float: left;
+font-size:18px;
+margin-right: 55px;
+}
+.free
+{
+	background: url(/images/rummybazaar/home/join.png) no-repeat;
+padding: 20px 65px 20px 25px;
+text-decoration: none;
+color: #fff;
+float: left;
+font-size:18px;
+}
+div.quick-links {
+position: absolute;
+right: 0;
+top: 55px;
+cursor: pointer;
+}
+div.quick-links img{
+float: left;
+z-index: 25;
+}
+.slide-left
+{
+	background: #d5d5d5;
+	border: 2px solid #333;
+	display: none;
+	z-index: 5;
+    padding: 10px;
+    float: left;
+}
+.offers {
+width: 100%;
+float: left;
+}
+div.offers > h1 {
+font-size: 42px;
+color:#807878;
+text-align: center;
+font-family:QuorumITCbyBT;
+font-weight:normal;
+}
+div.offers > h1 > span{
+font-size: 58px;
+color:#ed1b24;
+}
+div.offers > h1 > img{
+margin-left: 15px;
+}
+div.offer-types  {
+float: left;
+width: 100%;
+text-align: center;
+}
+div.bonus-inner {
+width: 930px;
+margin: 0 auto;
+}
+.bonus
+{
+width: 300px;
+float: left;
+background:url(/images/rummybazaar/home/offer-bg.png) no-repeat;
+padding-top: 35px;
+margin-right: 8px;
+}
+div.bonus-inner img {
+height: 100px;
+}
+div.bonus-inner  h2 {
+color: #ed1b24;
+font-size: 26px;
+font-weight: normal;
+margin-top: 12px;
+}
+div.bonus p {
+color: #686666;
+font-size: 14px;
+margin-left: 15px;
+line-height: 25px;
+}
+div.bonus a {
+	background:url(/images/rummybazaar/home/offer-arw.png) no-repeat;
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+}
+div.bonus a:hover {
+	background:url(/images/rummybazaar/home/offer-arw-hover.png) no-repeat;
+}
+div.believe {
+float: left;
+width: 100%;
+text-align: center;
+margin-top: 30px;
+}
+div.believe > h3 {
+color: #ed1b24;
+font-size: 22px;
+font-weight: normal;
+}
+div.believe > p {
+font-size: 28px;
+color: #807878;
+}
+.triptich {
+width: 100%;
+float: left;
+background: #000;
+padding: 20px 0;
+}
+.trip-inner {
+/*width: 780px;
+margin: 0 auto;*/
+}
+div.trip {
+float: left;
+width: 370px;
+margin-left: 105px;
+}
+div.trip  ul {
+float: left;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+div.trip  ul li{
+float: left;
+clear:both;
+padding: 0 0 5px 15px;
+color:#f8f8f8;
+background: url(/images/rummybazaar/home/li-bg.png) no-repeat 0 5px;
+}
+div.trip h4 {
+color: #ed1b24;
+font-size:42px;
+font-weight: normal;
+}
+div.trip p {
+color: #6e6e6e;
+font-size: 24px;
+font-weight: normal;
+}
+div.trip a
+{
+background: #ed1b24;
+border-radius: 4px;
+padding: 5px 24px;
+float: right;
+color: #fff;
+text-decoration: none;
+font-weight: 700;
+}
+.footer {
+width: 1000px;
+float: left;
+background:url(/images/rummybazaar/home/foot-bg.png) repeat;
+padding: 10px 30px 15px;
+border-bottom: 7px solid #e20e0e;
+z-index: 3;
+position: relative;
+}
+div.foot-left {
+float: left;
+width:650px;
+}
+div.tabs {
+float: left;
+background:url(/images/rummybazaar/home/tab-bg.png) repeat;
+margin-bottom: 30px;
+}
+div.slide-tabs {
+float: left;
+position: relative;
+/* z-index: 2; */
+}
+div.slide-tabs ul{
+float: left;
+list-style:none;
+}
+div.slide-tabs ul li{
+float: left;
+color:#fff;
+font-size:14px;
+position: absolute;
+top: 8px;
+}
+div.slide-tabs ul li.one {
+left: 34px;
+width: 90px;
+}
+div.slide-tabs ul li.two {
+left: 185px;
+width: 80px;
+}
+div.slide-tabs ul li.three {
+left: 341px;
+width: 51px;
+}
+div.slide-tabs ul li.four {
+left: 470px;
+width: 82px;
+}
+div.slide-content {
+float: left;
+margin-top: 70px;
+}
+div.slide-content > img {
+border: 2px solid #9e9e9e;
+border-radius: 2px;
+float: left;
+margin-right: 15px;
+}
+ div.slide-content > ul {
+float: left;
+width: 365px;
+padding-left: 20px;
+list-style: disc;
+}
+ div.slide-content > ul li{
+float: left;
+color:#fff;
+padding-bottom: 10px;
+}
+ div.slide-content > ul li label{
+color:#9e9e9e;
+font-size:12px;
+ }
+div.foot-links {
+float: left;
+}
+.footer  h5 {
+color: #bcbcbc;
+font-size: 20px;
+margin-bottom:10px;
+font-weight: normal;
+}
+div.foot-links ul {
+float: left;
+list-style: none;
+margin: 0;
+padding: 0;
+width:165px;
+}
+div.foot-links ul li{
+float: left;
+padding: 0 0 10px;
+width: 100%;
+}
+ul.last-list {
+    margin-left: 20px !important;
+    width: 125px !important;
+}
+div.foot-links ul li a{
+color:#fff;
+text-decoration: none;
+font-size:12px;
+}
+div.foot-links ul li a:hover{
+color:#ed1b24;
+}
+.copy
+{
+color: #C0C0C0;
+    float: right;
+    font-size: 12px;
+    margin-top: 15px;
+    width: 100%;
+    text-align:center;
+}
+div.foot-right{
+float: left;
+margin-left: 23px;
+width: 275px;
+}
+div.foot-right input[type="text"] {
+width: 197px;
+height: 27px;
+padding: 5px;
+border-radius: 4px;
+box-shadow: none;
+border: none;
+float: left;
+}
+div.foot-right input[type="submit"] {
+background: #ed1b24;
+box-shadow: none;
+border: none;
+color: #fff;
+font-weight: 700;
+padding: 10px 12px;
+border-radius: 4px;
+clear: both;
+float: left;
+margin-top: 10px;
+cursor:pointer;
+}
+div.foot-logo {
+float: left;
+clear: both;
+margin: 40px 0 0;
+}
+div.foot-share {
+float: left;
+clear: both;
+margin: 15px 0 10px;
+}
+div.foot-share h5
+{
+	float: left;
+}
+div.foot-share > ul {
+float: left;
+list-style:none;
+}
+div.foot-share > ul li{
+float: left;
+margin-left: 5px;
+}
+div.foot-share > ul li a{
+float: left;
+width:33px;
+height:33px;
+}
+div.foot-share > ul li a.fb{
+	background:url(/images/rummybazaar/home/social-icons.png) no-repeat;
+}
+div.foot-share > ul li a.twitt{
+	background:url(/images/rummybazaar/home/social-icons.png) no-repeat -38px 0;
+}
+div.foot-share > ul li a.ln{
+	background:url(/images/rummybazaar/home/social-icons.png) no-repeat -78px 0;
+}
+div.foot-share > ul li a.gp{
+	background:url(/images/rummybazaar/home/social-icons.png) no-repeat  -120px 0;
+}
+div.payment {
+float: left;
+clear: both;
+}
+div.payment img{
+margin-bottom:10px;
+}
+.menu-icon
+{
+	display:none;
+	cursor:pointer;
+	background: #ed1b24;
+	float:right;
+	padding: 3px;
+	border-radius: 5px;
+	margin-right: 1%;
+	margin-top: -10%;
+}
+.menu-icon img
+{
+width: 38px;
+}
+
+/*----Table structure ----*/
+div.table{
+width: 100%;
+float: left;
+}
+div.table-head {
+width: 98%;
+float: left;
+text-align: center;
+background: #314570;
+color: #fff;
+padding: 1% 1%;
+font-weight:bold;
+font-size:16px;
+}
+div.table-body {
+width: 98%;
+float: left;
+text-align: center;
+color: #fff;
+padding: 1% 1%;
+}
+#even
+{
+	background: #474f58;
+}
+#odd
+{
+	background: #606b78;
+}
+div.table-content {
+width: 11%;
+float: left;
+margin-right: 3%;
+}
+div.result-table-content {
+width: 22%;
+float: left;
+margin-right: 3%;
+}
+div.result-table-content a{
+	color:#FFF;
+}
+#even div.join a{
+background: rgb(220,220,221);
+background: -moz-linear-gradient(top, rgb(220,220,221) 0%, rgb(145,145,148) 85%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(153,9,13,1)), color-stop(85%,rgba(126,7,6,1)));
+background: -webkit-linear-gradient(top, rgb(220,220,221) 0%,rgb(145,145,148) 85%);
+background: -o-linear-gradient(top, rgb(220,220,221) 0%,rgb(145,145,148) 85%);
+background: -ms-linear-gradient(top, rgb(220,220,221) 0%,rgb(145,145,148) 85%);
+background: linear-gradient(to bottom, rgb(220,220,221) 0%,rgb(145,145,148) 85%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99090d', endColorstr='#7e0706',GradientType=0 );
+color:#000;
+text-decoration:none;
+padding: 10% 56%;
+border-radius:4px;
+border:1px solid #ccc;
+}
+div.join a:hover{ 
+background: rgb(206, 53, 58, 1);
+background: -moz-linear-gradient(top, rgba(206, 53, 58, 1) 0%, rgba(97, 17, 17, 1) 85%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(206, 53, 58, 1)), color-stop(85%,rgba(97, 17, 17, 1)));
+background: -webkit-linear-gradient(top, rgba(206, 53, 58, 1) 0%,rgba(97, 17, 17, 1) 85%);
+background: -o-linear-gradient(top, rgba(206, 53, 58, 1) 0%,rgba(97, 17, 17, 1) 85%);
+background: -ms-linear-gradient(top, rgba(206, 53, 58, 1) 0%,rgba(97, 17, 17, 1) 85%);
+background: linear-gradient(to bottom, rgba(206, 53, 58, 1) 0%,rgba(97, 17, 17, 1) 85%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99090d', endColorstr='#7e0706',GradientType=0 );
+}
+#odd div.join a{
+background: rgb(32,54,104);
+background: -moz-linear-gradient(top, rgb(32,54,104) 0%, rgb(51,77,128) 85%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(32,54,104)), color-stop(85%,rgb(51,77,128)));
+background: -webkit-linear-gradient(top, rgb(32,54,104) 0%,rgb(51,77,128) 85%);
+background: -o-linear-gradient(top, rgb(32,54,104) 0%,rgb(51,77,128) 85%);
+background: -ms-linear-gradient(top, rgb(32,54,104) 0%,rgb(51,77,128) 85%);
+background: linear-gradient(to bottom, rgb(32,54,104) 0%,rgb(51,77,128) 85%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99090d', endColorstr='#7e0706',GradientType=0 );
+color:#fff;
+text-decoration:none;
+padding: 10% 56%;
+border:1px solid #969ba2;
+border-radius:4px;
+}
+.status-head
+{
+float:left;
+width:94%;
+background:#000;
+padding:3%;
+}
+.status-head .com
+{
+float:left;
+color:#fff;
+margin:0;
+font-size: 19px;
+}
+.status-head .stat
+{
+float:right;
+color:#fff;
+margin:0;
+font-size: 17px;
+}
+.input-feilds ul,.input-feilds li
+{
+margin:0;
+padding:0;
+list-style:none;
+}
+#terms-conditions{
+	color: #fff;
+	font-size: 12px;
+	margin-left: 5px;
+}
+
+.zend_form > ul {
+margin: 0;
+padding: 3%;
+list-style: none;
+float: left;
+background: #000;
+border-radius: 4px;
+/* max-width: 330px; */
+}
+.zend_form > ul > li {
+/* float: left; */
+clear: both;
+}
+.zend_form > ul > li > input[type="text"], .zend_form > ul > li > input[type="password"] {
+padding: 5px;
+border-radius: 4px;
+box-shadow: none;
+border: 1px solid #4c4748;
+background: #000;
+width: 318px;
+height: 25px;
+margin-bottom: 10px;
+color: #fff;
+}
+.zend_form > ul > li > ul {
+float: left;
+list-style: none;
+color: red;
+margin: 0 0 15px;
+padding: 0;
+}
+.zend_form > ul > li > span > a
+{
+color: #ffb10b;
+}
+.zend_form > ul > li.forgot-password{
+margin-top: 25px;
+margin-left: 10px;
+}
+.zend_form > ul > li.forgot-password a{
+color: #ffb10b; 
+}
+.zend_form > ul > li.login_form_button{
+	clear:none;
+	margin-left:180px;
+	/* position:absolute;
+	margin-top:105px; */
+}
+.login-popup{
+  	background:url(/images/rummybazaar/home/login-bg.png) no-repeat;
+  	height:210px;
+  	position: absolute;
+    top: 60px;
+    width: 284px;
+    z-index: 5;
+    right: 120px;
+}
+.form-close{
+float: right;
+text-align: right;
+width: 100%;
+margin-bottom: 12px;
+}
+.form-close img{
+padding-right: 10px;
+padding-top: 5px;
+cursor: pointer;
+}
+.login-popup .zend_form{
+width: 230px;
+margin: 0 auto;
+margin-top: 20px;
+}
+.login-popup .zend_form > ul{
+	background: none;
+    border-radius: 0px;
+    float: left;
+    max-width: none;
+    padding: 0px;
+}
+.login-popup .zend_form > ul > li > input[type="text"], .login-popup .zend_form > ul > li > input[type="password"]{
+	width: 223px;
+	border-radius: 5px;
+	border: none;
+	height: 23px;
+	margin-bottom: 10px;
+	padding: 5px;
+	background:#FFF;
+	color:#000;
+}
+.login-popup .zend_form > ul > li.login_form_button{
+	clear:none;
+	margin-left:0px;
+	/* position:absolute; */
+	margin-top:-115px;
+}
+.login-popup .zend_form > ul > li > input[type="submit"]{
+	background: url(/images/rummybazaar/home/login-butn.png) no-repeat;
+	width: 87px;
+	height: 34px;
+	border: none;
+	background-color: none;
+	font-size: 0px;
+	cursor: pointer;
+	margin-left: 140px;
+    margin-top: 90px;
+}
+#rememberMe{
+	margin-top:15px;
+}
+.zend_form > ul > li#fp_link{
+	padding-top:25px;
+}
+.zend_form > ul > li#signup_link{
+	float:right;
+	margin-top:-15px;
+}
+div.main-menu > ul > li > a.nav-hide{
+	display:none;
+}
+#inline_content #player-login-form ul{
+	height:160px;
+}
+
+.content-block #player-login-form .login_form_button{
+	margin-top:-25px;
+	position:relative;
+}
+#player-login-form li a{
+	margin-top:5px;
+	color:#FFF;
+}
+.login-popup #player-login-form li a{
+	text-decoration: none;
+	font-size: 12px;
+	color: #4c4c4c;
+}
+.zend_form > ul > li.signup-button{
+	margin-left:215px;
+	margin-top:-22px;
+}
+.content-block .zend_form > ul > li > label{
+	color:#FFF;
+}
+#already_member{
+	margin-top:12px;
+}
+#already_member a{
+	color:#ed1b24;
+	font-size:14px;
+}
+
+/*sub-menu css*/
+.sub-menu-home{
+width: 100%;
+float: left;
+margin-top: 13px;
+}
+div.sub-menu-home > ul{
+width: 100%;
+list-style: none;
+float: left;
+padding: 8px 0px;
+}
+.sub-menu-home ul li a{
+float:left;
+text-decoration:none;
+color:#fff;
+padding-right: 30px;
+padding-bottom: 5px;
+}
+.dropdown-menu{
+	display:none;
+}
+#tn_logo{
+	margin-left: 140px;
+    margin-top: 135px;
+}
+.bx-wrapper .bx-pager.bx-default-pager a {
+text-indent: 1px ! important;
+height: 27px ! important;
+padding-top: 7px;
+font-size: 14px;
+color: #fff;
+text-decoration: none;
+font-weight: normal;
+}

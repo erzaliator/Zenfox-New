@@ -1,0 +1,77 @@
+<html>
+	<head>
+	</head>
+	<body>
+	<?php
+	if($this->gameGroups)
+	{
+		?>
+		<script type="text/javascript">
+			<!--
+			function popitup(url)
+			{
+				newwindow=window.open(url,'name','fullscreen');
+				if (window.focus) {newwindow.focus()}
+				return false;
+			}
+			//-->
+		</script>
+		<?php
+		//echo "<table cellpadding='0' cellspacing='2' border='1'>";
+		foreach($this->gameGroups as $gameGroup)
+		{
+			foreach($gameGroup as $groupName => $flavour)
+			{
+				foreach($flavour as $flavourName => $machine)
+				{
+					echo $flavourName;
+					echo "<br>";
+					foreach($machine as $machineDetails)
+					{
+						$runningMachineId = $machineDetails['runningMachineId'];
+						$link = "http://apps.facebook.com/" . $this->appName . "/game/flavour/" . $machineDetails['gameFlavour'] . "/machineId/" . $runningMachineId . "/amountType/" . $machineDetails['amountType'];
+						$image = "/images/thumbnails/" . $machineDetails['gameFlavour'] . "_" . $runningMachineId . ".jpg";
+                        ?>
+                        <a href='#' id='this' onclick='return popitup("<?php echo $link; ?>")'><?php echo $machineDetails['machineName'];?>
+							<img src = '<?php echo $image; ?>'/>
+						</a>
+                        <?php
+					}
+				echo "<br>";
+				}
+			}
+		}
+	}
+	else
+	{
+        $game_id = 1;
+        $game_flavour = 'RU_US';
+        $login = $this->login;
+        $passKey = md5($game_id . md5($this->phpsessid));
+        $xml_config = 'http://demo.logicdice.com/games/single-player/lan_enu.xml';
+        $string = "game_id=$game_id&game_flavour=$game_flavour&". "login=$login|$game_id|$game_flavour&pass_key=$passKey
+        &xml_config=$xml_config&amount_type=REAL&currency=USD&frontend_id=1&locale=en_US";
+		?>
+		<fb:swf swfbgcolor="000000" imgstyle="border-width:3px; border-color:white;"
+		swfsrc='http://demo.logicdice.com/games/single-player/roulette.swf'
+		imgsrc='http://demo.logicdice.com/games/single-player/roulette.swf' width='768' height='480' flashvars="<?php echo
+		$string ?>"/>
+		<?php
+	}
+	?>
+	<!-- 
+	<div id="fb-root"></div>
+      <script src="http://connect.facebook.net/en_US/all.js">
+      </script>
+      <script>
+         FB.init({ 
+            appId:'250870833286', cookie:true, 
+            status:true, xfbml:true 
+         });
+
+         FB.ui({ method: 'feed', 
+            message: 'zenfox games are super-cool'});
+      </script>
+       -->
+	</body>
+</html>

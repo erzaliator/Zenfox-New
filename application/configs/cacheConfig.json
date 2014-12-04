@@ -1,0 +1,23 @@
+{
+	"frontEndOptions": 
+		{
+			"caching":"true",
+			"lifteime":3000,
+			"automatic_serialization":"false"
+		},
+    "serverList":
+    	[
+    		{
+            	"host":"192.168.1.42",
+            	"port":11211
+        	},
+        	{
+            	"host":"192.168.1.111",
+            	"port":11211
+        	},
+        	{
+            	"host":"192.168.1.110",
+            	"port":11211
+        	}
+        ]
+}

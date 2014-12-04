@@ -1,0 +1,572 @@
+<?php
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LanguageForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+
+//$frontendDetails = Zend_Registry::getInstance()->isRegistered('frontendDetails-' . $_SERVER['HTTP_HOST'])?Zend_Registry::getInstance()->get('frontendDetails-' . $_SERVER['HTTP_HOST']):'';
+
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+//$webConfig = isset($frontendDetails['webConfig'])?$frontendDetails['webConfig']:'';
+$this->viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+$this->cssDir = isset($webConfig['cssDir'])?$webConfig['cssDir']:$this->viewDir;
+$this->jsDir = isset($webConfig['jsDir'])?$webConfig['jsDir']:$this->viewDir;
+$this->imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:$this->viewDir;
+$this->htmlTitle = isset($webConfig['htmlTitle'])?$webConfig['htmlTitle']:'null';
+
+$frontController = Zend_Controller_Front::getInstance();
+$controllerName = $frontController->getRequest()->getControllerName();
+$actionName = $frontController->getRequest()->getActionName();
+$session = new Zend_Auth_Storage_Session();
+$store = $session->read();
+		    
+$isLoggedIn = isset($store)?true:false;
+if($isLoggedIn)
+{
+	$pageAddress = $controllerName . '-' . $actionName;	
+}
+else
+{
+	$pageAddress = $controllerName;
+}
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php 
+$this->metatags();
+?>
+<title><? echo $this->htmlTitle; echo isset($this->pageTitle)? "-".$this->pageTitle:""; ?></title>
+<?$this->headLink()->appendStylesheet('/css/'. $this->viewDir .'global.css') ?>
+  <?=$this->headLink()?>
+<!-- 
+<link rel="stylesheet" href="/css/rummy.tld/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="/css/rummy.tld/css/style.css" type="text/css" />
+ -->
+<!-- <script src="script/jquery.min.js" type="text/javascript"></script>
+<script src="script/custom.js" type="text/javascript"></script>
+<script type="text/javascript" src="iepngfix_tilebg.js"></script>
+-->
+<!--[if lt IE 7]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+<![endif]-->
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body class="<?php echo $pageAddress; ?>">
+<div class="container">
+  <div id="login-header" class="span-24">
+    <div class="span-4 live-tables">
+      <div class="left pad-t-9 pad-l-5">Live Tables:</div>
+      <div class="live-tables-number right pad-r-5">
+      <?php 
+      $onlineTable = new OnlineTable();
+      echo $onlineTable->getLiveTables();
+      ?>
+      </div>
+    </div>
+    <div class="span-16 prepend-2 login-container">
+  <div class="login-box">
+	<?php 
+		$facebookLikeSession = new Zend_Session_Namespace('facebookLikeSession');
+		
+		if($isLoggedIn)
+		    {
+		    	$playerId = $store['id'];
+		    	$imageName = md5("image" . $playerId) . '.jpg';
+			    $loginName = $store['authDetails'][0]['login'];
+			    $firstName = $store['authDetails'][0]['first_name'];
+			    $cash = $store['authDetails'][0]['cash'];
+			    $bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+			    $loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+	    
+			    $currency = new Zend_Currency();
+			    $currencySession = new Zend_Session_Namespace('currency');
+			 //   if($currencySession->oldValue != $currencySession->newValue)
+			 //   {
+				$source = $currency->getShortName('', $currencySession->oldValue);
+				$destination = $currency->getShortName('', $currencySession->newValue);
+				$currConv = new CurrencyConversion();
+				$cash = $currConv->getConvertedValue($source, $destination, $cash);
+				$bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+				$store['cash'] = $cash;
+				$store['bonus'] = $bonus;
+				$session->write($store);
+		    	?>
+		    	 <div class="left login-controls color-blue welcome-box"> <strong>Welcome back, <?php echo empty($firstName)?$loginName:$firstName;?>! </strong></div>
+        <div class="right login-controls small black-link"><a href="/auth/edit"><strong>Profile</strong></a> | <a href="/auth/changepwd"><strong>Change Password</strong></a> | <a href="/auth/logout"><strong>Logout</strong></a></div>
+		    	<?php 
+		    }
+		    else
+		    {
+			$facebookLikeSession->unsetAll();
+		    	$loginForm = new Player_LoginForm();
+				$request = Zend_Controller_Front::getInstance()->getRequest();
+				if($request->getParam('format') == 'json')
+				{
+					$loginForm->setAction('/auth/login/format/json');
+				}
+				else
+				{
+					$loginForm->setAction('/auth/login');
+				}
+				echo $loginForm;
+		    }
+		?>
+
+      </div>
+
+    </div>
+    
+  </div>
+  <div id="nav-bar" class="span-24">
+    <div class="span-6 pad-t-10"><a href ="/index/index"><img src="/css/rummy.tld/images/logo-animation-2.gif" width="238" height="51" alt="Taash Logo" /></a></div>
+    <div class="span-25 last prepend-1">
+    <?php 
+    	$partial = array('menu.phtml','player');
+		$this->navigation()->menu()->setPartial($partial);
+		echo $this->navigation()->menu()->render();
+	?>
+    <!-- 
+      <ul id="main-menu">
+        <li><a href="#" title="">
+          <p class="menu-pad">Home</p>
+          </a></li>
+        <li><a href="#" title="">
+          <p class="menu-pad">Join Now!</p>
+          </a> </li>
+        <li><a href="#" title="" >
+          <p class="menu-pad">Rummy</p>
+          </a></li>
+        <li class="headlink"><a href="#" title="Test">
+          <p class="menu-pad">Legality</p>
+          </a> </li>
+        <li class="headlink"><a href="#" title="Test">
+          <p class="menu-pad">Promotions</p>
+          </a> </li>
+        <li class="headlink"><a href="#" title="Test">
+          <p class="menu-pad">Winners</p>
+          </a> </li>
+        <li class="headlink"><a href="#" title="Test">
+          <p class="menu-pad">Players Guide</p>
+          </a> </li>
+        <li><img src="images/top-menu-pipe.png"/></li>
+      </ul>
+      -->
+    </div>
+  </div>
+  <div id="layout" class="span-24 home-banner">
+	<div id="after-banner"><img src="/css/rummy.tld/images/web-banner-01.jpg" alt="Play Now!"/></div>
+    <div id="left-column" class="span-16">
+      <div id="home-banner-left" class="left">
+      <div id="slideml">
+      	<div id="container">
+     		<div id="example">
+     			<div id="slides">
+      				<div class="slides_container" style="overflow: hidden; position: relative; display: block;">
+      					<div class="slides_control" style="position: relative; width: 2025px; height: 365px; left: -675px;">
+      						<div class="slide" style="position: absolute; top: 0px; left: 675px; z-index: 0; display: none;">
+      							<a target="_blank" title="Play Rummy for Free &amp; 1000 Taash Coins Free" href="http://taashtime.com/">
+      								<img width="675" height="365" title="Play Rummy for Free &amp; 1000 Taash Coins Free" alt="Play Rummy for Free &amp; 1000 Taash Coins Free" src="/css/rummy.tld/images/b6.jpg?1326193207262">
+      							</a>
+      						</div>
+      						<div class="slide" style="position: absolute; top: 0px; left: 675px; z-index: 0; display: none;">
+      							<a target="_blank" title="Follow,Like &amp; Friend Us!" href="http://taashtime.com/">
+      								<img width="675" height="365" title="Follow,Like &amp; Friend Us!" alt="Follow,Like &amp; Friend Us!" src="/css/rummy.tld/images/b2.jpg">
+      							</a>
+      						</div>
+      						<div class="slide" style="position: absolute; top: 0px; left: 675px; z-index: 0; display: none;">
+      							<a target="_blank" title="3TypesofGames" href="http://taashtime.com/">
+      								<img width="675" height="365" title="3TypesofGames" alt="3TypesofGames" src="/css/rummy.tld/images/b3.jpg">
+      							</a>
+      						</div>
+      						<div class="slide" style="position: absolute; top: 0px; left: 675px; z-index: 0; display: none;">
+      							<a target="_blank" title="Announcing" href="http://taashtime.com/">
+      								<img width="675" height="365" title="Announcing" alt="Announcing" src="/css/rummy.tld/images/b4.jpg">
+      							</a>
+      						</div>
+      						<div class="slide" style="position: absolute; top: 0px; left: 675px; z-index: 5; display: block;">
+      							<a target="_blank" title="Secure Payments" href="http://taashtime.com/">
+      								<img width="675" height="365" title="Secure Payments" alt="Secure Payments" src="/css/rummy.tld/images/b5.jpg">
+      							</a>
+      						</div>
+      						<div class="slide" style="position: absolute; top: 0px; left: 675px; z-index: 0; display: none;">
+      							<a target="_blank" title="GoiningReferalDepositBonus" href="http://taashtime.com/">
+      								<img width="675" height="365" title="GoiningReferalDepositBonus" alt="GoiningReferalDepositBonus" src="/css/rummy.tld/images/b1.jpg">
+      							</a>
+      						</div>
+      						<div class="slide" style="position: absolute; top: 0px; left: 675px; z-index: 0; display: none;">
+      							<a target="_blank" title="GoiningReferalDepositBonus" href="http://taashtime.com/">
+      								<img width="675" height="365" title="GoiningReferalDepositBonus" alt="GoiningReferalDepositBonus" src="/css/rummy.tld/images/b7.jpg">
+      							</a>
+      						</div>
+      					</div>
+      				</div>
+      				<ul class="pagination">
+      					<li class=""><a href="#0">1</a></li>
+      					<li class=""><a href="#1">2</a></li>
+      					<li class=""><a href="#2">3</a></li>
+      					<li class=""><a href="#3">4</a></li>
+      					<li class="current"><a href="#4">5</a></li>
+      					<li class=""><a href="#5">6</a></li>
+      					<li class=""><a href="#6">7</a></li>
+      				</ul>
+      			</div>
+      			<img width="739" height="341" id="frame" alt="Example Frame" src="/css/rummy.tld/images/example-frame.png">
+      		</div>
+      </div>
+      <map id="Map" name="Map">
+      <area title="visacard" alt="visacard" href="#" coords="88,200,170,259" shape="rect">
+      </map>
+      </div>
+      
+      
+	<?php
+		$randomNumber = rand(1,3);
+	?>
+<!-- img src="/css/rummy.tld/images/main_banner_<?=$randomNumber?>.jpg" width="679" height="376" border="0" usemap="#play" />
+		<map name="play">
+			<area shape="rect" coords="522,321,678,363" href="/game" />
+		</map>
+<!--
+        <h1 class="color-white">Best Online Rummy <br />
+          Playing Experience!</h1>
+        <ul id="home-bullet">
+          <li>Exciting rewards</li>
+          <li>Gifts, vouchers and many thrilling prizes</li>
+          <li>Healthy competition and camaraderie</li>
+          <li>Play with friends and family online</li>
+          <li>Invite your friends and have a private room</li>
+        </ul>
+        <p><a href="/game"><img src="/css/rummy.tld/images/home-play-now.png" width="175" height="55" alt="Play Now!" /></a></p>
+-->
+      </div>
+      
+      <div class="home-content left">
+      <div class="promo-box left">
+      <div class="deposite">
+      <div class="depositebg">
+      <h2>BEST OF 3</h2>
+      <div class="depositein">
+      <h3><span>Three Rummy </span></h3>
+      <h3><span>Games</span></h3>
+      <h3>Maintain the least</h3>
+      <h3>count and become
+      </h3>
+      <h3> a winner</h3>
+      
+      </div>
+      <div class="btn"><a href="/game/quickjoin/flavour/BestOfThree/amount_type/FREE"><img src="/css/rummy.tld/images/join now.png" width="148" height="44" alt="JoinNow" title="JoinNow" /></a></div>
+      </div>
+      </div>
+      <!--
+      <div class="promo-top"><img src="/css/rummy.tld/images/promo-1-top.png" alt="" width="198" height="94" /></div>
+      <div class="promo-content">
+      <h3><strong>On Sign-up for Rummy Players!</strong></h3>
+      <p class="pad-t-20"><img src="/css/rummy.tld/images/play-now-small.png" width="132" height="38" alt="Play Now!" /></p>
+      </div>
+      <div><img src="/css/rummy.tld/images/promo-bottom.png" width="198" height="14" alt="Promotion 1" /></div>
+      
+      <img src="/css/rummy.tld/images/join.jpg" alt="Promotion 1" border="0" usemap="#joinMap"/>
+      <map name="joinMap">
+      <area shape="rect" coords="91,257,187,286" href="" />
+      </map>-->
+      </div>
+      <div class="promo-box right">
+      <div class="deposite">
+              <div class="taashplay">
+                <h2>STAKE</h2>
+      <div class="depositein">
+                  <h3><span>Quickest</span></h3>
+      
+      <h3> <span>Rummy Game</span></h3>
+      <h3>Earn a multiple of </h3>
+      <h3>loser's count </h3>
+      
+      </div>
+      <div class="btnlast"><a href="/game/quickjoin/flavour/Indian_Rummy/amount_type/FREE"><img src="/css/rummy.tld/images/referbtn.png" width="148" height="44" alt="Refer" title="Refer" /></a></div>
+              </div>
+      </div>
+      <!--
+                <div class="promo-top"><img src="/css/rummy.tld/images/promo-3-top.png" alt="" width="198" height="94" /></div>
+                <div class="promo-content">
+      <h3><strong>When you refer your friends!</strong></h3>
+                  <p class="pad-t-20"><img src="/css/rummy.tld/images/play-now-small.png" width="132" height="38" alt="Play Now!" /></p>
+                </div>
+                <div><img src="/css/rummy.tld/images/promo-bottom.png" width="198" height="14" alt="Promotion 1" /></div>
+      
+                <img src="/css/rummy.tld/images/refer.jpg" alt="Promotion 1" border="0" usemap="#referMap" />
+      <map name="referMap">
+      				<area shape="rect" coords="91,257,187,286" href="/index/invite" />
+      			</map>-->
+      </div>
+      <div style="margin-left:15px;" class="promo-box left">
+            <div class="deposite">
+      <div class="referbg">
+      <h2>SYNDICATE</h2>
+                <div class="depositein">
+      <h3><span>101 & 201 </span></h3>
+      <h3><span>Pool Rummy</span></h3>
+       
+       
+      <h3>Last Man Standing</h3>
+                   <h3>wins!!!</h3>
+      </div>
+      <div class="btnlast"><a href="/game/quickjoin/flavour/MPPRummy/amount_type/FREE"><img src="/css/rummy.tld/images/depositbtn.png" width="148" height="44" alt="Deposit" title="Deposit" /></a></div>
+      </div>
+      </div>
+      <!--<div class="promo-top"><img src="/css/rummy.tld/images/promo-2-top.png" alt="" width="198" height="94" /></div>-->
+            <!-- 
+      	<div class="promo-top"><img src="/css/rummy.tld/images/deposit-bonus.png" alt="" width="198" height="94" /></div>
+                <div class="promo-content">
+                  <h3><strong>On First Deposit!!</strong></h3>
+                  <p class="pad-t-20"><img src="/css/rummy.tld/images/play-now-small.png" style="margin-top: 22px;" width="132" height="38" alt="Play Now!" /></p>
+      </div>
+      <div><img src="/css/rummy.tld/images/promo-bottom.png" width="198" height="14" alt="Promotion 1" /></div>
+                
+      <img src="/css/rummy.tld/images/deposit.jpg" alt="Promotion 1" border="0" usemap="#depositMap"/>
+      <map name="depositMap">
+      				<area shape="rect" coords="91,257,187,286" href="/banking/deposit" />
+      </map>-->
+      </div>
+      </div>
+
+      
+      <?php 
+      /*
+      <div class="home-content left">
+        <div class="promo-box left">
+          <div class="promo-top"><img src="/css/rummy.tld/images/promo-1-top.png" alt="" width="198" height="94" /></div>
+          <div class="promo-content">
+            <h3><strong>On Sign-up for Rummy Players!</strong></h3>
+            <p class="pad-t-20"><img src="/css/rummy.tld/images/play-now-small.png" width="132" height="38" alt="Play Now!" /></p>
+          </div>
+          <div><img src="/css/rummy.tld/images/promo-bottom.png" width="198" height="14" alt="Promotion 1" /></div>
+        </div>
+        <div class="promo-box right">
+          <div class="promo-top"><img src="/css/rummy.tld/images/promo-3-top.png" alt="" width="198" height="94" /></div>
+          <div class="promo-content">
+            <h3><strong>When you refer your friends!</strong></h3>
+            <p class="pad-t-20"><img src="/css/rummy.tld/images/play-now-small.png" width="132" height="38" alt="Play Now!" /></p>
+          </div>
+          <div><img src="/css/rummy.tld/images/promo-bottom.png" width="198" height="14" alt="Promotion 1" /></div>
+        </div>
+        <div class="promo-box left" style="margin-left:15px;">
+          <!--<div class="promo-top"><img src="/css/rummy.tld/images/promo-2-top.png" alt="" width="198" height="94" /></div>-->
+	<div class="promo-top"><img src="/css/rummy.tld/images/deposit-bonus.png" alt="" width="198" height="94" /></div>
+          <div class="promo-content">
+            <h3><strong>On First Deposit!!</strong></h3>
+            <p class="pad-t-20"><img src="/css/rummy.tld/images/play-now-small.png" style="margin-top: 22px;" width="132" height="38" alt="Play Now!" /></p>
+          </div>
+          <div><img src="/css/rummy.tld/images/promo-bottom.png" width="198" height="14" alt="Promotion 1" /></div>
+        </div>
+      </div>
+      */
+      ?>
+      <div class="home-content left">
+        <div id="wit-title">
+          <h2 class="color-pink"><strong>What Is TAASH Time?</strong></h2>
+        </div>
+        <div id="wit-body" class="clear">
+          <div id="wit-body-left" class="left">
+            <p>Taashtime is a site dedicated to providing the best online card playing experience. The traditional Indian Rummy is their first game and it will be followed up by several others. The primary purpose of taashtime is to provide whole entertainment for the individual and their family, friends and colleagues. Taashtime is conceived as and created to be a means of entertainment and not a means for earning large amounts of money nor enabling players to do so. </p>
+            <p>Taashtime is building an exciting rewards program for all their players. Players can earn gifts, vouchers and many more thrilling prizes. As the site grows, so will the number and size of the
+              prizes distributed. </p>
+            <p><a href="#"><strong>Learn More</strong></a></p>
+          </div>
+          <div id="wit-body-right" class="right"><img src="/css/rummy.tld/images/taash-image.png" width="158" height="214" alt="Taash" /></div>
+        </div>
+      </div>
+      <div class="home-content left">
+        <div id="testi-title"></div>
+        
+        <?php 
+        echo $this->action('view', 'testimonial', 'player', array('scroll' => true));
+        ?>
+        <!-- 
+          <div id="testi-left" class="left">
+            <div id="testi-photo" class="left"><img src="images/testi-photo.png" width="77" height="98" alt="Testimonial Photo" /></div>
+            <div id="testi-content" class="right">
+              <p>This site is great. I have played on other sites but the feel of this site is fantastic! I wish them all the success going forward!</p>
+              <p><strong>Geetha Madhuri</strong></p>
+            </div>
+          </div>
+          <div id="testi-right" class="right">
+            <div id="testi-photo" class="left"><img src="images/testi-photo.png" width="77" height="98" alt="Testimonial Photo" /></div>
+            <div id="testi-content" class="right">
+              <p>This site is great. I have played on other sites but the feel of this site is fantastic! I wish them all the success going forward!</p>
+              <p><strong>Geetha Madhuri</strong></p>
+            </div>
+          </div>
+          <div id="testi-left" class="left">
+            <div id="testi-photo" class="left"><img src="images/testi-photo.png" width="77" height="98" alt="Testimonial Photo" /></div>
+            <div id="testi-content" class="right">
+              <p>This site is great. I have played on other sites but the feel of this site is fantastic! I wish them all the success going forward!</p>
+              <p><strong>Geetha Madhuri</strong></p>
+            </div>
+          </div>
+          <div id="testi-right" class="right">
+            <div id="testi-photo" class="left"><img src="images/testi-photo.png" width="77" height="98" alt="Testimonial Photo" /></div>
+            <div id="testi-content" class="right">
+              <p>This site is great. I have played on other sites but the feel of this site is fantastic! I wish them all the success going forward!</p>
+              <p><strong>Geetha Madhuri</strong></p>
+            </div>
+          </div>
+          <div class="clear"></div>
+          <p><a href="#"><strong>More Players Speak</strong></a></p>
+          -->
+          <img src="/images/rummy.tld/legal.png" width="60" height="45">According to supreme court ruling, now rummy is fully legal in India. So continue Taashtiming, Play more, and Earn more!! :)</img>
+      </div>
+    </div>
+    <div id="right-column" class="span-7 last right">
+      <div id="join-now-top"></div>
+      <!-- 
+        <h2 class="pad-t-20"><strong>Join Now!</strong></h2>
+         <div id="get-blurb" class="right"><img src="/css/rummy.tld/images/get-25-blurb.png" width="97" height="98" alt="Get Rs. 25/-!" /></div>
+         -->
+        <?php echo $this->layout()->content;?>
+        <!-- 
+        <div id="reg-form">
+          <form id="player-registration-form" action="" method="post">
+            <p class="bottom">
+              <input type="text" value="Username" id="login" name="login" class="text">
+            </p>
+            <div id="get-blurb" class="right"><img src="images/get-25-blurb.png" width="97" height="98" alt="Get Rs. 25/-!" /></div>
+            <div class="clear"></div>
+            <p class="bottom">
+              <input type="text" value="Password" id="password" name="password" class="text">
+            </p>
+            <p class="bottom">
+              <input type="text" value="Confirm password" id="confirmPassword" name="confirmPassword" class="text">
+            </p>
+            <p class="bottom">
+              <input type="text" value="Email id" id="email" name="email" class="text">
+            </p>
+            <p class="pad-t-20">
+              <input type="image" id="submit" name="submit" src="images/join-now.png">
+            </p>
+            <p class="bottom pad-t-20"><img src="images/fb-connect.png" width="196" height="27" /></p>
+          </form>
+        </div>
+         -->
+      <div id="join-now-bottom"></div>
+     
+<!-- 
+<div id="help-top"></div>
+<div id="help-back">
+-->
+<?php
+//$this->help(true);
+?>
+<!-- 
+</div>
+<div id="help-bottom"></div>      
+--> 
+
+  
+ <!--     <div class="home-content left"><img src="/css/rummy.tld/images/grame-platform.png" width="267" height="209" alt="Game Platform" /></div> -->
+      <div class="home-content left">
+       
+        <!-- <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script> -->
+	<?php
+		$likes = $facebookLikeSession->value;
+
+		if($likes)
+		{
+			?>
+				<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js #appId=191295980888105&amp;xfbml=1"></script><fb:facepile></fb:facepile>
+
+
+			<?php
+		}
+		else
+		{
+			?>
+				<fb:like-box href="http://www.facebook.com/taashtime" width="267" show_faces="true" border_color="" stream="true" header="true"></fb:like-box>
+			<?php
+		}
+	?>
+      </div>
+	<?php
+$this->help(true);
+?>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="footer">
+  <div class="container pad-t-20">
+    <div class="span-4 append-1 black-link line-links">
+      <p class="bottom"><strong>TAASH Time</strong></p>
+      <p class="bottom"><a href="/content/about">About TAASH Time</a></p>
+      <p class="bottom"><a href="/content/legal">Legality</a></p>
+      <p class="bottom"><a href="/content/terms">Terms And Conditions</a></p>
+      <p class="bottom"><a href="/content/withdrawterms">Withdrawal Terms</a></p>
+      <p><a href="/content/contact">Contact Us</a></p>
+    </div>
+    <div class="span-4 append-1 black-link line-links">
+      <p class="bottom"><strong>Games</strong></p>
+      <p class="bottom"><a href="/game">Play Rummy</a></p>
+      <p class="bottom"><a href="/index/winner">Winners Zone</a></p>
+      <p class="bottom"><a href="/faq">Taash FAQ</a></p>
+      <p class="bottom"><a href="/content/awards">Taash Awards</a></p>
+      <p class="bottom"><a href="http://taashtime.com/blog">Blogs</a></p>
+      <p class="bottom"><a href="/affiliate/program">Affiliate Program</a></p>
+      <p><a href="/help/howtoplay">Players Guide</a></p>
+    </div>
+    <div class="span-6 line-links">
+      <p class="bottom"><strong>Exciting Offers!</strong></p>
+      <p><img src="/css/rummy.tld/images/offers.png" width="193" height="131"></p>
+      <p class="black-link"><a href="#"><strong>Join Now!</strong></a></p>
+    </div>
+    <div class="span-6 last prepend-1">
+      <p><img src="/css/rummy.tld/images/taashlogo-bottom.png"></p>
+      <p class="small line-small">Taashtime is a site dedicated to providing the best online card playing experience. The traditional Indian Rummy is their first game and it will be followed up by several others.</p>
+      <p class="small line-small">Copyright © 2011 TaashTime.com - All rights reserved.</p>
+      <p class="small black-link"><a href="/content/privacypolicy">Privacy Policy</a> | <a href="#">Site Map</a></p>
+    </div>
+  </div>
+</div>
+ <?php
+  $this->JQuery()->enable();
+    if($this->JQuery()->isEnabled())
+    {
+        //TODO:: Change the ui css depending on the frontend
+        $this->JQuery()->setUiLocalPath($this->baseUrl()."/js/jquery/js/jquery-ui.js")
+        				->addStylesheet($this->baseUrl()."/css/rummy.tld/jquery-ui-1.8.9.custom.css");
+                        //->addStylesheet($this->baseUrl()."/js/jquery/css/custom-theme/jquery-ui.css");
+        echo $this->JQuery();
+		$this->facebook();
+        //echo $this->headMeta();
+    }
+
+	$frontController = Zend_Controller_Front::getInstance();
+	$siteUrl = $frontController->getRequest()->getBaseUrl();
+	echo $this->piwiktracker();
+  ?>
+  <!-- begin olark code --><script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length;while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])}c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d);(function(){function l(){return["<head></head><",z,' onload="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"}D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});olark.identify('8609-194-10-7825');/*]]>{/literal}*/</script><!-- end olark code -->
+<!-- Begin Olark Addon Code --><script type='text/javascript'>/*Updating the nickname*/olark('api.chat.updateVisitorNickname', {snippet:'<?php echo isset($loginName)?$loginName:null?>' })</script><!-- EndOlark Addon Code -->
+<!-- Start of the Pzyche Tag 
+<script type="text/javascript">
+    var pzy = document.createElement('script');
+    pzy.type = 'text/javascript';
+    var method = 'pzyche';
+    pzy.async = false;
+    pzy.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's3.amazonaws.com/embed.j.im/' + method + '.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(pzy, s);
+</script>
+ End of the Pzyche Tag -->
+<script type="text/javascript" src="https://www.startssl.com/seal.js"></script>
+</body>
+</html>

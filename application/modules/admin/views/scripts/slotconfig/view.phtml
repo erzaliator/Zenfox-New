@@ -1,0 +1,16 @@
+<?php
+foreach($this->slotData as $slot)
+{
+	?>
+	<a href = "<?php echo $this->url(array(
+							'controller' => 'slotconfig',
+							'action' => 'edit',
+							'id' => $slot['id'],
+							'pjp' => $slot['pjp_enabled']));
+			?>">
+	<?php 
+	print("Machine Id -> " . $slot['id']);?></a>
+	<?php print("Game Flavour -> " . $slot['game_flavour']);
+	echo '<br>';															
+}
+?>

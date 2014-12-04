@@ -1,0 +1,285 @@
+<?php
+if($this->paymentGateway == 'EBS')
+{
+	?>
+
+<!-- div style = 'clear: both; height: 225px;'>
+  <div style = 'float: left;'>
+    <?php
+/* echo $this->form;
+echo $this->custForm;  */
+if($this->playerRecord)
+{
+	foreach($this->playerRecord as $playerRecord)
+	{
+		echo $playerRecord['card_no'];
+		?>
+    <a href = "<?php echo $this->url(array('controller' => 'transaction', 'action' => 'view', 'cardNo' => $playerRecord['card_no']));?>">View</a> <a href = "<?php echo $this->url(array('controller' => 'transaction', 'action' => 'edit', 'cardNo' => $playerRecord['card_no']));?>">Edit</a>
+    <?php
+        }
+        echo '<br>';
+        ?>
+    <a href = "<?php echo $this->url(array('controller' => 'transaction', 'action' => 'addcard'));?>">Add Card</a>
+    <?php
+}
+?>
+  </div>
+  
+</div-->
+<?php
+}
+else
+{
+	/* echo $this->form;
+	echo $this->custForm; */
+	if($this->playerRecord)
+	{
+		foreach($this->playerRecord as $playerRecord)
+		{
+			echo $playerRecord['card_no'];
+			?>
+<a href = "<?php echo $this->url(array('controller' => 'transaction', 'action' => 'view', 'cardNo' => $playerRecord['card_no']));?>">View</a> <a href = "<?php echo $this->url(array('controller' => 'transaction', 'action' => 'edit', 'cardNo' => $playerRecord['card_no']));?>">Edit</a>
+<?php
+		}
+		echo '<br>';
+		?>
+<a href = "<?php echo $this->url(array('controller' => 'transaction', 'action' => 'addcard'));?>">Add Card</a>
+<?php
+	}
+}
+?>
+<!-- script src="js/wr.js" type="text/javascript"></script>
+<div class="ttdepol">
+      <div class="ttdepolcont">
+        <div><div class="verification">TAASHCASH PURCHASE ORDER</div>
+        
+        <?php 
+        if($this->paymentType == 'NETBANKING')
+        {
+        	?>
+        	<div style="padding:5px 15px 15px 15px">
+        	<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" >
+        	<tr>
+        	<td>&nbsp;</td>
+        	<td colspan="2" ><table width="40%" border="0" cellspacing="0" cellpadding="0">
+        	<tr>
+        	<td width="29%">Amount :</td>
+        	<td width="71%" ><div class="ttpurchaseorder" ><?=$this->amount ?></div></td>
+        	                    </tr>
+        	                  </table></td>
+        	                  <td >&nbsp;</td>
+        	                </tr>
+        	                <tr>
+        	                  <td width="21%">Bank Name :</td>
+        	                  <td width="26%" ><div class="ttpurchaseorder" ><?=$this->bankName ?></div></td>
+        	                  <td width="23%">Payment Mode :</td>
+        	                  <td width="30%" ><div class="ttpurchaseorder" ><?=$this->paymentType ?></div></td>
+        	                </tr>
+        	                <tr>
+        	                  <td>Offer Selected :</td>
+        	                  <td colspan="3" ><?=$this->scheme ?></td>
+        	                </tr>
+        	                <tr>
+        	                  <td></td>
+        	                  <td colspan="2"></td>
+        	                  <td>&nbsp;</td>
+        	                </tr>
+        	              </table>
+        	            </div>
+        	<?php
+        }
+        else
+        {
+        	?>
+        	<div style="padding:5px 15px 15px 15px">
+        	<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" >
+        	<tr>
+        	<td colspan="2" ><table width="40%" border="0" cellspacing="0" cellpadding="0">
+        	<tr>
+        	<td width="29%">Amount :</td>
+        	<td width="71%" ><div class="ttpurchaseorder" ><?=$this->amount ?></div></td>
+        	                    </tr>
+        	                  </table></td>
+        	                  <td >&nbsp;</td>
+        	                </tr>
+        	                <tr>
+        	                  <td width="23%">Payment Mode :</td>
+        	                  <td width="30%" ><div class="ttpurchaseorder" ><?=$this->paymentType ?></div></td>
+        	                </tr>
+        	                <tr>
+        	                  <td>Offer Selected :</td>
+        	                  <td colspan="3" ><?=$this->scheme ?></td>
+        	                </tr>
+        	                <tr>
+        	                  <td></td>
+        	                  <td colspan="2"></td>
+        	                  <td>&nbsp;</td>
+        	                </tr>
+        	              </table>
+        	            </div>
+        	<?php
+        }
+        ?>
+        <div align="right"> <input name="" type="button" value="Confirm Order" class="ttdepolconfbtn"></div>
+        </div>
+      </div>
+    </div-->
+<div>
+<form name="transaction-form" action="<?=$this->action?>" method="post">
+<input type="hidden" value="<?=$this->transactionId ?>" id="transId" name="transId">
+<input type="hidden" value="<?=$this->transactionId ?>" id="txtTranID" name="txtTranID">
+<input type="hidden" value="L1472" id="txtMarketCode" name="txtMarketCode">
+<input type="hidden" value="1" id="txtAcctNo" name="txtAcctNo">
+<input type="hidden" value="<?=$this->amount ?>" id="txtTxnAmount" name="txtTxnAmount">
+<input type="hidden" value="<?=$this->code ?>" id="txtBankCode" name="txtBankCode">
+<input type="hidden" value="<?=APPLICATION_PATH . '/../public/MerchantDetails.properties'?>" id="txtPropPath" name="txtPropPath">
+  <div class="ttdepolcont ttdeprofilepad">
+    <div class="ttdep rofilet">
+    <div style="margin:10px 0px 10px 0px">
+      <?php
+      if(!$this->discount)
+      {
+      	?>
+          <!--div style=" font-size: 12px; color: #484848; background:#ffffe1 ; padding:5px; border:solid 1px #CCC ">Sorry!! There is no discount on below &nbsp; <b>Rs. 250</b></div-->
+                  <?php
+            	}
+            	else
+            	{
+            		?>
+                  <div style=" font-size: 12px; color: #484848; background:#ffffe1 ; padding:5px; border:solid 1px #CCC ">Congratulation!! You got a discount of &nbsp;<b> Rs.
+                  <?=$this->discount ?>
+                  </b><br>
+                  You can get more discount by depositing &nbsp; <b>Rs.
+                  <?=$this->nextHigher ?>
+                  </b> or above.</div>
+                  <?php
+            	} 
+      ?>
+      </div>
+      <div >
+        <!--<div>
+          <div style=" font-size: 14px; color: #8A0829;padding:5px;   ">
+            <?php 
+      	if(!$this->discount)
+      	{
+      		?>
+            Sorry!! There is no discount on below &nbsp; <b>Rs. 250</b>
+            <?php
+      	}
+      	else
+      	{
+      		?>
+            Congratulation!! You got discount of &nbsp;<b> Rs.
+            <?=$this->discount ?>
+            </b><br>
+            You can get more discount by depositing &nbsp; <b>Rs.
+            <?=$this->nextHigher ?>
+            </b> or above.
+            <?php
+      	}
+      ?>
+          </div>
+        </div>-->
+      </div>
+    </div>
+    <div class="ttdeprofileb">
+      <div class="ttdeprofilel">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+          	<tr>
+              <td><div><strong> Amount: </strong> </div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->amount ?>" id="amount" name="amount">Rs. <?=$this->amount ?></td>
+            </tr>
+            <tr>
+              <td><div><strong> First Name </strong> </div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->firstName ?>" id="amount" name="name"><?=$this->firstName ?></td>
+            </tr>
+            <tr>
+              <td><div><strong> Last Name </strong></div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->lastName ?>" id="amount" name="lastName"><?=$this->lastName ?></td>
+            </tr>
+            <tr>
+              <td><div> <strong> Sex </strong></div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->sex ?>" id="amount" name="sex"><?=$this->sex ?></td>
+            </tr>
+            <tr>
+              <td><div><strong> Date Of Birth </strong> </div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->dob ?>" id="amount" name="dob"><?=$this->dob ?></td>
+            </tr>
+            <tr>
+              <td><div><strong> Email ID </strong></div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->email ?>" id="amount" name="email"><?=$this->email ?></td>
+            </tr>
+            <!-- tr>
+            <td><div><strong>
+                Phone Number                 </strong></div></td>
+            <td>:</td>
+            <td>9000797615</td>
+          </tr-->
+          </tbody>
+        </table>
+      </div>
+      <div class="ttdeprofiler">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td><div><strong> Address : </strong></div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->address ?>" id="amount" name="address"><?=$this->address ?></td>
+            </tr>
+            <tr>
+              <td><div><strong> City : </strong></div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->city ?>" id="amount" name="city"><?=$this->city ?></td>
+            </tr>
+            <tr>
+              <td><div> <strong> State : </strong> </div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->state ?>" id="amount" name="state"><?=$this->state ?></td>
+            </tr>
+            <tr>
+              <td><div> <strong> Pincode : </strong> </div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->pin ?>" id="amount" name="postalCode"><?=$this->pin ?></td>
+            </tr>
+            <tr>
+              <td><div><strong> Country </strong> </div></td>
+              <td>:</td>
+              <td><input type="hidden" value="IN" id="amount" name="country">IN</td>
+            </tr>
+            <tr>
+              <td><div><strong> Phone Number </strong></div></td>
+              <td>:</td>
+              <td><input type="hidden" value="<?=$this->contact ?>" id="amount" name="phone"><?=$this->contact ?></td>
+            </tr>
+            <!-- tr>
+            <td><strong>PAN</strong></td>
+            <td>:</td>
+            <td>BLLKJI21</td>
+          </tr-->
+            <!-- tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr-->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ttdepolnextback">
+    <div class="ttdepolback">
+      <input name="notConfirm" type="button" value="Cancel" class="ttdepolbackbtns" onClick="goToBankPage()">
+    </div>
+    <div class="ttdepolnext">
+    	<input name="confirm" type="submit" value="Make Payment" class="ttdepolconfbtn"  />
+    </div>
+  </div>
+  </form>
+</div>

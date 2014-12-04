@@ -1,0 +1,24 @@
+ <?php
+
+echo $this->form;
+
+if($this->paginator)
+{
+		$linkArrays = array();
+		
+		//Temp is used to print the table headings only for one time
+		foreach($this->contents as $tableData)
+		{
+			echo 'id is'.$this->id[$ind];
+			echo '$ind is'.$ind;
+			$linkArrays[$tableData['Edit'].$ind] = array(
+					'controller' => 'template',
+					'action' => 'edittag',
+			        'source_id' => $this->id[$ind]);
+			$ind++;
+			
+		}
+		$this->table($this->contents,array('Edit'),$linkArrays,'not_primary');
+		
+	echo $this->paginationControl($this->paginator, 'Sliding', 'my_paginator_control.phtml');
+}

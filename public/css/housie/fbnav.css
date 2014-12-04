@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+.ttfbmain{ width:960px; margin:0px auto; }
+.ttfbnav{ height:30px; clear:both; border-top:#FFF solid 1px;}
+.ttfbnav ul{ margin:0px; padding:0px; }
+.ttfbnav ul li{ margin:0px; padding:0px; list-style:none; display:inline; float:left;  text-align:center; width:160px;}
+.ttfbnav ul li a{ line-height:30px; display:block; margin:0px; border-right:solid 1px #FFF; padding:0px;   text-decoration:none; font-family:Verdana, Geneva, sans-serif; font-weight:bold; font-size:12px; color:#fff; background-image: linear-gradient(bottom, #000000 50%, #000000 0%, #2e2d2d 0%);background-image: -o-linear-gradient(bottom, #000000 50%, #000000 0%, #2e2d2d 0%);background-image: -moz-linear-gradient(bottom, #000000 50%, #000000 0%, #2e2d2d 0%);background-image: -webkit-linear-gradient(bottom, #000000 50%, #000000 0%, #2e2d2d 0%);
+background-image: -ms-linear-gradient(bottom, #000000 50%, #000000 0%, #2e2d2d 0%);
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.5, #000000),
+	color-stop(0, #000000),
+	color-stop(0, #2e2d2d)
+); }
+.ttfbnav ul li.active a{ line-height:30px; display:block; margin:0px; border-right:solid 1px #FFF; padding:0px;   text-decoration:none; font-family:Verdana, Geneva, sans-serif; font-weight:bold; font-size:12px; color:#fff; background-image: linear-gradient(bottom, #004298 50%, #004298 0%, #0452b7 0%);
+background-image: -o-linear-gradient(bottom, #004298 50%, #004298 0%, #0452b7 0%);
+background-image: -moz-linear-gradient(bottom, #004298 50%, #004298 0%, #0452b7 0%);
+background-image: -webkit-linear-gradient(bottom, #004298 50%, #004298 0%, #0452b7 0%);
+background-image: -ms-linear-gradient(bottom, #004298 50%, #004298 0%, #0452b7 0%);
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.5, #004298),
+	color-stop(0, #004298),
+	color-stop(0, #0452b7)
+); }
+.ttfbnav ul li a:hover{ color:#198cf6 }
+.ttfbbdyclr{ background-color: #d1e3fb;}
+.tab_contents{display:none;}
+.tab_contents_active{display:block;}

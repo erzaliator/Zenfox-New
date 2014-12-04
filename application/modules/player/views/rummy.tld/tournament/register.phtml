@@ -1,0 +1,15 @@
+<?php
+?>
+    <p class="notice"><?=$this->message?></p>
+
+<?php
+	if ($this->status == "REGISTERED" || $this->status == "ALREADY_REGISTERED")
+	{
+?>
+	<img src="/css/rummy.tld/images/tournament_thanku.png" border="0" usemap="#playGames"/>	
+	<map name="playGames">
+		<area shape="rect" coords="492,205,622,236"  href="/game" />
+	</map>
+<?php
+	}
+?>

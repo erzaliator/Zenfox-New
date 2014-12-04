@@ -1,0 +1,253 @@
+<script type="text/javascript" src="/js/wr.js"></script>
+      <div class="ttltm">
+        <div class="ttlthedbg"><?=$this->tournamentName ?> Details</div>
+        <div class="ttltbot">
+          <div class="ttltcurrent">
+                  <?php 
+                  	if($this->status != 'COMPLETED')
+                  	{
+                  		?>
+                  		<div class="ttltcurrentl" style="margin-left:-10px">
+	                  		<a id = "sho_box" href="javascript:void(0)" onclick='getLevels("<?=$this->tournamentId?>")'>
+	                  			<img src="/css/rummy.tld/images/ttdtlsregister.png" width="78" height="21" />
+	                  		</a>
+                  		</div>
+                  		<div class="ttltcurrentr"> Status: <span>Open</span> </div>
+                  		<?php 
+                  	}
+                  	else
+                  	{
+                  		?>
+                  		<div class="ttltcurrentl" style="margin-left:-10px">
+	                  		<a href="/tournament/result/tournamentId/<?=$this->tournamentId ?>">
+	                  			<img src="/css/rummy.tld/images/ttltresultbtn.png" width="78" height="21" />
+	                  		</a>
+                  		</div>
+                  		<div class="ttltcurrentr"> Status: <span>Closed</span> </div>
+                  		<?php 
+                  	}
+                  ?>
+                </div>
+             <div class="tournadtlsin">
+                  <div class="tournadtlsinl">
+                    <div class="tournadtlshedbg">Game Type Stake</div>
+                    <div class="tournadtlstblbg">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="">
+                        <tr class = "ttltcontbg">
+                          <td><strong>Level </strong></td>
+                          <td><strong>Entry Criteria </strong></td>
+                        </tr>
+                        <?php 
+                        foreach($this->configuration as $index => $tournamentConfig)
+                        {
+                        	$trClass = "";
+                        	if($index % 2 != 0)
+                        	{
+                        		$trClass = "ttltcontbgt";
+                        	}
+				else
+				{
+					$trClass = "ttltcontbg";
+				}
+                        	?>
+                        	<tr class="<?=$trClass ?>">
+                        	<td>Level<?=$index ?></td>
+                        	<td><?=$tournamentConfig['eligibilityCriteria'] ?> T&cent;</td>
+                        	</tr>
+                        	<?php
+                        }
+                        ?>
+                      </table>
+                    </div>
+                    <div class="tournadtlsbotbg"></div>
+                  </div>
+                  <div class="tournadtlsinr">
+                    <div class="tournadtlshedbg">Number Of Levels <?=count($this->configuration) ?></div>
+                    <div class="tournadtlstblbg">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="">
+                        <tr class = "ttltcontbg">
+                          <td><strong>Entry Level </strong></td>
+                        </tr>
+                        <?php 
+                        foreach($this->configuration as $index => $tournamentConfig)
+                        {
+                        	$trClass = "";
+                        	if($index % 2 != 0)
+                        	{
+                        		$trClass = "ttltcontbgt";
+                        	}
+				else
+                                {
+                                        $trClass = "ttltcontbg";
+                                }
+
+					if($tournamentConfig['amountType'] == 'FREE')
+                        		{
+                        			$symbol = '<span class="ttltbotwebrupee" >T&cent;</span>';
+						if($index == 1)
+                		        	{
+							$symbol = '<span class="ttltbotwebrupee" ></span>';
+		                        	}
+                        		}
+                        		else
+                        		{
+                        			$symbol = 'T<span class="ttltbotwebrupee" >Rs.</span>';
+                        		}
+                        		?>
+                        		<tr class="<?=$trClass ?>">
+                        		   <td>Level<?=$index ?> Entry -<strong> <?=$symbol?> <?=$tournamentConfig['entryFee'] ?></strong></td>
+                        		 </tr>
+                        		<?php
+                        }
+                        ?>
+                      </table>
+                    </div>
+                    <div class="tournadtlsbotbg"></div>
+                  </div>
+                </div>
+                <div class="tournadtlsin">
+                  <div class="tournadtlsinl">
+                    <div class="tournadtlshedbg">Prizes</div>
+                    <div class="tournadtlstblbg">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="">
+                        <tr class = "ttltcontbg">
+                          <td><strong>Number of Winners <?=count($this->rewards) ?></strong></td>
+                        </tr>
+                        <?php 
+                        foreach($this->rewards as $index => $reward)
+                        {
+				if($reward[0]['amountType'] == 'FREE')
+                        	{
+                        		$symbol = '<span class="ttltbotwebrupee" >T&cent;</span>';
+                        	}
+                        	else
+                        	{
+                        		$symbol = 'T<span class="ttltbotwebrupee" >Rs.</span>';
+                        	}
+                        	$trClass = "";
+                        	if($index % 2 != 0)
+                        	{
+                        		$trClass = "ttltcontbgt";
+                        	}
+				else
+                                {
+                                        $trClass = "ttltcontbg";
+                                }
+
+                        	switch($index)
+                        	{
+                        		case '1':
+                        			$placeName = 'First Place';
+                        			break;
+                        		case '2':
+                        			$placeName = 'Second Place';
+                        			break;
+                        		case '3':
+                        			$placeName = 'Third Place';
+                        			break;
+                        		case '4':
+                        			$placeName = 'Fourth Place';
+                        			break;
+                        		case '5':
+                        			$placeName = 'Fifth Place';
+                        			break;
+                        	}
+                        	?>
+                        	<tr class="<?=$trClass ?>">
+                        		<td><?=$placeName ?> -<strong><?=$symbol?> <?=$reward[0]['amount'] ?></strong></td>
+                        	</tr>
+                        	<?php
+                        }
+                        ?>
+                      </table>
+                    </div>
+                    <div class="tournadtlsbotbg"></div>
+                  </div>
+                  <div class="tournadtlsinr">
+                    <div class="tournadtlshedbg">Date &amp; Time &nbsp;&nbsp;&nbsp; <?=$this->startDate ?></div>
+                    <div class="tournadtlstblbg">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="">
+                        <tr class = "ttltcontbg">
+                          <td><strong>Level </strong></td>
+                          <td><strong>Start Time</strong></td>
+                          <td><strong>End Time</strong></td>
+                        </tr>
+                        <?php 
+                        foreach($this->configuration as $index => $tournamentConfig)
+                        {
+                        	$trClass = "";
+                        	if($index % 2 != 0)
+                        	{
+                        		$trClass = "ttltcontbgt";
+                        	}
+				else
+                                {
+                                        $trClass = "ttltcontbg";
+                                }
+
+                        	?>
+                            <tr class="<?=$trClass ?>">
+                            	  <td><?=$index ?></td>
+		                          <td><?=$tournamentConfig['startTime'] ?></td>
+		                          <td>&nbsp;&nbsp;<?=$tournamentConfig['endTime'] ?></td>
+                             </tr>
+                             	<?php
+                        }
+                        ?>
+                      </table>
+                    </div>
+                    <div class="tournadtlsbotbg"></div>
+                  </div>
+                </div>
+                <div class="tournadtadiinfo">Additional Information
+                  <p>Refer a friend and get 50 Tc extra for each new friend who joins the site .</p>
+                  <p> Result will be announced by <?=$this->resultDisplayTime ?>, <?=$this->startDate ?></p>
+                </div>
+                <div class="tournadtlstandc"><strong>Terms and Conditions</strong>
+                  <ol>
+                    <li>Tournament Coins given to you are only valid for this Tournament and can not be retained, redeemed, returned or exchanged for anything else. </li>
+                     <li> In case of any ties in the tournament, prize money shall be shared by the number of members tied.</li>
+                      <li> You can enter the same level multiple times by paying the appropriate necessary amount.</li>
+                       <li> All decisions made by management are final and binding.</li>
+                  </ol>
+                  
+                </div>
+        </div><div  class="tcregibtn"><a href="/tournament/list"><img src="/css/rummy.tld/images/back-button-01.png" width="78" height="21" /></a></div>
+      </div>
+      
+      <?php 
+      if($this->loggedIn)
+      {
+      	?>
+      			<script type="text/javascript" src="/js/jquery_002.js"></script>
+      			<script type="text/javascript" src="/js/jquery_lightbox.js"></script>
+      			<script type="text/javascript">
+      			$(function() {
+      				$("#ttlightbox").jwtSimpleBox({
+      					show_event_target	: '#sho_box',
+      					show_function		: 'fadeIn',
+      					show_duration		: 500,
+      					hide_event_target	: '#jwt_overlay, .jwt_close'
+      				});
+      				$("#lightbox2").jwtSimpleBox({
+      					show_event_target	: '#sho_box2',
+      					hide_event_target	: '#jwt_overlay, .jwt_close',
+      					overlay_background	: 'rgba(255,255,255,.8)'
+      				});
+      			});
+      			</script>
+      			<div id="page-wrap"></div>
+      			<div id="ttlightbox" style="display: none; z-index: 999999; position: fixed; height: auto; overflow: visible; top: 17.2727px; left: 413px;">
+      			<div id="ttlogin-box">
+      			<div id="ttclose"><a ss="jwt_close" cla="" href=""><img width="35" height="35" border="0" src="/css/rummy.tld/images/ttlightboxclose.png"></a></div>
+      			<div id="ttlgtboxentry">Select Entry Level</div>
+      			<div id = "lgtboxmsg"></div>
+      			<table  width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px">
+      			<tbody id = "ttldislevel">
+      			</tbody></table>
+      			</div>
+      			</div>
+      			<?php 
+              }   
+      
+      ?>

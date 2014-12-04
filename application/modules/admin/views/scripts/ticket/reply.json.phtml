@@ -1,0 +1,56 @@
+<?php
+
+
+//print_r($this->messages); exit();
+if($this->sent !='sent')
+{
+	echo "<br>";
+$i = 0;
+$str = '';
+//print_r($this->messages);?><!--  -->
+<table bgcolor="white" width=100%>
+  <tr bgcolor="#E8EDFF">
+    <th style="text-align: center;">From</th>
+    <th style="text-align: center;">To</th>
+    <th style="text-align: center;">Message</th>
+    <th style="text-align: center;"">Time</th>
+  </tr>
+
+
+<?php
+foreach($this->messages as $message)
+{?>
+  <tr style="outline-style:solid; outline-width: 2px; outline-color: gray; ">
+    <td style="padding: 10px 10px 10px 10px;text-align: center;"><?php echo $this->sender[$i] ;?></td>
+    <td style="padding: 10px 10px 10px 10px;text-align: center;"><?php echo $this->receiver[$i] ;?></td>
+    <td style="padding: 10px 10px 10px 10px"><?php echo $message['reply_msg'] ;?></td>
+    <td style="padding: 10px 10px 10px 10px;text-align: center;"><?php echo $message['time']; ?></td>
+ </tr>
+
+	
+	
+	<?php 
+	$id = $message['ticket_id'];
+	$i++;
+}?> 
+
+
+</table>
+<?php 
+foreach($this->csrIds as $key=>$value)
+{
+
+  
+   $str = $this->csrIds[$key]['id'].'*'.$str ;
+    }?>
+   
+
+
+ <a href="#" onclick="callTicketReplyForm('<?php echo $str;?>', <?php echo $id;?>,<?php echo $this->messages[0]['user_id']?> )">Reply</a> 
+<?php }
+
+if($this->sent =='sent')
+{
+	echo"{success : 'true'}";	
+}
+?>

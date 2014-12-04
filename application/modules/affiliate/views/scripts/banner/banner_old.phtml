@@ -1,0 +1,102 @@
+<?php
+
+echo $this->form;
+echo '<br>';
+if($this->banners)
+{
+	?>
+	<table>
+		<tr>
+			<th>Text</th>
+			<th>Link</th>
+		</tr>
+	<?php
+	foreach($this->banners as $banners)
+	{
+		$landingPage = explode('-', $banners['landing_page']);
+		$controller = $landingPage[1];
+		$action = $landingPage[2];
+		$trackerUrl = $this->varValue . '/' . $controller . '/' . $action . '/trackerId/' . $this->trackerId;
+		?>
+		<tr>
+			<td>
+				<?='<a href="'.$trackerUrl.'">'.$banners['name'].'</a>'?>
+			</td>
+			<td>
+				<textarea style="width: 20em; height: 8em;">
+				<?='<a href="'.$trackerUrl.'"></a>'?>
+				</textarea>
+			</td>
+		</tr>
+		<?php
+	}
+	?>
+	</table>
+	<table>
+		<tr>
+			<th>Image</th>
+			<th>Link</th>
+		</tr>
+	<?php
+	foreach($this->banners as $banners)
+	{
+		if($banners['file_type'] == 'IMAGE')
+		{
+			$landingPage = explode('-', $banners['landing_page']);
+			$controller = $landingPage[1];
+			$action = $landingPage[2];
+			$trackerUrl = $this->varValue . '/' . $controller . '/' . $action . '/trackerId/' . $this->trackerId;
+			?>
+			<tr>
+			<td>
+			<a href=<?=$trackerUrl ?>><img border="0" src=<?=$banners['url'] ?>></a>
+			</td>
+			<td>
+			<textarea style="width: 30em; height: 10em;">
+			<?php
+			echo '<a href="'.$trackerUrl.'"><img border="0" style="width:'.$banners['width'].'px;height:'.$banners['height'].'px" src="'.$this->varValue.$banners['url'].'"></a>';
+			?>
+			</textarea>
+			</td>
+			</tr>
+			<?php
+		}
+	}
+	?>
+	</table>
+	<table>
+		<tr>
+			<th>Flash</th>
+			<th>Link</th>
+		</tr> 
+	<?php
+	foreach($this->banners as $banners)
+	{
+		if($banners['file_type'] == 'FLASH')
+		{
+			?>
+			<tr>
+			<td>
+			<object type="text/html">
+			<param name="movie" value="<?=$banners['url'] ?>">
+			<embed src="<?=$banners['url'] ?>">
+			</embed>
+			</object>
+			</td>
+			<td>
+			<textarea style="width: 30em; height: 10em;">
+			<?php
+			echo '<object width="'.$banners['width'].'" height="'.$banners['height'].'" type="text/html">'.
+			'<param name="movie" value="'.$this->varValue.$banners['url'].'">'.
+			'<embed src="'.$this->varValue.$banners['url'].'" width="'.$banners['width'].'" height="'.$banners['height'].'"></embed></object>'
+			?>
+			</textarea>
+			</td>
+			</tr>
+			<?php
+		}
+	}
+	?>
+	</table>
+	<?php
+}

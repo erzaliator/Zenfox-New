@@ -1,0 +1,19 @@
+<?php 
+
+
+	$data = array();
+	$data['totalCount'] = '22';
+	$data1 = $this->contents;
+	$index = 0;
+	foreach($data1 as $key=>$value)
+	{
+		
+		$data['affiliates'][$index]['Id']=$data1[$key]['Id'];
+		$data['affiliates'][$index]['Alias']=$data1[$key]['Alias'];
+		$data['affiliates'][$index]['Email']=$data1[$key]['Email'];
+		$index++;
+	}
+	//print_r($data);
+	echo json_encode($data);
+	//echo "{'totalCount':'22','affiliates':[{'Id':'".$data['affiliates']['Id']."','Alias':'vi','Email':'fo@for.com'}]} ";
+?>

@@ -1,0 +1,756 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php 
+require_once APPLICATION_PATH . '/modules/player/forms/RegistrationForm.php';
+$form = new Player_RegistrationForm();
+$form->setAction('/auth/signup');
+$form->registration('registration');
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="google-site-verification" content="Yh27V2AJP-RkfhmY1WYCrldRoNLIoCuyFQ3YaVJaWfg" />
+<?=$this->title() ?>
+<!-- <link href="/css/bingocrush/bingo.css" rel="stylesheet" type="text/css" />
+<link href="/css/bingocrush/menu.css" rel="stylesheet" type="text/css" /> -->
+<link href="/css/bingocrush/bingo_minify.css" rel="stylesheet" type="text/css" />
+
+<link rel="shortcut icon" href="http://bingocrush.co.uk/images/bingocrush/favicon.ico" type="image/x-icon" />
+<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="/css/bingocrush/ie-only.css" />
+	<link rel="shortcut icon" href="http://bingocrush.co.uk/images/bingocrush/favicon.ico" type="image/x-icon" />	
+<![endif]-->
+<!--
+<style type="text/css">
+ @font-face
+{
+font-family:Berlin Sans FB Demi;
+src: url('http://bingocrush.co.uk/css/bingocrush/Berlin Sans FB Demi Bold.ttf')
+    ,url('Sansation_Light.eot'); /* IE9 */
+}
+
+div
+{
+font-family:Berlin Sans FB Demi;
+}
+</style> -->
+<script src="/js/bingocrush/jquery-1.8.3.min.js" type="text/javascript"></script>
+<!-- homepage slide tabed js-->
+<script type="text/javascript" src="/js/bingocrush/easySlider1.7.js"></script>
+<!-- game tabed js-->
+<?php 
+/* <script type="text/javascript" src="/js/bingocrush/menu.js"></script>
+<script type="text/javascript" src="/js/bingocrush/SpryAssets/SpryTabbedPanels.js"></script>
+<script type="text/javascript" src="/js/bingocrush/SpryAssets/SpryTabbedPanel.js"></script>
+<script type="text/javascript" src="/js/bingocrush/SpryAssets/SpryAccordion.js"></script>
+<script type="text/javascript" src="/js/bingocrush/banner.js"></script>
+<script type="text/javascript" src="/js/bingocrush/jquery.placeholder.js"></script>
+<script type="text/javascript" src="/js/bingocrush/login.js"></script> */
+?>
+<script type="text/javascript" src="/js/bingocrush/yahoo-min.js"></script>
+<script type="text/javascript" src="/js/bingocrush/event-min.js"></script>
+<script type="text/javascript" src="/js/bingocrush/connection_core-min.js"></script>
+<script type="text/javascript" src="/js/bingocrush/jquery_bingo_minify.js?v=1.2"></script>
+<script type="text/javascript" src="/js/bingocrush/SpryAssets/jquery_spryassets_minify.js?v=1.1"></script>
+
+<!--Google Analytics-->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-27546725-4', 'bingocrush.co.uk');
+ ga('send', 'pageview');
+
+</script>
+
+	<script type="text/javascript">
+ 	  $(function() {
+		 $('input, textarea').placeholder();
+		 });
+  </script>
+
+<script type="text/javascript">
+var TabbedPanels1 = new Spry.Widget.TabbedPanel("TabbedPanels1");
+</script>
+<script type="text/javascript">
+	$(window).load(function(){
+		  $(".TTBingoUserInfo,.TTBingoUserInfo img.prof-arrow , img.TTBingoUserInfo").click(function(){
+						
+			
+			if ($('.TTBingo-index').hasClass('prof-inactive')) 
+					{
+						$('.TTBingo-index').removeClass('prof-inactive').addClass('prof-active');
+					} 
+					else if ($('.TTBingo-index').hasClass('prof-active')) 
+					{
+						$('.TTBingo-index').removeClass('prof-active').addClass('prof-inactive');
+					}
+			});
+		});
+    
+</script>
+<script type='text/javascript'>
+$(document).ready(function(){
+$(document).bind("contextmenu",function(e){
+return false;
+});
+});
+</script>
+
+<script type="text/javascript">
+function slideSwitch() {
+    var $active = $('#TTBingoslideshow DIV.active');
+    if ( $active.length == 0 ) $active = $('#TTBingoslideshow DIV:last');
+
+    // use this to pull the divs in the order they appear in the markup
+    var $next =  $active.next().length ? $active.next()
+        : $('#TTBingoslideshow DIV:first');
+
+    // uncomment below to pull the divs randomly
+    // var $sibs  = $active.siblings();
+    // var rndNum = Math.floor(Math.random() * $sibs.length );
+    // var $next  = $( $sibs[ rndNum ] );
+
+
+    $active.addClass('last-active');
+
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 1000, function() {
+            $active.removeClass('active last-active');
+        });
+}
+
+$(function() {
+    setInterval( "slideSwitch()", 5000);
+});
+
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#firstSlide').fadeIn();
+    $('#ttbingotestim .slide');
+    setInterval(function(){
+        $('#ttbingotestim .slide').filter(':visible').fadeOut(500,function(){
+            if($(this).next('li.slide').size()){
+                $(this).next().fadeIn(500);
+            }
+            else{
+                $('#ttbingotestim .slide').eq(0).fadeIn(500);
+            }
+        });
+    },10000);  
+}); 
+
+</script>
+<script type="text/javascript">
+		$(document).ready(function(){	
+			$("#slider").easySlider({
+				auto: true, 
+				continuous: true,
+				speed: 			900,			
+			    pause:			1000,
+				
+			});
+		});	
+	</script>
+<script type="text/javascript">
+		$(document).ready(function(){	
+			$("#sliderban").easySlider({
+				auto: true, 
+				continuous: true
+			});
+		});	
+	</script>
+<script type="text/javascript">
+	function goToGamePage(type){
+		var link = "/game";
+		if(type){
+			link = link + "/index/type/" + type;
+		}
+		window.location.href = link;
+	}
+	function goToPlayMore(id)
+	 {
+	   var element = document.getElementById(id);
+	   element.scrollIntoView(true);
+	 }
+	 function goToHomePage()
+	 {
+		 window.location.href = "/";
+	 }
+</script>
+<style type="text/css">
+/*chaitu*/
+#banners ul li
+{
+display:none;
+}
+</style>
+<script type="text/javascript">
+
+//chaitu
+$(document).ready(function(){
+var my_day=new Date()
+var day_name=new Array(7);
+day_name[0]="Sunday"
+day_name[1]="Monday"
+day_name[2]="Tuesday"
+day_name[3]="Wednesday"
+day_name[4]="Thursday"
+day_name[5]="Friday"
+day_name[6]="Saturday"
+
+//alert(my_day.getDay());
+//alert ("Today Day is  = " + day_name[my_day.getDay()]); 
+ if(my_day.getDay() == 1)
+ $("#mon").css('display','block');
+ 
+ if( my_day.getDay() == 2)
+ {
+ $("#tues").css('display','block');
+ }
+ 
+  if(my_day.getDay() == 0)
+ $("#sun").css('display','block');
+ 
+ if(my_day.getDay() == 3)
+ $("#wed").css('display','block');
+ 
+ if(my_day.getDay() == 4)
+ $("#thurs").css('display','block');
+ 
+ if(my_day.getDay() == 5)
+ $("#fri").css('display','block');
+ 
+ if(my_day.getDay() == 6)
+ $("#sat").css('display','block');
+});
+</script>
+
+
+
+
+
+</head>
+<body onload="/*new lIterator((document.getElementById('banners')).getElementsByTagName('ul')[0],86400000);*/">
+<div id="TTBingoM">
+  <div id="TTBingoHedBg">
+    <div id="TTBingoLogo"><img src="/images/bingocrush/ttbingologo.png"  alt="BingoGrid" onclick="goToHomePage()" style="cursor:pointer"/></div>
+    <div id="TTBingoLogin" class="TTBingoJoinForm TTBingoRight">
+    <?php 
+    $isLoggedIn = false;
+    $authSession = new Zenfox_Auth_Storage_Session();
+    $sessionData = $authSession->read();
+    if($sessionData)
+    {
+    	$isLoggedIn = true;
+    }
+    if(!$isLoggedIn)
+    {
+    	?>
+    	
+    	<form action="/auth/login" method="post">
+		<div style="height:30px;border:0px solid;width:515px;margin-top:15px;">
+    			<input type="text" placeholder="Username"  value="" name="userName" style="color:#666;"  class="text"  />
+				<input type="password" placeholder="Password" value="" name="password" class="text"/>
+				<input type="submit" value="Login" class="TTBingoGradentBtn5" style="margin:-40px 0px 0px 0px ;"/>
+		</div>
+    	</form>
+		<div style="height:40px;border:0px solid;width:440px;float:left;">
+			<div style="border:0px solid;width:196px;float:left"><a href="/auth/forgotpassword" style="color:#fff;font-weight:bold">Forgot Username/Password Click here ?</a></div>
+			<div style="border:0px solid;width:206px;float:left;margin-left:25px;"><a href="/auth/registration" style="color:#fff;font-weight:bold" >Are you new? <br/> Click here to join now</a>	
+			</div>		
+			<div style="height:40px;border:0px solid;width:450px;float:left;margin-top:20px;">
+			<div style="margin-top:6px;margin-left:5px;">
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1374392616114851";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+			<div class="fb-like" data-href="https://www.facebook.com/pages/Bingo-Crush/159660587527531" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+			&nbsp;&nbsp;&nbsp;
+			  <a href="https://twitter.com/Bingocrush" class="twitter-follow-button" data-show-count="true" data-show-screen-name="true" >Follow @Bingocrush</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<a href="https://twitter.com/Bingocrush" class="twitter-share-button" data-url="http://bingocrush.co.uk"   data-text="Play Free Online Bingo,Slots,Roulette,keno at http://bingocrush.co.uk" data-via="Bingocrush" >Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+			</div>	
+			</div>	
+		</div>
+	<br/>	
+    	<?php 
+    }
+    else
+    {
+    	?>
+    	    	<?php 
+						if($sessionData)
+						{
+							?>
+            
+                        <div class="TTBingoRight1 TTBingoGameL">
+                        <?php 
+                       $playerId = $sessionData['id'];
+                        $imageName = md5("image" . $playerId) . '.jpg';
+                        $loginName = $sessionData['authDetails'][0]['login'];
+                        $firstName = $sessionData['authDetails'][0]['first_name'];
+                        $firstName = "";
+                        
+                       
+                        $buddyBonus = $sessionData['authDetails'][0]['buddy_earnings'];
+                        $imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+                        if(!file_exists($imagePath))
+                        {
+                            $imagePath = "/images/profiles/profile-m1.jpg";
+                        }
+                        else
+                        {
+                            $imagePath = "/images/profiles/" . $imageName;
+                        }
+                        
+                        $accountVariable = new AccountVariable();
+                        $varData = $accountVariable->getData($playerId, 'freeMoney');
+                        if($varData)
+                        {
+                            $freeMoney = floatval($varData['varValue']);
+                        }
+                        ?>
+                        <div class="TTBingoRadius TTBingoborder TTBingoUserInfo "  style="border:0px solid">
+                    <div class="TTBingoUserInfoT clearfix">
+                     
+                      <div class="TTBingoLogOut">
+                       
+                        <div class="ttusrnme" style="float:left;float: left;margin-left: 15px;margin-top: 3px;margin-right: 25px;"><?php echo empty($firstName)?$loginName:$firstName;?></div>
+                         <div class="TTBingoUserPic1"><img src="/images/bingocrush/ttbingouserphoto.png" width="27" height="27" alt="Bingo Crush"/></div>
+                         <div class="prof-arrow"><img src="/images/bingocrush/downarrow.png" width="9" height="4" alt="Bingo Crush"></div>
+                      </div>
+                    </div>
+                       
+                        </div>
+						
+						<div style="height:40px;border:0px solid;width:450px;float:left;margin-top:20px;margin-left:-250px;">
+			<div style="margin-top:6px;margin-left:5px;">
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1374392616114851";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+			<div class="fb-like" data-href="https://www.facebook.com/pages/Bingo-Crush/159660587527531" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+			&nbsp;&nbsp;&nbsp;
+			  <a href="https://twitter.com/Bingocrush" class="twitter-follow-button" data-show-count="true" data-show-screen-name="true" >Follow @Bingocrush</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<a href="https://twitter.com/Bingocrush" class="twitter-share-button" data-url="http://bingocrush.co.uk"   data-text="Play Free Online Bingo,Slots,Roulette,keno at http://bingocrush.co.uk" data-via="Bingocrush" >Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+			</div>	
+			</div>	
+                        <?php
+                    }
+                   ?>
+                
+                
+              </div>
+        	    <div class="profile-complete">
+                	 <?php 
+						if($sessionData)
+						{
+							?>
+							
+							<div class="TTBingoRight TTBingoGameL">
+							<?php 
+							$playerId = $sessionData['id'];
+							$imageName = md5("image" . $playerId) . '.jpg';
+							$loginName = $sessionData['authDetails'][0]['login'];
+							$firstName = $sessionData['authDetails'][0]['first_name'];
+							$firstName = "";
+							
+							$balance = $sessionData['authDetails'][0]['balance'];
+							$cash = $sessionData['authDetails'][0]['cash'];
+							$bonus = $sessionData['authDetails'][0]['bonus_bank'] + $sessionData['authDetails'][0]['bonus_winnings'];
+							$buddyBonus = $sessionData['authDetails'][0]['buddy_earnings'];
+							
+							$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+							if(!file_exists($imagePath))
+							{
+								$imagePath = "/images/profiles/profile-m1.jpg";
+							}
+							else
+							{
+								$imagePath = "/images/profiles/" . $imageName;
+							}
+							
+							$accountVariable = new AccountVariable();
+							$varData = $accountVariable->getData($playerId, 'freeMoney');
+							if($varData)
+							{
+								$freeMoney = floatval($varData['varValue']);
+							}
+							?>
+							<div class="TTBingoRadius TTBingoborder TTBingoUserInfo TTBingo-index prof-inactive">
+						<div class="TTBingoUserInfoT clearfix">
+						  <div class="TTBingoUserPic"><img src="/images/bingocrush/ttbingouserphoto.png" width="49" height="66" /></div>
+						  <div class="TTBingoLogOut">
+							<div align="right" ><a href="/auth/logout">Logout</a></div>
+							<div class="TTBingoWelcome">Welcome</div>
+							<div><?php echo empty($firstName)?$loginName:$firstName;?></div>
+						  </div>
+						</div>
+							<div class="clearfix TTBingopad_5">
+							<div class="clearfix TTBingoBalnce">
+							<div class="TTBingoLeft TTBingoBalncecont">Balance</div>
+							<div class="TTBingoLeft">:</div>
+							<div  class="TTBingoRight" ><?= $balance ?></div>
+							</div>
+							<div class="clearfix TTBingoBalnce">
+							<div class="TTBingoLeft TTBingoBalncecont">Cash</div>
+							<div class="TTBingoLeft">:</div>
+							<div  class="TTBingoRight" ><?= $cash ?></div>
+							</div>
+							<div class="clearfix TTBingoBalnce">
+							<div class="TTBingoLeft TTBingoBalncecont">Bonus</div>
+							<div class="TTBingoLeft">:</div>
+							<div  class="TTBingoRight" ><?= $bonus ?></div>
+							</div>
+							<div class="clearfix TTBingoLogOut"><a href="/auth/view"> Profile </a><a style="margin-left: 75px;" href="/promotions/referfriend"> Refer A Friend </a></div>
+							</div>
+							</div>
+							<?php
+						}
+						else
+						{
+							?>
+							<!--<div class="TTBingoRight TTBingoGameL">
+							<div class=" TTBingoJoinl TTBingoRadius">
+							<div  class="TTBingoJoinTitle">
+							<p>JOIN NOW  & <br />
+							GET FREE £20</p>
+							<p class="TTBingoJoinTitleSmall">No Card Details Required</p>
+							</div>
+							<div class="TTBingoJoinForm TTBingoBtnmargt" style="padding:0px">
+							<?php
+							echo $registrationForm;
+							?>
+								  </div>
+								</div>
+							<?php 
+						}
+						?>
+												 
+					<!--</div>-->
+					
+					
+					
+				  </div>
+				  
+                </div><!--profile-complete-->	
+    	    	<!--<a href = "/auth/logout">Logout</a>-->
+    	    	
+    	    	<?php
+    }
+    ?>
+    </div>
+    <div id="TTBingoHedNav" class="TTBingoRadius ">
+      <div id="TTBingoHedNavinn" class=" TTBingoBtninn">
+      <?php 
+  
+  $partial = array('menu.phtml','player');
+  $this->navigation()->menu()->setPartial($partial);
+  echo $this->navigation()->menu()->render();
+  
+  ?>
+        <!-- <ul>
+          <li ><a href="/" class="active"><span>Home</span></a></li>
+          <li><a href="/game"><span>Games</span></a></li>
+          <li><a href="/promotions"><span>Promotions</span></a></li>
+          <li><a href="#"><span>Gallery</span></a></li>
+          <li><a href="/index/winner"><span>Winners</span></a></li>
+          <li><a href="/banking/fundbonus">Banking</a></li>
+         
+        </ul>-->
+      </div>
+    </div>
+    <div id="TTBingosubNavHover"><ul id="sub-menu-hover">
+
+</ul></div>
+  </div>
+  <div class="clearfix TTBingoBtnmargt">
+    <div class=" TTBingoBanner TTBingoLeft">
+      <div id="contentban">
+        <div id="sliderban">
+          <ul>
+            
+            <li>
+              <div class="TTBingoLeft TTBingoBtnmargl_40"><img src="/images/bingocrush/ttbingowelcomebonus.png" width="293" alt="BingoCrush"/></div>
+              <div class="TTBingoRight TTBingoBnrTitle">
+                <h2>JOIN</h2>
+                <h1>NOW</h1>
+                <div  class="TTBingoBnrmargint"><h3>* No Deposit</h3>
+                <h3>* No Card Details</h3>
+                <h3> * Get Free 20 instantly.</h3></div>
+              </div>
+            </li>
+	  <li>
+              <div class="TTBingoLeft TTBingoBtnmargl_40 TTBingoBtnmargl_40e" ><img src="/images/bingocrush/500bonus.png" height="263" width="300" alt="BingoCrush"/></div>
+              <div class="TTBingoRight TTBingoBnrTitle" style="width:290px;">
+               <h2><span style="font-size:50px;color:#000000;margin-left:-50px;font-family:'Berlin Sans FB Demi'">Deposit &#163;10</span></h2>
+                <h2><span style="font-size:100px;margin-left:-55px;color:#00680A;font-family:Verdana,Geneva,sans-serif">PLAY</span></h2>	
+		<h2><span style="font-size:50px;margin-left:-50px;color:#000000;font-family:Berlin Sans FB Demi">With &#163;60</span></h2>
+                 	</div>
+            </li>
+          </ul>
+        </div>
+        <div class="TTBingoBtnBlk clearfix ">
+        <div class="TTBingoExploBtn">
+          <div class="TTBingoBtninn"><input name="" type="button" class="TTBingoGradentBtn1 " value="Explore"  onclick="goToPlayMore('play-more')" /></div>
+        </div>
+        <div class="TTBingoPlayBtn">
+         <div class="TTBingoBtninn"> <input name="" type="button" class="TTBingoGradentBtn " value="Play Now"  onclick="goToGamePage()" /></div>
+        </div>
+        <div class="TTBingoLikeBtn">
+         <a href="http://www.facebook.com/pages/Bingo-Crush/159660587527531" target="_blank"> <img src="/images/bingocrush/ttbingofb.png"  alt="BingoCrushFb" /></a>
+        </div>
+      </div>
+      </div>
+      
+    </div>
+    <?php 
+    if($isLoggedIn)
+    {
+    	?>
+    	<div id="banners">
+    	
+    	<ul>
+    	<li id="mon"><a href="http://bingocrush.co.uk/en_GB/promotions"><img alt="Bingo Crush Promotion" src="/images/bingocrush/home-Monday.jpg"></a></li>
+		<li id="tues"><a href="http://bingocrush.co.uk/en_GB/promotions"><img alt="Bingo Crush Promotion" src="/images/bingocrush/home-Tuesday.jpg"></a></li>
+	    <li id="wed"><a href="http://bingocrush.co.uk/en_GB/promotions"><img alt="Bingo Crush Promotion" src="/images/bingocrush/home-Wednesday.jpg"></a></li>
+    	<li id="thurs"><a href="http://bingocrush.co.uk/en_GB/promotions"><img alt="Bingo Crush Promotion" src="/images/bingocrush/home-Thursday.jpg"></a></li>
+    	<li id="fri"><a href="http://bingocrush.co.uk/en_GB/promotions"><img alt="Bingo Crush Promotion" src="/images/bingocrush/home-Friday.jpg"></a></li>
+    	<li id="sat"><a href="http://bingocrush.co.uk/en_GB/promotions"><img alt="Bingo Crush Promotion" src="/images/bingocrush/home-Saturday.jpg"></a></li>
+    	<li id="sun"><a href="http://bingocrush.co.uk/en_GB/promotions"><img alt="Bingo Crush Promotion" src="/images/bingocrush/home-Sunday.jpg"></a></li>
+    	</ul>
+    	</div><!--banners-->
+    	<?php 
+    }
+    else
+    {
+    	?>
+    	<div class=" TTBingoJoin TTBingoLeft TTBingoRadius">
+    	<div  class="TTBingoJoinTitle">
+    	<p>JOIN NOW  &amp; <br/>
+    	GET FREE £20</p>
+    	<p class="TTBingoJoinTitleSmall">No Card Details Required</p>
+    	</div>
+    	<div class="TTBingoJoinForm TTBingoBtnmargt">
+    	<?php
+    	echo $form;
+    	?>
+    	      </div>
+    	    </div>
+    	<?php 
+    }
+    ?>
+    
+
+  </div >
+  
+  <div class="TTBingoPlayBlk clearfix TTBingoBtnmargt_20">
+    <div class="TTBingoPlaymorebg" id="play-more">Offers</div>
+    <div class="TTBingoPlaymorebot clearfix">
+      <div class="TTBingooffer TTBingoLeft ">
+        <div class="TTBingoofferimg">Promotions</div>
+        <div class="TTBingoofferin">
+          <div id="content">
+            <div id="slider" style="margin-left:-15px">
+              <ul>
+                <li><a href="http://bingocrush.co.uk/en_GB/promotions"><img src="/images/bingocrush/Every-Monday.jpg" alt="Bingo Crush Promotion"  border="0" /></a></li>
+				<li><a href="http://bingocrush.co.uk/en_GB/promotions"><img src="/images/bingocrush/Every-Tuesday.jpg" alt="Bingo Crush Promotion"  border="0" /></a></li>
+                <li><a href="http://bingocrush.co.uk/en_GB/promotions"><img src="/images/bingocrush/Every-Wednesday.jpg" alt="Bingo Crush Promotion"  border="0" /></a></li>
+                <li><a href="http://bingocrush.co.uk/en_GB/promotions"><img src="/images/bingocrush/Every-Thursday.jpg" alt="Bingo Crush Promotion"   border="0" /></a></li>
+                <li><a href="http://bingocrush.co.uk/en_GB/promotions"><img src="/images/bingocrush/Every-Friday.jpg" alt="Bingo Crush Promotion" border="0" /></a></li>
+                <li><a href="http://bingocrush.co.uk/en_GB/promotions"><img src="/images/bingocrush/Every-Saturday.jpg" alt="Bingo Crush Promotion"   border="0" /></a></li>
+                <li><a href="http://bingocrush.co.uk/en_GB/promotions"><img src="/images/bingocrush/Every-Sunday.jpg" alt="Bingo Crush Promotion"  border="0" /></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="TTBingooffer TTBingoLeft TTBingoMidPad">
+        <div class="TTBingoofferimg">Refer A Friend</div>
+        <div class="frnd-inner">
+        	<a href="http://bingocrush.co.uk/promotions/referfriend"><img src="/images/bingocrush/Rf-25.jpg" alt="Bingo Crush"/></a>
+            <p>Invite your friends to Bingo Crush &#38; get 25% CASH Commission.</p>
+            <p></p>
+            <p style="text-align:right;margin:0;font-weight:bold;"><a href="">Click here to know more</a></p>
+        </div>
+        <div class="tttournwinrbg">
+          <div class="tt_winner_cont">
+            <ul>
+              <?php 
+		        echo $this->action('winner', 'index', 'player', array('home' => true));
+		        ?>
+              <!-- <li>J.Sankar
+                <div>T<span class="WebRupee"> Rs. </span>14258</div>
+              </li>
+              <li>musvis69
+                <div>T<span class="WebRupee"> Rs. </span>10553</div>
+              </li>
+              <li>jaddu
+                <div>T<span class="WebRupee"> Rs. </span>9136</div>
+              </li>
+              <li>chaitu2112
+                <div>T<span class="WebRupee"> Rs. </span>8620</div>
+              </li>
+              <li>mancy
+                <div>T<span class="WebRupee"> Rs. </span>7922</div>
+              </li-->
+            </ul>
+          </div>
+          <!-- <div class=" TTBingoRight  ttbingomoredtls"><a href="/index/winner">More Details</a></div>-->
+        </div>
+      </div>
+      <div class="TTBingooffer TTBingoLeft ">
+        <div class="TTBingoofferimg">Affiliates</div>
+        <div class="frnd-inner">
+        	<a href="http://affiliate.bingocrush.co.uk" target="_blank"><img src="/images/bingocrush/Rf-30.jpg" alt="Bingo Crush Affiliates" /></a>
+            <p>Webmasters/Affiliates can now earn 30% commission. Join now. <!--& get free 100 cash credited to your account.--></p>
+            <p style="text-align:right;margin:0; font-weight:bold;color:#000;"><a href="http://affiliate.bingocrush.co.uk" target="_blank">Click here to know more</a></p>
+        </div>
+        <div id="ttbingotestim">
+          <ul>
+            <?php 
+	        echo $this->action('view', 'testimonial', 'player', array('scroll' => true));
+	        ?>
+            <!-- li class="slide" id="firstSlide" style="display:none;">
+              <blockquote>"kvr Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum velit quis lorem bibendum commodo. Quisque dolor ipsum."</blockquote>
+            </li>
+            <li class="slide" style="display: none">
+              <blockquote>2-I absolutely love and take great pride in building websites. I'm passionate about all things design and dedicated to standards based design.</blockquote>
+            </li>
+            <li class="slide" style="display: none">
+              <blockquote>3-I absolutely love and take great pride in building websites. I'm passionate about all things design and dedicated to standards based design.</blockquote>
+            </li-->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="TTBingoPlaymorebg  TTBingoBtnmargt_20 clearfix">Play More Win More</div>
+	
+    <div class="TTBingogamesbot clearfix">
+      <div class="TTBingogamesm TTBingoLeft">
+        <div class="TTBingogamesimg  "><img src="/images/bingocrush/ttbingoimg.JPG"  alt="ttbingo" /></div>
+        <div>
+          <div class="TTBingogameName TTBingoBtnmargt">Bingo</div>
+          <p>Play 90 and/or 75 Ball Bingo both at a time at Bingo Crush. <b>£2000 Mega Bingo Jackpot </b> is now played for every game in both, Cupid's luck (90 Ball) and Pink Room (75 Ball) bingo rooms. To add to the excitement, Bingo Crush also offers <b>FREE GAMES</b> that are played randomly in both the bingo room through out the day.
+</p>
+          <div  >
+            <input name="" type="button"  class="TTBingoGradentBtn3 TTBingoRight" value="Play Now" onclick="goToGamePage()"/>
+          </div>
+        </div>
+      </div>
+      <div class="TTBingogamesm TTBingoLeft  TTBingoMidPad_noborder">
+        <div class="TTBingogamesimg "><img src="/images/bingocrush/ttslotsimg.JPG"  alt="ttbingoKeno" /></div>
+        <div>
+          <div class="TTBingogameName TTBingoBtnmargt">Slots</div>
+          <p> Bingo Crush offers you more than 12 different slot games with different themes and bonus rounds. Couple of slots like Treasures of Agrabah, Potter Ville Farm etc offers you <b> FREE SPINS and SCATTER PAYOUTS </b> wherein you 2x or 3x your win amount. To top the action, Bingo Crush also offers upto <b>£5000 Progressive Slot Jackpot</b>. </p>
+          <div  >
+            <input name="" type="button"  class="TTBingoGradentBtn3 TTBingoRight" value="Play Now" onclick="goToGamePage()"/>
+          </div>
+        </div>
+      </div>
+      <div class="TTBingogamesm TTBingoLeft ">
+        <div class=" TTBingogamesimg  "><img src="/images/bingocrush/ttinstant.JPG"  alt="ttbingoRoulette" /></div>
+        <div>
+          <div class="TTBingogameName TTBingoBtnmargt">Instant Games</div>
+          <p>You must check this set of instant games. i.e. Two variants of Roulette, 1) Classic Roulette, and 2) American Roulette,3 different themes of keno games and one unique flavor game offered exclusively by Bingo Crush - <b>"Wheel of Fortune"</b>. We believe that you will have a great run on these instant games.</p>
+          <div  >
+            <input name="" type="button"  class="TTBingoGradentBtn3 TTBingoRight" value="Play Now" onclick="goToGamePage('roulette')"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
+
+
+<div class="TTBingoFooter clearfix">
+<div class="TTBingoFooterinn">
+    <div class="TTBingoFooterAccept TTBingoLeft">
+      <div class="TTBingoWeaccepthed">WE ACCEPT</div>
+      <div class="TTBingoBtnmargt"><img src="/images/bingocrush/ttbingoacceptcards.png" width="282" height="107" alt="BingoAcceptCards" /></div>
+     <!-- <div class="TTBingoWeaccepthed TTBingoBtnmargt_20" style="background-color:#ffffff;margin-left:0px">
+	  <div style="margin:5px 0px 0px 10px;">
+	 </div>-->
+	  </div>
+      <!-- div class="TTBingoBtnmargt"><a href="#"><img src="/images/bingocrush/ttbingoficon.png" width="51" height="49" border="0" alt="BingoFacebook" /></a><a href="#"><img src="/images/bingocrush/ttbingogicon.png" width="52" height="48" border="0"  alt="BingoGmail"/></a><a href="#"><img src="/images/bingocrush/ttbingoticon.png" width="51" height="49" border="0" alt="BingoTwitter" /></a></div-->
+    </div>
+    <div class="TTBingoFooterNav TTBingoLeft">
+      <ul class="TTBingoLeft">
+        <li><a href="/content/about">About Us</a></li>
+        <li> <a href="/faq">FAQ</a></li>
+       <!-- <li><a href="/content/article">Articles</a></li> -->
+        <li><a href="/promotions/referfriend">Tell A Friend</a></li>
+      </ul>
+      <div class="TTBingoLeft TTBingoBtnmargl_40">
+        <ul>
+          <li><a href="/content/privacypolicy">Privacy Policy</a></li>
+          <li><a href="http://affiliate.bingocrush.co.uk">Affiliates</a></li>
+          <li><a href="/content/rules">Rules</a></li>
+         
+        </ul>
+      </div>
+      <div class="TTBingoLeft TTBingoBtnmargl_40">
+        <ul>
+          <li><a href="/content/contact">Contact Us</a></li>
+		   <li><a href="/content/terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="TTBingoFooterRight TTBingoLeft">
+      <div><!-- a href="#"--><img src="/images/bingocrush/ttbingogamble.png" width="124" height="33" border="0"  alt="BingoGambleAware"/><!-- /a--></div>
+      <div class="TTBingoBtnmargt"><!-- a href="#"--><img src="/images/bingocrush/ttbingogetflash.png" width="127" height="32" border="0"  alt="BingoGetAdobeFlashPlayer"/><!-- /a--></div>
+      <div class="TTBingoBtnmargt TTBingoBtnmargl_40"><img src="/images/bingocrush/ttbingo18plus.png" width="40" height="53" alt="Bingo18+" /></div>
+      <div class="TTBingoBtnmargt"><img src="/images/bingocrush/ttbingo256bit.png" width="172" height="54" alt="BingoSecure" /></div>
+    </div>
+  </div>
+  
+ <!-- <div style="margin:-1415px 0px 0px 0px;float:left;position:fixed;left:1%;z-index:-1;">
+	<img src="/images/bingocrush/HP_Banner_left.png"  alt="Bingo" style="max-height:100%;max-width:100%"/>
+	</div>
+
+  
+	<div style="margin:-1415px 0px 0px 0px;float:right;position:fixed;right:0%;z-index:-1">
+	<img src="/images/bingocrush/HP_Banner_right.png"  alt="Bingo" style="max-height:100%;max-width:100%" />
+	</div>-->
+	
+  </div>
+	
+	
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?181uRzK3H7TO4l2xOLZRMPeFntzH8fDK';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->
+<!-- GeoTrust QuickSSL [tm] Smart  Icon tag. Do not edit. -->
+<script language="javascript" type="text/javascript" src="//smarticon.geotrust.com/si.js"></script>
+<!-- end  GeoTrust Smart Icon tag -->
+</body>
+</html>

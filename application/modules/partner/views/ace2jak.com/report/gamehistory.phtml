@@ -1,0 +1,32 @@
+<style>
+	#withdrawal_type-label, #withdrawal_type-element,#amount_type-label,#amount_type-element,#transaction_type-label,#transaction_type-element{
+		display:none;
+	}
+</style>
+<?php
+echo $this->dateForm;
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $playerData)
+		{
+			$linkArray[$playerData['Player Id']] = array(
+										'controller' => 'player',
+										'action' => 'profile',
+										'playerId' => $playerData['Player Id'],
+										'accountType' => $this->accountType);
+		}
+		$this->table($this->contents, array('Player Id'), $linkArray);
+	}
+
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+
+	$this->pagination($pages, array(
+							'from' => $this->from,
+							'to' => $this->to,
+							'id' => $this->playerId
+			));
+}

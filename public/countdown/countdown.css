@@ -1,0 +1,219 @@
+.countdownHolder{
+	width:200px;
+	position:fixed;
+	margin-left:-97px;
+	margin-top:167px;
+	font: 23px/1.5 'Open Sans Condensed',sans-serif;
+	font-weight:bold;
+	font-size:23px;
+	text-align:center;
+	position:fixes;
+	
+}
+
+.on-pop-up{
+	font: 34px/1.5 'Open Sans Condensed',sans-serif;
+	font-weight:bold;
+	width:320px;
+	margin-top:187px;
+	margin-left:64px;
+	position:fixed;	
+}
+
+.position{
+	display: inline-block;
+	height: 1.6em;
+	overflow: hidden;
+	position: relative;
+	width: 1.05em;
+}
+
+.digit{
+	position:absolute;
+	display:block;
+	width:1em;
+	background-color:#004298;
+	border-radius:0.2em;
+	text-align:center;
+	color:white;
+	letter-spacing:-1px;
+}
+
+.digit.static{
+	box-shadow:1px 1px 1px rgba(4, 4, 4, 0.35);
+	
+	background-image: linear-gradient(bottom, #004298 50%, #004298 50%);
+	background-image: -o-linear-gradient(bottom, #004298 50%, #004298 50%);
+	background-image: -moz-linear-gradient(bottom, #004298 50%, #004298 50%);
+	background-image: -webkit-linear-gradient(bottom, #004298 50%, #004298 50%);
+	background-image: -ms-linear-gradient(bottom, #004298 50%, #004298 50%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.5, #004298),
+		color-stop(0.5, #004298)
+	);
+}
+
+/**
+ * You can use these classes to hide parts
+ * of the countdown that you don't need.
+ */
+
+.countDays{ /* display:none !important;*/ }
+.countDiv0{ /* display:none !important;*/ }
+.countHours{}
+.countDiv1{}
+.countMinutes{}
+.countDiv2{}
+.countSeconds{}
+
+
+.countDiv{
+	display:inline-block;
+	width:16px;
+	height:1.6em;
+	position:relative;
+}
+
+.countDiv:before,
+.countDiv:after{
+	position:absolute;
+	width:5px;
+	height:5px;
+	background-color:black;
+	border-radius:50%;
+	left:50%;
+	margin-left:-3px;
+	top:0.5em;
+	box-shadow:1px 1px 1px rgba(4, 4, 4, 0.5);
+	content:'';
+}
+
+.countDiv:after{
+	top:0.9em;
+}
+
+#countDownNote{
+	position:fixed;
+	margin-bottom:5px;
+	color: white;
+	font-size:12px;
+	margin-top:8px;
+	margin-left:-75px;
+	text-align: left;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+	width: 160px;
+	height:13px;
+}
+
+.deposit_now_button{
+	width:180px;
+	margin-top:-74px;
+	margin-left:135px;
+	position:fixed;	
+}
+
+.deposit_now_button_text{
+	font-size:20px;
+	width:155px;
+	margin-top:-68px;
+	margin-left:145px;
+	z-index:1000;
+	position:fixed;
+	font-weight:bold;
+	color:white;
+	text-align: center;	
+}
+
+#popup_box { 
+	display:none; /* Hide the DIV */
+	position:fixed;  
+	_position:absolute; /* hack for internet explorer 6 */  
+	width:452px;
+	left: 450px;
+	top: 50px;
+	z-index:100001; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+	margin-left: 15px;  
+	
+	/* additional features, can be omitted */
+	
+	
+	font-size:15px;  
+	-moz-box-shadow: 0 0 5px #ffffff;
+	-webkit-box-shadow: 0 0 5px #ffffff;
+	
+	
+}
+
+.overlay {
+ 	position:absolute;
+	display:none; 
+	height:2000px;
+    /* color with alpha transparency */
+    background-color: rgba(0, 0, 0, 0.7);
+
+    /* stretch to screen edges */
+    top: 0;
+	left: 0;
+    bottom: 0;
+    right: 0;
+    z-index:1002;
+}
+
+
+a{  
+cursor: pointer;  
+text-decoration:none;  
+} 
+
+#popupBoxClose {
+	font-size:16px;  
+	line-height:14px;  
+	right:2px;  
+	top:2px;  
+	position:absolute;  
+	color:#004298;  
+	font-weight:bold;
+	cursor:pointer;
+  	
+}
+
+
+.daily-winner{
+    background: url(../css/rummy.tld/images/dealofthedaypromotions/dealoftheday.png);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    border-style:solid;
+	border-color:white;
+    font-size: 14px;
+    font-weight: bold;
+    position: fixed;
+    text-align: center;
+    top: 180px;
+    right:1px;
+    width: 220px;
+    height:315px;
+}
+
+.winner-name{
+	font-size:18px;
+}
+
+.daily-winner-detail{
+	text-align:center;
+}
+
+.daily-winner-close{
+	text-align:right;
+	cursor:pointer;
+	margin-top:	44px;
+	margin-bottom:5px;
+	margin-left:97px;
+	font-size:12px;
+	position:fixed;
+}

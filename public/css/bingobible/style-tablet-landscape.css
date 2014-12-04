@@ -1,0 +1,44 @@
+@media only screen and (min-width:769px) and (max-width:960px)
+{
+.content
+{
+width: 100%;
+}
+.rect {
+width: 60%;
+}
+.menu, .footer-content
+{
+width:100%;
+}
+.login-sec
+{
+display: none;
+}
+.menu
+{
+	display:none;
+}
+.menu-icon
+{
+display: block;
+}
+.menu ul li
+{
+width: 100%;
+text-align: left;
+}
+.menu ul 
+{
+padding-left: 10px;
+background: #eb0009;
+}
+ul#menu li ul.sub-menu
+{
+display: none;
+}
+.nav
+{
+
+}
+}

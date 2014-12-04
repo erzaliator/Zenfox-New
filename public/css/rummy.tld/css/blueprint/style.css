@@ -1,0 +1,546 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	   background-image:url('http://taashtime.com/css/rummy.tld/images/home-page-back.png') ;
+	   background-repeat:repeat;
+	   background-attachment:fixed;
+		font-family:Verdana,Arial,Helvetica;
+		font-size:12px;
+				
+	}
+
+.container_12 {
+	   margin-left: auto;
+	   margin-right: auto;
+	   width: 960px;
+	}
+label{margin-bottom:0px !important}
+#main_div{
+	  	background:#FFF;
+  		border:3px solid;
+		border-color:#FFF;
+		border-top:none;
+    }
+.required{
+	  	font-size:10px;	
+	  }
+ul{ 
+	    list-style: none outside none;}  
+label{
+	    font-weight:bold;}
+/*.zend_form	ul li input{margin-left:80px};
+*/ 		   
+.row{
+	    margin:0px;}
+span{   margin-left:0px;}
+.login-button{
+	  	background:#B40263;
+		border:none;
+		width:60px;
+		height:24px;
+		cursor:pointer;
+		color:#ffffff;
+		font-weight:bold;
+		border:2px solid #ebebeb;
+		padding:0px;font-size:90%;
+		margin-left:10px
+	}
+.fgpwd{
+		color: #000000; 
+    	font-size: 11px;
+		text-decoration:underline;
+	}
+.links > li {
+	     list-style:none;
+		 float:left;
+		 }
+.links > a{color:#2E2E2E !important;text-decoration:underline;}
+#pipe{color:#2E2E2E;}
+.headings td{
+	     font-weight:bold;
+		 font-size:13px
+		 padding-left:10px;
+		 }
+.abouttaash {
+	      text-align:inherit;
+		  margin:10px 0px 0px 8px;
+		  font-size:13px;
+		  font-weight:normal;
+		  }
+.navbar-inner {
+  min-height: 40px;
+  padding-right: 0px;/*Changed*/
+  padding-left: 0px;/*Changed*/
+ 
+}
+		  
+.navbar .nav > li > a {
+          float: none;
+          padding:8px 8px 8px;
+          color: #000000;
+          text-decoration: none;
+          text-shadow: 0 1px 0 #ffffff;}
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  		 color: #FFF;
+  		 text-decoration: none;
+         background-color: #004298;
+         -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+         -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+         box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);}
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  color: #FFFFFF;
+  background-color: #004298;
+}
+/* .nav-collapse .nav > li > a{margin-left:30px;}*/
+
+
+{ color:#ffffff;}
+.input-small {
+        width: 100px;
+}
+@media (max-width: 480px){
+.ttpromotime_l{
+			width:220px;
+	}
+    .ttpromoprizes_r{ 
+		height:50px !important;
+		width:40% !important;
+		padding:20PX 20PX 0PX 20PX;
+		font-size: 12px !important;
+    }
+    .ttpromoprizes_l{
+		height:50px !important;
+		width:35% !important;
+		padding:20PX 20PX 0PX 20PX;
+		font-size: 12px !important;
+    }
+	.ttpromoprizes{
+		height: 225px !important;
+	}
+    .ttpromotime2pm{
+		width:230px;
+		padding:20PX 20PX 0PX 20PX  
+    }
+    .ttpromotime2pm_l{
+		width: 80px;
+    }
+	
+	.ttpromotime_r{
+		border:none !important;
+		padding-left: 0px !important;
+		
+	}
+.ttpromotime{
+		height:370px;
+	}
+#social-icons{margin-left:-75px}
+.ttafterlogin{left:200}
+.ttltcurrentr{margin-left:-35px}
+#join_now_img{width:40px !important}
+th, td, caption {
+    padding: 4px 5px 4px 5px;
+}
+#h_from_time{margin-left:-45px}
+#h_to_time{margin-left:-45px}
+#promotion-refer #player-invite-form textarea.text{width:200px !important;}
+#ttdeprofiler{margin:30px 0px 0px 0px ;}
+.ttdeprofiler{margin-left:-19px}
+.ttmsgblksubj{height:50px}	
+}
+
+@media (max-width: 768px){
+	
+
+.ttlegalm{height:120px !important}
+#tables{margin-bottom: 15px; !important}
+#desktop{margin-left:0px !important;}
+#yourdesktop{width:99% !important}
+#tournaments1{margin-top:48px !important}
+#join_now{width: 100% !important}
+
+#row-fluid{margin-top:50px !important}
+
+.ttpromotime_l{
+			width:220px;
+	}
+    .ttpromoprizes_r{ 
+		height:50px !important;
+		width:40% !important;
+		padding:20PX 20PX 0PX 20PX;
+		font-size: 12px !important;
+    }
+    .ttpromoprizes_l{
+		height:50px !important;
+		width:40% !important;
+		padding:20PX 20PX 0PX 20PX;
+		font-size: 12px !important;
+    }
+	.ttpromoprizes{
+		height: 225px !important;
+	}
+    .ttpromotime2pm{
+		width:250px;
+		padding:20PX 20PX 0PX 20PX  
+    }
+    .ttpromotime2pm_l{
+		width: 80px;
+    }
+	
+	.ttpromotime_r{
+		
+		padding-left: 0px !important;
+		
+	}
+
+.ttpromotime{
+		height:180px;
+	}
+	#ttlivetbl{margin-top:-20px}
+	 .nav-collapse .dropdown-menu  a {margin-left:30px !important}
+	  .nav-collapse .dropdown-menu  a:hover{margin-left:30px}
+	.tt_th_blue_bg h1, .tt_th_grey_bg h1, .tt_th_pink_bg h1{font-size:14px !important; } 
+	.tttournwidth{width:85px !important} 
+	.ttmsgblk{height:65px;}
+/*#live-tables{margin-top:-20px !important}
+*/}
+@media (min-width: 768px){
+.row-fluid .span4 {
+    width: 34.2% !important;
+}
+.span3 {
+	width: 277px !important;
+}
+
+}
+.nav > li {border-right:1px solid #CCC}
+.nav > li:hover{background-color:#004297;color:#}
+.navbar .nav > li > a:hover{color:#FFF;background-color:#004298 !important;}
+.navbar .nav > li > a {
+    color: #595959;
+    font-weight: bold;
+	font-size:12px;
+	width:90px;
+	text-align:center;
+	padding-bottom: 20px;
+    padding-top: 20px;
+	
+}
+#desktop{margin-left:10px !important;}
+#menu-bar{height:70px !important}
+#footer_inner{margin-top:41px !important}
+#tournment{width:95px !important}
+#hlp{width:105px !important}
+}
+
+@media (max-width: 980px) {
+  .span3 {
+	width: 100% !important;
+	}
+	.ttpromotime_l{
+			width:40% !important;
+			padding-right: 25px !important;
+	}
+	.ttpromoworth{
+		font-size: 15px;
+	}
+    .ttpromoprizes_r{ 
+		height:50px;
+		width:40%;
+		padding:20PX 20PX 0PX 20PX;
+		font-size: 15px;
+    }
+    .ttpromoprizes_l{
+		height:50px;
+		width:40%;
+		padding:20PX 20PX 0PX 20PX;
+		font-size: 15px;
+    }
+ .ttpromotime_r{
+	width:235px !important;
+ }
+    
+    .ttpromotime2pm_l{
+		width: 40px !important;
+    }
+	
+}
+@media (max-width: 979px) and (min-width: 768px){
+	#desktop{width:50% !important}
+	#vijay{margin-left: 10px !important;}
+	#player-div{margin-left: 10px !important;}
+	#3rd-row{margin-left:0px !important;}
+	.span7a {
+	width: 100% !important;
+	}
+	.span4d{
+		float:left !important;
+	}
+#row-4{margin-bottom:30px !important;margin-top:10px !important}	
+#player-div{width:28% !important;}
+#login-head{
+	margin-top:-20px !important;
+	width: 351px !important;
+}
+#submit{
+	margin-top:21px !important;
+	}
+.login-box .zend_form a{margin-top:22px !important;}	
+.login-box .zend_form {margin-top:0px !important;}
+#tables{width:230px !important}
+/*.nav > li {border-right:1px solid #CCCCCC!important;width:105px !important;text-align:center; font-size: 12px; }
+.nav > li:hover{background:#004297; !important;}
+.navbar .nav > li > a{color:#595959;font-weight:bold ;}
+.navbar .nav > li > a:hover{color:#FFF;font-weight:bold;}*/
+
+#join_now{margin-bottom:30px !important}
+
+#tournaments1{margin-top: 48px;}
+#join_now{width: 100% !important}
+
+#exciting-offer{width:725px !important;}
+#tournment{width:95px !important}
+#hlp{width:105px !important}
+#social-icons{margin-top:-15px}
+#hugme-discount{width:100% !important;}
+.tt_th_blue_bg h1, .tt_th_grey_bg h1, .tt_th_pink_bg h1{font-size:14px !important; }
+.tttournwidth{width:81px !important} 
+}
+@media (max-width: 979px) {
+	
+#3rd-row{margin-left:0px; !important;}	
+.login-box .zend_form{
+	margin-top: -8px !important;
+	float: left !important;
+	margin-left: 20px !important;
+}	
+.fb_edge_widget_with_comment{
+	position: relative;
+	float: left !important;
+	margin-left: 18px !important;
+
+}
+
+#invite-friend{width:725px !important;}
+#main_banner{width:725px !important;}
+#hugme-discount{width:100% !important;}
+#ttrefeRafriend{width:725px !important;}
+#ttfreedownload{width:725px !important;}
+
+#desktop{margin-left:0px !important;}
+
+#exciting-offer{width:725px !important;}
+#join-now{margin-top:10px !important}
+
+}
+
+@media (max-width: 320px){
+	
+	.login-box .zend_form #submit{
+		margin-top: 0px !important;
+	}
+	.login-box .zend_form a{
+		margin-top: 0px !important;
+	}
+#inner-nav{position:absolute;margin-top:-95px}
+.ttpromotime_l{
+			width:220px;
+	}
+    .ttpromoprizes_r{ 
+		height:50px !important;
+		width:30% !important;
+		padding:20PX 20PX 0PX 20PX;
+		font-size: 12px !important;
+    }
+    .ttpromoprizes_l{
+		height:50px !important;
+		width:30% !important;
+		padding:20PX 20PX 0PX 20PX;
+		font-size: 12px !important;
+    }
+	.ttpromoprizes{
+		height: 225px !important;
+	}
+    .ttpromotime2pm{
+		width:250px;
+		padding:20PX 20PX 0PX 20PX  
+    }
+    .ttpromotime2pm_l{
+		width: 80px;
+    }
+	.ttpromotime{
+		height:370px;
+	}
+	.ttpromotime_r{
+		border:none !important;
+		padding-left: 0px !important;
+		
+	}
+	.ttpromoworth{width:192px !important;}
+	.ttlegalm {
+    height: 168px !important;
+}
+#h_from_time{margin-left:40px}
+#h_to_time{margin-left:40px}
+}
+@media (min-width: 980px) {
+.row-fluid .span4 {
+    width: 34.2% !important;
+}
+.span4d,.invite-friend{
+	width:284px !important;
+	height:60px !important;
+	
+}
+.navbar .nav > li > a {
+    color: #595959;
+    font-weight: bold;
+	font-size:12px;
+
+	text-align:center;
+	
+}
+#row-4{margin-bottom:10px !important;}
+#vijay{margin-left:10px !important;}
+#player-div{margin-left:10px !important;}
+#login-head{width:410px !important}
+}
+@media (min-width: 1200px) {
+.row-fluid .span4 {
+    width: 33.3% !important;
+}
+.span3 {
+	width: 300px !important;
+}
+#after-login{width:250px !important;}
+.span4d,.invite-friend{
+	width:300px !important;
+	height:60px !important;
+/**/}
+#row-4{margin-top:4px !important}
+#row-4{margin-bottom:10px !important;}
+#about-tash{width:646px !important ;}
+#desktop{margin-left:10px;width: 296px !important;
+}
+.span5a{width:535px}
+.span4c{margin-top: -22px; !important}
+.navbar-inner{padding:0px !important}
+#login-head {width: 400px; !important}
+#tables{width:230px !important}
+
+.navbar .nav > li > a {
+    color: #595959;
+    font-weight: bold;
+	font-size:12px;
+	width:90px;
+	text-align:center;
+	padding-bottom: 20px;
+    padding-top: 20px;
+	
+}
+#ttfreedownload{width:300px !important}
+
+#tournment{width:95px !important}
+#hlp{width:105px !important}
+
+}
+	
+
+.get-blurb-bfont{ font-size:22px; font-weight:bold;color:#FFF }
+.get-blurb-sfont{ font-size:14px; font-weight:bold;color:#FFF }
+.joinform li{padding-top:6px}
+h4{font-size:16px;}
+.table td {color:#000;border:0px solid;padding:0px}
+.span7a{width:650px}
+/*#join_now{height:330px !important;margin-bottom:30px !important}*/
+#3rd-row{margin:0px !important}
+#player-div{height:280px;}
+ul#main-menu li p{margin:0 0 1.4em;}
+.navbar .nav {width:650px !important}
+
+.headings {
+    background: none repeat scroll 0 0 #9CB6D7;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 0 5px 5px;
+    vertical-align: middle;
+}
+
+#step-1{
+	display:none;
+}
+#step-2{
+	display:none;
+}
+#step-3{
+	display:none;
+}
+
+.invite-frnds h1 {
+    background: none repeat scroll 0 0 #0D3686;
+    color: white;
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 15px 0;
+    text-align: center;
+}	
+
+
+.invite-frnds p {
+    color: #0D3686;
+    font-family: Verdana;
+    font-size: 16px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+
+.invite-frnds {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #0D3686 #0D3686 -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 3px 3px medium;
+    padding-bottom: 23px;
+}
+.required{font-size:12px !important}
+#Signup{background: url("../../images/ttnextbtn.gif") repeat-x scroll 0 0 transparent;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 120%;
+    font-weight: bold;
+    height: 30px;
+    padding: 5px 10px;
+	width:75px;}
+#submit{background: url("../../images/ttnextbtn.gif") repeat-x scroll 0 0 transparent;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 120%;
+    font-weight: bold;
+    height: 30px;
+    padding: 5px 10px;
+	width:75px;}	
+	
+#h_from_time,#m_from_time,#p_from_time,#h_to_time,#p_to_time,#m_to_time{width:60px}	
+
+h2 {
+    font-size: 2em;
+}
+
+#heading_howtoplay{background:#004298;font-family:copperplate Gothic Bold;font-size:32px;color:#ffffff;text-align:center;height:50px;line-height:50px;width:960px}
+#congrats{background:#F8EDDB;width:960px;padding-top:20px;text-align:center}
+.name{font-size:24px;color:#fff;font-family:Verdana, Geneva, sans-serif;font-weight:bold;line-height:50px}
+#or{font-size:18px;color:#000;font-family:Verdana, Geneva, sans-serif;font-weight:bold}
+#main{font-family:Verdana, Geneva, sans-serif;width:960px;border:2px solid #004298;margin:auto}
+#sheela{position:absolute;z-index:999;top:172px}

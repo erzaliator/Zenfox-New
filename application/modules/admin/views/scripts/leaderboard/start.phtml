@@ -1,0 +1,94 @@
+<?php 
+echo '<a href="/leaderboard/start?createnew=true" > Create for New Room</a>';
+echo "<br/>";
+if($this->alldata)
+{
+	
+	
+	foreach($this->alldata as $roomData)
+	{
+		$linkArray[$roomData['Leader Board Title']] = array(
+				'controller' =>'leaderboard',
+				'action' => 'start',
+				'roomId' => $roomData['Room Id']
+		);
+	}
+	$this->table($this->alldata, array('Leader Board Title'), $linkArray);
+}
+if($this->form)
+{
+	echo '<a href="/leaderboard/start" > << back to the list</a>';
+	echo "<br/>";
+	if($this->roomId)
+	{
+		echo '<a href="/leaderboard/start?roomId='.$this->roomId.'&generateLeaderBoard=true"> Get LeaderBoard</a>';
+		echo "<br/>"."<br/>";
+	}
+	
+	
+	echo $this->form;
+}
+if($this->leaderboard)
+{
+	echo "<br/>";
+	?>
+	<br><h2 style="text-align:center"><strong>Leader Board Data</strong></h2>
+<?php
+	$this->table($this->leaderboard);
+}
+?>
+
+<script>
+addon = "";
+function appendGame(obj)
+{
+	//alert(document.getElementById(obj.id).checked);
+	if(document.getElementById(obj.id).checked)
+	{
+		//flag[obj.id]=obj.id;
+		if(document.getElementById("allowedGames").value == "")
+		{
+			document.getElementById("allowedGames").value += obj.value;
+		}
+		else
+		{
+			document.getElementById("allowedGames").value += ","+obj.value;
+		}
+		
+	}
+	else
+	{
+		detachvalue = obj.value;
+		var myStr = document.getElementById("allowedGames").value;
+		var myArr = myStr.split(",");
+		//var newArr = new array();
+		document.getElementById("allowedGames").value = "";
+		
+		for(i=0;i<myArr.length;i++)
+		{
+			if(myArr[i] != detachvalue)
+			{
+				if(document.getElementById("allowedGames").value == "")
+				{
+					document.getElementById("allowedGames").value += myArr[i];
+				}
+				else
+				{
+					document.getElementById("allowedGames").value += ","+myArr[i];
+				}
+			}
+		}
+
+		
+		
+		
+	}
+
+	
+            
+	
+	
+	 
+}
+
+</script>

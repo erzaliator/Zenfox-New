@@ -1,0 +1,51 @@
+<a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a>
+<br></br><br></br>
+<b>Resource Details</b>
+<br></br>
+<table border='1'>
+<?php
+$resource = $this->resourceData;
+$parentId = $this->parentData['id'];
+
+foreach($resource as $key => $value)
+{
+	if($key != 'id')
+	{?>
+		<tr>
+			<td>
+				<?=$key?>
+			</td>
+			<td>
+				<?php 
+				if($key == 'parentId')
+				{?>
+					<a href = "<?php echo $this->url(array(
+								'controller' => 'resource',
+								'action' => viewdetails,
+								'id' => $parentId
+								));
+							?>">
+							<?php echo $this->parentData['name']?></a>
+					
+				<?}
+				else
+				{?>
+					<?= $value?>	
+				<?}?>
+			</td>
+		</tr>
+	<?php 
+	}
+}?>
+</table>
+
+<br></br>
+<br></br>
+
+<a href="<?php echo $this->url(array('controller' => 'resource', 
+									'action' => 'edit',
+									'id' => $this->resourceData['id']
+										)
+										);?>"
+										> edit</a>

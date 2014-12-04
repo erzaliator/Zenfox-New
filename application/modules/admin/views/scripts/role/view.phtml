@@ -1,0 +1,19 @@
+<a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a>
+<br></br><br></br>
+<b>Available Roles</b>
+<br></br><br></br>
+<?php
+$roles = $this->roles;
+foreach($roles as $role)
+{?>
+	<a href = "<?php echo $this->url(array(
+					'controller' => 'role',
+					'action' => 'viewdetails',
+					'id' => $role['id']));
+		?>">
+		<?php  print($role['name']);?>
+	</a>
+	<br></br>
+		
+<?}?>

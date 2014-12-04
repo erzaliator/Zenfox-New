@@ -1,0 +1,45 @@
+<?php
+echo $this->form;
+//echo $this->submitButton;
+//echo $this->message;
+if($this->showForms)
+{
+	?>
+	<div id="tabs_container">
+		<ul class="tabs">
+			<li class="active" >
+				<a  rel="#tab_1_contents" class="tab">General</a>
+	        </li >
+	        <li >
+	        	<a rel="#tab_2_contents" class="tab">Contact</a>
+	        </li>
+	        <li >
+	        	<a rel="#tab_3_contents" class="tab">Account Setting</a>
+	        </li>
+		</ul>
+		<div class="tab_contents_container">
+			<div id="tab_1_contents" class="tab_contents tab_contents_active">
+				<div class="edit-form">
+			    	<?php
+		            	echo $this->gnForm;
+		            ?>
+				</div>
+			</div>
+			<div id="tab_2_contents" class="tab_contents">
+				<div class="edit-form">
+					<?php
+		            	echo $this->cnForm;
+		            ?>
+				</div>
+			</div>
+			<div id="tab_3_contents" class="tab_contents">
+				<div class="edit-form">
+					<?php
+		            	echo $this->stForm;
+		            ?>
+				</div>
+			</div>
+		</div>
+	</div> 
+	<?php
+} 

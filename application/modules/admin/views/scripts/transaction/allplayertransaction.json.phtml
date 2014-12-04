@@ -1,0 +1,67 @@
+<?php 
+//echo 'json.phtml';
+$transactions = $this->transactions;
+if($transactions == 'null')
+{
+ echo '{"transactions":[]}';	
+}
+
+if($this->sheet)
+{
+	$this->excel($this->sheet , '2011-02-22' , '2011-07-25');
+}
+
+elseif($transactions != 'null')
+{
+	$playerUserName = new Player();
+	
+$data = array();
+foreach($transactions as $key=>$value)
+        {
+        $data[$key]['source_id'] = $value['source_id']; 
+        $data[$key]['player_id'] = $value['player_id'];
+    	$username = $playerUserName->getUserName($value['player_id']);
+    	$data[$key]['user_name'] = $username;    
+        $data[$key]['audit_id']  = $value['audit_id'];
+        $data[$key]['merchant_trans_id'] = $value['merchant_trans_id'];
+        $data[$key]['card_id'] = $value['card_id'];
+        $data[$key]['game_flavour'] = $value['game_flavour'];
+        $data[$key]['running_machine_id'] = $value['running_machine_id'];
+        $data[$key]['session_id'] = $value['session_id'];
+        $data[$key]['gamelog_id'] = $value['gamelog_id'];
+        $data[$key]['amount'] = $value['amount'];
+        $data[$key]['amount_type'] = $value['amount_type'];
+        $data[$key]['transaction_currency'] = $value['transaction_currency'];
+        $data[$key]['notes'] = $value['notes'];
+        $data[$key]['frontend_id'] = $value['frontend_id'];
+        $data[$key]['trans_start_time'] = $value['trans_start_time'];
+        $data[$key]['trans_end_time'] = $value['trans_end_time'];
+        $data[$key]['parent_id'] = $value['parent_id'];
+        $data[$key]['processed'] = $value['processed'];
+        $data[$key]['error'] = $value['error'];
+        $data[$key]['cash_balance'] = $value['cash_balance'];
+        $data[$key]['bb_balance'] = $value['bb_balance'];
+        $data[$key]['real_change'] = $value['real_change'];
+        $data[$key]['bonus_change'] = $value['bonus_change'];
+        $data[$key]['tracker_id'] = $value['tracker_id'];
+        $data[$key]['csr_id'] = $value['csr_id'];
+        $data[$key]['conversion_rate'] = $value['conversion_rate'];
+        $data[$key]['converted_amount'] = $value['converted_amount'];
+        $data[$key]['bonus_scheme_id'] = $value['bonus_scheme_id'];
+        $data[$key]['bonus_level_id'] = $value['bonus_level_id'];
+        $data[$key]['loyalty_points_left'] = $value['loyalty_points_left'];
+        $data[$key]['total_loyalty_points'] = $value['total_loyalty_points'];
+        
+        
+        
+         //print_r($value['audit_id']);
+         
+        }
+        /**/
+
+        //VIVEK CODE
+	//echo json_encode(array('totalCount'=>count($transactions)*10,'transactions'=>$data));
+
+        echo json_encode(array('transactions'=>$data));
+}	        
+?>

@@ -1,0 +1,36 @@
+Source: zenfox-web
+Section: non-free/web
+Priority: extra
+Maintainer: Yaswanth Narvaneni <yaswanth@fortuity.in>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Homepage: http://logicdice.com
+#Vcs-Git: git://git.debian.org/collab-maint/zenfox-web.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/zenfox-web.git;a=summary
+
+Package: zenfox-web-common
+Architecture: all
+Depends: ${misc:Depends},apache2,
+ libapache2-mod-php5,
+ php5-mysql
+Description: Zenfox common library files for web interface
+
+Package: zenfox-web-admin
+Architecture: all
+Depends: ${misc:Depends},
+ zenfox-web-common
+Description: Zenfox administrator web interface
+
+Package: zenfox-web-affiliate
+Architecture: all
+Depends: ${misc:Depends},
+ python,python-sqlalchemy,
+ zenfox-web-common
+Description: Zenfox affiliate web interface
+
+Package: zenfox-web-player
+Architecture: all
+Depends: ${misc:Depends},
+ python,python-sqlalchemy,
+ zenfox-web-common
+Description: Zenfox player web interface

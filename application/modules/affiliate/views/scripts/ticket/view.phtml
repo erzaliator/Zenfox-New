@@ -1,0 +1,27 @@
+<?php
+echo '<table border = "1">';
+echo '<tr>';
+echo '<th align = "left">Started by</th>';
+echo '<th align = "left">Subject</th>';
+echo '<th align = "left">Start Date</th>';
+echo '</tr>';
+foreach($this->messages as $message)
+{
+	?>
+	<?php
+	if($message['start_by'] == 'CSR')
+		$startedBy = 'admin';
+	elseif($message['start_by'] == 'AFFILIATE')
+		$startedBy = "me";
+	echo '<tr>';
+	echo '<td>'.$startedBy.'</td>';	
+	echo '<td>';?>
+	<a href ="<?php echo $this->url(array('controller'=>'ticket','action'=>'reply','ticket_id'=>$message['id']));?>">
+	<?php 
+	echo substr($message['subject'],0,20);?> </a>
+	<?php echo '</td>';
+	echo '<td>'.$message['start_date'].'</td>';
+	echo '</tr>';
+}
+echo '</table>';
+?>

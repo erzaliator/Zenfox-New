@@ -1,0 +1,17 @@
+{
+	"authentication":
+	{
+		"auth":"login",
+		"username":"admin@bingocrush.co.uk",
+        "password":"fortuity!@#",
+		"smtp":"smtp.zoho.com",
+		"ssl":"ssl",
+		"port":"465"
+	},
+	"displayname":
+	{
+		"name":"Bingo Crush",
+		"email":"no-reply@bingocrush.co.uk",
+		"replyto":"no-reply@bingocrush.co.uk"
+	}
+}

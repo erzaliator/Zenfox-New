@@ -1,0 +1,16 @@
+{
+	"authentication":
+	{
+		"auth":"login",
+		"username":"admin@bingocrush.co.uk",
+        	"password":"d923f0eb-af00-4492-8619-aa0051a0b62b",
+		"smtp":"smtp.elasticemail.com",
+		"port":"2525"
+	},
+	"displayname":
+	{
+		"name":"Bingo Crush",
+		"email":"no-reply@bingocrush.co.uk",
+		"replyto":"no-reply@bingocrush.co.uk"
+	}
+}

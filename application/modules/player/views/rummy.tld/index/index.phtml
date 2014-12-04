@@ -1,0 +1,90 @@
+<?php /*
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')? Zend_Registry::getInstance()->get('webConfig'):'null';
+$viewDir = $webConfig['viewDir'];
+
+<div>
+	<div class="promo">
+	<img src="<?php echo "/images/" . $viewDir. "/promo.png" ?> " alt="" width="390" height="310">"></img>
+	*/?>
+		<?php 
+		
+		?>
+	
+	
+<?php
+/*
+	//echo $this->cricketForm; //<img src="<?php echo "/images/" . $viewDir. "/promo.png"" alt="" width="390" height="310">
+	</div>
+    <div class="reg" id="regForm">
+    	<strong><?php echo $this->heading?></strong>
+    	*/?>
+    	<?php 
+    	if($this->form)
+    	{
+	    	?>
+	    	<div class="joinnowbg">
+	    	<div class="joinnowpad"><div id="join-now">
+	    	<h2 class="pad-t-10 join-nowfont"><strong><?php echo $this->heading?></strong></h2>
+	    	<div id="get-blurb-home" class="right"><div class="get-blurb-bfont">FREE </div><div class="get-blurb-sfont">&nbsp; Rs. 25/-</div></div>
+	    	<div class="reg" id="regForm">
+	    		<?php
+	    		echo $this->form;
+	    		?>
+	    		</div>
+	    		</div></div></div>
+	    		<!-- 
+	    		<div id="break">&nbsp; &nbsp; 
+</div>
+-->
+	    		<?php 
+    	}
+    	else
+    	{
+    		/*
+			?>
+    	
+    	<div id="my-account-box"><div id="profile-photo" class="right"><a href = "/auth/image"><img src="<?php echo $this->imagePath;?>" width="53" height="52" alt="Profile Photo"></a></div>
+        <h3 class="pad-t-20"><strong>My Account</strong></h3>
+
+<div id="my-account">
+<p class="left pad-t-20 my-acc-left"><strong>Taash Cash:</strong></p>
+<p class="left color-blue pad-l-15 pad-t-20"><strong>
+<?php 
+echo $this->cash;
+?>
+</strong></p>
+<div class="clear"></div>
+<p class="left my-acc-left"><strong>Bonus Due:</strong></p>
+<p class="left color-blue pad-l-15"><strong>
+<?php 
+echo $this->bonus;
+?>
+</strong></p>
+<div class="clear"></div>
+<p class="left my-acc-left"><strong>Fun Coins:</strong></p>
+<p class="left color-blue pad-l-15"><strong>
+<?php 
+echo $this->freeChips;
+?>
+</strong></p>
+<div class="clear"></div>
+<p class="left my-acc-left"><strong>Points:</strong></p>
+<p class="left color-blue pad-l-15 my-acc-left"><strong>
+<?php 
+echo $this->loyality;
+?>
+</strong></p>
+<div class="clear"></div>
+</div>
+
+<p class="bottom"><strong><a href="#">My Game History</a></strong></p></div>
+	    <?php
+	    echo $this->form;
+	    ?>
+    <!--div class="submit"><a href="#">Submit</a></div-->
+<?php  
+*/		
+    	}
+  
+
+

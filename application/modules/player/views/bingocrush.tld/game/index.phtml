@@ -1,0 +1,381 @@
+<script type="text/javascript">
+function goToPrebuy(){
+	window.location.href = '/prebuy';
+}
+function changeType(type){
+	if(type=='REAL'){
+		if(document.getElementById('slots-bonus-9') != undefined){
+			document.getElementById('slots-bonus-9').style.display = "none";
+		}
+		if(document.getElementById('slots-bonus-25') != undefined){
+                        document.getElementById('slots-bonus-25').style.display = "none";
+                }
+		if(document.getElementById('roulette-bonus') != undefined){
+			document.getElementById('roulette-bonus').style.display = "none";
+                }
+		if(document.getElementById('keno-bonus') != undefined){
+			document.getElementById('keno-bonus').style.display = "none";
+                }
+		if(document.getElementById('slots-flavor-9-BONUS') != undefined){
+                        document.getElementById('slots-flavor-9-BONUS').style.display = "none";
+                }
+		if(document.getElementById('slots-flavor-25-BONUS') != undefined){
+                        document.getElementById('slots-flavor-25-BONUS').style.display = "none";
+                }
+
+		if(document.getElementById('slots-real-9') != undefined){
+			document.getElementById('slots-real-9').style.display = "block";
+                }
+		if(document.getElementById('slots-real-25') != undefined){
+                        document.getElementById('slots-real-25').style.display = "block";
+                }
+		if(document.getElementById('roulette-real') != undefined){
+			document.getElementById('roulette-real').style.display = "block";
+                }
+		if(document.getElementById('keno-real') != undefined){
+			document.getElementById('keno-real').style.display = "block";
+                }
+		if(document.getElementById('slots-flavor-9-REAL') != undefined){
+                        document.getElementById('slots-flavor-9-REAL').style.display = "block";
+                }
+                if(document.getElementById('slots-flavor-25-REAL') != undefined){
+                        document.getElementById('slots-flavor-25-REAL').style.display = "block";
+                }
+	}
+	else{
+		if(document.getElementById('slots-real-9') != undefined){
+			document.getElementById('slots-real-9').style.display = "none";
+                }
+		if(document.getElementById('slots-real-25') != undefined){
+                        document.getElementById('slots-real-25').style.display = "none";
+                }
+		if(document.getElementById('roulette-real') != undefined){
+			document.getElementById('roulette-real').style.display = "none";
+                }
+		if(document.getElementById('keno-real') != undefined){
+			document.getElementById('keno-real').style.display = "none";
+                }
+		if(document.getElementById('slots-flavor-9-REAL') != undefined){
+                        document.getElementById('slots-flavor-9-REAL').style.display = "none";
+                }
+                if(document.getElementById('slots-flavor-25-REAL') != undefined){
+                        document.getElementById('slots-flavor-25-REAL').style.display = "none";
+                }
+
+		if(document.getElementById('slots-bonus-9') != undefined){
+			document.getElementById('slots-bonus-9').style.display = "block";
+                }
+		if(document.getElementById('slots-bonus-25') != undefined){
+                        document.getElementById('slots-bonus-25').style.display = "block";
+                }
+		if(document.getElementById('roulette-bonus') != undefined){
+			document.getElementById('roulette-bonus').style.display = "block";
+                }
+		if(document.getElementById('keno-bonus') != undefined){
+			document.getElementById('keno-bonus').style.display = "block";
+                }
+		if(document.getElementById('slots-flavor-9-BONUS') != undefined){
+                        document.getElementById('slots-flavor-9-BONUS').style.display = "block";
+                }
+                if(document.getElementById('slots-flavor-25-BONUS') != undefined){
+                        document.getElementById('slots-flavor-25-BONUS').style.display = "block";
+                }
+	}
+}
+
+
+
+</script>
+<script type="text/javascript">
+$(function(){
+	$("img[src*='_s.png']").thumbPopup({
+		imgSmallFlag:"_s",
+		imgLargeFlag:"_l",
+		imgHoverFlag:"_over"
+	});
+	
+
+});
+
+function goToBingo(session_id, currency,windowName ,game_type, game_id, amount_type, game_flavour){
+	window.open("/bingo/index/sessionId/" + session_id + "/currency/" + currency + "/gameType/" + game_type + "/gameId/" + game_id + "/amountType/" + amount_type + "/flavour/" + game_flavour, game_flavour + game_id,'width=800%,height=600%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false;
+}
+</script>
+
+		
+<div class="clearfix ">
+  <div class=" TTBingoGameR TTBingoLeft TTBingomargl">
+    <div class="clearfix">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr class="TTBingoThBg">
+          <th width="16%" height="35" style="text-align:center">Room Name</th>
+          <th width="12%">Game Type</th>
+          <th width="10%">Players</th>
+          <th width="12%">Card Cost</th>
+          <th width="12%">Game Prize</th>
+          <th width="10%">Jackpot</th>
+          <th width="10%" style="text-align:center">Play</th>
+          <th width="10%"></th>
+        </tr>
+        
+        
+        <?php 
+          foreach($this->allRunningRooms as $runningRoom)
+          {
+          	$imageName = "ttbingogametypeicon";
+          	if($runningRoom['game_type'] == 75)
+          	{
+          		$imageName = "ttbingogametypeicon_75";
+          	}
+		if($runningRoom['game_id'] == 61)
+          	{
+          		$runningRoom['pool_price'] = 45;
+          	}
+          if($runningRoom['game_id'] == 2)
+          	{
+          		$runningRoom['pool_price'] = 1;
+          	}
+          	?>
+        <tr >
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+		
+        <tr class="TTBingoTrBg" onMouseOver="this.className='TTBingoTrhoverBg'" onMouseOut="this.className='TTBingoTroutBg'" style="border:1px solid" >
+          <!-- td  valign="middle" height="61"><?//=$runningRoom['room_name'] ?></td-->
+          <td valign="middle" height="61"><img width="120" height="55" src="/images/bingocrush/ttbingo_<?=$runningRoom['game_type'] ?>_balls.png"></td> 
+          <td  valign="middle"><img src="/images/bingocrush/<?=$imageName ?>.png" width="45" height="44" /></td>
+          <td  valign="middle" class="TTBingoBonanza">
+		  	<div style="background:white;height:25px;width:80px;text-align:center;line-height:25px;border-radius:5px;margin-top:4px;"><?=$runningRoom['players'] ?></div></td>
+          <td  valign="middle" class="TTBingoBonanza">
+		  	<div style="background:white;height:25px;width:80px;text-align:center;line-height:25px;border-radius:5px;margin-top:4px;">£<?=$runningRoom['price'] ?></div>  </td>
+          <td  valign="middle" class="TTBingoBonanza">
+		 <div style="background:white;height:25px;width:80px;text-align:center;line-height:25px;border-radius:5px;margin-top:4px;">£<?=$runningRoom['pool_price'] ?></div></td>
+          <td  valign="middle"  class="TTBingoBonanza">
+		 <div style="background:white;height:25px;width:80px;text-align:center;line-height:25px;border-radius:5px;margin-top:4px;">£<?=$runningRoom['jackpot'] ?></div></td>
+          <td align="center" valign="middle"><label>
+              <input type="submit" name="button" id="button" onclick='goToBingo("<?=$runningRoom['session_id'] ?>","<?=$runningRoom['currency'] ?>","<?=$runningRoom['room_name'] ?> ","<?=$runningRoom['game_type'] ?> ","<?=$runningRoom['game_id'] ?>","<?=$runningRoom['amount_type'] ?>","<?=$runningRoom['flavour'] ?>")' value="Play" class="TTBingoGradentBtn4" />
+            </label></td>
+            <td align="center" valign="middle"><label>
+              <input type="submit" name="button" value="Pre-Buy" onclick='goToPrebuy()' class="TTBingoGradentBtn6" />
+            </label></td>
+        </tr>
+		
+        <?php
+          }
+          ?>
+      </table>
+       <div class="r-strip">
+        	<p class="left" ><input type="radio" checked="checked" name="rr" onclick="changeType('REAL')">Real</p>
+            <p class="right" style="margin-right:15px;"><input type="radio" name="rr" onclick="changeType('BONUS')">Bonus</p>
+        </div><!--r-strip--> 
+      
+      
+      
+      <!-- <div class="TTBingoTodaysProm TTBingoLeft TTBingoRadius TTBingoborder">dqw</div>
+        <div class="TTBingoTodaysProm TTBingoLeft TTBingoRadius TTBingoborder TTBingomargl">qewrwr</div>-->
+    </div>
+    <div class="clearfix TTBingoBtnmargt tb-real">
+      <!--<div class="TTBingoContentNav">
+          <ul>
+            <li><a href="#">BINGO</a></li>
+            <li>|</li>
+            <li><a href="#">SLOTS</a></li>
+            <li>|</li>
+            <li><a href="#">KENO</a></li>
+            <li>|</li>
+            <li><a href="#">POKER</a></li>
+          </ul>
+        </div>-->
+      <div >
+        <div class="TabbedPanel" id="TabbedPanels1">
+          <ul class="TabbedPanelTabGroup">
+            <!-- li tabindex="0" class="TabbedPanelTab TabbedPanelTabSelected">All Games</li-->
+            <!--li tabindex="0" class="TabbedPanelTab">Roulette</li>
+            <li tabindex="0" class="TabbedPanelTab">Keno</li>
+            <li tabindex="0" class="TabbedPanelTab">Slots</li-->
+            <?php
+			  
+				$groups = $this->groups;
+				$gameFlavours = $this->gameFlavours;
+				$allGameDetails = $this->allGameDetails;
+				if($groups)
+				{
+					foreach($groups as $group)
+					{
+						?>
+            <li class="TabbedPanelTab" tabindex="0">
+              <?=ucfirst($group['name'])?>
+            </li>
+            <?php
+					}
+						?>
+          </ul>
+          <div class="TabbedPanelContentGroup" style="margin-top:0px;">
+            <!-- div class="TabbedPanelContent TabbedPanelContentVisible" style="display: block;">
+              <div class="game-titles">
+                
+              </div>
+              <div class="game-list">
+                <ul>
+                  <?php
+				  
+							foreach($groups as $group)
+							{
+								$gameDetails = $allGameDetails[$group['id']][$group['name']];
+								if($gameDetails)
+								{
+									$this->game($gameDetails, $group['name']);
+								}	
+							}
+						?>
+
+                </ul>
+              </div>
+            </div-->
+            <?php
+			  
+			foreach($groups as $group)
+			{
+				$gameDetails = $allGameDetails[$group['id']][$group['name']];
+				if($gameDetails)
+							{
+								?>
+            <div class="TabbedPanelContent">
+              <div class="game-titles"> </div>
+              <div class="game-list" style="margin-top:30px;">
+                
+                  <?php
+												$this->game($gameDetails, $group['name']);
+							}
+											?>
+                
+              </div>
+            </div>
+            <?php
+			}
+				}
+				
+								?>
+<?php
+/*
+            <div class="TabbedPanelContent" style="display: none;">
+              <div class="game-titles">
+                <!--    <p>Roulette</p>-->
+              </div>
+              <div class="game-list">
+                <ul>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/RU_US/machineId/1/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/RU_US/machineId/1/amountType/BONUS"> <img border="0" src="/images/thumbnails/RU_US_1_s.png">
+                      <p> <span class="machine-name"> Classic Roulette </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/WOF/machineId/2/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/WOF/machineId/2/amountType/BONUS"> <img border="0" src="/images/thumbnails/WOF_2_s.png">
+                      <p> <span class="machine-name"> Wheel Of Fortune </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/RU_EU/machineId/3/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/RU_EU/machineId/3/amountType/BONUS"> <img border="0" src="/images/thumbnails/RU_EU_3_s.png">
+                      <p> <span class="machine-name"> American Roulette </span> </p>
+                      </a> </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="TabbedPanelContent" style="display: none;">
+              <div class="game-titles">
+                <!--  <p>Keno</p>-->
+              </div>
+              <div class="game-list">
+                <ul>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/Keno/machineId/1/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/Keno/machineId/1/amountType/BONUS"> <img border="0" src="/images/thumbnails/Keno_1_s.png">
+                      <p> <span class="machine-name"> Valentine's Keno </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/Keno/machineId/2/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/Keno/machineId/2/amountType/BONUS"> <img border="0" src="/images/thumbnails/Keno_2_s.png">
+                      <p> <span class="machine-name"> Honey Comb </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/Keno/machineId/3/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/Keno/machineId/3/amountType/BONUS"> <img border="0" src="/images/thumbnails/Keno_3_s.png">
+                      <p> <span class="machine-name"> Ravana </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/Keno/machineId/4/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/Keno/machineId/4/amountType/BONUS"> <img border="0" src="/images/thumbnails/Keno_4_s.png">
+                      <p> <span class="machine-name"> Zombie </span> </p>
+                      </a> </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="TabbedPanelContent" style="display: none;">
+              <div class="game-titles">
+                <!--     <p>Slots</p>-->
+              </div>
+              <div class="game-list">
+                <ul>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/ThreeRFiveL/machineId/1/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/ThreeRFiveL/machineId/1/amountType/BONUS"> <img border="0" src="/images/thumbnails/ThreeRFiveL_1_s.png">
+                      <p> <span class="machine-name"> Buttercup Bakery </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/FiveRNineL/machineId/2/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/FiveRNineL/machineId/2/amountType/BONUS"> <img border="0" src="/images/thumbnails/FiveRNineL_2_s.png">
+                      <p> <span class="machine-name"> Jungle Bells </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/FiveRNineL/machineId/3/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/FiveRNineL/machineId/3/amountType/BONUS"> <img border="0" src="/images/thumbnails/FiveRNineL_3_s.png">
+                      <p> <span class="machine-name"> Christmas Bells </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/FiveRNineL/machineId/4/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/FiveRNineL/machineId/4/amountType/BONUS"> <img border="0" src="/images/thumbnails/FiveRNineL_4_s.png">
+                      <p> <span class="machine-name"> Mysteries Of Egypt </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/FiveRNineL/machineId/5/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/FiveRNineL/machineId/5/amountType/BONUS"> <img border="0" src="/images/thumbnails/FiveRNineL_5_s.png">
+                      <p> <span class="machine-name"> Spinz &amp; Stringz </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/FiveRNineL/machineId/6/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/FiveRNineL/machineId/6/amountType/BONUS"> <img border="0" src="/images/thumbnails/FiveRNineL_6_s.png">
+                      <p> <span class="machine-name"> Treasures of Agrabah </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/FiveRNineL/machineId/7/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/FiveRNineL/machineId/7/amountType/BONUS"> <img border="0" src="/images/thumbnails/FiveRNineL_7_s.png">
+                      <p> <span class="machine-name"> Potter Ville Farm </span> </p>
+                      </a> </div>
+                  </li>
+                  <li>
+                    <div> <a onclick="window.open('/game/game/flavour/FiveRNineL/machineId/8/amountType/BONUS','popup','width=1000%,height=1000%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false" href="/game/game/flavour/FiveRNineL/machineId/8/amountType/BONUS"> <img border="0" src="/images/thumbnails/FiveRNineL_8_s.png">
+                      <p> <span class="machine-name"> Devonshire Derby </span> </p>
+                      </a> </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+*/?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$(window).load(function(){
+           changeType('REAL');
+		});
+    
+</script>

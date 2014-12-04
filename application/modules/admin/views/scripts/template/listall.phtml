@@ -1,0 +1,27 @@
+<?php 
+	//echo $this->data;
+	
+	if(count($this->data) > 0)
+	{
+
+		foreach($this->data as $tableData)
+			{
+
+				$linkArrays[$tableData['name']] = array(
+					'controller' => 'template',
+					'action' => 'edittemplate',
+					'id' => $tableData['id'],					
+					);
+		}
+		
+		$this->table($this->data,  array('name'), $linkArrays);
+		//print 'heere';
+		//exit();
+	}
+	
+	else
+	{
+		echo $this->translate($this->error);
+	}
+
+?>

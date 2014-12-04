@@ -1,0 +1,79 @@
+<?php
+//echo 'pagecount' . $this->pageCount;
+if ($this->pageCount): ?>
+<div class="paginationControl">
+
+<!-- First page link -->
+<?php if (isset($this->previous)): ?>
+<a href="<?= $this->url(array(
+				'page' => $this->first, 
+				'item' => $this->itemCountPerPage, 
+				'field' => $this->searchField,
+				'match' => $this->match,
+				'str' => $this->searchString,
+				'from' => $this->from,
+				'to' => $this->to)); ?>">&lt;&lt; First</a> |
+<?php else: ?>
+<span class="disabled">First</span> |
+<?php endif; ?>
+
+<!-- Previous page link -->
+<?php if (isset($this->previous)): ?>
+<a href="<?= $this->url(array(
+				'page' => $this->previous, 
+				'item' => $this->itemCountPerPage,
+				'field' => $this->searchField,
+				'match' => $this->match,
+				'str' => $this->searchString,
+				'from' => $this->from,
+				'to' => $this->to)); ?>">&lt; Previous</a> |
+<?php else: ?>
+<span class="disabled">&lt; Previous</span> |
+<?php endif; ?>
+
+<!-- Numbered page links -->
+<?php foreach ($this->pagesInRange as $page): ?>
+<?php if ($page != $this->current): ?>
+<a href="<?= $this->url(array(
+				'page' => $page, 
+				'item' => $this->itemCountPerPage,
+				'field' => $this->searchField,
+				'match' => $this->match,
+				'str' => $this->searchString,
+				'from' => $this->from,
+				'to' => $this->to)); ?>"><?= $page; ?></a> |
+<?php else: ?>
+<?= $page; ?> |
+<?php endif; ?>
+<?php endforeach; ?>
+
+<!-- Next page link -->
+<?php if (isset($this->next)): ?>
+<a href="<?= $this->url(array(
+				'page' => $this->next, 
+				'item' => $this->itemCountPerPage,
+				'field' => $this->searchField,
+				'match' => $this->match,
+				'str' => $this->searchString,
+				'from' => $this->from,
+				'to' => $this->to)); ?>">Next &gt;</a>
+<?php else: ?>
+<span class="disabled">Next &gt;</span>
+<?php endif; ?>
+
+<!-- Last page link -->
+<?php if (isset($this->next)): ?>
+<a href="<?= $this->url(array(
+				'page' => $this->last, 
+				'item' => $this->itemCountPerPage,
+				'field' => $this->searchField,
+				'match' => $this->match,
+				'str' => $this->searchString,
+				'from' => $this->from,
+				'to' => $this->to)); ?>">Last &gt;&gt;</a>
+<?php else: ?>
+<span class="disabled">Last</span>
+<?php endif; ?>
+
+</div>
+<?php endif; ?>

@@ -1,0 +1,26 @@
+<div style="border:1px solid #CD222B;border-radius:5px;">
+<div class="TTBingogameName TTBingoBtnmargt">Withdraw Form</div>
+<div style="line-height:30px;"><ul>
+	<li><label for="amount" class="required">Total Balance :</label>
+	<input type="text" name="amount" id="amount" value="<?=$this->balance ?>" readonly></li>
+	<li><label for="amount" class="required">Cash Balance :</label>
+	<input type="text" name="amount" id="amount" value="<?=$this->cash ?>" readonly></li>
+	<li><label for="amount" class="required">Bonus Balance :</label>
+	<input type="text" name="amount" id="amount" value="<?=$this->bonus ?>" readonly></li>
+
+</ul>
+
+</div>
+<?php
+echo $this->form;
+?>
+
+<div><ul>
+	<li><label for="amount" class="required">Note :</label>
+	</li>
+	<li><label for="amount" class="with_note">You will be able to withdraw only available cash balance. Once you request for a withdrwal, your bonus balance will be reset to 0</label></li>
+</ul>
+
+</div>
+</div>
+</div>

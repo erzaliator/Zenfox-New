@@ -1,0 +1,33 @@
+<div style="border:1px solid #CD222B;border-radius:5px;">
+<div class="TTBingogameName TTBingoBtnmargt">Convert Loyalty Points To Bonus</div>
+<div style="line-height:30px;"><ul>
+	<li><label for="tlp" class="required">Total Loyalty Points :</label>
+	<input type="text" name="tlp" id="tlp" value="<?=$this->tlp ?>" readonly></li>
+	<li><label for="lpl" class="required">Loyalty Points Left :</label>
+	<input type="text" name="lpl" id="lpl" value="<?=$this->lpl ?>" readonly></li>
+</ul>
+
+</div>
+<form method="post" name="player-convert-lp" id="player-convert-lp" action="/banking/convertlp" enctype="application/x-www-form-urlencoded">
+	<dl class="zend_form">
+		<ul>
+			<li>
+				<label class="required" for="amount">Enter Loyalty Points To Convert :</label>
+				<input type="text" name="lp" value="" id="lp" />
+			</li>
+			<li class="login_form_button ttsaveprofilelibg"><input type="submit" name="submit" id="submit" value="Submit"></li>
+		</ul>
+	</dl>
+</form>
+<div><ul>
+	<li><label for="amount" class="required"><b>Note :</b></label>
+	</li>
+	<li><label for="amount" class="with_note">You are at <b>Level <?=$this->currentLevel ?></b>. You can convert maximum <b><?=$this->convertLP ?></b> loyalty points in a week and
+	 you should have one deposit during the week to convert the LP's. For more details please click on this link 
+	 <a href = "/promotions/loyalty">LP's Conversion Rules</a>
+	</label></li>
+</ul>
+
+</div>
+</div>
+</div>

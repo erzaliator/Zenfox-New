@@ -1,0 +1,34 @@
+<?php
+echo $this->table($this->contents);
+?>
+<center><a href="<?=$this->url(array(
+'controller' => 'affiliatemanage',
+'action'     => 'editprofile',
+'id'         => $this->contents[0]['Value']))?>">Edit Profile</a>
+&nbsp
+<a href="<?=$this->url(array(
+'controller' => 'affiliatetracker',
+'action'     => 'create',
+'id'         => $this->contents[0]['Value']))?>">Create Link</a><br />
+<br></center>
+<?php
+$linkArrays = array();
+if($this->trackerTable)
+{
+	foreach($this->trackerTable as $tableData)
+	{
+		$linkArrays[$tableData['Tracker Name']] = array(
+				'controller' => 'affiliatetracker',
+				'action' => 'viewtracker',
+				'id' => $tableData['Link Id'],					
+				);	
+	}
+	$this->table($this->trackerTable, 'Tracker Name', $linkArrays);
+}
+else
+{
+	echo '<center>No trackers for this affiliate</center>';
+}
+//$this->newTable($this->contents, array('Player Id','Withdrawal Id'), $linkArrays);
+
+

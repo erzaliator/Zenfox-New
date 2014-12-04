@@ -1,0 +1,33 @@
+<?php
+Zend_Layout::getMvcInstance()->disableLayout();
+$logId = $this->logDetails['logId'];
+$machineId = $this->logDetails['machineId'];
+$sessionId = $this->logDetails['sessionId'];
+$playerId = $this->logDetails['playerId'];
+$betAmount = $this->logDetails['betAmount'];
+$selectedNumbers = $this->logDetails['selectedNumbers'];
+$generatedNumbers = $this->logDetails['generatedNumbers'];
+$winString = $this->logDetails['winString'];
+$winAmount = $this->logDetails['winAmount'];
+$wageredCurrency = $this->logDetails['wageredCurrency'];
+$pjpWinAmount = $this->logDetails['pjpWinAmount'];
+$swfFile = '/gamelogs/single-player/slots/' . $machineId . '/game.swf';
+$string = "game_config=/gamelogs/Config.txt&log_id=$logId&session_id=$sessionId&player_id=$playerId&bet_amount=$betAmount&selected_numbers=$selectedNumbers&generated_numbers=$generatedNumbers&win_string=$winString&win_amount=$winAmount&balance_amount=250&wagered_currency=$wageredCurrency&pjp_win_amount=$pjpWinAmount&locale=en_US";
+?>
+<object 
+	classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+	id="Keno" width="100%" height="100%"
+    codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+    <param name="movie" value="<?php echo $swfFile;?>" />
+    <param name="FlashVars" value = <?php echo $string ?>" />
+    <param name="quality" value="high" />
+    <param name="bgcolor" value="#869ca7" />
+    <param name="allowScriptAccess" value="sameDomain" />
+    <embed 
+    	src="<?php echo $swfFile;?>" flashVars = <?php echo $string;?>
+    	quality="high" bgcolor="#869ca7" width="100%" height="100%" 
+        name="roulette" align="middle" play="true" loop="false" quality="high"
+        allowScriptAccess="sameDomain" type="application/x-shockwave-flash"
+        pluginspage="http://www.adobe.com/go/getflashplayer">
+    </embed>
+</object>

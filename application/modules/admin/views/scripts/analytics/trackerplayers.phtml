@@ -1,0 +1,16 @@
+<?php 
+
+echo $this->form;
+
+if($this->playerdata)
+{
+	foreach($this->playerdata as $playerData)
+		{
+			$linkArray[$playerData['Player-Id']] = array(
+										'controller' => 'player',
+										'action' => 'view',
+										'playerId' => $playerData['Player-Id']);
+		}
+		$this->table($this->playerdata, array('Player-Id'), $linkArray);
+}
+?>

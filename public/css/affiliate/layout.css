@@ -1,0 +1,277 @@
+.left-nav {
+	background-color:#FAD5DC;
+	height:400px;
+	width:200px;
+       padding:0 1px;
+}
+.left-nav ul.navigation, .left-nav ul.navigation ul {
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.left-nav ul.navigation a {
+  display: block;
+  text-decoration: none;	
+}
+
+.left-nav ul.navigation li {
+  margin-top: 1px;
+}
+
+.left-nav ul.navigation li.active a {
+  background:#dedede url("/images/left-nav-list-active-bg.png") repeat-x scroll 0 0;
+  font-weight:bold;
+  color:#E22731;
+}
+
+.left-nav ul.navigation li.active ul li a{background:none;}
+
+.left-nav ul.navigation li.active  ul li.active {
+  background-color:#E22731;
+  font-weight:bold;
+  border-left: 5px #E22731 solid;
+}
+
+.left-nav ul.navigation li.active  ul li.active a {
+  font-weight:bold;
+  background-color:#a2c6e9;
+}
+
+.left-nav ul.navigation li.active  ul li.active a:hover {
+  font-weight:bold;
+   border-left: 0px #E22731 solid;
+  padding-left:20px;
+  
+}
+
+
+.left-nav ul.navigation li.active  ul li a {
+  background-color:#A2C6E9;
+  font-weight:normal;
+  color:#000;
+}
+
+
+.left-nav ul.navigation li a {
+  background:url("/images/left-nav-list-bg.png") repeat-x scroll 0 0 #E22731;
+  color: #fff;
+  font-weight:bold;	
+  padding: 0.5em;
+}
+
+.left-nav ul.navigation li a:hover {
+  background: #a2c6e9;
+  color:#792258;
+  font-weight:bold;
+}
+
+.left-nav ul.navigation li ul li a {
+  background: #E22731;
+  color: #fff;
+  padding-left: 20px;
+  font-weight:normal;
+}
+
+.left-nav ul.navigation li ul li a:hover {
+  background: #a2c6e9; 
+  padding-left: 15px;
+  color:#000
+}
+.toplinks a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+	float:right;
+	font-weight:bold;
+	margin-right:10px;
+}
+body {
+    background: url("http://bingocrush.co.uk/images/bingocrush/bg_aff.jpg") repeat-x scroll center top #FFFFFF;
+	
+}
+#main{
+	background:  no-repeat scroll left bottom #FFF;
+	border-color: #FFFFFF;
+	border-image: none;
+	border-style: solid ;
+	border-radius: 10px;
+	border-width: 10px 10px 10px 10px ;
+	height: 903px; /*800px;*/
+	position: relative;
+	background-color: #e22731;
+	width:1000px;
+	margin:auto;
+}
+#header{
+	height:170px;
+	width:auto;
+	border:0px solid;
+}
+#header #logo{
+	 background: url("http://bingocrush.co.uk/images/bingocrush/logo_100.png") no-repeat scroll left top transparent;
+    display: block;
+    height: 87px;
+    left: 20px;
+    position: absolute;
+    text-indent: -99999px;
+    top: 17px;
+    width: 100px;
+}
+#header #menu_bg{
+	height:40px;
+	width:auto;
+	background-color:#FFF;
+	position:relative;
+	top:130px;
+	border-radius:10px 10px 0px 0px;
+}
+#header #menu_bg ul{
+	bottom: -6px;
+    left: 20px;
+    list-style: none outside none;
+    position: absolute;
+}
+#header #menu_bg ul li{
+	float: left;
+    margin: 0 10px;
+    position: relative;
+    top: 10px;
+}
+#header #menu_bg ul li a {
+	background: none repeat scroll 0 0 transparent;
+	border: medium none;
+	color: #C00;
+	display: block;
+	font-size: 160%;
+	padding: 10px 10px 7px;
+	position: relative;
+	text-decoration: none;
+	top: 0px;
+	font-family:Berlin Sans FB Demi;
+	
+}
+#header #menu_bg ul li a:hover {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: #900;
+	color: #FFF;
+}
+#header #menu_bg ul li a:active{
+	color: #FFFF;
+	display: block;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: #C00;
+}
+#menu_btm{
+	height:20px;
+	width:auto;
+	background-color:#900;
+	position:relative;
+	top:-4px;
+	z-index:1;
+	border-radius:6px 6px 0px 0px;
+}
+#canves{
+	height:728px;;/*625px*/
+	width:auto;
+	background-color:#FAD5DC;/*#fad5dc;*/
+	position:relative;
+	top: -15px;
+	z-index:1;
+	border-radius:6px 6px 0px 0px;
+}
+#login{
+	width:385px;
+	height:70px;
+	float:left;
+	margin:auto;
+	position:relative;
+	left:190px;
+	top:30px;
+	
+}
+#header form1{
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    width: 500px;
+	
+}
+#forgot{
+	font-size:90%;
+	margin:0 0 0 118px;
+	text-decoration:none;
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+#uname{
+	border-radius:3px;
+	margin:8px 0px;
+	
+}
+
+/*fieldset*/#form1 .zend_form {
+    background: none repeat scroll 0 0 #C00;
+    border: 1px solid #F60;
+    border-radius: 10px 10px 10px 10px;
+    margin: 5px 0 0;
+    padding: 5px;
+}
+#checkbox{
+	margin:0px -36px;
+}
+
+#Remember{
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:90%;
+	padding:0px;
+	margin:0px -12px;
+}
+
+#form1 .zend_form input {
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #942E5B;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 90%;
+    font-weight: bold;
+    padding: 5px;
+    width: 110px;
+}
+#form1 .zend_form .login-submit {
+    background: none repeat scroll 0 0 #390;
+    border: 3px solid #3C0;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 90%;
+    margin: 0px 0px 0px 10px;
+    padding: 2px 10px;
+    text-transform: uppercase;
+}
+#form1 .zend_form .login-submit:hover {
+    background: none repeat scroll 0 0 #360;
+}
+
+
+img{
+	border-image:none;
+}
+#form1 dt{float:left;}
+#form1 dt label{display:none;}
+#menu
+{
+border:0px solid;height:500px;width:150px;float:left;
+}
+#right_body
+{
+border:0px solid;
+height:725px;
+width:800px;
+float:left;
+margin-left:20px;
+}

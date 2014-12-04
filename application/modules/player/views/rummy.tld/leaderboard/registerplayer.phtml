@@ -1,0 +1,59 @@
+<?php 
+$teamsData = $this->teamsdata;
+$leaderboardId = $this->leaderboardId;
+?>
+
+        <style type="text/css">
+/* popup_box DIV-Styles*/
+a{
+cursor: pointer;
+text-decoration:none;
+}
+
+/* This is for the positioning of the Close Link */
+
+.names{text-align:center;font-size:18px;font-weight:bold;font-family:Verdana, Geneva, sans-serif;}
+.joinnow{background:url('/css/rummy.tld/images/leaderboards/button-01.png');height:40px;width:130px;color:#000000;font-size:16px;font-family:Verdana, Geneva, sans-serif;font-weight:bold;line-height:35px}
+.teams{height:240;width:140px;border:2px solid #004298;background:#CBE8F7;margin-left:15px;float:left}
+.moredetails{font-size:10px;text-decoration:underline;color:#004298;text-align:right;font-weight:bold;font-family:Verdana, Geneva, sans-serif}
+</style>
+
+<div id="teamLeaderboard"  style="float:left;width:640px;background:#004298;height:90px;border:2px solid #004298;">
+            <div style="text-align:center;margin-left:160px;margin-top:10px;line-height:30px;color:#fff;width:335px;"> 
+          	<div style="text-align:center;font-family:Copperplate Gothic Bold;font-size:28px;color:#fff;width:335px;line-height:20px">DUSSEHRA NAVARATRI</div>
+            <div style="text-align:center;font-family:Copperplate Gothic Bold;font-size:24px;color:#fff;width:335px;margin-top:5px;line-height:20px">TEAM RUMMY</div>
+            <div style="text-align:center;font-family:Copperplate Gothic Bold;font-size:15px;color:#fff;width:335px;margin-top:15px;line-height:20px"> Dates: 13th October to 3rd November</div>
+     </div>
+
+		<div >
+                <p style="text-align:center;color:#004298;font-size:18px;font-weight:bold;font-family:Verdana, Geneva, sans-serif">Choose Your Team</p>
+            </div>
+            <div>
+                <p style="text-align:center;color:#004298;font-size:16px;font-weight:bold;font-family:Verdana, Geneva, sans-serif">Join for FREE , Play More Games and Win More Money</p>
+            </div>
+                <div>
+
+    		 <?php
+                                $noOfTeams = count($teamsData);
+                                foreach ($teamsData as $data)
+                                {
+                                        ?>
+                                        <div class="teams" align="center" style="padding-top:10px">
+                        <span  class="names"><?=$data["name"]?></span>
+                    <img src="<?=$data["url"]?>" style="padding:10px 0px 10px 0px" />
+                    <div class="joinnow"><a href = "/leaderboard/insertplayer/leaderboardId/<?=$leaderboardId?>/teamId/<?=$data["team_id"]?>" style="text-decoration: none;"> <font color="black">JOIN FREE </font></a></div>
+                        <p style="text-align:right;padding-right:5px;padding-top:10px"><a class="moredetails" href = "/leaderboard/rummyteams/leaderboardId/<?=$leaderboardId?>">View Scores</a></p>
+                        </div>
+                                        <?php
+                                }
+
+                ?>
+
+            </div>
+
+
+</div>
+
+</div>
+
+

@@ -1,0 +1,31 @@
+<?php 
+//print_r($this->data);
+if($this->data)
+{
+	foreach ($this->data as $key=>$value)
+	{
+		$displayData[$key]['Merchant Transaction Id'] = "<a href='#' onclick='showTransactionSlip(".$this->data[$key]['merchant_trans_id'].")'>".$this->data[$key]['merchant_trans_id']."</a>";
+		$displayData[$key]['start time'] = $this->data[$key]['trans_start_time'];
+		$displayData[$key]['end time'] = $this->data[$key]['trans_end_time'];
+		$displayData[$key]['amount'] = $this->data[$key]['amount'];
+		$displayData[$key]['base currency'] = $this->data[$key]['base_currency'];
+		$displayData[$key]['transaction status'] = $this->data[$key]['transaction_status'];
+	//echo "[{'appeId':'1','survId':'1','location':'','surveyDate':'2008-03-14','surveyTime':'12:19:47'}]";
+	}
+
+
+	$final = array(
+					'totalCount'=>count($displayData),
+	               'data'=>$displayData
+	);
+	
+	echo json_encode($final);
+}	
+
+else
+{
+
+	echo "{totalCount:0, data:[{'Merchant Transaction Id':'', 'start time': 'Nothing to display', 'end time':'', 'amount':'', 'base currency':'', 'transaction status':''}]}";
+	
+}
+?>

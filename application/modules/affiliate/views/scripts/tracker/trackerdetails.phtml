@@ -1,0 +1,46 @@
+<?php
+$linkArray = array();
+foreach($this->contents as $tableData)
+{
+	$linkArray[$tableData['Scheme']] = array(
+				'controller' => 'scheme',
+				'action' => 'details',
+				'schemeId' => $this->schemeId
+	);
+}
+$linkField = array('Scheme');
+$this->affiliatetable($this->contents, $this->data, $linkField, $linkArray);
+/*$trackerDetails = $this->trackerDetails;
+echo '<br><b>Tracker Details</b>';
+echo "<br><br><table border = '1'>";
+echo '<tr>';
+foreach($trackerDetails as $detail)
+{
+	echo '<th align = "left">'.$detail['variable_name'].'</th>';
+}
+echo '</tr><tr>';
+foreach($trackerDetails as $detail)
+{
+	echo '<td>'.$detail['varaibale_value'].'</td>';
+}
+echo '</tr>';
+echo '</table>';
+//array should be replaced with flash vars
+$data = array();
+foreach($trackerDetails as $detail)
+{
+	$dataItem = array();
+	$dataItem['variable_name'] = $detail['variable_name'];
+	$dataItem['variable_value'] = $detail['varaibale_value'];
+	$data[] = $dataItem;
+}
+$json_array = array('xAxis' => 'variable_name', 'yAxisDetails' => array(array('YField' => 'variable_value', 'DisplayName' => 'Value')), 'Data' => $data);
+$json_string = json_encode($json_array);
+//echo $json_string;
+$attributes = array(
+        'width' => '600',
+		'height' => '600'
+    );
+$params = array('FlashVars' => 'jsonString='.$json_string);
+//tracker summary swf file should be added in place of flash.swf
+echo $this->htmlFlash('/bin/columnGraph.swf',$attributes,$params);*/ ?>

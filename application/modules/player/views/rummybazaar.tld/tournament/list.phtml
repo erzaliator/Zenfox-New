@@ -1,0 +1,179 @@
+<?php 
+if($this->tournaments)
+{
+	?>
+	<div class="table">
+    	<?php
+}
+if($this->currentTournamentsList)
+{
+	?>
+	<div class="status-head">
+                <p class="com">Current</p>
+                <p class="stat">Status:Open</p>
+        </div>
+	<div class="table-head">
+    		<div class="table-content">Name</div>
+    		<div class="table-content">Start Time</div>
+    		<div class="table-content">Entry</div>
+    		<div class="table-content">Join</div>
+        	<div class="table-content"></div>
+    	</div>
+    	<?php 
+    	foreach($this->currentTournamentsList as $index => $tournament)
+    	{ 
+    		$entryFeesArray = Zend_Json::decode($tournament['Entry Fee']);
+		if($entryFeesArray['registrationCost'][0]['amountType'] == 'FREE')
+        	{
+        		$symbol = '<span><span> FREE </span></span>';
+        	}
+        	else
+        	{
+        		$symbol = '<span class="ttltbotwebrupee" ><span class="WebRupee"> Rs. </span></span>' . $entryFeesArray['registrationCost'][0]['amount'];
+        	}
+        	$divId = "";
+        	if($index % 2 != 0)
+        	{
+        		$divId = "odd";
+        	}
+		else
+		{
+			$divId = "even";
+		}
+       		?>
+        	<div class="table-body" id="<?=$divId ?>">
+        		<div class="table-content"><?=$tournament['Tournament Name'] ?></div>
+        		<div class="table-content"><?=$tournament['Start Time'] ?></div>
+        		<div class="table-content"><?=$symbol ?></div>
+        		<div class="table-content"><a id = "sho_box" href="javascript:void(0)" onclick='getLevels("<?=$tournament['Tournament Id'] ?>")'><img src="/css/rummy.tld/images/ttltjoinnowbtn.png" width="78" height="22" /></a></div>
+        		<div class="table-content"><a href="/tournament/desc/tournamentId/<?=$tournament['Tournament Id'] ?>" class="ttltmoredtls">More Details</a></div>
+        	</div> 		
+        	<?php
+     	}
+}
+if($this->upcomingTournamentsList)
+{
+	?>
+	<div class="status-head">
+                <p class="com">Upcoming</p>
+                <p class="stat">Status:Open</p>
+        </div>
+
+   	<div class="table-head">
+    		<div class="table-content">Name</div>
+    		<div class="table-content">Start Time</div>
+    		<div class="table-content">Entry</div>
+    		<div class="table-content">Join</div>
+        	<div class="table-content"></div>
+    	</div>
+    	<?php
+    	foreach($this->upcomingTournamentsList as $index => $tournament)
+    	{
+    		$entryFeesArray = Zend_Json::decode($tournament['Entry Fee']);
+		if($entryFeesArray['registrationCost'][0]['amountType'] == 'FREE')
+        	{
+        		$symbol = '<span><span> FREE </span></span>';
+        	}
+        	else
+        	{
+        		$symbol = '<span class="ttltbotwebrupee" ><span class="WebRupee"> Rs. </span></span>' . $entryFeesArray['registrationCost'][0]['amount'];
+        	}
+        	$divId = "";
+        	if($index % 2 != 0)
+        	{
+        		$divId = "odd";
+        	}
+		else
+        	{
+        		$divId = "even";
+        	}
+        	?>
+        	<div class="table-body" id="<?=$divId ?>">
+        		<div class="table-content"><?=$tournament['Tournament Name'] ?></div>
+        		<div class="table-content"><?=$tournament['Start Time'] ?></div>
+        		<div class="table-content"><?=$symbol ?></div>
+        		<div class="table-content"><a id = "sho_box" href="javascript:void(0)" onclick='getLevels("<?=$tournament['Tournament Id'] ?>")'><img src="/css/rummy.tld/images/ttdtlsregister.png" width="78" height="22" /></a></div>
+        		<div class="table-content"><a href="/tournament/desc/tournamentId/<?=$tournament['Tournament Id'] ?>" class="ttltmoredtls">More Details</a></div>
+        	</div>
+        	<?php
+     	}
+}
+if($this->completedTournamentsList)
+{
+	?>
+	<div class="status-head">
+		<p class="com">Completed</p>
+		<p class="stat">Status:Closed</p>
+	</div>
+   	<div class="table-head">
+    		<div class="result-table-content">Name</div>
+    		<div class="result-table-content">Date</div>
+    		<div class="result-table-content">Result</div>
+        	<div class="result-table-content"></div>
+    	</div>
+   	<?php
+   	foreach($this->completedTournamentsList as $index => $tournament)
+   	{
+   		$entryFeesArray = Zend_Json::decode($tournament['Entry Fee']);
+   		$divId = "";
+        	if($index % 2 != 0)
+        	{
+        		$divId = "odd";
+        	}
+		else
+        	{
+           		$divId = "even";
+        	}
+        	?>
+        	<div class="table-body" id="<?=$divId ?>">
+        		<div class="result-table-content"><?=$tournament['Tournament Name'] ?></div>
+        		<div class="result-table-content"><?=$tournament['Start Time'] ?></div>
+        		<div class="result-table-content"><a href="/tournament/result/tournamentId/<?=$tournament['Tournament Id']?>" >Result</a></div>
+        		<div class="result-table-content"><a href="/tournament/desc/tournamentId/<?=$tournament['Tournament Id'] ?>" class="ttltmoredtls">More Details</a></div>
+        	</div>		        				        		
+        	<?php
+     	}
+     	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+     	$this->acepagination($pages);
+}
+if($this->tournaments)
+{
+  	?>
+   	</div>
+   	<?php 
+}
+        
+        if($this->loggedIn)
+        {
+			?>
+			<script type="text/javascript" src="/js/jquery_002.js"></script>
+			<script type="text/javascript" src="/js/jquery_lightbox.js"></script>
+			<script type="text/javascript">
+			$(function() {
+				$("#ttlightbox").jwtSimpleBox({
+					show_event_target	: '#sho_box',
+					show_function		: 'fadeIn',
+					show_duration		: 500,
+					hide_event_target	: '#jwt_overlay, .jwt_close'
+				});
+				$("#lightbox2").jwtSimpleBox({
+					show_event_target	: '#sho_box2',
+					hide_event_target	: '#jwt_overlay, .jwt_close',
+					overlay_background	: 'rgba(255,255,255,.8)'
+				});
+			});
+			</script>
+			<div id="page-wrap"></div>
+			<div id="ttlightbox" style="display: none; z-index: 999999; position: fixed; height: auto; overflow: visible; top: 17.2727px; left: 413px;">
+			<div id="ttlogin-box">
+			<div id="ttclose"><a ss="jwt_close" cla="" href=""><img width="35" height="35" border="0" src="/css/rummy.tld/images/ttlightboxclose.png"></a></div>
+			<div id="ttlgtboxentry">Select Entry Level</div>
+			<div id = "lgtboxmsg"></div>
+			<table  width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px">
+			<tbody id = "ttldislevel">
+			</tbody></table>
+			</div>
+			</div>
+			<?php 
+        }   
+    

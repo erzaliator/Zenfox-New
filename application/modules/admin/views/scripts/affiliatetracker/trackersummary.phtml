@@ -1,0 +1,86 @@
+<?php
+echo '<br>';
+$schemeInstance = new AffiliateScheme();
+$affiliateSchemes = $this->affiliateSchemes;
+foreach($affiliateSchemes as $schemeId => $trackers)
+{
+echo '<br><b>Scheme: </b>'.$schemeInstance->getSchemeName($schemeId).'<br>';
+echo "<table border = '1'>";
+echo '<tr>';
+echo '<th align = "left">Tracker Name</th>';
+echo '<th align = "left">Earnings</th>';
+echo '</tr>';
+foreach($trackers as $affiliateTracker)
+{
+	echo '<tr>';
+	echo '<td>';?>
+	<a href = "<?php echo $this->url(array(
+							'controller' => 'affiliatetracker',
+							'action' => trackerdetails,
+							'id' => $affiliateTracker['tracker']['tracker_id']
+							));
+			?>">
+	<?php  print($affiliateTracker['tracker']['tracker_name']);?>
+</a>
+<?php 
+	echo '</td>';
+	echo '<td>'.$affiliateTracker['trackerDetails']['varaibale_value'].'</td>';
+	echo '<td>';?>
+	<a href = "<?php echo $this->url(array(
+							'controller' => 'affiliatetracker',
+							'action' => viewtracker,
+							'id' => $affiliateTracker['tracker']['tracker_id']
+							));
+			?>">
+	<?php  print('edit').'</td>';?>
+	</a>
+	<?php echo '</tr>';
+}
+echo '</table>';
+?>
+<br></br>
+<br></br>
+<?php 
+
+//$json_data = array ('id'=>1,'name'=>"mike",'country'=>'usa',"office"=>array("microsoft","oracle"));
+$data = array();
+foreach($trackers as $affiliateTracker)
+{
+	$dataItem = array();
+	$dataItem['tracker'] = $affiliateTracker['tracker']['tracker_name'];
+	$dataItem['amount'] = $affiliateTracker['trackerDetails']['varaibale_value'];
+	$data[] = $dataItem;
+}
+$yAxisDetails = array('YField' => 'amount', 'DisplayName' => 'Amount');
+$yAxisDetails = json_encode($yAxisDetails);
+$jsonData = json_encode($data);
+
+$json_array = array('xAxis' => 'tracker', 'yAxisDetails' => array(array('YField' => 'amount', 'DisplayName' => 'Amount')), 'Data' => $data);
+$json_string = json_encode($json_array);
+
+$attributes = array(
+        'width' => '600',
+		'height' => '600'
+    );
+//$params = array('flashvars' => 'xAxis=Tracker&yAxisDetails='.$yAxisDetails.'&Data='.$jsonData);
+$params = array('flashvars' => 'jsonString='.$json_string);
+//tracker summary swf file should be added in place of flash.swf
+echo $this->htmlFlash('/bin/columnGraph.swf',$attributes,$params); 
+}
+?>
+<br></br>
+<br></br>
+<a href = "<?php echo $this->url(array(
+							'controller' => 'affiliatetracker',
+							'action' => alltrackers,
+							'id' => $this->affiliateId
+							));
+			?>">
+	<?php  print('view all tracker details');?>
+	</a>
+	
+	
+	
+	
+	
+	

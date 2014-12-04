@@ -1,0 +1,19 @@
+<?php
+//Zenfox_Debug::dump($this->machines, 'game details', true, true);
+foreach($this->machines as $machine)
+{
+	print("Machine Id --> "); print($machine['id']);
+	print("Machine Name --> ");
+	?>
+	<a href = "<?php echo $this->url(array(
+							'controller' => 'keno',
+							'action' => 'viewdetails',
+							'id' => $machine['id']));
+			?>">
+			<?php  print($machine['machine_name']);?>
+	</a>
+	<?php 
+		echo '<br>';
+}
+?>
+

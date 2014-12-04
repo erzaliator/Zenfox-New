@@ -1,0 +1,36 @@
+<?php 
+echo $this->form;
+
+if($this->data)
+{
+	?>
+	<br><h2 style="text-align:center"><strong><?php echo $this->title; ?></strong></h2>
+<?php
+	$this->table($this->data);
+}
+elseif($this->allleaderboards)
+{
+	$index = 0;
+	foreach($this->allleaderboards as $leaderboard)
+	{
+		?>
+	<br><h2 style="text-align:center"><strong><?php echo $leaderboard[1]; ?></strong></h2>
+<?php
+	$this->table($leaderboard[0]);
+	}
+}
+elseif($this->selectone)
+{
+		?>
+	<br><h2 style="text-align:center"><strong><?php echo "No Room is Selected" ?></strong></h2>
+<?php
+	
+}
+else
+{
+	?>
+	<br><h2 style="text-align:center"><strong>No Records Found</strong></h2>
+<?php
+}
+
+?>

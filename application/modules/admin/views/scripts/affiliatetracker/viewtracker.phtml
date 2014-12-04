@@ -1,0 +1,35 @@
+<?php
+echo $this->table($this->contents);
+?>
+<a href = "<?php echo $this->url(array(
+							'controller' => 'affiliatetracker',
+							'action' => edittracker,
+							'id' => $this->id,
+							));
+			?>">
+	<?php  echo 'edit'?>
+</a>
+
+<?php 
+
+$trackerDetails = $this->trackerDetails;
+//array should be replaced with flash vars
+$data = array();
+foreach($trackerDetails as $detail)
+{
+	$dataItem = array();
+	$dataItem['variable_name'] = $detail['variable_name'];
+	$dataItem['variable_value'] = $detail['variable_value'];
+	$data[] = $dataItem;
+}
+$json_array = array('xAxis' => 'variable_name', 'yAxisDetails' => array(array('YField' => 'variable_value', 'DisplayName' => 'Value')), 'Data' => $data);
+$json_string = json_encode($json_array);
+//echo $json_string;
+$attributes = array(
+        'width' => '600',
+		'height' => '600'
+    );
+$params = array('FlashVars' => 'jsonString='.$json_string);
+//tracker summary swf file should be added in place of flash.swf
+echo $this->htmlFlash('/bin/columnGraph.swf',$attributes,$params);
+

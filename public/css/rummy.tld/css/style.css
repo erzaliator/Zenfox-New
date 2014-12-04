@@ -1,0 +1,497 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+background:url(../images/home-page-back.png) repeat-x;	
+}
+
+#login-header{
+height: 54px;
+padding-top:10px;
+}
+
+#login-box input.text {
+width:100px;
+color:#b8b8b8;
+padding:5px;
+margin-right:5px;
+}
+
+.login-controls{
+margin-right:5px;
+margin-top:9px;
+}
+
+.black-link a{
+color:#000000;
+}
+
+.black-link a:hover{
+color:#000000;
+text-decoration:none;
+}
+
+.live-tables{
+background:#ebebeb;
+border: 4px solid #FFF;
+height:35px;
+font-weight:bold;
+}
+
+.live-tables-number{
+font-size:2em;
+color:#43609b;
+width:55px;
+margin-top:-2px;
+}
+
+#nav-bar{
+height: 68px;
+}
+
+.home-banner{
+background:url(../images/home-banner-back.png) repeat-x;
+}
+
+.pad-t-5{padding-top:5px;}
+.pad-t-9{padding-top:9px;}
+.pad-t-10{padding-top:10px;}
+.pad-t-20{padding-top:20px;}
+.pad-l-5{padding-left:5px;}
+.mar-r-10{margin-left:10px;}
+.pad-r-20{padding-right:20px;}
+.pad-r-5{padding-right:5px;}
+.mar-n-l-10{margin-left:-15px;}
+.pad-l-15{padding-left:15px;}
+
+
+/*MAIN MENU*/
+
+#main-menu{
+height:20px;
+width:auto;
+margin:auto;}
+
+ul#main-menu{
+margin:0 auto;
+padding:0;
+list-style-type:none;
+display:block;
+font-size:12px;
+font-weight:bold;
+}
+ul#main-menu li{
+display:inline;
+margin-left: 0px;
+pading:0;}
+	
+ul#main-menu li a{
+display:block;
+float:left;
+color:#595959;
+text-decoration:none;
+font-weight:bold;
+/* Top, Right, Bottom, Left */
+padding:0px 19px 0px 19px;
+padding-top:0px;
+height:68px;
+background:url(../images/top-menu-grey.png) 0% 100% no-repeat;
+}
+
+ul#main-menu li a:hover{
+color:#FFFFFF;
+background:url(../images/top-menu-blue.png) 0% 100% no-repeat;
+}
+	
+ul#main-menu li a.selected-tab{
+color:#FFFFFF;
+background:url(../images/top-menu-blue.png) 0% 100% no-repeat;
+}
+
+ul#main-menu1 {
+display: none;
+position:absolute;
+top: 205px;
+left: 80px;
+width: auto 0;
+border:none;
+border-top: solid 1px #CCCCCC;
+border-left: solid 1px #CCCCCC;
+border-right: solid 1px #CCCCCC;
+}
+
+ul#main-menu1 li {
+display:block;
+list-style-type:none;
+width: 160px;
+overflow:hidden;
+padding:0px;
+height: 30px;
+border-bottom: solid 1px #CCCCCC;
+}
+
+
+ul#main-menu1 li a{
+float:left;
+color:#595959 !important;
+text-decoration:none;
+font-weight:bold;
+height:24px;
+border:none;
+width:160px;
+text-align:left;
+padding-top:7px;
+padding-left:5px;
+background:white !important;
+}
+
+ul#main-menu1 li a:hover {
+background:#f1f1f1 !important;
+}	
+.menu-pad{
+padding-top:25px;}
+
+/* HOME PAGE BANNER */
+#home-banner-left{
+width:602px;
+height:324px;
+padding-left:25px;
+padding-top:50px;
+color:#ffffff;
+background: url(../images/home-center-image.png) no-repeat 100% 100%;
+}
+.color-white{
+color:#ffffff;	
+}
+
+.color-blue{
+color:#2e5190;	
+}
+#home-bullet li{padding: 5px 10px 4px 27px; list-style:none; background: url(../images/home-bullet.png) 3px 7px no-repeat; behavior: url(iepngfix.htc);}
+
+/* IE6 PNG Fix */
+img{ behavior: url(iepngfix.htc) }
+#home-banner-left{
+behavior: url(iepngfix.htc);
+}
+#home-bullet li{
+behavior: url(iepngfix.htc);
+}
+
+/* Home Page Join Now */
+
+#join-now{
+background: url(../images/join-now-back.png) repeat-y;
+height:430px;
+padding-left:25px;
+}
+
+#join-now-top{
+background: url(../images/join-now-top.png) no-repeat;
+height:6px;
+}
+
+#join-now-bottom{
+background: url(../images/join-now-bottom.png) no-repeat;
+height:23px;
+}
+
+#player-registration-form input.text {
+width:200px;
+color:#b8b8b8;
+padding:10px;
+}
+
+#reg-form{
+z-index:50;
+}
+
+#get-blurb{
+margin-top:-125px;
+z-index:1000;
+position:relative;
+}
+
+
+/*Home Page Promos*/
+
+.home-content{
+width:100%;
+margin-top:30px;
+display:block;
+}
+
+.promo-box{
+width:200px;
+margin:0;
+padding:0;
+}
+
+.promo-top{
+padding:0px;
+margin:0px;
+height:94px;
+}
+
+.promo-content{
+height:159px;
+background:url(../images/promo-back.png) repeat-y;
+padding-top:30px;
+padding-left:30px;
+padding-right:30px;
+}
+
+.promo-content h3{
+color:#464646;
+line-height:1.2em;
+}
+
+
+
+#wit-title{
+background:url(../images/what-taash-top.png) no-repeat;
+height:44px;
+padding-top:15px;
+padding-left:25px;
+}
+
+#wit-body{
+background:url(../images/what-taash-back.png) repeat-x;
+display:block;
+min-height:250px;
+padding-top:30px;
+padding-left:30px;
+padding-right:30px;
+}
+
+#wit-body-left{
+width:375px;
+}
+
+.color-pink{
+color:#89265b;
+}
+
+#testi-title{
+background:url(../images/player-speaks.png) no-repeat;
+height:59px;
+}
+
+#testi-left, #testi-right{
+width:295px;
+margin-top:20px;
+}
+
+#testi-content{
+width:200px;
+line-height:1.2em;
+}
+
+/* Footer */
+
+.footer{
+background:#d5d5d5;
+margin-top:30px;
+border-top:2px solid #c6c6c6;
+}
+
+.line-small{
+line-height:1.2em;
+}
+
+.line-big{
+line-height:1.2em;
+}
+
+.line-links{
+line-height:1.9em;
+}
+
+/* INTERNAL LAYOUT SPECIFIC */
+
+body.internal {
+background:url(../images/internal-page-back.png) repeat-x;	
+}
+
+body.internal-al {
+background:url(../images/internal-al-page-back.png) repeat-x;	
+}
+
+#inner-nav {
+background:url(../images/inner-nav-back.png) repeat-x;
+height: 60px;
+}
+
+.welcome-box{
+width:350px;
+text-align:right;
+}
+
+.inner-content{
+width:100%;
+display:block;
+}
+
+#inner-welcome{
+background:#ececec;
+height:57px;
+padding-left:20px;
+padding-top:20px;
+}
+
+#inner-welcome-back{
+background:url(../images/inner-welcome-back.png) repeat-x;
+height:300px;
+padding-top:20px;
+}
+
+#inner-welcome-back-left{
+width:307px;
+padding-left:20px;
+
+}
+
+#inner-welcome-back-right{
+width:242px;
+padding-top:50px;
+}
+
+#inner-buttons-box{
+padding-left:20px;
+padding-top:20px;
+}
+
+
+#button-edit-profile{
+background:url(../images/edit-profile-back.png) no-repeat;
+width:175px;
+height:55px;
+padding-left:105px;
+padding-top:35px;
+}
+
+#button-support{
+background:url(../images/contact-support-back.png) no-repeat;
+width:175px;
+height:55px;
+padding-left:105px;
+padding-top:35px;
+}
+
+#button-password{
+background:url(../images/change-password-back.png) no-repeat;
+width:175px;
+height:55px;
+padding-left:105px;
+padding-top:35px;
+}
+
+#button-funds{
+background:url(../images/deposit-funds-back.png) no-repeat;
+width:175px;
+height:55px;
+padding-left:105px;
+padding-top:35px;
+}
+
+#game-history{
+border: 2px solid #e2e2e2;
+padding-top:20px;
+padding-left:10px;
+padding-right:10px;
+padding-bottom:20px;
+}
+
+#game-history-top{
+background:url(../images/game-history.png) no-repeat;
+margin-top:35px;
+height:38px;
+width:199px;
+}
+
+#game-history-table th{
+background:#e2e2e2;
+height:40px;
+}
+
+#my-account{
+width:223px;
+}
+
+#my-account-box{
+background: url(../images/join-now-back.png) repeat-y;
+padding-left:25px;
+}
+
+#profile-photo{
+margin-top:0px;
+z-index:1000;
+position:relative;
+padding-right:20px;
+padding-top:10px;
+}
+
+.my-acc-left{
+width:70px;
+}
+
+#player-invite-form input.text, #player-invite-form textarea.text {
+width:200px;
+color:#b8b8b8;
+padding:10px;
+}
+
+#player-invite-form textarea.text{
+height:100px;
+}
+
+
+/*Sub Menu*/
+
+#sub-menu{
+height:15px;
+width:auto;
+margin:auto;}
+
+ul#sub-menu{
+margin:0 auto;
+padding:0;
+list-style-type:none;
+display:block;
+font-size:12px;
+font-weight:bold;
+}
+ul#sub-menu li{
+display:inline;
+margin-left: 0px;
+pading:0;}
+	
+ul#sub-menu li a{
+display:block;
+float:left;
+color:#ffffff;
+text-decoration:none;
+font-weight:bold;
+/* Top, Right, Bottom, Left */
+padding:0px 19px 5px 19px;
+padding-top:0px;
+height:60px;
+}
+
+ul#sub-menu li a:hover{
+color:#d55096;
+}
+	
+ul#sub-menu li a.selected-tab{
+color:#d55096;
+}
+
+.menu-pad-1{
+padding-top:22px;}
+
+
+/* Bullets */
+
+ul.bullet-normal {padding-left:35px;}
+ul.bullet-normal li{padding: 5px 10px 5px 8px; list-style-type:disc; font-weight:normal;}
+ul.bullet-normal li p{color:black; font-weight:normal;}

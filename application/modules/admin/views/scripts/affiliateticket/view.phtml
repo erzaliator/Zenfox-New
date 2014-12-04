@@ -1,0 +1,50 @@
+<?php echo $this->form;?>
+<?php
+echo '<br>';
+$csrIds = new CsrIds();
+if($this->paginator)
+{
+	echo '<table>';
+	echo '<tr>';
+	echo '<th align = "left">Started by</th>';
+	echo '<th align = "left">Affiliate</th>';
+	echo '<th align = "left">Subject</th>';
+	echo '<th align = "left">Start date</th>';
+	echo '<th align = "left">Ticket Status</th>';
+	echo '</tr>';
+	foreach($this->paginator as $ticketDetails)
+	{
+		echo '<tr>';
+		echo '<td>'.$ticketDetails['start_by'].'</td>';
+		echo '<td>'.$csrIds->getAffiliateAlias($ticketDetails['user_id']).'</td>';
+		echo '<td>';?>
+		<a href ="<?php echo $this->url(array(
+						'controller' => 'affiliateticket',
+						'action' => 'reply',
+						'ticket_id' => $ticketDetails['id'],
+						'id' => $ticketDetails['user_id'],
+						'ticketType' => $this->ticketType
+				)
+			);?>">
+		<?=substr($ticketDetails['subject'],0,20);?>
+		</a>
+		<? echo '</td>';
+		echo '<td>'.$ticketDetails['start_date'].'</td>';
+		echo '<td>'.$ticketDetails['ticket_status'].'</td>';
+		echo '</tr>';
+	}
+	echo '</table>';
+	?>
+	<?php 
+	echo $this->paginationControl(
+				$this->paginator,
+				'Sliding',
+				'ticket_paginator_control.phtml',
+				array(
+					'fromDate' => $this->fromDate,
+					'toDate' => $this->toDate,
+					'status' => $this->status,
+					'ticketType' => $this->ticketType));
+}
+?>
+<br></br>

@@ -1,0 +1,144 @@
+<div id="testi-body">
+<?php /*
+<html>
+	<head>
+ 
+		if($this->scrolling)
+		{
+
+				<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+				<script type="text/javascript" src="/js/jquery.simplyscroll-1.0.4.js"></script>
+				<link rel="stylesheet" href="/css/jquery.simplyscroll-1.0.4.css" media="all" type="text/css">
+				<script type="text/javascript">
+					(function($) {
+						$(function() { //on DOM ready
+							$("#scroller").simplyScroll({
+							autoMode: 'loop',
+							horizontal: false
+							});
+						});
+					})(jQuery);
+				</script>
+
+		}
+		
+	</head>
+	<body>
+		<h3>Player Speaks</h3>
+		<div class="speaks">
+		<ul id="scroller">
+
+				$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+				$viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+				$imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:$viewDir;
+				foreach($this->testies as $testimonial)
+				{
+					$imageName = md5("image" . $testimonial['playerId']) . '.jpg';
+					$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+					if(!file_exists($imagePath))
+					{
+						$imagePath = "/images/" . $imagesDir . "../profiles/profile-m1.jpg";
+					}
+					else
+					{
+						$imagePath = "/images/" . $imagesDir . "../profiles/" . $imageName;
+					}
+
+						<li><img src=" echo $imagePath;" alt="" width="70" height="70" hspace="0" vspace="0" border="0" /> <div> echo $testimonial['testi'];<strong> echo $testimonial['name'];</strong> </div></li>
+
+				}
+
+			</ul>
+		</div>
+	</body>
+</html>
+
+
+if(!$this->scrolling)
+{
+	echo $this->paginationControl($this->paginator, 'Sliding', 'testimonial.phtml');
+}
+*/
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+$viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+$imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:$viewDir;
+$index = 0;
+foreach($this->testies as $testimonial)
+{
+	$imageName = md5("image" . $testimonial['playerId']) . '.jpg';
+	$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+	if(!file_exists($imagePath))
+	{
+		$imagePath = "/images/" . $imagesDir . "../profiles/profile-m1.jpg";
+	}
+	else
+	{
+		$imagePath = "/images/" . $imagesDir . "../profiles/" . $imageName;
+	}
+	if(($index % 2) == 0)
+	{
+		?>
+			<div id="testi-left" class="left">
+            <div id="testi-photo" class="left"><img src="<?php echo $imagePath;?>" width="77" height="98" alt="Testimonial Photo" /></div>
+            <div id="testi-content" class="right">
+              <p><?php 
+              $i = 0;
+              for($i = 0; $i < 125; $i++)
+              {
+              	/*if($i > strlen($testimonial['testi']))
+              	{
+              		
+              			&nbsp;
+              		
+              	}
+              	else
+              	{*/
+              		echo substr($testimonial['testi'], $i, 1);
+              	//}
+              }
+              ?></p>
+              <p><strong><?php echo $testimonial['name'];?></strong></p>
+            </div>
+          </div>
+		<?php
+	}
+	else
+	{
+		?>
+			<div id="testi-right" class="right">
+            <div id="testi-photo" class="left"><img src="<?php echo $imagePath;?>" width="77" height="98" alt="Testimonial Photo" /></div>
+            <div id="testi-content" class="right">
+              <p><?php 
+			  $i = 0;
+              for($i = 0; $i < 125; $i++)
+              {
+              	/*if($i > strlen($testimonial['testi']))
+              	{
+              		
+              			&nbsp;
+              		
+              	}
+              	else
+              	{*/
+              		echo substr($testimonial['testi'], $i, 1);
+              	//}
+              }
+              ?></p>
+              <p><strong><?php echo $testimonial['name'];?></strong></p>
+            </div>
+          </div>
+          <div class="clear"></div>
+		<?php
+	}
+	$index++;
+}
+?>
+<div class="clear"></div>
+          <p><a href="/testimonial/view"><strong>More...</strong></a></p>
+          <p><a href="/testimonial/write"><strong>Write Testimonial</strong></a></p>
+        </div>
+<?php
+if(!$this->scrolling)
+{
+	echo $this->paginationControl($this->paginator, 'Sliding', 'testimonial.phtml');
+}

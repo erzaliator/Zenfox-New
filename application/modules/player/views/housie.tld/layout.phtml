@@ -1,0 +1,299 @@
+<?php
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LanguageForm.php';
+/*
+ * FIXME: Should this not be included only if the user is not logged in?
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/CommentsForm.php';
+
+/*
+ * Including frontend specific webConfig.
+ */
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+$this->viewDir = $webConfig['viewDir']?$webConfig['viewDir']:'null';
+$this->htmlTitle = $webConfig['htmlTitle']?$webConfig['htmlTitle']:'null';
+$this->jsDir = $webConfig['jsDir']?$webConfig['jsDir']:'null';
+$this->cssDir = $webConfig['cssDir']?$webConfig['cssDir']:'null';
+$this->imagesDir = $webConfig['cssDir']?$webConfig['cssDir']:'null';
+
+$frontController = Zend_Controller_Front::getInstance();
+
+$frontController->getResponse()->setHeader('Expires', '', true);
+/*$frontController->getResponse()->setHeader('Cache-Control', 'public', true);
+$frontController->getResponse()->setHeader('Cache-Control', 'max-age=3800');*/
+$frontController->getResponse()->setHeader('Pragma', '', true);
+
+/*
+ * Check if user is logged in and populate user specific values
+ */
+    $session = new Zend_Auth_Storage_Session();
+    $store = $session->read();
+    
+    $isLoggedIn = isset($store)?true:false;
+    if($isLoggedIn)
+    {
+		$playerId = $store['id'];
+    	$imageName = md5("image" . $playerId) . '.jpg';
+		$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+		if(!file_exists($imagePath))
+		{
+			$imagePath = "/images/" . $this->imagesDir . "../profiles/profile-m1.jpg";
+		}
+		else
+		{
+			$imagePath = "/images/" . $this->imagesDir . "../profiles/" . $imageName;
+		}
+	    $loginName = $store['authDetails'][0]['login'];
+	    $firstName = $store['authDetails'][0]['first_name'];
+	    $cash = $store['authDetails'][0]['cash'];
+	    $bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+		//$cash = $store['cash'];
+		//$bonus = $store['bonus'];
+	    $loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+	    
+	    $currency = new Zend_Currency();
+	    $currencySession = new Zend_Session_Namespace('currency');
+	 //   if($currencySession->oldValue != $currencySession->newValue)
+	 //   {
+		$source = $currency->getShortName('', $currencySession->oldValue);
+		$destination = $currency->getShortName('', $currencySession->newValue);
+		$currConv = new CurrencyConversion();
+		$cash = $currConv->getConvertedValue($source, $destination, $cash);
+		$bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+		$store['cash'] = $cash;
+		$store['bonus'] = $bonus;
+		$session->write($store);
+	//	  }
+    }
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="/images/rummy.tld/favicon.ico" mce_href="/images/rummy.tld/favicon.ico" type="image/x-icon"/>
+<title><? echo isset($this->pageTitle)? "-".$this->pageTitle:""; echo $this->htmlTitle; ?></title>
+
+
+<?php
+
+  $this->headLink()->appendStylesheet('/css/'. $this->cssDir .'style-inner.css');
+  
+  /*Echo the headlink after appending everything*/
+  echo $this->headLink();
+  /*Appending the files before echoing*/
+  $this->headScript()->appendFile('//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js');
+  $this->headScript()->appendFile('/js/' . $this->jsDir . 'menu.js');
+  //$this->headScript()->appendFile('js/jquery-leftNav.js')
+  echo $this->headScript();
+  echo $this->headMeta();
+if(Zend_Registry::get('piwikEnabled'))
+{
+  echo $this->piwiktracker();
+}
+
+  //$partial = array('index/sitemap.phtml', 'player');
+  //$this->navigation()->sitemap()->setPartial($partial);
+?>
+<link  href="//fonts.googleapis.com/css?family=Ubuntu:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
+</head>
+
+<body class="innerbody">
+<div class="topHeader">
+  <div class="header-strip">
+    <div class="small-logo"><a href="<?=$this->baseUrl() ?>"><img src="<?echo "/images/" . $this->imagesDir . "logo-small.png"?>" alt="Your pastime is now cash time!"></img></a></div>
+    <!-- Menu -->
+    <div class="topnav">
+    <?php
+    		//Zenfox_Debug::dump($this->narvaneni, "Yaswanth");
+    		//$navigation = Zend_Registry::getInstance()->get('zenfox-navigation');
+    		echo $this->navigation()->menu();//->renderMenu($navigation);
+    		//print spl_object_hash($this);
+    		//Zenfox_Debug::dump($this->navigation()->getContainer(), "Navigation");
+
+    ?>
+    </div>
+    <!-- End Menu -->
+  </div>
+</div>
+
+<div class="inner-content">	
+	<div class="inner-left-block">
+		<?php
+	    if($isLoggedIn)
+	    {
+	    ?>
+
+    	<div class="profile">
+        	<div class="p-img">
+            	<a href = "/auth/image"><img src=<?="$imagePath"?> alt="" width="50" height="50" hspace="0" vspace="0" border="0" /></a>
+            </div>
+            <div class="p-details">
+            	<ul class="p-links">
+                	<li><a href="/auth/view"><strong>
+                		<?php
+		                //echo $loginName;
+						//isset won't work coz firstName is already set above.
+		                $displayName = empty($firstName)?$loginName:$firstName;
+						echo $displayName;
+		                ?></strong>
+		                </a></li>
+                    <li><a href="/auth/edit">Edit My Account</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="myaccount">
+        	<ul>
+            	<li><img src=<?="/images/". $this->imagesDir ."rupees.jpg"?> alt="" width="17" height="16"> <span>Balance :</span> <strong>
+            	<?php
+			   // }
+		//	Zenfox_Debug::dump($session->read(), 'session');
+		//            $currency = new Zend_Currency();
+		            if($cash)
+		            {
+		                echo $currency->setValue($cash);
+		            }
+		            else
+		            {
+		                echo $currency->setValue(0);
+		            }
+		            ?></strong></li>
+                <li><img src=<?="/images/". $this->imagesDir ."points.jpg"?> alt="" width="17" height="16"> <span>Bonus :</span> <strong><?php
+		            if($bonus)
+		            {
+		                echo $currency->setValue($bonus);
+		            }
+		            else
+		            {
+		                echo $currency->setValue(0);
+		            }
+		            ?></strong></li>
+               <li><img src=<?="/images/". $this->imagesDir ."points1.jpg"?> alt="" width="17" height="16"> <span>Points :</span> <strong><?php
+		            if($loyaltyPoints)
+		            {
+		                echo $loyaltyPoints;
+		            }
+		            else
+		            {
+		                echo '0';
+		            }
+		            ?></strong></li>
+            </ul>
+        </div>
+		        <?php
+		    }
+		    else
+		    {
+		        $loginForm = new Player_LoginForm();
+		//        $loginForm->getElement('fgPassword')->setDecorators($decorator->linkDecorator);
+		//        $loginForm->getElement('signup')->setDecorators($decorator->linkDecorator);
+		
+		        //This div is added to facilitate the CSS
+				echo "<div class=\"login-form-side\">";
+		        echo $loginForm;
+		        echo "</div>";
+				echo $this->facebook();
+		    }
+	    ?> 
+        
+		<?php
+			if($isLoggedIn)
+			{
+		?>
+    			<div class="reg" id="regForm">
+		<?php
+				require_once APPLICATION_PATH . '/modules/player/forms/InviteFriendForm.php';
+				$form = new Player_InviteFriendForm();
+				echo $form;
+		?>
+				</div>
+			<?php
+			}
+			else
+			{?>
+        <div class="promo-block">
+        	<ul>
+                <li><img src=<?="/images/". $this->imagesDir ."atin.jpg"?> alt="" width="17" height="16"> Get <strong>25 TaashCash</strong> Sign-up Bonus</li>
+                <li><img src=<?="/images/". $this->imagesDir ."atin.jpg"?> alt="" width="17" height="16"> Get <strong>100%</strong> deposit bonus on every deposit.</li>
+                <li><img src=<?="/images/". $this->imagesDir ."atin.jpg"?> alt="" width="17" height="16"> Refer your friend and get <strong>25 TaashCash</strong> Free</li>
+            </ul>
+        </div>
+			<?}?>
+    </div>
+	<div class="inner-right-block">
+	<div class="inner-right-A-block">
+	<div class="flash-messenger"><?=$this->flashMessenger(); ?></div>
+	    <?=$this->layout()->content ?>
+	</div>
+	<!--div class="inner-right-B-block">
+		<div class="b-block-title"><a href="/auth/logout">Play Rummy</a></div>
+		
+		<ul class="game-list">
+			<li><strong>Game 1</strong></li>
+			<li><strong>Game 2</strong></li>
+			<li><strong>Game 3</strong></li>
+			
+		</ul>
+		
+	</div-->	
+	
+ </div>
+ 
+ <div class="clear">&nbsp;</div>
+</div>
+     <div id="footer"><?= $this->render('footer.phtml') ?></div>
+ <?php 
+ $this->JQuery()->enable();
+    if($this->JQuery()->isEnabled())
+    {
+        //TODO:: Change the ui css depending on the frontend
+        $this->JQuery()->setUiLocalPath($this->baseUrl()."/js/jquery-ui-1.8.10.custom.min.js")
+        		->addStylesheet($this->baseUrl()."/css/rummy.tld/jquery-ui-1.8.9.custom.css");
+        echo $this->JQuery();
+        //echo $this->headMeta();
+    }
+ ?>
+ <script type="text/javascript">
+$(function(){
+	$('#tabs').tabs();
+});
+
+</script>
+<script type="text/javascript">
+<!--
+var TabbedPanels1 = new Spry.Widget.TabbedPanel("TabbedPanels1");
+var Accordion1 = new Spry.Widget.Accordion("Accordion1");
+//-->
+</script>
+
+<!-- Google Analytics-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22630875-1']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- Beginning of meebo me widget code.
+Want to talk with visitors on your page?  
+Go to http://www.meebome.com/ and get your widget! -->
+<!--embed src="http://widget.meebo.com/mm.swf?kiqvByRnfV" type="application/x-shockwave-flash" width="250" height="300"></embed-->
+<!-- begin olark code --><script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length;while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])}c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d);(function(){function l(){return["<head></head><",z,' onload="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"}D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});olark.identify('8609-194-10-7825');olark('api.chat.updateVisitorNickname', {snippet: '<?=isset($loginName)?$loginName:"Guest"?>'});/*]]>{/literal}*/</script><!-- end olark code -->
+
+ 
+</body>
+</html>

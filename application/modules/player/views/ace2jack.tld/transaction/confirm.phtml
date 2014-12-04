@@ -1,0 +1,61 @@
+<script type="text/javascript">
+	function processCitruspay(){
+		var transactionId = document.getElementById("merchantTxnId").value;
+		var post_vars = "ajax=true&gateway=CITRUSPAY&transId=" + transactionId;
+		$.ajax({
+			  type: "POST",
+			  url: "/transaction",
+			  data: post_vars,
+			  success: function(data){
+				  var form = document["transaction-form"];
+				  form.submit();
+			  	}
+			});
+	}
+	processCitruspay();
+</script>
+<form method="post" action="<?=$this->action?>" name="transaction-form">
+	<input type="hidden" name="gateway" id="gateway" value="<?=$this->gateway ?>">
+	<?php 
+	if($this->action == '/transaction/index')
+	{
+		?>
+		<input type="hidden" name="transId" id="transId" value="<?=$this->transactionId ?>">
+		<input type="hidden" name="txtTranID" id="txtTranID" value="<?=$this->transactionId ?>">
+		<input type="hidden" name="txtMarketCode" id="txtMarketCode" value="L2636">
+		<input type="hidden" name="txtAcctNo" id="txtAcctNo" value="1">
+		<input type="hidden" name="txtTxnAmount" id="txtTxnAmount" value="<?=$this->amount ?>">
+		<input type="hidden" name="txtBankCode" id="txtBankCode" value="<?=$this->code ?>">
+		<input type="hidden" name="txtPropPath" id="txtPropPath" value="/var/zenfox/taashtime_new/application/../public/MerchantDetails.properties">
+		<?php
+	}
+	else
+	{
+		?>
+		<input type="hidden" name="merchantTxnId" id="merchantTxnId" value="<?=$this->transactionId ?>">
+		<input type="hidden" name="addressState" id="addressState" value="<?=$this->state ?>">
+		<input type="hidden" name="addressCity" id="addressCity" value="<?=$this->city ?>">
+		<input type="hidden" name="addressStreet1" id="addressStreet1" value="<?=$this->address ?>">
+		<input type="hidden" name="addressCountry" id="addressCountry" value="IN">
+		<input type="hidden" name="addressZip" id="addressZip" value="<?=$this->pin ?>">
+		<input type="hidden" name="firstName" id="firstName" value="<?=$this->firstName ?>">
+		<input type="hidden" name="lastName" id="lastName" value="<?=$this->lastName ?>">
+		<input type="hidden" name="phoneNumber" id="phoneNumber" value="<?=$this->contact ?>">
+		<input type="hidden" name="email" id="email" value="<?=$this->email ?>">
+		<input type="hidden" name="paymentMode" id="paymentMode" value="<?=$this->mode ?>">
+		<input type="hidden" name="issuerCode" id="issuerCode" value="<?=$this->issuerCode ?>">
+		<!-- input type="hidden" name="cardHolderName" id="cardHolderName" value="<?=$this->cardHolder ?>">
+		<input type="hidden" name="cardNumber" id="cardNumber" value="<?=$this->cardNumber ?>">
+		<input type="hidden" name="expiryMonth" id="expiryMonth" value="<?=$this->expiryMonth ?>">
+		<input type="hidden" name="cardType" id="cardType" value="<?=$this->type ?>">
+		<input type="hidden" name="cvvNumber" id="cvvNumber" value="<?=$this->cvvNumber ?>">
+		<input type="hidden" name="expiryYear" id="expiryYear" value="<?=$this->expiryYear ?>"-->
+		<input type="hidden" name="returnUrl" id="returnUrl" value="http://www.ace2jak.com/transaction/confirm">
+		<input type="hidden" name="orderAmount" id="orderAmount" value="<?=$this->amount ?>">
+		<input type="hidden" name="reqtime" id="reqtime" value="<?=$this->reqTime ?>">
+		<input type="hidden" name="secSignature" id="secSignature" value="<?=$this->signature ?>">
+		<input type="hidden" name="currency" id="currency" value="INR">
+		<?php 
+	}
+	?>
+</form>

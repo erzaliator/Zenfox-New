@@ -1,0 +1,60 @@
+	
+	<div class="ttfuncoinsrsltbot" style="width:630px">
+	 
+	 
+	<div class="ttfuncoinshed">Player War Winners</div>
+	<div class="ttfuncoinsdatetime"><b>From :</b> <?=$this->startTime ?> <b>To :</b> <?=$this->endTime ?></div>
+	 <div  class=".ttresultgthedbg" style="width:630px">
+	          
+	           <table>
+	           <tr>
+	           <th style="text-align:center">
+	           	<div class="ttresultgthedbgl" style="text-align:center" >Position</div>
+	           
+	           </th>
+	           <th>
+	           <div class="ttresultgthedbgm" style="text-align:center">Login Name</div>
+	           
+	           </th>
+	           <th>
+	           	 <div class="ttresultgthedbgr" style="text-align:center">Points Won</div>
+	           
+	           </th>
+	           </tr>
+	        
+	         
+	           <tbody>
+				<?php 
+	          foreach($this->leaderboard as $index => $winners)
+	          {
+	          	if($index < 3)
+	          	{
+	          	?>
+	            	<tr style="width:612px"><td style="text-align:center"><?=($index+1)?></td><td style="text-align:center"><?=$winners['Player Name'] ?></td><td style="text-align:center"><?=$winners['Points'] ?></td></tr>
+	                      	
+	                      	<?php
+	          	}
+	          }
+	          ?>
+	        
+	            <?php 
+	            foreach($this->leaderboard as $index => $winners)
+	            {
+	            	if($index > 2)
+	            	{
+	            	?>
+	            	<tr style="width:612px"><td style="text-align:center"><?=($index+1)?></td><td style="text-align:center"><?=$winners['Player Name'] ?></td><td style="text-align:center"><?=$winners['Points'] ?></td></tr>
+	                      	
+	                      	<?php
+	            	}
+	                      }
+	            ?>
+	             </tbody>
+	            </table>
+	          </div>
+	      
+	        
+	      <img src = "/css/rummy.tld/images/ttresultgoldbg1.png" repeat scroll 0 0 transparent  style="width:630px;height:120px">
+	      </div>
+	 
+	

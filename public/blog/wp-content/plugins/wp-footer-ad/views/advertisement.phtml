@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright 2010 Stefan Des
+ *
+ * This file is part of WP Footer Ad
+ */
+?>
+<div id="footer-adcont">
+	<div id="footer-adcont-bar"></div>
+	
+	<?php if (strlen($this->simpleImageUrl)): ?>
+	<div id="footer-adcont-content" class="type-simple">
+		<a <?php if ($this->simpleLinkTarget == 'external'): ?> class="external"<?php endif ?>
+			href="<?php echo attribute_escape($this->simpleDestinationUrl) ?>">
+			<img src="<?php echo attribute_escape($this->simpleImageUrl) ?>" alt="" />
+		</a>
+	</div>
+	<?php else: ?>
+	<div id="footer-adcont-content" class="type-simple" style="background-color:#<?php echo attribute_escape($this->simpleBackgroundColor) ?>">
+		<a <?php if ($this->simpleLinkTarget == 'external'): ?> class="external"<?php endif ?>
+			style="color:#<?php echo attribute_escape($this->simpleFontColor) ?>; font-size:<?php echo attribute_escape($this->simpleFontSize) ?>px"
+			href="<?php echo attribute_escape($this->simpleDestinationUrl) ?>">
+			<?php echo nl2br(htmlspecialchars($this->simplePlainText)) ?>
+		</a>
+	</div>
+	<?php endif ?>
+	
+	<a id="footer-adcont-close" href="#" title="Close">
+		<img src="<?php echo htmlspecialchars($this->pluginUrl) ?>/images/close-button.gif"	width="17" height="17" alt="Close" />
+	</a>
+</div>

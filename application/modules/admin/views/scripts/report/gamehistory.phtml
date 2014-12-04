@@ -1,0 +1,49 @@
+<?php
+
+echo $this->form;
+if($this->paginator)
+{
+	if($this->playerId)
+	{
+		?>
+			<h2 style="text-align:right"><strong>Total Number Of Games : <?php echo $this->totalGames;?></strong></h2>
+		<?php
+	}
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $playerData)
+		{
+			$linkArray[$playerData['Player Id']] = array(
+										'controller' => 'player',
+										'action' => 'view',
+										'playerId' => $playerData['Player Id']);
+		}
+		$this->table($this->contents, array('Player Id'), $linkArray);
+	}
+
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	
+	if($this->playerId)
+	{
+		$this->pagination($pages, array(
+							'from' => $this->from,
+							'to' => $this->to,
+							'playerId' => $this->playerId,
+							'totalGames' => $this->totalGames));
+		?>
+			<a href = "/download/index/rType/gamehistory/from/<?= $this->from?>/to/<?= $this->to?>/playerId/<?= $this->playerId?>">Download</a>
+		<?php
+	}
+	else
+	{
+		$this->pagination($pages, array(
+							'from' => $this->from,
+							'to' => $this->to));
+		?>
+			<a href = "/download/index/rType/gamehistory/from/<?= $this->from?>/to/<?= $this->to?>">Download</a>
+		<?php
+	}
+}
+
+?>

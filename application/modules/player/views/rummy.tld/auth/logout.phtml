@@ -1,0 +1,20 @@
+<script>
+$(function() {
+	removeInviteFriendCookie();
+});
+	</script>
+<?php
+//$this->facebook();
+//<body onload="FB.logout();"></body>
+if($_COOKIE['nikhil'])
+{
+	?>
+	<body onload="FB.logout();"></body>
+	<?php
+}
+else
+{
+	$this->headMeta()->appendHttpEquiv('Refresh',
+                                   '3;URL=' . $this->link);
+}
+?>

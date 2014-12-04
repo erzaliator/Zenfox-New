@@ -1,0 +1,187 @@
+body {
+    background: url("http://bingocrush.co.uk/images/bingocrush/bg_aff.jpg") repeat-x scroll center top #FFFFFF;
+}
+#logo_name
+{
+float:left;border:0px solid;margin:25px 0px 0px 115px;
+}
+#main{
+	background:  no-repeat scroll left bottom #FFF;
+	border-color: #FFFFFF;
+	border-image: none;
+	border-style: solid ;
+	border-radius: 10px;
+	border-width: 10px 10px 10px 10px ;
+	height: 800px;
+	position: relative;
+	background-color: #e22731;
+	width:1000px;
+	margin:auto;
+}
+#header{
+	height:170px;
+	width:auto;
+	border:0px solid;
+}
+#header #logo{
+	background: url("http://bingocrush.co.uk/images/bingocrush/logo_100.png") no-repeat scroll left top transparent;
+    display: block;
+    height: 87px;
+    left: 20px;
+    position: absolute;
+    text-indent: -99999px;
+    top: 17px;
+    width: 100px;
+}
+#header #menu_bg{
+	height:40px;
+	width:auto;
+	background-color:#FFF;
+	position:relative;
+	top:130px;
+	border-radius:10px 10px 0px 0px;
+}
+#menu_bg @font-face
+{
+font-family: BRLNSDB;
+src: url("http://bingocrush.co.uk/images/bingocrush/BRLNSDB.tiff");
+}
+#header #menu_bg ul{
+	bottom: -6px;
+    left: 20px;
+    list-style: none outside none;
+    position: absolute;
+}
+#header #menu_bg ul li{
+	float: left;
+    margin: 0 10px;
+    position: relative;
+    top: 10px;
+}
+#header #menu_bg ul li a {
+	background: none repeat scroll 0 0 transparent;
+	border: medium none;
+	color: #C00;
+	display: inline-block;
+	font-size: 160%;
+	padding: 10px 10px 7px;
+	position: relative;
+	text-decoration: none;
+	top: 0px;
+	font-family:Berlin Sans FB Demi;
+	
+}
+#header #menu_bg ul li a:hover {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: #900;
+	 color: #FFF;
+}
+
+#menu_btm{
+	height:20px;
+	width:auto;
+	background-color:#900;
+	position:relative;
+	top:-4px;
+	z-index:1;
+	border-radius:6px 6px 0px 0px;
+}
+
+#login{
+	width:385px;
+	height:70px;
+	float:left;
+	margin:auto;
+	position:relative;
+	left:190px;
+	top:30px;
+	
+}
+#header form1{
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    width: 500px;
+	
+}
+#forgot{
+	font-size:90%;
+	margin:0 0 0 118px;
+	text-decoration:none;
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+#uname{
+	border-radius:3px;
+	margin:8px 0px;
+	
+}
+
+/*fieldset*/ .zend_form {
+    background: none repeat scroll 0 0 #C00;
+    border: 1px solid #F60;
+    border-radius: 10px 10px 10px 10px;
+    margin: 5px 0 0;
+    padding: 5px;
+}
+#checkbox{
+	margin:0px -36px;
+}
+
+#Remember{
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:90%;
+	padding:0px;
+	margin:0px -12px;
+}
+
+.zend_form input {
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #942E5B;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 90%;
+    font-weight: bold;
+    padding: 5px;
+    width: 110px;
+}
+.zend_form .login-submit {
+    background: none repeat scroll 0 0 #390;
+    border: 3px solid #3C0;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 90%;
+    margin: 0px 0px 0px 10px;
+    padding: 2px 10px;
+    text-transform: uppercase;
+}
+.zend_form .login-submit:hover {
+    background: none repeat scroll 0 0 #360;
+}
+
+#canves{
+	height:625px;
+	width:auto;
+	background-color:#fad5dc;
+	position:relative;
+	top: -15px;
+	z-index:1;
+	border-radius:6px 6px 0px 0px;
+}
+
+img{
+	border-image:none;
+}
+dt{float:left;}
+dt label{display:none;}
+.toplinks a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+	float:right;
+	font-weight:bold;
+	margin-right:10px;
+}

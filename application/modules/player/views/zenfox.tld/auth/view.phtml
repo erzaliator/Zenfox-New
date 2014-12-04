@@ -1,0 +1,61 @@
+<table cellpadding="0" cellspacing="0" border="1" width="100%" class="paly-report-forms">
+	<tr class="even-style1">
+		<td width="50%"><div><?=$this->translate("User  Name:")?> </div></td>
+		<td width="50%"><?php echo $this->playerData['login']; ?></td>
+	</tr>
+	<tr class="odd-style1">
+		<td><div><?=$this->translate("First Name :")?></div></td>
+		<td><?php echo $this->playerData['firstName']; ?></td>
+	</tr>
+	<tr class="even-style1">
+		<td><div><?=$this->translate("Last Name :")?></div></td>
+		<td><?php echo $this->playerData['lastName']; ?></td>
+	</tr>
+	
+	<tr class="odd-style1">
+		<td><div><?=$this->translate("Email ID :")?></div></td>
+		<td><?php echo $this->playerData['email']; ?></td>
+	</tr>
+	<tr class="even-style1">
+		<td><div><?=$this->translate("Date Of Birth :")?></div></td>
+		<td><?php echo $this->playerData['dateOfBirth']; ?></td>
+	</tr>
+	<tr class="odd-style1">
+		<td><div><?=$this->translate("Sex :")?></div></td>
+		<td><?php 
+			if($this->playerData['sex'] == 'M')
+			{
+				print("Male");
+			}
+			elseif($this->playerData['sex'] == 'F')
+			{
+				print("Female");
+			} 
+			?></td>
+	</tr>
+	<tr class="even-style1">
+		<td><div><?=$this->translate("Address :")?></div></td>
+		<td><?php echo $this->playerData['address']; ?></td>
+	</tr>
+		<tr class="odd-style1">
+		<td><div><?=$this->translate("City :")?></div></td>
+		<td><?php echo $this->playerData['city']; ?></td>
+	</tr>
+	<tr class="even-style1">
+		<td><div><?=$this->translate("State :")?></div></td>
+		<td><?php echo $this->playerData['state']; ?></td>
+	</tr>
+		<tr class="odd-style1">
+		<td><div><?=$this->translate("Country :")?></div></td>
+		<td><?php echo $this->playerData['country']; ?></td>
+	</tr>
+	<tr class="even-style1">
+		<td><div><?=$this->translate("Pin :")?></div></td>
+		<td><?php echo $this->playerData['pin']; ?></td>
+	</tr>
+		<tr class="odd-style1">
+		<td><div><?=$this->translate("Phone Number :")?></div></td>
+		<td><?php echo $this->playerData['phone']; ?></td>
+	</tr>
+</table>
+

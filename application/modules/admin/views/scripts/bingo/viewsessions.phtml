@@ -1,0 +1,21 @@
+
+
+<?php 
+if($this->sessions)
+{
+	echo '<a href = "/bingo/sessions/createSession/true"> Create Session </a>';
+	echo "<br/>"."<br/>";
+	
+	foreach($this->sessions as $Data)
+	{
+		$linkArray[$Data['name']] = array(
+										'controller' => 'bingo',
+										'action' => 'sessions',
+										'SessionId' => $Data['id']);
+	}
+	$this->table($this->sessions, array('name'), $linkArray);
+	
+}
+
+
+?>

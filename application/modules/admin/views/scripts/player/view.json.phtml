@@ -1,0 +1,165 @@
+<?php
+if($this->csrNote)
+{
+	echo "{success:'CSR note Added'}";
+}
+
+else
+{
+	$j = 0;
+	$personalData = $this->playerData;
+	$transaction = $this->transaction;
+	//echo print_r($transaction); exit();
+	$imageName = md5("image" . $this->playerId) . '.jpg';
+			$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+			if(!file_exists($imagePath))
+			{
+				$imagePath = "/images/" . $this->imagesDir . "../profiles/profile-m1.jpg";
+			}
+			else
+			{
+				$imagePath = "/images/" . $this->imagesDir . "../profiles/" . $imageName;
+			}
+?>
+<div id="wrap">
+  <table id='profileTab'>
+	 <tr><td class='boxLabel' colspan='2'><h3>Personal Details</h3></td></tr>
+	 <tr><td width="300px">Name :</td><td width="430px"><?php echo $personalData['firstName']." ".$personalData['lastName'];?></td></tr>
+	 <tr><td >Contact No. :</td><td><?php echo $personalData["phone"];?></td></tr>
+	 <tr><td valign="top">Postal Address </td><td>
+	 															<?php echo 	  $personalData["address"] ; 	?><br>
+																<?php echo	  $personalData["city"]; 		?><br>
+																<?php echo	  $personalData["state"];		?><br>
+																<?php echo	  $personalData["country"];		?><br>
+																<?php echo	  $personalData["pin"]; 		?><br>
+														</td></tr>
+	<tr><td>Email:</td><td><?php echo $personalData['email']?></td></tr>	
+	<tr><td height="20px"></td><td></td></tr>	
+	<tr><td></td><td><a href="#" onclick="callPlayerEditForm('<?php echo $this->playerId;?>',
+										'<?php echo $this->playerData['firstName'];?>',
+										'<?php echo $this->playerData['lastName'];?>',
+										'<?php echo $this->playerData['email'];?>',
+										'<?php echo $this->playerData['sex'];?>',
+										'<?php echo $this->playerData['dateOfBirth'];?>',
+										'<?php echo $this->playerData['address'];?>',
+										'<?php echo $this->playerData['city'];?>',
+										'<?php echo $this->playerData['state'];?>',
+										'<?php echo $this->playerData['country'];?>',
+										'<?php echo $this->playerData['pin'];?>',
+										'<?php echo $this->playerData['phone'];?>',
+										'<?php echo $this->playerData['securityQuestion'];?>',
+										'<?php echo $this->playerData['hint'];?>',
+										'<?php echo $this->playerData['securityAnswer'];?>')">Edit Profile | </a>
+					<a href="#" onclick="playerBuddyList('<?php echo $personalData['login']; ?>','<?php echo $this->playerId;?>')"> Buddy List</a></td></tr>														
+																					  
+	
+	
+	<tr><td class='boxLabel' colspan="2"><h3>Account Details</h3></td></tr>
+<?php 
+foreach($this->contents as $i)
+{
+	echo "<tr><td  width='300px' >".$i['Category']."</td><td width='430px'>".$i['Value']."</td></tr>";
+	if($i['Category']=='Bank'||$i['Category']=='Winnings'||$i['Category']=='Bonus Winnings'||$i['Category']=='Bonus Bank')
+	{
+	 $feilds[$j] = $i['Value'];
+	 $j++; 	
+	}
+}
+if($this->accountType == 'confirmed')
+{?>
+<tr><td height="20px"></td><td></td></tr>
+<tr><td></td><td style='text-align: left'><a href="#" onclick="withdrawalHistory(	<?php echo "'".$personalData['login']."'"; ?>,
+												<?php echo "'".$this->playerId."'";?>,
+												'WITHDRAWAL_ACCEPT')">Withdrawal History | </a>
+		<a href="#" onclick="withdrawalHistory(	<?php echo "'".$personalData['login']."'"; ?>,
+												<?php echo "'".$this->playerId."'";?>,
+												'CREDIT_DEPOSITS')"> Deposit History | </a>
+		<a href="#" onclick="callForm(<?php echo $this->playerId.','.$feilds[0].','.$feilds[1].','.$feilds[2].','.$feilds[3]; ?>)">Adjust User Balance |  </a>
+	    <a href="#" onclick="addReconciliation()">View Reconciliation Report</a></td></tr>
+
+<tr><td class='boxLabel' colspan="2"><h3>Game Details</h3></td></tr>
+<tr><td>Loyalty Level</td><td><?php echo $this->loyaltyPoints ;?></td></tr>
+
+<tr><td></td><td style='text-align: right'><a href="#" onclick="playerGameLog('<?php echo $personalData['login']?>','<?php echo $this->playerId; ?>', 'keno')">Keno Log | </a>
+											<a href="#" onclick="playerGameLog('<?php echo $personalData['login']?>','<?php echo $this->playerId; ?>', 'slot')">Slot Log | </a>
+											<a href="#" onclick="playerGameLog('<?php echo $personalData['login']?>','<?php echo $this->playerId; ?>', 'roulette')">Roulette Log</a></td></tr>
+<?php }?>
+</table>
+<br>
+<br>
+
+<div id="sideBox">
+<div style="background-color: #fff; width: 100px; height: 100px"></div>
+<br>
+<?php foreach ($this->csrNotes as $key=>$values)
+		{
+			echo "<p class='note'>CSR ID-".$this->csrNotes[$key]['csr_id'].": ".$this->csrNotes[$key]['note']."</p>
+				  <p class='note'>Time - ".$this->csrNotes[$key]['created']."</p><hr>";
+		 }
+ ?>
+ <a href='#' onclick="insertCsrNoteForm('<?php echo $this->playerId;?>')">put Note</a>
+</div>
+<center>
+<?php if($this->accountType == 'confirmed' && false){?>
+<a href="#" onclick="callForm(<?php echo $this->playerId.','.$feilds[0].','.$feilds[1].','.$feilds[2].','.$feilds[3]; ?>)">Adjust User Balance |</a>
+<a href="#" >Credit Bonus |</a>
+
+<a href="#" onclick="callPlayerEditForm(<?php echo $this->playerId;?>,
+										<?php echo "'".$this->playerData['firstName']."'";?>,
+										<?php echo "'".$this->playerData['lastName']."'";?>,
+										<?php echo "'".$this->playerData['email']."'";?>,
+										<?php echo "'".$this->playerData['sex']."'";?>,
+										<?php echo "'".$this->playerData['dateOfBirth']."'";?>,
+										<?php echo "'".$this->playerData['address']."'";?>,
+										<?php echo "'".$this->playerData['city']."'";?>,
+										<?php echo "'".$this->playerData['state']."'";?>,
+										<?php echo "'".$this->playerData['city']."'";?>,
+										<?php echo "'".$this->playerData['country']."'";?>,
+										<?php echo "'".$this->playerData['pin']."'";?>,
+										<?php echo "'".$this->playerData['phone']."'";?>,
+										<?php echo "'".$this->playerData['securityQuestion']."'";?>,
+										<?php echo "'".$this->playerData['hint']."'";?>,
+										<?php echo "'".$this->playerData['securityAnswer']."'";?>)">Edit Profile</a>
+
+<?php }
+elseif(!$this->accountType == 'confirmed'){
+?>
+<a href="#" onclick="confirmPlayerForm(<?php echo "'".$this->code."'"?>,<?php  echo "'".$this->playerId."'"?>)">Confirm Request</a>
+<?php }?>
+
+
+</center>
+</div>
+<style>
+#sideBox{width: 210px;height: 100px;float: left;position: absolute;top: 10px;left: 760px}
+.note{font: 12px sans-serif;color: #666;}
+#wrap
+{
+	background-color: #F8F8F8
+}
+#profileTab
+{
+
+margin: 0; padding: 0; border-collapse: collapse; 
+
+}
+
+.boxLabel
+{
+	outline-width: 
+	
+	outline-style: solid;
+}
+
+#profileTab td, th {padding: 0px 4px; border-bottom: 1px solid #EEE;}
+#profileTab td + td {border-left: 1px solid #FAFAFA; color: #999;}
+#profileTab td + td + td {color: #666; border-left: none;}
+#profileTab tfoot th {text-align: right;}
+#profileTab th {text-align: left;}
+#profileTab th + th {text-align: right;}
+#profileTab th + th + th {text-align: left;}
+#profileTab thead tr, tfoot tr {color: #555; font-size: 0.8em;}
+#profileTab tr {font: 12px sans-serif; background: url(prettyinpink_row.png) repeat-x #F8F8F8; color: #666;}
+#profileTab tr:hover {background: #FFF;}
+</style>
+<?php }?>

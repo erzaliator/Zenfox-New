@@ -1,0 +1,68 @@
+<form name="player-birthday" id="player-birthday" action="/report/birthday" method="post">
+	<ul>
+		<li>		  
+			<label class="required" for="dob">Date Of Birth*</label>
+			<select name="dob-month" id="dob-month" style="width:75px">
+               	<option label="Month" value="month">Month</option>
+				<?php
+				for($i=1; $i <= 12; $i++)
+				{
+					if($i < 10)
+					{
+						?>
+						<option label="<?=$i ?>" value="0<?=$i ?>" <?=($this->currentMonth == $i)?"selected":"" ?>><?=$i ?></option>
+						<?php
+					}
+					else
+					{
+						?>
+						<option label="<?=$i ?>" value="<?=$i ?>" <?=($this->currentMonth == $i)?"selected":"" ?>><?=$i ?></option>
+						<?php
+					}
+				} 
+				?>
+			</select>
+            <select name="dob-date" id="dob-date" style="width:65px">
+               	<option label="Date" value="date">Date</option>
+				<?php
+				for($i=1; $i <= 31; $i++)
+				{
+					if($i < 10)
+					{
+						?>
+						<option label="<?=$i ?>" value="0<?=$i ?>" <?=($this->currentDate == $i)?"selected":"" ?>><?=$i ?></option>
+						<?php
+					}
+					else
+					{
+						?>
+						<option label="<?=$i ?>" value="<?=$i ?>" <?=($this->currentDate == $i)?"selected":"" ?>><?=$i ?></option>
+						<?php
+					}
+				} 
+				?>
+            </select>
+		</li>
+		<li>
+			<input type="submit" name="submit" value="Submit">
+		</li>
+	</ul>
+</form>
+<?php 
+if($this->players)
+{
+	$linkArray = array();
+	foreach($this->players as $playerData)
+	{
+		$linkArray[$playerData['Player Id']] = array(
+						'controller' => 'player',
+						'action' => 'view',
+						'playerId' => $playerData['Player Id']);
+	}
+	$this->table($this->players, array('Player Id'), $linkArray);
+}
+else
+{
+	echo "No player has birthday on this date.";
+}
+?>

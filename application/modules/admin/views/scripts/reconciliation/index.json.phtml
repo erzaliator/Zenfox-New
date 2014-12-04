@@ -1,0 +1,31 @@
+<?php 
+
+
+	$totalCount =7; //( $this->paginator->getTotalItemCount() )/2;
+	$reconciliationData = array();
+	$reconciliation = array();
+	foreach($this->contents as $key=>$value)
+	{
+		
+		$reconciliationData[$key]['Audit Id'] = $this->contents[$key]['Audit Id'];
+		$reconciliationData[$key]['Transaction Type'] = $this->contents[$key]['Transaction Type'];
+		$reconciliationData[$key]['Amount Type'] = $this->contents[$key]['Amount Type'];
+		$reconciliationData[$key]['Currency'] = $this->contents[$key]['Currency'];
+		$reconciliationData[$key]['Amount'] =$this->contents[$key]['Amount']; 
+		$reconciliationData[$key]['Real Balance'] = $this->contents[$key]['Balance'];
+		$reconciliationData[$key]['Bonus Balance'] = $this->contents[$key]['Real Sub'];
+		$reconciliationData[$key]['Balance'] = $this->contents[$key]['Balance'];
+		$reconciliationData[$key]['Real Sub'] = $this->contents[$key]['Real Sub'];
+		$reconciliationData[$key]['Bonus Sub'] = $this->contents[$key]['Bonus Sub'];
+		$reconciliationData[$key]['Processed'] = $this->contents[$key]['Processed'];
+		$reconciliationData[$key]['Game Id'] = $this->contents[$key]['Audit Id'];
+		$reconciliationData[$key]['Game Type'] = $this->contents[$key]['Audit Id'];
+		$reconciliationData[$key]['DateTime'] = $this->contents[$key]['Date/Time'];
+	}
+	$reconciliation['reconciliation'] = $reconciliationData;
+	
+	
+	
+	echo json_encode($reconciliation);
+	//echo "[{'reconciliation':[{'Audit Id':1,'Transaction Type':'unconfirm','Amount Type':'s','Currency':'ee','Amount':454,'Real Balance':23,'Bonus Balance':32,'Balance':33,'Real Sub':3,'Bonus Sub':3,'Processed':'unconfirm','Game Id':2,'Game Type':'23','DateTime':234}]}]";
+?>

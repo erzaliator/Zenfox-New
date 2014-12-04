@@ -1,0 +1,137 @@
+<?php 
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+$viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+$imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:$viewDir;
+$index = 0;
+if($this->scrolling)
+{
+	?>
+	<script type="text/javascript">
+	
+	$(function(){
+	
+		// The height of the content block when it's not expanded
+		var adjustheight = 94;
+		// The "more" link text
+		var moreText = "+More";
+		// The "less" link text
+		var lessText = "-Less";
+	
+		// Sets the .more-block div to the specified height and hides any content that overflows
+		$(".more-less .more-block").css('height', adjustheight).css('overflow', 'hidden');
+	
+		// The section added to the bottom of the "more-less" div
+		$(".more-less").append('<p class="continued">[&hellip;]</p><a href="#" class="adjust"></a>');
+	
+		$("a.adjust").text(moreText);
+	
+		$(".adjust").toggle(function() {
+			$(this).parents("div:first").find(".more-block").css('height', 'auto').css('overflow', 'visible');
+			// Hide the [...] when expanded
+			$(this).parents("div:first").find("p.continued").css('display', 'none');
+			$(this).text(lessText);
+		}, function() {
+			$(this).parents("div:first").find(".more-block").css('height', adjustheight).css('overflow', 'hidden');
+			$(this).parents("div:first").find("p.continued").css('display', 'block');
+			$(this).text(moreText);
+		});
+	});
+	
+	</script>
+	
+	<div class="joinnowpad" style="padding-top:0px; height:200px">
+	<div id="tttestimonials" style="height:190px; ">
+	<?php
+	if($this->testies)
+	{
+		foreach($this->testies as $testimonial)
+		{
+			$imageName = md5("image" . $testimonial['playerId']) . '.jpg';
+			$imagePath = "http://" . $_SERVER['HTTP_HOST'] . "/images/profiles/" . $imageName;
+			if(!fopen($imagePath, 'r'))
+			{
+				$imagePath = "/images/profiles/profile-m1.jpg";
+			}
+			else
+			{
+				$imagePath = "/images/" . $imagesDir . "../profiles/" . $imageName;
+			}
+			?>
+			        	<blockquote style="margin:0px; padding:0px">
+		              <div class="tttestimonim tttextoverflow">
+		                <div class="ttplyspksimg"><img alt="Taashtime Profile - <?=$testimonial['name']?>" width="70" height="70" src="<?php echo $imagePath;?>"></div>
+		                <div class="ttplyspkscont">
+			        
+			          <?php 
+			    		echo $testimonial['testi'];
+			    		
+			              ?>
+			              </div></div>
+			              
+		              <div>
+		                <div  class="left">[...]</div>
+		                <div class="ttplyspksname"> <?php echo $testimonial['name'];?></div>
+		              </div>
+		            </blockquote>
+			        	<?php
+			        }
+			        
+			        
+	}
+	?>
+				        </div>
+				        <div class="ttplyspkmore"><a href="/testimonial/view">More Players Speak!</a></div>
+				        </div>
+				        
+				<?php
+}
+else
+{
+	?>
+	<div id="testi-body">
+	<?php 
+	foreach($this->testies as $testimonial)
+	{
+		$imageName = md5("image" . $testimonial['playerId']) . '.jpg';
+		$imagePath = "http://" . $_SERVER['HTTP_HOST'] . "/images/profiles/" . $imageName;
+		if(!fopen($imagePath, 'r'))
+		{
+			$imagePath = "/images/profiles/profile-m1.jpg";
+		}
+		else
+		{
+			$imagePath = "/images/" . $imagesDir . "../profiles/" . $imageName;
+		}
+		?>
+		<div id="tttestimonim">
+		<div id="tttestimoniphoto"><img width="70" height="70" src="<?php echo $imagePath;?>" alt="Testimonial Photo"></div>
+		<div id="tttestimonicont">
+		<p><?php echo $testimonial['testi'];?></p>
+		<div align="right"><strong><?php echo $testimonial['name'];?></strong></div>
+		</div>
+		</div>
+		<?php
+	}
+	?>		
+	<div class="clear"></div>
+	<?php 
+		if($this->playerId)
+		{
+			?>
+			<p><a id="testi-write" href="/testimonial/write"><strong>Write Testimonial</strong></a></p>
+			<?php
+		}
+	?>
+	</div>
+	<div align="right">
+	<?php 
+	if($this->paginator)
+	{
+		$pages = get_object_vars($this->paginator->getPages('Sliding'));
+		$this->pagination($pages);
+	}
+	?>
+	</div>
+	<a class="top" href="#" style="position:absolute;">Back To Top</a>
+	<?php
+}

@@ -1,0 +1,27 @@
+<?php
+echo $this->form;
+if($this->paginator)
+{
+	if(count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $playerData)
+		{
+			$linkArray[$playerData['Player Id']] = array(
+										'controller' => 'player',
+										'action' => 'view',
+										'playerId' => $playerData['Player Id'],
+										'accountType' => 'confirmed');
+		}
+		$this->table($this->contents, array('Player Id'), $linkArray);
+	}
+	echo $this->paginationControl(
+				$this->paginator,
+				'Sliding',
+				'normal_date_paginator.phtml',
+				array(
+					'from' => $this->fromDate,
+					'to' => $this->toDate
+				)
+		);
+}

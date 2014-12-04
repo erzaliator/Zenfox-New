@@ -1,0 +1,70 @@
+<form method="post">
+Name : 
+<input type = "text" , name="name" , value="<?=$this->data[0]['name']?>"></input><br>
+Description :
+<input type = "text" , name="desc" , value="<?=$this->data[0]['description']?>"></input><br>
+Note : 
+<input type = "text" , name="note" , value="<?=$this->data[0]['note']?>"></input><br>
+<?php 
+if($this->schemeDef[0]['scheme_type'] == 'CPA')
+{
+?>	
+
+	<table>
+	<tr>
+	<th>Min Players</th>
+	<th>Max Players</th>
+	<th>Commision</th>
+	<th>Acquisition Threshold</th>
+	</tr>
+	<?php 
+	foreach($this->schemeDef as $info)
+	{
+		?>
+		<tr>
+		<td><input type = "text" name="<?=$info['slab_id'].'min'?>" value="<?=$info['min']?>"></input></td>
+		<td><input type = "text" name="<?=$info['slab_id'].'max'?>" value="<?=$info['max']?>"></input></td>
+		<td><input type = "text" name="<?=$info['slab_id'].'factor'?>" value="<?=$info['factor']?>"></input></td>
+		<td><input type = "text" name="<?=$info['slab_id'].'prerequisite'?>" value="<?=$info['prerequisite_count']?>"></input></td>
+	
+	<?php 
+	
+	}
+}
+else if($this->schemeDef[0]['scheme_type'] == 'RS')
+{
+?>	
+
+	<table>
+	<tr>
+	<th>Min Amount</th>
+	<th>Max Amount</th>
+	<th>Percentage</th>	
+	</tr>
+	<?php 
+	foreach($this->schemeDef as $info)
+	{
+		?>
+		<tr>
+		<td><input type = "text" name="<?=$info['slab_id'].'min'?>" value="<?=$info['min']?>"></input></td>
+		<td><input type = "text" name="<?=$info['slab_id'].'max'?>" value="<?=$info['max']?>"></input></td>
+		<td><input type = "text" name="<?=$info['slab_id'].'factor'?>" value="<?=$info['factor']?>"></input></td>
+		</tr>
+	
+	<?php 
+	}
+}
+?>
+</table>
+<input type="submit" name="submit" value="Edit"></input>
+</form>
+
+<a href="<?=$this->url(array(
+'controller' => 'affiliatescheme',
+'action'     => 'edit',
+'request'    => 'addSlab'))?>">Add a Slab</a><br />
+
+<a href="<?=$this->url(array(
+'controller' => 'affiliatescheme',
+'action'     => 'edit',
+'request'    => 'deleteSlab'))?>">Delete Last Slab</a><br />

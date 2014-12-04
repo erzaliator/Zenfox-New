@@ -1,0 +1,37 @@
+<table cellpadding="0" cellspacing="0" border="1" width="100%" class="paly-report-forms">
+<tr class="report-head">
+<td><div>From</div></td>
+<td><div>Message</div></td>
+<td><div>Date</div></td>
+</tr>
+<?php
+$i = 0;
+foreach($this->messages as $message)
+{
+	if(($i%2) == 0)
+	{
+		?>
+		<tr class="even-style1">
+		<?php
+	}
+	else
+	{
+		?>
+		<tr class="odd-style1">
+		<?php
+	}
+	?>
+	<td><?php echo $this->sender[$i]; ?></td>
+	<td><?php echo $message['reply_msg']; ?></td>
+	<td><?php echo $message['time']; ?></td></tr>
+	<?php 
+//	echo $this->translate("From: ") . $this->sender[$i] . "  ";
+//	echo $this->translate("Message: ") . $message['reply_msg'] . "  " . $message['time'];
+	$i++;
+	?><br></br><?php
+}
+?></table>
+<?php 
+echo $this->form;
+echo $this->message;
+?>

@@ -1,0 +1,55 @@
+<?php
+$iterator = new RecursiveIteratorIterator ( $this->container, RecursiveIteratorIterator::SELF_FIRST );
+$prevDepth = - 1;
+$active = false;
+$activeLabel = "";
+foreach ( $iterator as $page ) {
+	if ($page->isVisible() && $this->navigation()->accept($page)) {
+		$depth = $iterator->getDepth ();
+		$isActive = $page->isActive ( true );
+		
+		if($isActive)
+		{
+			$activeLabel = $page->getLabel ();
+			$active = true;
+		}
+		if($active)
+		{
+			if ($prevDepth == -1) {
+				$html [] = '<h3>' . $page->getLabel () . '</h3><ul class="nav">' . "\n";
+			}else if($depth > $prevDepth){
+				
+			} 
+			else if ($prevDepth > $depth) {
+				for($i = $prevDepth; $i > $depth; $i --) {
+					$html [] = '</li>' . "\n";
+				}
+				$html [] = '    </li>' . "\n";
+				$active = false;
+				$prevDepth = -1;
+				continue;
+			}
+			else if($prevDepth == 0)
+			{
+				$active = false;
+				$prevDepth = -1;
+			} 
+			else {
+				$html [] = '    </li>' . "\n";
+			}
+			if($prevDepth != -1){
+				$html [] = '<li>';
+				$html [] = '<a href="' . $page->getHref () . '">'  . $page->getLabel () . '</a>' . "\n";
+			}
+			$prevDepth = $depth;
+		}
+	}
+}
+if($depth != 0)
+{
+	$html [] = '</li>' . "\n";
+    $html [] = '</ul>' . "\n";
+}
+$html [] = '</li>';
+$html [] = '</ul>';
+echo join ( PHP_EOL, $html );

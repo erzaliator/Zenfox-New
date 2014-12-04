@@ -1,0 +1,18 @@
+<?php
+echo $this->form;
+if($this->slotDetails)
+{
+	foreach($this->slotDetails as $slot)
+	{
+		?>
+		<a href = "<?php echo $this->url(array(
+							'controller' => 'slotconfig', 
+							'action' => 'create',
+							'machineId' => $slot['machine_id']));
+		?>">
+		<?php print("Machine Id -> " . $slot['machine_id']);
+		echo '<br>';
+	}
+}
+?>
+</a>

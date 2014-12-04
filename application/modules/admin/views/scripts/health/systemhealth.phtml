@@ -1,0 +1,47 @@
+
+<?php echo $this->form ;
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$this->table($this->value,  true);
+	}
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	$this->pagination($pages, array(
+							'tag' => $this->tag,
+							'reporttype' => $this->reporttype,
+							'starttime' => $this->starttime,
+							'endtime' => $this->endtime,
+							'itemsperpage' => $this->itemsperpage));
+}
+?>
+<script type="text/javascript" >
+
+	document.getElementById("systemtag-element").style.display = "none";
+	document.getElementById("systemtag-label").style.display = "none";
+
+	document.getElementById("playertag-element").style.display = "none";
+	document.getElementById("playertag-label").style.display = "none";
+
+	document.getElementById("trackertag-element").style.display = "none";
+	document.getElementById("trackertag-label").style.display = "none";
+
+	if(!document.getElementById("HealthForm").health.length)
+	{
+		if(document.getElementById("HealthForm").health.checked)
+		{
+			document.getElementById("systemtag-element").style.display = "block";
+			document.getElementById("systemtag-label").style.display = "block";
+		}
+		
+	}
+	else
+	{
+		if(document.getElementById("HealthForm").health[1].checked)
+		{
+			document.getElementById("systemtag-element").style.display = "block";
+			document.getElementById("systemtag-label").style.display = "block";
+		}
+	}
+</script>

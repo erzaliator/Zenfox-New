@@ -1,0 +1,9 @@
+{
+	"viewDir":"bingobible.tld/",
+	"htmlTitle":"Online Bingo",
+	"cssDir":"bingobible/",
+	"jsDir":"bingobible/",
+	"imagesDir":"bingobible/",
+	"flashDir":"/games/taashtime",
+	"cdnImageServer":"http://play.taashtime.com"
+}

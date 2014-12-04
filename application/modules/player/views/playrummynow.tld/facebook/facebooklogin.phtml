@@ -1,0 +1,9 @@
+<?php
+if($this->newUser)
+{
+	$siteHttpUrl = "http://". $_SERVER['HTTP_HOST'];
+	$link = $siteHttpUrl . '/facebookauth/auth';
+	?>
+		<body onload='JavaScript:popitup("<?php echo $link;?>");'></body>			
+	<?php
+}

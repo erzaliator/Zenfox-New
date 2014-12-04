@@ -1,0 +1,80 @@
+<!-- a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a-->
+<?php
+if($this->gameGroups)
+{
+	foreach($this->gameGroups as $gameGroup)
+	{
+		if($gameGroup)
+		{
+			foreach($gameGroup as $groupName => $flavour)
+			{
+				if($groupName && $flavour)
+				{
+					echo "<table cellpadding='0' cellspacing='2' border='1'>";
+					echo "<tr><td><b>" . "Group Name" . "</b></td></tr>";
+					echo "<tr><td>" . $groupName . "</td></tr>";
+					echo "<tr><td><b>" . "Game Id" . "</b></td><td><b>". "Game Name" . 
+					 	 "</b></td><td><b>" . "Amount Type" . "</b></td><td><b>" . "Game Flavour" . 
+					 	 "</b></td></tr>";
+					//Zenfox_Debug::dump($groupName, 'group');
+					foreach($flavour as $flavourName => $machine)
+					{
+						//Zenfox_Debug::dump($flavourName, 'flavour');
+						if($flavourName && $machine)
+						{
+							foreach($machine as $machineDetails)
+							{
+								echo "<tr><td>" . $machineDetails ['runningRouletteId'] . "</td><td>" . 
+								 	 $machineDetails['machineName'] . "</td><td>" . 
+								 	 $machineDetails['amountType'] . "</td><td>" . 
+								 	 $machineDetails['gameFlavour'] . "</td></tr>";
+							}
+						}
+					}
+				}
+			}
+		}
+	echo "<br>";
+	}
+}
+else
+{
+	//print ("hi");
+        $game_id = 1;
+        $game_flavour = 'RU_US';
+        //$session = new Zend_Auth_Storage_Session();
+        //$store = $session->read();
+        //$login = $store['authDetails'][0]['login'];
+        $login = $this->login;
+        //$passKey = md5($game_id . md5(Zend_Session::getId()));
+        $passKey = md5($game_id . md5($this->phpsessid));
+        $xml_config = 'http://demo.logicdice.com/games/single-player/lan_enu.xml';
+        $string = "game_id=$game_id&game_flavour=$game_flavour&". "login=$login|$game_id|$game_flavour&pass_key=$passKey
+        &xml_config=$xml_config&amount_type=REAL&currency=USD&frontend_id=1&locale=en_US";
+
+//print $string;
+//	print "Ha ha, sucker!! There is no game.";
+?>
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                        id="roulette" width="100%" height="100%"
+                        codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+                        <param name="movie" value="/games/single-player/roulette.swf" />
+                        <param name="FlashVars" value="<?php echo $string ?>" />
+                        <param name="quality" value="high" />
+                        <param name="bgcolor" value="#869ca7" />
+                        <param name="allowScriptAccess" value="sameDomain" />
+                        <embed src="/games/single-player/roulette.swf" flashVars = "<?php echo $string ?>" quality="high" bgcolor="#869ca7"
+                                width="100%" height="100%" name="roulette" align="middle"
+                                play="true"
+                                loop="false"
+                                quality="high"
+                                allowScriptAccess="sameDomain"
+                                type="application/x-shockwave-flash"
+                                pluginspage="http://www.adobe.com/go/getflashplayer">
+                        </embed>
+        </object>
+
+<?php
+}

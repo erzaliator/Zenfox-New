@@ -1,0 +1,29 @@
+<?php
+
+$this->dateform($this->fromDate, $this->toDate, $this->fromHour, $this->toHour, $this->fromMinute, $this->toMinute, $this->fromPM, $this->toPM, $this->items);		
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArrays = array();
+
+		foreach($this->contents as $tableData)
+		{
+			$ids = explode('-', $tableData['Gamelog Id']);
+			$linkArrays[$tableData['Gamelog Id']] = array(
+					'controller' => 'rummylog',
+					'action' => 'log',
+					'sessId' => $ids[0],
+					'gameId' => $ids[1],
+					'flavour' => $ids[2]);
+		}
+
+		$linkField = array('Gamelog Id', 'Outcome');
+		$this->table($this->contents, $linkField, $linkArrays, '', array('Outcome' => 'Gamelog Id'), true);
+	}
+	
+	echo $this->paginationControl($this->paginator, 'Sliding', 'my_paginator_control.phtml', array('myFromDate' => $this->fromDate, 'myToDate' => $this->toDate));
+}
+
+?>

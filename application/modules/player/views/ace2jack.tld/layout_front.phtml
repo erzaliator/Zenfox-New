@@ -1,0 +1,270 @@
+<?php 
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+$authSession = new Zenfox_Auth_Storage_Session();
+$sessionData = $authSession->read();
+?>
+<!DOCTYPE html>
+<html><head>
+<link rel="shortcut icon" href="/images/ace2jak/a2j.png">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ace2Jak</title>
+<link rel="stylesheet" href="/css/ace2jak/master.css" type="text/css">
+<link rel="stylesheet" href="/css/ace2jak/mobile.css" type="text/css">
+<link rel="stylesheet" href="/css/ace2jak/style-768.css" type="text/css">
+<link rel="stylesheet" href="/css/ace2jak/style-960.css" type="text/css">
+<!--[if IE]>
+	<link rel="stylesheet" href="/css/ace2jak/ie.css" type="text/css"/>
+<![endif]-->
+
+</head>
+
+<body>
+<div id="header">
+  <div class="container">
+<div class="logo"><a href="/"><img src="/images/ace2jak/logo.png"></a></div>
+<div class="header-menu">
+    <div class="top-ribbon">
+    	<!-- <form id="player-login-form" enctype="application/x-www-form-urlencoded" action="/auth/login" method="post"><dl class="zend_form">
+<ul><li><label for="userName" class="required">Username *</label>
+
+<input type="text" name="userName" id="userName" value="" class="text"></li>
+<li><label for="password" class="required">Password *</label>
+
+<input type="password" name="password" id="password" value="" class="text"></li>
+<li class="login_form_button">
+<input type="submit" name="submit" id="submit" value="Log In"></li>
+<li>
+<input type="hidden" name="fgPassword" value="" id="fgPassword">
+<a href="/en_GB/auth/forgotpassword">Forgot Password</a></li>
+<li class="live">Live Tables: &nbsp;<span>285</span></li></ul></dl></form> -->
+<?php
+    		if($sessionData)
+    		{
+    			$playerId = $sessionData['id'];
+    			$imageName = md5("image" . $playerId) . '.jpg';
+    			$loginName = $sessionData['authDetails'][0]['login'];
+    			$firstName = $sessionData['authDetails'][0]['first_name'];
+    			
+    			$cash = $sessionData['authDetails'][0]['bank'] + $sessionData['authDetails'][0]['winnings'] + $sessionData['authDetails'][0]['bonus_bank'] + $sessionData['authDetails'][0]['bonus_winnings'];
+    			$bonus = $sessionData['authDetails'][0]['bonus_due'];
+    			$buddyBonus = $sessionData['authDetails'][0]['buddy_earnings'];
+    			
+    			$loyaltyPoints = $sessionData['authDetails'][0]['loyalty_points_left'];
+    			
+    			$currency = new Zend_Currency();
+    			$currencySession = new Zend_Session_Namespace('currency');
+    			$source = $currency->getShortName('', $currencySession->oldValue);
+    			$destination = $currency->getShortName('', $currencySession->newValue);
+    			$currConv = new CurrencyConversion();
+    			$cash = $currConv->getConvertedValue($source, $destination, $cash);
+    			$bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+    			$buddyBonus = $currConv->getConvertedValue($source, $destination, $buddyBonus);
+    			$sessionData['cash'] = $cash;
+    			$sessionData['bonus'] = $bonus;
+    			$authSession->write($sessionData);
+    			$joinUrl = "/";
+    			$accountVariable = new AccountVariable();
+    			$varData = $accountVariable->getData($playerId, 'freeMoney');
+    			if($varData)
+    			{
+    				$freeMoney = floatval($varData['varValue']);
+    			}
+    			
+    			$bonusLevel = new BonusLevel();
+    			$bonusPercent = $bonusLevel->getBonusPercentage($playerId);
+    			$level = $bonusPercent['levelPercent'];
+    			
+    			?>
+    			<script src="/js/ace2jak/jquery-1.8.3.min.js"></script>
+    			<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+				<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+				<script>
+			        $(document).ready(function() {
+			        	$("#progressbar").progressbar({
+			                value: <?=$level ?>
+			        	});
+			        });
+				</script>
+    			<div class="top-replace">
+	    			<p>Cash :&nbsp;<span>Rs. <?=round($cash, 2);?></span></p>
+	    			<p>Coins :&nbsp;<span>T¢ <?=round($freeMoney, 2);?></span></p>
+    			</div>
+    			<div class="top-replace">
+    				<p>Bonus Due :&nbsp;<span>Rs. <?=round($bonus, 2);?></span></p>
+    			</div>
+    			<div class="top-replace level">
+	    			<p>Level :</p><br>
+	    			<div id="progressbar"></div>
+    			</div>
+    			<?php 
+    		}
+	    	else
+	    	{
+	    		$decorator = new Decorator();
+	    		$loginForm = new Player_LoginForm();
+	    		$loginForm = $decorator->addDecorators($loginForm, 'login');
+	    		$request = Zend_Controller_Front::getInstance()->getRequest();
+	    		if($request->getParam('format') == 'json')
+	    		{
+	    			$loginForm->setAction('/auth/login/format/json');
+	    		}
+	    		else
+	    		{
+	    			$loginForm->setAction('/auth/login');
+	    		}
+	    		echo $loginForm;
+	    	}
+        ?>
+        <p class="live-tab">Live Tables: &nbsp;<span><?php 
+              $onlineTable = new OnlineTable();
+              echo $onlineTable->getLiveTables();
+              ?></span></p>
+       <?php 
+       if($sessionData)
+       {
+       	?>
+       	<p class="log-out"><a id="" href="/auth/logout" onclick="()" class="dropdown-toggle" data-hover="dropdown">Log Out</a></p>
+       	<?php 
+       }
+       ?>
+    </div>
+    <?php 
+    	$partial = array('menu.phtml','player');
+		$this->navigation()->menu()->setPartial($partial);
+		echo $this->navigation()->menu()->render();
+	?>
+</div>
+<div style="padding-left: 20px;"><a href="https://taashtime.com" target="_blank"><img src="/images/ace2jak/tn_small.png"></a></div>
+</div>
+  </div>
+<div class="page-wrapper">
+<div id="featured">
+	<div class="featured-inner">
+	<?php 
+    		echo $this->layout()->content;
+    	?>
+    		   	
+	    	</div>
+</div>
+<div id="content-top">
+<div class="offers-videos">
+<h5 class="offers">Offers</h5>
+<h5 class="videos">Videos</h5>
+</div>
+<div class="contain-pad">
+<div class="content-top-left">
+<div class="content-top-box">
+<p class="section-head">100% Welcome Bonus</p>
+<img src="/images/ace2jak/double.png" alt="double">
+<p>Join us and claim a 100% bonus on your first purchase today. Get lot of exciting bonuses. There are certain rules that apply to this offer. To read all the rules, click on Read More</p>
+<a href="/promotions#welcome-bonus" class="readmore">Read More...</a>
+</div>
+<div class="content-top-box">
+<p class="section-head">Refer &amp; Earn Rs. 1000/-</p>
+<img src="/images/ace2jak/refer-earn.png" alt="double">
+<p>You can now earn credits by referring your friend to Ace2Jak.com. When a friend you refer joins the game and converts to a Premium player, you will be credited with reward points. These reward points expire in 45 days from the date of issue.</p>
+<a href="/promotions#refer-earn" class="readmore">Read More...</a>
+</div>
+<div class="content-top-box">
+<p class="section-head">Special Daily Tourneys</p>
+<img src="/images/ace2jak/time.png" alt="double">
+<p>Register and grab the opportunity to make your day even more exciting. Play in our Special Daily Tournaments every day for a chance to win up to Lakhs. Do you have the skills? There is only one way to find out - Register Now!</p>
+<a href="/promotions#special-tournament" class="readmore">Read More...</a>
+</div>
+</div>
+<div class="content-top-right">
+<h5 class="videos-hide">Videos</h5>
+<p class="section-head">Rummy Tours</p>
+<img src="/images/ace2jak/vedio.png" alt="vedio">
+<a href="#" class="browse">Browse Videos</a>
+</div>
+</div>
+</div>
+<div id="content-middle">
+<div class="contain-pad">
+<div class="content-middle-left">
+<div class="online-rummy">
+<p class="section-head">Online Rummy</p>
+<p>Playing rummy not only tests your decision-making skills but also targets your strategy devising skills. While we acknowledge your interest in reaping profits from the game, we urge you to know the game rules to ensure you do not let go of any hard earned penny.</p>
+<a href="/faq/gameplay" class="readmore">Read More...</a>
+</div>
+<div class="online-image"><img src="/images/ace2jak/online.png" alt="online"></div>
+</div>
+<div class="content-middle-right">
+<div class="online-rummy">
+<p class="section-head">Fair Play</p>
+<p>We understand your zeal towards rummy and thus, promise you a ride where fun and safety, and, entertainment and security go hand in hand.
+That's why we have fair play policy.</p>
+<a href="/content/rules" class="readmore">Read More...</a>
+</div>
+<div class="online-image"><img src="/images/ace2jak/fairplay.png" alt="online"></div>
+</div>
+</div>
+</div>
+<div id="content-last">
+<div class="contain-pad">
+<div class="content-last-box">
+	<p class="section-head">Ace2Jak Rummy</p>
+	<p>Your personal details are retained with the company for information sake and are never revealed to a third party.
+	By signing up, you understand that the Terms bind on you. You agree that Services offered on the Website can be accessed only in accordance with the Terms and you should be responsible to 
+	comply with the Terms at all times. You are responsible to be aware of and agree to abide by the Terms as published and periodically modified by Ace2jak.</p>
+	<p>If any of the Terms are determined to be unlawful, invalid, void or unenforceable for any reason by any judicial or quasi - judicial body in India, it will not affect the validity and 
+	enforceability of the remaining Terms.
+	Our failure or delay to act or exercise any right or remedy with respect to a breach of any of the Terms by you must not be construed as a waiver of our right to act with respect to the said breach or 
+	any prior, concurrent, subsequent or similar breaches.</p>
+</div>
+<div class="content-last-box middle-pad">
+	<p class="section-head">Choose your rummy game</p>
+	<p>We are offering variety of games. You can choose any one of the following: </p>
+	<p><b>Free Rummy: </b>These are sets of free practice games that you can playmultiple times to test your skills. When you join our rummy community, you become eligible for 100% welcome back bonus of up to Rs.500 on your first deposit amount!</p>
+	<p><b>Pool Player Rummy: </b>Play rummy on the online multiplayer interface, just the way it is played at a local rummy club with up to 6 players per table.</p>
+	<p><b>En-Cash Rummy: </b>This game allows the winner to collect cash according to the points scored in the match played.</p>
+	<p><b>Tournaments: </b>Ace2jak includes daily, weekly and even seasonal rummy tournaments, where you get the chance to win big cash prizes.</p>
+</div>
+<div class="content-last-box last-noborder">
+<p class="section-head">More at Ace2Jak</p>
+	<p>While we do offer various bonuses, cash prizes and other exciting promotions, we also offer various styles of rummy for you to play online.</p>
+	<p>Playing rummy not only tests your decision-making skills but also targets your strategy devising skills. While we acknowledge your interest in reaping profits from the game, we urge you to know 
+	the game rules to ensure you do not let go of any hard earned money.</p>
+	<p>If a promotion, game, event, competition or tournament is organized by us on Ace2jak, it must be governed by the Terms and any supplementary terms and conditions which may be specifically 
+	applied for that promotion, game, event, competition or tournament.</p>
+	<p>For more information on Ace2jak, latest events, tournaments or offers, sign up to our newsletter.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div class="container">
+	<div class="foot1">
+    	<a href=""><img src="/images/ace2jak/img21.png" alt=""></a>
+        <a href=""><img src="/images/ace2jak/know.png" alt=""></a>
+    </div>
+    <div class="foot2">
+    	<div class="foot2-inner">
+            <a href=""><img src="/images/ace2jak/visa.png" alt=""></a>
+            <a href=""><img src="/images/ace2jak/master.png" alt=""></a>
+            <a href=""><img src="/images/ace2jak/tech.png" alt=""></a>
+            <a href=""><img src="/images/ace2jak/cit.png" alt=""></a>
+            <!-- <a href=""><img src="/images/ace2jak/paypal.png" alt=""></a> -->
+        </div>
+    </div>
+    <div class="foot3">
+    	<!-- <a href=""><img src="/images/ace2jak/tn.png" alt=""></a> -->
+        <a href="http://taashnetwork.com" target="_blank" class="foot-last"><img src="/images/ace2jak/tn.png" alt="Taashnetwork"></a>
+    </div>
+</div>
+<div class="footer-bottom">
+<div class="container">
+<a href="/content/about">About Us</a>
+<a href="/faq/security">Security</a>
+<a href="/content/contact">Contact Us</a>
+<a href="/content/privacypolicy">Privacy Policy</a>
+<a href="/content/terms">Terms & Conditions</a>
+</div>
+</div>
+</div>
+
+
+</body></html>

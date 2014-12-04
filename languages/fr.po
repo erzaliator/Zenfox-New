@@ -1,0 +1,1643 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zenfox\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-10 18:04+0530\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Yaswanth Narvaneni <yaswanth@gmail.com>\n"
+"Language-Team: Zenfox <yaswanth@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: /home/ny/workspace/zenfox-web/\n"
+"X-Poedit-KeywordsList: translate;__;setLabel;setValue;setMessage;setLegend;_refresh;append;prepend\n"
+"X-Poedit-SearchPath-0: application\n"
+"X-Poedit-SearchPath-1: library/Zenfox\n"
+"X-Poedit-SearchPath-2: languages\n"
+
+#: application/models/Player.php:65
+#: application/models/Player.php:71
+#, fuzzy
+msgid "Login Failed. The username or password, you entered, did not match."
+msgstr "Échec de connexioin. Le nom de l'utilisateur ou le  mot de passe que vous avez saisi ne correspondent pas"
+
+#: application/models/Player.php:208
+msgid "Player data undefined"
+msgstr "Données du joueur est indéfini"
+
+#: application/models/Player.php:220
+msgid "Invalid login"
+msgstr "Nom du l'utilisateur est invalide"
+
+#: application/models/Player.php:233
+msgid "Invalid password"
+msgstr "mot de passe est invalide"
+
+#: application/models/Player.php:246
+msgid "Invalid Email"
+msgstr "Adresse électronique est invalide"
+
+#: application/models/Player.php:331
+#: application/models/Player.php:334
+msgid "Login Name `"
+msgstr "Cet nom du l'utilisateur a été déjà pris"
+
+#: application/models/Player.php:331
+#: application/models/Player.php:334
+msgid "` has already been taken"
+msgstr "' a été déjà pris"
+
+#: application/models/Player.php:341
+#: application/models/Player.php:344
+msgid "Invalid loginname."
+msgstr "Nom du l'utilisateur est invalide"
+
+#: application/models/Player.php:368
+msgid "Password and Confirm Password fields do not match."
+msgstr "Le mot de passe de confirmation que vous avez entré ne correspond pas"
+
+#: application/models/Player.php:375
+msgid "Invalid password."
+msgstr "Mot de passe est invalide"
+
+#: application/models/Player.php:403
+msgid "Email already exists"
+msgstr "Adress éléctronique est déjà la"
+
+#: application/models/Player.php:410
+msgid "Invalid email."
+msgstr "Adress éléctronique est invalide"
+
+#: application/models/Player.php:508
+msgid "Unable to get partition connection with partition Key::"
+msgstr "Incapable d'obtenir la connexion de cloison avec la clé de cloison"
+
+#: application/models/WithdrawalRequest.php:86
+#, fuzzy
+msgid "Player Id"
+msgstr "identifier moitié"
+
+#: application/models/WithdrawalRequest.php:87
+#: application/models/WithdrawalRequest.php:211
+#: application/models/WithdrawalRequest.php:254
+#: application/models/WithdrawalRequest.php:303
+msgid "Withdrawal Id"
+msgstr ""
+
+#: application/models/WithdrawalRequest.php:88
+#: application/models/WithdrawalRequest.php:256
+msgid "Initial Requested"
+msgstr ""
+
+#: application/models/WithdrawalRequest.php:89
+#: application/models/WithdrawalRequest.php:214
+#: application/models/WithdrawalRequest.php:257
+#: application/models/WithdrawalRequest.php:306
+#, fuzzy
+msgid "Remaining Amount"
+msgstr "Somme actuel"
+
+#: application/models/WithdrawalRequest.php:90
+#: application/models/WithdrawalRequest.php:216
+#: application/models/WithdrawalRequest.php:259
+#: application/models/WithdrawalRequest.php:308
+msgid "Status"
+msgstr "statut"
+
+#: application/models/WithdrawalRequest.php:93
+msgid "Date & Time"
+msgstr "Date et Lieu"
+
+#: application/models/WithdrawalRequest.php:212
+#: application/models/WithdrawalRequest.php:255
+#: application/models/WithdrawalRequest.php:304
+#, fuzzy
+msgid "Date and Time"
+msgstr "Date et Lieu"
+
+#: application/models/WithdrawalRequest.php:213
+#: application/models/WithdrawalRequest.php:305
+#, fuzzy
+msgid "Requested Amount"
+msgstr "Somme du Pari"
+
+#: application/models/WithdrawalRequest.php:215
+#: application/models/WithdrawalRequest.php:258
+#: application/models/WithdrawalRequest.php:307
+msgid "Withdrawal Type"
+msgstr ""
+
+#: application/models/AffiliateConfig.php:207
+msgid "Login Failed. The username and password you entered did not match."
+msgstr "Échec de connexioin. Le nom de l'utilisateur et le  mot de passe que vous avez saisi ne correspondent pas"
+
+#: application/models/AffiliateConfig.php:214
+msgid "Login Failed. The username or password you entered did not match."
+msgstr "Échec de connexioin. Le nom de l'utilisateur ou le  mot de passe que vous avez saisi ne correspondent pas"
+
+#: application/modules/affiliate/forms/TicketReplyForm.php:12
+#: application/modules/affiliate/forms/TicketForm.php:17
+msgid "Message"
+msgstr "message"
+
+#: application/modules/affiliate/forms/TicketReplyForm.php:18
+msgid "Ticket Status : "
+msgstr "Statut du billet/plainte"
+
+#: application/modules/affiliate/forms/TicketReplyForm.php:20
+msgid "Open"
+msgstr "ouvert"
+
+#: application/modules/affiliate/forms/TicketReplyForm.php:21
+msgid "Closed"
+msgstr "Fermé"
+
+#: application/modules/affiliate/forms/TicketReplyForm.php:26
+#: application/modules/affiliate/forms/AffiliateTrackerForm.php:18
+#: application/modules/affiliate/forms/RegistrationForm.php:78
+#: application/modules/affiliate/forms/ChangePasswordForm.php:21
+#: application/modules/affiliate/forms/TicketForm.php:23
+#: application/modules/affiliate/forms/TransactionForm.php:31
+#: application/modules/affiliate/forms/LoginForm.php:15
+msgid "Submit"
+msgstr "Soumettez"
+
+#: application/modules/affiliate/forms/AffiliateTrackerForm.php:7
+msgid "Tracker Type *"
+msgstr "Type du poursuivant"
+
+#: application/modules/affiliate/forms/AffiliateTrackerForm.php:14
+msgid "Tracker Name *"
+msgstr "Nom du poursuivant"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:7
+#: application/modules/affiliate/forms/LoginForm.php:7
+msgid "Alias *"
+msgstr "Alias"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:12
+#: application/modules/affiliate/forms/LoginForm.php:11
+msgid "Password *"
+msgstr "mot de passe"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:17
+msgid "Confirm Password *"
+msgstr "Confirmez mot de passe"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:22
+msgid "Email ID *"
+msgstr "Adresse électronique"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:27
+msgid "First Name *"
+msgstr "prénom"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:32
+msgid "Last Name *"
+msgstr "Nom"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:37
+msgid "Company *"
+msgstr "Nom de la Compagnie"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:41
+msgid "Address *"
+msgstr "Adresse"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:45
+msgid "City *"
+msgstr "Ville"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:49
+msgid "State *"
+msgstr "État"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:53
+msgid "Country *"
+msgstr "Pays"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:57
+msgid "Pin Code *"
+msgstr "Code postale"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:62
+msgid "Phone No *"
+msgstr "numero du téléphone"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:67
+msgid "Payment Type *"
+msgstr "mode du paiement"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:71
+msgid "Referer Alias"
+msgstr "référence Alias"
+
+#: application/modules/affiliate/forms/RegistrationForm.php:74
+msgid "Language *"
+msgstr "Langue"
+
+#: application/modules/affiliate/forms/ChangePasswordForm.php:7
+msgid "Your Current Password *"
+msgstr "Votre mot de passe actuel"
+
+#: application/modules/affiliate/forms/ChangePasswordForm.php:11
+msgid "Enter New Password *"
+msgstr "Entrez mot de passe nouveau"
+
+#: application/modules/affiliate/forms/ChangePasswordForm.php:16
+msgid "Re-enter New Password *"
+msgstr "Rentrez le mot de passe nouveau"
+
+#: application/modules/affiliate/forms/TicketForm.php:9
+msgid "Subject *"
+msgstr "Sujet"
+
+#: application/modules/affiliate/forms/TransactionForm.php:7
+msgid "From Date *"
+msgstr "de"
+
+#: application/modules/affiliate/forms/TransactionForm.php:11
+#: application/modules/affiliate/forms/TransactionForm.php:18
+msgid "Time *"
+msgstr "temps"
+
+#: application/modules/affiliate/forms/TransactionForm.php:14
+msgid "To Date *"
+msgstr "à"
+
+#: application/modules/affiliate/forms/TransactionForm.php:21
+msgid "Items per page"
+msgstr "Objets par page"
+
+#: application/modules/affiliate/forms/TransactionForm.php:28
+msgid "20"
+msgstr "20"
+
+#: application/modules/affiliate/controllers/AuthController.php:31
+msgid "You have been successfully registered. Please <a href=\""
+msgstr "vous avez été enregistré"
+
+#: application/modules/affiliate/controllers/IndexController.php:15
+msgid "This is the affiliate website"
+msgstr "C'est le site affilié"
+
+#: application/modules/affiliate/controllers/HomeController.php:47
+msgid "Your profile has been updated successfully"
+msgstr "Votre profil a été mis à jour"
+
+#: application/modules/affiliate/controllers/HomeController.php:74
+msgid "Your password has been successfully changed"
+msgstr "Votre mot de passe a été changé"
+
+#: application/modules/affiliate/controllers/ErrorController.php:21
+msgid "Page not found"
+msgstr "Page n'est pas trouvé "
+
+#: application/modules/affiliate/controllers/ErrorController.php:27
+msgid "Application error"
+msgstr "Erreur d'application "
+
+#: application/modules/affiliate/controllers/TicketController.php:56
+msgid "Your ticket has been submited successfully"
+msgstr "Votre billet/plainte a été deposé"
+
+#: application/modules/affiliate/controllers/TicketController.php:132
+msgid "Your reply has been sent"
+msgstr "Votre réponse a été envoyée"
+
+#: application/modules/player/models/TransactionReports.php:105
+msgid "Audit Id"
+msgstr "Identifiant Audit"
+
+#: application/modules/player/models/TransactionReports.php:106
+msgid "Transaction Type"
+msgstr "Type du transaction"
+
+#: application/modules/player/models/TransactionReports.php:107
+#: application/modules/player/models/KenoLog.php:75
+#: application/modules/player/models/RouletteLog.php:76
+msgid "Amount Type"
+msgstr "Type du somme"
+
+#: application/modules/player/models/TransactionReports.php:108
+#: application/modules/player/models/KenoLog.php:73
+#: application/modules/player/models/RouletteLog.php:75
+msgid "Currency"
+msgstr "Monnaie"
+
+#: application/modules/player/models/TransactionReports.php:109
+msgid "Amount"
+msgstr "somme"
+
+#: application/modules/player/models/TransactionReports.php:110
+msgid "Balance"
+msgstr "solde"
+
+#: application/modules/player/models/TransactionReports.php:111
+msgid "Real Sub"
+msgstr "Sub actuel"
+
+#: application/modules/player/models/TransactionReports.php:112
+msgid "Bonus Sub"
+msgstr "Bonus Sub"
+
+#: application/modules/player/models/TransactionReports.php:113
+msgid "Processed"
+msgstr "traité "
+
+#: application/modules/player/models/TransactionReports.php:114
+#, fuzzy
+msgid "Date/Time"
+msgstr "Date et Lieu"
+
+#: application/modules/player/models/KenoLog.php:70
+#: application/modules/player/models/RouletteLog.php:72
+msgid "Log Id"
+msgstr "identifiant login"
+
+#: application/modules/player/models/KenoLog.php:71
+#: application/modules/player/models/RouletteLog.php:73
+msgid "Session Id"
+msgstr "Identifiant de session"
+
+#: application/modules/player/models/KenoLog.php:72
+#: application/modules/player/models/RouletteLog.php:74
+msgid "Machine Id"
+msgstr "Identifiant de Machine"
+
+#: application/modules/player/models/KenoLog.php:76
+msgid "Pjp Win Status"
+msgstr "Statut du victoire Pjp"
+
+#: application/modules/player/models/KenoLog.php:79
+#: application/modules/player/models/RouletteLog.php:78
+msgid "Bet Amount"
+msgstr "Somme du Pari"
+
+#: application/modules/player/models/KenoLog.php:80
+#: application/modules/player/models/RouletteLog.php:79
+msgid "Win Amount"
+msgstr "Somme du Victoire"
+
+#: application/modules/player/models/KenoLog.php:81
+msgid "Pjp_Win Amount"
+msgstr "Somme du Victoire PJP"
+
+#: application/modules/player/models/RouletteLog.php:77
+msgid "PJP Win Status"
+msgstr "Statut du victoire PJP"
+
+#: application/modules/player/models/RouletteLog.php:80
+msgid "PJP Win Amount"
+msgstr "Somme du Victoire PJP"
+
+#: application/modules/player/forms/PasswordRecoveryForm.php:12
+msgid "Enter User Name OR Email Address *"
+msgstr ""
+
+#: application/modules/player/forms/PasswordRecoveryForm.php:38
+#: application/modules/player/forms/ChangePasswordForm.php:17
+msgid "New Password *"
+msgstr "nouveau mot de passe"
+
+#: application/modules/player/forms/ListallForm.php:11
+#: application/modules/player/forms/ReconciliationForm.php:11
+msgid "From Date"
+msgstr "de"
+
+#: application/modules/player/forms/ListallForm.php:17
+#: application/modules/player/forms/ListallForm.php:27
+#: application/modules/player/forms/ReconciliationForm.php:17
+#: application/modules/player/forms/ReconciliationForm.php:27
+msgid "Time"
+msgstr "temps"
+
+#: application/modules/player/forms/ListallForm.php:21
+#: application/modules/player/forms/ReconciliationForm.php:21
+msgid "To Date"
+msgstr "à"
+
+#: application/modules/player/forms/ListallForm.php:31
+#, fuzzy
+msgid "Transaction Status"
+msgstr "Type du transaction"
+
+#: application/modules/player/forms/ListallForm.php:33
+#, fuzzy
+msgid "Un-Processed"
+msgstr "traité "
+
+#: application/modules/player/forms/ListallForm.php:34
+#, fuzzy
+msgid "Partially Processed"
+msgstr "traité "
+
+#: application/modules/player/forms/ListallForm.php:38
+#: application/modules/player/forms/ReconciliationForm.php:44
+msgid "Result per page"
+msgstr "resultats par page"
+
+#: application/modules/player/forms/ListallForm.php:40
+#: application/modules/player/forms/ReconciliationForm.php:46
+msgid "10"
+msgstr "10"
+
+#: application/modules/player/forms/ListallForm.php:42
+#: application/modules/player/forms/ReconciliationForm.php:48
+msgid "30"
+msgstr "30"
+
+#: application/modules/player/forms/ListallForm.php:43
+#: application/modules/player/forms/ReconciliationForm.php:49
+msgid "40"
+msgstr "40"
+
+#: application/modules/player/forms/ListallForm.php:44
+#: application/modules/player/forms/ReconciliationForm.php:50
+msgid "50"
+msgstr "50"
+
+#: application/modules/player/forms/FundForm.php:7
+#, fuzzy
+msgid "100"
+msgstr "10"
+
+#: application/modules/player/forms/FundForm.php:10
+#, fuzzy, php-format
+msgid "Credit Amount By %s"
+msgstr "Somme du Pari"
+
+#: application/modules/player/forms/RegistrationForm.php:25
+#: application/modules/player/forms/LoginForm.php:7
+msgid "Username *"
+msgstr "nom d'utilisateur"
+
+#: application/modules/player/forms/RegistrationForm.php:41
+msgid "EmailID *"
+msgstr "Adresse électronique"
+
+#: application/modules/player/forms/RegistrationForm.php:78
+msgid "Sex"
+msgstr "Sexe"
+
+#: application/modules/player/forms/RegistrationForm.php:80
+msgid "Male"
+msgstr "Homme"
+
+#: application/modules/player/forms/RegistrationForm.php:81
+msgid "Female"
+msgstr "Femme"
+
+#: application/modules/player/forms/RegistrationForm.php:86
+msgid "Date Of Birth *"
+msgstr "Date de nassaince"
+
+#: application/modules/player/forms/RegistrationForm.php:95
+msgid "Address"
+msgstr "Adresse"
+
+#: application/modules/player/forms/RegistrationForm.php:98
+msgid "City"
+msgstr "Ville"
+
+#: application/modules/player/forms/RegistrationForm.php:102
+msgid "State"
+msgstr "État"
+
+#: application/modules/player/forms/RegistrationForm.php:105
+msgid "Country"
+msgstr "Pays"
+
+#: application/modules/player/forms/RegistrationForm.php:108
+msgid "Pin Code"
+msgstr "Code postale"
+
+#: application/modules/player/forms/RegistrationForm.php:112
+msgid "Phone No"
+msgstr "numero du téléphone"
+
+#: application/modules/player/forms/RegistrationForm.php:115
+msgid "Security Question *"
+msgstr "question de securité"
+
+#: application/modules/player/forms/RegistrationForm.php:119
+msgid "Hint"
+msgstr "Indication"
+
+#: application/modules/player/forms/RegistrationForm.php:122
+msgid "Answer *"
+msgstr "Reponse"
+
+#: application/modules/player/forms/RegistrationForm.php:126
+msgid "I want regular news updates from the website"
+msgstr "Je voudrais recevoir les nouvelles du site"
+
+#: application/modules/player/forms/ChangePasswordForm.php:12
+msgid "Current Password *"
+msgstr "Mot de passe actuel"
+
+#: application/modules/player/forms/ReconciliationForm.php:32
+msgid "Real"
+msgstr "actuel"
+
+#: application/modules/player/forms/ReconciliationForm.php:33
+msgid "Bonus"
+msgstr "Bonus"
+
+#: application/modules/player/forms/ReconciliationForm.php:34
+msgid "Both"
+msgstr "tout les deux"
+
+#: application/modules/player/forms/ReconciliationForm.php:38
+msgid "Winning"
+msgstr "Gain"
+
+#: application/modules/player/forms/ReconciliationForm.php:39
+msgid "Deposits"
+msgstr "dépôts"
+
+#: application/modules/player/forms/ReconciliationForm.php:40
+msgid "Wager"
+msgstr "Pari"
+
+#: application/modules/player/forms/ReconciliationForm.php:41
+#, fuzzy
+msgid "Bonus Credit"
+msgstr "rendement bonus"
+
+#: application/modules/player/forms/FlowbackForm.php:9
+msgid "Enter the amount to flowback : "
+msgstr ""
+
+#: application/modules/player/forms/FlowbackForm.php:14
+#, fuzzy
+msgid "Submit Request"
+msgstr "soumettez"
+
+#: application/modules/player/forms/LoginForm.php:15
+msgid "Log In"
+msgstr "Log in"
+
+#: application/modules/player/forms/LoginForm.php:19
+#, fuzzy
+msgid "Forgot Password"
+msgstr "Confirmez mot de passe"
+
+#: application/modules/player/forms/LanguageForm.php:22
+msgid "Go"
+msgstr ""
+
+#: application/modules/player/forms/WithdrawalForm.php:13
+msgid "Enter the amount to withdraw : "
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:150
+#: application/modules/player/controllers/AuthController.php:251
+msgid "A confirmation mail has been sent at your given email address. Please confirm your registration."
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:309
+#, fuzzy
+msgid "Your password has been changed successfully. Please try to Log In."
+msgstr "Votre mot de passe a été changé"
+
+#: application/modules/player/controllers/AuthController.php:324
+msgid "Confirm password does not match, please try again."
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:337
+msgid "Wrong current password, please try again."
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:365
+msgid "You are already registered."
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:371
+msgid "The link is expired. Please try to re-register.Please <a href=\""
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:396
+msgid "Please check the details, you have provided."
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:405
+msgid "Error"
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:412
+msgid "An email has been sent at your primary email address."
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:416
+msgid "There is some problem. Please try again."
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:446
+#, fuzzy
+msgid "Your password is successfully reset. Please <a href = \""
+msgstr "vous avez été enregistré"
+
+#: application/modules/player/controllers/AuthController.php:451
+msgid "There is some problem in reseting, please try again."
+msgstr ""
+
+#: application/modules/player/controllers/AuthController.php:456
+#, fuzzy
+msgid "Confirm Password does not match. Please try again."
+msgstr "Le mot de passe de confirmation que vous avez entré ne correspond pas"
+
+#: application/modules/player/controllers/BankingController.php:51
+msgid "Your amount has not been credited, please try again. If problem persists contact our customer support"
+msgstr "Votre somme n'a pas été credité. Contactez notre support technique si le problem persiste"
+
+#: application/modules/player/controllers/IndexController.php:22
+msgid "This is the player website"
+msgstr "C'est le site des joueurs"
+
+#: application/modules/player/controllers/ReconciliationController.php:40
+#: application/modules/player/controllers/ReconciliationController.php:80
+msgid "No record found."
+msgstr ""
+
+#: application/modules/player/controllers/ErrorController.php:44
+#, fuzzy
+msgid "Access Denied!!!"
+msgstr "accès rejeté"
+
+#: application/modules/player/controllers/GameController.php:24
+msgid "No game groups listed!"
+msgstr ""
+
+#: application/modules/player/controllers/GameController.php:46
+msgid "No game flavours listed!"
+msgstr ""
+
+#: application/modules/player/controllers/GameController.php:63
+msgid "No games listed!"
+msgstr ""
+
+#: application/modules/player/controllers/TicketController.php:92
+#, fuzzy
+msgid "No tickets"
+msgstr "voyez les billets"
+
+#: application/modules/admin/models/EmailTag.php:88
+#, fuzzy
+msgid "Tag Name"
+msgstr "nom"
+
+#: application/modules/admin/models/EmailTag.php:89
+msgid "Query"
+msgstr ""
+
+#: application/modules/admin/models/EmailTag.php:90
+msgid "Edit"
+msgstr ""
+
+#: application/modules/admin/forms/PjpForm.php:22
+#: application/modules/admin/forms/PjpForm.php:103
+msgid "Pjp Id"
+msgstr "Id Pjp"
+
+#: application/modules/admin/forms/PjpForm.php:29
+msgid "Game Flavour"
+msgstr "flavor du game"
+
+#: application/modules/admin/forms/PjpForm.php:44
+#: application/modules/admin/forms/PjpForm.php:121
+msgid "Real Percentage"
+msgstr "Pourcentage actuel"
+
+#: application/modules/admin/forms/PjpForm.php:48
+#: application/modules/admin/forms/PjpForm.php:124
+msgid "Bonus Percentage"
+msgstr "Pourcentage du bonus"
+
+#: application/modules/admin/forms/PjpForm.php:52
+#: application/modules/admin/forms/PjpForm.php:127
+msgid "Minimum Real Bet"
+msgstr "Pari actuel minimum"
+
+#: application/modules/admin/forms/PjpForm.php:57
+#: application/modules/admin/forms/PjpForm.php:131
+msgid "Minimum Bonus Bet"
+msgstr "Pari bonus minimum"
+
+#: application/modules/admin/forms/PjpForm.php:62
+#: application/modules/admin/forms/PjpForm.php:135
+msgid "Maximum Real Bet"
+msgstr "pari actuel maximum"
+
+#: application/modules/admin/forms/PjpForm.php:67
+#: application/modules/admin/forms/PjpForm.php:139
+msgid "Maximum Bonus Bet"
+msgstr "pari bonus maximum"
+
+#: application/modules/admin/forms/AffiliateSchemeForm.php:7
+msgid "Affiliate Scheme Name *"
+msgstr "nom du projet affilié / nom du programme affilié"
+
+#: application/modules/admin/forms/AffiliateSchemeForm.php:16
+#: application/modules/admin/forms/FrontendForm.php:13
+msgid "Description *"
+msgstr "Description"
+
+#: application/modules/admin/forms/AffiliateSchemeForm.php:23
+msgid "Note *"
+msgstr "point / message"
+
+#: application/modules/admin/forms/PrivilegeForm.php:7
+msgid "Select Resource *"
+msgstr "choisisez la ressource"
+
+#: application/modules/admin/forms/PrivilegeForm.php:21
+msgid "Select Role *"
+msgstr "choisissez la rôle "
+
+#: application/modules/admin/forms/PrivilegeForm.php:34
+msgid "Select mode *"
+msgstr "choisissez la mode"
+
+#: application/modules/admin/forms/FrontendForm.php:7
+msgid "Name *"
+msgstr "nom"
+
+#: application/modules/admin/forms/FrontendForm.php:16
+msgid "Site Code *"
+msgstr "code du site"
+
+#: application/modules/admin/forms/FrontendForm.php:21
+msgid "Contact *"
+msgstr "Contact"
+
+#: application/modules/admin/forms/FrontendForm.php:25
+msgid "Url *"
+msgstr "Url"
+
+#: application/modules/admin/forms/FrontendForm.php:30
+msgid "Ams Url *"
+msgstr "Lien Ams / Url Ams"
+
+#: application/modules/admin/forms/FrontendForm.php:35
+msgid "Gms Url *"
+msgstr "Gms Url / lien Gms"
+
+#: application/modules/admin/forms/FrontendForm.php:40
+msgid "Status *"
+msgstr "l'etat du situation/condition"
+
+#: application/modules/admin/forms/FrontendForm.php:46
+msgid "Affiliate Frontend Id *"
+msgstr "Identifier de Assistance directe finaux affilié"
+
+#: application/modules/admin/forms/FrontendForm.php:60
+msgid "Allowed Frontend Ids *"
+msgstr "Identifier de Assistance directe finaux autorisé"
+
+#: application/modules/admin/forms/FrontendForm.php:83
+msgid "Default Currency *"
+msgstr "monnaie défaut"
+
+#: application/modules/admin/forms/FrontendForm.php:94
+msgid "Allowed  Currencies *"
+msgstr "monnaies loisible"
+
+#: application/modules/admin/forms/FrontendForm.php:104
+msgid "Default Bonus Scheme Id *"
+msgstr "Id du projet bonus défaut"
+
+#: application/modules/admin/forms/VariablePotForm.php:11
+msgid "Part Id"
+msgstr "identifier moitié"
+
+#: application/modules/admin/forms/VariablePotForm.php:15
+msgid "Real Return"
+msgstr "rendement actuel"
+
+#: application/modules/admin/forms/VariablePotForm.php:18
+msgid "Bonus Return"
+msgstr "rendement bonus"
+
+#: application/modules/admin/forms/VariablePotForm.php:21
+msgid "Minimum Real Pot"
+msgstr "actuel pot minimum"
+
+#: application/modules/admin/forms/VariablePotForm.php:24
+msgid "Minimum Bonus Pot"
+msgstr "bonus pot minimum"
+
+#: application/modules/admin/forms/VariablePotForm.php:27
+msgid "Maximum Real Pot"
+msgstr "actuel pot maximum"
+
+#: application/modules/admin/forms/VariablePotForm.php:30
+msgid "Maximum Bonus Pot"
+msgstr "bonus pot maximum"
+
+#: application/modules/admin/forms/BonusSchemeForm.php:13
+msgid "Name"
+msgstr "nom"
+
+#: application/modules/admin/forms/BonusSchemeForm.php:20
+#: application/modules/admin/forms/KenoConfigForm.php:49
+#: application/modules/admin/forms/KenoConfigForm.php:159
+#: application/modules/admin/forms/SlotConfigForm.php:219
+#: application/modules/admin/forms/RouletteconfigForm.php:37
+#: application/modules/admin/forms/RouletteconfigForm.php:130
+msgid "Description"
+msgstr "description"
+
+#: application/modules/admin/forms/BonusSchemeForm.php:26
+msgid "Number of Levels"
+msgstr "nombre des niveaus"
+
+#: application/modules/admin/forms/MainconfigForm.php:171
+msgid "Submit All"
+msgstr "soumettez tout"
+
+#: application/modules/admin/forms/MainconfigForm.php:182
+msgid "Do you want to add another Pjp form?"
+msgstr "Vous voulez ajouter un autre Pjp formulaire"
+
+#: application/modules/admin/forms/GameGroupForm.php:10
+msgid "Group Name *"
+msgstr "Nom du group"
+
+#: application/modules/admin/forms/GameGroupForm.php:23
+msgid " *"
+msgstr "*"
+
+#: application/modules/admin/forms/RoleForm.php:7
+msgid "Role Name *"
+msgstr "nom du rôle"
+
+#: application/modules/admin/forms/RoleForm.php:11
+msgid "Role Type *"
+msgstr "type du role"
+
+#: application/modules/admin/forms/RoleForm.php:19
+msgid "Parent *"
+msgstr "Parent"
+
+#: application/modules/admin/forms/AffiliateTrackerForm.php:18
+msgid "Affiliate Scheme *"
+msgstr "nom du projet affilié / nom du programme affilié"
+
+#: application/modules/admin/forms/KenoForm.php:24
+msgid "Select Keno Machine *"
+msgstr "Choissisez machine Keno"
+
+#: application/modules/admin/forms/KenoForm.php:32
+msgid "Running Machine Name *"
+msgstr "nom du machine qui marche"
+
+#: application/modules/admin/forms/KenoForm.php:60
+msgid "Denominations *"
+msgstr "Denomination"
+
+#: application/modules/admin/forms/KenoForm.php:68
+msgid "Default Denomination *"
+msgstr "Denomination défaut"
+
+#: application/modules/admin/forms/KenoForm.php:72
+msgid "Min Bet *"
+msgstr "Pari minimum"
+
+#: application/modules/admin/forms/KenoForm.php:76
+msgid "Min Nums *"
+msgstr "nombres minimum"
+
+#: application/modules/admin/forms/KenoForm.php:81
+msgid "Max Bet *"
+msgstr "Pari maximum"
+
+#: application/modules/admin/forms/KenoForm.php:85
+msgid "Max Nums *"
+msgstr "nombres maximum"
+
+#: application/modules/admin/forms/KenoForm.php:90
+msgid "Min Coins *"
+msgstr " Pièces minimum"
+
+#: application/modules/admin/forms/KenoForm.php:95
+msgid "Max Coins *"
+msgstr " Pièces maximum"
+
+#: application/modules/admin/forms/KenoForm.php:101
+msgid "Machine Enabled"
+msgstr "La machine est activé"
+
+#: application/modules/admin/forms/KenoForm.php:107
+#: application/modules/admin/forms/KenoConfigForm.php:93
+#: application/modules/admin/forms/KenoConfigForm.php:196
+#: application/modules/admin/forms/SlotConfigForm.php:78
+#: application/modules/admin/forms/SlotConfigForm.php:261
+#: application/modules/admin/forms/RouletteconfigForm.php:71
+#: application/modules/admin/forms/RouletteconfigForm.php:155
+msgid "Pjp Enabled"
+msgstr "Pjp est activé"
+
+#: application/modules/admin/forms/KenoForm.php:114
+msgid "Amount Type *"
+msgstr "Type du somme"
+
+#: application/modules/admin/forms/KenoForm.php:121
+msgid "Allowed Pjps *"
+msgstr "Pjps loisible"
+
+#: application/modules/admin/forms/RegistrationForm.php:25
+msgid "Date Of Birth"
+msgstr "Date de naissance"
+
+#: application/modules/admin/forms/RegistrationForm.php:49
+msgid "Security Question"
+msgstr "Question de la securité"
+
+#: application/modules/admin/forms/RegistrationForm.php:56
+msgid "Answer"
+msgstr "réponse"
+
+#: application/modules/admin/forms/RegistrationForm.php:60
+msgid "I regular news updates from the website."
+msgstr "Je voudrais recevoir les nouvelles du site"
+
+#: application/modules/admin/forms/UserForm.php:7
+msgid "Select Field"
+msgstr "Choissisez "
+
+#: application/modules/admin/forms/UserForm.php:12
+msgid "login"
+msgstr "login / connexion"
+
+#: application/modules/admin/forms/UserForm.php:15
+msgid "Enter String *"
+msgstr "Tapez la text"
+
+#: application/modules/admin/forms/UserForm.php:19
+msgid "Match String"
+msgstr "la texte pour comparer"
+
+#: application/modules/admin/forms/PageRequestForm.php:8
+#, fuzzy
+msgid "Results per page"
+msgstr "resultats par page"
+
+#: application/modules/admin/forms/MainForm.php:108
+msgid "Next"
+msgstr "la suivante"
+
+#: application/modules/admin/forms/MainForm.php:116
+msgid "Previous"
+msgstr "la précédente"
+
+#: application/modules/admin/forms/KenoConfigForm.php:22
+msgid "ID"
+msgstr "idantifiant"
+
+#: application/modules/admin/forms/KenoConfigForm.php:27
+#: application/modules/admin/forms/KenoConfigForm.php:136
+msgid "Machine Name"
+msgstr "nom de machine"
+
+#: application/modules/admin/forms/KenoConfigForm.php:54
+#: application/modules/admin/forms/KenoConfigForm.php:163
+msgid "Denominations"
+msgstr "denominations"
+
+#: application/modules/admin/forms/KenoConfigForm.php:58
+#: application/modules/admin/forms/KenoConfigForm.php:166
+#: application/modules/admin/forms/SlotConfigForm.php:62
+#: application/modules/admin/forms/SlotConfigForm.php:247
+msgid "Default Denomination"
+msgstr "denomination défaut"
+
+#: application/modules/admin/forms/KenoConfigForm.php:62
+#: application/modules/admin/forms/KenoConfigForm.php:176
+#: application/modules/admin/forms/SlotConfigForm.php:87
+#: application/modules/admin/forms/SlotConfigForm.php:266
+#: application/modules/admin/forms/RouletteconfigForm.php:42
+#: application/modules/admin/forms/RouletteconfigForm.php:134
+msgid "Maximum Bet"
+msgstr "pari maximum"
+
+#: application/modules/admin/forms/KenoConfigForm.php:66
+#: application/modules/admin/forms/KenoConfigForm.php:169
+msgid "Minimum Bet"
+msgstr "pari minimum"
+
+#: application/modules/admin/forms/KenoConfigForm.php:70
+#: application/modules/admin/forms/KenoConfigForm.php:172
+msgid "Minimum Nums"
+msgstr "nombres minimum"
+
+#: application/modules/admin/forms/KenoConfigForm.php:74
+#: application/modules/admin/forms/KenoConfigForm.php:179
+msgid "Maximum Nums"
+msgstr "nombres maximum"
+
+#: application/modules/admin/forms/KenoConfigForm.php:78
+#: application/modules/admin/forms/KenoConfigForm.php:183
+#: application/modules/admin/forms/SlotConfigForm.php:131
+#: application/modules/admin/forms/SlotConfigForm.php:304
+#: application/modules/admin/forms/RouletteconfigForm.php:50
+#: application/modules/admin/forms/RouletteconfigForm.php:140
+msgid "Enabled"
+msgstr "Activé"
+
+#: application/modules/admin/forms/WithdrawalProcessingForm.php:8
+msgid "Accept/Reject"
+msgstr ""
+
+#: application/modules/admin/forms/WithdrawalProcessingForm.php:13
+msgid "Amount to be Accepted/Rejected"
+msgstr ""
+
+#: application/modules/admin/forms/WithdrawalProcessingForm.php:16
+#, fuzzy
+msgid "Notes"
+msgstr "note"
+
+#: application/modules/admin/forms/SlotConfigForm.php:13
+msgid "Slot Machine Name"
+msgstr "nom du machine des fentes"
+
+#: application/modules/admin/forms/SlotConfigForm.php:38
+#: application/modules/admin/forms/SlotConfigForm.php:230
+msgid "Feature Enabled"
+msgstr "l'accessoire a été enablé"
+
+#: application/modules/admin/forms/SlotConfigForm.php:44
+#: application/modules/admin/forms/SlotConfigForm.php:235
+msgid "Bonus Spins Enabled"
+msgstr "tours du bonus ont été enablés"
+
+#: application/modules/admin/forms/SlotConfigForm.php:49
+#: application/modules/admin/forms/SlotConfigForm.php:83
+#: application/modules/admin/forms/SlotConfigForm.php:136
+#: application/modules/admin/forms/RouletteconfigForm.php:56
+#: application/modules/admin/forms/RouletteconfigForm.php:76
+msgid "ENABLED"
+msgstr "Activé"
+
+#: application/modules/admin/forms/SlotConfigForm.php:54
+#: application/modules/admin/forms/SlotConfigForm.php:240
+msgid "Denomination"
+msgstr "denomination"
+
+#: application/modules/admin/forms/SlotConfigForm.php:70
+#: application/modules/admin/forms/SlotConfigForm.php:254
+msgid "Default Currency"
+msgstr "monnaie défaut"
+
+#: application/modules/admin/forms/SlotConfigForm.php:92
+#: application/modules/admin/forms/SlotConfigForm.php:270
+msgid "Machine Type"
+msgstr "type du machine"
+
+#: application/modules/admin/forms/SlotConfigForm.php:99
+#: application/modules/admin/forms/SlotConfigForm.php:276
+msgid "Maximum Bet Lines"
+msgstr "lignes de pari maximum"
+
+#: application/modules/admin/forms/SlotConfigForm.php:107
+#: application/modules/admin/forms/SlotConfigForm.php:283
+msgid "Maximum Coins"
+msgstr "pièces maximum"
+
+#: application/modules/admin/forms/SlotConfigForm.php:115
+#: application/modules/admin/forms/SlotConfigForm.php:290
+msgid "Minimum Bet Lines"
+msgstr "lignes de pari minimum"
+
+#: application/modules/admin/forms/SlotConfigForm.php:123
+#: application/modules/admin/forms/SlotConfigForm.php:297
+msgid "Minimum Coins"
+msgstr "pièces maximum"
+
+#: application/modules/admin/forms/SlotConfigForm.php:140
+msgid "Created By"
+msgstr "créé par"
+
+#: application/modules/admin/forms/SlotConfigForm.php:145
+msgid "Created Time"
+msgstr "l'heure de creation / temps de creation"
+
+#: application/modules/admin/forms/SlotConfigForm.php:150
+msgid "Last Updated By"
+msgstr "derniere upgradation en"
+
+#: application/modules/admin/forms/SlotConfigForm.php:155
+msgid "Last Updated Time"
+msgstr "temps de la derniere upgradation"
+
+#: application/modules/admin/forms/SlotConfigForm.php:208
+#, fuzzy
+msgid "Running Slot Machine Name *"
+msgstr "nom du machine qui marche"
+
+#: application/modules/admin/forms/LoyaltyForm.php:12
+msgid "Wager Factor"
+msgstr "facteur du pari"
+
+#: application/modules/admin/forms/LoyaltyForm.php:14
+msgid "Loyalty Per Doller"
+msgstr "loyauté pour un dollar"
+
+#: application/modules/admin/forms/RouletteconfigForm.php:28
+#: application/modules/admin/forms/RouletteconfigForm.php:110
+#, fuzzy
+msgid "Running Roulette Machine Name *"
+msgstr "nom du machine roulette marchant"
+
+#: application/modules/admin/forms/RouletteconfigForm.php:46
+#: application/modules/admin/forms/RouletteconfigForm.php:137
+msgid "Maximum Bet String"
+msgstr "Pari maximum "
+
+#: application/modules/admin/forms/RouletteconfigForm.php:62
+#: application/modules/admin/forms/RouletteconfigForm.php:147
+msgid "Roulette Machine Name"
+msgstr "nom du machine roulette"
+
+#: application/modules/admin/forms/TagForm.php:8
+msgid "Enter Tag Name :  $"
+msgstr ""
+
+#: application/modules/admin/forms/TagForm.php:10
+msgid "Enter Corresponding Query :  $"
+msgstr ""
+
+#: application/modules/admin/forms/FixedPotForm.php:15
+msgid "Call Number"
+msgstr "Numero d'appel"
+
+#: application/modules/admin/forms/FixedPotForm.php:19
+msgid "Real Amount"
+msgstr "Somme actuel"
+
+#: application/modules/admin/forms/FixedPotForm.php:22
+msgid "Bonus Amount"
+msgstr "Somme bonus"
+
+#: application/modules/admin/forms/TicketForm.php:18
+#: application/modules/admin/forms/ReplyForm.php:40
+msgid "CsrIds"
+msgstr "Csr Identifiers"
+
+#: application/modules/admin/forms/TicketForm.php:21
+#: application/modules/admin/forms/ReplyForm.php:43
+msgid "CSR-"
+msgstr "CSR"
+
+#: application/modules/admin/forms/TicketForm.php:27
+msgid "User Name *"
+msgstr "Nom de l'utilisateur"
+
+#: application/modules/admin/forms/TicketForm.php:51
+#: application/modules/admin/forms/ReplyForm.php:21
+msgid "Note"
+msgstr "note"
+
+#: application/modules/admin/forms/QuickRegistrationForm.php:29
+msgid "Submit *"
+msgstr "soumettez"
+
+#: application/modules/admin/forms/AffiliateSearchForm.php:15
+msgid "alias"
+msgstr "Alias"
+
+#: application/modules/admin/forms/AffiliateSearchForm.php:28
+msgid "2"
+msgstr "2"
+
+#: application/modules/admin/forms/TransactionForm.php:21
+msgid "Transaction Type *"
+msgstr "Type de la transaction"
+
+#: application/modules/admin/forms/AmsSchemeTypesForm.php:7
+msgid "Scheme Type *"
+msgstr "type du plan"
+
+#: application/modules/admin/forms/AmsSchemeTypesForm.php:11
+msgid "Scheme Name *"
+msgstr "nom du plan"
+
+#: application/modules/admin/forms/AmsSchemeTypesForm.php:20
+msgid "Scheme Description"
+msgstr "description du plan"
+
+#: application/modules/admin/forms/AmsSchemeTypesForm.php:24
+msgid "criteria *"
+msgstr "les criterions"
+
+#: application/modules/admin/forms/AmsSchemeTypesForm.php:28
+msgid "Crediting Factor *"
+msgstr "facteur du crédit"
+
+#: application/modules/admin/forms/ResourceForm.php:7
+msgid "Resource Name *"
+msgstr "nom du resource"
+
+#: application/modules/admin/forms/ResourceForm.php:11
+msgid "Resource Type *"
+msgstr "type de ressource"
+
+#: application/modules/admin/forms/AffiliateFrontendForm.php:7
+msgid "Affiliate Frontend Name *"
+msgstr "nom de Assistance directe finaux affilié"
+
+#: application/modules/admin/forms/AffiliateFrontendForm.php:21
+msgid "Allowed Affiliate Frontends *"
+msgstr "Identifier de Assistance directe finaux affilié autorisé"
+
+#: application/modules/admin/forms/AffiliateFrontendForm.php:34
+msgid "Allowed Frontends *"
+msgstr "Identifier de Assistance directe finaux autorisé"
+
+#: application/modules/admin/forms/AffiliateFrontendForm.php:46
+msgid "Default Affiliate Scheme *"
+msgstr "projet affilié défaut"
+
+#: application/modules/admin/forms/EditTagForm.php:14
+msgid "Edit Corresponding Query :  $"
+msgstr ""
+
+#: application/modules/admin/forms/DropdownMenuForm.php:10
+msgid "Close"
+msgstr "Fermé / fermeture"
+
+#: application/modules/admin/forms/DropdownMenuForm.php:11
+#: application/modules/admin/forms/ReplyForm.php:31
+msgid "Pending"
+msgstr "en attendant"
+
+#: application/modules/admin/forms/DropdownMenuForm.php:12
+#: application/modules/admin/forms/ReplyForm.php:32
+msgid "Forwarded"
+msgstr "a été envoyé"
+
+#: application/modules/admin/forms/DropdownMenuForm.php:13
+#: application/modules/admin/forms/ReplyForm.php:33
+msgid "Dispatch"
+msgstr "expédier"
+
+#: application/modules/admin/forms/DropdownMenuForm.php:16
+msgid "From"
+msgstr "de"
+
+#: application/modules/admin/forms/DropdownMenuForm.php:25
+msgid "To"
+msgstr "à"
+
+#: application/modules/admin/forms/DropdownMenuForm.php:34
+msgid "Results Per Page"
+msgstr "résultats par page"
+
+#: application/modules/admin/forms/DropdownMenuForm.php:43
+msgid "View Tickets"
+msgstr "voyez les billets"
+
+#: application/modules/admin/forms/DateSelectionForm.php:37
+msgid "Withdrawal Status"
+msgstr ""
+
+#: application/modules/admin/forms/DateSelectionForm.php:39
+#, fuzzy
+msgid "Not processed"
+msgstr "traité "
+
+#: application/modules/admin/forms/DateSelectionForm.php:40
+#, fuzzy
+msgid "Partially processed"
+msgstr "traité "
+
+#: application/modules/admin/forms/BonusLevelForm.php:14
+msgid "Level Name"
+msgstr "nom du niveau"
+
+#: application/modules/admin/forms/BonusLevelForm.php:17
+msgid "Minimum Points"
+msgstr "Points minimum"
+
+#: application/modules/admin/forms/BonusLevelForm.php:20
+msgid "Maximum Points"
+msgstr "Points maximum"
+
+#: application/modules/admin/forms/BonusLevelForm.php:26
+msgid "Fixed Bonus"
+msgstr "bonus fixé"
+
+#: application/modules/admin/forms/BonusLevelForm.php:29
+msgid "Minimum Deposit"
+msgstr "Dépôt minimum"
+
+#: application/modules/admin/forms/BonusLevelForm.php:32
+msgid "Minimum Total Deposit"
+msgstr " dépôt totale minimum"
+
+#: application/modules/admin/forms/BonusLevelForm.php:35
+msgid "Reward Times"
+msgstr "fois récompense"
+
+#: application/modules/admin/forms/BonusLevelForm.php:38
+msgid "Fixed Real"
+msgstr "actuel fixé "
+
+#: application/modules/admin/forms/BingoForm.php:13
+msgid "Game Name *"
+msgstr "nom du jeu"
+
+#: application/modules/admin/forms/BingoForm.php:29
+msgid "Game Flavour *"
+msgstr "gout de joue"
+
+#: application/modules/admin/forms/BingoForm.php:37
+msgid "Game Type *"
+msgstr "type du jeu"
+
+#: application/modules/admin/forms/BingoForm.php:51
+msgid "Pot Type"
+msgstr "type du pot"
+
+#: application/modules/admin/forms/BingoForm.php:58
+msgid "Pattern Name *"
+msgstr "nom du dessin"
+
+#: application/modules/admin/forms/BingoForm.php:67
+msgid "No Of Parts *"
+msgstr "nombres des motiés"
+
+#: application/modules/admin/forms/BingoForm.php:71
+msgid "Card Price *"
+msgstr "prix de la carte"
+
+#: application/modules/admin/forms/BingoForm.php:75
+msgid "Minimum Cards *"
+msgstr "cartes minimum"
+
+#: application/modules/admin/forms/BingoForm.php:80
+msgid "Maximum Cards *"
+msgstr "cartes maximum"
+
+#: application/modules/admin/forms/BingoForm.php:85
+msgid "Free Ratio *"
+msgstr "proportion gratuit"
+
+#: application/modules/admin/forms/BingoForm.php:91
+msgid "Buy Time *"
+msgstr "temps disponible pour acheter"
+
+#: application/modules/admin/forms/BingoForm.php:95
+msgid "Call Delay *"
+msgstr "retard d'appel"
+
+#: application/modules/admin/forms/BingoForm.php:104
+msgid "Pre Buy Enabled"
+msgstr "achétes en avance est autorisé"
+
+#: application/modules/admin/forms/BingoForm.php:109
+msgid "Real Return *"
+msgstr "rendement actuel"
+
+#: application/modules/admin/forms/BingoForm.php:113
+msgid "Bonus Return *"
+msgstr "rendement bonus"
+
+#: application/modules/admin/forms/BingoForm.php:117
+msgid "Minimum Real Pot *"
+msgstr "actuel pot minimum"
+
+#: application/modules/admin/forms/BingoForm.php:121
+msgid "Minimum Bonus Pot *"
+msgstr "bonus pot minimum"
+
+#: application/modules/admin/forms/BingoForm.php:125
+msgid "Maximum Real Pot *"
+msgstr "actuel pot maximum"
+
+#: application/modules/admin/forms/BingoForm.php:129
+msgid "Maximum Bonus Pot *"
+msgstr "bonus pot maximu"
+
+#: application/modules/admin/forms/BingoForm.php:189
+msgid "-"
+msgstr "-"
+
+#: application/modules/admin/controllers/AffiliateticketController.php:170
+msgid "Your reply has been sent."
+msgstr "Votre réponse a été envoyée"
+
+#: application/modules/admin/controllers/BingoController.php:275
+msgid "Your data is saved."
+msgstr ""
+
+#: application/modules/admin/controllers/IndexController.php:15
+msgid "This is the admin website"
+msgstr "C'est le site du adminstrateu"
+
+#: application/modules/admin/controllers/SearchingController.php:110
+msgid "Player profile has been updated successfully."
+msgstr "profil du joueur a été mis à jour"
+
+#: application/modules/admin/controllers/WithdrawalController.php:93
+#: application/modules/admin/controllers/WithdrawalController.php:94
+msgid "No withdrawal found."
+msgstr ""
+
+#: application/modules/admin/controllers/WithdrawalController.php:162
+#: application/modules/admin/controllers/WithdrawalController.php:163
+msgid "Amount is invalid"
+msgstr ""
+
+#: application/modules/admin/controllers/WithdrawalController.php:213
+#: application/modules/admin/controllers/WithdrawalController.php:214
+#, fuzzy
+msgid "Invalid Options"
+msgstr "Nom du l'utilisateur est invalide"
+
+#: application/modules/admin/controllers/WithdrawalController.php:225
+#, fuzzy
+msgid "Transaction not saved"
+msgstr "Type du transaction"
+
+#: application/modules/admin/controllers/WithdrawalController.php:226
+#, fuzzy
+msgid "Not Saved"
+msgstr "note"
+
+#: application/modules/admin/controllers/WithdrawalController.php:246
+#, fuzzy
+msgid "Transaction timed out"
+msgstr "Type de la transaction"
+
+#: application/modules/admin/controllers/WithdrawalController.php:255
+#, fuzzy
+msgid "Transaction has been processed"
+msgstr "Type du transaction"
+
+#: application/modules/admin/controllers/WithdrawalController.php:256
+#, fuzzy
+msgid "Transaction processed"
+msgstr "Type du transaction"
+
+#: application/modules/admin/controllers/WithdrawalController.php:261
+#, fuzzy
+msgid "Transaction has some errors."
+msgstr "Type de la transaction"
+
+#: application/modules/admin/controllers/WithdrawalController.php:262
+msgid "Error Note "
+msgstr ""
+
+#: application/modules/admin/controllers/TicketController.php:101
+msgid "Your message has been sent"
+msgstr "Votre message a été envoyé"
+
+#: application/controllers/IndexController.php:15
+msgid "Welcome to Zenfox"
+msgstr "Bienvenue à Zenfox"
+
+#: languages/Translations.php:9
+#, fuzzy
+msgid "Login"
+msgstr "login / connexion"
+
+#: languages/Translations.php:10
+msgid "Register"
+msgstr ""
+
+#: languages/Translations.php:11
+msgid "Full Registration"
+msgstr ""
+
+#: languages/Translations.php:12
+msgid "Home"
+msgstr ""
+
+#: languages/Translations.php:13
+#, fuzzy
+msgid "My Account"
+msgstr "somme"
+
+#: languages/Translations.php:14
+msgid "View Profile"
+msgstr ""
+
+#: languages/Translations.php:15
+msgid "Edit Profile"
+msgstr ""
+
+#: languages/Translations.php:16
+#, fuzzy
+msgid "Change Password"
+msgstr "nouveau mot de passe"
+
+#: languages/Translations.php:17
+msgid "Logout"
+msgstr ""
+
+#: languages/Translations.php:18
+msgid "Banking"
+msgstr ""
+
+#: languages/Translations.php:19
+#, fuzzy
+msgid "Fund Account"
+msgstr "Somme du Victoire"
+
+#: languages/Translations.php:20
+msgid "Request a Withdrawal"
+msgstr ""
+
+#: languages/Translations.php:21
+#, fuzzy
+msgid "Unprocessed Reports"
+msgstr "traité "
+
+#: languages/Translations.php:22
+msgid "Request a Flowback"
+msgstr ""
+
+#: languages/Translations.php:23
+#, fuzzy
+msgid "Play"
+msgstr "identifier moitié"
+
+#: languages/Translations.php:24
+msgid "Play Games"
+msgstr ""
+
+#: languages/Translations.php:25
+msgid "Keno"
+msgstr ""
+
+#: languages/Translations.php:26
+msgid "Play Keno"
+msgstr ""
+
+#: languages/Translations.php:27
+msgid "Keno Gamelogs"
+msgstr ""
+
+#: languages/Translations.php:28
+msgid "Roulette"
+msgstr ""
+
+#: languages/Translations.php:29
+msgid "Play Roulette"
+msgstr ""
+
+#: languages/Translations.php:30
+#, fuzzy
+msgid "Roulette Gamelogs"
+msgstr "nom du machine roulette"
+
+#: languages/Translations.php:31
+msgid "Support"
+msgstr ""
+
+#: languages/Translations.php:33
+#, fuzzy
+msgid "Open a Ticket"
+msgstr "voyez les billets"
+
+#: languages/Translations.php:34
+#, fuzzy
+msgid "Reports"
+msgstr "dépôts"
+
+#: languages/Translations.php:35
+msgid "Reconcile Report"
+msgstr ""
+
+#: languages/Translations.php:36
+msgid "Withdrawal Report"
+msgstr ""
+
+#~ msgid "Unable to save Account with Exception"
+#~ msgstr "Incapable d'épargner Compte avec Exception"
+#~ msgid "Unable to save Account Details with exception"
+#~ msgstr "Incapable d'épargner les Détails de Compte avec l'exception"
+#~ msgid "Account Details::"
+#~ msgstr "Détails de compte"
+#~ msgid "STarting"
+#~ msgstr "Commencement"
+#~ msgid "Ending!!"
+#~ msgstr "Fin"
+#~ msgid "Exception "
+#~ msgstr "Exception"
+#~ msgid "Unable to update the profile"
+#~ msgstr "Incapable de modifier le profil"
+#~ msgid "Unable to change the password"
+#~ msgstr "Incapable de modifier le mot de passe"
+#~ msgid "Your profile has been updated successfully."
+#~ msgstr "Votre profil a été mis à jour"
+#~ msgid "Congratulation!! Your account has been credited with $100."
+#~ msgstr "Felicitations! Votre compte a été credité par $100"
+#~ msgid "Fund By $100"
+#~ msgstr "financer par $100"
+

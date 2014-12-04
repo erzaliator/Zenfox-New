@@ -1,0 +1,263 @@
+<?php 
+$authSession = new Zenfox_Auth_Storage_Session();
+$sessionData = $authSession->read();
+
+$frontendController = Zend_Controller_Front::getInstance();
+$controller = $frontendController->getRequest()->getControllerName();
+$action = $frontendController->getRequest()->getActionName();
+$pageAddress = $controller . '-' . $action;
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bingo</title>
+<link rel="stylesheet" href="/css/bingobible/style.css" type="text/css" />
+<link rel="stylesheet" href="/css/bingobible/common.css" type="text/css" />
+<link rel="stylesheet" href="/css/bingobible/style-tablet-landscape.css" type="text/css" />
+<link rel="stylesheet" href="/css/bingobible/style-tablet-potrate.css" type="text/css" />
+<link rel="stylesheet" href="/css/bingobible/style-mobile.css" type="text/css" />
+<script type="text/javascript" src="/js/bingobible/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/js/bingobible/jquery.bxslider.js"></script>
+<script type="text/javascript" src="/js/bingobible/jquery.colorbox.js"></script>
+<script type="text/javascript" src="/js/bingobible/custom.js"></script>
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
+<script src="/js/bingobible/jquery-ui-1.10.4.custom.js"></script>
+
+
+<?=$this->headMeta()?>
+
+</head>
+<body>
+<div class="header">
+  <div class="top-ribbon">
+   <div class="logo"><a href="/"><img src="/images/bingobible/logo.png" alt="logo-image"/></a></div>
+   <?php 
+   if($sessionData)
+   {
+   	$playerId = $sessionData['id'];
+   	$imageName = md5("image" . $playerId) . '.jpg';
+   	$loginName = $sessionData['authDetails'][0]['login'];
+   	$firstName = $sessionData['authDetails'][0]['first_name'];
+   	$loyaltyPoints = $sessionData['authDetails'][0]['loyalty_points_left'];
+   	$firstName = "";
+   		
+   	$balance = $sessionData['authDetails'][0]['balance'];
+   	$cash = $sessionData['authDetails'][0]['cash'];
+   	$bonus = $sessionData['authDetails'][0]['bonus_bank'] + $sessionData['authDetails'][0]['bonus_winnings'];
+   	$buddyBonus = $sessionData['authDetails'][0]['buddy_earnings'];
+   		
+   	$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+   	if(!file_exists($imagePath))
+   	{
+   		$imagePath = "/images/profiles/profile-m1.jpg";
+   	}
+   	else
+   	{
+   		$imagePath = "/images/profiles/" . $imageName;
+   	}
+   		
+   	$accountVariable = new AccountVariable();
+   	$varData = $accountVariable->getData($playerId, 'freeMoney');
+   	if($varData)
+   	{
+   		$freeMoney = floatval($varData['varValue']);
+   	}
+   	?>
+   	<div class="after-login">
+   	<div class="game-page-img-3">
+   	<p class="points">Seeramsetty</p>
+   	<img id="profile-image" height="60" width="60" src="/images/bingobible/my-photo.png"></img>
+   	<span id="notification">1</span>
+   	<div class="my-profile">
+   	<ul>
+   	<li><a href="/auth/view">My Profile</a></li>
+   	<li><a href="/auth/image">Set Profile Image</a></li>
+   	<li class="supperation"></li>
+   	<li><a href="">Settings</a></li>
+   	<li><a href="/auth/view">Account</a></li>
+   	<li><a href="/banking/deposit">Payment</a></li>
+   	<li><a href="">Language</a></li>
+   	<li></li>
+   	<li><a href="/auth/logout">Logout</a></li>
+   	</ul>
+   	</div>
+   	</div>
+   	<div class="game-page-img-2">
+   	<p class="points">Layman</p>
+   	<p class="txt">Loyalty Points<br><?=$loyaltyPoints ?></p>
+   	</div>
+   	<div class="game-page-img-1">
+   	<p class="points">£ <?=$balance ?></p>
+   	<p class="cash">Cash <br><span>£ <?=$cash ?></span></p>
+   	<p class="bonus">Bonus <br><span>£ <?=$bonus ?></span></p>
+   	</div>
+   	</div>
+   	<?php 
+   }
+   else
+   {
+   	?>
+   	<div class="login-sec">
+   	<form name="player-login-form" method="post" action="/auth/login">
+   	<div class="input-fields">
+   	<input type="text" Placeholder="Email" name="userName"/>
+   	<input type="checkbox" /><p>Keep me logged in</p>
+   	</div>
+   	<div class="input-fields">
+   	<input type="password" Placeholder="Password" name ="password"/>
+   	<p  style="float:right;"><a href="/auth/forgotpassword">Forgot Password ?</a></p>
+   	</div>
+   	<input type="submit" name="login" value="Login" class="btn">
+   	</form>
+   	<a href="/auth/signup" class="btn-1">Sign Up</a>
+   	</div>
+   	<?php 
+   }
+	?>
+  </div>
+  <div class="menu-icon"><img src="/images/bingobible/menu-icon.png"></div>
+  <div class="nav">
+   <div class="menu">
+    <ul id="menu">
+    <li class="first-icon"><span>12568.00</span><span class="pad">Jackpot</span></li>
+    <?php 
+				    	$partial = array('menu.phtml','player');
+						$this->navigation()->menu()->setPartial($partial);
+						echo $this->navigation()->menu()->render(); 
+						//echo $this->navigation()->menu();
+					?>
+    <!-- <li class="dropdown">Games
+      <ul class="sub-menu">
+       <li><a href="#">Plantsvs. Zombies Games</a></li>
+       <li><a href="#">Bejeweld Games</a></li>
+       <li><a href="#">Solitaire Bilts</a></li>
+       <li><a href="#">Peggle Games</a></li>
+       <li><a href="#">All Games</a></li>
+       </ul>
+    </li>
+    <li>Banking</li>
+    <li>Promotions</li>
+    <li>Gallery</li> -->
+    </ul>
+   </div>
+  </div>
+</div>
+<div id="socialicons">
+<a href="#"><img src="/images/bingobible/fb-chat.png" /></a>
+<a href="#"><img src="/images/bingobible/blog-chat.png"/></a>
+<a href="#"><img src="/images/bingobible/fb-icon.png" /></a>
+<a href="#"><img src="/images/bingobible/twitter-icon.png"/></a>
+<a href="#"><img src="/images/bingobible/gplus-icon.png"/></a>
+<a href="#"><img src="/images/bingobible/linkedin-icon.png"/></a>
+<a href="#"><img src="/images/bingobible/pinterest-icon.png"/></a>
+</div>
+<div class="content">
+<div class="content-internal<?=(!$sessionData && $pageAddress != 'game-index')?"-login":"" ?>">
+
+
+
+<?=$this->flashMessenger(); ?>
+<?php 
+echo $this->layout()->content;
+?>
+<!-- h2 style="text-align:center">Welcome to Bingo Bible!</h2>
+<p style="text-align:center;font-family: myriad-web-pro; font-size: 24px">Thank you for verifying your e-mail. Your account has been <a href=""><span style="color:#e8082e"> credited with $5.</span></a><br/>
+Choose your Bingo Bible mode</p>
+<div class="three-blck-sec">
+<div class="welcom-box">
+<div class="welcome-text"><h2>Layman</h2><p>Free</p></div>
+<img src="/images/bingobible/layman.png" alt="logo-image">
+<div class="welcom-bottom">
+<p>Access Bingo Bible
+games for free and
+win real cash</p>
+<a href="#" class="green-btn">Play Now</a>
+</div>
+</div>
+<div class="welcom-box1">
+<h2>Bishop</h2><p>For £10 get £40</p>
+<img src="/images/bingobible/layman-1.png" alt="logo-image">
+<div class="welcom-bottom">
+<p>Great for ardent fans of
+Bingo and a chance to
+win &pound; 20,000 Jackpot</p>
+<a href="#" class="orng-btn">Deposite</a>
+</div>
+</div>
+<div class="welcom-box">
+<h2>Preacher</h2><p>Get £25 per friend</p>
+<img src="/images/bingobible/preacher.png" alt="logo-image">
+<div class="welcom-bottom">
+<p>Win more than &pound; 2,500 
+freebies every day
+Play well and preach well</p>
+<a href="#" class="green-btn">Learn More</a>
+</div>
+</div>
+</div-->
+
+</div>
+<?php 
+if(!$sessionData && $pageAddress != 'game-index')
+{
+	?>
+	<div id="box-3">
+	<center><p class="text">JOIN & GET £20 FREE</p></center>
+	<form class="form" method="post" action="/auth/signup" enctype="application/x-www-form-urlencoded" name="player-signup" id="player-registration-form"><dl class="zend_form">
+	<ul><li>
+	<input type="text" placeholder="Username" class="box" value="" id="login" name="login"></li>
+	<li>
+	<input type="password" placeholder="Password" class="box" value="" id="password" name="password"></li>
+	<li>
+	<input type="password" placeholder="Confirm Password" class="box" value="" id="confirmPassword" name="confirmPassword"></li>
+	<li>
+	<input type="text" placeholder="Email" class="box" value="" id="email" name="email"></li>
+	<li>
+	<input type="hidden" value="0" name="terms"><input type="checkbox" class="chk-bx" checked="checked" value="1" id="terms" name="terms">
+	<div id="iagree"><p>I agree to <a href="/content/terms">Terms &amp; Conditions</a></p></div></li>
+	<li class="signup-button">
+	<button onclick="goToLogin('player-signup')" class="join-now" type="button" id="Signup" name="Signup">Join Now</button></li></ul></dl></form>
+	</div>
+	<?php 
+}
+?>
+</div>
+<div class="footer">
+<div class="footer-main">
+   <div class="footer-content">
+    <div class="footer-column-1"><p>We Accept</p></div>
+   <div class="footer-column-2">
+	  <p><a href="/content/about">Abouts Us</a></p>
+	  <p><a href="/faq">Faq</a></p>
+	  <p><a href="/promotions/referfriend">Tell A freind</a></p>
+	</div>
+    
+    <div class="footer-column-3">
+		<p><a href="/content/privacypolicy">Privacy Policies</a></p>
+	    <p><a href="http://affiliate.bingobible.co.uk">Affliates</a></p>
+	    <p><a href="/content/rules">Rules</a></p>
+	</div>
+    
+    <div class="footer-column-4">
+	    <p><a href="/content/contact">Contact Us</a></p>
+	    <p><a href="/content/terms">Terms Use</a></p>	</div>
+     </div>
+	   <div class="footer-column-5">
+      </div>
+
+
+</div>
+</div>
+
+<!-- script type="text/javascript">stLight.options({publisher: "911b74ed-0178-43db-b71a-288ece655181", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script>
+var options={ "publisher": "911b74ed-0178-43db-b71a-288ece655181", "position": "right", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "googleplus", "linkedin", "pinterest"]}};
+var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+</script-->
+
+</body>
+</html>

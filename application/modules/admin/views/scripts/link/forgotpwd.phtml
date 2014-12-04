@@ -1,0 +1,45 @@
+<h3 style = "text-align:center;">Forgot password</h3>
+<?php 
+
+echo $this->form ;?>
+<?php 
+
+
+	if ( !empty($this->id))
+	{
+		
+			
+			if($this->status == "UNPROCESSED")
+			{
+				if($this->expirytime >= $this->time)
+				
+				{
+					echo "ID = ".($this->id);echo"<br/>";
+					echo "email = ".($this->email);echo"<br/>";
+					echo "user type = ".($this->playertype);echo"<br/>";
+					echo "link = http://taashtime.tld/auth/resetpassword/code/".($this->code);echo"<br/>";
+					echo "status = ".($this->status);echo"<br/>";
+					
+					echo"<br/>";
+				}
+				else 
+				{
+					echo "code expired";
+				}
+			}
+			else 
+			{
+				echo "user already processed";
+			}
+	}
+	elseif ($this->empty=="empty array")
+	{
+		
+		echo "no data found in database for the value entered";	
+	}
+				
+		
+		
+	
+
+?>

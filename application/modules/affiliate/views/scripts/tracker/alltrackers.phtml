@@ -1,0 +1,15 @@
+<?php
+echo '<br>';
+$trackers = $this->trackers;
+
+foreach($trackers as $affiliateTracker)
+{
+	print('<b>Tracker Name</b><br><a href ="/tracker/trackerdetails/id/' . $affiliateTracker['tracker']['tracker_id'] . '">'.$affiliateTracker['tracker']['tracker_name'].'</a></br>');
+	echo "<br><table border = '1'>";
+	echo '<tr><td><b>Variable Name</b></td><td><b>Variable Value</b></td></tr>';
+	foreach($affiliateTracker['trackerDetails'] as $detail)
+	{
+		echo '<tr><td>'.$detail['variable_name'] . '</td><td>' .$detail['variable_value'].'</td></tr>';
+	}
+	echo '</table><br><br>';
+}

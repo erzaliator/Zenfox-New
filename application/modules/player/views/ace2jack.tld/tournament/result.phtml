@@ -1,0 +1,88 @@
+
+      <div class="ttltm">
+        <div class="ttlthedbg"> <?=$this->tournamentName ?> - Result</div>
+        <div class="ttltbot">
+          <div class="ttresultm">
+            <div  class="ttresultgt">
+              <div class="ttresultbfont">Game Type: <span> <strong>Stake</strong></span>
+                <div class="ttresultdatetime">Date & Time: <?=$this->tournamentStartTime ?> - <?=$this->tournamentEndTime ?>, <?=$this->tournamentStartDate ?></div>
+              </div>
+              <div class="ttresultgtl">
+                <div class="ttresultgthedbg" >
+                   <div class="ttresultgthedbgl">Rank</div>
+                  <div class="ttresultgthedbgm">Login Name</div>
+                    <div class="ttresultgthedbgr">Amount Won</div>     
+                </div>
+                <div class="ttresultrankm">
+                <?php 
+                foreach($this->winnerList as $winners)
+                {
+                	foreach($winners as $rank => $winner)
+                	{
+                		?>
+                		                	<div class="ttresult<?=$rank ?>rankbg">
+                			                	<div class="ttresultusername"><?=$winner['playerName'] ?></div>
+                			                	<div class="ttresultamtwon"><?=$winner['amount'] ?></div>
+                		                	</div>
+                		                	<?php
+                	}
+                }
+                ?>
+                </div>
+              </div>
+              <div class="ttresultgtr">
+                <div class="ttresultgthedbg" >Consolation Prize Winners</div>
+                <div class="ttresultPrizewin ttresultPrizewinscroll">
+                <div class="ttresultPrizewinl">
+                <ul>
+                <?php 
+                $length = count($this->consolationWinner);
+                $index = 0;
+                foreach($this->consolationWinner as $consolationWinner)
+                {
+                	if($index == $length)
+                	{
+                		?>
+                		</ul>
+                		</div>
+                		<div class="ttresultPrizewinr">
+                		<ul>
+                		<?php 
+                	}
+                	?>
+                		<li><?=$consolationWinner['playerName'] ?></li>
+                	<?php
+                	$index++;
+                	$length--;
+                }
+                if($this->consolationAmountType == 'FREE')
+                {
+                	$symbol = "T&cent;";
+                }
+                else
+                {
+                	$symbol = "Rs.";
+                }
+                ?>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ttresultconsolm">
+            <div class="ttresultgold"></div>
+            <div style="float:left">
+            <div class="ttresultamoutwin">
+                  <div class="ttresultamoutwinimg"></div>
+                  <div class="ttresultamoutwincont">
+                    <p>ConsolationPrizes X <?=count($this->consolationWinner) ?></p>
+                    <p>Amount <span><?=$symbol ?> <?=($this->consolationAmount * count($this->consolationWinner)) ?>/-</span></p>
+                  </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div  class="ttresultback" ><a href="/tournament/list"><img src="/css/rummy.tld/images/back-button-01.png" width="80" height="25" /></a></div>
+      </div>
+    

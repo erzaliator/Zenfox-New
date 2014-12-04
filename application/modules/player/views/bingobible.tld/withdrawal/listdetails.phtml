@@ -1,0 +1,13 @@
+<?php
+
+if($this->results)
+{
+	echo $this->table($this->results);
+}
+?>
+<br></br><br></br><center>
+<a href = "<?php echo $this->url(array(
+							'controller' => 'withdrawal',
+							'action' => 'listunprocessed',
+							));?>">BACK</a>
+</center>

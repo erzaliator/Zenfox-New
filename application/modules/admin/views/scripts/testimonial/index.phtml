@@ -1,0 +1,22 @@
+<?php
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $testimonialData)
+		{
+			$linkArray[$testimonialData['id']] = array(
+										'controller' => 'testimonial',
+										'action' => 'modify',
+										'id' => $testimonialData['id']);
+		}
+		$this->table($this->contents, array('id'), $linkArray);
+	}
+}
+
+if($this->refreshPage)
+{
+	$this->headMeta()->appendHttpEquiv('Refresh',
+                                   '3;URL=' . $this->link);
+}

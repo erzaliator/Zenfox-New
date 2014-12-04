@@ -1,0 +1,26 @@
+<?php
+echo $this->searchForm;
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $playerData)
+		{
+			$linkArray[$playerData['Player Id']] = array(
+													'controller' => 'player',
+													'action' => 'profile',
+													'accountType' => $this->accountType,
+													'playerId' => $playerData['Player Id']
+											);
+		}
+		$this->table($this->contents, array('Player Id'), $linkArray);
+	}
+
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	$this->pagination($pages, array(
+		'field' => $this->searchField,
+		'accountType' => $this->accountType,
+		'str' => $this->searchStr)); 
+}

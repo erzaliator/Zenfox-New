@@ -1,0 +1,20 @@
+<?php echo $this->form; 
+echo $this->table($this->value,  true);
+?>
+
+<script type="text/javascript" >
+	document.getElementById("report_type_time-label").style.display = "none";
+	document.getElementById("report_type_time-element").style.display = "none";
+	
+</script>
+<?php /*
+if($this->displaylinks == "yes")
+{
+
+?>
+<a href="<?php echo $this->url(array ('controller'=> 'analytics', 'action'=> 'networkwagering',  'start_date' => $this->previousdate ) ) ?>">previous date</a>
+
+<a href="<?php echo $this->url(array ('controller'=> 'analytics', 'action'=> 'networkwagering',  'start_date' => $this->nextdate ) ) ?>">next date</a>
+<?php 
+}*/
+?>

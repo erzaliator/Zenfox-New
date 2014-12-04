@@ -1,0 +1,34 @@
+<!-- <a href ="/home">Home</a>  -->
+<?php
+echo $this->form;
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArrays = array();
+		//Temp is used to print the table headings only for one time
+		foreach($this->contents as $tableData)
+		{
+			$linkArrays[$tableData['Player Id']] = array(
+					'controller' => 'player',
+					'action' => 'view',
+			        'playerId' => $tableData['Player Id'],
+					'accountType' => $this->accountType);
+			
+		}
+		$this->table($this->contents, 'Player Id', $linkArrays);		
+	}
+
+	echo $this->paginationControl(
+						$this->paginator,
+						'Sliding',
+						'playerPaginator.phtml',
+						array(
+							'searchField' => $this->searchField,
+							'match' => $this->match,
+							'itemCountPerPage' => $this->items,
+							'accountType' => $this->accountType,
+							'searchString' => $this->searchStr));
+}
+
+?>

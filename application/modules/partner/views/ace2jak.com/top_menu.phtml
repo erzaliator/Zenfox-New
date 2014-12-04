@@ -1,0 +1,40 @@
+<?php
+$iterator = new RecursiveIteratorIterator ( $this->container, RecursiveIteratorIterator::SELF_FIRST );
+$prevDepth = - 1;
+foreach ( $iterator as $page ) {
+	if ($page->isVisible() && $this->navigation()->accept($page)) {
+		$depth = $iterator->getDepth ();
+		$isActive = $page->isActive ( true );
+		if (($depth != 1) && ($depth > $prevDepth)) {
+			$html [] = '<ul id="top-navigation">' . "\n";
+		} else if($depth > $prevDepth){
+			//$html [] = '<ul class="dropdown-menu sub-menu">' . "\n";
+		}	else if ($prevDepth > $depth) {
+			for($i = $prevDepth; $i > $depth; $i --) {
+				/* $html [] = '</li>' . "\n";
+				$html [] = '</ul>' . "\n"; */
+			}
+			//$html [] = '    </li>' . "\n";
+		} else {
+			$html [] = '    </li>' . "\n";
+		}
+		if($depth != 0 && $depth >= $prevDepth){
+			/* $html [] = '<li>';
+			$html [] = '<a href="' . $page->getHref () . '">'  . $page->getLabel () . '</a>' . "\n"; */
+		}
+		else{
+			$liClass = $isActive ? ' class="active"' : '';
+			$html [] = '<li' . $liClass . '><span><span>';
+			$html [] = '<a href="' . $page->getHref () . '">'  . $page->getLabel () . '</a></span></span>' . "\n";
+		}
+		$prevDepth = $depth;
+	}
+}
+if($depth != 0)
+{
+	$html [] = '</li>' . "\n";
+    $html [] = '</ul>' . "\n";
+}
+$html [] = '</li>';
+$html [] = '</ul>';
+echo join ( PHP_EOL, $html );

@@ -1,0 +1,43 @@
+{
+	"frontends":
+	{
+		"zenfox.tld":
+		{
+			"defaultModule":"player",
+			"enabledModules":["player","affiliate","admin"],
+			"frontendId":"1",
+            "site_code":"zfx",
+			"site_name":"Taash Time",
+			"companyName": "Fortuity Infotech Pvt. Ltd.",
+			"companyAddress": "Plot No. 53, UBI Colony, Road No. 3, Banjara Hills, Hyderabad - 34",
+			"frontendName": "taashtime.com",
+			"frontendShortName": "TaashTime",
+			"frontendCurrency": "INR",
+			"frontendMinDeposit": "100",
+			"softwareCompanyName": "Logic Dice LLC",
+			"SoftwareCompanyShortName": "Logic Dice",
+			"operationsCompanyName": "Fortuity Infotech Private Limited",
+			"operationsCompanyShortName": "Fortuity",
+			"operationsCompanyJurisdiction": "India",
+			"licensingJurisdiction": "India",
+			"supportEmailId": "support@taashtime.com",
+			"advertisingSiteName": "affiliate.zenfox.tld"
+		},
+		"affiliate.zenfox.tld":
+		{
+			"defaultModule":"affiliate",
+			"enabledModules":["affiliate"],
+			"affiliateFrontendId":"1",
+			"frontendId" : "1",
+            "site_code":"azfx"
+		},
+		"admin.zenfox.tld":
+		{
+   			"defaultModule":"admin",
+   			"enabledModules":["admin"],
+   			"adminFrontendId":"1",
+  			"frontendId" : "1",
+            "site_code":"gzfx"
+		}
+	}
+}

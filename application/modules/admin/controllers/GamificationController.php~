@@ -1,0 +1,44 @@
+<?php
+require_once dirname(__FILE__).'/../forms/CreateVariablesForm.php';
+require_once dirname(__FILE__).'/../forms/UserForm.php';
+
+class Admin_GamificationController extends Zenfox_Controller_Action
+{
+	public function init()
+	{
+		parent::init();
+		$this->_redirector = $this->_helper->getHelper('Redirector');
+        $contextSwitch = $this->_helper->getHelper('contextSwitch');
+        $contextSwitch->setAutoJsonSerialization(false);
+		$contextSwitch->addActionContext('index', 'json')
+						->addActionContext('edit', 'json')				
+              	->initContext();
+	}
+	public function indexAction()
+	{
+		print "This should load everything. This is printing without View";
+	}
+
+	public function createvariableAction()
+	{
+		/*
+		$form=new Admin_CreateVariablesForm();
+		$this->view->form = $form;
+		$offset = $this->getRequest()->page;  
+		*/
+
+		$form = new Admin_CreateVariablesForm();
+        $this->view->form = $form;
+	}	
+	public function createvariableAction()
+	{
+		/*
+		$form=new Admin_CreateVariablesForm();
+		$this->view->form = $form;
+		$offset = $this->getRequest()->page;  
+		*/
+
+		$form = new Admin_CreateVariablesForm();
+        $this->view->form = $form;
+	}	
+}

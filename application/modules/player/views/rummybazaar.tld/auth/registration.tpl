@@ -1,0 +1,2 @@
+{$completeRegistrationForm}
+{$message}

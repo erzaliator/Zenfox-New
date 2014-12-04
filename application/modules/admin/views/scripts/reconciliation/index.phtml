@@ -1,0 +1,22 @@
+<?php
+
+echo $this->form;
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$this->table($this->contents);
+	}
+	
+	echo $this->paginationControl($this->paginator, 'Sliding', 'transactionPaginator.phtml', array(
+						'myFromDate' => $this->fromDate,
+						'myToDate' => $this->toDate,
+						'amountType' => $this->amountType,
+						'transactionType' => $this->transactionType,
+						'playerId' => $this->playerId));
+	?>
+	<a href = "/download/index/rType/reconciliation/from/<?= $this->fromDate?>/to/<?= $this->toDate?>/playerId/<?= $this->playerId?>/transType/<?=$this->transactionType ?>/amtType/<?=$this->amountType ?>">Download</a>
+	<?php
+}
+?>

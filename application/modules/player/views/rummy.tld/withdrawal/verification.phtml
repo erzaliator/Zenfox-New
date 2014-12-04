@@ -1,0 +1,58 @@
+<div class="ttdepol">
+<div class="ttdepolcont">
+   			<div class="withdrawalm">
+			<div id="identityverification">
+			<div id="inner-box">
+<?php 
+if(!empty($this->form))
+{
+	if(!$this->withdrawalForm)
+	{
+		?>
+		<div class="verification"> IDENTITY VERIFICATION</div>
+		<div class="details">Personal Details</div>
+		<?php
+	}
+	echo $this->form;
+}
+
+if($this->verified =="yes")
+{
+	echo $this->table($this->table1);
+	echo $this->table($this->table2);
+?>
+
+<a href = "/withdrawal/modify/type/updateidentity">  UPDATE IDENTITY  </a>&nbsp;&nbsp;
+<a href = "/withdrawal/modify/type/addbankdetails">  ADD BANK DETAILS  </a>&nbsp;&nbsp;
+<a href = "/withdrawal/modify/type/mydetails">  MY DETAILS  </a><br/><br/>
+<?php }
+?>
+</div>
+</div>
+
+</div>
+</div></div>
+<script type="text/javascript" >
+
+document.getElementById("verification_form").onsubmit = function(){
+	document.getElementById("first_name").disabled = false;
+	document.getElementById("last_name").disabled = false;
+	document.getElementById("dateofbirth").disabled = false;
+	document.getElementById("address").disabled = false;
+	document.getElementById("city").disabled = false;
+	document.getElementById("state").disabled = false;
+	document.getElementById("country").disabled = false;
+	document.getElementById("pin").disabled = false;
+	document.getElementById("phone").disabled = false;
+	document.getElementById("email").disabled = false;
+	document.getElementById("sex").disabled = false;
+
+	if(document.getElementById("dateofbirth").value == "0000-00-00")
+	{
+		document.getElementById("dateofbirth").value = "";
+	}
+
+	
+}
+changeIdProof();
+</script>

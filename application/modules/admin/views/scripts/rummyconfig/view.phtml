@@ -1,0 +1,10 @@
+<?php
+foreach($this->rummyConfig as $configData)
+{
+	$linkArray[$configData['Table Id']] = array(
+										'controller' => 'rummyconfig',
+										'action' => 'edit',
+										'tableId' => $configData['Table Id'],
+										'flavour' => $configData['Flavour']);
+}
+echo $this->table($this->rummyConfig, array('Table Id'), $linkArray);

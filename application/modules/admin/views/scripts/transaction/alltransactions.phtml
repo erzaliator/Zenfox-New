@@ -1,0 +1,58 @@
+<?php
+echo $this->form;
+if($this->paginator)
+{
+	$paginator = $this->paginator;
+	$affTracker = new AffiliateTracker();
+	$csrIds = new CsrIds();
+	if (count($this->paginator))
+	{
+		$items = $paginator->getCurrentItems();
+		echo "<br><table border = '1'>";
+		echo '<tr>';
+		echo '<th align="left">Transaction Id</th>';
+		echo '<th align="left">Date Time</th>';
+		echo '<th align="left">Tracker Name</th>';
+		echo '<th align="left">Player Name</th>';
+		echo '<th align="left">Transaction Type</th>';
+		echo '<th align="left">Amount</th>';
+		foreach($items as $item)
+		{
+			echo '<tr>';
+			echo '<td>'.$item['audit_id'].'</td>';
+			echo '<td>'.$item['trans_end_time'].'</td>';
+			echo '<td>'.$affTracker->getTrackerNameFromId($item['tracker_id']).'</td>';
+			echo '<td>'.$csrIds->getPlayerLogin($item['player_id']).'</td>';
+			echo '<td>'.$item['trans_type'].'</td>';
+			echo '<td>'.$item['amount'].'</td>';
+			echo '</tr>';
+		}
+		echo '</table>';
+	
+		echo '<br><br>';
+		echo $this->paginationControl(
+						$this->paginator,
+						'Sliding',
+						'transaction_paginator_control.phtml',
+						array(
+							'toDate' => $this->toDate,
+							'fromDate' => $this->fromDate,
+							'transType' => $this->transType));
+	}
+}
+/*if($this->transactions)
+{
+	$transactions = $this->transactions;
+	echo "<br><table border = '1'>";
+	echo '<tr>';
+	echo '<th>Transaction start time</th>';
+	echo '<th>Transaction end time</th>';
+	foreach($transactions as $transaction)
+	{
+		echo '<tr>';
+		echo '<td>'.$transaction['trans_start_time'].'</td>';
+		echo '<td>'.$transaction['trans_end_time'].'</td>';
+		echo '</tr>';
+	}
+	echo '</table>';
+}*/

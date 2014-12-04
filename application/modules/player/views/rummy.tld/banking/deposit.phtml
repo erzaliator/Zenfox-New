@@ -1,0 +1,897 @@
+<?php
+//echo $this->form;
+if(!$this->ajaxReq)
+{
+?>
+
+<div class="ttdepol">
+  <div class="ttdepolcont">
+    <div class="ttdepolplz" id="player-deposit-amount">
+    <?php 
+    if($this->amount)
+    {
+    	echo "You have selected Rs " . $this->amount;
+    	?>
+    	<script type = "text/javascript">$(function(){ setDepositCounter(); });</script>
+    	<?php
+    }
+    else
+    {
+    	echo "Please deposit minimum 100 or above";
+    }
+    ?>
+    </div>
+    <div class="span7a" style="border:1px solid #A4A3A3;margin-top:10px">
+      <div class="steps" >
+       
+          <div id="step-0"> <a href="javascript:void(0)" class="<?=$this->amount?'':'current' ?>">
+          <img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/payment1.png" alt=""  style="width:100%" />
+         </a> </div>
+                   <div id="step-1"> <a href="javascript:void(0)" class="<?=$this->amount?'':'current' ?>">
+          <img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/payment2.png" alt=""  style="width:100%" />
+         </a> </div>
+                   <div id="step-2"> <a href="javascript:void(0)" class="<?=$this->amount?'':'current' ?>">
+          <img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/payment3.png" alt=""  style="width:100%" />
+         </a> </div>
+                   <div id="step-3"> <a href="javascript:void(0)" class="<?=$this->amount?'':'current' ?>">
+          <img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/payment4.png" alt=""  style="width:100%" />
+         </a> </div>
+         
+		  
+      </div>
+      <div id="deposit-section-0" class="ttdepolflowback" style="display:<?=$this->amount?'none':'block' ?>;">
+        <?php 
+              if($this->withdrawalAmount)
+              {
+              	?>
+        <div class="ttdepolflowbackt"> <span  >Rs. </span><span id="flowback-value">
+          <?=$this->withdrawalAmount ?>
+          </span><span>
+          <input name="" type="button" onClick="withdrawalFlowback()" value="Flow Back" class="ttdepolflrupeebtn">
+          </span> </div>
+        <?php
+              }
+              $bonusPercentage = 100;
+              if($this->noOfDeposit)
+              {
+              	$bonusPercentage = 30;
+              }
+              ?>
+        <div class="ttdepolfloinn">
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <!--tr style="height:40px;">
+                <td style="background:#fff">&nbsp;</td>
+                <td style="background:#fff"><input type="radio" value="100" id="amount-1" name="radio"></td>
+                <td style="background:#fff">Rs. 100</td>
+                <td width="50%" style="background:#fff; font-size:16px;"><b><span style="margin-right:10px;">Get</span> Rs. 105 + <?=$bonusPercentage?>% Bonus</b></td>
+              </tr>
+              <tr style="height:40px;">  
+                <td>&nbsp;</td>
+                <td><input type="radio" value="250" id="amount-2" name="radio"></td>
+                <td>Rs. 250</td>
+                <td width="50%" style="font-size:16px;"><b><span style="margin-right:10px;">Get</span> Rs. 262.5 + <?=$bonusPercentage?>% Bonus</b></td>
+              </tr>
+              <tr style="height:40px;">
+                <td style="background:#fff">&nbsp;</td>
+                <td style="background:#fff"><input type="radio" value="499" id="amount-3" name="radio"></td>
+                <td style="background:#fff">Rs. 499</td>
+                <td width="50%" style="background:#fff; font-size:16px;"><b><span style="margin-right:10px;">Get</span> Rs. 525 + <?=$bonusPercentage?>% Bonus</b></td>
+              </tr>
+              <tr style="height:40px;">
+                <td >&nbsp;</td>
+                <td><input type="radio" value="999" id="amount-4" name="radio" >
+                <td>Rs. 999</td>
+                <td width="50%" style="font-size:16px;"><b><span style="margin-right:10px;">Get</span> Rs. 1050 + <?=$bonusPercentage?>% Bonus</b></td>
+               </tr>
+               <tr style="height:40px;">
+                <td style="background:#fff">&nbsp;</td>
+                <td style="background:#fff"><input type="radio" value="1990" id="amount-5" name="radio"></td>
+                <td style="background:#fff">Rs. 1990</td>
+                <td width="50%" style="background:#fff; font-size:16px;"><b><span style="margin-right:10px;">Get</span> Rs. 2100 + <?=$bonusPercentage?>% Bonus</b></td>
+               </tr>
+               <tr style="height:40px;">
+                <td>&nbsp;</td>
+                <td><input type="radio" value="4949" id="amount-6" name="radio"></td>
+                <td>Rs. 4949</td>
+                <td width="50%" style="font-size:16px;"><b><span style="margin-right:10px;">Get</span> Rs. 5250 + <?=$bonusPercentage?>% Bonus</b></td>
+              </tr-->
+
+
+		<tr style="height:40px;">
+                <td width="5%" style="background:#fff">&nbsp;</td>
+                <td width="6%" style="background:#fff"><input type="radio" value="100" id="amount-1" name="radio"></td>
+                <td width="30%" style="background:#fff">Rs. 100</td>
+                  
+                <td width="6%" style="background:#fff"><input type="radio" value="250" id="amount-2" name="radio"></td>
+                <td width="30%" style="background:#fff">Rs. 250</td>
+
+                <td width="6%" style="background:#fff"><input type="radio" value="500" id="amount-3" name="radio"></td>
+                <td width="30%" style="background:#fff">Rs. 500</td>
+              </tr>
+              
+              <tr style="height:40px;">
+                <td width="5%">&nbsp;</td>
+                <td width="6%"><input type="radio" value="1000" id="amount-4" name="radio" >
+                <td width="30%">Rs. 1000</td>
+              
+                <td width="6%"><input type="radio" value="2000" id="amount-5" name="radio"></td>
+                <td width="30%">Rs. 2000</td>
+               
+                <td width="6%"><input type="radio" value="5000" id="amount-6" name="radio"></td>
+                <td width="30%">Rs. 5000</td>
+              </tr>
+
+              <tr style="height:40px;">
+                <td width="5%" style="background:#fff">&nbsp;</td>
+                <td width="6%" style="background:#fff"><input type="radio" value="" id="amount-7" name="radio">
+                  <label for="radio"></label></td>
+                <td width="31%" style="background:#fff">Custom Rs.
+                  <input type="text" id="custom-amount" style="width:100px" name=""></td>
+                <td width="7%" style="background:#fff">&nbsp;</td>
+                <td width="19%" style="background:#fff">&nbsp;</td>
+                <td width="6%" style="background:#fff">&nbsp;</td>
+                <td width="26%" style="background:#fff">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+	<!-- img src = "/css/rummy.tld/images/diwali_1.jpg" width="635px;"/-->
+      </div>
+	  <div id="deposit-section-1" style="display:<?=$this->amount?'block':'none' ?>;" class="ttpaymentnavm">
+		  <?php
+		  if(!$this->completed)
+		  {
+			?>
+			<div class="warning" style="font-size:14px;"><b style="font-size:16px;">Note:</b> It is very essential to provide correct profile information. If found any fraudulent information, management has the right to close account and reset the account balance to zero.!!</div>
+			<?php
+		  }
+		  else
+		  {
+			?>
+			<div class="warning" style="font-size:14px;">Your profile is completed, click on Next.!!<br>
+				<b style="font-size:16px;">Note:</b> To change any information, please contact to our customer support.
+			</div>
+			<?php
+		  }
+		  ?>
+		<div class="ttpaymentcont" id="profile-form">
+          <form name = "player-profile-form">
+            <div id="inner-box">
+              <dl class="zend_form">
+                <ul>
+                  <li>
+                    <label class="optional" for="firstName">First Name*</label>
+                    <input type="text" value="<?=$this->firstName ?>" id="firstName" name="firstName" <?=($this->firstName)?"disabled":""?>>
+                  </li>
+				  <li>
+                    <label class="optional" for="lastName">Last Name*</label>
+                    <input type="text" value="<?=$this->lastName ?>" id="lastName" name="lastName" <?=($this->lastName)?"disabled":""?>>
+                  </li>
+				  <li>
+					<label class="optional" for="sex">Sex*</label>
+                    <select name="sex" id="sex" style="width:100px" <?=($this->sex)?"disabled":""?>>
+                      <option label="Male" value="M" <?=($this->sex == 'M')?"selected":"" ?>>Male</option>
+					  <option label="Female" value="F" <?=($this->sex == 'F')?"selected":"" ?>>Female</option>
+                     </select>
+				  </li>
+				  <li>
+					<label for="dateofbirth" class="required">Date Of Birth *</label>
+					<input type="text" name="dateofbirth" id="datepicker" value="<?=$this->dob ?>" <?=($this->dob != '0000-00-00')?"disabled":""?>>
+				</li>
+                  <li>
+                    <label class="optional" for="contactNo">Contact No*</label>
+                    <input type="text" value="<?=$this->phone ?>" id="contactNo" name="contactNo" <?=($this->phone)?"disabled":""?>>
+                  </li>
+                  <li>
+                    <label class="optional" for="emailAddress">Email*</label>
+                    <input type="text" value="<?=$this->email ?>" id="emailAddress" name="emailAddress" <?=($this->email)?"disabled":""?>>
+                  </li>
+				<li>
+                    <label class="optional" for="address">Address*</label>
+                    <input type="text" value="<?=$this->address ?>" id="address" name="address" <?=($this->address)?"disabled":""?>>
+                  </li>
+				<li>
+                    <label class="optional" for="city">City*</label>
+                    <input type="text" value="<?=$this->city ?>" id="city" name="city" <?=($this->city)?"disabled":""?>>
+                  </li>
+                  <li>
+                    <label class="optional" for="pin">Pincode*</label>
+                    <input type="text" value="<?=$this->pin ?>" id="pin" name="pin" <?=($this->pin)?"disabled":""?>>
+                  </li>
+                  <li>
+                    <label class="optional" for="state">Select State*</label>
+                    <select name="state" id="state" style="width:150px" <?=($this->state)?"disabled":""?>>
+                      <option label="Andhra Pradesh" value="AP" <?=($this->state == 'AP')?"selected":"" ?>>Andhra Pradesh</option>
+                      <option label="Andaman and Nicobar Islands" value="AN" <?=($this->state == 'AN')?"selected":"" ?>>Andaman and Nicobar Islands</option>
+                      <option label="Arunachal Pradesh" value="AR" <?=($this->state == 'AR')?"selected":"" ?>>Arunachal Pradesh</option>
+                      <option label="Assam" value="AS" <?=($this->state == 'AS')?"selected":"" ?>>Assam</option>
+                      <option label="Bihar" value="BR" <?=($this->state == 'BR')?"selected":"" ?>>Bihar</option>
+                      <option label="Chandigarh" value="CH" <?=($this->state == 'CH')?"selected":"" ?>>Chandigarh</option>
+                      <option label="Chhattisgarh" value="CT" <?=($this->state == 'CT')?"selected":"" ?>>Chhattisgarh</option>
+                      <option label="Delhi" value="DL" <?=($this->state == 'DL')?"selected":"" ?>>Delhi</option>
+                      <option label="Goa" value="GA" <?=($this->state == 'GA')?"selected":"" ?>>Goa</option>
+                      <option label="Gujarat" value="GJ" <?=($this->state == 'GJ')?"selected":"" ?>>Gujarat</option>
+                      <option label="Haryana" value="HR" <?=($this->state == 'HR')?"selected":"" ?>>Haryana</option>
+                      <option label="Himachal Pradesh" value="HP" <?=($this->state == 'HP')?"selected":"" ?>>Himachal Pradesh</option>
+                      <option label="Jammu and Kashmir" value="JK" <?=($this->state == 'JK')?"selected":"" ?>>Jammu and Kashmir</option>
+                      <option label="Jharkhand" value="JH" <?=($this->state == 'JH')?"selected":"" ?>>Jharkhand</option>
+                      <option label="Karnataka" value="KA" <?=($this->state == 'KA')?"selected":"" ?>>Karnataka</option>
+                      <option label="Kerala" value="KL" <?=($this->state == 'KL')?"selected":"" ?>>Kerala</option>
+                      <option label="Lakshadweep" value="LD" <?=($this->state == 'LD')?"selected":"" ?>>Lakshadweep</option>
+                      <option label="Madhya Pradesh" value="MP" <?=($this->state == 'MP')?"selected":"" ?>>Madhya Pradesh</option>
+                      <option label="Maharashtra" value="MH" <?=($this->state == 'MH')?"selected":"" ?>>Maharashtra</option>
+                      <option label="Manipur" value="MN" <?=($this->state == 'MN')?"selected":"" ?>>Manipur</option>
+                      <option label="Meghalaya" value="ML" <?=($this->state == 'ML')?"selected":"" ?>>Meghalaya</option>
+                      <option label="Mizoram" value="MZ" <?=($this->state == 'MZ')?"selected":"" ?>>Mizoram</option>
+                      <option label="Nagaland" value="NL" <?=($this->state == 'NL')?"selected":"" ?>>Nagaland</option>
+                      <option label="Orissa" value="OR" <?=($this->state == 'OR')?"selected":"" ?>>Orissa</option>
+                      <option label="Puducherry" value="PY" <?=($this->state == 'PY')?"selected":"" ?>>Puducherry</option>
+                      <option label="Punjab" value="PB" <?=($this->state == 'PB')?"selected":"" ?>>Punjab</option>
+                      <option label="Rajasthan" value="RJ" <?=($this->state == 'RJ')?"selected":"" ?>>Rajasthan</option>
+                      <option label="Sikkim" value="SK" <?=($this->state == 'SK')?"selected":"" ?>>Sikkim</option>
+                      <option label="Tamil Nadu" value="TN" <?=($this->state == 'TN')?"selected":"" ?>>Tamil Nadu</option>
+                      <option label="Tripura" value="TR" <?=($this->state == 'TR')?"selected":"" ?>>Tripura</option>
+                      <option label="Uttarakhand" value="UT" <?=($this->state == 'UT')?"selected":"" ?>>Uttarakhand</option>
+                      <option label="Uttar Pradesh" value="UP" <?=($this->state == 'UP')?"selected":"" ?>>Uttar Pradesh</option>
+                      <option label="West Bengal" value="WB" <?=($this->state == 'WB')?"selected":"" ?>>West Bengal</option>
+                    </select>
+                  </li>
+		  <li>
+                    <input type="hidden" value="IN" id="country" name="country">
+                  </li>
+                </ul>
+              </dl>
+            </div>
+          </form>
+        </div>
+	  </div>
+      <div id="deposit-section-2" class="ttselectoffer" style="display:<?=$this->amount?'block':'none' ?>; ">
+        <div cla ss="ttdepolflowbackt"> <span>
+          <input name="redeem-coupon" type="hidden" id="redeem-coupon">
+          </span><span>
+          <input name="" type="hidden" value="Redeem Coupon" cla ss="ttdepolflrupeebtn">
+          </span> </div>
+        <div id="banner-ad">
+          <?php 
+			foreach($this->bonusSchemes as $bonusScheme)
+                {
+                        ?>
+          <div class="ttselectofferb1">
+            <?php
+                                                if($bonusScheme['scheme_id'] == 1)
+                                                {
+                                                	if($this->noOfDeposit)
+                                                	{
+                                                        ?>
+                                                        <!-- img alt="hugme" src="/css/rummy.tld/images/hugme.png"-->
+            <div  class="ttselectofferbbgblue" >
+              <h2>Each</h2>
+              <h2>Deposit</h2>
+              <h1>30%</h1>
+              <h2>Bonus</h2>
+            </div>
+            <?php
+                                                	}
+                                                	else
+                                                	{
+                                                		?>
+                                                	                                                        <!-- img alt="hugme" src="/css/rummy.tld/images/hugme.png"-->
+                                                	            <div  class="ttselectofferbbgblue" >
+                                                	              <h2>First</h2>
+                                                	              <h2>Deposit</h2>
+                                                	              <h1>100%</h1>
+                                                	              <h2>Bonus</h2>
+                                                	            </div>
+                                                	            <?php
+                                                	                                                	}
+                                                }
+                                        ?>
+            <div align="center">
+              <?php
+                                                if($bonusScheme['scheme_id'] == 1)
+                                                {
+                                                        ?>
+              <input name="ad-banner" type="radio" checked value="<?=$bonusScheme['scheme_id'] ?>">
+              <?php
+
+                                                }
+                                                /*
+                                                else
+                                                {
+                                                        ?>
+                                                        <input name="ad-banner" type="radio" value="<?=$bonusScheme['scheme_id'] ?>">                                                                   <?php
+                                                }*/
+                                                ?>
+            </div>
+          </div>
+          <!-- div class="ttselectofferb1"-->
+          <?php
+                                /*
+                                                if($bonusScheme['scheme_id'] == 2)
+                                                {
+                                                        ?>
+                                <div  class="ttselectofferbbg" ><h2>Repeat</h2>
+<h2>Deposit</h2>
+<h1>100%</h1>
+<h2>Bonus</h2></div>                                           <?php
+                                                }
+                                        ?>
+                                <div align="center">
+                                                <?php
+                                                if($bonusScheme['scheme_id'] == 2)
+                                                {
+                                                        ?>
+                                                        <input name="ad-banner" type="radio" checked value="<?=$bonusScheme['scheme_id'] ?>">                                                                   <?php
+
+                                                }
+                                                else
+                                                {
+                                                        ?>
+                                                        <input name="ad-banner" type="radio" value="<?=$bonusScheme['scheme_id'] ?>">                                                                   <?php
+                                                }
+                                                ?>
+                                        </div>
+                                </div>
+                                <?php
+                                */
+                        }
+
+              	?>
+        </div>
+      </div>
+      <div id="deposit-section-3" style="display:none" class="ttpaymentnavm">
+	  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <tr style="background:#fff">
+                <td width="5%" style="background:#fff">&nbsp;</td>
+                <td width="6%" style="background:#fff"><input type="radio" value="NETBANKING" id="netbanking" name="payment-option" onclick="checkPaymentType('NETBANKING')">
+                  <label for="radio"></label></td>
+                <td width="31%" style="background:#fff">Net Banking</td>
+                <td width="7%" style="background:#fff" ><input type="radio" value="DEBIT" id="debit" name="payment-option" onclick="checkPaymentType('DEBIT')"></td>
+                <td width="19%" style="background:#fff">Debit</td>
+                <td width="6%" style="background:#fff"><input type="radio" value="CREDIT" id="credit" name="payment-option" onclick="checkPaymentType('CREDIT')"></td>
+                <td width="26%" style="background:#fff">Credit</td>
+              </tr>
+              <tr>
+                <td width="5%"  >&nbsp;</td>
+                <td width="6%"  ><input type="radio" value="CASH" id="cod" name="payment-option" onclick="checkPaymentType('COD')">
+                  <label for="radio"></label></td>
+                <td width="31%"  >Cash On Delivery</td>
+                <td width="7%"  ><input type="radio" value="MOL" id="mol" name="payment-option" onclick="checkPaymentType('MOL')"></td>
+                <td width="19%"  >MOL</td>
+                <td width="7%"  ><input type="radio" value="WT" id="wire-transfer" name="payment-option" onclick="checkPaymentType('WT')"></td>
+                <td width="19%"  >Wire Transfer</td>
+              </tr>
+              <!-- tr style="background:#fff">
+                <td width="5%" style="background:#fff">&nbsp;</td>
+                <td width="6%" style="background:#fff"><input type="radio" value="BTC" id="btc" name="payment-option" onclick="checkPaymentType('BTC')">
+                  <label for="radio"></label></td>
+                <td width="31%" style="background:#fff">Bitcoins</td>
+              </tr-->
+            </tbody>
+      </table>
+	  <div class="ttpaymentcont" id="bank-list" Deposit><span style="font-weight:bold">Select Bank</span>
+            <select name="bankCode" id="bankCode">
+              <option label="ICICI Bank" value="10">ICICI Bank</option>
+              <option label="Axis Bank" value="50">Axis Bank</option>
+              <option label="Corporation Bank" value="120">Corporation Bank</option>
+              <option label="Yes Bank" value="130">Yes Bank</option>
+              <option label="Karnataka Bank" value="140">Karnataka Bank</option>
+              <option label="Oriental Bank of Commerce" value="160">Oriental Bank of Commerce</option>
+              <option label="Bank of India" value="240">Bank of India</option>
+              <option label="Bank of Rajasthan" value="170">Bank of Rajasthan</option>
+              <option label="South Indian Bank" value="180">South Indian Bank</option>
+              <option label="Vijaya Bank" value="200">Vijaya Bank</option>
+              <option label="Federal Bank" value="270">Federal Bank</option>
+              <option label="Bank of Baroda" value="310">Bank of Baroda</option>
+              <option label="Bank of Bahrain and Kuwait" value="340">Bank of Bahrain and Kuwait</option>
+              <option label="Dhanlaxmi Bank" value="370">Dhanlaxmi Bank</option>
+              <option label="Deutsche Bank" value="330">Deutsche Bank</option>
+              <option label="Union Bank of India" value="190">Union Bank of India</option>
+              <option label="Standard Chartered Bank" value="450">Standard Chartered Bank</option>
+              <option label="Indian Overseas Bank" value="420">Indian Overseas Bank</option>
+              <option label="Allahabad Bank" value="280">Allahabad Bank</option>
+              <option label="HDFC Bank" value="300">HDFC Bank</option>
+              <option label="Citi Bank" value="230">Citi Bank</option>
+              <option label="IDBI Bank" value="520">IDBI Bank</option>
+              <option label="State Bank of India" value="530">State Bank of India</option>
+              <option label="City Union Bank" value="440">City Union Bank</option>
+              <option label="State Bank of Mysore" value="550">State Bank of Mysore</option>
+              <option label="State Bank of Hyderabad" value="560">State Bank of Hyderabad</option>
+              <option label="Indian Bank" value="490">Indian Bank</option>
+              <option label="Tamilnad Mercantile Bank" value="620">Tamilnad Mercantile Bank</option>
+              <option label="Development Credit Bank" value="540">Development Credit Bank</option>
+            </select>
+		</div>
+		<div id="player-wt">
+			<form name = "player-wt-form">
+				<dl class="zend_form">
+	                <ul>
+	                	<li style="list-style-type:none">
+	                    	<label class="optional" for="acNumber" style="width:175px; display:inline-block;">Account Number*</label>
+	                    	<input type="text" value="" id="acNumber" name="acNumber">
+	                  	</li>
+	                  	<li style="list-style-type:none">
+	                    	<label class="optional" for="transAmount" style="width:175px; display:inline-block;">Amount*</label>
+	                    	<input type="text" value="" id="transAmount" name="transAmount">
+	                  	</li>
+	                	<li style="list-style-type:none">
+	                    	<label class="optional" for="acName" style="width:175px; display:inline-block;">Account Holder Name*</label>
+	                    	<input type="text" value="" id="acName" name="acName">
+	                  	</li>
+	                  	<li style="list-style-type:none">
+	                    	<label class="optional" for="bankName" style="width:175px; display:inline-block;">Bank Name*</label>
+	                    	<input type="text" value="" id="bankName" name="bankName">
+	                  	</li>
+	                  	<li style="list-style-type:none">
+	                    	<label class="optional" for="bankTransId" style="width:175px; display:inline-block;">Bank Confirmation Number(Transaction Id)*</label>
+	                    	<input type="text" value="" id="bankTransId" name="bankTransId">
+	                  	</li>
+	                </ul>
+	            </dl>
+			</form>
+		</div>
+		<!-- div id="player-btc">
+			<form name="player-btc-form">
+				<dl class="zend_form">
+					<ul>
+						<li style="list-style-type:none">
+	                    	<label class="optional" for="noofbtc" style="width:125px; display:inline-block;">No Of Bitcoins*</label>
+	                    	<input type="text" value="" id="noofbtc" name="noofbtc">
+	                  	</li>
+					</ul>
+				</dl>
+			</form>
+		</div-->
+	  <?php
+	  /*
+        <div class="ttpaymentnav" id="payment-type">
+          <ul>
+            <li><a href="javascript:void(0)" class="current" onclick="changePaymentType('net-banking')">Net Banking</a></li>
+            <li><a href="javascript:void(0)" onclick="changePaymentType('cod')">Cash on Delivery</a></li>
+            <li><a href="javascript:void(0)" onclick="changePaymentType('debit-card')">Debit Card</a></li>
+            <li><a href="javascript:void(0)" onclick="changePaymentType('credit-card')">Credit Card</a></li>
+            <?php
+	          if($this->mol)
+                  {
+                        ?>
+            <li><a href="javascript:void(0)" onclick="changePaymentType('mol')">Mol</a></li>
+            <?php
+                  }
+                  ?>
+          </ul>
+        </div>
+        <div class="ttpaymentcont" id="bank-list" ><span style="font-weight:bold">Select Bank</span>
+          
+            <select name="bankCode" id="bankCode">
+              <option label="ICICI Bank" value="10">ICICI Bank</option>
+              <option label="Axis Bank" value="50">Axis Bank</option>
+              <option label="Corporation Bank" value="120">Corporation Bank</option>
+              <option label="Yes Bank" value="130">Yes Bank</option>
+              <option label="Karnataka Bank" value="140">Karnataka Bank</option>
+              <option label="Oriental Bank of Commerce" value="160">Oriental Bank of Commerce</option>
+              <option label="Bank of India" value="240">Bank of India</option>
+              <option label="Bank of Rajasthan" value="170">Bank of Rajasthan</option>
+              <option label="South Indian Bank" value="180">South Indian Bank</option>
+              <option label="Vijaya Bank" value="200">Vijaya Bank</option>
+              <option label="Federal Bank" value="270">Federal Bank</option>
+              <option label="Bank of Baroda" value="310">Bank of Baroda</option>
+              <option label="Bank of Bahrain and Kuwait" value="340">Bank of Bahrain and Kuwait</option>
+              <option label="Dhanlaxmi Bank" value="370">Dhanlaxmi Bank</option>
+              <option label="Deutsche Bank" value="330">Deutsche Bank</option>
+              <option label="Union Bank of India" value="190">Union Bank of India</option>
+              <option label="Standard Chartered Bank" value="450">Standard Chartered Bank</option>
+              <option label="Indian Overseas Bank" value="420">Indian Overseas Bank</option>
+              <option label="Allahabad Bank" value="280">Allahabad Bank</option>
+              <option label="HDFC Bank" value="300">HDFC Bank</option>
+              <option label="Citi Bank" value="230">Citi Bank</option>
+              <option label="IDBI Bank" value="520">IDBI Bank</option>
+              <option label="State Bank of India" value="530">State Bank of India</option>
+              <option label="City Union Bank" value="440">City Union Bank</option>
+              <option label="State Bank of Mysore" value="550">State Bank of Mysore</option>
+              <option label="State Bank of Hyderabad" value="560">State Bank of Hyderabad</option>
+              <option label="Indian Bank" value="490">Indian Bank</option>
+              <option label="Tamilnad Mercantile Bank" value="620">Tamilnad Mercantile Bank</option>
+              <option label="Development Credit Bank" value="540">Development Credit Bank</option>
+            </select>
+       
+          <form name = "player-netbanking-form">
+            <label class="optional" for="playerState">Select State</label>
+            <select name="state" id="state">
+              <option label="Andhra Pradesh" value="AP" <?=($this->state == 'AP')?"selected":"" ?>>Andhra Pradesh</option>
+              <option label="Andaman and Nicobar Islands" value="AN" <?=($this->state == 'AN')?"selected":"" ?>>Andaman and Nicobar Islands</option>
+              <option label="Arunachal Pradesh" value="AR" <?=($this->state == 'AR')?"selected":"" ?>>Arunachal Pradesh</option>
+              <option label="Assam" value="AS" <?=($this->state == 'AS')?"selected":"" ?>>Assam</option>
+              <option label="Bihar" value="BR" <?=($this->state == 'BR')?"selected":"" ?>>Bihar</option>
+              <option label="Chandigarh" value="CH" <?=($this->state == 'CH')?"selected":"" ?>>Chandigarh</option>
+              <option label="Chhattisgarh" value="CT" <?=($this->state == 'CT')?"selected":"" ?>>Chhattisgarh</option>
+              <option label="Delhi" value="DL" <?=($this->state == 'DL')?"selected":"" ?>>Delhi</option>
+              <option label="Goa" value="GA" <?=($this->state == 'GA')?"selected":"" ?>>Goa</option>
+              <option label="Gujarat" value="GJ" <?=($this->state == 'GJ')?"selected":"" ?>>Gujarat</option>
+              <option label="Haryana" value="HR" <?=($this->state == 'HR')?"selected":"" ?>>Haryana</option>
+              <option label="Himachal Pradesh" value="HP" <?=($this->state == 'HP')?"selected":"" ?>>Himachal Pradesh</option>
+              <option label="Jammu and Kashmir" value="JK" <?=($this->state == 'JK')?"selected":"" ?>>Jammu and Kashmir</option>
+              <option label="Jharkhand" value="JH" <?=($this->state == 'JH')?"selected":"" ?>>Jharkhand</option>
+              <option label="Karnataka" value="KA" <?=($this->state == 'KA')?"selected":"" ?>>Karnataka</option>
+              <option label="Kerala" value="KL" <?=($this->state == 'KL')?"selected":"" ?>>Kerala</option>
+              <option label="Lakshadweep" value="LD" <?=($this->state == 'LD')?"selected":"" ?>>Lakshadweep</option>
+              <option label="Madhya Pradesh" value="MP" <?=($this->state == 'MP')?"selected":"" ?>>Madhya Pradesh</option>
+              <option label="Maharashtra" value="MH" <?=($this->state == 'MH')?"selected":"" ?>>Maharashtra</option>
+              <option label="Manipur" value="MN" <?=($this->state == 'MN')?"selected":"" ?>>Manipur</option>
+              <option label="Meghalaya" value="ML" <?=($this->state == 'ML')?"selected":"" ?>>Meghalaya</option>
+              <option label="Mizoram" value="MZ" <?=($this->state == 'MZ')?"selected":"" ?>>Mizoram</option>
+              <option label="Nagaland" value="NL" <?=($this->state == 'NL')?"selected":"" ?>>Nagaland</option>
+              <option label="Orissa" value="OR" <?=($this->state == 'OR')?"selected":"" ?>>Orissa</option>
+              <option label="Puducherry" value="PY" <?=($this->state == 'PY')?"selected":"" ?>>Puducherry</option>
+              <option label="Punjab" value="PB" <?=($this->state == 'PB')?"selected":"" ?>>Punjab</option>
+              <option label="Rajasthan" value="RJ" <?=($this->state == 'RJ')?"selected":"" ?>>Rajasthan</option>
+              <option label="Sikkim" value="SK" <?=($this->state == 'SK')?"selected":"" ?>>Sikkim</option>
+              <option label="Tamil Nadu" value="TN" <?=($this->state == 'TN')?"selected":"" ?>>Tamil Nadu</option>
+              <option label="Tripura" value="TR" <?=($this->state == 'TR')?"selected":"" ?>>Tripura</option>
+              <option label="Uttarakhand" value="UT" <?=($this->state == 'UT')?"selected":"" ?>>Uttarakhand</option>
+              <option label="Uttar Pradesh" value="UP" <?=($this->state == 'UP')?"selected":"" ?>>Uttar Pradesh</option>
+              <option label="West Bengal" value="WB" <?=($this->state == 'WB')?"selected":"" ?>>West Bengal</option>
+            </select>
+          </form>
+        </div>
+        <div class="ttpaymentcont" id="cod-form">
+          <div id="inner-box">
+            <dl class="zend_form">
+              <ul>
+                <li style="display: none;">
+                  <label class="optional" for="playerName">Name</label>
+                  <input type="text" value="<?=$this->playerName ?>" id="name" name="playerName">
+                </li>
+                <li id="address_box" class="li_tag" >
+                  <label class="optional" for="address">Address</label>
+                  <textarea cols="80" rows="24" class="text" style="width: 18em; height: 5em; line-height: 12px;" id="address" name="address"><?=$this->address ?>
+</textarea>
+                </li>
+                <li id="city_list" >
+                  <label class="optional" for="city">Select City</label>
+                  <select id="city" name="city" style="width:150px">
+                    <?php 
+							foreach($this->cityList as $cities)
+							{
+								if($cities['selected'])
+								{
+									?>
+                    <option selected = "selected" label="<?=$cities['label'] ?>" value="<?=$cities['value'] ?>">
+                    <?=$cities['label'] ?>
+                    </option>
+                    <?php
+								}
+								else
+								{
+									?>
+                    <option label="<?=$cities['label'] ?>" value="<?=$cities['value'] ?>">
+                    <?=$cities['label'] ?>
+                    </option>
+                    <?php
+								}
+							}
+							?>
+                  </select>
+                </li>
+                <li id="player_state" >
+                  <form name = "player-cod-form">
+                    <label class="optional" for="playerState">Select State</label>
+                    <select name="state" id="state" style="width:150px">
+                      <option label="Andhra Pradesh" value="AP" <?=($this->state == 'AP')?"selected":"" ?>>Andhra Pradesh</option>
+                      <option label="Andaman and Nicobar Islands" value="AN" <?=($this->state == 'AN')?"selected":"" ?>>Andaman and Nicobar Islands</option>
+                      <option label="Arunachal Pradesh" value="AR" <?=($this->state == 'AR')?"selected":"" ?>>Arunachal Pradesh</option>
+                      <option label="Assam" value="AS" <?=($this->state == 'AS')?"selected":"" ?>>Assam</option>
+                      <option label="Bihar" value="BR" <?=($this->state == 'BR')?"selected":"" ?>>Bihar</option>
+                      <option label="Chandigarh" value="CH" <?=($this->state == 'CH')?"selected":"" ?>>Chandigarh</option>
+                      <option label="Chhattisgarh" value="CT" <?=($this->state == 'CT')?"selected":"" ?>>Chhattisgarh</option>
+                      <option label="Delhi" value="DL" <?=($this->state == 'DL')?"selected":"" ?>>Delhi</option>
+                      <option label="Goa" value="GA" <?=($this->state == 'GA')?"selected":"" ?>>Goa</option>
+                      <option label="Gujarat" value="GJ" <?=($this->state == 'GJ')?"selected":"" ?>>Gujarat</option>
+                      <option label="Haryana" value="HR" <?=($this->state == 'HR')?"selected":"" ?>>Haryana</option>
+                      <option label="Himachal Pradesh" value="HP" <?=($this->state == 'HP')?"selected":"" ?>>Himachal Pradesh</option>
+                      <option label="Jammu and Kashmir" value="JK" <?=($this->state == 'JK')?"selected":"" ?>>Jammu and Kashmir</option>
+                      <option label="Jharkhand" value="JH" <?=($this->state == 'JH')?"selected":"" ?>>Jharkhand</option>
+                      <option label="Karnataka" value="KA" <?=($this->state == 'KA')?"selected":"" ?>>Karnataka</option>
+                      <option label="Kerala" value="KL" <?=($this->state == 'KL')?"selected":"" ?>>Kerala</option>
+                      <option label="Lakshadweep" value="LD" <?=($this->state == 'LD')?"selected":"" ?>>Lakshadweep</option>
+                      <option label="Madhya Pradesh" value="MP" <?=($this->state == 'MP')?"selected":"" ?>>Madhya Pradesh</option>
+                      <option label="Maharashtra" value="MH" <?=($this->state == 'MH')?"selected":"" ?>>Maharashtra</option>
+                      <option label="Manipur" value="MN" <?=($this->state == 'MN')?"selected":"" ?>>Manipur</option>
+                      <option label="Meghalaya" value="ML" <?=($this->state == 'ML')?"selected":"" ?>>Meghalaya</option>
+                      <option label="Mizoram" value="MZ" <?=($this->state == 'MZ')?"selected":"" ?>>Mizoram</option>
+                      <option label="Nagaland" value="NL" <?=($this->state == 'NL')?"selected":"" ?>>Nagaland</option>
+                      <option label="Orissa" value="OR" <?=($this->state == 'OR')?"selected":"" ?>>Orissa</option>
+                      <option label="Puducherry" value="PY" <?=($this->state == 'PY')?"selected":"" ?>>Puducherry</option>
+                      <option label="Punjab" value="PB" <?=($this->state == 'PB')?"selected":"" ?>>Punjab</option>
+                      <option label="Rajasthan" value="RJ" <?=($this->state == 'RJ')?"selected":"" ?>>Rajasthan</option>
+                      <option label="Sikkim" value="SK" <?=($this->state == 'SK')?"selected":"" ?>>Sikkim</option>
+                      <option label="Tamil Nadu" value="TN" <?=($this->state == 'TN')?"selected":"" ?>>Tamil Nadu</option>
+                      <option label="Tripura" value="TR" <?=($this->state == 'TR')?"selected":"" ?>>Tripura</option>
+                      <option label="Uttarakhand" value="UT" <?=($this->state == 'UT')?"selected":"" ?>>Uttarakhand</option>
+                      <option label="Uttar Pradesh" value="UP" <?=($this->state == 'UP')?"selected":"" ?>>Uttar Pradesh</option>
+                      <option label="West Bengal" value="WB" <?=($this->state == 'WB')?"selected":"" ?>>West Bengal</option>
+                    </select>
+                  </form>
+                </li>
+                <li id="contact_no" >
+                  <label class="optional" for="contact">Contact No</label>
+                  <input type="text" value="<?=$this->phone ?>" id="contact" name="contact">
+                </li>
+                <li id="pin_code" >
+                  <label class="optional" for="pinCode">Pin Code</label>
+                  <input type="text" value="<?=$this->pin ?>" id="pinCode" name="pin">
+                </li>
+              </ul>
+            </dl>
+          </div>
+        </div>
+        <div class="ttpaymentcont" id="debit-form">
+          <form name = "player-debit-form">
+            <div id="inner-box">
+              <dl class="zend_form">
+                <ul>
+                  <li>
+                    <label class="optional" for="playerName">Name*</label>
+                    <input type="text" value="<?=$this->playerName ?>" id="playerName" name="playerName">
+                  </li>
+                  <li>
+                    <label class="optional" for="playerContactNo">Contact No*</label>
+                    <input type="text" value="<?=$this->phone ?>" id="playerContactNo" name="playerContactNo">
+                  </li>
+                  <li>
+                    <label class="optional" for="emailAddress">Email*</label>
+                    <input type="text" value="<?=$this->email ?>" id="emailAddress" name="emailAddress">
+                  </li>
+		  <li>
+                    <label class="optional" for="playerAddress">Address*</label>
+                    <input type="text" value="<?=$this->address ?>" id="playerAddress" name="playerAddress">
+                  </li>
+		  <li>
+                    <label class="optional" for="playerCity">City*</label>
+                    <input type="text" value="<?=$this->city ?>" id="playerCity" name="playerCity">
+                  </li>
+                  <li>
+                    <label class="optional" for="playerPin">Pincode*</label>
+                    <input type="text" value="<?=$this->pin ?>" id="playerPin" name="playerPin">
+                  </li>
+                  <li>
+                    <label class="optional" for="playerState">Select State*</label>
+                    <select name="state" id="state" style="width:150px">
+                      <option label="Andhra Pradesh" value="AP" <?=($this->state == 'AP')?"selected":"" ?>>Andhra Pradesh</option>
+                      <option label="Andaman and Nicobar Islands" value="AN" <?=($this->state == 'AN')?"selected":"" ?>>Andaman and Nicobar Islands</option>
+                      <option label="Arunachal Pradesh" value="AR" <?=($this->state == 'AR')?"selected":"" ?>>Arunachal Pradesh</option>
+                      <option label="Assam" value="AS" <?=($this->state == 'AS')?"selected":"" ?>>Assam</option>
+                      <option label="Bihar" value="BR" <?=($this->state == 'BR')?"selected":"" ?>>Bihar</option>
+                      <option label="Chandigarh" value="CH" <?=($this->state == 'CH')?"selected":"" ?>>Chandigarh</option>
+                      <option label="Chhattisgarh" value="CT" <?=($this->state == 'CT')?"selected":"" ?>>Chhattisgarh</option>
+                      <option label="Delhi" value="DL" <?=($this->state == 'DL')?"selected":"" ?>>Delhi</option>
+                      <option label="Goa" value="GA" <?=($this->state == 'GA')?"selected":"" ?>>Goa</option>
+                      <option label="Gujarat" value="GJ" <?=($this->state == 'GJ')?"selected":"" ?>>Gujarat</option>
+                      <option label="Haryana" value="HR" <?=($this->state == 'HR')?"selected":"" ?>>Haryana</option>
+                      <option label="Himachal Pradesh" value="HP" <?=($this->state == 'HP')?"selected":"" ?>>Himachal Pradesh</option>
+                      <option label="Jammu and Kashmir" value="JK" <?=($this->state == 'JK')?"selected":"" ?>>Jammu and Kashmir</option>
+                      <option label="Jharkhand" value="JH" <?=($this->state == 'JH')?"selected":"" ?>>Jharkhand</option>
+                      <option label="Karnataka" value="KA" <?=($this->state == 'KA')?"selected":"" ?>>Karnataka</option>
+                      <option label="Kerala" value="KL" <?=($this->state == 'KL')?"selected":"" ?>>Kerala</option>
+                      <option label="Lakshadweep" value="LD" <?=($this->state == 'LD')?"selected":"" ?>>Lakshadweep</option>
+                      <option label="Madhya Pradesh" value="MP" <?=($this->state == 'MP')?"selected":"" ?>>Madhya Pradesh</option>
+                      <option label="Maharashtra" value="MH" <?=($this->state == 'MH')?"selected":"" ?>>Maharashtra</option>
+                      <option label="Manipur" value="MN" <?=($this->state == 'MN')?"selected":"" ?>>Manipur</option>
+                      <option label="Meghalaya" value="ML" <?=($this->state == 'ML')?"selected":"" ?>>Meghalaya</option>
+                      <option label="Mizoram" value="MZ" <?=($this->state == 'MZ')?"selected":"" ?>>Mizoram</option>
+                      <option label="Nagaland" value="NL" <?=($this->state == 'NL')?"selected":"" ?>>Nagaland</option>
+                      <option label="Orissa" value="OR" <?=($this->state == 'OR')?"selected":"" ?>>Orissa</option>
+                      <option label="Puducherry" value="PY" <?=($this->state == 'PY')?"selected":"" ?>>Puducherry</option>
+                      <option label="Punjab" value="PB" <?=($this->state == 'PB')?"selected":"" ?>>Punjab</option>
+                      <option label="Rajasthan" value="RJ" <?=($this->state == 'RJ')?"selected":"" ?>>Rajasthan</option>
+                      <option label="Sikkim" value="SK" <?=($this->state == 'SK')?"selected":"" ?>>Sikkim</option>
+                      <option label="Tamil Nadu" value="TN" <?=($this->state == 'TN')?"selected":"" ?>>Tamil Nadu</option>
+                      <option label="Tripura" value="TR" <?=($this->state == 'TR')?"selected":"" ?>>Tripura</option>
+                      <option label="Uttarakhand" value="UT" <?=($this->state == 'UT')?"selected":"" ?>>Uttarakhand</option>
+                      <option label="Uttar Pradesh" value="UP" <?=($this->state == 'UP')?"selected":"" ?>>Uttar Pradesh</option>
+                      <option label="West Bengal" value="WB" <?=($this->state == 'WB')?"selected":"" ?>>West Bengal</option>
+                    </select>
+                  </li>
+                </ul>
+              </dl>
+            </div>
+          </form>
+        </div>
+        <div class="ttpaymentcont" id="credit-form" >
+          <form name = "player-credit-form">
+            <div id="inner-box">
+              <dl class="zend_form">
+                <ul>
+                  <li>
+                    <label class="optional" for="playerName">Name*</label>
+                    <input type="text" value="<?=$this->playerName ?>" id="player_name" name="playerName">
+                  </li>
+                  <li>
+                    <label class="optional" for="playerContactNo">Contact No*</label>
+                    <input type="text" value="<?=$this->phone ?>" id="player_contact_no" name="playerContactNo">
+                  </li>
+                  <li>
+                    <label class="optional" for="emailAddress">Email*</label>
+                    <input type="text" value="<?=$this->email ?>" id="email_address" name="emailAddress">
+                  </li>
+		  <li>
+                    <label class="optional" for="playerAddress">Address*</label>
+                    <input type="text" value="<?=$this->address ?>" id="player_address" name="playerAddress">
+                  </li>
+                  <li>
+                    <label class="optional" for="playerCity">City*</label>
+                    <input type="text" value="<?=$this->city ?>" id="player_city" name="playerCity">
+                  </li>
+                  <li>
+                    <label class="optional" for="playerPin">Pincode*</label>
+                    <input type="text" value="<?=$this->pin ?>" id="player_pin" name="playerPin">
+                  </li>
+                  <li>
+                    <label class="optional" for="playerState">Select State*</label>
+                    <select name="state" id="state" style="width:150px">
+                      <option label="Andhra Pradesh" value="AP" <?=($this->state == 'AP')?"selected":"" ?>>Andhra Pradesh</option>
+                      <option label="Andaman and Nicobar Islands" value="AN" <?=($this->state == 'AN')?"selected":"" ?>>Andaman and Nicobar Islands</option>
+                      <option label="Arunachal Pradesh" value="AR" <?=($this->state == 'AR')?"selected":"" ?>>Arunachal Pradesh</option>
+                      <option label="Assam" value="AS" <?=($this->state == 'AS')?"selected":"" ?>>Assam</option>
+                      <option label="Bihar" value="BR" <?=($this->state == 'BR')?"selected":"" ?>>Bihar</option>
+                      <option label="Chandigarh" value="CH" <?=($this->state == 'CH')?"selected":"" ?>>Chandigarh</option>
+                      <option label="Chhattisgarh" value="CT" <?=($this->state == 'CT')?"selected":"" ?>>Chhattisgarh</option>
+                      <option label="Delhi" value="DL" <?=($this->state == 'DL')?"selected":"" ?>>Delhi</option>
+                      <option label="Goa" value="GA" <?=($this->state == 'GA')?"selected":"" ?>>Goa</option>
+                      <option label="Gujarat" value="GJ" <?=($this->state == 'GJ')?"selected":"" ?>>Gujarat</option>
+                      <option label="Haryana" value="HR" <?=($this->state == 'HR')?"selected":"" ?>>Haryana</option>
+                      <option label="Himachal Pradesh" value="HP" <?=($this->state == 'HP')?"selected":"" ?>>Himachal Pradesh</option>
+                      <option label="Jammu and Kashmir" value="JK" <?=($this->state == 'JK')?"selected":"" ?>>Jammu and Kashmir</option>
+                      <option label="Jharkhand" value="JH" <?=($this->state == 'JH')?"selected":"" ?>>Jharkhand</option>
+                      <option label="Karnataka" value="KA" <?=($this->state == 'KA')?"selected":"" ?>>Karnataka</option>
+                      <option label="Kerala" value="KL" <?=($this->state == 'KL')?"selected":"" ?>>Kerala</option>
+                      <option label="Lakshadweep" value="LD" <?=($this->state == 'LD')?"selected":"" ?>>Lakshadweep</option>
+                      <option label="Madhya Pradesh" value="MP" <?=($this->state == 'MP')?"selected":"" ?>>Madhya Pradesh</option>
+                      <option label="Maharashtra" value="MH" <?=($this->state == 'MH')?"selected":"" ?>>Maharashtra</option>
+                      <option label="Manipur" value="MN" <?=($this->state == 'MN')?"selected":"" ?>>Manipur</option>
+                      <option label="Meghalaya" value="ML" <?=($this->state == 'ML')?"selected":"" ?>>Meghalaya</option>
+                      <option label="Mizoram" value="MZ" <?=($this->state == 'MZ')?"selected":"" ?>>Mizoram</option>
+                      <option label="Nagaland" value="NL" <?=($this->state == 'NL')?"selected":"" ?>>Nagaland</option>
+                      <option label="Orissa" value="OR" <?=($this->state == 'OR')?"selected":"" ?>>Orissa</option>
+                      <option label="Puducherry" value="PY" <?=($this->state == 'PY')?"selected":"" ?>>Puducherry</option>
+                      <option label="Punjab" value="PB" <?=($this->state == 'PB')?"selected":"" ?>>Punjab</option>
+                      <option label="Rajasthan" value="RJ" <?=($this->state == 'RJ')?"selected":"" ?>>Rajasthan</option>
+                      <option label="Sikkim" value="SK" <?=($this->state == 'SK')?"selected":"" ?>>Sikkim</option>
+                      <option label="Tamil Nadu" value="TN" <?=($this->state == 'TN')?"selected":"" ?>>Tamil Nadu</option>
+                      <option label="Tripura" value="TR" <?=($this->state == 'TR')?"selected":"" ?>>Tripura</option>
+                      <option label="Uttarakhand" value="UT" <?=($this->state == 'UT')?"selected":"" ?>>Uttarakhand</option>
+                      <option label="Uttar Pradesh" value="UP" <?=($this->state == 'UP')?"selected":"" ?>>Uttar Pradesh</option>
+                      <option label="West Bengal" value="WB" <?=($this->state == 'WB')?"selected":"" ?>>West Bengal</option>
+                    </select>
+                  </li>
+                  <!--li id="credit_card_no" >
+                    <label class="optional" for="creditCardNo">Credit Card No</label>
+                    <input type="text" value="<?=$this->creditCardNo ?>" id="creditCardNo" name="creditCardNo">
+                  </li>
+                  <li id="card_holder" >
+                    <label class="optional" for="cardHolder">Card Holder Name</label>
+                    <input type="text" value="<?=$this->cardHolder ?>" id="cardHolder" name="cardHolder">
+                  </li>
+                  <li id="card_cvv" >
+                    <label class="optional" for="cardCVV">CVV No</label>
+                    <input type="text" value="<?=$this->cardCVV ?>" id="cardCVV" name="cardCVV">
+                  </li>
+                  <li id="card_expiry_month" >
+                    <label class="optional" for="cardExpiryMonth">Card Expiry Month</label>
+                    <select name="cardExpiryMonth">
+                      <option label="01" value="01" <?=($this->cardExpiryMonth == '01')?"selected":"" ?>>01</option>
+                      <option label="02" value="02" <?=($this->cardExpiryMonth == '02')?"selected":"" ?>>02</option>
+                      <option label="03" value="03" <?=($this->cardExpiryMonth == '03')?"selected":"" ?>>03</option>
+                      <option label="04" value="04" <?=($this->cardExpiryMonth == '04')?"selected":"" ?>>04</option>
+                      <option label="05" value="05" <?=($this->cardExpiryMonth == '05')?"selected":"" ?>>05</option>
+                      <option label="06" value="06" <?=($this->cardExpiryMonth == '06')?"selected":"" ?>>06</option>
+                      <option label="07" value="07" <?=($this->cardExpiryMonth == '07')?"selected":"" ?>>07</option>
+                      <option label="08" value="08" <?=($this->cardExpiryMonth == '08')?"selected":"" ?>>08</option>
+                      <option label="09" value="09" <?=($this->cardExpiryMonth == '09')?"selected":"" ?>>09</option>
+                      <option label="10" value="10" <?=($this->cardExpiryMonth == '10')?"selected":"" ?>>10</option>
+                      <option label="11" value="11" <?=($this->cardExpiryMonth == '11')?"selected":"" ?>>11</option>
+                      <option label="12" value="12" <?=($this->cardExpiryMonth == '12')?"selected":"" ?>>12</option>
+                    </select>
+                  </li>
+                  <li id="card_expiry_year" >
+                    <label class="optional" for="cardExpiryYear">Card Expiry Year</label>
+                    <input type="text" value="<?=$this->cardExpiryYear ?>" id="cardExpiryYear" name="cardExpiryYear">
+                  </li>
+                  <li id="card_type" >
+                    <label class="optional" for="cardType">Card Type</label>
+                    <select name="cardType">
+                      <option label="VISA" value="VISA" <?=($this->cardType == 'VISA')?"selected":"" ?>>VISA</option>
+                      <option label="MASTER" value="MASTER" <?=($this->cardType == 'MASTER')?"selected":"" ?>>MASTER</option>
+                    </select>
+                  </li-->
+                </ul>
+              </dl>
+            </div>
+          </form>
+        </div>
+        <div class="ttpaymentcont" id="mol-form"> Click on Confirm to continue </div>
+		*/
+		?>
+      </div>
+    </div>
+    <div class="ttdepolnextback">
+      <div class="ttdepolback">
+        <input id="deposit-back" name="" type="button" value="Back" class="ttdepolbackbtns" onclick="prevDepositSec('<?=$this->completed ?>')">
+      </div>
+      <div class="ttdepolnext">
+        <input id="deposit-next" name="" type="button" value="Next" class="ttdepolnextbackbtn" onclick="nextDepositSec()">
+      </div>
+      <div id="confirm-order" align="right" style="margin:0px;">
+        <input name="" type="button" value="Confirm Order" class="ttdepolconfbtn" onclick="confirmOrder()">
+      </div>
+    </div>
+    <div id="wire-transfer-detail">
+    <h2>Wire Transfer</h2>
+You can transfer the amount directly to our bank accounts from your online banking account or your nearest bank.
+<br/><b>Online Banking Account:</b>
+Go to your online banking or NetBanking sites of your bank. (You can find the list of banks approved by RBI <a href="http://www.rbi.org.in/scripts/banklinks.aspx" target="_blank">here</a>)
+Initiate a new bank transfer, send it to the account numbers below.
+Once you get the acknowledgement of transfer, enter the details in the above form.
+<br/>
+<span style="margin-left:275px;">OR</span>
+<br/>
+<b> Bank Transfer</b>
+Go to your nearest bank, initiate a new tranfer (in India it is called NEFT) to our bank accounts and pay in cash or cheque to the bank.
+Once you get the acknowledgement slip, enter the details in the above form.
+    </div>
+    <div class="ttbankdtls" id="wt-bank-list">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>&nbsp;</th>
+            <th  style="border-left:#484848 solid 1px">RBS</th>
+            <th style="border-left:#484848 solid 1px">ICICI</th>
+          </tr>
+          <tr>
+            <td><strong>A/c Name</strong></td>
+            <td>Fortuity Infotech Pvt. Ltd.</td>
+            <td>Fortuity Infotech Pvt. Ltd.</td>
+          </tr>
+          <tr>
+            <td><strong>A/c No</strong></td>
+            <td>1616794</td>
+            <td>000805014011</td>
+          </tr>
+          <tr>
+            <td><strong>IFSC</strong></td>
+            <td>ABNA0100317</td>
+            <td>ICICI0000008</td>
+          </tr>
+          <tr>
+            <td><strong>Bank</strong></td>
+            <td>The Royal Bank of Scotland N.V.</td>
+            <td>ICICI Bank</td>
+          </tr>
+          <tr>
+            <td><strong>Branch</strong></td>
+            <td>Hyderabad</td>
+            <td>Khairtabad</td>
+          </tr>
+          <tr>
+            <td><strong>Address</strong></td>
+            <td>Stamford Park<br>
+              Door No 8-2-269/4/B, Road No. 2, Banjara Hills,<br>
+              Hyderabad 500 034,</td>
+            <td>6-2-1012, Tgv Mansions, Opp. Institution Of Engineers, Khairatabad, Hyderabad. 500004 </td>
+          </tr>
+        </table>
+      </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="/css/rummy.tld/jquery-ui-1.8.9.custom.css" type="text/css" media="screen">
+<script type="text/javascript">
+//<!--
+$(document).ready(function() {
+    $("#dateofbirth").datepicker({"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true,"yearRange":"1970:1994"});
+});
+//-->
+
+</script>
+<?php 
+}

@@ -1,0 +1,16 @@
+<b>Click on the Game groups to view and edit the groups</b>
+<br></br><br></br>
+<?php
+$gamegroups = $this->gamegroups;
+foreach($gamegroups as $gamegroup)
+{?>
+	<a href = "<?php echo $this->url(array(
+						'controller' => 'gamegroup',
+						'action' => 'viewgroup',
+						'id' => $gamegroup['id']));
+		?>">
+		<?php  print($gamegroup['name']);?>
+	</a>
+<?  echo '<br>';
+}
+?>

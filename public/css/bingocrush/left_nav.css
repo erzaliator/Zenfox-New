@@ -1,0 +1,83 @@
+.left-nav {
+	background-color:#FFFFEE;
+	height:400px;
+	width:200px;
+       padding:0 1px;
+}
+.left-nav ul.navigation, .left-nav ul.navigation ul {
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.left-nav ul.navigation a {
+  display: block;
+  text-decoration: none;	
+}
+
+.left-nav ul.navigation li {
+  margin-top: 1px;
+}
+
+.left-nav ul.navigation li.active a {
+ /* background:#A61F7D url("/images/left-nav-list-active-bg.png") repeat-x scroll 0 0;*/
+ 	background:#A61F7D;
+  font-weight:bold;
+  color:#FFF;
+}
+
+.left-nav ul.navigation li.active ul li a{background:none;}
+
+.left-nav ul.navigation li.active  ul li.active {
+  background-color:#ffb7f6;
+  font-weight:bold;
+  border-left: 5px #C42695 solid;
+}
+
+.left-nav ul.navigation li.active  ul li.active a {
+  font-weight:bold;
+  background-color:#ffc5fb;
+}
+
+.left-nav ul.navigation li.active  ul li.active a:hover {
+  font-weight:bold;
+   border-left: 0px #C42695 solid;
+  padding-left:20px;
+  
+}
+
+
+.left-nav ul.navigation li.active  ul li a {
+  background-color:#FFB7F6;
+  font-weight:normal;
+  color:#000;
+}
+
+
+.left-nav ul.navigation li a {
+  /*background:url("/images/left-nav-list-bg.png") repeat-x scroll 0 0 #C42695;*/
+  background: #C42695;
+  color: #fff;
+  font-weight:bold;	
+  padding: 0.5em;
+}
+
+.left-nav ul.navigation li a:hover {
+  background: #e85dbd;
+  color:#792258;
+  font-weight:bold;
+}
+
+.left-nav ul.navigation li ul li a {
+  background: #ffb7f6;
+  color: #000;
+  padding-left: 20px;
+  font-weight:normal;
+}
+
+.left-nav ul.navigation li ul li a:hover {
+  background: #ffc5fb;
+  border-left: 5px #C42695 solid;
+  padding-left: 15px;
+}

@@ -1,0 +1,73 @@
+<div class="ttdeprofilepad " id="reconcileli"><?php
+
+//$this->table('Hi I am Nik');
+//echo $this->table();
+if(!$this->post)
+{
+	?>
+	<div class="ttcolactive"> Your last five successful transactions </div>
+	<?php
+	$this->table($this->contents);
+	
+	?>
+	<div class="ttcolactive"> Create custom report </div>
+	<?php
+}
+/*if($this->result)
+{
+	echo "<table cellpadding='0' cellspacing='2' border='1'>";
+	echo "<tr><td><b>" . "Audit Id" .  "</b></td><td><b>" . 
+	"Transaction Type" . "</b></td><td><b>". "Amount Type" . "</b></td><td><b>" . "Amount" . 
+	"</b></td><td><b>" . "Currency" . "</b></td><td><b>" . "Balance" . "</b></td><td><b>"
+	. "Real Sub" . "</b></td><td><b>" . "Bonus Sub" . "</b></td><td><b>" . 
+	"Processed" . "</b></td></tr>";
+	foreach($this->result as $logs)
+	{
+		echo "<tr><td>" . $logs ['audit_id'] . "</td><td>" . $logs['transaction_type'] . 
+		"</td><td>" . $logs['amount_type'] . "</td><td>" . $logs['amount'] . "</td><td>" . 
+		$logs['transaction_currency'] .	"</td><td>" . $logs['bb_balance'] + $logs['cash_balance'] . 
+		"</td><td>" . $logs['real_change'] . "</td><td>" . $logs['bonus_change'] . 
+		"</td><td>" . $logs['processed'] .	"</td></tr>";
+	}
+}*/
+echo $this->form;
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$this->table($this->contents);
+		/*echo "<table cellpadding='0' cellspacing='2' border='1'>";
+		echo "<tr><td><b>" . "Audit Id" . "</b></td><td><b>". "Transaction Type" . "</b></td><td><b>" . 
+		"Amount Type" . "</b></td><td><b>". "Amount" . "</b></td><td><b>" . "Currency" . 
+		"</b></td><td><b>" . "Balance" . "</b></td><td><b>" . "Real Sub" . "</b></td><td><b>" . 
+		"Bonus Sub" . "</b></td><td><b>" . "Processed" . "</b></td></tr>";
+		foreach($this->paginator as $logs)
+		{
+			echo "<tr><td>" . $logs ['audit_id'] . "</td><td>" . $logs['transaction_type'] . 
+			"</td><td>" . $logs['amount_type'] . "</td><td>" . $logs['amount'] . 
+			"</td><td>" . $logs['transaction_currency'] . "</td><td>" . $logs['bb_balance'] . 
+			"</td><td>" . $logs['real_change'] . 
+			"</td><td>" . $logs['bonus_change'] . "</td><td>" . $logs['processed'] . 
+			"  </td></tr>";
+		}*/
+	}
+	
+	//$this->view->result = array($this->paginator, $this->date)
+	//echo $this->paginationControl($this->paginator, 'Sliding', 'my_paginator_control.phtml', $this->view->date = "hi");
+	
+	//Pass the Paginator to Pagination Control
+	echo $this->paginationControl($this->paginator, 'Sliding', 'transactionPaginator.phtml', array(
+						'myFromDate' => $this->fromDate,
+						'myToDate' => $this->toDate,
+						//'amountType' => $this->amountType,
+						'transactionType' => $this->transactionType));
+}
+?>
+
+</div>
+<!-- div class="ttdepolnextback">        
+        <div class="ttdepolnext">
+          <input type="button" style="display:none" class="ttdepolconfbtn" value="Confirm Order" name="input2">
+          <input type="button" id="submit" class="ttdepolnextbackbtn" value="Submit" name="">
+        </div>
+      </div-->

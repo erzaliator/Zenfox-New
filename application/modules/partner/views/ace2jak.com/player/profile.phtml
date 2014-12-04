@@ -1,0 +1,18 @@
+<?php
+if(!empty($this->contents))
+{
+	echo $this->table($this->contents);
+	?>
+	<br/>
+	<br/>
+	<a href ="/report/gamelogs/id/<?=$this->playerId ?>">Game Logs</a>
+	|&nbsp;
+	<a href ="/player/reconcile/id/<?=$this->playerId ?>">Reconciliation Report</a>
+	|&nbsp;
+	<a href ="/report/gamehistory/id/<?=$this->playerId ?>">Game History</a>
+	<?php 
+}
+else
+{
+	echo "No player found with this id";
+}

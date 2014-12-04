@@ -1,0 +1,40 @@
+<?php 
+/*
+$title = 'player';
+$id = '7';
+$url = '/en_GB/player/view/playerId/';
+$type = 'confirmed';
+$name = 'sds';
+$str='newtab('.$title.','. $id.','. $url.','. $type.','. $name.')';
+*/
+$data = $this->data;
+
+
+	if($data)
+	{
+		foreach($data as $key=>$value)
+		{
+			$tabData[$key]['id'] = $data[$key]['id'];
+			$tabData[$key]['login'] = $data[$key]['login'];
+			$tabData[$key]['email'] = $data[$key]['email'];
+		}	 
+	}
+	
+	else
+	{
+		$key=0;
+		$msg = 'Nothing to Display';
+		$tabData[$key]['id'] = $msg;
+		$tabData[$key]['login'] = '';
+		$tabData[$key]['email'] = '';
+	}
+
+
+$final = array(
+				'totalCount'=>count($tabData),
+				'data'=>$tabData ,
+				);
+				
+echo json_encode($final);
+	
+?>

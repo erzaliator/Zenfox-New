@@ -1,0 +1,40 @@
+{
+    "server":
+        [
+            {
+                "type":"master",
+                "name":"master",
+                "ip":"localhost",
+                "port":3306,
+                "login":"root",
+                "password":"kaveri",
+                "dbtype":"mysql",
+                "dbname":"zenfox"
+            },
+            {
+                "type":"partition",
+                "name":"partition 1",
+                "ip":"localhost",
+                "port":3306,
+                "login":"root",
+                "password":"kaveri",
+                "dbtype":"mysql",
+                "dbname":"zenfox"
+            },
+            {
+                "type":"partition",
+                "name":"partition 2",
+                "ip":"localhost",
+                "port":3306,
+                "login":"root",
+                "password":"kaveri",
+                "dbtype":"mysql",
+                "dbname":"zenfox"
+            }
+        ],
+    "serverTypes":
+        {
+            "master":[0], 
+            "partition":[1,2]
+        }
+}

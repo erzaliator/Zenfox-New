@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>	 	
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<div id="flashContent">
+			<h1>You need at least Flash Player 9.0 to view this page.</h1>
+			<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+		</div>  
+		<script type="text/javascript">
+			alert("Flashvars");
+			//Dynamic publishing with swfObject 
+			var flashvars = {};
+			flashvars.game_id = '3';
+			flashvars.game_flavour = 'Indian_Rummy';
+			flashvars.login = '|3|Indian_Rummy';
+			flashvars.pass_key = '7db41009417b9205ac82442c049a3819';
+			flashvars.xml_config = 'config.txt';
+			flashvars.amount_type = 'BONUS';
+			flashvars.currency = 'INR';
+			flashvars.frontend_id = '1';
+			flashvars.locale = 'en_IN';
+			flashvars.game_swf_path = 'C:/Documents and Settings/Bharathi/Desktop/Work/June 2011/13/flash/bin/games/multi-player/rummy/indian-rummy/game.swf';
+			flashvars.game_config = 'C:/Documents and Settings/Bharathi/Desktop/Work/June 2011/13/flash/bin/games/multi-player/rummy/indian-rummy/config.txt';
+			flashvars.chat = 'components/chat/chat.swf';
+			//A 'name' attribute with the same value as the 'id' is REQUIRED for Chrome/Mozilla browsers
+			swfobject.embedSWF("container.swf", "flashContent", "800", "600", "9.0", null,flashvars, null, {name:"flashContent"}); 			
+		</script>
+		<h1>TaashTime</h1>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<?php
+
+if($this->allBingoData)
+{
+	foreach($this->allBingoData as $Data)
+	{
+		$linkArray[$Data['name']] = array(
+				'controller' => 'bingo',
+				'action' => 'edit',
+				'id' => $Data['id']
+		);
+	}
+	$this->table($this->allBingoData, array('name'), $linkArray);
+}
+

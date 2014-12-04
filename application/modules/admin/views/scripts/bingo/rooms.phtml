@@ -1,0 +1,24 @@
+<?php 
+
+if($this->allrooms)
+{
+	echo "<h3 align = center>ALL ROOMS</h3>";
+	foreach($this->allrooms as $Data)
+	{
+		$linkArray[$Data['name']] = array(
+										'controller' => 'bingo',
+										'action' => 'roomsessions',
+										'roomId' => $Data['id']);
+	}
+	$this->table($this->allrooms, array('name'), $linkArray);
+}
+
+if($this->runningrooms)
+{
+	echo "<br/><h3 align = center>RUNNING ROOMS</h3>";
+	$this->table($this->runningrooms);
+}
+
+
+
+?>

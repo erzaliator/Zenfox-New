@@ -1,0 +1,64 @@
+[production]
+phpSettings.display_startup_errors = 0
+phpSettings.display_errors = 0
+phpSettings.date.timezone = "UTC"
+includePaths.library = APPLICATION_PATH "/../library"
+bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
+bootstrap.class = "Bootstrap"
+autoloaderNamespaces[] = "Doctrine"
+autoloaderNamespaces[] = "models"
+autoloaderNamespaces[] = "Zenfox"
+# Depricated
+#dbConfigFile = APPLICATION_PATH "/configs/dbConfig.json"
+resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
+resources.layout.layoutpath = APPLICATION_PATH "/layouts"
+
+#Module Definition
+resources.frontcontroller.moduleDirectory = APPLICATION_PATH "/modules"
+resources.frontcontroller.params.prefixDefaultModule = true 
+resources.frontcontroller.pluginPaths = APPLICATION_PATH "../library/Zenfox/Controller/Plugin"
+
+#Custom Plugins
+pluginPaths.zenfox_resource = APPLICATION_PATH "/../library/Zenfox/Resource"
+
+#Custom Resources
+#Module Selector Resource
+resources.moduleselector.defaultModule = "player"
+
+## Logger Resource
+resources.logger.dblog = APPLICATION_PATH "/logs/database.log";
+resources.logger.msglog = APPLICATION_PATH "/logs/app.log";
+## Doctrine Resource
+resources.doctrine.models_path = APPLICATION_PATH "/models"
+resources.doctrine.data_fixtures_path = APPLICATION_PATH "/doctrine/data/fixtures"
+resources.doctrine.migrations_path = APPLICATION_PATH "/doctrine/migrations"
+resources.doctrine.sql_path = APPLICATION_PATH "/doctrine/data/sql"
+resources.doctrine.yaml_schema_path = APPLICATION_PATH "/doctrine/schema"
+## Database Resource
+resources.database.serverConfigFile = APPLICATION_PATH "/configs/dbConfig.json"
+## Locale Resource
+resources.locale.defaultLocale = "en_GB"
+## Translation Resource
+resources.translation.defaultLanguage = "en_GB"
+## Currency Resource
+#FIXME:: This has to be split into defaultLocale and defaultCurrency
+resources.currency.defaultCurrency = "en_GB"
+## Datetime Resource
+#TODO:: Extend it to have an array
+resources.datetime.timeServers = "0.europe.pool.ntp.org"
+## Defaults
+defaults.timeZone = "Europe/London";
+
+
+
+[staging : production]
+
+[testing : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+
+[development : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+resources.logger.dblog = APPLICATION_PATH "/logs/database-dev.log";
+resources.logger.msglog = APPLICATION_PATH "/logs/app-dev.log";

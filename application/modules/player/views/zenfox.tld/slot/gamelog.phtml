@@ -1,0 +1,58 @@
+<?php
+
+echo $this->form;
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArrays = array();
+		//Temp is used to print the table headings only for one time
+		foreach($this->contents as $tableData)
+		{
+			$ids = explode('-', $tableData['Gamelog Id']);
+			$linkArrays[$tableData['Gamelog Id']] = array(
+					'controller' => 'slotlogdetails',
+					'action' => 'index',
+					'sessId' => $ids[0],
+					'logId' => $ids[1]);
+		}
+		/*$translate = Zend_Registry::get('Zend_Translate');
+		$fieldHeads = array(
+			$translate->translate('Gamelog Id'),
+			$translate->translate('Machine Name'),
+			$translate->translate('Currency'),
+			$translate->translate('Amount Type'),
+			$translate->translate('Pjp Win Status'),
+			$translate->translate('Date & Time'),
+		);*/
+		$linkField = array('Gamelog Id', 'Outcome');
+		$this->table($this->contents, $linkField, $linkArrays, '', array('Outcome' => 'Gamelog Id'), true);
+		/*echo "<table cellpadding='0' cellspacing='2' border='1'>";
+		echo "<tr><td><b>" . "Log Id" . "</b></td><td><b>". "Session Id" . "</b></td><td><b>" . 
+		"Machine Id" . "</b></td><td><b>". "Bet Amount" . "</b></td><td><b>" . "Currency" . 
+		"</b></td><td><b>" . "Win Amount" . "</b></td><td><b>" . "Amount Type" . "</b></td><td><b>" . 
+		"PJP Win Status" . "</b></td><td><b>" . "PJP Win Amount" . "</b></td><td><b>" . "Date Time" . "</b></td></tr>";
+		foreach($this->paginator as $logs)
+		{
+			echo "<tr><td>";
+			?>
+			<a href = "<?php echo $this->url(array(
+							'controller' => 'kenologdetails',
+							'action' => 'index',
+							'logId' => $logs['log_id'],
+							'playerId' => $logs['player_id']));?>">
+			<?php echo $logs ['log_id'] . "</td><td>" . $logs['session_id'] . 
+			"</td><td>" . $logs['machine_id'] . "</td><td>" . $logs['bet_amount'] . 
+			"</td><td>" . $logs['wagered_currency'] . "</td><td>" . $logs['win_amount'] . 
+			"</td><td>" . $logs['amount_type'] . 
+			"</td><td>" . $logs['pjp_winstatus'] . "</td><td>" . $logs['pjp_win_amount'] . 
+			"</td><td>" . $logs['datetime']. "  </td></tr>";
+		}*/
+	}
+	
+	//$this->view->result = array($this->paginator, $this->date)
+	//echo $this->paginationControl($this->paginator, 'Sliding', 'my_paginator_control.phtml', $this->view->date = "hi");
+	echo $this->paginationControl($this->paginator, 'Sliding', 'my_paginator_control.phtml', array('myFromDate' => $this->fromDate, 'myToDate' => $this->toDate));
+}
+
+?>

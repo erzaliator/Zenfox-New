@@ -1,0 +1,197 @@
+
+			<?php
+			/*
+			 * OLD CODE
+			 * 
+			//$this->facebook();
+				$groups = $this->groups;
+				$gameFlavours = $this->gameFlavours;
+				$allGameDetails = $this->allGameDetails;
+				if($groups)
+				{
+					?>
+					<div id="TabbedPanels1" class="TabbedPanel">
+		<ul class="TabbedPanelTabGroup">
+			<li class="TabbedPanelTab" tabindex="0">All Games</li>
+					<?php 
+					foreach($groups as $group)
+					{
+						?>
+						<li class="TabbedPanelTab" tabindex="0"><?=ucfirst($group['name'])?></li>
+						<?php
+					}
+						?>
+						<li class="TabbedPanelTab" tabindex="0">Rummy</li>
+						<li class="TabbedPanelTab" tabindex="0">Bingo</li>
+		</ul>
+		<div class="TabbedPanelContentGroup">
+	
+			<div class="TabbedPanelContent">
+				<div class="game-titles"><p>All Games</p>
+				</div>
+				<div class="game-list">
+					<ul>
+
+						<?php
+							foreach($groups as $group)
+							{
+								$gameDetails = $allGameDetails[$group['id']][$group['name']];
+								if($gameDetails)
+								{
+									$this->game($gameDetails, $group['name']);
+								}	
+							}
+						?>
+				</ul>
+			</div>
+		</div>	
+	
+		<?php
+			foreach($groups as $group)
+			{
+				$gameDetails = $allGameDetails[$group['id']][$group['name']];
+				if($gameDetails)
+							{
+								?>
+												
+								<div class="TabbedPanelContent">
+									<div class="game-titles"><p><?=ucfirst($group['name'])?></p>
+									</div>
+									<div class="game-list">
+										<ul>
+									
+											<?php
+												$this->game($gameDetails, $group['name']);
+							}
+											?>
+										</ul>
+									</div>
+								</div>
+								<?php
+			}
+				}
+								?>
+								<div class="TabbedPanelContent">
+									<div class="game-titles"><p>Rummy</p>
+									</div>
+									<div class="game-list">
+									<div id="myFlash">dfsdgdg</div>
+							
+									
+									</div>
+		</div>
+		<div class="TabbedPanelContent">
+									<div class="game-titles"><p>Bingo</p>
+									</div>
+									<div class="game-list">
+									<div id="myFlash">
+									<a href = "/game/game/flavour/RU_US/machineId/1/amountType/BONUS/gameName/bingo">Bingo</a>
+									</div>
+							
+									
+									</div>
+		</div>
+	</div>
+	</div>
+	<div id="abc"></div>
+<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="http://jquery.thewikies.com/swfobject/jquery.swfobject.1-1-1.min.js"></script>
+	
+<script type="text/javascript">
+
+
+
+		console.log("sad");
+
+	//	$.('#myFlash').flash(
+	//			{
+	//				swf: 'http://zenfox.tld/games/multi-player/rummy/indian-rummy/help.swf',
+					
+	//			}
+	//		);
+		
+		$('#myFlash').flash({swf:'/games/container/web-container.swf', 
+							 height:502, 
+							 width:670,
+							 flashvars: { xml_config:'/games/container/config.txt', lobby_swf_path: '/games/container/components/lobby/lobby.swf' }
+							 },
+							 { expressInstall: true }
+							 );
+	
+
+		
+var TabbedPanels1 = new Spry.Widget.TabbedPanel("TabbedPanels1");
+</script>
+<?php
+*/
+			?>
+	<div id="TabbedPanels1" class="TabbedPanel">
+		<ul class="TabbedPanelTabGroup">
+			<li class="TabbedPanelTab" tabindex="0">All Games</li>
+
+			<?php
+				$groups = $this->groups;
+				$gameFlavours = $this->gameFlavours;
+				$allGameDetails = $this->allGameDetails;
+				if($groups)
+				{
+					foreach($groups as $group)
+					{
+						?>
+						<li class="TabbedPanelTab" tabindex="0"><?=ucfirst($group['name'])?></li>
+						<?php
+					}
+						?>
+		</ul>
+		<div class="TabbedPanelContentGroup">
+	
+			<div class="TabbedPanelContent">
+				<div class="game-titles"><p>All Games</p>
+				</div>
+				<div class="game-list">
+					<ul>
+
+						<?php
+							foreach($groups as $group)
+							{
+								$gameDetails = $allGameDetails[$group['id']][$group['name']];
+								if($gameDetails)
+								{
+									$this->game($gameDetails, $group['name']);
+								}	
+							}
+						?>
+				</ul>
+			</div>
+		</div>	
+	
+		<?php
+			foreach($groups as $group)
+			{
+				$gameDetails = $allGameDetails[$group['id']][$group['name']];
+				if($gameDetails)
+							{
+								?>
+												
+								<div class="TabbedPanelContent">
+									<div class="game-titles"><p><?=ucfirst($group['name'])?></p>
+									</div>
+									<div class="game-list">
+										<ul>
+									
+											<?php
+												$this->game($gameDetails, $group['name']);
+							}
+											?>
+										</ul>
+									</div>
+								</div>
+								<?php
+			}
+				}
+								?>
+		</div>
+	</div>
+<script type="text/javascript">
+var TabbedPanels1 = new Spry.Widget.TabbedPanel("TabbedPanels1");
+</script>

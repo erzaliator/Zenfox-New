@@ -1,0 +1,283 @@
+<?php
+/*
+				$groups = $this->groups;
+				$gameFlavours = $this->gameFlavours;
+				$allGameDetails = $this->allGameDetails;
+								?>
+<div class="TabbedPanelContent">
+									<!--div class="game-titles"><p>Rummy</p>
+									</div-->
+									<div class="game-list">
+									<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="550" height="400" id="WebContainerLobby" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<!--param name="movie" value="/games/multi-player/lobby/WebContainerLobby.swf" />
+	<param name="FlashVars" value="xml_config=/games/multi-player/lobby/Config.txt&lobby_swf_path=/games/multi-player/lobby/lobby/Lobby.swf" /-->
+	<param name="movie" value="/games/container/web-container.swf" />
+	<param name="FlashVars" value="xml_config=/games/container/config.txt&lobby_swf_path=/games/container/components/lobby/rummy-lobby/lobby.swf" />
+	<param name="quality" value="high" />
+	<param name="bgcolor" value="#ffffff" />
+	<param name="wmode" value="transparent" />
+	<!--embed src="/games/multi-player/lobby/WebContainerLobby.swf" flashVars = "xml_config=/games/multi-player/lobby/Config.txt&lobby_swf_path=/games/multi-player/lobby/lobby/Lobby.swf" quality="high" bgcolor="#000000"-->
+	<embed src="/games/container/web-container.swf" flashVars = "xml_config=/games/container/config.txt&lobby_swf_path=/games/container/components/lobby/rummy-lobby/lobby.swf" quality="high" bgcolor="#000000"
+				width="670" height="502" name="Web Container" align="middle"
+				play="true"
+				loop="false"
+				quality="high"
+				allowScriptAccess="sameDomain"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer" 
+				wmode="transparent"
+				>
+			</embed>
+			</object>
+									</div>
+									</div>
+<?php /*
+<html>
+	<head>
+	</head>
+	<body>
+		<div id="fb-root"></div>
+      <script src="http://connect.facebook.net/en_US/all.js">
+      </script>
+      <script>
+         FB.init({ 
+            appId:'250870833286', cookie:true, 
+            status:true, xfbml:true 
+         });
+
+         //FB.ui({ method: 'feed', 
+           // message: 'zenfox games are super-cool'});
+      </script>      
+      <fb:like href="http://www.facebook.com/pages/Zen-fox/168248703230999" layout="button_count" show_faces="true" width="450" font="verdana"></fb:like>
+      <script type="text/javascript">
+      function loadUrl()
+      {
+    	  top.location.href = 'http://apps.facebook.com/zen-fox/game';
+      }
+      </script>
+<a href = "#" onClick="loadUrl()">Click Here</a>
+
+<?php
+	if($this->gameGroups)
+	{
+		?>
+		<script type="text/javascript">
+			<!--
+			function popitup(url)
+			{
+				newwindow=window.open(url,'name','fullscreen');
+				if (window.focus) {newwindow.focus()}
+				return false;
+			}
+			//-->
+		</script>
+		<?php
+		//echo "<table cellpadding='0' cellspacing='2' border='1'>";
+		foreach($this->gameGroups as $gameGroup)
+		{
+			foreach($gameGroup as $groupName => $flavour)
+			{
+				foreach($flavour as $flavourName => $machine)
+				{
+					echo $flavourName;
+					echo "<br>";
+					foreach($machine as $machineDetails)
+					{
+						$runningMachineId = $machineDetails['runningMachineId'];
+						$link = "http://apps.facebook.com/" . $this->appName . "/game/flavour/" . $machineDetails['gameFlavour'] . "/machineId/" . $runningMachineId . "/amountType/" . $machineDetails['amountType'];
+						$image = "/images/thumbnails/" . $machineDetails['gameFlavour'] . "_" . $runningMachineId . ".jpg";
+                        ?>
+                        <a href='#' id='this' onclick='return popitup("<?php echo $link; ?>")'><?php echo $machineDetails['machineName'];?>
+							<img src = '<?php echo $image; ?>'/>
+						</a>
+                        <?php
+					}
+				echo "<br>";
+				}
+			}
+		}
+	}
+	else
+	{/*
+        $game_id = 1;
+        $game_flavour = 'RU_US';
+        $login = $this->login;
+        $passKey = md5($game_id . md5($this->phpsessid));
+        $xml_config = 'http://demo.logicdice.com/games/single-player/lan_enu.xml';
+        $string = "game_id=$game_id&game_flavour=$game_flavour&". "login=$login|$game_id|$game_flavour&pass_key=$passKey
+        &xml_config=$xml_config&amount_type=REAL&currency=USD&frontend_id=1&locale=en_US";
+		?>
+		<fb:swf swfbgcolor="000000" imgstyle="border-width:3px; border-color:white;"
+		swfsrc='http://demo.logicdice.com/games/single-player/roulette.swf'
+		imgsrc='http://demo.logicdice.com/games/single-player/roulette.swf' width='768' height='480' flashvars="<?php echo
+		$string ?>"/>
+		<?php
+		
+		
+	}
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/s    wflash.cab#version=10,0,0,0" width="550" height="400" id="WebContainerLobby" align="middle">
+     <param name="allowScriptAccess" value="sameDomain" />
+     <param name="allowFullScreen" value="false" />
+     <!--param name="movie" value="/games/multi-player/lobby/WebContainerLobby.swf" />
+     <param name="FlashVars" value="xml_config=/games/multi-player/lobby/Config.txt&lobby_swf_path=/games/multi-player/lobby/lobby/Lobby.swf" /-->
+     <param name="movie" value="/games/container/web-container.swf" />
+     <param name="FlashVars" value="xml_config=/games/container/config.txt&lobby_swf_path=/games/container/components/lobby/rummy-lobby/lobby.swf" />
+     <param name="quality" value="high" />
+     <param name="bgcolor" value="#ffffff" />
+     <param name="wmode" value="transparent" />
+     <!--embed src="/games/multi-player/lobby/WebContainerLobby.swf" flashVars = "xml_config=/games/multi-player/lobby/Config.txt&lobby_swf_path=/games/multi-player/    lobby/lobby/Lobby.swf" quality="high" bgcolor="#000000"-->
+     <embed src="/games/container/web-container.swf" flashVars = "xml_config=/games/container/config.txt&lobby_swf_path=/games/container/components/lobby/rummy-lobby    /lobby.swf" quality="high" bgcolor="#000000"
+                 width="670" height="502" name="Web Container" align="middle"
+                 play="true"
+                 loop="false"
+                 quality="high"
+                 allowScriptAccess="sameDomain"
+                 type="application/x-shockwave-flash"
+                 pluginspage="http://www.adobe.com/go/getflashplayer" 
+                 wmode="transparent"
+                 >
+             </embed>
+             </object>
+      
+	</body>
+</html>
+*/
+/*
+?>
+<html>
+<head>
+ <link href="/css/rummy.tld/global-inner.css" media="screen" rel="stylesheet" type="text/css" >
+
+<script type="text/javascript" src='http://code.jquery.com/jquery.min.js'></script>
+<script type="text/javascript" src="/js/jquery_tabs.js"></script>
+
+<script type="text/javascript">
+function playRummy()
+{
+	$('#tabs_container > .tabs > li.active')
+  	.removeClass('active');
+	  
+// Add the 'active' class to the clicked tab.
+$("#rummy").parent().addClass('active');
+
+$('#tabs_container > .tabs > li.active > a.tab_hover')
+	.removeClass('tab_hover');
+
+// Remove the 'tab_contents_active' class from the visible tab contents.
+$('#tabs_container > .tab_contents_container > div.tab_contents_active')
+	.removeClass('tab_contents_active');
+
+// Add the 'tab_contents_active' class to the associated tab contents.
+$("#tab_2_contents").addClass('tab_contents_active');
+}
+</script>
+</head>
+<body>
+	<div id="fb-root"></div>
+    <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+    <script type="text/javascript">
+        FB.init({
+           appId  : '<?php echo $this->appId; ?>',
+           status : true, // check login status
+           cookie : true, // enable cookies to allow the server to access the session
+           xfbml  : true  // parse XFBML
+        });
+    </script>
+<div id="tabs_container">
+	<ul class="tabs">
+		<li class="active" >
+			<a  rel="#tab_1_contents" class="tab" style="color:white;">About Us</a>
+	    </li >
+	    <li >
+	    	<a rel="#tab_2_contents" class="tab" id="rummy" style="color:white;">Play Rummy</a>
+	    </li>
+	    <li >
+	       	<a rel="#tab_3_contents" class="tab" style="color:white;">How to Play</a>
+	    </li>
+		<li >
+	       	<a rel="#tab_4_contents" class="tab" style="color:white;">Invite Friends</a>
+	    </li>
+	</ul>
+	<div class="tab_contents_container">
+		<div id="tab_1_contents" class="tab_contents tab_contents_active">
+			<div class="edit-form">
+			<ul class="tabs">
+			<li>
+				<img src="/images/rummy.tld/Facebook_app_page.jpg"  usemap="#playButton" border=0></img>
+					<map name="playButton">
+  <area shape="rect" coords="416,207,503,244" onclick="playRummy()" href="#">
+ </map>
+ </li>
+ </ul>
+
+					</div>
+		</div>
+		<div id="tab_2_contents" class="tab_contents">
+			<div class="edit-form">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="550" height="400" id="WebContainerLobby" align="middle">
+      <param name="allowScriptAccess" value="sameDomain" />
+      <param name="allowFullScreen" value="false" />
+      <!--param name="movie" value="/games/multi-player/lobby/WebContainerLobby.swf" />
+      <param name="FlashVars" value="xml_config=/games/multi-player/lobby/Config.txt&lobby_swf_path=/games/multi-player/lobby/lobby/Lobby.swf" /-->
+      <param name="movie" value="/games/container/web-container.swf" />
+      <param name="FlashVars" value="xml_config=/games/container/config.txt&lobby_swf_path=/games/container/components/lobby/rummy-lobby/lobby.swf" />
+      <param name="quality" value="high" />
+      <param name="bgcolor" value="#ffffff" />
+      <param name="wmode" value="transparent" />
+      <!--embed src="/games/multi-player/lobby/WebContainerLobby.swf" flashVars = "xml_config=/games/multi-player/lobby/Config.txt&lobby_swf_path=/games/multi-player/    lobby/lobby/Lobby.swf" quality="high" bgcolor="#000000"-->
+      <embed src="/games/container/web-container.swf" flashVars = "xml_config=/games/container/config.txt&lobby_swf_path=/games/container/components/lobby/rummy-lobby/lobby.swf" quality="high" bgcolor="#000000"
+                  width="670" height="502" name="Web Container" align="middle"
+                  play="true"
+                  loop="false"
+                  quality="high"
+                  allowScriptAccess="sameDomain"
+                  type="application/x-shockwave-flash"
+                  pluginspage="http://www.adobe.com/go/getflashplayer" 
+                  wmode="transparent"
+                  >
+              </embed>
+     </object>			
+</div>
+		</div>
+		<div id="tab_3_contents" class="tab_contents">
+			<div class="edit-form">
+				<div style="width:640px;" id="__ss_7490083">
+					<strong style="display:block;margin:12px 0 4px">
+						<a href="http://www.slideshare.net/nationalrummy/a-beginners-guide-to-indian-rummy-nationalrummy-7490083" style="margin-left:120px; font-size:18px;" title="A beginner’s guide to indian rummy nationalrummy">A beginners guide to indian rummy nationalrummy</a>
+					</strong>
+					<iframe src="http://www.slideshare.net/slideshow/embed_code/7490083" width="640" height="480" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+					<div style="padding:5px 0 12px"> View more 
+						<a href="http://www.slideshare.net/">presentations</a> from 
+						<a href="http://www.slideshare.net/nationalrummy">nationalrummy</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div id="tab_4_contents" class="tab_contents">
+			<div class="edit-form">
+				<fb:serverfbml width="615">
+  <script type="text/fbml">
+    <fb:request-form action="http://nationalrummy.com/facebook/gameindex"
+                     method="POST"
+                     invite="true"
+                     type="Rummy"
+                     content="Come and join me on National Rummy. <?php echo htmlentities("<fb:req-choice url=\"http://nationalrummy.com/facebook/index/buddyId/$this->buddyId\" label=\"Authorize My Application\"") ?>">
+      <fb:multi-friend-selector showborder="false"
+                                bypass="cancel"
+                                cols=4
+                                actiontext="Echo Action Text"
+								exclude_ids="<? echo $this->friends; ?>"/>
+    </fb:request-form>
+  </script>
+</fb:serverfbml>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var TabbedPanels1 = new Spry.Widget.TabbedPanel("TabbedPanels1");
+</script>
+			</body>
+			</html>

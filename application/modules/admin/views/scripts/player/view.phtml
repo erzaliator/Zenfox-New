@@ -1,0 +1,110 @@
+<?php
+if(!empty($this->contents))
+{
+echo $this->table($this->contents);
+}
+if(!empty($this->playerTransactions))
+{
+	
+?>
+<br><h2 style="text-align:center"><strong>Last Five Successfull Transactions</strong></h2>
+<?php
+
+echo $this->table($this->playerTransactions);
+}
+if(!empty($this->gameHistory))
+{
+?>
+<br><h2 style="text-align:center"><strong>Last Five Games</strong></h2>
+<?php
+
+echo $this->table($this->gameHistory);
+}
+//Zenfox_Debug::dump($this->contents, 'timezone', true, true);
+ if(!empty($this->buddys))
+ {
+ ?>
+ <br><h2 style="text-align:center"><strong>My Buddys</strong></h2>
+<?php
+echo $this->table($this->buddys);
+ }
+ 
+ if(!empty($this->ids))
+ {
+ 	?>
+  <br><h2 style="text-align:center"><strong>IDs</strong></h2>
+ <?php
+ echo $this->table($this->ids);
+  }
+  
+  if(!empty($this->bankdetails))
+  {
+  	?>
+    <br><h2 style="text-align:center"><strong>Bank Details</strong></h2>
+   <?php
+   echo $this->table($this->bankdetails);
+    }
+
+  if(!empty($this->form))
+  {
+  	?>
+   
+ <table>
+ 	<tr>
+ 		<td width = 10 ><br><h2 style="text-align:center"><strong>Journal notes</strong></h2><?php echo $this->table($this->csrName); ?>	</td>
+		
+	 </tr>
+	 <tr>
+	 <td width = 10 ><?php echo $this->form; ?></td>
+	 </tr>
+ </table>
+
+<?php 
+  }
+if($this->accountType == 'confirmed')
+{
+	?><center>
+	
+<a href="<?=$this->url(array(
+'controller' => 'player',
+'action'     => 'creditbonus',
+'playerId'   =>  $this->playerId))?>">Credit</a>&nbsp;
+
+
+<a href="<?=$this->url(array(
+'controller' => 'reconciliation',
+'action'     => 'index',
+'playerId'   =>  $this->playerId))?>">Reconciliation Report</a>&nbsp;
+
+<a href="<?=$this->url(array(
+'controller' => 'player',
+'action'     => 'adjustbalance',
+'playerId'   =>  $this->playerId))?>">Adjust Balance</a>&nbsp;
+
+<a href="<?=$this->url(array(
+'controller' => 'player',
+'action'     => 'edit',
+'id'   =>  $this->playerId))?>">Edit Profile</a>&nbsp;
+
+
+<br /></center>
+<?php 
+
+
+
+
+
+
+
+
+
+}
+elseif(!$this->csrpermission)
+{
+	?><center>
+	<a href="<?=$this->url(array(
+'controller' => 'player',
+'action'     => 'confirmplayer',
+'code'   =>  $this->code))?>">Confirm Request</a><br /></center>
+<?php 
+}

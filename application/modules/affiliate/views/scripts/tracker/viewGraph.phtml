@@ -1,0 +1,91 @@
+<!-- CODE WRITTEN BY VIVEK & REMOVED BY NIKHIL on 8 Dec 2011(it was added in view.phtml) -->
+<!-- Graph specific javascript -->
+<!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+<!--script language="javascript" type="text/javascript" src="jquery-1.3.2.min.js"></script-->
+
+<?php 
+
+$this->headScript()->appendFile("/js/jquery.jqplot.min.js");
+//$this->headScript()->appendFile("/js/schemePlot.js");
+//$this->headScript()->appendFile("/js/schemePlotZoom.js");
+$this->headScript()->appendFile("http://code.jquery.com/jquery.min.js");
+$this->headLink()->appendStylesheet("/css/jquery.jqplot.css");
+$this->headScript()->appendFile("/js/graphPlugins/jquery.jqplot.js");
+$this->headScript()->appendFile("/js/graphPlugins/jqplot.logAxisRenderer.js");
+$this->headScript()->appendFile("/js/graphPlugins/jqplot.dateAxisRenderer.js");
+$this->headScript()->appendFile("/js/graphPlugins/jqplot.cursor.js");
+$this->headScript()->appendFile("/js/graphPlugins/jqplot.highlighter.js");
+$this->headScript()->appendFile("/js/ajaxPlugins/change.js");
+$this->headScript()->appendFile("/js/getJsn.js");
+$this->headScript()->appendFile("/js/affiliate.js");
+
+?>
+<br>
+<table border="1">
+<tr>
+<td width="200"><input  name="rad" type="radio" value="visits" onclick="graphType()">Visits</input>
+	<input  name="rad" type="radio" value="earnings" onclick="graphType()">Earnings</input></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr></tr>
+<tr>
+<td valign="top">
+<select id="selectL1">
+	  <option value="/tracker/uniquevisitors">Unique visitors</option>
+	  <option value="/tracker/visitors">Visitors</option>
+	  
+</select>
+</td>
+<td width=""></td>
+<td valign="top">
+<select id="selectL2">
+	<option value="/tracker/visitors">Visitors</option>
+  	<option value="/tracker/uniquevisitors">Unique visitors</option>
+  	
+</select><br>
+
+</td>
+<td style="width: 200px"></td>
+<td valign="top">
+<select id="track1">
+	<option value="" onclick="sendDataL1()">Summary</option>
+	<?php foreach($tabContent as $key => $value){ 
+	$trackId = explode('/', $tabContent[$key]['Tracker Link']);
+	?>
+	<option value="<?php echo $trackId[6]; ?>" onclick="sendDataL1()"><?php echo $tabContent[$key]['Tracker Name'];?></option> 
+	<?php }?>
+</select></td>
+<td valign="top">
+<select id="track2" >
+	<option value="" onclick="sendDataL2()">Summary</option>
+	<?php foreach($tabContent as $key => $value){ 
+	$trackId = explode('/', $tabContent[$key]['Tracker Link']);
+	?>
+	<option value="<?php echo $trackId[6]; ?>" onclick="sendDataL2()"><?php echo $tabContent[$key]['Tracker Name'];?></option> 
+	<?php }?>
+</select>
+</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td align="right"><a href="#" onclick="lookUp()">View</a></td>
+<td></td>
+<td></td>
+<td align="right" style="display: none;"><label id="apply"  style="text-align: right;">Apply</label></td>
+</tr>
+</table>
+
+
+
+
+<div id="chartdiv" style="height:200px;width:600px; left: 50px "></div>
+<div id="btn" style="padding-top:20px"><button value="reset" style="background-color:#FF99CC ;  border:none ; cursor:pointer" type="button" onClick="plot.resetZoom();">Zoom Out</button></div>
+<!--<div id="chart" style="margin-top:20px; margin-left:20px; width:600px; height:300px;"></div>
+    <div style="padding-top:20px"><button value="reset" style="background-color:#FF99CC ;  border:none ; cursor:pointer" type="button" onClick="plot.resetZoom();">Zoom Out</button></div>
+-->
+<div id="chk">here</div>

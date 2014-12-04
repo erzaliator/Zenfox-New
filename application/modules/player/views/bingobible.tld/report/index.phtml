@@ -1,0 +1,33 @@
+<div style="border:1px solid #CD222B;border-radius:5px;height:600px">
+<div class="TTBingogameName TTBingoBtnmargt">Reports - <?=$this->reportName ?></div>
+<div class="ttdeprofilepad " id="reconcileli" >
+<?php
+if(!$this->post)
+{
+	?>
+	<div class="ttcolactive" style="border:0px solid;height:20px;"> Your last five successful transactions </div>
+	<?php
+	$this->table($this->contents);
+	
+	?>
+	<div class="ttcolactive"> </div>
+	<?php
+}
+//echo $this->form; 
+
+$this->dateform($this->fromDate, $this->toDate, $this->fromHour, $this->toHour, $this->fromMinute, $this->toMinute, $this->fromPM, $this->toPM, $this->items);		
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$this->table($this->contents);
+	}
+	//Pass the Paginator to Pagination Control
+	echo $this->paginationControl($this->paginator, 'Sliding', 'transactionPaginator.phtml', array(
+						'myFromDate' => $this->from,
+						'myToDate' => $this->to
+					));
+}
+?>
+</div>
+</div>

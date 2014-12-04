@@ -1,0 +1,30 @@
+<?php
+echo $this->form;
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArrays = array();
+
+		foreach($this->contents as $tableData)
+		{
+			$ids = explode('-', $tableData['Gamelog Id']);
+			$linkArrays[$tableData['Gamelog Id']] = array(
+					'controller' => 'rummyreport',
+					'action' => 'log',
+					'playerId' => $this->playerId,
+					'sessionId' => $ids[0],
+					'gameId' => $ids[1],
+					'flavour' => $ids[2]);
+		}
+
+		/* $linkField = array('Gamelog Id', 'Outcome');
+		$this->table($this->contents, $linkField, $linkArrays, '', array('Outcome' => 'Gamelog Id'), true); */
+		$this->table($this->contents, array('Gamelog Id'), $linkArrays);
+	}
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	$this->pagination($pages, array(
+							'from' => $this->from,
+							'to' => $this->to,
+							'playerId' => $this->playerId));
+}

@@ -1,0 +1,46 @@
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+});
+	function gotoEdit(){
+		window.location.href = "/auth/edit";
+	}
+	</script>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Profile</a></li>
+		<li><a href="#tabs-2">Account</a></li>
+		<li><a href="#tabs-3">Security</a></li>
+	</ul>
+	<div id="tabs-1">
+	 <p><b>Email Id: </b><span class="change" style="color: #000;"><?=$this->playerData['email'] ?></span></p>
+	   <p><?=$this->playerData['firstName'] ?><span class="change" onclick = "gotoEdit()">change</span></p>
+	   <p><?php if(strtolower($this->playerData['sex']) == 'm')
+			{
+				print("Male");
+			}
+			elseif(strtolower($this->playerData['sex']) == 'f')
+			{
+				print("Female");
+			} ?><span class="change" onclick = "gotoEdit()">change</span></p>
+	   <p><?=$this->playerData['dateOfBirth'] ?> <span class="change" onclick = "gotoEdit()">change</span></p>
+	   
+	   <p><?=$this->playerData['address'] ?><span class="change" onclick = "gotoEdit()">change</span></p>
+	   <p><?=$this->playerData['city'] ?><span class="change" onclick = "gotoEdit()">change</span></p>
+	   <p><?=$this->playerData['state'] ?><span class="change" onclick = "gotoEdit()">change</span></p>
+	   <p><?=$this->country ?><span class="change" onclick = "gotoEdit()">change</span></p>
+	   <p><?=$this->playerData['phone'] ?><span class="change" onclick = "gotoEdit()">change</span></p>
+
+	  
+	</div>
+	<div id="tabs-2">
+	<p>Seeramsetty Madhu Babu <span class="change">change</span></p>
+	   <p>Account Photo 2<span class="change">change</span></p>
+	   <p>madhu.designer@gmail.com <span class="change">change</span></p>
+</div>
+	<div id="tabs-3">
+	<p>Seeramsetty Madhu Babu <span class="change">change</span></p>
+	   <p>Account Photo 3<span class="change">change</span></p>
+	   <p>madhu.designer@gmail.com <span class="change">change</span></p>
+</div>
+</div>

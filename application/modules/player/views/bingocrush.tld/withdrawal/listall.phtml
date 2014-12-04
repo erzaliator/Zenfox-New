@@ -1,0 +1,22 @@
+<?php
+
+echo $this->form;
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArrays = array();
+		//Temp is used to print the table headings only for one time
+		$ind = 0;
+		
+		$this->table($this->contents);
+		
+	}
+	//print_r($this->transactionStatus);
+	echo $this->paginationControl($this->paginator, 'Sliding', 'withdrawalPaginator.phtml', array(
+						'FromDate' => $this->fromDate,
+					    'ToDate' => $this->toDate,
+						'transactionStatus' => $this->transactionStatus));
+}
+
+?>

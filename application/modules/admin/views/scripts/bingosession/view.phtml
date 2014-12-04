@@ -1,0 +1,15 @@
+<?php
+foreach($this->sessions as $session)
+{
+	?>
+	<a href = "<?php echo $this->url(array(
+						'controller' => 'bingosession',
+						'action' => 'edit',
+						'id' => $session['id'],
+					));?>">
+	<?php 
+	echo $session['name'];
+	echo '<br>';
+}
+?>
+</a>

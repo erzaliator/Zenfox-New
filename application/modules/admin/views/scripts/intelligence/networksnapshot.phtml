@@ -1,0 +1,584 @@
+<?php 
+echo $this->form;
+
+if($this->tableData)
+{
+	/*print '<pre>';
+	print_r($this->tableData);
+	print '</pre>';*/
+	$tableData = $this->tableData;
+	$prefix = 'network';
+	$snapshot = new Snapshot();
+	
+	
+	print '<table cellpadding="5" border="1">';
+?>
+	<tr>
+		<td><?php echo $this->translate('Traffic') ?></td>
+		<td><?php echo $this->translate('Direct') ?></td>
+		<td><?php echo $this->translate('Affiliates') ?></td>
+		<td><?php echo $this->translate('Buddy') ?></td>
+		<td><?php echo $this->translate('Total') ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $this->translate('Registrations') ?></td>
+		<td><?php echo $tableData[$prefix.'Registrations'.'Direct']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'Registrations'.'Affiliates']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'Registrations'.'Buddy']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'Registrations'.'Buddy']['value']+$tableData[$prefix.'Registrations'.'Affiliates']['value']
+																		   +$tableData[$prefix.'Registrations'.'Direct']['value'] ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $this->translate('Conversion To Wagerer') ?></td>
+		<td><?php echo $tableData[$prefix.'ConversionToWagerers'.'Direct']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'ConversionToWagerers'.'Affiliates']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'ConversionToWagerers'.'Buddy']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'ConversionToWagerers'.'Buddy']['value']+$tableData[$prefix.'ConversionToWagerers'.'Affiliates']['value']
+																				  +$tableData[$prefix.'ConversionToWagerers'.'Direct']['value'] ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $this->translate('Conversion To Depositor') ?></td>
+		<td><?php echo $tableData[$prefix.'ConversionToDepositors'.'Direct']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'ConversionToDepositors'.'Affiliates']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'ConversionToDepositors'.'Buddy']['value'] ?></td>
+		<td><?php echo $tableData[$prefix.'ConversionToDepositors'.'Buddy']['value']+$tableData[$prefix.'ConversionToDepositors'.'Affiliates']['value']
+																					+$tableData[$prefix.'ConversionToDepositors'.'Direct']['value'] ?></td>
+	</tr>
+<?php 	
+	
+	
+	print '</table><br><br>';
+	//print '<pre>';
+	//print_r($tableData);
+	
+	print '<table cellpadding="5" border="1">';
+	
+	$bonusScheme = new BonusScheme();
+	$bonusLevel = new BonusLevel();
+	$allSchemes = $bonusScheme->getAllSchemeData();
+	$schemeWithLevels;
+	print '<tr><td>Tag Name</td>';
+	
+	foreach ($allSchemes as $scheme) {
+		$scheme['levels'] = $bonusLevel->getLevelsOfScheme($scheme['scheme_id']);
+		print '<td>'.$scheme['name'].'</td>';
+		$schemeWithLevels[] = $scheme; 
+	}
+	print '<td>'.$this->translate('Total').'</td>';
+	$allSchemes = $schemeWithLevels;
+		
+	print '</tr>';
+	
+	// Print Tag Values
+	print '<tr>';
+	print '<td>'.$this->translate('Depositors(Count)').'</td>';
+	$tagTotal = array();
+	$Zenfoxcurrency = new Zenfox_Currency();
+	foreach ($allSchemes as $scheme) {
+		print '<td>';
+		print '<table border="1">';
+		foreach($scheme['levels'] as $level) {
+			
+			if($tableData[$prefix.'DepositorsCount']['value'][$scheme['name']][$level['level_name']]) {
+				print '<tr><td>';
+				print $level['level_name'];
+				$tagData = $tableData[$prefix.'DepositorsCount']['value'][$scheme['name']][$level['level_name']];
+				print '<table border="1">';
+				foreach ($tagData as $currency => $value) {
+					print '<tr><td>';
+					
+					//print $Zenfoxcurrency->setValue($currency,$value);
+					print $currency.':'.$value;
+					$tagTotal[$currency] += $value;					
+					print '</td></tr>';
+				}
+				print '</table>';
+				print '</td></tr>';
+			} 
+		}
+		print '</table>';
+		print '</td>';
+	}
+	print '<td>';
+	print '<table border="1">';
+	$tagTotal = $tableData[$prefix.'All'.'DepositorsCount']['value'];
+	if($tagTotal) {
+		foreach ($tagTotal as $currency => $value) {
+			print '<tr><td>';
+			print $currency. ($value);
+			print '</td></tr>';
+		}
+	}
+	print '</table>';
+	print '</td>';
+	
+	
+	print '<tr>';
+	print '<td>'.$this->translate('Deposits (Count)').'</td>';
+	$tagTotal = array();
+	$Zenfoxcurrency = new Zenfox_Currency();
+	foreach ($allSchemes as $scheme) {
+		print '<td>';
+		print '<table border="1">';
+		foreach($scheme['levels'] as $level) {
+			
+			if($tableData[$prefix.'DepositsCount']['value'][$scheme['name']][$level['level_name']]) {
+				print '<tr><td>';
+				print $level['level_name'];
+				$tagData = $tableData[$prefix.'DepositsCount']['value'][$scheme['name']][$level['level_name']];
+				print '<table border="1">';
+				foreach ($tagData as $currency => $value) {
+					print '<tr><td>';
+					
+					//print $Zenfoxcurrency->setValue($currency,$value);
+					print $currency.':'.$value;
+					$tagTotal[$currency] += $value;
+					print '</td></tr>';
+				}
+				print '</table>';
+				print '</td></tr>';
+			} 
+		}
+		print '</table>';
+		print '</td>';
+	}
+	print '<td>';
+	print '<table border="1">';
+	$tagTotal = $tableData[$prefix.'All'.'DepositsCount']['value'];
+	if($tagTotal) {
+		foreach ($tagTotal as $currency => $value) {
+			print '<tr><td>';
+			print $currency. ($value);
+			print '</td></tr>';
+		}
+	}
+	print '</table>';
+	print '</td>';
+	
+	
+	
+	print '<tr>';
+	print '<td>'.$this->translate('Deposits (Amount)').'</td>';
+	$tagTotal = array();
+	$Zenfoxcurrency = new Zenfox_Currency();
+	foreach ($allSchemes as $scheme) {
+		print '<td>';
+		print '<table border="1">';
+		foreach($scheme['levels'] as $level) {
+			
+			if($tableData[$prefix.'DepositsAmount']['value'][$scheme['name']][$level['level_name']]) {
+				print '<tr><td>';
+				print $level['level_name'];
+				$tagData = $tableData[$prefix.'DepositsAmount']['value'][$scheme['name']][$level['level_name']];
+				print '<table border="1">';
+				foreach ($tagData as $currency => $value) {
+					print '<tr><td>';
+					
+					//print $Zenfoxcurrency->setValue($currency,$value);
+					print $currency.':'.$value;
+					$tagTotal[$currency] += $value;
+					print '</td></tr>';
+				}
+				print '</table>';
+				print '</td></tr>';
+			} 
+		}
+		print '</table>';
+		print '</td>';
+	}
+	print '<td>';
+	print '<table border="1">';
+	$tagTotal = $tableData[$prefix.'All'.'DepositsAmount']['value'];
+	if($tagTotal) {
+		foreach ($tagTotal as $currency => $value) {
+			print '<tr><td>';
+			print $currency. ($value);
+			print '</td></tr>';
+		}
+	}
+	print '</table>';
+	print '</td>';
+	
+	
+	print '<tr>';
+	print '<td>'.$this->translate('Deposits Per Transaction').'</td>';
+	$tagTotal = array();
+	$tagCount = array();
+	$Zenfoxcurrency = new Zenfox_Currency();
+	foreach ($allSchemes as $scheme) {
+		print '<td>';
+		print '<table border="1">';
+		foreach($scheme['levels'] as $level) {
+			
+			if($tableData[$prefix.'DepositsPerTransaction']['value'][$scheme['name']][$level['level_name']]) {
+				print '<tr><td>';
+				print $level['level_name'];
+				$tagData = $tableData[$prefix.'DepositsPerTransaction']['value'][$scheme['name']][$level['level_name']];
+				print '<table border="1">';
+				foreach ($tagData as $currency => $value) {
+					print '<tr><td>';
+					//print $Zenfoxcurrency->setValue($currency,$value);
+					print $currency.':'.$value;
+					$tagTotal[$currency] += $value;
+					$tagCount[$currency] +=1;
+					print '</td></tr>';
+				}
+				print '</table>';
+				print '</td></tr>';
+			} 
+		}
+		print '</table>';
+		print '</td>';
+	}
+	print '<td>';
+	print '<table border="1">';
+	$tagTotal = $tableData[$prefix.'All'.'DepositorsCount']['value'];
+	if($tagTotal) {
+		foreach ($tagTotal as $currency => $value) {
+			print '<tr><td>';
+			print $currency.($value);
+			print '</td></tr>';
+		}
+	}
+	print '</table>';
+	print '</td>';
+	
+	
+	print '<tr>';
+	print '<td>'.$this->translate('Deposits Per Player').'</td>';
+	$tagTotal = array();
+	$tagCount = array();
+	$Zenfoxcurrency = new Zenfox_Currency();
+	foreach ($allSchemes as $scheme) {
+		print '<td>';
+		print '<table border="1">';
+		foreach($scheme['levels'] as $level) {
+			
+			if($tableData[$prefix.'DepositsPerPlayer']['value'][$scheme['name']][$level['level_name']]) {
+				print '<tr><td>';
+				print $level['level_name'];
+				$tagData = $tableData[$prefix.'DepositsPerPlayer']['value'][$scheme['name']][$level['level_name']];
+				print '<table border="1">';
+				foreach ($tagData as $currency => $value) {
+					print '<tr><td>';
+					//print $Zenfoxcurrency->setValue($currency,$value);
+					print $currency.':'.$value;
+					$tagTotal[$currency] += $value;
+					$tagCount[$currency] +=1;
+					print '</td></tr>';
+				}
+				print '</table>';
+				print '</td></tr>';
+			} 
+		}
+		print '</table>';
+		print '</td>';
+	}
+	print '<td>';
+	print '<table border="1">';
+	$tagTotal = $tableData[$prefix.'All'.'DepositsPerPlayer']['value'];
+	if($tagTotal) {
+		foreach ($tagTotal as $currency => $value) {
+			print '<tr><td>';
+			print $currency. ($value);
+			print '</td></tr>';
+		}
+	}
+	print '</table>';
+	print '</td>';
+	
+	
+print '</table>';
+
+print '<br><br>';
+
+print $this->translate('Depositor Behavior');
+print '<table border="1">';
+
+?>
+<tr>
+	<td><?php echo $this->translate('Tag Name')?></td>
+	<td><?php echo $this->translate('Number')?></td>
+	<td><?php echo $this->translate('Percentage')?></td>
+</tr>
+<tr>
+	<td><?php echo $this->translate('One Time Depositors')?></td>
+	<td><?php echo $tableData[$prefix.'One'.'TimeDepositors']['value'] ?></td>
+	<?php
+	$total = $tableData[$prefix.'All'.'DepositorsCount'];
+	if($total != 0) 
+	{ 
+	print '<td>';
+	echo $tableData[$prefix.'One'.'TimeDepositors']['value']/$total;
+	print '</td>';																				
+	 }
+	 else
+	 	print '<td></td>';?>
+</tr>
+<tr>
+	<td><?php echo $this->translate('Two to Three Time Depositors')?></td>
+	<td><?php echo $tableData[$prefix.'TwoToThree'.'TimeDepositors']['value'] ?></td>
+	<?php
+	 if($total != 0) 
+	{ 
+		print '<td>';
+		echo $tableData[$prefix.'TwoToThree'.'TimeDepositors']['value']/$total;
+		print '</td>';																				
+	 }
+	 else
+	 	print '<td></td>';
+	?>
+	
+</tr>
+<tr>		
+	<td><?php echo $this->translate('Four to Six Depositors')?></td>
+	<td><?php echo $tableData[$prefix.'FourToSix'.'TimeDepositors']['value'] ?></td>
+	<?php
+	 if($total != 0) 
+	{ 
+		print '<td>';
+		echo $tableData[$prefix.'FourToSix'.'TimeDepositors']['value']/$total;
+		print '</td>';																				
+	 }
+	 else
+	 	print '<td></td>';
+	?>
+</tr>
+<tr>	
+	<td><?php echo $this->translate('Seven or more Time Depositors')?></td>
+	<td><?php echo $tableData[$prefix.'SevenOrMore'.'TimeDepositors']['value'] ?></td>
+	<?php
+	 if($total != 0) 
+	{ 
+		print '<td>';
+		echo $tableData[$prefix.'SevenOrMore'.'TimeDepositors']['value']/$total;
+		print '</td>';																				
+	 }
+	 else
+	 	print '<td></td>';
+	?>
+</tr>
+<?php
+
+
+
+print '</table>';
+
+
+print '<br><br>';
+
+print $this->translate('Game Reports');
+print $this->translate('Game Flavors need to hardcoded in Snapshot Model. Otherwise below this an error will appear.');
+print '<table border="1">';
+
+
+?>
+
+<tr>
+	<td><?php echo $this->translate('Tag Name')?></td>
+	<td><?php echo $this->translate('Bingo')?></td>
+	<td><?php echo $this->translate('Slots')?></td>
+	<td><?php echo $this->translate('Keno')?></td>
+	<td><?php echo $this->translate('Roulette')?></td>
+</tr>
+
+
+<tr>
+	<td><?php echo $this->translate('Number of Players')?></td>
+	<td><?php
+		print '<table border="0">';
+		if($tableData['gameIdentificationBIPlayersCount']['value']) {
+			foreach ($tableData['gameIdentificationBIPlayersCount']['value'] as $flavor => $count ) {
+				print '<tr><td>'."$flavor : $count".'</td></tr>';
+			} 
+		}
+		print '</table>';
+		?>
+	</td>
+	<td><?php
+		$snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationOtherPlayersCount']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $count ) {
+				if($snapshot->isSlotsFlavor($flavor)) {
+					print '<tr><td>'."$flavor : $count".'</td></tr>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	
+	</td>
+	<td><?php
+	 $snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationBIPlayersCount']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $count ) {
+				if($snapshot->isKenoFlavor($flavor)) {
+					print '<tr><td>'."$flavor : $count".'</td></tr>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	</td>
+	<td><?php
+	 $snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationOtherPlayersCount']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $count ) {
+				if($snapshot->isRouletteFlavor($flavor)) {
+					print '<tr><td>'."$flavor : $count".'</td></tr>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	</td>
+	
+</tr>
+
+<tr>
+	<td><?php echo $this->translate('Total Games(Spins)')?></td>
+	<td><?php
+		print '<table border="0">';
+		if($tableData['gameIdentificationBITotalGames']['value']) {
+			foreach ($tableData['gameIdentificationBIPlayersCount']['value'] as $flavor => $count ) {
+				print '<tr><td>'."$flavor : $count".'</td></tr>';
+			} 
+		}
+		print '</table>';
+		?>
+	</td>
+	<td><?php
+		$snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationOtherTotalGames']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $count ) {
+				if($snapshot->isSlotsFlavor($flavor)) {
+					print '<tr><td>'."$flavor : $count".'</td></tr>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	
+	</td>
+	<td><?php
+	 $snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationBITotalGames']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $count ) {
+				if($snapshot->isKenoFlavor($flavor)) {
+					print '<tr><td>'."$flavor : $count".'</td></tr>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	</td>
+	<td><?php
+	 $snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationOtherTotalGames']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $count ) {
+				if($snapshot->isRouletteFlavor($flavor)) {
+					print '<tr><td>'."$flavor : $count".'</td></tr>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	</td>
+	
+</tr>
+
+
+<tr>
+	<td><?php echo $this->translate('Total Wagered')?></td>
+	<td><?php
+		print '<table border="0">';
+		if($tableData['gameIdentificationBITotalWagered']['value']) {
+			foreach ($tableData['gameIdentificationBIPlayersCount']['value'] as $flavor => $count ) {
+				print '<tr><td>'.$flavor;
+					print '<table border="1">';
+					foreach ($array as $currency => $value) {
+						print '<tr><td>'."$currency : $value".'</td></tr>';	
+					}
+					print '</table>';
+			} 
+		}
+		print '</table>';
+		?>
+	</td>
+	<td><?php
+		$snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationOtherTotalWagered']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $count ) {
+				if($snapshot->isSlotsFlavor($flavor)) {
+					print '<tr><td>'.$flavor;
+					print '<table border="1">';
+					foreach ($array as $currency => $value) {
+						print '<tr><td>'."$currency : $value".'</td></tr>';	
+					}
+					print '</table>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	
+	</td>
+	<td><?php
+	 $snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationBITotalWagered']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $count ) {
+				if($snapshot->isKenoFlavor($flavor)) {
+					print '<tr><td>'.$flavor;
+					print '<table border="1">';
+					foreach ($array as $currency => $value) {
+						print '<tr><td>'."$currency : $value".'</td></tr>';	
+					}
+					print '</table>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	</td>
+	<td><?php
+	 $snapshot = new Snapshot();
+	 	print '<table border="0">';
+		if($tableData['gameIdentificationOtherTotalWagered']['value']) {
+			foreach ($tableData['gameIdentificationOtherPlayersCount']['value'] as $flavor => $array ) {
+				if($snapshot->isRouletteFlavor($flavor)) {
+					print '<tr><td>'.$flavor;
+					print '<table border="1">';
+					foreach ($array as $currency => $value) {
+						print '<tr><td>'."$currency : $value".'</td></tr>';	
+					}
+					print '</table>';
+				}
+			} 
+		}
+		print '</table>';
+	?>
+	</td>
+	
+</tr>
+
+
+
+<?php		
+	
+print '</table>';
+
+
+
+print $this->translate('Bingo Insight');
+	
+}
+
+?>

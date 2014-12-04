@@ -1,0 +1,148 @@
+<?php
+/*echo '<br>';
+$schemeInstance = new AffiliateScheme();*/
+$frontend = new Frontend();
+$affiliateSchemes = $this->affiliateSchemes;
+
+foreach($this->contents as $id => $tableData)
+{
+	$ids = explode('_', $tableData['Tracker Name']);
+	$frontendData = $frontend->getFrontendById($ids[2]);
+	$tableData['Tracker Name'] = $ids[0] . ' (' . $frontendData[0]['name'] . ')';
+	$linkArrays[$tableData['Tracker Name']] = array(
+	'controller' => 'tracker',
+	'action' => 'trackerdetails',
+	'tId' => $ids[1],
+	'fId' => $ids[2]);
+	$this->contents[$id]['Tracker Name'] = $ids[0] . ' (' . $frontendData[0]['name'] . ')';
+	
+	$tabContent[$id] = array(
+	'Tracker Name' => $this->contents[$id]['Tracker Name'],
+	'Tracker Link' => $this->contents[$id]['Tracker Link'],
+	'Frontend' => $this->contents[$id]['Frontend'],
+	'Earnings' => $this->contents[$id]['Earnings'],
+	'controller' => 'tracker',
+	'action' => 'trackerdetails',
+	'tId' => $ids[1],
+	'fId' => $ids[2]);
+}
+//Zenfox_Debug::dump($tabContent, 'schemes', true, true);
+$linkField = array('Tracker Name');
+//$this->table($this->contents, $linkField, $linkArrays);
+?>
+<label id="showTrackers">Tracker</label>
+
+<div id="trackerTab" style="border: thin;border-style: ridge;">
+
+<table>
+<form name="frm">
+  <tr>
+  	<!--<th>Select</th>-->
+    <th>Tracker Name</th>
+    <th>Tracker Link</th>
+    <th>Front End</th>
+    <th>Earnings</th>
+  </tr>
+  <input type="hidden" value="<?php echo sizeof($tabContent);?>" id="trackNo"/>
+ <?php 
+ $count = 0;
+ if($_POST['val'] == ''){ $num = 5; $tag = 'View more';}
+ if($_POST['val'] != ''){ $num = sizeof($tabContent); $tag = 'View recent';}
+ 
+ 
+ foreach($tabContent as $key => $value) 
+ {
+ 	$link = '/'.$tabContent[$key]['controller'].
+ 			'/'.$tabContent[$key]['action'].
+ 			'/tId/'.$tabContent[$key]['tId'].
+ 			'/fId/'.$tabContent[$key]['fId'];
+ 	
+ 	$affId = explode('/', $tabContent[$key]['Tracker Link']);
+ 	//print_r($affId);
+ 	
+ ?> 
+ 
+  <tr id="<?php echo 't'.$count; ++$count ; ?>">
+  	<!--<td align="center"><input type="checkbox" id="d" name="affiliateId" value="<?php //echo $affId[6];?>" /></td>-->
+    <td align="center"><a href="<?php echo $link;  ?>"><?php echo $tabContent[$key]['Tracker Name'];?></a></td>
+    <td align="center"><?php echo $tabContent[$key]['Tracker Link'];?></td>
+    <td align="center"><?php echo $tabContent[$key]['Frontend'];?></td>
+    <td align="center"><?php echo $tabContent[$key]['Earnings'];?></td>
+  </tr>
+ 
+  <?php  if($key == ($num-1)) break ; 
+ 
+ 	}?>
+  <tr>
+  <td></td><td></td><td></td>
+  <td align="right" style="font-size: 12px;  ">
+  <a href="#" onclick="relod(<?php echo $num; ?>)" id="viewMore"><?php echo $tag; ?></a></td></tr>
+  </form>
+</table>
+
+</div>
+
+<?php 
+foreach($affiliateSchemes as $schemeId => $trackers)
+{
+/*echo '<br><b>Scheme: </b>'.$schemeInstance->getSchemeName($schemeId).'<br>';
+echo "<table border = '1'>";
+echo '<tr>';
+echo '<th align = "left">Tracker Name</th>';
+echo '<th align = "left">Earnings</th>';
+echo '</tr>';
+foreach($trackers as $affiliateTracker)
+{
+	echo '<tr>';
+	echo '<td>';*/?>
+<!-- 	<a href = "<?php /*echo $this->url(array(
+							'controller' => 'tracker',
+							'action' => trackerdetails,
+							'id' => $affiliateTracker['tracker']['tracker_id']
+							));*/
+			?>">
+	<?php // print($affiliateTracker['tracker']['tracker_name']);?>
+</a>
+ -->
+<?php 
+	/*echo '</td>';
+	echo '<td>'.$affiliateTracker['trackerDetails']['varaibale_value'].'</td>';
+	echo '</tr>';
+}*/
+//echo '</table>';
+?>
+<!-- 
+<br></br>
+<br></br>
+ -->
+<?php 
+
+//$json_data = array ('id'=>1,'name'=>"mike",'country'=>'usa',"office"=>array("microsoft","oracle"));
+
+
+$data = array();
+foreach($trackers as $affiliateTracker)
+{
+	$dataItem = array();
+	$dataItem['tracker'] = $affiliateTracker['tracker']['tracker_name'];
+	$dataItem['amount'] = $affiliateTracker['trackerDetails'];
+	$data[] = $dataItem;
+}
+$yAxisDetails = array('YField' => 'amount', 'DisplayName' => 'Amount');
+$yAxisDetails = json_encode($yAxisDetails);
+$jsonData = json_encode($data);
+
+$json_array = array('xAxis' => 'tracker', 'yAxisDetails' => array(array('YField' => 'amount', 'DisplayName' => 'Amount')), 'Data' => $data);
+$json_string = json_encode($json_array);
+
+$attributes = array(
+        'width' => '800',
+		'height' => '600'
+    );
+//$params = array('flashvars' => 'xAxis=Tracker&yAxisDetails='.$yAxisDetails.'&Data='.$jsonData);
+$params = array('flashvars' => 'jsonString='.$json_string);
+//tracker summary swf file should be added in place of flash.swf
+//echo $this->htmlFlash('/bin/columnGraph.swf',$attributes,$params); 
+}
+
+?>

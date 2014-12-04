@@ -1,0 +1,15 @@
+<?php
+foreach($this->rooms as $room)
+{
+	?>
+	<a href = "<?php echo $this->url(array(
+						'controller' => 'bingorooms',
+						'action' => 'edit',
+						'id' => $room['id'],
+					));?>">
+	<?php 
+	echo $room['name'];
+	echo '<br>';
+}
+?>
+</a>

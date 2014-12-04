@@ -1,0 +1,12 @@
+<?php 
+$linkArrays = array();
+foreach($this->leaderboards as $Data)
+		{
+			$linkArrays[$Data['title']] = array(
+					'controller' => 'leaderboard',
+					'action' => 'teamrummywinners',
+			        'leaderboardId' => $Data['leader_board_id']);
+			
+		}
+ 	$this->table($this->leaderboards, array('title'), $linkArrays);
+?>

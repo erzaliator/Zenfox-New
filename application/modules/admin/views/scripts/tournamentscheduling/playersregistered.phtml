@@ -1,0 +1,30 @@
+<?php 
+
+if(!empty($this->tablevalues))
+{
+	echo $this->table($this->tablevalues);
+	?>
+		<a href = "/download/index/rType/playerslist/tournamentid/<?= $this->tournamentid?>">Download</a>
+		<?php
+}
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		foreach($this->tournaments as $playerData)
+		{
+			$linkArray[$playerData['Tournament_Id']] = array(
+															'controller' => 'tournamentscheduling',
+															'action' => 'playersregistered',
+															'Tournament_Id' => $playerData['Tournament_Id']
+														);
+		}
+		$this->table($this->tournaments, array('Tournament_Id'), $linkArray);
+	
+	}
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	$this->pagination($pages, array(
+			'offset' => $this->offset));
+}
+
+?>

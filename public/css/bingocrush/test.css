@@ -1,0 +1,46 @@
+#message_box {
+position: absolute;
+top: 0; right: 0px;
+z-index: 10;
+background:#ffc;
+border:1px solid #CCCCCC;
+text-align:left;
+font-weight:bold;
+}
+
+#facebook_button {
+position: fixed;
+top: 68px; right: 0px;
+z-index: 10;
+background:#ffc;
+border:1px solid #CCCCCC;
+text-align:left;
+font-weight:bold;
+}
+
+.overout { width:20%; height:120px; margin:0 15px;}
+
+.box {
+height: 50px;
+width: 125px;
+overflow: auto;
+border: 1px solid #666;
+background-color: #ccc;
+padding: 5px;
+}
+
+body{margin:0px auto; font-family:Arial, Helvetica, sans-serif; font-size:12px; }
+.edit-form{
+		overflow:hidden;
+	background-color:#FFDEFF;
+	
+	left:15px;
+
+	padding:30px;
+	
+}
+.edit-form ul{
+list-style:none outside none;
+margin:0;
+overflow:hidden;
+padding:0;}

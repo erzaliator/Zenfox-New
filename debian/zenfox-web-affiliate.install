@@ -1,0 +1,3 @@
+application/modules/affiliate var/www/zenfox/web/application/modules
+python/synchroniseAffiliate.py python/wrapperSynchroniseAffiliate.py /usr/share/zenfox-web-affiliate
+zenfox-web-player.conf /etc/apache2/sites-available

@@ -1,0 +1,152 @@
+<?
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Bingocrush Affiliate</title>
+  <? //$this->headLink()->appendStylesheet('/css/global.css') ?>
+  <? $this->headLink()->appendStylesheet('/css/affiliate/layout_front.css') ?>
+  <?php /*Appending the files before echoing*/?> 
+  <? //$this->headLink()->appendStylesheet('/SpryAssets/SpryAccordion.css') ?>
+  <? //$this->headLink()->appendStylesheet('/SpryAssets/SpryTabbedPanels.css') ?>
+  <?php /*Echo the headlink after appending everything*/?>
+  <?= $this->headLink()?>
+ <?php /*Appending the files before echoing*/?>
+  <? $this->headScript()->appendFile('/SpryAssets/SpryTabbedPanels.js') ?>
+  <? $this->headScript()->appendFile('/SpryAssets/SpryAccordion.js') ?>
+  <?php /*Echo the headscript after appending everything*/?>
+  <?= $this->headScript()?>
+</head>
+<body>
+
+<!--<div class="nav-bt-strip">&nbsp;</div>
+<div id="mainDiv">
+  <div id="header">
+    <div class="logo">
+      <h2>ZOOM BINGO</h2>
+    </div>
+    -->
+    <!-- div class="toplinks"><a href="#">HELP</a> | <a href="#">CONTACT</a> | <a href="#">ABOUT YOURGAMES</a></div-->
+
+  <!--</div>
+ <div class="crumb"><?php echo $this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0)->render(); ?> </div>
+  <table cellpadding="0" cellspacing="0" width="100%" border="0" id="page-layout">
+  	<tr>
+  		<td valign="top" class="left-nav">
+            <?php echo $this->navigation()->menu(); ?>
+        </td>
+          <td width="8px">&nbsp;</td>
+  		<td class="body-content" valign="top"><?//=$this->layout()->content ?>
+  		<img src = "/images/bingocrush-affiliate-banner.png" style="height:440px;width:800px; margin-left:120px;" />
+  		</td>
+  	</tr>
+  </table>-->
+  
+ 
+<!-- End Body -->
+  <!--<div id="footer"> 
+    <p>Bingocrush</p> 
+  </div>
+</div>-->
+
+
+<div id="main">
+        <div id="header">
+            <span id="logo">Bingocrush.co.uk affiliates</span> 
+			
+			<div id="logo_name">
+			<img src = "http://bingocrush.co.uk/images/bingocrush/affiliate-headline1.png" />
+			</div>
+			
+			 <div id="login">
+			  <?php 
+				$session = new Zend_Auth_Storage_Session();
+				$storedData = $session->read();
+				$affiliateId = $storedData['id'];
+				if($affiliateId)
+				{
+					?>
+						<!--<div class="toplinks"><a href="/auth/logout">Logout</a></div>-->
+					<?php
+				}else{
+			?>
+              <form id="form1" action="/auth/login" method="post" enctype="application/x-www-form-urlencoded">
+			  <dl class="zend_form">
+			  <dt id="alias-label" >
+			  <label class="required" for="alias">Alias *</label>
+			  </dt>
+			  <dd id="alias-element" style="float:left; margin-left:0px">
+			  <input type="text" value="" id="alias" name="alias"  placeholder="Username">
+			  </dd>
+			  <dt id="password-label">
+			  <label class="required" for="password">Password *</label>
+			  </dt>
+			  <dd id="password-element" style="float:left; margin-left:0px">
+			  <input type="password" value="" id="password" name="password" placeholder="Password"></dd>
+			  <dt id="submit-label"> </dt>
+			  <dd id="submit-element">
+			  <input class="login-submit" type="submit" value="Submit" id="submit" name="submit">
+			  </dd>
+			  </dl>
+			  </form>
+			  
+			  <?php } ?>
+			  
+           <!-- <div id="forgot">
+            <a id="forgot" target="_parent" href="#">Forgot Password?</a>
+            </div>-->
+            </div>
+			
+           <div id="menu_bg">
+                   <ul>
+                    <li><a href="http://affiliate.bingocrush.co.uk/" id="active">Home</a></li>
+					<?php
+					if(!$affiliateId)
+				    {
+					?>
+                    <li><a href="http://affiliate.bingocrush.co.uk/auth/signup">Sign Up</a></li>
+					<?php } ?>
+                    <li><a href="http://affiliate.bingocrush.co.uk/scheme/product">Product</a></li>
+                    <li><a href="http://affiliate.bingocrush.co.uk/scheme/paymentplans">Payment Plans</a></li>
+                    <li><a href="http://affiliate.bingocrush.co.uk/help/faq">FAQs</a></li>
+                    <li><a href="http://affiliate.bingocrush.co.uk/help/contact">Contact Us</a></li>
+					<?php
+					if($affiliateId)
+				    {
+					?>
+					<li><a href="/auth/logout">Logout</a></li>
+					<?php } ?>
+                   </ul>
+           </div>   
+           
+        </div>
+        <div id="menu_btm">
+        </div>
+        <div id="canves"> 
+        <img src="http://bingocrush.co.uk/images/bingocrush/Afeelet.jpg" usemap="#Map" border="0"/>
+		<map name="Map" id="Map">
+         <area shape="rect" coords="562,469,784,526" href="http://affiliate.bingocrush.co.uk/auth/signup" />
+         <area shape="poly" coords="22,82" href="http://affiliate.bingocrush.co.uk/auth/signup" />
+         <area shape="poly" coords="28,88,101,26,254,17,225,69,265,71,378,73,382,182,371,541,24,542,27,88" href="http://affiliate.bingocrush.co.uk/auth/signup" />
+       </map>
+       
+        
+        </div>
+        
+</div>
+<script type="text/javascript">
+<!--
+var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+var Accordion1 = new Spry.Widget.Accordion("Accordion1");
+//-->
+</script>
+<?php $this->jQuery()->setLocalPath("http://zenfox.tld/js/testing.js");
+echo $this->JQuery();?>
+
+</body>
+</html>

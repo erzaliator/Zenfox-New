@@ -1,0 +1,43 @@
+<?php 
+if($this->message)
+{
+	?>
+	<div style="text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 10px;"><?=$this->message?></div>
+	<?php 
+}
+?>
+<table border="0" style="border:1px solid;border-color:#CD222B;border-radius:5px;height:400px">
+	<tr><td class="TTBingogameName">Contact Form</td></tr>
+	<tr>
+		<td>
+				<p style="text-indent:55px;">Its a great pleasure to serve you. We value your feedbacks, thoughts and comments. You can contact us by either
+				 filling up the below form or send us an email to <a href="mailto:support@bingocrush.co.uk">support@bingocrush.co.uk.</a> You can also contact us instantly by clicking on the live chat icon.</p>
+				
+				</td></tr>
+	<tr><td>
+		<div style="height:250px;width:400px;border:0px solid;margin-left:50px">
+			<form name="player-contact" action="/content/contact" method="post">
+			<table align="center">
+				<tr>
+					<td height="50">Name* :</td>
+					<td><span><input type="text" name="name" value="<?=$this->name ?>" required></span></td>
+				</tr>
+				<tr >
+					<td height="30">Email* :</td>
+					<td><span><input type="text" name="email" value="<?=$this->email ?>" required></span></td>
+				</tr>
+				<tr >
+					<td height="50" valign="top">Message* :</td>
+					<td ><textarea rows="5" cols="30" name="message" required><?=$this->postMessage ?></textarea></td>
+				</tr>
+				<tr >
+					<td height="50" valign="top"></td>
+					<td><input type="submit" value="Submit"></td>
+				</tr>
+			</table>
+		</form>
+		</div>
+	
+	</td></tr>
+	
+</table>

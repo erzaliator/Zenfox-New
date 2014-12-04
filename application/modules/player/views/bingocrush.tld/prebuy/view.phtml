@@ -1,0 +1,14 @@
+<div style="margin-top:20px;margin-left:40px;">
+<a href ="/prebuy/index/" > << back to Prebuy</a>
+</div>
+<?php 
+if($this->data)
+{
+	$this->table($this->data);
+}
+else
+{
+	?>
+	<br><h2 style="text-align:center"><strong>No Prebuys Found</strong></h2>
+<?php
+}

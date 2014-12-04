@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+
+.wrap h2
+{
+	padding-left:45px;
+	margin-top:10px;
+}
+
+div.postbox-container
+{
+	float:none;
+	padding:0;
+	min-width:850px;
+	width:100%;
+}
+
+div.postbox div.inside
+{
+	margin:14px 18px 18px;
+	position:relative;
+}
+
+div.postbox div.inside div.add-more
+{
+	margin-top:15px;
+}
+
+
+#settings input
+{
+	vertical-align:middle;
+}
+
+#settings label
+{
+	font-weight:bold;
+}
+
+#settings textarea
+{
+	width:100%;
+}
+
+#settings select option.default
+{
+	color:#ccc;
+	font-style:italic;
+}
+
+#settings p.note, #settings p.secondary-note
+{
+	background:url(../images/note.png) no-repeat 0 8px;
+	color:#7a7a7a;
+	padding:8px 0 0 28px;
+	line-height:24px;
+	font-size:11px;
+}
+
+#settings p.secondary-note
+{
+	background:none;
+	padding-top:0;
+}

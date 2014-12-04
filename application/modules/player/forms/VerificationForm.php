@@ -1,0 +1,164 @@
+<?php
+class Player_verificationForm extends Zend_Form
+{
+	public function getform()
+	{
+		$firstname = $this->createElement('text','firstname');
+		$firstname->setLabel($this->getView()->translate('First Name * '))
+		->setRequired(true);
+		
+		$lastname = $this->createElement('text','lastname');
+		$lastname->setLabel($this->getView()->translate('Last Name * '))
+		->setRequired(true);
+		
+		$sex = new Zend_Form_Element_Select('sex');
+		$sex->setLabel('Sex *')
+		->setMultiOptions(array('male'=>'MALE', 'female'=>'FEMALE'))
+		->setRequired(true);
+		
+		$dob = $this->createElement('text','dob');
+		$dob->setLabel($this->getView()->translate('DOB * '))
+		->setRequired(true);
+		
+		$address = $this->createElement('textarea','address');
+		$address->setLabel($this->getView()->translate('Address * '))
+		->setRequired(true);
+		
+		$city = $this->createElement('text','city');
+		$city->setLabel($this->getView()->translate('City * '))
+		->setRequired(true);
+		
+		$country = new Zend_Form_Element_Select('country');
+		$country->setLabel('Country *')
+		->setMultiOptions(array("Afghanistan" =>"Afghanistan","Albania" =>"Albania","Algeria" =>"Algeria","American Samoa" =>"American Samoa",
+				"Andorra" =>"Andorra","Angola" =>"Angola","Anguilla" =>"Anguilla","Antarctica" =>"Antarctica",
+				"Antigua and Barbuda" =>"Antigua and Barbuda","Argentina" =>"Argentina","Armenia" =>"Armenia","Aruba" =>"Aruba",
+				"Australia" =>"Australia","Austria" =>"Austria","Azerbaijan" =>"Azerbaijan","Bahamas" =>"Bahamas",
+				"Bahrain" =>"Bahrain","Bangladesh" =>"Bangladesh","Barbados" =>"Barbados","Belarus" =>"Belarus",
+				"Belgium" =>"Belgium","Belize" =>"Belize","Benin" =>"Benin","Bermuda" =>"Bermuda",
+				"Bhutan" =>"Bhutan","Bolivia" =>"Bolivia","Bosnia and Herzegovina" =>"Bosnia and Herzegovina","Botswana" =>"Botswana",
+				"Bouvet Island" =>"Bouvet Island","Brazil" =>"Brazil","British Indian Ocean Territory" =>"British Indian Ocean Territory","Brunei Darussalam" =>"Brunei Darussalam",
+				"Bulgaria" =>"Bulgaria","Burkina Faso" =>"Burkina Faso","Burundi" =>"Burundi","Cambodia" =>"Cambodia",
+				"Cameroon" =>"Cameroon","Canada" =>"Canada","Cape Verde" =>"Cape Verde","Cayman Islands" =>"Cayman Islands",
+				"Central African Republic" =>"Central African Republic","Chad" =>"Chad","Chile" =>"Chile","China" =>"China",
+				"Christmas Island" =>"Christmas Island","Cocos (Keeling) Islands" =>"Cocos (Keeling) Islands","Colombia" =>"Colombia","Comoros" =>"Comoros",
+				"Congo" =>"Congo","Congo, the Democratic Republic of the" =>"Congo, the Democratic Republic of the","Cook Islands" =>"Cook Islands","Costa Rica" =>"Costa Rica",
+				"Cote D'Ivoire" =>"Cote D'Ivoire","Croatia" =>"Croatia","Cuba" =>"Cuba","Cyprus" =>"Cyprus",
+				"Czech Republic" =>"Czech Republic","Denmark" =>"Denmark","Djibouti" =>"Djibouti","Dominica" =>"Dominica",
+				"Dominican Republic" =>"Dominican Republic","Ecuador" =>"Ecuador","Egypt" =>"Egypt","El Salvador" =>"El Salvador",
+				"Equatorial Guinea" =>"Equatorial Guinea","Eritrea" =>"Eritrea","Estonia" =>"Estonia","Ethiopia" =>"Ethiopia",
+				"Falkland Islands (Malvinas)" =>"Falkland Islands (Malvinas)","Fiji" =>"Fiji","Finland" =>"Finland","France" =>"France",
+				"French Guiana" =>"French Guiana","French Polynesia" =>"French Polynesia","French Southern Territories" =>"French Southern Territories","Gabon" =>"Gabon",
+				"Gambia" =>"Gambia","Georgia" =>"Georgia","Germany" =>"Germany","Ghana" =>"Ghana", 
+				"Gibraltar" =>"Gibraltar","Greece" =>"Greece","Greenland" =>"Greenland","Grenada" =>"Grenada",
+				"Guadeloupe" =>"Guadeloupe","Guam" =>"Guam","Guatemala" =>"Guatemala","Guinea" =>"Guinea",
+				"Guinea-Bissau" =>"Guinea-Bissau","Guyana" =>"Guyana","Haiti" =>"Haiti","Heard Island and Mcdonald Islands" =>"Heard Island and Mcdonald Islands",
+				"Holy See (Vatican City State)" =>"Holy See (Vatican City State)","Honduras" =>"Honduras","Hong Kong" =>"Hong Kong","Hungary" =>"Hungary",
+				"Iceland" =>"Iceland","India" =>"India","Indonesia" =>"Indonesia","Indonesia" =>"Indonesia",
+				"Iran, Islamic Republic of" =>"Iran, Islamic Republic of","Iraq" =>"Iraq","Ireland" =>"Ireland","Israel" =>"Israel",
+				"Italy" =>"Italy","Jamaica" =>"Jamaica","Japan" =>"Japan","Jordan" =>"Jordan",
+				"Kazakhstan" =>"Kazakhstan","Kenya" =>"Kenya","Kiribati" =>"Kiribati","Korea, Democratic People's Republic of" =>"Korea, Democratic People's Republic of",
+				"Kuwait" =>"Kuwait","Kyrgyzstan" =>"Kyrgyzstan","Kyrgyzstan" =>"Kyrgyzstan","Lao People's Democratic Republic" =>"Lao People's Democratic Republic",
+				"Latvia" =>"Latvia","Lebanon" =>"Lebanon","Lesotho" =>"Lesotho","Liberia" =>"Liberia",
+				"Libyan Arab Jamahiriya" =>"Libyan Arab Jamahiriya","Liechtenstein" =>"Liechtenstein","Lithuania" =>"Lithuania","Luxembourg" =>"Luxembourg",
+				"Macao" =>"Macao","Macedonia" =>"Macedonia","Madagascar" =>"Madagascar","Malawi" =>"Malawi",
+				"Malaysia" =>"Malaysia","Maldives" =>"Maldives","Mali" =>"Mali","Malta" =>"Malta",
+				"Marshall Islands" =>"Marshall Islands","Martinique" =>"Martinique","Mauritania" =>"Mauritania","Mauritius" =>"Mauritius",
+				"Mayotte" =>"Mayotte","Mexico" =>"Mexico","Micronesia, Federated States of" =>"Micronesia, Federated States of","Moldova, Republic of" =>"Moldova, Republic of",
+				"Monaco" =>"Monaco","Mongolia" =>"Mongolia","Montserrat" =>"Montserrat","Morocco" =>"Morocco",
+				"Mozambique" =>"Mozambique","Myanmar" =>"Myanmar","Namibia" =>"Namibia","Nauru" =>"Nauru",
+				"Nepal" =>"Nepal","Netherlands" =>"Netherlands","Netherlands Antilles" =>"Netherlands Antilles","New Caledonia" =>"New Caledonia",
+				"New Zealand" =>"New Zealand","Nicaragua" =>"Nicaragua","Niger" =>"Niger","Nigeria" =>"Nigeria",
+				"Niue" =>"Niue","Norfolk Island" =>"Norfolk Island","Northern Mariana Islands" =>"Northern Mariana Islands","Norway" =>"Norway",
+				"Oman" =>"Oman","Pakistan" =>"Pakistan","Palau" =>"Palau","Palestinian Territory, Occupied" =>"Palestinian Territory, Occupied",
+				"Panama" =>"Panama","Papua New Guinea" =>"Papua New Guinea","Paraguay" =>"Paraguay","Peru" =>"Peru",
+				"Philippines" =>"Philippines","Pitcairn" =>"Pitcairn","Poland" =>"Poland","Portugal" =>"Portugal",
+				"Puerto Rico" =>"Puerto Rico","Qatar" =>"Qatar","Reunion" =>"Reunion","Romania" =>"Romania",
+				"Russian Federation" =>"Russian Federation","Rwanda" =>"Rwanda","Saint Helena" =>"Saint Helena","Saint Kitts and Nevis" =>"Saint Kitts and Nevis",
+				"Saint Lucia" =>"Saint Lucia","Saint Pierre and Miquelon" =>"Saint Pierre and Miquelon","Saint Vincent and the Grenadines" =>"Saint Vincent and the Grenadines","Samoa" =>"Samoa",
+				"San Marino" =>"San Marino","Sao Tome and Principe" =>"Sao Tome and Principe","Saudi Arabia" =>"Saudi Arabia","Senegal" =>"Senegal",
+				"Serbia and Montenegro" =>"Serbia and Montenegro","Seychelles" =>"Seychelles","Sierra Leone" =>"Sierra Leone","Singapore" =>"Singapore",
+				"Slovenia" =>"Slovenia","Solomon Islands" =>"Solomon Islands","Somalia" =>"Somalia","South Africa" =>"South Africa",
+				"South Georgia and the South Sandwich Islands" =>"South Georgia and the South Sandwich Islands","Spain" =>"Spain",
+				"Sri Lanka" =>"Sri Lanka","Sudan" =>"Sudan","Suriname" =>"Suriname","Svalbard and Jan Mayen" =>"Svalbard and Jan Mayen",
+				"Swaziland" =>"Swaziland","Sweden" =>"Sweden","Switzerland" =>"Switzerland","Syrian Arab Republic" =>"Syrian Arab Republic",
+				"Taiwan, Province of China" =>"Taiwan, Province of China","Tajikistan" =>"Tajikistan","Tanzania, United Republic of" =>"Tanzania, United Republic of","Thailand" =>"Thailand",
+				"Timor-Leste" =>"Timor-Leste","Togo" =>"Togo","Tokelau" =>"Tokelau","Tonga" =>"Tonga",
+				"Trinidad and Tobago" =>"Trinidad and Tobago","Tunisia" =>"Tunisia","Turkey" =>"Turkey","Turkmenistan" =>"Turkmenistan",
+				"Turks and Caicos Islands" =>"Turks and Caicos Islands","Tuvalu" =>"Tuvalu","Uganda" =>"Uganda","Ukraine" =>"Ukraine",
+				"United Arab Emirates" =>"United Arab Emirates","United Kingdom" =>"United Kingdom","United States" =>"United States","United States Minor Outlying Islands" =>"United States Minor Outlying Islands",
+				"Uruguay" =>"Uruguay","Uzbekistan" =>"Uzbekistan","Vanuatu" =>"Vanuatu","Venezuela" =>"Venezuela",
+				"Viet Nam" =>"Viet Nam","Virgin Islands, British" =>"Virgin Islands, British","Virgin Islands, U.s." =>"Virgin Islands, U.s.","Wallis and Futuna" =>"Wallis and Futuna",
+				"Western Sahara" =>"Western Sahara","Yemen" =>"Yemen","Zambia" =>"Zambia","Zimbabwe" =>"Zimbabwe"))
+		->setRequired(true);
+		
+		$state = $this->createElement('text','state');
+		$state->setLabel($this->getView()->translate('State * '))
+		->setRequired(true);
+		
+		$pincode = $this->createElement('text','pincode');
+		$pincode->setLabel($this->getView()->translate('Pincode * '))
+		->setRequired(true);
+		
+		$email = $this->createElement('text','email');
+		$email->setLabel($this->getView()->translate('Email * '))
+		->addValidator('EmailAddress')
+		->setRequired(true);
+		
+		$pancard = $this->createElement('text','pancard');
+		$pancard->setLabel($this->getView()->translate('Pan Card Number * '))
+		->setRequired(true);
+		
+		$idproof = new Zend_Form_Element_Select('idproof');
+		$idproof->setLabel('ID *')
+		->setMultiOptions(array('VOTER_ID'=>'VOTER ID', 'PASSPORT'=>'PASSPORT', 'DRIVING_LICENSE'=>'DRIVING LICENSE', 'PAN'=>'PAN'))
+		->setRequired(true);
+		
+		$file1 = $this->createElement('file','file1');
+		$file1->setLabel($this->getView()->translate('File1 * '))
+		->setRequired(true);
+		
+		$file2 = $this->createElement('file','file2');
+		$file2->setLabel($this->getView()->translate('File2  '));
+		
+		
+		$file3 = $this->createElement('file','file3');
+		$file3->setLabel($this->getView()->translate('File3  '));
+		
+		
+		
+		$NAME = $this->createElement('text','name as on bank');
+		$NAME->setLabel($this->getView()->translate('NAME(As on Bank Account) * '))
+		->setRequired(true);
+		
+		$Bank = $this->createElement('text','bank');
+		$Bank->setLabel($this->getView()->translate('BANK NAME * '))
+		->setRequired(true);
+		
+		$BankAccountNo = $this->createElement('text','BankAccountNumber');
+		$BankAccountNo->setLabel($this->getView()->translate('Bank Account Number * '))
+		->setRequired(true);
+		
+		$BankAccountNoRe = $this->createElement('text','BankAccountNumberRe');
+		$BankAccountNoRe->setLabel($this->getView()->translate('Re-type Bank Account Number * '))
+		->setRequired(true);
+		
+		$Branch = $this->createElement('text','Branch');
+		$Branch->setLabel($this->getView()->translate('Branch * '))
+		->setRequired(true);
+		
+		$IFSCCode = $this->createElement('text','ifsccode');
+		$IFSCCode->setLabel($this->getView()->translate('IFSC Code * '))
+		->setRequired(true);
+		
+		$submit = new Zend_Form_Element_Submit('submit');
+		$submit->setLabel('Upload and Submit');
+		
+		$this->addElements(array( $firstname, $lastname,$sex, $dob,
+				$address, $city,$state,$country,$pincode,$email,$pancard,$idproof,$file1,$file2,$file3,$Bank,$NAME,$BankAccountNo,$BankAccountNoRe, 
+				$Branch,$IFSCCode,$submit));
+		
+		return $this;
+
+	}
+}

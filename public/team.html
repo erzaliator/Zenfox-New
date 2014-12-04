@@ -1,0 +1,565 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+						<title>Play Online Rummy | 13 Cards Indian Classic Rummy - Play Now & Win Cash Prizes | Free Rummy Games Online</title>
+														<meta name = "keywords" content = "online rummy, 13 card rummy, play rummy, rummy, cash rummy, card games, taash,taashtime,Joining Bonus, Deposit Bonus, free games" />
+																	<meta name = "description" content = "Taash in hindi means playing cards. Taashtime offers online rummy for free. Play free games including 13 card rummy. Hope you enjoy playing rummy." />
+								<script type="text/javascript" src="/js/rummy/jquery.min.js"></script>
+<script type="text/javascript" src="/js/rummy/wr.js"></script>
+<script type="text/javascript" src="/js/rummy/jquery.cycle.all.latest.js"></script>
+<script type="text/javascript" src="/js/rummy/jquery-ui.min.js"></script><link href="/css/rummy.tld/css/blueprint/screen.css" media="screen" rel="stylesheet" type="text/css" >		
+				<div id="fb-root"></div>
+		 <script type='text/javascript' src = 'https://connect.facebook.net/en_US/all.js' async = true></script>
+<script type="text/javascript">
+
+window.fbAsyncInit = function() {
+  FB.init({appId: '143168342410923', status: true, cookie: true, xfbml: true, oauth : true});
+
+  FB.Event.subscribe('auth.logout', function(response) {
+	  if(get_cookie('nikhil'))
+	  {
+		  var i;
+		  for(i = 0; i < 5; i++)
+		  {
+			  if(!get_cookie('nikhil'))
+			  {
+				  break;
+			  }
+			  delete_cookie('nikhil');
+		  }
+		  var loggedOut = confirm ("You have been logged out from Facebook. Do you wanna log out from Taashtime?");
+		  if(loggedOut)
+		  {
+			  window.location.href = "/auth/logout";
+		  }
+	  }
+  });
+
+};
+
+function facebookLogin() {
+	alert("This feature is unavailable at the moment. Please contact Live Help for more information.");
+	/*
+    FB.login( function (response) {
+      if(response.authResponse) {
+    	  var accessToken = response.authResponse.accessToken;
+    	  var userId = response.authResponse.userID;
+    	  window.location.href = "/facebook/facebooklogin/userId/"+userId+"/accessToken/"+accessToken;
+    	  FB.api('/me', function(response) {
+           // if(set_cookie('nikhil', 2))
+            //{
+        		//window.location.href = "/facebook/facebooklogin";
+            //}
+        });
+      } else  {
+        // not logged in.
+      }
+    }, {scope:'email'});*/
+}
+
+function set_cookie ( name, value, exp_y, exp_m, exp_d, path, domain, secure )
+{
+  var cookie_string = name + "=" + escape ( value );
+
+  if ( exp_y )
+  {
+    var expires = new Date ( exp_y, exp_m, exp_d );
+    cookie_string += "; expires=" + expires.toGMTString();
+  }
+
+  if ( path )
+        cookie_string += "; path=" + escape ( path );
+
+  if ( domain )
+        cookie_string += "; domain=" + escape ( domain );
+  
+  if ( secure )
+        cookie_string += "; secure";
+  
+  document.cookie = cookie_string;
+  return true;
+}
+
+function delete_cookie ( cookie_name )
+{
+  var cookie_date = new Date ( );  // current date & time
+  cookie_date.setTime ( cookie_date.getTime() - 1 );
+  document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+}
+
+function get_cookie ( cookie_name )
+{
+  var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+
+  if ( results )
+    return ( unescape ( results[2] ) );
+  else
+    return null;
+}
+
+</script>
+		
+<!-- 
+<link rel="stylesheet" href="/css/rummy.tld/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+
+<link rel="stylesheet" href="/css/rummy.tld/css/style.css" type="text/css" />
+ -->
+<!-- <script src="script/jquery.min.js" type="text/javascript"></script>
+<script src="script/custom.js" type="text/javascript"></script>
+<script type="text/javascript" src="iepngfix_tilebg.js"></script>
+-->
+<!--[if lt IE 7]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+<![endif]-->
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="/css/rummy.tld/css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+<!--Google Analytics-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27546725-1']);
+  _gaq.push(['_setDomainName', 'taashtime.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+function slideSwitch() {
+    var $active = $('#ttslideshow IMG.active');
+    if ( $active.length == 0 ) $active = $('#ttslideshow IMG:last'); 
+    var $next =  $active.next().length ? $active.next()
+        : $('#ttslideshow IMG:first');
+    $active.addClass('last-active');
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 1000, function() {
+            $active.removeClass('active last-active');
+        });
+}
+$(function() {
+    setInterval( "slideSwitch()", 5000 );
+    setInterval( "getLiveTables()", 120000);
+});
+
+function gotoTournamentList(){
+	window.location = "/tournament/list";
+}
+
+
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+   $('#tttestimonials')
+	//.before('<div id="nav">')
+	.cycle({
+        fx: 'fade', // choose your transition type, ex: fade, scrollUp, scrollRight, shuffle
+		//pager:  '#nav'
+     });
+});
+</script>
+<script type="text/javascript">
+      var flashvars = {};
+      flashvars.cssSource = "/css/piecemaker.css";
+      flashvars.xmlSource = "/js/piecemaker_js/piecemaker.xml";		
+      var params = {};
+      params.play = "true";
+      params.menu = "false";
+      params.scale = "showall";
+      params.wmode = "transparent";
+      params.allowfullscreen = "true";
+      params.allowscriptaccess = "always";
+      params.allownetworking = "all";	  
+      swfobject.embedSWF('/js/piecemaker_js/piecemaker.swf', 'piecemaker', '650', '360', '2', null, flashvars,    
+      params, null);
+    
+    </script>
+    <script type="text/javascript">
+
+$(document).ready(function(){
+	if($.browser.mozilla){
+		document.getElementById("live-tables").style.marginTop="15px";
+	}
+});
+</script>
+</head>
+<body class="index">
+<div class="container tt_container_m tt_contai_wid">
+  <div id="login-header" class="tt_contai_wid">
+    <div class="ttlogo pad-l-5"><a href ="/index/index"><img src="/css/rummy.tld/images/logo-animation.gif" width="240" height="50" alt="Taash Logo" /></a></div>
+    <div class="span-13 login-container ">
+      <div class="login-box">
+        <form id="player-login-form" enctype="application/x-www-form-urlencoded" action="/auth/login" method="post"><dl class="zend_form">
+<ul><li><label for="userName" class="required">Username *</label>
+
+<input type="text" name="userName" id="userName" value="" class="text"></li>
+<li><label for="password" class="required">Password *</label>
+
+<input type="password" name="password" id="password" value="" class="text"></li>
+<li class="login_form_button">
+<input type="submit" name="submit" id="submit" value="Log In"></li>
+<li>
+<input type="hidden" name="fgPassword" value="" id="fgPassword">
+<a href = "/en_GB/auth/forgotpassword">Forgot Password</a></li></dl></form>      </div>
+      
+    </div>
+    <div class="ttlivetbl live-tables right">
+    <div class="fb-like" data-href="http://www.facebook.com/taashtime.rummy" data-send="false" data-height="40" data-width="80" data-show-faces="false"></div>
+      <div class="live-tables-number right pad-r-5" id = "live-tables">
+        190      </div>
+      <div class="right">Live Tables: </div>
+    </div>
+  </div>
+  <div id="nav-bar" class="tt_contai_wid">
+    <div class="nav-barl last left">
+      <ul id="main-menu">
+
+<li class="active">
+
+<a href="/"><p class="menu-pad">Home</p></a>
+
+    </li>
+
+<li>
+
+<a href="/en_GB/game"><p class="menu-pad">Play Rummy</p></a>
+
+    </li>
+
+<li>
+
+<a href="/en_GB/tournament/list"><p class="menu-pad">Tournament</p></a>
+
+<ul id="nav-menu-sub" style="display:none;">
+
+<li>
+
+<a href="/en_GB/tournament/list"><p class="menu-pad">Tournament</p></a>
+
+</li>
+
+</ul>
+
+    </li>
+
+<li>
+
+<a href="/en_GB/promotions"><p class="menu-pad">Promotions</p></a>
+
+<ul id="nav-menu-sub" style="display:none;">
+
+<li>
+
+<a href="/en_GB/promotions"><p class="menu-pad">Promotions</p></a>
+
+    </li>
+
+<li>
+
+<a href="/en_GB/promotions/referfriend"><p class="menu-pad">Refer A Friend</p></a>
+
+</li>
+
+</ul>
+
+    </li>
+
+<li>
+
+<a href="/en_GB/faq"><p class="menu-pad">Help</p></a>
+
+<ul id="nav-menu-sub" style="display:none;">
+
+<li>
+
+<a href="/en_GB/faq"><p class="menu-pad">FAQ</p></a>
+
+</li>
+
+</ul>
+
+    </li>
+
+<li>
+
+<a href="/en_GB/banking/detail"><p class="menu-pad">Banking</p></a>
+
+</li>
+</ul>    </div>
+    <div class="ttoffer left"><img src="/css/rummy.tld/images/invite-friend.gif" width="300" height="60" alt="get500" /></div>
+  </div>
+  <div id="layout" class="tt_contai_wid home-banner">
+        <div id="left-column" class="tt_l_colum">
+      
+      <div id="left-column" >
+        <div id="home-banner-left" >
+        			<form name="ipl-form" action="/" method="post">
+				<div class='team-vote-message' style="text-align:center;color:blue;font-size:20px"><b>Who will win today?</b></div>
+				
+				<table style="border:0px solid;border-color:black;width:500px;margin:auto;">
+					<tr><td style="border:2px solid;background-color:#004298;"><label id="label-team-1" style="margin-left:58px;">Punjab</label></td><td style="background-color:white;width:100px"></td><td style="border:2px solid;background-color:#004298;"><label id="label-team-2" style="margin-left:58px;">Chennai</label></td></tr>
+					<tr><td><img id="image-team-1" src="/images/rummy.tld/kings-11-punjab.png" style="margin-left:20px"></img></td><td><img id="vs" src="/images/rummy.tld/vs.png" style="margin-left:20px"></img></td><td><img id="image-team-2" src="/images/rummy.tld/chennai-super-kings.png" style="margin-left:20px"></img></td></tr>
+					<tr><td style="border:2px solid;background-color:#004298;"><input id="radio-team-1"  type="radio" name="team" value="PUNJAB"  style="margin-left:80px;"/></td><td style="background-color:white"></td><td style="border:2px solid;background-color:#004298;"><input id="radio-team-2"  type="radio" name="team" value="CHENNAI" style="margin-left:80px;" /></td></tr>
+				</table>
+				<div class='team-vote-message' style="text-align:center;color:blue;font-size:20px"><b>Pick the winning team, earn Rs 100/-</b></div>
+				<input id ="cricket-form-submit" src="/images/rummy.tld/vote-now.png" type="submit" name="submit" value="Submit" style="margin-left:500px"/>
+			</form>
+			        <!-- img alt="Main Banner" src="/css/rummy.tld/images/main_banner_3.jpg" height = "370px;" width="650px;" usemap="#diwali-offer" /-->
+        
+          <!-- div id="piecemaker"></div-->
+         
+        </div>
+     <div class="tttourntime">
+          <div class="tttourntimel">
+            <div class="tt_th_blue_bg">
+              <h1>TaashTime Rummy Tournaments</h1>
+            </div>
+            <div  class="tttournentryhed">
+              <div class="tttournwidth left">Prize Money</div>
+              <div class="tttournwidth left">Start Time</div>
+              <div class="tttournwidth left">Entry</div>
+            </div>
+            		        				<div class="tttournentryfee" onclick="gotoTournamentList()">
+		        				     <div class="tttournwidth left tttournblue"><span class="WebRupee"> Rs. </span>1000</div>
+		        				      <div class="tttournwidth left">15-Feb-2013 1:00 pm</div>
+		        				        <div class="tttournwidth left pad-t-10"><span class="WebRupee"> Rs. </span>5</div>
+		        				  </div>
+		        											        		
+		        						        				<div class="tttournentryfree" onclick="gotoTournamentList()">
+		        				<div class="tttournwidth left  pad-t-10"><strong><span class="WebRupee"> Rs. </span>2000</strong></div>
+		        				<div class="tttournwidth left">15-Feb-2013 5:00 pm</div>
+		        				<div class="tttournwidth left pad-t-10"><span class="WebRupee"> Rs. </span>10</div>
+		        				</div>
+		        						        				<div class="tttournentryfree" onclick="gotoTournamentList()">
+		        				<div class="tttournwidth left  pad-t-10"><strong><span class="WebRupee"> Rs. </span>5000</strong></div>
+		        				<div class="tttournwidth left">15-Feb-2013 8:00 pm</div>
+		        				<div class="tttournwidth left pad-t-10"><span class="WebRupee"> Rs. </span>20</div>
+		        				</div>
+		        						        				<div class="tttournentryfree last" onclick="gotoTournamentList()">
+		        				<div class="tttournwidth left  pad-t-10"><strong><span class="WebRupee"> Rs. </span>1000</strong></div>
+		        				<div class="tttournwidth left">30-Mar-2013 7:35 pm</div>
+		        				<div class="tttournwidth left pad-t-10"><span class="WebRupee"> Rs. </span>5</div>
+		        				</div>
+		        					<!-- div class="tttournentryfee">
+              <div class="tttournwidth left tttournblue">Rs 1500</div>
+              <div class="tttournwidth left">28-07-2012
+                2:00 PM</div>
+              <div class="tttournwidth left pad-t-10">Rs 10.00</div>
+            </div>
+            <div class="tttournentryfree">
+              <div class="tttournwidth left pad-t-10"><strong>Rs 500</strong></div>
+              <div class="tttournwidth left">28-07-2012
+                8:00 PM</div>
+              <div class="tttournwidth left pad-t-10">Free</div>
+            </div>
+            <div class="tttournentryfree">
+              <div class="tttournwidth left  pad-t-10"><strong>Rs 500</strong></div>
+              <div class="tttournwidth left">28-07-2012
+                8:00 PM</div>
+              <div class="tttournwidth left pad-t-10">Free</div>
+            </div>
+            <div class="tttournentryfree last">
+              <div class="tttournwidth left  pad-t-10"><strong>Rs 500</strong></div>
+              <div class="tttournwidth left">28-07-2012
+                8:00 PM</div>
+              <div class="tttournwidth left pad-t-10">Free</div>
+            </div-->
+	          </div>
+          <div class="tttourntimer" >
+            <div class="tt_th_blue_bg">
+              <h1>Winners List</h1>
+            </div>
+            <div class="tttournwinrbg">
+              <div class="tt_winner_hed">Weekly TaashCash<span class="WebRupee"> </span> Winners</div>
+              <div class="tt_winner_cont">
+                <ul>
+                  	                </ul>
+              </div>
+              <div class=" tt_more_dtls"><a href="/index/winner">More Details</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="tt_tbl_border left">
+          <div class="tt_th_grey_bg">
+            <h1>What is Taashtime?</h1>
+          </div>
+          <div class="joinnowpad">
+            <div >
+              <p>Taashtime is India's most trusted online rummy site! Taash means "playing cards" in Hindi. The site is dedicated to providing the best card games experience and currently you can play online rummy. You get 5000 FunCoins to play free, fun rummy games and 25 TaashCash as a welcome bonus to try out cash games! Taashtime is truly cash time as it allows rummy players to win cash prizes. </p>
+              <p> The primary purpose of Taashtime is to provide wholesome entertainment to individuals, their family, friends and colleagues. Taashtime is meant for time pass and provides you the ability to earn money - a completely different approach to most free card game sites. Taashtime is not a means to earn large amounts, nor does it enable players to do so. </p>
+              <p>At Taashtime, we are proud of our stringent policies as it keeps players' safe, secure and ensures high quality entertainment on the site. We have created a great rummy enthusiast community of ardent rummy lovers who play on our site regularly. It is a great opportunity to build rummy skill and play with skilled rummy players from across the country. </p>
+              <p>Taashtime provides true Indian rummy, a classic rummy experience and provides the most real feel to on line rummy. Taashtime provides the largest variety of rummy: Syndicate games (Pool rummy), Stake games (Points rummy), Best of Three, Best of Five, Summit (a forward ladder pool rummy). Taashtime also has rummy tournaments with both free entry and paid entry! </p>
+              <p>Enjoy the experience of playing cards, on line rummy, with the best game of rummy in India. Play rummy, have fun - Taashtime is Cash time! </p>
+              <p><a href="/content/about"><strong>Learn More</strong></a></p>
+            </div>
+          </div>
+        </div>
+        <div class="ttlegalm left ">
+          <div class="ttlegalml"><img src="/css/rummy.tld/images/legal.png" /></div>
+          <div class="ttlegalmcont">According to supreme court ruling, now rummy is fully legal in India. So continue Taashtiming, Play more, and Earn more!! :)</div>
+        </div>
+      </div>
+    </div>
+    <div id="right-column" class="join_r_colum last right">
+      <!-- 
+        <h2 class="pad-t-10 join-nowfont" ><strong>Join Now!</strong></h2>
+         <div id="get-blurb" class="right"><img src="/css/rummy.tld/images/get-25-blurb.png"  alt="Get Rs. 25/-!"  width="139" height="76"/></div>
+         -->
+      			
+	
+    		    	<div class="joinnowbg">
+	    	<div class="joinnowpad"><div id="join-now">
+	    	<h2 class="pad-t-10 join-nowfont"><strong>JOIN NOW!</strong></h2>
+	    	<div id="get-blurb-home" class="right"><div class="get-blurb-bfont">FREE </div><div class="get-blurb-sfont">&nbsp; Rs. 25/-</div></div>
+	    	<div class="reg" id="regForm">
+	    		<form id="player-registration-form" name="player-signup" enctype="application/x-www-form-urlencoded" action="/auth/signup" method="post"><dl class="zend_form">
+<dt id="affId-label">&#160;</dt>
+<dd id="affId-element">
+<input type="hidden" name="affId" value="" id="affId"></dd>
+<dt id="trackerId-label">&#160;</dt>
+<dd id="trackerId-element">
+<input type="hidden" name="trackerId" value="" id="trackerId"></dd>
+<dt id="buddyId-label">&#160;</dt>
+<dd id="buddyId-element">
+<input type="hidden" name="buddyId" value="" id="buddyId"></dd>
+<ul><li>
+<input type="text" name="login" id="login" value="" class="text" placeholder="Username"></li>
+<li>
+<input type="password" name="password" id="password" value="" class="text" placeholder="Password"></li>
+<li>
+<input type="password" name="confirmPassword" id="confirmPassword" value="" class="text" placeholder="Confirm Password"></li>
+<li>
+<input type="text" name="email" id="email" value="" class="text" placeholder="Email"></li>
+<li>
+<input type="hidden" name="terms" value="0"><input type="checkbox" name="terms" id="terms" value="1" checked="checked" style="width:300px" class="text">
+I agree to <a href = "/content/terms">Terms & Conditions</a></li>
+<li class="login_form_button ttsaveprofilelibg">
+<button name="Signup" id="Signup" type="button" class="TTBingoGradentBtn3" onclick="goToLogin(&#39;player-signup&#39;)">Submit</button></li></ul></dl></form>	    		</div>
+	    		</div></div></div>
+	    		<!-- 
+	    		<div id="break">&nbsp; &nbsp; 
+</div>
+-->
+	    		      <!-- div class="fb-like-box" data-href="http://www.facebook.com/playrummynow" data-width="292" data-show-faces="true" data-stream="true" data-header="true"></div-->
+      <div class="tt_tbl_border ">
+        <div class="tt_th_blue_bg">
+          <h1>Player Speaks</h1>
+        </div>
+        	<script type="text/javascript">
+	
+	$(function(){
+	
+		// The height of the content block when it's not expanded
+		var adjustheight = 94;
+		// The "more" link text
+		var moreText = "+More";
+		// The "less" link text
+		var lessText = "-Less";
+	
+		// Sets the .more-block div to the specified height and hides any content that overflows
+		$(".more-less .more-block").css('height', adjustheight).css('overflow', 'hidden');
+	
+		// The section added to the bottom of the "more-less" div
+		$(".more-less").append('<p class="continued">[&hellip;]</p><a href="#" class="adjust"></a>');
+	
+		$("a.adjust").text(moreText);
+	
+		$(".adjust").toggle(function() {
+			$(this).parents("div:first").find(".more-block").css('height', 'auto').css('overflow', 'visible');
+			// Hide the [...] when expanded
+			$(this).parents("div:first").find("p.continued").css('display', 'none');
+			$(this).text(lessText);
+		}, function() {
+			$(this).parents("div:first").find(".more-block").css('height', adjustheight).css('overflow', 'hidden');
+			$(this).parents("div:first").find("p.continued").css('display', 'block');
+			$(this).text(moreText);
+		});
+	});
+	
+	</script>
+	
+	<div class="joinnowpad" style="padding-top:0px; height:200px">
+	<div id="tttestimonials" style="height:180px; ">
+		        </div>
+	        <div class="ttplyspkmore"><a href="/testimonial/view">More Players Speak!</a></div>
+	        </div>
+	        
+	      </div>
+      <div class="tt_tbl_border ">
+        <div class="tt_th_pink_bg">
+          <h1>Your Desktop!</h1>
+        </div>
+        <div class="ttdeskdownload">
+          <div>TaashTime.com
+            Now on your Desktop! Download Now</div>
+          <div><a href = "http://taashtime.com/downloads/taashtime/desktop/rummy/offline-version/TaashTime.air"><img src="/css/rummy.tld/images/ttfreedownload.png" border="0"></a></div>
+        </div>
+      </div>
+      <div class="tt_ad_300"><a href="/index/invite"><img src="/css/rummy.tld/images/ttrefeRafriend.png" border="0"></a></div>
+     
+    
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="footer">
+  <div  class="footerin">
+    <div class="tt_supportby">
+      <h4>Supported by:</h4>
+      <div ><img src="/css/rummy.tld/images/tt_supportedby.png"/></div>
+    </div>
+    <div class="footernav">
+      <ul>
+        <li><a href="/content/about">About Us</a></li>
+        <li>|</li>
+        <li><a href="/content/legal">Legality</a></li>
+        <li>|</li>
+        <li><a href="/content/terms">Terms of Service</a></li>
+        <li>|</li>
+        <li><a href="/content/withdrawterms">Withdrawal Terms</a></li>
+        <li>|</li>
+        <li><a href="/content/terms">Privacy Policy </a></li>
+        <li>|</li>
+        <li><a href="/index/winner">Winners</a></li>
+        <li>|</li>
+        <li><a href="/content/privacypolicy">Players Guide</a></li>
+        <li>|</li>
+        <li><a href="/content/contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="tt-copyr">
+      <p class="small line-small" >Taashtime is a site dedicated to providing the best online card playing experience. The traditional <br>
+        Indian Rummy is their first game and it will be followed up by several others.</p>
+      <p  class="small line-small">Copyright © 2011 TaashTime.com - All rights reserved.</p>
+      <div class="tt_18plus"><img src="/css/rummy.tld/images/tt_18plus.png"/></div>
+    </div>
+  </div>
+</div>
+  <script type="text/javascript">
+function closeDailyWinner(){
+	document.getElementById("daily-winner").style.display = "none";
+}
+</script>
+<div class = "daily-winner" id="daily-winner"><div class="daily-winner-close" onclick="closeDailyWinner()">close</div>Today's Lucky Winner 
+<span class="winner-name">ANITHA KM</span><br>
+<a href="/promotions/special">more detail</a>
+</div>
+<!-- begin olark code -->
+<script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length;while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])}c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d);(function(){function l(){return["<head></head><",z,' onload="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"}D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});olark.identify('8609-194-10-7825');/*]]>{/literal}*/</script>
+<!-- end olark code -->
+<!-- Begin Olark Addon Code -->
+<script type='text/javascript'>/*Updating the nickname*/olark('api.chat.updateVisitorNickname', {snippet:'' })</script>
+<!-- EndOlark Addon Code -->
+
+<script type="text/javascript" src="https://www.startssl.com/seal.js"></script>
+<!-- Tracker Script -->
+<script type ="text/javascript" src="http://static.adohana.com/oa.js?usr=befa5c621cbbceace92907c751f8d506"></script>
+</body>
+</html>

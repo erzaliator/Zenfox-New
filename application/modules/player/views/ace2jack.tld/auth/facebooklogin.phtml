@@ -1,0 +1,16 @@
+<?php
+echo $this->form;
+
+if($this->facebookAuth)
+{
+	$siteHttpUrl = "http://". $_SERVER['HTTP_HOST'];
+	$link = $siteHttpUrl . '/facebookauth/auth';
+	?>
+		<body onload='JavaScript:popitup("<?php echo $link;?>");'></body>
+	<?php
+}
+?>
+
+<html>
+		<body onload="FB.login();"></body>
+</html>

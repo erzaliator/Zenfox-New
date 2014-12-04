@@ -1,0 +1,28 @@
+<?php
+echo $this->message;
+
+if($this->form)
+{
+        ?><div id = "invite-friends-form">
+                <div id="inner-box">
+                        <div class="invite-frnds">
+                <h1>Send Rs. 100 Gift to your dear ones!</h1>
+        </div><!--invite-frnds-->
+            <div class="ttdepolcont ttinvitebg ">
+
+
+            <div class="ttinvitebginn">
+
+<form method="post" action="/coupon/generate" enctype="application/x-www-form-urlencoded" id="player-invite-form"><dl class="zend_form">
+<ul><li><label class="optional" for="emails">Email Ids(Comma Seperated)</label>
+
+<textarea cols="80" rows="24" class="text" style="height: 40px; line-height: 12px;" id="emails" name="emails"></textarea></li>
+<li class="login_form_button ttsaveprofilelibg">
+<input type="button" value="Send Now!" id="submit" name="submit" onclick="sendInvitations()"></li></ul></dl></form>
+            </div>
+
+                </div>
+            </div>
+            </div>
+            <?php
+}

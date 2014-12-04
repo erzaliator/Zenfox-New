@@ -1,0 +1,18 @@
+<?php 
+
+$length = count($this->winners);
+
+$index = 0;
+
+while($index < $length)
+{
+	echo "<h3 align = center>".$this->winners[$index]["RoomName"]."</h3>";
+	$this->table($this->winners[$index]["list"]);
+	echo "<br/>";
+	$index++;
+}
+
+
+
+
+?>

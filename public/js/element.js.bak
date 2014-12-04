@@ -1,0 +1,115 @@
+$(document).ready(/*function() {initMenu();}*/);
+
+function initMenu() {
+  //alert("df");
+  $("body").addClass("skin-blue");		//to change body color scheme
+
+
+	document.getElementsByClassName("navigation")[0].className="sidebar-menu";//changing ul's name
+
+	var z= $('ul.sidebar-menu').children();
+	//z[3].classList=["treeview", "active"];
+	z[3].className="treeview";
+	z[3].onclick().classList.add("active");
+	//z[3].children[1].className="treeview-menu";
+
+	//for (var i=0;i<z.length;i++)
+	//{
+		/*if(z[i].childElementCount>1)
+		{
+			z[]
+		}*/
+
+	//}
+
+	  
+	/*  var y = $('ul.navigation li ul li a');		//to change the navigation bar
+	  for (var i = 0; i < y.length; ++i) {
+	    var item = y[i];  
+	    //item.innerHTML = ">> " + item.innerHTML;
+	}*/
+
+	/*--------------------------------*/
+	var z = $('ul.sidebar-menu').children;				//to change the navigation bar
+	 /*
+	  for (var i = 0; i < z.length; ++i) {
+	    var item = z[i];  
+	    //item.innerHTML = "<br/> <b> &nbsp&nbsp&nbsp&nbsp" + item.innerHTML + "</b>";
+	    //item.css({"padding":"5px","color":"white"});
+	    item.className="ello";
+	   }
+	//---------------------------------
+
+
+/*   var x=$("ul.navigation li");
+   console.log(x.innerHTML);
+   for (var i=0; i < x.length; ++i) {
+   	var item = x[i];
+   	item.innerHTML = item.innerHTML;
+   	/*if((item.innerHTML):contains("sasfa"))	{
+   		alert(item.innerHTML);
+   	}
+   	//item.addClass( "sampleclass" );
+   	//alert(item.innerHTML);
+   }*/
+
+/*--------------------------------------
+  var x=$("ul.navigation li");					//to change the remove ul.navigation
+  //alert("asdas");
+  $( "ul.navigation" ).replaceWith( x );
+ //--------------------------------------------*/
+  /*$( "li.parent" ).click(function() {
+	$( "li a" ).toggle();
+  });*/
+
+	/*var x=$("li");
+	for (var i = 0 ; i < x.length ;i++)	{
+		if(x[i].innerHTML=="Gamification") {
+			alert("found you");
+		}
+	}
+	alert(x[i-1].innerHTML);
+	alert("sample");*/
+
+/*---------------------------navigation jquery is over---------------------*/
+
+
+	activeli = $('li.active a')[1].text;		//to add title to form
+	$('h2#form-heading').text(activeli);
+
+	$("input").width("36em");					//to change width of input fields
+	$("textarea").width("36em");
+	$("input#submit").width("5em");
+
+	$("input").after("<br />");					//to add br after every input field
+	$("textarea").after("<br />");				//to add br after every textarea field
+
+	$("input:not(#submit)").addClass("form-control");			//change the form shape
+	$("textarea").addClass("form-control");						//change the form shape
+	$("input#submit").addClass("btn btn-primary btn-lg");		//to change the button classes
+
+	$('h2#form-heading').css({					//adding margin to the form
+		"margin-left":"15px"
+	});
+	$('input').css({
+		"margin-left":"10px"
+	});
+	$('input').css({
+		"margin-left":"30px"
+	});
+	$('textarea').css({
+		"margin-left":"30px"								
+	});														
+	$('label').css({										
+		"margin-left":"10px"									
+	});														
+	$('input#submit').css({				
+		"margin-right":"40px",
+		"float":"right"
+	});
+
+	var boxform=$("div#form-box");
+	boxform.css({"margin-top":"30px"});
+	//alert($('li a')[4].text);
+	//$('li a')[4].css({"padding-left":"20px"});
+}

@@ -1,0 +1,74 @@
+<?php 
+if ($this->pageCount): ?>
+<div class="paginationControl">
+
+<!-- First page link -->
+<?php if (isset($this->previous)): ?>
+<a href="<?= $this->url(array(
+				'pages' => $this->first, 
+				'item' => $this->itemCountPerPage, 
+				'from' => $this->myFromDate, 
+				'to' => $this->myToDate,
+				//'amT' => $this->amountType,
+				'transT' => $this->transactionType)); ?>">&lt;&lt; First</a> |
+ 
+<?php else: ?>
+<span class="disabled">First</span> |
+<?php endif; ?>
+
+<!-- Previous page link -->
+<?php if (isset($this->previous)): ?>
+<a href="<?= $this->url(array(
+				'pages' => $this->previous, 
+				'item' => $this->itemCountPerPage, 
+				'from' => $this->myFromDate, 
+				'to' => $this->myToDate,
+				//'amT' => $this->amountType,
+				'transT' => $this->transactionType)); ?>">&lt; Previous</a> |
+<?php else: ?>
+<span class="disabled">Previous</span> |
+<?php endif; ?>
+
+<!-- Numbered page links -->
+<?php foreach ($this->pagesInRange as $page): ?>
+<?php if ($page != $this->current): ?>
+<a href="<?= $this->url(array(
+				'pages' => $page, 
+				'item' => $this->itemCountPerPage,
+				'from' => $this->myFromDate, 
+				'to' => $this->myToDate,
+				//'amT' => $this->amountType,
+				'transT' => $this->transactionType)); ?>"><?= $page; ?></a> |
+<?php else: ?>
+<?= $page; ?> |
+<?php endif; ?>
+<?php endforeach; ?>
+
+<!-- Next page link -->
+<?php if (isset($this->next)): ?>
+<a href="<?= $this->url(array(
+				'pages' => $this->next, 
+				'item' => $this->itemCountPerPage,
+				'from' => $this->myFromDate, 
+				'to' => $this->myToDate,
+				//'amT' => $this->amountType,
+				'transT' => $this->transactionType)); ?>">Next &gt;</a> |
+<?php else: ?>
+<span class="disabled">Next</span> |
+<?php endif; ?>
+
+<!-- Last page link -->
+<?php if (isset($this->next)): ?>
+<a href="<?= $this->url(array(
+				'pages' => $this->last, 
+				'item' => $this->itemCountPerPage, 
+				'from' => $this->myFromDate, 
+				'to' => $this->myToDate,
+				//'amT' => $this->amountType,
+				'transT' => $this->transactionType)); ?>">Last &gt;&gt;</a> 
+ 
+<?php else: ?>
+<span class="disabled">Last</span> 
+<?php endif; ?>
+</div>
+<?php endif; ?>

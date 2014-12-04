@@ -1,0 +1,105 @@
+<?php 
+
+if(!$this->confirm)
+{
+	/*
+	?>
+	<img src="/css/rummy.tld/images/teacher-agent-sheila.png" border="0" usemap="#tutorial" />
+	<map name="tutorial">
+	<area shape="rect" coords="226,487,406,537"  href="/game" />
+	<area shape="rect" coords="555,488,732,536"  href="/help/howtoplay" />
+	</map>
+	<?php
+	*/
+	?>
+	<div id="main" >
+		<div><img src="/css/rummy.tld/images/sheela.png"  id="sheela"></div>
+		<div id="heading">WELCOME TO TAASHTIME.COM</div>
+		<div id="congrats">
+			<div>
+				<span style="font-size:28px;font-family:copperplate Gothic Bold;color:#004298;font-weight:bold;padding-top: 14px;" id="congrats"> CONGRATULATIONS!</span>
+				<span style="line-height:20px;font-size:14px;font-family:Verdana, Geneva, sans-serif">You Just Got </span>
+				<span style="color:#004298;font-size:32px;font-weight:bold">30,000 </span>
+				<span style="color:#004298;font-size:22px"> T&#162;</span>
+			</div>
+			<div  style="padding-top:15px;font-size:14px">You are just 2 steps away from getting your 
+				<span style="font-size:32px;color:#004298;font-weight:bold">Free </span>
+				<span class="WebRupee">Rs100</span>
+			</div>
+			<div>
+				<div id="confirm-facebook-like" style="border:1px solid #004298;width:500px;height:175px;margin:auto;margin-top:10px;background:#fff;display:none">
+					<div style="border:0px solid #004298;width:500px;height:41px;margin:auto;">
+						<img src="/css/rummy.tld/images/strip1.png" />
+					</div>
+					<p style="padding-top:18px;font-size:20px;font-weight:bold;padding-bottom:14px;">Like us on Facebook Get
+						<span style="color:#004298;font-size:32px;font-weight:bold">20,000 </span>
+						<span style="color:#004298;font-size:22px">T&#162;</span><br />
+						<!-- img src="/css/rummy.tld/images/fb_big.png" style="padding-top:10px" /-->
+						<div class="fb-like" data-href="https://www.facebook.com/pages/Funtaash/626757937368522" data-send="false" data-height="80" data-width="280" data-show-faces="false"></div>
+					</p>
+				</div>
+				<div id="confirm-invite-friends" style="border:1px solid #004298;width:500px;height:200px;margin:auto;margin-top:10px;background:#fff;dis play:none">
+					<div style="border:0px solid #004298;width:500px;height:41px;margin:auto;">
+						<img src="/css/rummy.tld/images/strip2.png" />
+					</div>
+					<span>
+						<div style="margin-top:10px;font-size:14px;font-weight:bold;">Invite 10 Friends Get
+							<span style="color:#004298;font-size:32px;font-weight:bold">50,000 </span>
+							<span style="color:#004298;font-size:22px"> T¢</span>
+						</div>
+						<textarea id="confirm-invite-friend" style="height:90px;width:300px;margin-top:10px;" placeholder="Email Ids(Comma Seperated)"></textarea>
+						<a href="#" onclick="inviteFriends()"><img src="/css/rummy.tld/images/invite.png"/></a>
+					</span>
+				</div>
+				<div id="confirm-convert-coins" style="border:1px solid #004298;width:500px;height:175px;margin:auto;margin-top:10px;background:#fff;display:none">
+					<div style="border:0px solid #004298;width:500px;height:41px;margin:auto;">
+						<img src="/css/rummy.tld/images/strip3.png" />
+					</div>
+					<p>You have 25000 Tc</p>
+					<p style="padding-top:15px">Get 1,00,000 Tc to <br>
+						Convert 1,00,000 Tc= <span style="color:#004298;font-size:32px;font-weight:bold"> Rs100</span>
+						<a href="#"><img style="margin-right:15px;float:right" src="/css/rummy.tld/images/claimgray.png"/></a>
+					</p>
+				</div>
+			</div>
+			<div>
+				<div style="padding-top:10px;font-size:14px" > <span id="or">OR</span> I Don't care about your Free Rs.100</div>
+	            <div style="width:500px;margin:auto;height:90px;padding-top:20px">
+	            	<div style="float:left">
+	                	<span style="font-size:14px">I am New to Rummy?</span>
+	                    <div style="background:url('/css/rummy.tld/images/learn.png');width:218px;height:58px"><span > <a class="name" href="#">Learn Rummy </a></span></div>
+	                </div>
+	                <div style="float:right">
+	                	<span style="font-size:14px">I am experienced</span>
+	                    <div style="background:url('/css/rummy.tld/images/play.png');width:218px;height:58px"> <span><a class="name" href="#"> Play Rummy</a></span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php  
+}
+else
+{
+	?>
+	<div style="text-align:center;">
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="550" height="400" id="Container" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<param name="movie" value="/games/taashtime/multi-player/rummy/indian-rummy/theme/blue-table/tutorial/tutorial.swf" />
+	<param name="quality" value="high" />
+	<param name="bgcolor" value="#ffffff" />
+	<embed src="/games/taashtime/multi-player/rummy/indian-rummy/theme/blue-table/tutorial/tutorial.swf" flashVars = "game_config=/games/taashtime/multi-player/rummy/indian-rummy/theme/blue-table/tutorial/config.txt&player_id=39&wagered_currency=INR&locale=en_IN&theme=blue_table&responses=/games/taashtime/multi-player/rummy/indian-rummy/theme/blue-table/tutorial/responses.txt" quality="high" bgcolor="#ffffff"
+	width="960" height="640" name="Rummy" align="middle"
+	play="true"
+	loop="false"
+	quality="high"
+	allowScriptAccess="sameDomain"
+	type="application/x-shockwave-flash"
+	pluginspage="http://www.adobe.com/go/getflashplayer">
+	</embed>
+	</object>
+	</div>
+	<?php 
+}
+?>

@@ -1,0 +1,28 @@
+<?php 
+/*print_r($this->results);
+print_r($this->ids);*/
+	$data = array();
+	$index = 0;
+	foreach($this->results as $key=>$value)
+	{
+		 	$data[$index]['Alias']=$this->results[$key]['Alias'] ;
+            $data[$index]['Name'] = $this->results[$key]['Name'];
+             $data[$index]['Associated Groups']=$this->results[$key]['Associated Groups'];
+             $data[$index]['Other Groups']=$this->results[$key]['Other Groups'];
+             $data[$index]['Pre Groups']=$this->results[$key]['Pre Groups'];
+             $data[$index]['Enabled/Disabled']=$this->results[$key]['Enabled/Disabled'];
+             $data[$index]['id']=/*"<a href='#' onclick='callCsrEditForm( '". $this->ids[$key]."',
+             															'".$this->results[$key]['Other Groups']."',
+             															'".$this->results[$key]['Alias']."',
+             															'".$this->results[$key]['Name']."',
+             															 ".$this->results[$key]['Associated Groups'].")'>".*/$this->ids[$key] ;
+             $index++;
+	}
+	
+	$o = array(  'totalCount'=>count($this->ids),
+	            
+	            'csrView'=>$data  
+	          );  
+	    echo json_encode($o); 
+	//print_r($this->results);
+?>

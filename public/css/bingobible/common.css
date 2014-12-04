@@ -1,0 +1,242 @@
+@font-face
+{
+	font-family: 'Verdana';
+	src:url(fonts/Verdana.ttf) format('truetype');
+}
+@font-face
+{
+	font-family: 'myriad-web-pro';
+	src:url(fonts/myriad-web-pro.ttf) format('truetype');
+	
+}
+
+.content .content-internal h2{
+	font-size: 40px;
+	font-family: verdana;
+	font-weight: normal;
+	   margin-bottom: 11px;
+    margin-top: 16px;
+}
+#cards{
+width:65%;
+}
+#paypal{
+width:20%;
+float:right;
+margin-top: -43px;
+ margin-right: 63px;
+}
+#paypal .radio-btn2{float:left;  margin-top: 23px;}
+.welcom-box h2 {
+    font-family: comic sans ms !important;
+}
+.welcom-box1 h2 {
+    font-family: comic sans ms !important;
+}
+
+.welcom-box2 h2 {
+    font-family: comic sans ms !important;
+}
+.welcom-box p {
+    font-family: myriad-web-pro;
+    font-size: 18px;
+	 margin-bottom: 18px;
+    margin-top: 0;
+}
+.welcom-box1 p {
+    font-family: myriad-web-pro;
+    font-size: 18px;
+    margin-bottom: 18px;
+    margin-top: 0;
+}
+.menu ul li{
+font-family: myriad-web-pro !important;
+}
+/* .nav  ul li{
+font-family: myriad-web-pro !important;
+font-size: 18px;
+} */
+.nav ul li a{
+	text-decoration:none;
+    color: #FFFFFF;
+    font-family: 'helvetica';
+    font-size: 18px;
+	padding: 19px 35px;
+}
+.sub-menu li a
+{
+padding: 0px;
+}
+#nav-menu-sub a{
+	color: #000000;
+	font-size:16px;
+}
+.zend_form ul{
+/* 	margin-left: -45px;
+    width: 290px; */
+	padding-left: 0;
+	width: 100%;
+}
+
+.zend_form li{
+	list-style:none;
+}
+
+.zend_form li a{
+	text-decoration:none;
+}
+
+
+
+@media only screen and (min-width:220px) and (max-width:510px){
+#windows-form-1 {
+width: 96% ;
+ height: 698px;
+padding:2%
+}
+.windows-form-1{
+width: 100%; 
+}
+.windows-form-1 label {
+width: 100%;
+}
+#inputField
+{
+  width: 72%;
+}
+.JsDatePickBox{
+ left: 0 !important;
+    top: -0 !important;
+	  margin-left: -220px;
+    margin-top: 14px;
+}
+
+.form-info {
+margin-left:0px;
+  width: 90%;
+}
+.content-top  .windows-form-1 {
+height:700px;
+}
+.name-error {
+ width: 100%;
+   float: left;
+}
+.name-error  p{
+ width: 100%;
+   float: left;
+}
+.windows-form-1 textarea {
+ width: 90%;
+   float: left;
+   margin-left:0px;
+   }
+   #iagree {
+    float: left;
+    width: 100%;
+}
+   #calender{
+     float: left;
+    width: 100%;
+   }
+#inputField {
+    float: left;
+    margin-top: 14px;
+}
+.deposit-form
+{
+    margin: 0 auto;
+    width: 100% !important;
+}
+#postal {
+    float: left;
+    width: 100%;
+}
+
+#security {
+    float: left;
+    width: 100%;
+}
+.deposit-form label img {
+    float: left;
+    margin-left: 96px;
+    margin-top: -18px;
+}
+.content-bottom {
+    height: 632px;
+  padding: 0 0 0 4%;
+}
+.content-top{   width: 100%;}
+.country {
+    float: left;
+    height: 25px;
+    width: 25%;
+}
+
+.postal-code {
+    height: 37px;
+    margin-right: 20px;
+    width: 78%;
+}
+
+.security-code {
+    height: 37px;
+    margin-right: 20px;
+    width: 78%;
+}
+.form-deposit-btn {
+    float: left;
+    margin-left: -11%;
+    margin-top: 58px;
+}
+#Expiration {
+    float: left;
+    margin-top: 9px;
+	margin-bottom:9px;
+    width: 86%;
+}
+.country {
+    float: left;
+    height: 25px;
+    width: 42%;
+	  margin-bottom: 11px;
+}
+.form-deposit-btn{float:left;}
+#paypal{width:50%; margin-top: -19px;}
+.radio-btn1, .radio-btn2 {
+margin-top: 51px;
+margin-left: 28px;
+}
+
+.date {
+    height: 25px;
+    width: 23%;
+}
+.year {
+    height: 25px;
+    width: 24%;
+}
+#cards {
+    width: 100%;
+	 margin-left: -16px;
+}
+
+.form-text {
+    margin-top: 53px;
+    width: 95%;
+}
+#paypal {
+    margin-top: 7px;
+    width: 86%;
+}
+}
+   
+.zend_form li label{
+	display: block;
+    float: left;
+    width: 275px;
+}
+
+#edit-submit{
+	margin-left:30%;
+}

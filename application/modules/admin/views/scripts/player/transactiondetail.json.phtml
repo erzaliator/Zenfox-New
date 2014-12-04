@@ -1,0 +1,29 @@
+<?php 
+$data = $this->data;
+//print_r($data);
+
+foreach($data as $key=>$value)
+{
+	//echo "here";
+	$details = Zend_Json::decode($data[$key]['gateway_response']);
+	if($details)
+	{
+		$tabData[$key]['name'] = $details['details']['customerFirstName'].' '.$detail['details']['customerLastName'];
+		$tabData[$key]['address'] = $details['details']['customerAddress'];
+	}
+	else
+	{
+		$tabData[$key]['name'] = '';
+		$tabData[$key]['address'] = '';
+	}
+
+	$tabData[$key]['amount'] = $data[$key]['amount'];
+	$tabData[$key]['gateway_id'] = $data[$key]['gateway_id'];
+	$tabData[$key]['gateway_trans_id'] =$data[$key]['gateway_trans_id'];
+	$tabData[$key]['bank_name'] =$data[$key]['bank_name'];
+	$tabData[$key]['payment_method'] =$data[$key]['payment_method'];
+}
+
+$final = array('data'=>$tabData);
+echo json_encode($final);
+?>

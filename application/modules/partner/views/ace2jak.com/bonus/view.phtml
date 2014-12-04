@@ -1,0 +1,10 @@
+<?php
+foreach($this->allLevelsData as $levelData)
+{
+	$linkArray[$levelData['Id']] = array(
+						'controller' => 'bonus',
+						'action' => 'edit',
+						'id' => $this->schemeId,
+						'levelId' => $levelData['Id']);
+}
+$this->table($this->allLevelsData, array('Id'), $linkArray);

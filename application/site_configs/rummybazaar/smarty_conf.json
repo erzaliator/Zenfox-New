@@ -1,0 +1,10 @@
+{
+	"caching":"1",
+	"cache_lifetime":"0",
+	"template_dir":"/modules/player/views/rummybazaar.tld/static/",
+	"compile_dir":"/modules/player/views/rummybazaar.tld/tmp/smarty_compile/",
+	"cache_dir":"/modules/player/views/rummybazaar.tld/tmp/smarty_cache/",
+	"left_delimiter":"{",
+	"right_delimiter":"}",
+	"config_dir":""
+}

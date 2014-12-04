@@ -1,0 +1,23 @@
+<style>
+	#playerId-label,#playerId-element,#amount_type-label,#amount_type-element,#transaction_type-label,#transaction_type-element{
+		display:none;
+	}
+</style>
+<?php
+echo $this->dateForm;
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$this->table($this->contents);
+	}
+
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+
+	$this->pagination($pages, array(
+				'from' => $this->from,
+				'to' => $this->to,
+				'processed' => $this->processed
+			));
+}

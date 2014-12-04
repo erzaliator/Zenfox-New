@@ -1,0 +1,15 @@
+<?php
+$affiliates = $this->affiliates;
+foreach($affiliates as $affiliate)
+{?>
+	<a href = "<?php echo $this->url(array(
+							'controller' => 'affiliatetracker',
+							'action' => trackersummary,
+							'id' => $affiliate['affiliate_id']
+							));
+			?>">
+	<?php  echo $affiliate['alias'];?>
+	</a>
+	<br></br>
+<?php 
+}

@@ -1,0 +1,36 @@
+<?php echo $this->form;
+if(!empty($this->table1))
+{
+	foreach($this->table1 as $playerData)
+	{
+		$linkArray[$playerData['player_id']] = array(
+				'controller' =>'player',
+				'action' => 'view',
+				'playerId' => $playerData['player_id']
+		);
+	}
+	$this->table($this->table1, array('player_id'), $linkArray);
+}
+
+if(!empty($this->iddetails))
+{
+	
+	echo $this->table($this->iddetails);
+	
+	if(!empty($this->download))
+	{
+		$index = 0;
+		while($this->download >0)
+		{
+			?>
+			<a href="<?php echo $this->url(array ('controller'=> 'withdrawal', 'action'=> 'checkwithdrawal',  'download' => $index+1 ) ) ?>">Download Proof<?php echo $index+1;?></a>
+			
+		<?php
+		$index++;
+		$this->download--;
+		} 
+	}
+	
+}
+
+ ?>

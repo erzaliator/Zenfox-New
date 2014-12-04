@@ -1,0 +1,19 @@
+<?php 
+//print_r($this->Csrs);
+if(count($this->Csrs) != 0)
+{$csr1 = array();
+	foreach($this->Csrs as $key=>$value)
+	{
+		$csr1[$key]['id'] = $this->Csrs[$key]['id'];
+		$csr1[$key]['alias'] = $this->Csrs[$key]['alias'];
+		$csr1[$key]['name'] = 'csrs[]';
+	}
+	$o = array(  'success'=>'true',
+	            
+	            'data'=>$csr1  
+	          );  
+	    echo json_encode($o); 
+
+}
+
+?>

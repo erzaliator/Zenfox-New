@@ -1,0 +1,99 @@
+{
+	"game-index":
+	{
+		"1":
+		{
+			"que":"What is 101 Pool game?",
+			"ans":"This is an elimination race, as and when a player gathers 101 points- He/She leaves the room. Players keep on going out as they score 101, and the last person remaining on the game table is declared the winner."
+		},
+		"2":
+		{
+			"que":"What is Time limit for every turn in the game?",
+			"ans":"The Time limit specifies the time in which a player gets a chance to play his move. Exceeding the time limit will lead to a lapse of turn. Different rooms have different time limits.</p><p>One such special room is speed room, in which Rapid Rummy is played. Here the time limit is lowest as compared to other rooms."
+		},
+		"3":
+		{
+			"que":"What is entry fee?",
+			"ans":"To play any game on Taashtime, you have to pay the entry fee, as specified in lobby, next to game table. Currently it is Rs. 10 Bonus chips."
+		},
+		"4":
+		{
+			"que":"What is In-game chat window?",
+			"ans":"This window allows you to chat your co-players during the game play. TaashTime helps you make friends, congratulate opponents or just to start a healthy & competitive discussion!"
+		}
+	},
+	"banking-deposit":
+	{
+		"1":
+		{
+			"que":"How to Deposit Money in account?",
+			"ans":"You can deposit real money and gain a deposit bonus by choosing your desired payment option and amount under the Banking section."
+		}
+	},
+	"content-withdrawterms":
+	{
+		"1":
+		{
+			"que":"How to Withdraw money from the account?",
+			"ans":"To withdraw money a player must ensure that he has enough taashpoints in order to be eligible for a withdrawal. Withdrawal takes place once a week. If the request is sanctioned then the player will get a cheque delivered at his/her doorstep otherwise he will be notified with the reasons due to which his request was denied."
+		}
+	},
+	"ticket-view":
+	{
+		"1":
+		{
+			"que":"What is ticket?",
+			"ans":"A Ticket is the customer support device via which the customers can contact the customer care service for help. It has a subject and a message part, to write the grievances or queries."
+		}
+	},
+	"coupon-redeem":
+	{
+		"1":
+		{
+			"que":"What is a coupon?",
+			"ans":"A coupon is redeemable coupon provided with a coupon code, which can give you bonus chips, real cash, real gift, virtual gift, or can be used for advancing in tournament."
+		}
+	},
+	"reconciliation-index":
+	{
+		"1":
+		{
+			"que":"What is Reconcile Report?",
+			"ans":"A reconcile report allows players to check a list of their transactions, deposits (Real & Bonus), Winnings, Bonus credits in a detailed format. This further enables keeping track of your TaashTime progress."
+		}
+	},
+	"index-index":
+	{
+		"1":
+		{
+			"que":"How to contact Customer Service?",
+			"ans":"There are many ways to contact customer care service. These are: a)Submit a coupon, b) Click on live help or c) Write to customersupprt@taashtime.com."
+		},
+		"2":
+		{
+			"que":"What is live help?",
+			"ans":"At the bottom of every page on the Taashtime site, there is a link of Live Help, clicking on which, you can get live customer care support, even during the game play."
+		},
+		"3":
+		{
+			"que":"What are Live Tables?",
+			"ans":"These are the number of game tables on Taashtime. Players must join one of these tables in order to play. Currently 30 live tables are available with different games like- 2,3,4,5,6 player rummy."
+		}
+	},
+	"home-index":
+	{
+		"1":
+		{
+			"que":"How to invite a friend on Taashtime?",
+			"ans":"On the Home page of Taashtime itself you are provided an option to invite your friends, by submitting their email addresses and any messages (optional) from you."
+		}
+	},
+	"help-howtoplay":
+	{
+		"1":
+		{
+			"que":"What is Beginner's guide?",
+			"ans":"A Beginner's guide is provided at Taashtime for the players who are new to Rummy. It is kind of a walk through for the players, so that they can learn to use the application to play Rummy."
+		}
+	}
+}

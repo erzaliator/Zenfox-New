@@ -1,0 +1,22 @@
+<?php
+$affiliateTrackers = $this->affiliateTrackers;
+
+$affiliate = new Affiliate();
+foreach($affiliateTrackers as $affiliateId => $trackers)
+{
+	echo '<br><b>'.$affiliate->getAliasFromAffiliateId($affiliateId).'</b><br><br>';
+	foreach($trackers as $tracker)
+	{?>
+		<a href = "<?php echo $this->url(array(
+							'controller' => 'affiliatetracker',
+							'action' => trackerdetails,
+							'id' => $tracker['tracker_id']
+							));
+			?>">
+	<?php  echo $tracker['tracker_name'];?>
+	</a>
+	<br>
+	<?php 
+	}
+	
+}

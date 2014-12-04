@@ -1,0 +1,51 @@
+<?php
+
+echo $this->form;
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $playerData)
+		{
+			$linkArray[$playerData['Player Id']] = array(
+										'controller' => 'player',
+										'action' => 'view',
+										'playerId' => $playerData['Player Id'],
+										'accountType' => $this->accountType);
+		}
+		$this->table($this->contents, array('Player Id'), $linkArray);
+	}
+
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	/*Zenfox_Debug::dump($pages, 'pages');
+	echo $this->paginationControl(
+						$this->paginator,
+						'Sliding',
+						'my_paginator_control.phtml',
+						array(
+							'searchField' => $this->searchField,
+							'match' => $this->match,
+							'searchString' => $this->searchStr,
+							'from' => $this->from,
+							'to' => $this->to));*/
+	$this->pagination($pages, array(
+							'from' => $this->from,
+							'to' => $this->to,
+							'frontendId' => $this->frontendId,
+							'accountType' => $this->accountType,
+							'trackerId' =>  $this->trackerId));
+	if($this->accountType == 'uconfirmed')
+	{
+		$url = "/download/index/rType/registration/frontendId/".$this->frontendId."/from/".$this->from."/to/".$this->to."/accountType/".$this->accountType."/trackerId/".$this->trackerId;
+	}
+	else
+	{
+		$url = "/download/index/rType/registration/frontendId/".$this->frontendId."/from/".$this->from."/to/".$this->to."/trackerId/".$this->trackerId;
+	}
+	?>
+	<a href = "<?=$url ?>">Download</a>
+	<?php
+}
+
+?>

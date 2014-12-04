@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{ margin:0px; padding:0px; font-family:Arial, Helvetica, sans-serif; font-size:13px }
+#taashm{ wi dth:800px; height:672px; margin:0px auto; background: url(../images/taashmbg.gif) repeat-x  #1f4588 ; padding-top:20px; behavior: url(images/border-radius.htc); }
+#taashmin{ background:url(../images/taashmin.png) ; behavior: url(images/border-radius.htc); }
+#taashlogo{ height:137px; background:url(../images/taashlogo.png) no-repeat center; behavior: url(images/iepngfix.htc);   }
+#taashcont{ height:475px; margin-top:50px; background:none; clear:both; width:800px; margin:60px auto 0px auto;  }
+#taashcontl, #taashcontr{ float:left; width:375px; margin-left:20px;   }
+#taashcontr{ width:360px; color:#000; font-size:12px; margin:-30px 0px 0px 25px}  
+#taashcont ul{ margin:0px; padding:0px;}
+#taashcont ul li{ margin:5px 0px 0px 10px; padding:0px; color:#fff; line-height:12px;  }
+.readmore{ text-align:right; padding:0px 20px 0px 0px; margin:-15px 0px 0px 0px;}
+.readmore a{ font-size:12px; color:#fff; text-decoration:none;  font-weight:bold ;  text-decoration:none;}
+.readmore a:hover{text-decoration:underline;  color:#7c0208; }
+.margin{ margin:10px 0px 0px 0px; }
+.marginpad{ margin:35px 0px 0px 0px; }
+.taashsocial{ height:110px; clear:both ; posi tion:relative; color:#fff}
+.taashsocial h4{ font-weight:normal; font-size:13px; text-align:center; margin:10px;  }
+.taashsocialicons{ width:340px; height:90px; margin: 20px auto 0px auto}
+.taashsocialiconsin { margin-top:20px; text-align:center}
+.taashsocialiconsin img{ padding:0px 20px 0px 20px}
+#taashfooter{ position:relative; height:40px; background:#828ab8; padding-top:6px; text-align:center; clear:both}
+.startssl{ width:97px; height:97px; position:absolute; right:0px; top:-51px;  }
+.supportedby{ position:absolute; top:6px; left:390px;  padding:18px 10px 0px 5px}
+.textbox{ background-color:#FFF;  border:#5574a3 solid 1px; font-size:12px; width:200px; opacity:1;  filter:alpha(opacity=100);  }
+.btn{ color:#fff; font-weight:bold; background:#00820e; -moz-border-radius: 5px;	-webkit-border-radius: 5px;	border-radius: 5px; border: 1px solid #fff; font-size:12px; cursor:pointer; padding:5px }
+.login{ color:#000; }
+.login a{ color:#ff2904; text-decoration:none; font-weight:bold }
+.login a:hover{ color:#FFF }
+.box3 {background:url(../images/formbg.png) ; 	height: 150px;	padding: 20px 10px 10px 15px;		-moz-border-radius: 15px;	-webkit-border-radius: 15px;	border-radius: 15px; border: 1px solid #b3b5c7;	behavior: url(images/border-radius.htc); }
+.box2 {	background:url(../images/r2bg.png);  color:#fff;			padding: 3px 5px 5px 17px;		-moz-border-radius: 10px;	-webkit-border-radius: 10px;	border-radius: 10px; behavior: url(images/border-radius.htc);}
+.box1{	background: #291f5c; 		height: 100px;	padding: 0px;		-moz-border-radius: 15px;	-webkit-border-radius: 15px;	border-radius: 15px; border: 1px solid #2a2369;	behavior: url(images/border-radius.htc); opacity:0.8;  filter:alpha(opacity=80); -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* For IE8 and earlier */}
+.box4{	background:url(../images/formbg.png) ;			padding: 0px; padding:5px 2px 2px 2px;		-moz-border-radius: 15px;	-webkit-border-radius: 15px;	border-radius: 15px;behavior: url(images/border-radius.htc); }
+.box5 { height:85px;	background:url(../images/r2bg.png);			padding: 0px 0px 2px 0px;		-moz-border-radius: 10px;	-webkit-border-radius: 10px;	border-radius: 10px;	behavior: url(images/border-radius.htc);}
+.box4colorhover{ background-color:#666 }
+.box4colorout{ background-color:none }
+#taashm h1{ margin:0px 0px 5px 15px; padding:0px; font-size:14px; color:#06195e;   z-index:1    }
+#taashm h2{ margin:0px 0px 10px 0px ; padding:0px; font-size:16px; co lor:#000; color:#382e2e; z-index:1; text-align:center   }
+.taashfloatr{ position:relative }
+.taashtimeicon{ position:absolute; width:165px; height:91px; top:-45px; right:-10px; z-index:1; text-align:right}
+.rummylegalm{ margin-top:10px; }
+.rummylegall{ float:left; width:245px;  }
+.rummylegalr{ float:left; width:122px; margin-left:8px; }
+.rummylegalr img{  z-index:0; margin:5px 5px 0px 5px }
+.taashlegal{ width:93px; height:90px; float:left ; height:100px; margin:-5px 0px 0px -20px   }
+.taashlegalcont{ width:161px;  padding: 5px 0 0 5px; float:left; color: #FFFFFF;}
+.verificationm{ padding:20px; color:#3a3220;  }
+.verification{ font-size:16px; font-weight:bold;  text-align:center; height:40px }
+.details{ font-size:15px; font-weight:normal; padding-bottom:5px; border-bottom:#cdc8bf solid 2px; margin:10px 0px 10px 0px;  }
+.withdrawh{ font-size:15px; font-weight:normal; padding-bottom:5px; border-bottom:#cdc8bf dashed 2px; margin:10px 0px 10px 0px;  }
+.withdrawhN{ font-size:15px; font-weight:normal; padding-bottom:5px; margin:10px 0px 10px 0px;  }
+
+.withdrawbtn{ width:101px; height:29px; background:url(../images/withdrawalsubmit.png) no-repeat ; color:#FFF ; cursor:pointer; font-size:14px; font-weight:bold; border:none;}
+.withdrawbox{ width:250px; margin:0px auto; background:url(../images/WITHDRAWBOXBG.png) repeat-x #e1e2e4;  border:#aaabaf solid 1px; 			padding: 10px 15px 5px 15px;		-moz-border-radius: 10px;	-webkit-border-radius: 10px;	border-radius: 10px; behavior: url(images/border-radius.htc); font-size:14px; line-height:20px}
+.withdrawboxh{ font-size:18px; text-align:center }

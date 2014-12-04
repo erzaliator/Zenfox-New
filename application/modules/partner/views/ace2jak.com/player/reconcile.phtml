@@ -1,0 +1,27 @@
+<style>
+	#withdrawal_type-label, #withdrawal_type-element{
+		display:none;
+	}
+</style>
+<?php
+echo $this->reconciliationForm;
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$this->table($this->contents);
+	}
+	
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	
+	$this->pagination($pages, array(
+				'from' => $this->from,
+				'to' => $this->to,
+				'id' => $this->playerId,
+				'amT' => $this->amountType,
+				'transT' => $this->transactionType
+		));
+	
+}
+?>

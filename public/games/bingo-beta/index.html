@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>	 	
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+		<script type="text/javascript">
+			function detectPopupBlocker()
+			{
+			  var myTest = window.open("about:blank","","directories=no,height=100,width=100,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,top=0,location=no");
+			  if (!myTest) {
+				//alert("A popup blocker was detected.");
+				return false;
+			  } else {
+				myTest.close();
+				//alert("No popup blocker was detected.");
+				return true;
+			  }
+			}
+		</script>
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<div id="flashContent">
+			<h1>You need at least Flash Player 9.0 to view this page.</h1>
+			<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+		</div>
+		<script language="javascript">
+			function closeWindows()
+			{
+				alert("close?")
+				window.close();
+			}
+		</script>
+		<script type="text/javascript">
+			//Dynamic publishing with swfObject 
+			
+			//A 'name' attribute with the same value as the 'id' is REQUIRED for Chrome/Mozilla browsers
+			var flashvars = {};
+			flashvars.base_url = 'http://taashtime.com';
+			flashvars.lobby_swf_path = 'components/lobby/rummy-lobby/lobby.swf';
+			flashvars.user_name = 'bharathi';
+			flashvars.balance = '75';
+			flashvars.bonus = '100';
+			flashvars.loyalty_points = '0';
+			flashvars.free_chips = '1150';
+			flashvars.image_path = '/images/../profiles/profile-m1.jpg';
+			flashvars.login = 'bharathi|-1|lobby';
+			flashvars.open_popup= 'true';
+			flashvars.game_flavour = '';
+			flashvars.pass_key = 'a957795dd32fc0096e9906e9966f343b';
+			flashvars.xml_config = 'config.txt';
+			flashvars.game_swf_path = 'games/bingo-beta/multi-player/bingo/game.swf';
+			flashvars.settings = 'components/settings/settings.swf';
+			flashvars.winner = 'components/winner/winner.swf';
+			flashvars.invitefriends = 'components/invitefriends/invitefriends.swf';
+			flashvars.locale = 'en_IN';
+			flashvars.theme = 'defaults';
+			flashvars.tabname = 'TOURNAMENT';
+			//flashvars.theme = 'blue_table';
+			if(flashvars.open_popup == 'true')
+			{
+				if(!detectPopupBlocker())
+				{
+					flashvars.open_popup = 'false';
+				}
+			}
+			swfobject.embedSWF("web-container.swf", "flashContent", "800", "600", "9.0", null, flashvars, null, {name:"flashContent"});
+			
+		</script>
+	</body>
+</html>

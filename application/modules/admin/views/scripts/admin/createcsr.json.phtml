@@ -1,0 +1,38 @@
+<?php 
+
+if(count($this->groups) != 0)
+{
+	foreach($this->groups as $key=>$value)
+	{
+		$this->groups[$key]['description'] = 'groups[]';
+		$this->groups[$key]['groups'] = $this->groups[$key]['name'];
+	}
+	$o = array(  'success'=>'true',
+	            
+	            'data'=>$this->groups  
+	          );  
+	    echo json_encode($o); 
+
+/*echo "{
+    'success':'true',
+    'data':[
+                 {'boxLabel':'Blue','id':'cb-color-1'},
+                 {'boxLabel':'Green','id':'cb-color-2'},
+                 {'boxLabel':'Red','id':'cb-color-3'},
+                 {'boxLabel':'Yellow','id':'cb-color-4'},
+                 {'boxLabel':'Purple','id':'cb-color-5'}
+   ]
+}";*/
+}   
+else
+{
+	if($this->Success == 'false')
+	{
+		echo "{'success':".$this->Success."}";
+	}
+	if($this->Success == 'true')
+	{
+		echo "{'success':".$this->Success."}";
+	}
+}
+?>

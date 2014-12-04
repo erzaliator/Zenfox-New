@@ -1,0 +1,3 @@
+application/modules/player var/www/zenfox/web/application/modules
+python/synchroniseBuddy.py python/wrapperSynchroniseBuddy.py /usr/share/zenfox-web-player
+zenfox-web-player.conf /etc/apache2/sites-available

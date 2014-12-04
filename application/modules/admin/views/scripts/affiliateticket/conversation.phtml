@@ -1,0 +1,9 @@
+<?php
+foreach($this->tickets as $message)
+{
+	echo $this->translate("From: ") . $message['user_id'] . "  ";
+	echo $this->translate("Message: ") . $message['reply_msg'] . "  " . $message['time'];
+	$id = $message['ticket_id'];
+	echo "<br>";
+}
+?>

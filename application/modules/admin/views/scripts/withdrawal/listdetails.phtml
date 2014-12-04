@@ -1,0 +1,30 @@
+<?php 
+
+if($this->showForm == true)
+{
+	echo $this->translate('Maximum amount to be processed ');
+	echo $this->maxAmount . '<br>';
+	echo $this->form;
+}
+else
+{
+	echo "To Accept Or Reject Transaction, Select Withdrawal Id That's Status NOT_PROCESSED Or PARTITIALY_PROCESSED";
+}
+
+if($this->data)
+{
+		/*$toShow = array(
+					'Player Id' => $this->data['player_id'],
+					'Withdrawal Id' => $this->data['withdrawal_id'],
+					''
+		);*/
+		$toShow = $this->data;
+		
+		$this->table($toShow);
+}
+else
+{
+	echo "No matching transaction found";
+}
+
+?>

@@ -1,0 +1,33 @@
+<?php
+if($this->sessions)
+{
+	?>
+	
+	<br><h2 style="text-align:center"><strong>Online Players Count</strong></h2>
+	<?php
+	$this->table($this->sessions);
+
+	echo "</br>";
+	echo $this->form;
+	echo "</br>";
+	if($this->data)
+	{
+		?>
+	
+	<br><h2 style="text-align:center"><strong>Frontend Based Online Players List</strong></h2>
+	<?php
+	foreach($this->data as $playerData)
+	{
+		$linkArray[$playerData['Player Id']] = array(
+				'controller' =>'player',
+				'action' => 'view',
+				'playerId' => $playerData['Player Id']
+		);
+	}
+	$this->table($this->data, array('Player Id'), $linkArray);
+	}
+	
+}
+
+
+?>

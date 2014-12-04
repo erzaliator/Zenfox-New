@@ -1,0 +1,17 @@
+{
+	"authentication":
+	{
+		"auth":"login",
+		"username":"postmaster@msg.bingocrush.co.uk",
+        "password":"17v8vgikrha0",
+		"smtp":"smtp.mailgun.org",
+		"ssl":"ssl",
+		"port":"465"
+	},
+	"displayname":
+	{
+		"name":"Bingo Crush",
+		"email":"no-reply@bingocrush.co.uk",
+		"replyto":"no-reply@bingocrush.co.uk"
+	}
+}

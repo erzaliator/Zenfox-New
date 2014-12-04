@@ -1,0 +1,26 @@
+<script type="text/Javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="/js/facebookauth.js"></script>
+
+<form id = 'user'>
+	<h>Are you registered on our server?</h>
+	<input type="radio" name="option1" value="yes">Yes<br>
+	<input type="radio" name="option1" value="no">No
+</form>
+<form id = 'connect'>
+	<h>Would you like to connect your Logicdice Account with Facebook Account?</h>
+	<input type="radio" name="option1" value="ok">Yes<br>
+	<input type="radio" name="option1" value="cancel">No
+</form>
+<?php
+	echo $this->form;
+	$link = $this->url(array(
+			'controller' => 'home',
+			'action' => 'index'));
+	if($this->submit)
+	{
+		?>
+		<body onload='JavaScript:refreshParent("<?php echo $link;?>")'></body>
+		<?php
+	}
+?>
+<A href="#" id="link" onclick='refreshParent("<?php echo $link;?>")'>Close this Window</A>

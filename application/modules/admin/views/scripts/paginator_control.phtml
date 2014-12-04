@@ -1,0 +1,79 @@
+<?php
+//echo 'pagecount' . $this->pageCount;
+if ($this->pageCount): ?>
+<div class="paginationControl">
+
+<!-- First page link -->
+<?php if (isset($this->previous)): ?>
+<a href="<?= $this->url(array(
+				'pages' => $this->first,
+				'items' => $this->itemCountPerPage,
+				$this->from => $this->fromDate,
+				$this->to => $this->toDate,
+				$this->indexes => $this->searchIndex,
+				$this->field => $this->searchingFields,
+				)); ?>">&lt; First</a> |
+<?php else: ?>
+<span class="disabled">&lt; First</span> |
+<?php endif; ?>
+
+<!-- Previous page link -->
+<?php if (isset($this->previous)): ?>
+<a href="<?= $this->url(array(
+				'pages' => $this->previous,
+				'items' => $this->itemCountPerPage,
+				$this->from => $this->fromDate,
+				$this->to => $this->toDate, 
+				$this->indexes => $this->searchIndex,
+				$this->field => $this->searchingFields,
+				)); ?>">&lt; Previous</a> |
+<?php else: ?>
+<span class="disabled">&lt; Previous</span> |
+<?php endif; ?>
+
+<!-- Numbered page links -->
+<?php foreach ($this->pagesInRange as $page): ?>
+<?php if ($page != $this->current): ?>
+<a href="<?= $this->url(array(
+				'pages' => $page,
+				'items' => $this->itemCountPerPage,
+				$this->from => $this->fromDate,
+				$this->to => $this->toDate,  
+				$this->indexes => $this->searchIndex,
+				$this->field => $this->searchingFields,
+				)); ?>"><?= $page; ?></a> |
+<?php else: ?>
+<?= $page; ?> |
+<?php endif; ?>
+<?php endforeach; ?>
+
+<!-- Next page link -->
+<?php if (isset($this->next)): ?>
+<a href="<?= $this->url(array(
+				'pages' => $this->next,
+				'items' => $this->itemCountPerPage,
+				$this->from => $this->fromDate,
+				$this->to => $this->toDate,
+				$this->indexes => $this->searchIndex,
+				$this->field => $this->searchingFields,
+				)); ?>">Next &gt;</a> |
+<?php else: ?>
+<span class="disabled">Next &gt;</span> |
+<?php endif; ?>
+
+<!-- Last page link -->
+<?php if (isset($this->next)): ?>
+<a href="<?= $this->url(array(
+				'pages' => $this->last,
+				'items' => $this->itemCountPerPage,
+				$this->from => $this->fromDate,
+				$this->to => $this->toDate, 
+				$this->indexes => $this->searchIndex,
+				$this->field => $this->searchingFields,
+				)); ?>">Last &gt;</a> 
+<?php else: ?>
+<span class="disabled">Last &gt;</span>
+<?php endif; ?>
+
+</div>
+<?php endif; ?>

@@ -1,0 +1,6 @@
+<?php
+$form = $this->form;
+$currAction = $form->createElement('hidden','currAction');
+$currAction->setValue('create');
+$form->addElement($currAction);
+echo $form;

@@ -1,0 +1,306 @@
+{
+	"auth-login":
+	{
+		"title":"Login|Play Game Of Rummy Online|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"auth-signup":
+	{
+		"title":"Signup|13 Cards Indian Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"auth-edit":
+	{
+		"title":"Edit Profile|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"auth-registration":
+	{
+		"title":"Registration|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"auth-view":
+	{
+		"title":"View Profile|Play Online Rummy|13 Cards Indian Classic Rummy"
+	},
+	"auth-logout":
+	{
+		"title":"Logout|Play Free Rummy Game Online|13 Cards Indian Classic Rummy"
+	},
+	"auth-changepwd":
+	{
+		"title":"Change Password|Play Online Rummy Free|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"auth-confirm":
+	{
+		"title":"Confirm Account|13 Cards Indian Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"auth-forgotpassword":
+	{
+		"title":"Forgot Password|Online Rummy|Classic Rummy|Free Rummy Game Online"
+	},
+	"auth-resetpassword":
+	{
+		"title":"Reset Password|Play Indian Classic Rummy & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"auth-getsfslogin":
+	{
+		"title":"Sfs Login|Play Online Rummy|Free Rummy Games"
+	},
+	"auth-image":
+	{
+		"title":"Upload Image|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"auth-reconfirm":
+	{
+		"title":"Reconfirm Account|Play Online Rummy|Free Rummy Game Online"
+	},
+	"auth-level":
+	{
+		"title":"Level|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"affiliate-program":
+	{
+		"title":"Affiliate|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"banking-fundbonus":
+	{
+		"title":"Bonus Fund|Classic Rummy|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"banking-index":
+	{
+		"title":"Credit|Play Online Rummy|Free Rummy Games Online"
+	},
+	"banking-deposit":
+	{
+		"title":"Deposit Cash|Online Classic Rummy|13 Cards Indian Rummy-Play Now & Win Cash Prizes"
+	},
+	"banking-funcoins":
+	{
+		"title":"Convert Funcoins|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"banking-detail":
+	{
+		"title":"Banking Details|Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"content-terms":
+	{
+		"title":"Terms & Conditions|Play Online Rummy|13 Cards Indian Classic Rummy"
+	},
+	"content-privacypolicy":
+	{
+		"title":"Privacy Policy|Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"content-legal":
+	{
+		"title":"Legality|Play Online Rummy & Win Cash Prizes|Indian Classic Rummy"
+	},
+	"content-rules":
+	{
+		"title":"Rules|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"content-withdrawterms":
+	{
+		"title":"Withdrawal Parameters|Play Online Rummy|13 Cards Indian Classic Rummy|Free Rummy Games"
+	},
+	"content-contact":
+	{
+		"title":"Contact Taashtime|Play Online Rummy|13 Cards Indian Classic Rummy|Free Rummy Games"
+	},
+	"content-about":
+	{
+		"title":"About Taashtime|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"content-awards":
+	{
+		"title":"Awards|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"content-blog":
+	{
+		"title":"Blog|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"coupon-redeem":
+	{
+		"title":"Redeem Coupon|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"coupon-index":
+	{
+		"title":"Coupon|Online Rummy|Classic Rummy|Free Rummy Game Online"
+	},
+	"faq-index":
+	{
+		"title":"FAQ|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"game-index":
+	{
+		"title":"Play Rummy Games|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"game-game":
+	{
+		"title":"Play Rummy Game|Online Rummy|Classic Rummy|Free Rummy Game Online"
+	},
+	"game-getsfslogin":
+	{
+		"title":"Game Sfs Login|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"game-quickjoin":
+	{
+		"title":"Quick Join Game|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"game-allgame":
+	{
+		"title":"All Games|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"gamereport-gamesplayed":
+	{
+		"title":"Games Played|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"home-index":
+	{
+		"title":"Home|Classic Rummy|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"index-index":
+	{
+		"title":"Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"index-winner":
+	{
+		"title":"Winners|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"index-sitemap":
+	{
+		"title":"Sitemap|Online Rummy|Classic Rummy|Free Rummy Game Online"
+	},
+	"index-invite":
+	{
+		"title":"Invite Friends|13 Cards Indian Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"index-unsubscribe":
+	{
+		"title":"Unsubscribe|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"index-reportbug":
+	{
+		"title":"Report Bug|Online Rummy|Classic Rummy |Play Rummy Online & Win Cash Prizes"
+	},
+	"promotions-index":
+	{
+		"title":"Promotions|13 Cards Indian Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"promotions-survey":
+	{
+		"title":"Survey|Play Rummy Online & Win Cash Prizes|Free Rummy Games Online"
+	},
+	"promotions-referfriend":
+	{
+		"title":"Refer Friend Promotion|13 Cards Indian Classic Rummy|Free Rummy Games Online"
+	},
+	"promotions-special":
+	{
+		"title":"Special Promotions|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes|Free Rummy Games"
+	},
+	"reconciliation-index":
+	{
+		"title":"Transaction Report|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"rummygamelog-index":
+	{
+		"title":"Gamelog|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"rummylog-index":
+	{
+		"title":"Logs|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"rummylog-log":
+	{
+		"title":"Rummy Logs|Online Rummy|Classic Rummy|Free Rummy Game Online"
+	},
+	"testimonial-index":
+	{
+		"title":"Testimonials|13 Cards Indian Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"testimonial-write":
+	{
+		"title":"Write Testimonials|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"testimonial-view":
+	{
+		"title":"View Testimonials|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"ticket-index":
+	{
+		"title":"Tickets|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"ticket-create":
+	{
+		"title":"Create Ticket|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"ticket-view":
+	{
+		"title":"View Tickets|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes|Free Rummy Games"
+	},
+	"ticket-reply":
+	{
+		"title":"Reply Ticket|Online Rummy|Classic Rummy|Free Rummy Game Online"
+	},
+	"ticket-delete":
+	{
+		"title":"Delete Ticket|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"tournament-index":
+	{
+		"title":"Tournaments|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"tournament-register":
+	{
+		"title":"Tournament Registration|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"tournament-current":
+	{
+		"title":"Running Tournaments|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"tournament-list":
+	{
+		"title":"Tournaments List|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"tournament-desc":
+	{
+		"title":"Tournament Description|Play Online Rummy|13 Cards Indian Classic Rummy|Free Rummy Games"
+	},
+	"tournament-result":
+	{
+		"title":"Tournament Result|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"transaction-index":
+	{
+		"title":"Transaction|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"transaction-confirm":
+	{
+		"title":"Transaction Result|Online Rummy|Classic Rummy|Free Rummy Game Online"
+	},
+	"withdrawal-request":
+	{
+		"title":"Withdrawal Request|Indian Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"withdrawal-modify":
+	{
+		"title":"Modify Withdrawal|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"withdrawal-verification":
+	{
+		"title":"Withdrawal Verification|13 Cards Indian Classic Rummy|Play Rummy Online & Win Cash Prizes"
+	},
+	"withdrawal-listprocessed":
+	{
+		"title":"Processed Withdrawal|Online Rummy|Classic Rummy|Free Rummy Game Online"
+	},
+	"withdrawal-listdetails":
+	{
+		"title":"Withdrawal Detail|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	},
+	"withdrawal-listall":
+	{
+		"title":"All Withdrawals|Play Online Rummy|13 Cards Indian Classic Rummy-Play Now & Win Cash Prizes"
+	},
+	"withdrawal-insertflowback":
+	{
+		"title":"Flowback|Online Rummy|Classic Rummy|Play Rummy Online & Win Cash Prizes|Free Rummy Game Online"
+	}
+}

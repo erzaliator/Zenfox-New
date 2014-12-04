@@ -1,0 +1,66 @@
+<?php echo 'Details of Affiliate Frontend: '.$this->affFrontendDetails['name'];?>
+<br></br>
+<br></br>
+<table border='1'>
+<?php
+$id = $this->affFrontendDetails['id'];
+$frntends = $this->allowedFrntends; 
+$affFrntends = $this->allowedAffFrntends;
+
+foreach($this->affFrontendDetails as $key => $value)
+{?>
+	<tr>
+		<td>
+			<?=$key?>
+		</td>
+		<td>
+			<?php
+			if($key == 'allowed_frontend_ids')
+			{
+				foreach($frntends as $frntend)
+				{?>
+						<a href = "<?php echo $this->url(array(
+							'controller' => 'frontend',
+							'action' => viewdetails,
+							'id' => $frntend['id']
+							));
+						?>">
+						<?php echo $frntend['name']?></a>
+						
+			<? }
+			}
+			elseif($key == 'affiliate_allowed_frontend_ids')
+			{
+				foreach($affFrntends as $affFrntend)
+				{?>
+					<a href = "<?php echo $this->url(array(
+						'controller' => 'affiliatefrontend',
+						'action' => viewdetails,
+						'id' => $affFrntend['id']
+						));
+					?>">
+					<?php echo $affFrntend['name']?></a>
+						
+			<? }
+				
+			}
+			else
+			{?>
+				<?=$value?>
+			<? 
+			}?>
+					
+		</td>
+	</tr>
+
+<?}?>
+</table>
+<br></br>
+<br></br>
+
+<a href="<?php echo $this->url(array('controller' => 'affiliatefrontend', 
+									'action' => 'edit',
+									'id' => $id
+										)
+										);?>"
+										> edit</a>

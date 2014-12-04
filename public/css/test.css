@@ -1,0 +1,150 @@
+#message_box {
+	position: absolute;
+	top: 0; right: 0px;
+	z-index: 10;
+	background:#ffc;
+	border:1px solid #CCCCCC;
+	text-align:left;
+	font-weight:bold;
+}
+
+#open_help{
+	width:75px;
+}
+
+#open_message{
+	width:75px;
+}
+
+#facebook_button {
+	position: fixed;
+	top: 68px; right: 0px;
+	z-index: 10;
+	background:#ffc;
+	border:1px solid #CCCCCC;
+	text-align:left;
+	font-weight:bold;
+}
+
+.overout { width:20%; height:120px; margin:0 15px;}
+
+.box {
+	height: 50px;
+	width: 125px;
+	overflow: auto;
+	border: 1px solid #666;
+	background-color: #ccc;
+	padding: 5px;
+}
+
+body{margin:0px auto; font-family:Arial, Helvetica, sans-serif; font-size:12px; }
+.edit-form{
+	overflow:hidden;
+	background-color:#FFDEFF;
+	left:15px;
+	padding:30px;
+}
+.edit-form ul{
+	list-style:none outside none;
+	margin:0;
+	overflow:hidden;
+	padding:0;
+}
+
+#comment_accordion {
+	background:#333 url(/img/global/gradient/h300.png) 0 0;
+
+	border:1px solid #333;	
+	-background:#666;
+}
+
+/* currently active header */
+#comment_accordion h2.tab1 {
+	background-color: #C42695;
+	border-top: solid 0px black;
+	border-bottom: solid 0px gray;
+	margin: 0px;
+	padding:5px;
+	cursor: pointer;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	font-size:12px;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	/*background-image:url(../images/accordion-strip1.jpg);*/
+	background-position:left top;
+	background-repeat:no-repeat;
+}
+
+/* comment_accordion header */
+#comment_accordion h2.tab2 {
+	background-color: #A61F7D;
+	border-top: solid 0px black;
+	border-bottom: solid 0px gray;
+	margin: 0px;
+	padding:5px;
+	cursor: pointer;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	font-size:12px;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	/*background-image:url(../images/accordion-strip2.jpg);*/
+	background-position:left top;
+	background-repeat:no-repeat;
+}
+
+/* comment_accordion header */
+#comment_accordion h2.tab3 {
+	background-color: #CCCCCC;
+	border-top: solid 0px black;
+	border-bottom: solid 0px gray;
+	margin: 0px;
+	padding:10px;
+	cursor: pointer;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	font-size:12px;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	/*background-image:url(../images/accordion-strip3.jpg);*/
+	background-position:left top;
+	background-repeat:no-repeat;
+}
+
+#comment_accordion h2.tab4 {
+	background-color: #CCCCCC;
+	border-top: solid 0px black;
+	border-bottom: solid 0px gray;
+	margin: 0px;
+	padding:10px;
+	cursor: pointer;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	font-size:12px;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	/*background-image:url(../images/accordion-strip4.jpg);*/
+	background-position:left top;
+	background-repeat:no-repeat;
+}
+
+/* comment_accordion pane */
+#comment_accordion .pane {
+	overflow: auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	background-color:#ffe0ff;
+	display:none;
+
+	margin: 0px;
+	padding: 5px;
+}
+
+/* a title inside pane */
+#comment_accordion .pane h3 {
+	font-weight:normal;
+	margin:0 0 -5px 0;
+	font-size:16px;
+	color:#999;
+}

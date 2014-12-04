@@ -1,0 +1,13 @@
+<?php
+echo $this->form;
+if($this->iplWinners)
+{
+	foreach($this->iplWinners as $winner)
+	{
+		$linkArray[$winner['Player Id']] = array(
+										'controller' => 'player',
+										'action' => 'view',
+										'playerId' => $winner['Player Id']);
+	}
+	$this->table($this->iplWinners, array('Player Id'), $linkArray); 
+}

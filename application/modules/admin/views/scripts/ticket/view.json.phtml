@@ -1,0 +1,27 @@
+<?php
+
+if($this->paginator)
+{
+	if($this->paginator->getTotalItemCount() == 0)
+	{
+	 	echo "{'ticketdetails':[{'ticket_id':'Nothing to display','user_id':'','subject':'','start_date':'','ticket_status':''}]}";
+	}
+	else{
+	?>{"ticketdetails":[
+	<?php
+		foreach($this->paginator as $ticketDetails)
+		{	
+			
+			$str = substr($ticketDetails['subject'],0,20);
+			?>{"ticket_id"     : "<?php echo $ticketDetails['id'];?>",
+				"user_id"      : "<?php echo $ticketDetails['user_id'];?>",
+				"subject"      : "<?php echo $str;?>",
+				"start_date"   : "<?php echo $ticketDetails['start_date'];?>",
+				"ticket_status": "<?php echo $ticketDetails['ticket_status'];?>"},
+	<?php }?>
+				
+				]}
+	<?php }
+}?>
+
+

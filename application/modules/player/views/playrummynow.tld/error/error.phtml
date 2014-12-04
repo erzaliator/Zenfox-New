@@ -1,0 +1,13 @@
+<div class="flash-messenger"><?=$this->flashMessenger(); ?></div>
+<? if ('development' == APPLICATION_ENV): ?>
+	<div class='error'>
+	
+	
+	
+	  <h3>Request Parameters:</h3>
+	  <pre><? isset($this->request)?var_dump($this->request->getParams()):null ?>
+	  <pre><? isset($this->exception)?var_dump($this->exception->getMessage()):null ?>
+	  </pre>
+	
+	</div>
+<? endif ?>

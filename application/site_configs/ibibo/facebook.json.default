@@ -1,0 +1,15 @@
+{
+	"application":
+	{
+		"appName":"logicdicedemo",
+		"appId":"250870833286",
+		"apiKey":"e87e0fea7ecd1840608b014a1b6509dd",
+		"secret":"f12d9087b3a1939762973732bd92ea70",
+		"bank":"100",
+		"winnings":"100",
+		"bonus_bank":"100",
+		"bonus_winnings":"100",
+		"cash":"100",
+		"balance":"100"
+	}
+}

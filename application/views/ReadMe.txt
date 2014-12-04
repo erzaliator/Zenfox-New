@@ -1,0 +1,1 @@
+--- This views folder should not exist ---

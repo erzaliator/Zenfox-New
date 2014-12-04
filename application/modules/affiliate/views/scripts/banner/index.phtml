@@ -1,0 +1,105 @@
+
+<?php 
+
+if($this->allBanners)
+{
+$cnt = 0;
+if($this->trackerUrls){ 
+$chkbwidth = $this->bannerWidth;
+$chkbheight = $this->bannerHeight;
+foreach($this->trackerUrls as $index => $trackerUrl)
+		{
+		if($cnt <1){
+?>
+       <table width="100%" style='border-collapse:collapse;border:0px solid'>
+		   <tr><td></td></tr>
+		   <tr><td><?php echo $this->bannerWidth.' '.'x'.' '.$this->bannerHeight;?></td>
+		       <td><img id="aff-banner-image" border="0" style="width:<?=$this->bannerWidth?>px;height:<?=$this->bannerHeight?>px" src="<?=$this->bannerUrls[$index]?>"/></td></tr>
+		   </table>		   
+<?php }
+$cnt = $cnt+1;}
+}else
+{
+$cnt =0;
+foreach($this->allBanners as $banners)
+	{
+		foreach($banners as $index => $banner)
+		{
+		   if($cnt == 12)
+		   { ?>
+		       <table width="100%" style='border-collapse:collapse;border:0px solid'>
+		   <tr><td></td></tr>
+		   <tr><td><?php echo $banner['width'].' '.'x'.' '.$banner['height'];?></td>
+		       <td><img id="aff-banner-image" border="0" style="width:<?=$banner['width']?>px;height:<?=$banner['height']?>px" src="<?=$banner['url']?>"/></td></tr>
+		   </table>		   
+		  <?php }
+ 	      $cnt = $cnt + 1;
+		}
+		
+	}
+}			
+	?> <br><br>
+		<form action = "/banner" method="post">
+		<div id = "aff-allbanner-box" >
+		<table width="50%">
+	<?php
+	foreach($this->allBanners as $banners)
+	{
+		foreach($banners as $index => $banner)
+		{
+		  ?>
+		        <tr><td>
+				<!--<div id = "aff-banner-box" style="border:0px solid;width:368px;float:left;margin-bottom:10px">-->
+				<?php if($chkbwidth == $banner['width'] && $chkbheight == $banner['height'] ){ ?>
+					<input id="aff-banner-radio"type = "radio" name = "banner" value = "<?=$banner['url'].':'.$banner['width'].':'.$banner['height'].':'.$banner['frontend_id'].':'.$banner['landing_page'] ?>" checked=""  /> 
+				<?php }else{ ?>
+				<input id="aff-banner-radio"type = "radio" name = "banner" value = "<?=$banner['url'].':'.$banner['width'].':'.$banner['height'].':'.$banner['frontend_id'].':'.$banner['landing_page'] ?>"  /> 
+				<?php } ?>	
+				 
+				 </td>
+					<td>
+					<?php echo $banner['width'].' '.'x'.' '.$banner['height'];?>
+					<!--<img id="aff-banner-image" border="0" style="width:<?=$banner['width']?>px;height:<?=$banner['height']?>px" src="<?=$banner['url']?>"/>-->
+					</td>
+					
+					
+				<!--</div>	-->
+				
+				</td></tr>
+				<!--<tr><td colspan='2' align='left'><hr width='800px'></td></tr>-->
+			<?php
+			if($index % 3 == 2)
+			{
+				?>
+				<div id="aff-middle-banners"></div>	
+				<?php 
+			}
+			
+		}
+		
+	}
+	?></table>
+			</div>
+				<input id="aff-banner-submit" type="submit" value="Submit" />
+		</form>
+	<?php
+	if($this->trackerUrls)
+	{
+		foreach($this->trackerUrls as $index => $trackerUrl)
+		{
+			?>
+				<textarea style="width: 30em; height: 10em;">
+					<?php
+						echo '<a href="'.$trackerUrl.'"><img border="0" style="width:'.$this->bannerWidth.'px;height:'.$this->bannerHeight.'px" src="'.$this->bannerUrls[$index].'"></a>';
+					?>
+				</textarea>
+			<?php
+		}
+	}
+}
+else
+{
+	echo "There is no banner";
+}
+
+?>

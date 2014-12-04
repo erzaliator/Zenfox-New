@@ -1,0 +1,229 @@
+@charset "utf-8";
+/* Mobile CSS Document */
+@media only screen and (min-width:150px) and (max-width:480px)
+{
+.container {
+max-width: 480px;
+width: 100%;
+}
+.page-wrapper {
+max-width: 480px;
+width: 100%;
+}
+#footer .container {
+max-width: 460px;
+width: 100%;
+padding: 0;
+}
+.featured-inner {
+width: 92%;
+padding: 5% 4%;
+}
+.offers-videos {
+max-width: 420px;
+width: 90%;
+padding: 0 5%;
+}
+.contain-pad {
+max-width: 460px;
+width: 100%;
+}
+.logo {
+width: 88%;
+text-align: center;
+padding: 0 12px;
+}
+.logo img
+{
+	width:100%;
+	max-width:267px;
+}
+.header-menu {
+	width: 100%;
+}
+.top-ribbon {
+width: 90%;
+padding: 0 12px;
+}
+.zend_form {
+width: 100%;
+}
+.top-ribbon ul {
+width: 89%;
+margin: 0 auto;
+text-align: center;
+float: none;
+}
+.top-ribbon p {
+margin: -40px 65px 0 0px;
+}
+.top-ribbon input[type="text"], .top-ribbon input[type="password"] {
+margin: 0 10px 0 0;
+}
+.top-ribbon .login_form_button {
+clear: both;
+}
+.header-menu .nav
+{
+margin: 0 auto;
+width: 100%;
+display: inline-block;
+}	
+.header-menu .nav li
+{
+width: 100%;
+}
+.header-menu .nav li a {
+width: 100%;
+padding: 10px 0px;
+font-size: 12px;
+border-right: none;
+}
+#featured {
+background-size: 150%;
+width: 98%;
+}
+.buttons {
+float: none;
+width: 50%;
+margin: 55% auto 0%;
+}
+.playnow,.download {
+width: 100%;
+float: left;
+text-align: center;
+margin: 0 auto 10%;
+clear: both;
+padding: 15px 0;
+}
+.download {
+margin: 0 auto 20%;
+}
+.raummy-register {
+width: 70%;
+float: none;
+margin: 0 auto;
+height: 380px;
+clear: both;
+}
+.raummy-register h2 {
+font-size: 23px;
+}
+.raummy-register input[type="text"], .raummy-register input[type="password"] {
+width: 84%;
+}
+.raummy-register input[type="checkbox"] {
+margin: 0px 10px 0 7%;
+float: none;
+}
+.raummy-register input[type="submit"]
+{
+	float: none;
+}
+.raummy-register ul {
+margin: -47px auto 0;
+width: 100%;
+}
+.raummy-register ul li {
+float: left;
+margin: 0 auto 7%;
+width: 88%;
+text-align: center;
+}
+.contain-pad {
+width: 96%;
+padding: 10px 2%;
+}
+.content-middle-left {
+width: 95%;
+padding: 0 0%;
+margin: 0 auto;
+float: none;
+border-right: none;
+}
+.online-rummy {
+width: 100%;
+padding-right: 0%;
+}
+.online-image {
+width: 35%;
+float:right;
+display:none;
+}
+.content-middle-right {
+width: 95%;
+float: left;
+padding: 0 3%;
+margin: 5% 0;
+}
+.content-last-box {
+width: 100%;
+border: none;
+padding: 0;
+margin-bottom: 3%;
+}
+.foot1,.foot2,.foot3 {
+border: none;
+width: 87%;
+margin: 0 auto;
+text-align: center;
+float: none;
+padding: 3% 0;
+}
+.foot3 {
+float: left;
+margin: 3% 0;
+}
+#footer a {
+	float:none;
+	padding: 28px 11px 8px;
+	margin-right: 0;
+}
+.foot2 .foot2-inner {
+padding: 10px 6px 10px 0;
+}
+.offers {
+width: 100%;
+}
+#content-top, #content-middle, #content-last {
+width: 98%;
+}
+.content-top-left,.content-top-right  {
+width: 100%;
+border: none;
+padding: 0;
+text-align: center;
+}
+.content-top-right  {
+padding: 0 0 8%;
+}
+.content-top-box {
+width: 100%;
+padding: 0 0;
+text-align: center;
+margin: 5% 0;
+}
+.content-top-box a {
+float:none;
+}
+.content-top-right img{
+width: 55%;
+margin: 0 auto 5%;
+float: none;
+text-align: center;
+display: inherit;
+}
+.browse {
+float: none;
+}
+.videos-hide {
+text-transform: uppercase;
+display:block;
+}
+.offers-videos .videos
+{
+display:none;
+}
+/*-----innerpage-----*/
+
+}

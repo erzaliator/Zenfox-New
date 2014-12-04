@@ -1,0 +1,20 @@
+<?php
+
+echo $this->form;
+
+if($this->tableArray)
+{		
+	$index = 0;
+	foreach($this->tableArray as $contents)
+	{
+		echo $this->schemeArray[$index]['name'];
+		?>
+		<a href="<?=$this->url(array(
+					'controller' => 'affiliatescheme',
+					'action'     => 'edit',
+					'id'         => $this->schemeArray[$index]['id']))?>">(Edit)</a><br />
+		<?php 
+		echo $this->table($contents);
+		$index++;
+	}
+}

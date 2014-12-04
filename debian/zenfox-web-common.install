@@ -1,0 +1,13 @@
+languages var/www/zenfox/web
+library var/www/zenfox/web
+public var/www/zenfox/web
+application/Bootstrap.php var/www/zenfox/web/application
+application/configs var/www/zenfox/web/application
+application/controllers var/www/zenfox/web/application
+application/doctrine var/www/zenfox/web/application
+application/layouts var/www/zenfox/web/application
+application/models var/www/zenfox/web/application
+application/site_configs var/www/zenfox/web/application
+application/views var/www/zenfox/web/application
+application/logs var/www/zenfox/web/application
+zenfox-web-common.conf /etc/apache2/sites-available

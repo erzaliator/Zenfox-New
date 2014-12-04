@@ -1,0 +1,54 @@
+<?php
+$authSession = new Zenfox_Auth_Storage_Session();
+$sessionData = $authSession->read();
+
+$iterator = new RecursiveIteratorIterator ( $this->container, RecursiveIteratorIterator::SELF_FIRST );
+$prevDepth = - 1;
+foreach ( $iterator as $page ) {
+	if ($page->isVisible() && $this->navigation()->accept($page)) {
+		$depth = $iterator->getDepth ();
+		$isActive = $page->isActive ( true );
+		if (($depth != 1) && ($depth > $prevDepth)) {
+			//$html [] = '<ul id="all-menu" class="navigation">' . "\n";
+		} else if($depth > $prevDepth){
+			$html [] = '<ul class="sub-menu" id="nav-menu-sub">' . "\n";
+		}	else if ($prevDepth > $depth) {
+			for($i = $prevDepth; $i > $depth; $i --) {
+				$html [] = '</li>' . "\n";
+				$html [] = '</ul>' . "\n";
+			}
+			$html [] = '    </li>' . "\n";
+		} else {
+			$html [] = '    </li>' . "\n";
+		}
+		if($depth != 0 && $depth >= $prevDepth){
+			$class = "";
+			if($isActive)
+			{
+				$class="active";
+			}
+			$html [] = '<li class="sub-dropdown">';
+			$html [] = '<a href="' . $page->getHref () . '" class="' . $class . '">'  . $page->getLabel () . '</a>' . "\n";
+		}
+		else{
+			$id = "";
+			if($isActive)
+			{
+				$id="active";
+			}
+			$href = $page->getHref();
+			
+			$html [] = '<li class="dropdown">';
+			$html [] = '<a id="' . $id . '" class="' . $page->getClass() . '" href="' . $href . '">'  . $page->getLabel () . '</a>' . "\n";
+		}
+		$prevDepth = $depth;
+	}
+}
+if($depth != 0)
+{
+	$html [] = '</li>' . "\n";
+    //$html [] = '</ul>' . "\n";
+}
+$html [] = '</li>';
+//$html [] = '</ul>';
+echo join ( PHP_EOL, $html );

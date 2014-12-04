@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<nav>
+		<main>
+	    	<resource>player-index-index</resource>
+		   	<label>Main Page</label>
+        	<module>player</module>
+	    	<controller>index</controller>
+		   	<action>index</action>
+            <class>nav-top</class>
+        </main>
+		<login>
+	    	<resource>player-auth-login</resource>
+		   	<label>Login</label>
+        	<module>player</module>
+	    	<controller>auth</controller>
+		   	<action>login</action>
+            <class>nav-top</class>
+            <id>flogout</id>
+        </login>
+		<register>
+			<label>Register</label>
+			<resource>player-auth-signup</resource>
+			<module>player</module>
+			<controller>auth</controller>
+			<action>signup</action>
+            <class>nav-top</class>
+			<pages>
+				<full-registration>
+					<resource>player-auth-registration</resource>
+					<label>Full Registration</label>
+					<module>player</module>
+					<controller>auth</controller>
+					<action>registration</action>
+                    <class>nav-sub</class>
+				</full-registration>
+			</pages>
+		</register>
+		<home>
+			<label>Home</label>
+			<!--<resource>player-index-index</resource>
+			<uri>#</uri>-->
+			<resource>player-home-index</resource>
+			<module>player</module>
+			<controller>home</controller>
+			<action>index</action>
+            <class>nav-top</class>
+		</home>
+        <my-account>
+            <label>My Account</label>
+            <resource>player-auth-view</resource>
+            <module>player</module>
+            <controller>auth</controller>
+            <action>view</action>
+            <class>nav-top</class>
+            <pages>
+                <view-profile>
+					<resource>player-auth-view</resource>
+					<label>View Profile</label>
+					<module>player</module>
+					<controller>auth</controller>
+					<action>view</action>
+                    <class>nav-sub</class>
+                </view-profile>
+                <edit-profile>
+					<resource>player-auth-edit</resource>
+					<label>Edit Profile</label>
+					<module>player</module>
+					<controller>auth</controller>
+					<action>edit</action>
+                    <class>nav-sub</class>
+                </edit-profile>
+                <change-password>
+					<resource>player-auth-changepwd</resource>
+					<label>Change Password</label>
+					<module>player</module>
+					<controller>auth</controller>
+					<action>changepwd</action>
+                    <class>nav-sub</class>
+                </change-password>
+        		<!-- login>
+	        		<resource>player-auth-login</resource>
+		        	<label>Login</label>
+        			<module>player</module>
+	        		<controller>auth</controller>
+		        	<action>login</action>
+                    <class>nav-sub</class>
+        		</login-->
+        		<!--redeem-coupon>
+	        		<resource>player-promotions-coupon</resource>
+		        	<label>Redeem Coupon</label>
+        			<module>player</module>
+	        		<controller>promotions</controller>
+		        	<action>coupon</action>
+                    <class>nav-sub</class>
+        		</redeem-coupon-->
+				<logout>
+					<resource>player-auth-logout</resource>
+					<label>Logout</label>
+					<module>player</module>
+					<controller>auth</controller>
+					<action>logout</action>
+                    <class>nav-sub</class>
+				</logout>
+            </pages>
+        </my-account>
+        <banking>
+            <label>Banking</label>
+            <resource>player-banking-fundbonus</resource>
+            <module>player</module>
+            <controller>banking</controller>
+            <action>fundbonus</action>
+            <class>nav-top</class>
+            <pages>
+                <fund-bonus>
+					<resource>player-banking-fundbonus</resource>
+					<label>Fund Account</label>
+					<module>player</module>
+					<controller>banking</controller>
+					<action>fundbonus</action>
+                    <class>nav-sub</class>
+                </fund-bonus>
+                <coupon-bonus>
+					<resource>player-coupon-redeem</resource>
+					<label>Redeem Coupon</label>
+					<module>player</module>
+					<controller>coupon</controller>
+					<action>redeem</action>
+                    <class>nav-sub</class>
+                </coupon-bonus>
+                <!--<withdrawal>
+					<resource>player-withdrawal-request</resource>
+					<label>Request a withdrawal</label>
+					<module>player</module>
+					<controller>withdrawal</controller>
+					<action>request</action>
+                    <class>nav-sub</class>
+                </withdrawal>
+		<unprocessed-report>
+                	<resource>player-withdrawal-listunprocessed</resource>
+                	<label>Unprocessed Reports</label>
+                	<module>player</module>
+                	<controller>withdrawal</controller>
+                	<action>listunprocessed</action>
+                	<class>nav-sub</class></unprocessed-report>
+                <request-flowback>
+                	<resource>player-withdrawal-insertflowback</resource>
+                	<label>Request a Flowback</label>
+                	<module>player</module>
+                	<controller>withdrawal</controller>
+                	<action>insertflowback</action>
+                	<class>nav-sub</class></request-flowback>-->
+            </pages>
+        </banking>
+        <play>
+            <label>Play</label>
+            <resource>player-game-index</resource>
+            <module>player</module>
+            <controller>game</controller>
+            <action>index</action>
+            <class>nav-top</class>
+            <pages>
+                <games>
+					<resource>player-game-index</resource>
+					<label>Play Games</label>
+					<module>player</module>
+					<controller>game</controller>
+					<action>index</action>
+                    <class>nav-sub</class>
+                </games>
+                <!--pages>
+                    <label>Keno</label>
+                    <resource>player-keno-index</resource>
+                    <module>player</module>
+                    <controller>keno</controller>
+                    <action>index</action>
+                    <class>nav-sub</class>
+                    <keno>
+					    <resource>player-keno-index</resource>
+    					<label>Play Keno</label>
+	    				<module>player</module>
+		    			<controller>keno</controller>
+			    		<action>index</action>
+                        <class>nav-sub</class>
+                    </keno>
+                    <keno-logs>
+					    <resource>player-keno-gamelog</resource>
+    					<label>Keno Gamelogs</label>
+	    				<module>player</module>
+		    			<controller>keno</controller>
+			    		<action>gamelog</action>
+                        <class>nav-sub</class>
+                    </keno-logs>
+                </pages>
+                <pages>
+                    <label>Roulette</label>
+                    <resource>player-roulette-index</resource>
+                    <module>player</module>
+                    <controller>roulette</controller>
+                    <action>index</action>
+                    <class>nav-sub</class>
+                    <roulette>
+					    <resource>player-roulette-index</resource>
+    					<label>Play Roulette</label>
+	    				<module>player</module>
+		    			<controller>roulette</controller>
+			    		<action>index</action>
+                        <class>nav-sub</class>
+                    </roulette>
+                    <roulette-logs>
+					    <resource>player-roulette-gamelog</resource>
+    					<label>Roulette Gamelogs</label>
+	    				<module>player</module>
+		    			<controller>roulette</controller>
+			    		<action>gamelog</action>
+                        <class>nav-sub</class>
+                    </roulette-logs>
+                </pages-->
+            </pages>
+        </play>
+        <support>
+            <label>Support</label>
+            <resource>player-ticket-view</resource>
+            <module>player</module>
+            <controller>ticket</controller>
+            <action>view</action>
+            <class>nav-top</class>
+            <pages>
+                <view-ticket>
+					<resource>player-ticket-view</resource>
+					<label>View Tickets</label>
+					<module>player</module>
+					<controller>ticket</controller>
+					<action>view</action>
+                    <class>nav-sub</class>
+                </view-ticket>
+                <create-ticket>
+					<resource>player-ticket-create</resource>
+					<label>Open a Ticket</label>
+					<module>player</module>
+					<controller>ticket</controller>
+					<action>create</action>
+                    <class>nav-sub</class>
+                </create-ticket>
+            </pages>
+        </support>
+        <reports>
+            <label>Reports</label>
+            <resource>player-reconciliation-index</resource>
+            <module>player</module>
+            <controller>reconciliation</controller>
+            <action>index</action>
+            <class>nav-top</class>
+            <pages>
+                <reconcile>
+					<resource>player-reconciliation-index</resource>
+					<label>Reconcile Report</label>
+					<module>player</module>
+					<controller>reconciliation</controller>
+					<action>index</action>
+                    <class>nav-sub</class>
+                </reconcile>
+                <roulette-logs>
+                    <resource>player-roulette-gamelog</resource>
+                    <label>Roulette Gamelogs</label>
+                    <module>player</module>
+                    <controller>roulette</controller>
+                    <action>gamelog</action>
+                    <class>nav-sub</class>
+                </roulette-logs>
+                <keno-logs>
+                    <resource>player-keno-gamelog</resource>
+                    <label>Keno Gamelogs</label>
+                    <module>player</module>
+                    <controller>keno</controller>
+                    <action>gamelog</action>
+                    <class>nav-sub</class>
+                </keno-logs>
+                <slot-logs>
+                    <resource>player-slot-gamelog</resource>
+                    <label>Slot Gamelogs</label>
+                    <module>player</module>
+                    <controller>slot</controller>
+                    <action>gamelog</action>
+                    <class>nav-sub</class>
+                </slot-logs>
+		<!--<withdrawal-report>
+                	<resource>player-withdrawal-listall</resource>
+                	<label>Withdrawal Report</label>
+                	<module>player</module>
+                	<controller>withdrawal</controller>
+                	<action>listall</action>
+                	<class>nav-sub</class></withdrawal-report>-->
+            </pages>
+        </reports>
+	</nav>
+</config>

@@ -1,0 +1,1556 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face
+{
+	font-family: 'ComicSansMS-Regular';
+	src:url(fonts/ComicSansMS-Regular.ttf)format('truetype');
+}
+@font-face
+{
+	font-family: 'Myriad-Pro-Regular';
+	src:url(fonts/Myriad-Pro-Regular.ttf) format('truetype');
+	
+}
+@font-face
+{
+	font-family: 'Tahoma-Regular';
+	src:url(fonts/Tahoma-Regular.ttf) format('truetype');	
+}
+@font-face
+{
+	font-family: 'helvetica';
+	src:url(fonts/helvetica.ttf) format('truetype');
+	src:url(fonts/helvetica.otf) format('opentype');
+	src:url(fonts/helvetica.woff) format('woff');
+	src:url(fonts/helvetica.svg) format('svg');
+}
+@font-face
+{
+	font-family: 'Verdana';
+	src:url(fonts/Verdana.ttf) format('truetype');
+}
+@font-face
+{
+	font-family: 'myriad-web-pro';
+	src:url(fonts/myriad-web-pro.ttf) format('truetype');
+	
+}
+@font-face
+{
+	font-family: 'ChangaOne-Italic';
+	src:url(fonts/ChangaOne-Italic.ttf)format('truetype');
+}
+body{
+	background:#ffed8e;
+	margin: 0 auto;
+}
+body p{
+	font-size:16px;
+}
+
+.header{
+	
+	margin-left:10px;
+	/*background-color:#eb0009;*/
+}
+.top-ribbon{ 
+    width:100%;
+	height:74px;
+    /*background: #ffffff; /* Old browsers */
+    /*background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+   /* background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /*       Chrome,Safari4+ */
+    /*background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+    /*background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+    /*background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+    /*background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C */
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	background:url(/images/bingobible/top-background.jpg) repeat;
+
+}
+.nav{
+  background-color:#eb0009;
+  height:47px;
+  border-bottom:3px solid #a90007;
+  margin-right:10px;
+}
+.logo{
+  padding: 26px 11px 23px 27px;
+  float: left;
+}
+.login-sec{
+   width:700px;
+   float:right;
+   padding: 15px 11px 5px 26px;
+}
+.input-fields{
+    width: 211px;
+    float: left;
+	padding-top: 5px;
+}
+.input-fields input[type="text"], .input-fields input[type="password"] {
+   width: 196px;
+   height:23px;
+   border-radius: 5px;
+   border-color: #DFD8D8;
+   border:none;
+   border-left:1px solid  #DFD8D8 ;
+   border-bottom:1px solid  #DFD8D8 ;
+    padding-left: 7px;
+}
+.input-fields input[type="checkbox"] {
+   float: left;
+   margin-left: 0;
+}
+.input-fields p{
+   margin:0px;
+   font-size:12px;
+   color:#000;
+   font-family : myriad-web-pro;
+   font-size : 12px;
+     margin-right: 5px;
+    margin-top: 4px;
+}
+.input-fields p a{
+	text-decoration:none;
+   color:#000;
+}
+.btn {
+   background-color: #EB0009;
+    border: 1px solid;
+    color: #FFFFFF;
+    float: left;
+    font-family: ComicSansMS-Regular;
+    font-size: 18px;
+    margin-right: 20px;
+    margin-top: -1px;
+    padding: 2px 25px;
+	-webkit-padding-after: 3px;
+	-webkit-padding-before: 3px;
+    cursor:pointer;
+}
+a.btn-1{
+    text-decoration: none;
+   float: left;
+   background-color: #9d9d2d;
+   color: #fff;
+   padding: 3px 25px;
+   font-family : ComicSansMS-Regular;
+   font-size : 18px;
+}
+/* menu css*/
+.menu, .footer-content{
+   width: 1023px;
+   margin: 0 auto;
+}
+.menu ul{
+  margin:0px;
+  list-style:none;
+  width:100%;
+  float:left;
+  padding:0px;
+}
+.menu ul li {
+  color: #FFF;
+  float: left;
+  display: inline;
+  font-size: 18px;
+  width: 166px;
+  padding: 12px 9px 12px 9px;
+  border-right: 1px solid #000;
+  text-align:center;
+  font-family : myriad-web-pro;
+  font-size : 22px;
+  -webkit-padding-after: 14px;
+  -webkit-padding-before: 14px;
+}
+li.first-icon span{
+  font-size: 22px;
+  width: 100%;
+  float: left;
+  padding-left: 48px;
+  text-align: left;
+  margin-top:-7px;
+  font-family: helvetica;
+  font-weight:bold;
+}
+li.first-icon {
+   background: url(/images/bingobible/first-icon.png) no-repeat 5px 5px;
+   padding: 5.5px 9px ! important;
+}
+span.pad {
+  font-size: 18px ! important;
+  font-weight: normal !important;
+  margin-top: -1px !important;
+}
+ul#menu li:hover{
+ background-color:#f3d224;
+}
+ul#menu li:hover ul.sub-menu {
+display: block;
+}
+ul#menu li {
+position: relative;
+}
+ul.sub-menu li {
+float: left;
+width: 207px;
+border-bottom: 2px solid #f3d224;
+border-right: none;
+padding: 5px 4px;
+}
+ul#menu li ul.sub-menu {
+display: none;
+position: absolute;
+left:0px;
+top: 53px;
+right: 0px;
+padding: 0px 35px 0px 0px;
+width: 180px;
+background: #fff;
+z-index: 100;
+border: 2px solid #f3d224;
+border-bottom:none;
+border-radius:3px;
+}
+.nav ul.sub-menu li a {
+padding: 4px 0px 4px 20px;
+float: left;
+font-size: 16px;
+text-decoration:none;
+color:#000;
+}
+ul.sub-menu li:hover{
+  background-color: #fbf0b9 ! important;
+}
+/*End of menu*/
+.content{
+ width:1023px;
+ margin:0 auto;
+}
+.content-top{
+width:100%;
+float: left;
+padding-top: 5px;
+}
+#box-1{
+width:341px;
+height:554px;
+background:url(/images/bingobible/night-special.png) no-repeat;
+float:left;
+}
+#box-2{
+width:341px;
+height:554px;
+background:url(/images/bingobible/spin.jpg) no-repeat;
+float:left;
+}
+#box-3{
+width:341px;
+height:554px;
+background:url(/images/bingobible/login.jpg) no-repeat;
+float:left;
+}
+.content-middle{
+width: 98%;
+float: left;
+background: #fff;
+margin-top: 20px;
+padding: 60px 0px 0px 20px;
+}
+.rect{
+	width:98%;
+	float:left;
+	margin-bottom: 30px;
+	text-align: justify;
+}
+.rect-left{
+    width:480px;
+	float:left;
+	margin-right: 27px;
+}
+.rect-left h2{
+font-family : ComicSansMS-Regular;
+font-size : 30px;
+}
+.rect-left p{
+font-family : Tahoma-Regular;
+font-size : 16px;
+}
+.rect-right{
+   background: url(/images/bingobible/rect-1.png) no-repeat;
+   width: 471px;
+   float: left;
+   height: 225px;
+}
+.rect-right-1{
+   background: url(/images/bingobible/rect-2.png) no-repeat;
+   width: 471px;
+   float: left;
+   height: 225px;
+}
+.rect-right-2{
+   background: url(/images/bingobible/rect-3.png) no-repeat;
+   width: 471px;
+   float: left;
+   height: 225px;
+}
+.rect-right-3{
+   background: url(/images/bingobible/rect-4.png) no-repeat;
+   width: 471px;
+   float: left;
+   height: 225px;
+}
+.rect-right a, .rect-right-1 a, .rect-right-2 a{
+   text-decoration: none;
+   text-align: center;
+   width: 100%;
+   float: left;
+   color: #fff;
+   /* background-color: #f7661b; */
+   padding: 10px 0px;
+   border-radius: 0px 0px 5px 5px;
+   margin-top: 185px;
+   font-family : myriad-web-pro;
+   font-size : 18px;
+   
+}
+.no-mar{
+  margin:0px;	
+}
+.mar-rit{
+margin-right:27px;
+}
+.footer-main{
+background-color: #0080b6;
+width: 100%;
+float: left;
+}
+.footer-column-1{
+background: url(/images/bingobible/paymethod.jpg) no-repeat -5px 40px;
+width: 287px;
+height: 175px;
+float: left;
+margin-right: 50px;
+color: #fff;
+	
+}
+.footer-column-1 p{
+font-family : arial;
+}
+.footer-column-2, .footer-column-3, .footer-column-4{
+width:132px;
+float:left;
+margin-right: 25px;
+ height: 126px;
+
+}
+.footer-column-2 p, .footer-column-3 p, .footer-column-4 p{
+	padding-top:15px;
+}
+.footer-content p a{
+text-decoration: none;
+color: #fff;
+font-family: arial;
+}
+.footer-column-5 {
+background: url(/images/bingobible/gamble.png) no-repeat 9px 5px;
+width: 185px;
+height: 218px;
+float: left;
+}
+.btns{
+width:100%;
+float:left;
+text-align:center;
+margin-bottom: 30px;
+}
+.btns a{
+text-decoration: none;
+color: #fff;
+font-size: 26px;
+background: #e7062c;
+padding:5px 55px;
+font-family : ComicSansMS-Regular;
+font-size : 26px;
+margin-right:20px;
+}
+a.free-btn{
+background: #9d9d2d;
+}
+.form{
+width: 70%;
+padding: 20% 15%;
+height: auto;
+}
+.join-text,.text{
+width: 70%;
+padding: 0% 15%;
+color: #fff;
+font-family : ComicSansMS-Regular;
+font-size : 34px;
+margin-top:12px;
+padding-bottom: 16px;
+}
+.text{
+height : 0px;
+}
+.text-down{
+width: 85%;
+padding: 6% 6%;
+color: #fff;
+font-family : ComicSansMS-Regular;
+font-size : 34px;
+height : 17px;
+margin-top: 375px;
+}
+.chk-bx{
+margin-bottom: 19px;
+}
+
+#iagree p {
+    font-family: myriad-web-pro;
+    margin-left: 24px;
+    margin-top: -33px;
+}
+.form span{
+color : #fff;
+}
+.join-now{
+width: 200px;
+height: 46px;
+background-color: #9d9d2d;
+border: 1px solid white;
+font-family: ComicSansMS-Regular;
+font-size: 26px;
+color : #fff;
+margin-left: 15px;
+    margin-top: 30px;
+}
+.box{
+height: 28px;
+margin-bottom: 27px;
+border-radius: 5px;
+border: medium none;
+padding-left: 7px;
+width: 95%;
+}
+/*Game-page*/
+.after-login{
+height: 70px;
+width: 70%;
+float: right;
+}
+.game-page-img-1{
+width: 202px;
+height: 70px;
+float: right;
+background: url(/images/bingobible/gamepage-img1.jpg) no-repeat 0px 0px;
+margin-top: 3px;
+}
+.game-page-img-2{
+width: 202px;
+height: 70px;
+float: right;
+background: url(/images/bingobible/gamepage-img2.jpg) no-repeat 0px 0px;
+margin-top: 3px;
+}
+.game-page-img-3{
+width: 202px;
+height: 70px;
+float: right;
+background: url(/images/bingobible/gamepage-img3.png) no-repeat 0px 0px;
+margin-top: 3px;
+cursor: pointer;
+}
+.points{
+width: 50%;
+/* float: left; */
+margin-left: 72px;
+/* text-align: center; */
+font-family: myriad-web-pro;
+font-size: 18px;
+margin-top: 5px;
+}
+.cash{
+font-family: myriad-web-pro;
+font-size: 12px;
+width: 30%;
+float: left;
+margin-left: 75px;
+margin-top: -13px;
+
+}
+.bonus{
+font-family: myriad-web-pro;
+font-size: 12px;
+width: 30%;
+float: left;
+margin-left: 139px;
+margin-top: -40px;
+}
+.txt{
+font-family: myriad-web-pro;
+font-size: 12px;
+margin-top: -12px;
+margin-left: 75px;
+}
+#box{
+width:1024px;
+height:1041px;
+background:#f7661b;
+float:left;
+}
+#game-box-1{
+width: 482px;
+height: 231px;
+float: left;
+background: url(/images/bingobible/cupidluck.jpg) no-repeat 0px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+/*background-color: #1f1f09;*/
+}
+.game-box-1-text{
+background: url(/images/bingobible/gamepage-bg1.jpg) no-repeat 0px 0px;
+width: 100%;
+height: 62px;
+margin-top: 170px;
+}
+.gb-1-txt-1{
+color: #ffffff;
+width: 20%;
+float: left;
+font-family: myriad-web-pro;
+font-size: 18px;
+margin-left: 29px;
+margin-top: 13px;
+}
+.gb-1-txt-1 span{
+font-family:myriad-web-pro ;
+color: #18fe00;
+font-size: 22px;
+margin-left: 7px;
+}
+.gb-1-txt-2{
+color: #ffffff;
+width: 20%;
+float: left;
+font-family: myriad-web-pro;
+font-size: 18px;
+margin-left: 36px;
+margin-top: 13px;
+}
+.gb-1-txt-2 span{
+font-family: myriad-web-pro;
+color: #00ccff;
+font-size: 22px;
+margin-left: 19px;
+}
+.gb-1-txt-3{
+width: 21%;
+float: left;
+color: #ffffff;
+font-family: myriad-web-pro;
+font-size: 18px;
+margin-top: 13px;
+margin-left: 10px;
+}
+.play-box{
+width: 13%;
+float: left;
+background-color: #eb0009;
+text-align: center;
+padding: 2%;
+border: 1px solid #ffffff;
+margin-left: 10px;
+margin-top: 10px;
+color: #ffffff;
+font-family: Tahoma;
+font-size: 18px;
+}
+.game-box-2-text{
+background: url(/images/bingobible/gamepage-bg2.jpg) no-repeat 0px 0px;
+width: 100%;
+height: 62px;
+margin-top: 170px;
+}
+.gb-2-txt-1{
+color: #ffffff;
+width: 20%;
+float: left;
+font-family: Tahoma;
+font-size: 18px;
+margin-left: 29px;
+margin-top: 5px;
+}
+.gb-2-txt-1 span{
+font-family:Tahoma ;
+color: #0b58b3;
+font-size: 22px;
+margin-left: 9px;
+}
+.gb-2-txt-2{
+color: #ffffff;
+width: 20%;
+float: left;
+font-family: Tahoma;
+font-size: 18px;
+margin-left: 36px;
+margin-top: 5px;
+}
+.gb-2-txt-2 span{
+font-family: Tahoma;
+color: #dc5d1d;
+font-size: 22px;
+margin-left: 19px;
+}
+.gb-2-txt-3{
+width: 21%;
+float: left;
+color: #ffffff;
+font-family: Tahoma;
+font-size: 18px;
+margin-top: 8px;
+margin-left: 10px;
+}
+.play-box-2{
+width: 13%;
+float: left;
+background-color: #eb0009;
+text-align: center;
+padding: 2%;
+border: 1px solid #ffffff;
+margin-left: 10px;
+margin-top: 8px;
+color: #ffffff;
+font-family: Tahoma;
+font-size: 18px;
+}
+#game-box-2{
+width: 482px;
+height: 231px;
+float: left;
+background: url(/images/bingobible/pinkroom.jpg) no-repeat 0px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #1f1f09;
+}
+#game-box-3{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/cityvillie.jpg) no-repeat 0px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+.Play-for-real{
+color: #ffffff;
+background-color: #eb0009;
+border: 1px solid #ffffff;
+padding: 10px;
+float: left;
+margin-top: -193px;
+width: 129px;
+height: 24px;
+text-align: center;
+font-family: Tahoma;
+font-size: 18px;
+margin-left: 38px;
+}
+.Play-for-bonus{
+color: #ffffff;
+background-color : #9d9d2d;
+border: 1px solid #ffffff;
+padding: 10px;
+float: left;
+margin-top: -134px;
+width: 129px;
+height: 24px;
+text-align: center;
+font-family: Tahoma;
+font-size: 18px;
+margin-left: 38px;
+}
+#game-box-4{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/pinkroom75.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-5{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/christmas-bells.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-6{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/potter.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-7{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/fruit-fantacy.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-8{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/go-gorgeous.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-9{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/treasures.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-10{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/mysteries.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-11{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/witches.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-12{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/roman-riches.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-13{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/sherif-saloon.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+#game-box-14{
+width: 230px;
+height: 239px;
+float: left;
+background: url(/images/bingobible/unicorns.jpg) no-repeat 1px 0px;
+border-radius: 8px;
+border: 4px solid #fff;
+margin-left: 14px;
+margin-top: 11px;
+background-color: #fff;
+}
+.game-page-btns{
+width: 100%;
+float: left;
+text-align: center;
+margin-bottom: 30px;
+margin-top: 30px;
+}
+.game-page-btns a{
+text-decoration: none;
+color: #fff;
+font-size: 26px;
+background: #e7062c;
+padding:10px 48px;
+font-family : ComicSansMS-Regular;
+font-size : 26px;
+}
+a.free-btn{
+background: #9d9d2d;
+padding: 5px 35px;
+margin-left:3px;
+}
+.game-text{
+font-family : myriad-web-pro;
+font-size : 16px;
+margin-top: 174px;
+margin-left: 5px;
+}
+.rate{
+font-family: myriad-web-pro;
+font-size: 22px;
+color: #fff;
+float: left;
+margin-top: 162px;
+margin-left: 12px;
+}
+.rate span{
+font-family: myriad-web-pro;
+font-size: 18px;
+color: #fff;
+float: left;
+margin-top: 54px;
+margin-left: 12px;
+}
+/*.cupid-text{
+font-family: myriad-web-pro;
+font-size: 18px;
+color: #fff;
+float: left;
+margin-top: 179px;
+margin-left: 12px;
+}*/
+/* Deposit Page */
+#deposit-page-box-1{
+background: url(/images/bingobible/deposit-1.jpg) no-repeat 1px 0px;
+width : 240px;
+height : 393px;
+margin-top : 141px;
+float : left;
+margin-bottom : 26px;
+}
+#deposit-page-box-2{
+background: url(/images/bingobible/deposit-2.jpg) no-repeat 1px 0px;
+width : 276px;
+height : 451px;
+float : left;
+margin-left : 10px;
+margin-top : 82px;
+margin-bottom : 26px;
+}
+#deposit-page-box-3{
+background: url(/images/bingobible/deposit-1.jpg) no-repeat 1px 0px;
+width : 240px;
+height : 393px;
+margin-top : 141px;
+float : left;
+margin-left : 9px;
+margin-bottom : 26px;
+}
+#deposit-page-box-4{
+background: url(/images/bingobible/deposit-1.jpg) no-repeat 1px 0px;
+width : 240px;
+height : 393px;
+margin-left : 8px;
+margin-top : 141px;
+float : left;
+margin-bottom : 26px;
+}
+.top-text{
+font-family : ComicSansMS-Regular;
+font-size : 24px;
+color: #fff;
+margin: 4px;
+text-align: center;
+}
+.middle-text{
+font-family : myriad-web-pro;
+font-size : 22px;
+color: #fff;
+margin: 4px;
+text-align: center;
+}
+.bottom-text{
+font-family : myriad-web-pro;
+font-size : 16px;
+color: #fff;
+margin: 4px;
+text-align: center;
+}
+.deposit-btn{
+width: 171px;
+background-color: #9d9d2d;
+text-align: center;
+font-family: ComicSansMS-Regular;
+font-size: 21px;
+padding: 6px 0px;
+color: #ffffff;
+/*margin-top: 242px;*/
+margin-left: 36px;
+margin-top: 40px;
+}
+.box2-top-text{
+font-family : ComicSansMS-Regular;
+font-size : 28px;
+color: #fff;
+margin: 4px;
+text-align: center;
+}
+.box2-middle-text{
+font-family : myriad-web-pro;
+font-size : 21px;
+color: #fff;
+margin: 4px;
+text-align: center;
+}
+.box2-bottom-text{
+font-family : myriad-web-pro;
+font-size : 21px;
+color: #fff;
+margin: 4px;
+text-align: center;
+}
+.box2-deposit-btn{
+width: 194px;
+background-color: #e90a2f;
+text-align: center;
+font-family: ComicSansMS-Regular;
+font-size: 21px;
+padding: 6px 0px;
+color: #ffffff;
+margin-top: 56px;
+margin-left: 42px;
+}
+.line-text{
+font-family: myriad-web-pro;
+font-size: 19px;
+color: #ffffff;
+text-align: center;
+}
+.line-text span{
+font-family: myriad-web-pro;
+font-size: 22px;
+color: #fff000;
+text-align: center;
+}
+.last-line-text{
+font-family: myriad-web-pro;
+font-size: 17px;
+color: #ffffff;
+text-align: center;
+margin-top: -10px;
+}
+.last-line-text span{
+font-family: myriad-web-pro;
+font-size: 16px;
+color: #f9db0b;
+text-align: center;
+}
+.box2-line-text{
+font-family: myriad-web-pro;
+font-size: 21px;
+color: #ffffff;
+text-align: center;
+ margin: 41px 0 -20px;
+}
+.box2-line-text span{
+font-family: myriad-web-pro;
+font-size: 24px;
+color: #ffef01;
+text-align: center;
+}
+.content-bottom{
+width : 100%;
+float :left;
+background-color : #fff;
+height : 453px;
+}
+.deposit-form{
+width: 405px;
+height: 383px;
+float: left;
+margin-left: 153px;
+}
+.radio-btn1,.radio-btn2{
+margin-top: 51px;
+}
+.radio-btn1 img,.radio-btn2 img{
+margin-top: 28px;
+}
+.form-text{
+background-color: #ffebeb;
+border: 1px solid #e74c4c;
+width: 374px;
+text-align: center;
+margin-top: 42px;
+padding: 7px 0px;
+font-family: myriad-web-pro;
+}
+.cardnum{
+width : 374px;
+height : 37px;
+
+}
+.postal-code{
+width: 104px;
+height: 37px;
+margin-right: 20px;
+}
+.deposit-form label{
+width: 100%;
+float: left;
+margin: 5px 0px;
+font-family: myriad-web-pro;
+}
+.security-code{
+width: 104px;
+height: 37px;
+margin-right: 20px;
+}
+.date{
+width : 44px;
+height : 25px;
+}
+.year{
+width : 62px;
+height : 25px;
+}
+.country{
+width : 93%;
+height : 25px;
+}
+.form-deposit-btn{
+width: 171px;
+background-color: #9d9d2d;
+text-align: center;
+font-family: ComicSansMS-Regular;
+font-size: 21px;
+padding: 6px 0px;
+color: #ffffff;
+float: right;
+margin-right: 29px;
+}
+.content-bottom textarea{
+width: 276px;
+height: 136px;
+margin-left: 44px;
+margin-top: 17px;
+}
+/* windows-page */
+.windows-form-1{
+width : 493px;
+height : 576px;
+background-color : #ffffff;
+margin-top : 35px;
+margin-bottom : 63px;
+float : left;
+border-radius: 10px;
+}
+.windows-form-1 label{
+font-family : myriad-web-pro;
+font-size : 14px;
+width: 40%;
+float: left;
+padding: 11px 0px;
+}
+.form-info{
+width: 48%;
+height: 31px;
+/*float: left;*/
+margin-bottom: 23px;
+border-radius: 6px;
+border: 1px solid black;
+background-color: #ffed8e;
+font-size : 18px;
+margin-left: 46px;
+}
+.windows-form-1 textarea{
+width : 48%;
+height : 120px;
+border-radius: 6px;
+border: 1px solid black;
+background-color: #ffed8e;
+font-size: 18px;
+margin-left: 46px;
+}
+#windows-form-1{
+width: 92%;
+height: 80%;
+padding-top: 46px;
+padding-bottom: 68px;
+padding-left: 20px;
+padding-right: 19px;
+font-family: myriad-web-pro;
+font-size: 14px;
+}
+#inputField{
+width: 48%;
+height: 31px;
+border-radius: 6px;
+border: 1px solid black;
+background-color: #ffed8e;
+float: right;
+margin-top: -10px;
+margin-right: 6px;
+font-size: 18px;
+}
+.JsDatePickBox{
+top: -10px !important;
+left: 227px !important;
+}
+/*Tabs Css*/
+div#tabs{
+width:100%;
+float:left;
+border-bottom:1px solid #000;
+margin-bottom: 25px;
+padding-bottom: 30px;
+}
+.ui-tabs-nav{
+padding:0px;
+list-style:none;
+width: 100%;
+float: left;
+border-bottom:1px solid #000;
+font-family: myriad-web-pro;
+font-size: 13px;
+}
+.ui-state-default{
+border-radius: 7px 7px 0px 0px;
+float:left;
+border: 1px solid #000;
+padding: 10px 20px;
+border-bottom: none;
+background: #fff;
+outline: none;
+}
+.ui-tabs-anchor{
+text-decoration:none;
+padding: 10px 20px;
+outline:none;
+}
+.ui-tabs-anchor:hover{
+text-decoration:none;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+margin-bottom: -1px;
+padding-bottom: 11px;
+background: #e28939;
+color:#fff;
+font-family: myriad-web-pro;
+font-size: 13px;
+}
+.ui-tabs-panel{
+width:100%;
+float:left;
+}
+.ui-state-active a, .ui-state-active a:link{
+color:#fff;
+}
+.pref-box{
+width: 100%;
+float: left;
+height: 350px;
+}
+/*End of tabs*/
+/*Welcom page*/
+.welcom-box{
+width: 240px;
+height: 392px;
+background: url(/images/bingobible/welcom-1.png) no-repeat;
+float: left;
+text-align: center;
+color: #fff;
+}
+.welcom-box1{
+width: 240px;
+height: 392px;
+background: url(/images/bingobible/welcom-2.png) no-repeat;
+float: left;
+margin: 0 102px;
+text-align: center;
+color: #fff;
+}
+div.welcom-bottom {
+width: 177px;
+/* float: left; */
+margin: 0 auto;
+margin-top: 16px;
+}
+div.welcom-bottom p{
+margin:0px;
+margin-bottom:20px;
+font-size: 18px;
+}
+a.orng-btn, a.green-btn {
+background: #e9092e;
+text-decoration: none;
+color: #fff;
+padding: 10px 45px;
+font-family : myriad-web-pro;
+}
+a.green-btn{
+background: #9d9d2d;
+}
+.content-internal, .content-internal-login{
+width: 100%;
+float: left;
+margin-bottom: 80px;
+}
+.content-internal-login{
+	margin-right: 15px;
+    text-align: justify;
+    width: 64%;
+}
+
+/* get started*/
+.get-start{
+text-align: center;
+font-family : Verdana;
+font-size : 24px;
+}
+.get-start-img{
+width : 494px;
+height : 239px;
+background: url(/images/bingobible/get-started-box.jpg) no-repeat;
+margin: 0 auto;
+margin-top: -14px;
+}
+.get-start-line-1{
+color: #ffffff;
+font-family: myriad-web-pro;
+font-size: 18px;
+padding-top: 17px;
+padding-left: 28px;
+}
+.get-start-line-1 span{
+font-size: 24px;
+}
+.get-start-line-2 {
+    font-family: myriad-web-pro;
+    font-size: 13px;
+    padding: 0 44px;
+    text-align: justify;
+}
+.content-top img{
+margin-left : 264px;
+}
+.get-start-box{
+width : 1028px;
+height : 358px;
+background-color : #f9ecaa;
+margin-top: 16px;
+margin-bottom: 16px;
+}
+.get-start-txt{
+background: url(/images/bingobible/round.jpg) no-repeat;
+height: 18px;
+padding: 1%;
+width: 92%;
+padding-left: 40px;
+font-size: 14px;
+/* margin-top: 10px; */
+font-family: Verdana;
+margin-left: 20px;
+float: left;
+margin: 9px;
+border-bottom: 2px solid #adadac;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+.get-start-txt span{
+float: right;
+margin-right: 4px;
+}
+.go-red{
+background-color: #eb0009;
+padding: 1% 4%;
+margin-top: -15px;
+color: #ffffff;
+border: 1px solid #ffffff;
+}
+.go-green{
+background-color: #9d9d2d;
+padding: 1% 4%;
+margin-top: -15px;
+color: #ffffff;
+border: 1px solid #ffffff;
+}
+
+.fb-btn {
+    background: url("/images/bingobible/fb-btn.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #FFFFFF;
+    height: 38px;
+    margin-left: -119px;
+    margin-top: 101px;
+    position: absolute;
+    width: 91px;
+}
+/* settings-page */
+#tabs-1 p , #tabs-2 p,#tabs-3 p{
+font-family: myriad-web-pro;
+font-size: 16px;
+width: 345px;
+}
+.pref-box p{
+font-family: myriad-web-pro;
+font-size: 16px;
+}
+.my-profile ul li a{
+	text-decoration:none;
+	color:#000;
+}
+.my-profile ul li
+{
+list-style: none;
+padding-bottom: 8px;
+}
+/* .my-profile ul li a.green
+{
+color:#389604;
+} */
+.my-profile ul li a:hover
+{
+/*color: #eb0009;*/
+color:#389604;
+}
+.my-profile ul li.supperation
+{
+background: url(/images/bingobible/suppration-img.png) no-repeat;
+}
+
+.my-profile ul
+{
+padding: 33px 0px 15px 8px;
+}
+.my-profile
+{
+background: url(/images/bingobible/profile-bg.png) no-repeat;
+font-family: myriad-web-pro;
+position: absolute;
+width: 16%;
+top: 44px;
+display: none;
+}
+.menu-icon {
+display: none;
+cursor: pointer;
+background: #ffed8e;
+float: right;
+padding: 3px;
+border-radius: 5px;
+margin-right: 1%;
+margin-top: 1%;
+}
+.menu-icon img {
+width: 38px;
+}
+#getstarted_likebox  p{
+background: url(/images/bingobible/bingobible_likebox.png) no-repeat;
+width:322px;
+margin: 0 auto;
+}
+.change{
+float:right;
+color:#E28939;
+font-family: verdana;
+font-size: 13px;
+cursor:pointer;
+}
+
+.deposit-form label img {
+    float: right;
+    margin-right: 20px;
+    margin-top: -18px;
+}
+.get-start-txt1{
+background: url(/images/bingobible/bingobible_verify.png) no-repeat;
+height: 18px;
+padding: 1%;
+width: 92%;
+padding-left: 40px;
+font-size: 14px;
+/* margin-top: 10px; */
+font-family: Verdana;
+margin-left: 20px;
+float: left;
+margin: 9px;
+border-bottom: 2px solid #adadac;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+.get-start-txt1 span{
+float: right;
+margin-right: 4px;
+}
+#fb_likebox
+{
+position: absolute;
+}
+#fb_likebox p{
+ background-image: url("/images/bingobible/bingobible_likebox.png");
+    background-repeat: no-repeat;
+	left: 340px;
+	top: 55px;
+    padding-bottom: 63px;
+    padding-left: 52px;
+    padding-top: 11px;
+    position: absolute;
+    width: 268px;
+}
+#christmasgift{
+   margin-left: -254px;
+    margin-top: -9px;
+    position: absolute;
+}
+#christmasgift > p {
+    float: right;
+    margin-left: 10px;
+    margin-top: -7px;
+}
+#postal{
+ width: 33%;
+ float: left;
+}
+#security{
+ width: 33%;
+  float: left;
+}
+#Expiration{
+ width: 33%;
+  float: left;
+}
+.rect .rect-left h2{
+color: #FF0000;
+}
+
+.content .content-middle .rect .rect-left h2 {
+    margin-top: 0;
+}
+.name-error {
+    float: right;
+    margin-bottom: -8px;
+    margin-top: -31px;
+	margin-right: 21px;
+    width: 80%;
+}
+.dropdown, .sub-dropdown{
+    background-image: url("/images/bingobible/dropdown.png");
+    background-repeat: no-repeat;
+	background-position: 153px center;
+	}
+	.sub-dropdown{
+		background-image: url("/images/bingobible/right-arrow.png");
+		background-position: 200px center;
+	}
+	
+	#socialicons { 
+    float: right; 
+    margin-left: 76%; 
+    margin-top: 50px; 
+    position: fixed; 
+    width: 24%; 
+    z-index:-100;
+} 
+  
+#socialicons a { 
+    float: right; 
+    margin-left: 42%; 
+}
+
+.windows-signup-form{
+	background-color: #FFFFFF;
+    border-radius: 10px;
+    float: left;
+    margin-bottom: 63px;
+    width: 100%;
+}
+
+#windows-signup-form{
+    font-family: myriad-web-pro;
+    font-size: 14px;
+    height: 80%;
+    padding: 46px 0 68px 110px;
+}
+
+.form-info-chkbox {
+    background-color: #FFED8E;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    float: left;
+    font-size: 18px;
+    height: 31px;
+    margin-bottom: 23px;
+    margin-left: 46px;
+    width: 48%;
+}
+
+.errors{
+	margin-top:-15px;
+	margin-bottom:20px;
+	color:#EB0009;
+}
+
+.login_form_button{
+	margin-left: 10%;
+}
+
+.containerbox{
+    background-image: url("/images/bingobible/bk-games.png"); /*place this bk-games image in the img folder */
+	 font-family: ChangaOne-Italic;
+    font-size: 13px;
+    background-repeat: no-repeat;
+    height: 25px;
+    left: -6px;
+    position: relative;
+    top: -8px;
+    width: 70px;
+	color:#FFFFFF;
+	}
+	
+#profile-image{
+	left: 5px;
+    position: relative;
+    top: -42px;
+}
+
+#notification{
+	background-image: url("/images/bingobible/num-bg.png");
+    color: #FFFFFF;
+    display: block;
+    font-size: 15px;
+    left: 100px;
+    position: relative;
+    text-align: center;
+    top: -68px;
+    width: 18px;
+}

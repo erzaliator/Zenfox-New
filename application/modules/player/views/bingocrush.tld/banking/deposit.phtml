@@ -1,0 +1,465 @@
+<?php
+//echo $this->form;
+
+if(!$this->ajaxReq)
+{
+?>
+<div id="inner-iframe-box">
+<div class="ttdepol">
+  <div class="ttdepolcont">
+    <div class="ttdepolplz" id="player-deposit-amount">
+    <?php 
+    if($this->amount)
+    {
+    	echo "You have selected £" . $this->amount;
+    	?>
+    	<script type = "text/javascript">$(function(){ setDepositCounter(); });</script>
+		
+    	<?php
+    }
+    else
+    {
+    	echo "Please deposit minimum £10 or above";
+    }
+    ?>
+    </div>
+    <div class="ttdepolinnnav">
+      <div class="steps">
+        <ul>
+          <li id="step-0" class="step step-1"> <a href="javascript:void(0)" class="<?=$this->amount?'':'current' ?>">Select Amount</a> </li>
+		  <li id="step-1" class="step step-2"> <a href="javascript:void(0)" class="<?=$this->amount?'current':'' ?>">Complete Profile</a> </li>
+          <li id="step-2" class="step step-4"> <a href="javascript:void(0)">Mode of Payment</a> </li>
+        </ul>
+      </div>
+      <div id="deposit-section-0" class="ttdepolflowback" style="border:0px solid;width:749px;display:<?=$this->amount?'none':'block' ?>;">
+        <div class="ttdepolfloinn" style="border:0px solid;">
+		<div style="float:left;width:505px;margin-top:10px">
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>            
+              <tr style="height:60px;">
+                <td width="5%" style="background:#fff">&nbsp;</td>
+                <td width="6%" style="background:#fff"><input type="radio" value="10" id="amount-1" name="radio"></td>
+                <td width="30%" style="background:#fff">&#163; 10</td>
+                  
+                <td width="6%" style="background:#fff"><input type="radio" value="25" id="amount-2" name="radio"></td>
+                <td width="30%" style="background:#fff">&#163; 25</td>
+
+               
+              </tr>
+              
+              <tr style="height:60px;">
+                <td width="5%">&nbsp;</td>
+                <td width="6%"><input type="radio" value="75" id="amount-4" name="radio" >
+                <td width="30%">&#163; 75</td>
+              
+                <td width="6%"><input type="radio" value="100" id="amount-5" name="radio"></td>
+                <td width="30%">&#163; 100</td>
+               
+                
+              </tr>
+			  <tr style="height:60px;">
+			   <td width="5%">&nbsp;</td>
+			   <td width="6%" style="background:#fff"><input type="radio" value="50" id="amount-3" name="radio"></td>
+                <td width="30%" style="background:#fff">&#163; 50</td>
+				
+				<td width="6%"><input type="radio" value="500" id="amount-6" name="radio"></td>
+                <td width="30%">&#163; 500</td>
+			  
+			  </tr>
+              
+              
+              <tr style="height:60px;">
+                <td width="5%" style="background:#fff">&nbsp;</td>
+                <td width="6%" style="background:#fff"><input type="radio" value="" id="amount-7" name="radio">
+                  <label for="radio"></label></td>
+                <td width="31%" style="background:#fff"><!--Custom-->Enter Amount &#163;
+                  <input type="text" id="custom-amount" style="width:80px" name=""></td>
+                <td width="7%" style="background:#fff">&nbsp;</td>
+                <td width="19%" style="background:#fff"> <div class="ttdepolnext1">    
+				    <input id="deposit-next-0" name="" type="button" value="Next"  class="ttdepolnextbackbtn" style="margin-left:-200px" onclick="nextDepositSec()">
+      </div></td>
+               <!--<td width="6%" style="background:#fff">&nbsp;</td>
+
+                <td width="26%" style="background:#fff">hii</td>-->
+              </tr>
+			  <!--<tr><td></td><td colspan="3"><img src="/images/bingocrush/egg4.png"  alt="Bingo" /></td></tr>-->
+            </tbody>
+          </table>
+		  </div>
+		   <div style="background: none repeat scroll 0 0 #FFD6DD;border: 1px solid #CD222B;border-radius: 6px 6px 6px 6px;float: left;height:280px;margin-bottom: 10px;width: 230px;margin-top:10px">
+				<img alt="Bingo Crush" src="/images/bingocrush/after_deposit.jpg" />
+		   </div>
+        </div>
+		
+	 </div>
+	
+	  <div id="deposit-section-1" style="display:<?=$this->amount?'block':'none' ?>;" class="ttpaymentnavm">
+		  <?php
+		  if(!$this->completed)
+		  {
+			?>
+			<div class="warning" style="font-size:14px;"><b style="font-size:16px;">Note:</b> It is very essential to provide correct profile information. If found any fraudulent information, management has the right to close account and reset the account balance to zero.!!</div>
+			<?php
+		  }
+		  else
+		  {
+			?>
+			<div class="warning" style="font-size:14px;">Your profile is completed, click on Next.!!<br>
+				<b style="font-size:16px;">Note:</b> To change any information, please contact to our customer support.
+			</div>
+			<?php
+		  }
+		  ?>
+		<div class="ttpaymentcont" id="profile-form">
+          <form name = "player-profile-form">
+            <div id="inner-box">
+              <dl class="zend_form">
+                <ul>
+                  <li>
+                    <label class="optional" for="firstName">First Name*</label>
+                    <input type="text" value="<?=$this->firstName ?>" id="firstName" name="firstName" <?=($this->firstName)?"disabled":""?>>
+                  </li>
+				  <li>
+                    <label class="optional" for="lastName">Last Name*</label>
+                    <input type="text" value="<?=$this->lastName ?>" id="lastName" name="lastName" <?=($this->lastName)?"disabled":""?>>
+                  </li>
+				  <li>
+					<label class="optional" for="sex">Sex*</label>
+                    <select name="sex" id="sex" style="width:100px" <?=($this->sex)?"disabled":""?>>
+                      <option label="Male" value="M" <?=($this->sex == 'M')?"selected":"" ?>>Male</option>
+					  <option label="Female" value="F" <?=($this->sex == 'F')?"selected":"" ?>>Female</option>
+                     </select>
+				  </li>
+				  <li>
+				  
+				  	<label class="required" for="dob">Date Of Birth*</label>
+				  	<select name="dob-year" id="dob-year" style="width:60px" <?=($this->dobYear)?"disabled":""?>>
+				  		<option label="Year" value="year">Year</option>
+				  		<?php
+				  		for($i=$this->currentYear; $i > 1900; $i--)
+				  		{
+				  			?>
+				  			<option label="<?=$i ?>" value="<?=$i ?>" <?=($this->dobYear == $i)?"selected":"" ?>><?=$i ?></option>
+				  			<?php 
+				  		} 
+				  		?>
+                    </select>
+                    <select name="dob-month" id="dob-month" style="width:75px" <?=($this->dobMonth)?"disabled":""?>>
+                    	<option label="Month" value="month">Month</option>
+				  		<?php
+				  		for($i=1; $i <= 12; $i++)
+				  		{
+				  			?>
+				  			<option label="<?=$i ?>" value="<?=$i ?>" <?=($this->dobMonth == $i)?"selected":"" ?>><?=$i ?></option>
+				  			<?php 
+				  		} 
+				  		?>
+                    </select>
+                    <select name="dob-date" id="dob-date" style="width:65px" <?=($this->dobDate)?"disabled":""?>>
+                    	<option label="Date" value="date">Date</option>
+				  		<?php
+				  		for($i=1; $i <= 31; $i++)
+				  		{
+				  			?>
+				  			<option label="<?=$i ?>" value="<?=$i ?>" <?=($this->dobDate == $i)?"selected":"" ?>><?=$i ?></option>
+				  			<?php 
+				  		} 
+				  		?>
+                    </select>
+				  
+					<!-- label for="dateofbirth" class="required">Date Of Birth *</label>
+					<input type="text" name="dateofbirth" id="dateofbirth" value="<?=$this->dob ?>" <?=($this->dob != '0000-00-00')?"disabled":""?>-->
+				</li>
+                  <li>
+                    <label class="optional" for="contactNo">Contact No*</label>
+                    <input type="text" value="<?=$this->phone ?>" id="contactNo" name="contactNo" <?=($this->phone)?"disabled":""?>>
+                  </li>
+                  <li>
+                    <label class="optional" for="emailAddress">Email*</label>
+                    <input type="text" value="<?=$this->email ?>" id="emailAddress" name="emailAddress" <?=($this->email)?"disabled":""?>>
+                  </li>
+				<li>
+                    <label class="optional" for="address">Address*</label>
+                    <input type="text" value="<?=$this->address ?>" id="address" name="address" <?=($this->address)?"disabled":""?>>
+                  </li>
+				<li>
+                    <label class="optional" for="city">City*</label>
+                    <input type="text" value="<?=$this->city ?>" id="city" name="city" <?=($this->city)?"disabled":""?>>
+                  </li>
+                  <li>
+                    <label class="optional" for="pin">Pincode*</label>
+                    <input type="text" value="<?=$this->pin ?>" id="pin" name="pin" <?=($this->pin)?"disabled":""?>>
+                  </li>
+                  <li>
+                    <label class="optional" for="state">State*</label>
+                    <input type="text" value="<?=$this->state ?>" id="state" name="state" <?=($this->state)?"disabled":""?>>
+                  </li>
+                  <li>
+                    <label class="optional" for="country">Country*</label>
+                    <select name="country" id="country" style="width:150px" <?=($this->countryCode)?"disabled":""?>>
+	                    <?php
+	                    	foreach($this->allCountries as $country)
+	                    	{
+	                    		?>
+	                    		<option label="<?=$country['country'] ?>" value="<?=$country['country_code'] ?>" <?=($this->countryCode == $country['country_code'])?"selected":"" ?>><?=$country['country'] ?></option>
+	                    		<?php
+	                    	} 
+	                    ?>
+                    </select>                 
+                  </li>
+                </ul>
+              </dl>
+            </div>
+          </form>
+        </div>
+	  </div>
+      <div id="deposit-section-2" style="display:none" class="ttpaymentnavm">
+	  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <tr style="background:#fff;line-height:40px">
+                <td width="5%" style="background:#fff">&nbsp;</td>
+                <td width="7%" style="background:#fff" ><input type="radio" value="DEBIT" id="debit" name="payment-option" onclick="checkPaymentType('DEBIT')"></td>
+                <td width="19%" style="background:#fff">Debit</td>
+                <td width="6%" style="background:#fff"><input type="radio" value="CREDIT" id="credit" name="payment-option" onclick="checkPaymentType('CREDIT')"></td>
+                <td width="26%" style="background:#fff">Credit</td>
+                <td width="6%" style="background:#fff"><!--<input type="radio" value="UKASH" id="ukash" name="payment-option" onclick="checkPaymentType('UKASH')">-->
+                  <label for="radio"></label></td>
+                <td width="31%" style="background:#fff;color:red;">Ukash - Coming Soon....</td>
+              </tr>
+
+            </tbody>
+      </table>
+	        </div>
+			
+			 <div class="ttdepolnextback1">
+      <div class="ttdepolback1">
+        <input id="deposit-back" name="" type="button" value="Back"  class="ttdepolbackbtns" onclick="prevDepositSec('<?=$this->completed ?>')">
+      </div>
+     <div class="ttdepolnext1">    
+				    <input id="deposit-next-1" name="" type="button" value="Next"  class="ttdepolnextbackbtn" style="margin-left:-200px" onclick="nextDepositSec()">
+      </div>
+      <div align="right" style="margin:0px;">
+        <input name="" id="confirm-order" type="button" value="Confirm Order" class="ttdepolconfbtn" onclick="confirmOrder('')">
+      </div>
+    </div>
+    </div>
+   
+  </div>
+</div>
+</div>
+
+<div id="exist_bank" style="border:1px solid #CD222B;height:auto;width:750px;float:left;margin:20px 0px 20px 0px;display:none">
+	
+	<div id="deposit_radio" style="display:none">
+	
+	  <?php 
+	  if($this->cardDetails)
+	  {
+	  	?>
+	  	<div style="float:left;width:750px;margin:10px 0px 0px 10px" class="TTBingogameName TTBingoBtnmargt">Existing Cards</div><br/>
+	  	<div style="float:left;width:750px;margin:10px 0px 0px 30px;line-height:35px">
+	  	 
+	  	<table width="100%">
+	  	<?php 
+	 	foreach($this->cardDetails as $cardData)
+	 	{
+	 		if($cardData['card_type'] == 'DEBIT')
+	 		{
+	 			?>
+	 				<tr style="height:40px;">
+	 				 		<td>xxx xxxx xxxx <?=substr($cardData['card_no'],11) ?></td>
+	 				 		<td><input type="button" value="Click here to deposit" class="ttdepolback_1" onclick="confirmOrder(<?=$cardData['id'] ?>)"/></td>
+	 				 		</tr>
+	 				 		<?php
+	 		} 
+	 	}
+	
+	  }
+	  ?>
+	  <tr  style="height:15px;"><td colspan="2"></td></tr>
+	  	<tr style="margin-left:-10px;">
+	  	<td colspan="2"><input type="submit" value="Add new card" id="addnew_debit" class="ttdepolconf_1" style="margin-bottom:20px;"/></td>
+	  	</tr>
+	  	
+	  	</table>
+	  	
+	  	</div>
+	</div>
+	<div id="credit_radio" style="display:none">
+	 <?php 
+	 if($this->cardDetails)
+	 {
+	 	?>
+	 	<div style="float:left;width:750px;margin:10px 0px 0px 10px" class="TTBingogameName TTBingoBtnmargt">Existing Cards</div><br/>
+	 	
+	 	<div style="float:left;width:750px;margin:10px 0px 0px 30px;line-height:35px">
+	 	
+	 	<table width="100%">
+	 	 
+	 	<?php 
+	 	foreach($this->cardDetails as $cardData)
+	 	{
+	 		if($cardData['card_type'] == 'CREDIT')
+	 		{
+	 			?>
+	 				 		<tr style="height:40px;">
+	 				 		<td>xxx xxxx xxxx <?=substr($cardData['card_no'],11) ?></td>
+	 				 		<td><input type="button" value="Click here to deposit" class="ttdepolback_1" onclick="confirmOrder(<?=$cardData['id'] ?>)"/></td>
+	 				 		</tr>
+	 				 		<?php 
+	 		}
+	 	}
+	 	 
+	 }
+	 ?>
+	 <tr  style="height:15px;"><td colspan="2"></td></tr>
+	 	<tr>
+	 	<td colspan="2"><input type="submit" value="Add new card" id="addnew_credit" class="ttdepolconf_1" style="margin-bottom:20px;"/></td>
+	 	</tr>
+	 	
+	 	</table>
+	 	</div>
+	</div>
+	<div id="addcard_debit" style="float:left;width:750px;display:none;margin:10px 0px 20px 30px;line-height:35px">
+		<table width="100%">
+	      <tr>
+			<td>First Name on the Card</td>
+		   <td><input id="card_holder_fname" value="" type="text" name="card_holer_fname"/></td>
+		   </tr>
+		   <tr>
+			<td>Last Name on the Card</td>
+		   <td><input id="card_holder_lname" value="" type="text" name="card_holer_lname"/></td>
+		   </tr>
+		   <tr>
+		   <td>Card number </td>
+		   <td><input id="card_no" value="" type="text" name="cardno"/></td>
+		   </tr>
+		   <tr>
+		   <td>Expiry Month</td>
+		   <td>
+		   <select name="expmonth" id="card_expiry_month" style="width:45px">
+           	<option label="Jan" value="01">01</option>
+			<option label="Feb" value="02">02</option>
+			<option label="Mar" value="03">03</option>
+			<option label="Apr" value="04">04</option>
+			<option label="May" value="05">05</option>
+			<option label="Jun" value="06">06</option>
+			<option label="Jul" value="07">07</option>
+			<option label="Aug" value="08">08</option>
+			<option label="Sep" value="09">09</option>
+			<option label="Oct" value="10">10</option>
+			<option label="Nov" value="11">11</option>
+			<option label="Dec" value="12">12</option>
+           </select>
+		   </tr>
+		   <tr>
+		   <td>Expiry Year</td>
+		   <td>
+		   	<select name="expyear" id="card_expiry_year" style="width:75px">
+		   		<?php 
+		   		for($i = 18; $i < 50; $i++)
+		   		{
+		   			$year = $this->currentYear + $i;
+		   			?>
+		   			<option label="<?=$year?>" value="<?=$year?>"><?=$year?></option>
+		   			<?php 
+		   		}
+		   		?>
+		   	</select>
+		   </td>
+		   </tr>
+		   <tr>
+		   <td>CVC Number</td>
+		   <td><input id="card_cvc_no" value="" type="text" name="cvcno" size="3"/></td>
+		   </tr>
+		   <tr id="valid_month">
+		   <td>Valid From Month</td>
+		   <td>
+		   <select name="validfromdate" id="valid_from_month" style="width:45px">
+           	<option label="Jan" value="01">01</option>
+			<option label="Feb" value="02">02</option>
+			<option label="Mar" value="03">03</option>
+			<option label="Apr" value="04">04</option>
+			<option label="May" value="05">05</option>
+			<option label="Jun" value="06">06</option>
+			<option label="Jul" value="07">07</option>
+			<option label="Aug" value="08">08</option>
+			<option label="Sep" value="09">09</option>
+			<option label="Oct" value="10">10</option>
+			<option label="Nov" value="11">11</option>
+			<option label="Dec" value="12">12</option>
+           </select>
+           </td>
+		   </tr>
+		   <tr id="valid_year">
+		   <td>Valid From Year</td>
+		   <td>
+		   <select name="validfromyear" id="valid_from_year" style="width:75px">
+		   		<?php 
+		   		$this->currentYear = $this->currentYear - 49;
+		   		for($i = 0; $i < 68; $i++)
+		   		{
+		   			$year = $this->currentYear + $i;
+		   			?>
+		   			<option label="<?=$year?>" value="<?=$year?>"><?=$year?></option>
+		   			<?php 
+		   		}
+		   		?>
+		   	</select>
+		   	</td>
+		   </tr>
+		   <tr id="issue_number">
+		   <td>Issue Number</td>
+		   <td><input id="card_issue_no" value="" type="text" name="issueno" size="2"/></td>
+		   </tr>
+		   <tr>
+		   <td>Card Type</td>
+		   <td>
+		   <select name="card_sub_type" id="card_sub_type" style="width:100px">
+                <option label="Master" value="MAST">Master</option>
+				<option label="Visa" value="VISA">Visa</option>
+				<option label="Switch" value="SWITCH">Switch</option>
+				<option label="Solo" value="SOLO">Solo</option>
+				<option label="Delta" value="DELTA">Delta</option>
+				<option label="Amex" value="AMEX">Amex</option>
+				<option label="Maestro" value="MAESTRO">Maestro</option>
+           </select>		   
+		   </td>
+		   </tr>
+		   <tr  style="height:15px;"><td colspan="2"></td></tr>
+		   <tr>
+		   <td></td>
+		   <td><input type="button" value="Deposit" class="ttdepolbackbtns" onclick="confirmOrder('')"/></td>
+		   </tr>
+		   </table>
+	    </div>
+</div>
+<!-- <link rel="stylesheet" href="/css/rummy.tld/jquery-ui-1.8.9.custom.css" type="text/css" media="screen">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<!-- link rel="stylesheet" href="/resources/demos/style.css" /-->
+<script type="text/javascript">
+$(function() {
+$("#dateofbirth").datepicker({"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true,"yearRange":"1970:1994"});
+
+});
+
+$("#addnew_debit").click(function(){
+$("#addcard_debit").css('display','block');
+});
+$("#addnew_credit").click(function(){
+$("#addcard_debit").css('display','block');
+});
+
+
+
+</script>
+
+<!-- form id="lpsredirect-form" name="lpsredirect-form" method="post" action="" style="display: none;">
+	<input id="md" type="hidden" name="MD" value="">
+	<input id="paReq" type="hidden" name="PaReq" value="">
+	<input id="termUrl" type="hidden" name="TermUrl" value="">
+</form-->
+<?php 
+}

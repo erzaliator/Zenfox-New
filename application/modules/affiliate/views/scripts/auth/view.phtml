@@ -1,0 +1,17 @@
+<?php
+$affiliateDetails = $this->affiliateDetails;
+echo '<br><b>Profile Details</b><br>';
+echo "<hr>";
+echo "<table border = '0' width='100%'>";
+foreach($affiliateDetails as $key => $value)
+{
+	if($key != 'affiliateId' && $key != 'passWord' && $key != 'masterId' && $key != 'masterId' && $key != 'created'  && $key != 'enabled' && $key != 'affiliateFrontendId' && $key != 'affiliateFrontendId' && $key != 'balance' && $key != 'masterContribution' && $key != 'masterDeduction' && $key != 'buddyBalance')
+	{
+		echo '<tr>';
+		echo '<td><b>'.ucfirst($key).'</b></td>';
+		echo '<td>'.$value.'</td>';
+		echo '</tr>';
+	}
+}
+echo '</table>';
+?>

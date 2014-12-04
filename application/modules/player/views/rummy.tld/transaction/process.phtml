@@ -1,0 +1,12 @@
+<?php 
+if(!$this->error)
+{
+	header("Status: 202 OK");
+	echo 1;
+}
+else
+{
+	header("Status: 500 Internal Server Error");
+	echo 0;
+}
+?>

@@ -1,0 +1,58 @@
+<div class="ttdepolcont">
+	<div id="inner-box">
+<?php 
+echo $this->form; 
+echo $this->table($this->table1);
+echo $this->table($this->table2);?>
+<a href = "/withdrawal/modify/type/updateidentity">  UPDATE IDENTITY  </a>&nbsp;&nbsp;
+<a href = "/withdrawal/modify/type/addbankdetails">  ADD BANK DETAILS  </a>&nbsp;&nbsp;
+<a href = "/withdrawal/modify/type/mydetails">  MY DETAILS  </a><br/><br/>
+
+<script type="text/javascript" >
+changeIdProof()
+
+function changeIdProof()
+{
+	if(document.getElementById("idproof_form-label") != undefined){
+		document.getElementById("idproof_form-label").textContent = "ID Proof";
+	}
+	if(document.getElementById("address_form-label") != undefined){
+		document.getElementById("address_form-label").textContent = "Address Proof";
+	}
+	if(document.getElementById("bank_detail_form-label") != undefined){
+		document.getElementById("bank_detail_form-label").textContent = "Bank Details";
+	}
+	if(document.getElementById("idproof_form-idproof") != undefined){
+		var currentIdProof = document.getElementById("idproof_form-idproof").value;
+		if(currentIdProof == 'OTHER'){
+			document.getElementById("player_idproofother").style.display = "block";
+			document.getElementById("player_idproofnumber").style.display = "block";
+			document.getElementById("player_idproofauthority").style.display = "block";
+			document.getElementById("player_idproofexpiry").style.display = "block";
+		}
+		else{
+			document.getElementById("player_idproofother").style.display = "none";
+			document.getElementById("player_idproofnumber").style.display = "none";
+			document.getElementById("player_idproofauthority").style.display = "none";
+			document.getElementById("player_idproofexpiry").style.display = "none";
+		}
+	}
+	if(document.getElementById("address_form-addressproof") != undefined){
+		var addressProof = document.getElementById("address_form-addressproof").value;
+		if(addressProof == 'OTHER'){
+			document.getElementById("player_otheraddressproof").style.display = "block";
+			document.getElementById("player_addressproofnumber").style.display = "block";
+			document.getElementById("player_addressproofauthority").style.display = "block";
+			document.getElementById("player_addressproofexpiry").style.display = "block";
+		}
+		else{
+			document.getElementById("player_otheraddressproof").style.display = "none";
+			document.getElementById("player_addressproofnumber").style.display = "none";
+			document.getElementById("player_addressproofauthority").style.display = "none";
+			document.getElementById("player_addressproofexpiry").style.display = "none";
+		}
+	}
+}
+</script>
+</div>
+</div>

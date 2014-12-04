@@ -1,0 +1,10 @@
+<a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a>
+<br></br><br></br>
+<?php
+
+if($this->form)
+{
+	echo '<b>Add A new Resource</b>'.'<br>';
+}
+echo $this->form;

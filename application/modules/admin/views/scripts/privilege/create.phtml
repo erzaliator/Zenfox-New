@@ -1,0 +1,30 @@
+<a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a>
+<br></br><br></br>
+<?php
+$form = $this->form;
+if($this->form)
+{
+	echo '<b>Add a Privilege</b>'.
+				'<br>';
+}
+if($this->privilegeId)
+{
+	$existingId = $form->createElement('hidden', 'existingId');
+	$existingId->setValue($this->privilegeId);
+	$form->addElement($existingId);
+	
+	echo 'A privilege with the same role and resource already exists'.'<br>';
+	echo 'Click submit to add anyway or click edit to edit the privilege'.'<br>';
+	?>
+	
+	<a href = "<?php echo $this->url(array(
+							'controller' => 'privilege',
+							'action' => 'viewdetails',
+							'id' => $this->privilegeId));
+			?>">
+			<?php  print('edit');?>
+		</a>
+<?php }
+echo $form;
+?>

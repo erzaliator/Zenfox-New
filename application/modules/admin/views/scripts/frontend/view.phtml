@@ -1,0 +1,19 @@
+<?php
+//Zenfox_Debug::dump($this->machines, 'game details', true, true);
+foreach($this->frontends as $frntend)
+{
+	print("Frontend Id -->    "); print($frntend['id'].'  ');
+	print("Frontend Name --> ");
+	?>
+	<a href = "<?php echo $this->url(array(
+							'controller' => 'frontend',
+							'action' => viewdetails,
+							'id' => $frntend['id']
+							));
+			?>">
+	<?php  print($frntend['name']);?></a>
+	<?php 
+	echo '<br>';
+}
+?>
+

@@ -1,0 +1,72 @@
+<a href ="/home">Home</a>
+<?php
+
+echo $this->form;
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $playerData)
+		{
+			$linkArray[$playerData['Player Id']] = array(
+										'controller' => 'player',
+										'action' => 'view',
+										'accountType' => $this->accountType,
+										'playerId' => $playerData['Player Id']);
+		}
+		$this->table($this->contents, array('Player Id'), $linkArray);
+//		echo "<table cellpadding='0' cellspacing='2' border='1'>";
+//		foreach($this->headings as $key => $heading)
+//		{
+//			echo "<td><b>" . $heading . "</b></td>";
+//		}
+//		echo "<tr>";
+//		foreach($this->playerData as $logs)
+//		{
+//			foreach($logs as $key => $value)
+//			{
+//				echo "<td>"; 
+//				if($key == 'player_id')
+//				{
+//					?>
+					<a href = "<?php 
+//					echo $this->url(array(
+//									'controller' => 'searching',
+//									'action' => 'edit',
+//									'id' => $value));
+					?>"> <?php
+//				}
+//				echo $value . "</td>";
+//			}
+//			echo "<tr>";
+//		}
+		?></a>
+		<?php
+	}
+
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	$this->pagination($pages, array(
+							'field' => $this->searchField,
+							'accountType' => $this->accountType,
+							'str' => $this->searchStr));
+	
+	
+	?>
+	<a href = "/download/index/rType/email/field/<?=$this->searchField ?>/str/<?=$this->searchStr ?>">Download</a>
+	<?php 
+	}
+	
+	/*echo $this->paginationControl(
+						$this->paginator,
+						'Sliding',
+						'my_paginator_control.phtml',
+						array(
+							'searchField' => $this->searchField,
+							'match' => $this->match,
+							'searchString' => $this->searchStr,
+							'from' => $this->from,
+							'to' => $this->to));*/
+
+?>

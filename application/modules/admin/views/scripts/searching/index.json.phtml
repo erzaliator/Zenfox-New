@@ -1,0 +1,14 @@
+<?php 
+
+if( $this->success)
+{
+	$totalCount = ( $this->paginator->getTotalItemCount() )/2;
+	$playerData = array();
+	$playerData['totalCount'] = $totalCount;
+	//$playerData['type'] = "unconfirm";
+	$playerData['players'] = $this->contents;
+	//print_r($playerData);
+
+	echo json_encode($playerData);
+}
+?>

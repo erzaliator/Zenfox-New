@@ -1,0 +1,2 @@
+{$quickRegistrationForm}
+{$message}

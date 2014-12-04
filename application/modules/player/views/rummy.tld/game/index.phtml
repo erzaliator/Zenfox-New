@@ -1,0 +1,206 @@
+			<?php
+/*
+				$groups = $this->groups;
+				$gameFlavours = $this->gameFlavours;
+				$allGameDetails = $this->allGameDetails;
+								
+<div class="TabbedPanelContent">
+									<!--div class="game-titles"><p>Rummy</p>
+									</div-->
+									<div class="game-list">
+									<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="550" height="400" id="WebContainerLobby" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<!--param name="movie" value="/games/multi-player/lobby/WebContainerLobby.swf" />
+	<param name="FlashVars" value="xml_config=/games/multi-player/lobby/Config.txt&lobby_swf_path=/games/multi-player/lobby/lobby/Lobby.swf" /-->
+	<param name="movie" value="/games/container/web-container.swf" />
+	<param name="FlashVars" value="xml_config=/games/container/config.txt&lobby_swf_path=/games/container/components/lobby/rummy-lobby/lobby.swf" />
+	<param name="quality" value="high" />
+	<param name="bgcolor" value="#ffffff" />
+	<param name="wmode" value="transparent" />
+	<!--embed src="/games/multi-player/lobby/WebContainerLobby.swf" flashVars = "xml_config=/games/multi-player/lobby/Config.txt&lobby_swf_path=/games/multi-player/lobby/lobby/Lobby.swf" quality="high" bgcolor="#000000"-->
+	<embed src="/games/container/web-container.swf" flashVars = "xml_config=/games/container/config.txt&lobby_swf_path=/games/container/components/lobby/rummy-lobby/lobby.swf" quality="high" bgcolor="#000000"
+				width="670" height="502" name="Web Container" align="middle"
+				play="true"
+				loop="false"
+				quality="high"
+				allowScriptAccess="sameDomain"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer" 
+				wmode="transparent"
+				>
+			</embed>
+			</object>
+									</div>
+									</div>
+*/
+//$hostAddress = $this->hostAddress;
+$hostAddress = "";
+$flavour = "";
+$login = $this->login.'|-1|lobby';
+$passKey = md5(-1 . md5($this->phpsessid));
+$swfFile = $hostAddress . $this->flashDir .'/multi-player/rummy/indian-rummy/theme/blue-table/game.swf';
+$gameConfig = $hostAddress . $this->flashDir .'/multi-player/rummy/indian-rummy/config.txt';
+$settings = $hostAddress. $this->flashDir . "/container/components/settings/settings.swf";
+
+/* $winner = $siteHttpUrl. $this->flashDir ."/container/components/winner/winner.swf";
+$inviteFriends = $siteHttpUrl . $this->flashDir .'/container/components/invitefriends/invitefriends.swf'; */
+?>
+
+<?php /*
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="100%" height="100%" id="WebContainerLobby" align="middle">
+<!--	<param name="allowScriptAccess" value="sameDomain" /> -->
+<param name="allowScriptAccess" value="always" />
+	<param name="allowFullScreen" value="false" />
+	<param name="wmode" value="transparent" />
+	<param name="movie" value="<?=$hostAddress?>/games/container/web-container.swf" />
+	<param name="FlashVars" value="base_url=<?=$hostAddress?>&xml_config=<?=$hostAddress?>/games/container/config.txt&lobby_swf_path=<?=$hostAddress?>/games/container/components/lobby/rummy-lobby/lobby.swf&user_name=<?php echo $this->name;?>&balance=<?php echo $this->cash;?>&bonus=<?php echo $this->bonus;?>&loyalty_points=<?php echo $this->loyaltyPoints;?>&image_path=<?php echo $this->imagePath;?>&free_chips=<?php echo $this->freeChips;?>" />
+	<param name="quality" value="high" />
+	<param name="bgcolor" value="#ffffff" />
+	<embed src="<?=$hostAddress?>/games/container/web-container.swf" flashVars = "base_url=<?=$hostAddress?>&xml_config=<?=$hostAddress?>/games/container/config.txt&lobby_swf_path=<?=$hostAddress?>/games/container/components/lobby/rummy-lobby/lobby.swf&user_name=<?php echo $this->name;?>&balance=<?php echo $this->cash;?>&bonus=<?php echo $this->bonus;?>&loyalty_points=<?php echo $this->loyaltyPoints;?>&image_path=<?php echo $this->imagePath;?>&free_chips=<?php echo $this->freeChips;?>" quality="high" bgcolor="#000000"
+				width="100%" height="600" name="Rummy" align="middle"
+				play="true"
+				wmode="transparent"
+				loop="false"
+				quality="high"
+				allowScriptAccess="sameDomain"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer">
+			</embed>
+			</object>
+
+*/
+?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>	 	
+		<?php
+		/*
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<!--		<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script> -->
+                <script type="text/javascript">
+                        function detectPopupBlocker()
+                        {
+                          var myTest = window.open("about:blank","","directories=no,height=100,width=100,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,top=0,location=no");
+                          if (!myTest) {
+                                //alert("A popup blocker was detected.");
+                                return false;
+                          } else {
+                                myTest.close();
+                                //alert("No popup blocker was detected.");
+                                return true;
+                          }
+                        }
+                </script>
+		*/
+		?>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<!--script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script-->
+		<script type="text/javascript">
+			var isActive;
+			window.onfocus = function () { 
+			  isActive = true; 
+			}; 
+
+			window.onblur = function () { 
+			  isActive = false; 
+			}; 
+			var oldTitle = document.title;
+			var msg = "Your turn!";
+			var timeoutId;
+			var blink = function() { document.title = document.title == msg ? ' ' : msg; };
+			var clear = hideAlert;
+			function turnAlert()
+			{
+				if(!isActive)
+				{
+					if (!timeoutId) {
+					  timeoutId = setInterval(blink, 1000);
+					  window.onmousemove = clear;
+					}
+				}
+			}
+			function hideAlert()
+			{
+				if (timeoutId) {
+					clearInterval(timeoutId);
+				}
+				document.title = oldTitle;
+				window.onmousemove = null;
+				timeoutId = null;
+			}
+			function detectPopupBlocker()
+			{
+				try
+				{
+			  		var myTest = window.open("about:blank","","directories=no,height=100,width=100,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,top=0,location=no");
+				}
+				catch(error)
+				{
+					return false;
+				}
+				//alert(myTest);
+			  if (!myTest) {
+				//alert("A popup blocker was detected.");
+				return false;
+			  } else if(myTest) {
+				//alert((navigator && (navigator.userAgent.toLowerCase()).indexOf("chrome") > -1));
+				if(navigator && (navigator.userAgent.toLowerCase()).indexOf("chrome") > -1)
+				{
+					//alert(myTest.screenX);
+					if (myTest.screenX === 0) 
+					{
+         				       //alert("failed for chrome");
+						myTest.close();
+						return false;
+      				     	} 
+					else 
+					{
+           				    	// close the test window if popups are allowed.
+						//alert("No popup blocker was detected in chrome.");
+          				      	myTest.close();
+						//return true; 
+       				}
+				}
+				myTest.close();
+				//alert("No popup blocker was detected.");
+				return true;
+			  }
+			}
+		</script>
+	</head>
+	<body>
+	
+		
+			<?php $flashvardata1 = "base_url=".$hostAddress."&lobby_swf_path=".$hostAddress.$this->flashDir."/container/components/lobby/rummy-lobby/theme/blue_table/lobby.swf"."&lobby_config=".$hostAddress.$this->flashDir."/container/components/lobby/rummy-lobby/lobby-config.txt"."&user_name=".$this->name."&balance=".$this->cash; ?>
+		<?php $flashvardata2 = "&bonus=".$this->bonus."&loyalty_points=".$this->loyaltyPoints."&free_chips=".$this->freeChips."&image_path=".$this->imagePath."&login=".$login."&open_popup=false&game_flavour=".$flavour; ?>
+		<?php $flashvardata3 = "&pass_key=".$passKey."&xml_config=".$hostAddress.$this->flashDir."/container/config.txt&game_config=".$gameConfig."&game_swf_path=".$swfFile."&settings=".$settings."&locale=en_IN&tabname=".$this->tabName."&frontend_id=".$this->frontendId."&theme=blue_table"; ?>
+		<?php $flashvardata = $flashvardata1.$flashvardata2.$flashvardata3 ;?>
+		
+		 <div id="fb-root"></div>
+		<!-- div id="flashContent">
+			<h1>You need at least Flash Player 10.0 to view this page.</h1>
+			<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+		</div-->  
+		<div>
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="960" height="790" id="Container" name="flashContent">
+				<param name="movie" value="/games/taashtime/container/web-container.swf" />
+				<param name="wmode" value="transparent" />
+				<param name="flashvars" value="<?=$flashvardata?>" />
+				<!--[if !IE]>-->
+				<object type="application/x-shockwave-flash" data="/games/taashtime/container/web-container.swf" width="960" height="790">
+					<param name="wmode" value="transparent" />
+					<param name="flashvars" value="<?=$flashvardata?>" />
+				<!--<![endif]-->
+					<a href="http://www.adobe.com/go/getflashplayer">
+					Your flash player version has to be 10.0.0 or greater. Please install from Adobe Flash Website
+						<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+					</a>
+				<!--[if !IE]>-->
+				</object>
+				<!--<![endif]-->
+			</object>
+	</body>
+</html>

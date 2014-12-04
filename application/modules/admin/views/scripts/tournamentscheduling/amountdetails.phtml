@@ -1,0 +1,168 @@
+<?php echo $this->form;
+if((!empty($this->table1)) or (!empty($this->table2)))
+{
+
+
+	
+	$fullarray = (array_merge($this->table1,$this->table2));
+	
+	$count = count($fullarray);
+	
+	
+
+	
+	while(--$count >= 0)
+	{
+		$index = $count;
+		while(--$index >= 0)
+		{
+			if(($fullarray[$count][tournament_id] == $fullarray[$index][tournament_id]) and ($fullarray[$count][tier_id] == $fullarray[$index][tier_id]))
+			{
+				
+				$result[$count][tournament_id] = $fullarray[$count][tournament_id];			
+				$result[$count][tier_id] = $fullarray[$count][tier_id];
+				$result[$count][playercount] = $fullarray[$count][count] + $fullarray[$index][count] ;
+				$result[$count][amount] = $fullarray[$count][sum] + $fullarray[$index][sum];
+				$result[$count][amount_type] = $fullarray[$count][amount_type];
+				
+				
+				$fullarray[$index][sum] = "empty";
+				$fullarray[$count][sum] = "empty";
+
+			}
+			
+			
+		}
+	}
+	
+	
+	$result = array_values($result);
+	$count = count($fullarray);
+	$length = count($result);
+	
+	while(--$count>=0)
+	{
+		if($fullarray[$count][sum] != "empty")
+		{
+			$result[$length][tournament_id] = $fullarray[$count][tournament_id];
+			$result[$length][tier_id] = $fullarray[$count][tier_id];
+			$result[$length][playercount] = $fullarray[$count][count];
+			$result[$length][amount] = $fullarray[$count][sum];
+			$result[$length][amount_type] = $fullarray[$count][amount_type];
+			$length++;
+			
+
+		}
+		
+	}
+	
+	
+	function aasort (&$array, $key) {
+		$sorter=array();
+		$ret=array();
+		reset($array);
+		foreach ($array as $ii => $va) {
+			$sorter[$ii]=$va[$key];
+		}
+		asort($sorter);
+		foreach ($sorter as $ii => $va) {
+			$ret[$ii]=$array[$ii];
+		}
+		$array=$ret;
+	}
+// 	aasort($result,'tier_id');
+	
+	$count = count($result);
+	$index = $count;
+	
+	while(--$index>=0)
+	{
+		if($result[$index][amount_type] == "FREE")
+		{
+			$result[$index][amount] = 0;
+		}
+	}
+	
+	
+	while(--$count>=0)
+	{
+		
+			$results[$result[$count][tournament_id]][tournament_id] = $result[$count][tournament_id];
+			$results[$result[$count][tournament_id]][tier_id] = TOTAL;
+			$results[$result[$count][tournament_id]][playercount] += $result[$count][playercount];
+			
+				$results[$result[$count][tournament_id]][amount] += $result[$count][amount];
+				$results[$result[$count][tournament_id]][amount_type] = $result[$count][amount_type];
+			
+			$length++;
+				
+					
+			
+	}
+	
+	$results = array_values($results);
+	
+	$fullarray = (array_merge($result,$results));
+	
+	array_multisort(tournament_id, SORT_ASC, $fullarray);
+	
+	
+	
+	//aasort($fullarray,'tier_id');
+	
+	
+	
+	
+	aasort($fullarray,'tournament_id');
+	
+	$count = count($fullarray);
+	$index =0;
+	$var =0;
+	$finalarray = array();
+	$fullarray = array_values($fullarray);
+	
+	while($index < $count)
+	{
+		$temp[$var] = $fullarray[$index];
+		while($fullarray[$index][tournament_id] == $fullarray[$index+1][tournament_id])
+		{
+			$var++;
+			$temp[$var] = $fullarray[$index+1];
+			$index++;
+		}
+		aasort($temp,'tier_id');
+		
+		$finalarray = (array_merge($finalarray,$temp));
+		$temp = array();
+		
+		$index++;	
+	}
+	
+	$count = count($finalarray);
+	$index = 0;
+	
+	$result = array();
+	
+	while($count > $index)
+	{
+		if($finalarray[$index][tier_id] != "TOTAL")
+		{
+			$result[$finalarray[$index][tournament_id]][tournament_id] = $finalarray[$index][tournament_id];
+			$result[$finalarray[$index][tournament_id]][tier_id] = $result[$finalarray[$index][tournament_id]][tier_id]." ".$finalarray[$index][tier_id];
+			$result[$finalarray[$index][tournament_id]][playercount] =$finalarray[$index][playercount]." ". $result[$finalarray[$index][tournament_id]][playercount];
+			$result[$finalarray[$index][tournament_id]][amount] = $result[$finalarray[$index][tournament_id]][amount]." ".$finalarray[$index][amount];
+		}
+		else
+		{
+			$result[$finalarray[$index][tournament_id]][TotalPlayers] = $finalarray[$index][playercount];
+			$result[$finalarray[$index][tournament_id]][TotalAmount] = $finalarray[$index][amount];
+		}
+			$index++;
+	}
+	
+	echo $this->table($result);
+	
+		
+}
+
+?>

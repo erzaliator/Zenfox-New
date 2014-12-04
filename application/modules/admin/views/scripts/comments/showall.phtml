@@ -1,0 +1,62 @@
+<?php
+if(count($this->paginator))
+{
+	/*Zenfox_Debug::dump($this->paginator, 'paginator');
+	print('current - ' .$this->paginator->getCurrentPageNumber());
+	print('items - ' . $this->paginator->getItemCountPerPage());*/
+	foreach($this->content as $index => $commentData)
+	{
+		$linkArray[$commentData['Change Status']] = array(
+			'controller' => 'comments',
+			'action' => 'status',
+			'id' => $commentData['Change Status'],
+			'status' => $commentData['Current Status'],
+//			'page' => $this->paginator->getCurrentPageNumber(),
+//			'items' => $this->paginator->getItemCountPerPage(),
+		);
+		$linkArray[$commentData['Page Address']] = array(
+			'controller' => 'comments',
+			'action' => 'showall',
+			'index' => 'page_address',
+			'field' => $commentData['Page Address'],
+			);
+		$linkArray[$commentData['Topic']] = array(
+			'controller' => 'comments',
+			'action' => 'showall',
+			'index' => 'topic',
+			'field' => $commentData['Topic'],
+			);
+		$linkArray[$commentData['Current Status']] = array(
+			'controller' => 'comments',
+			'action' => 'showall',
+			'index' => 'enabled',
+			'field' => $commentData['Current Status'],
+			);
+	}
+	$linkFields = array('Change Status', 'Page Address', 'Topic', 'Current Status');
+	$this->table($this->content, $linkFields, $linkArray);
+	if($this->searchString || $this->from)
+	{
+		echo $this->paginationControl($this->paginator, 'Sliding', 'paginator_control.phtml', array(
+																					'field' => 'field',
+																					'from' => 'from',
+																					'to' => 'to',
+																					'indexes' => 'index',
+																					'searchIndex' => $this->searchIndex,
+																					'searchingFields' => $this->searchString,
+																					'fromDate' => $this->from,
+																					'toDate' => $this->to));
+	}
+	elseif($this->view->index)
+	{
+		echo $this->paginationControl($this->paginator, 'Sliding', 'paginator_control.phtml', array(
+																					'field' => 'field',
+																					'indexes' => 'index',
+																					'searchIndex' => $this->index,
+																					'searchingFields' => $this->searchField,));
+	}
+	else
+	{
+		echo $this->paginationControl($this->paginator, 'Sliding', 'paginator_control.phtml');
+	}
+}

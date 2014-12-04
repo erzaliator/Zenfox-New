@@ -1,0 +1,247 @@
+<?php 
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+$authSession = new Zenfox_Auth_Storage_Session();
+$sessionData = $authSession->read();
+
+$frontendController = Zend_Controller_Front::getInstance();
+$controller = $frontendController->getRequest()->getControllerName();
+$action = $frontendController->getRequest()->getActionName();
+
+$page = $controller . '-' . $action;
+?>
+
+<!DOCTYPE html>
+<html><head>
+<link rel="shortcut icon" href="/images/ace2jak/a2j.png">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ace2Jak</title>
+<link rel="stylesheet" href="/css/ace2jak/master.css" type="text/css">
+<!--[if IE]>
+	<link rel="stylesheet" href="/css/ace2jak/ie.css" type="text/css"/>
+<![endif]-->
+<script src="/js/ace2jak/jquery-1.8.3.min.js"></script>
+<script src="/js/ace2jak/custom.js"></script>
+
+<script>
+function openGame(url, width, height) {
+	var leftPosition, topPosition;
+	//Allow for borders.
+	leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+	//Allow for title and status bars.
+	topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+	//Open the window.
+	window.open(url, "game","status=no,height=" + height + ",width=" + width + ",resizable=yes,left="
+	+ leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY="
+	+ topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no");
+}
+
+jQuery(function() {
+    jQuery( "#datepicker" ).datepicker();
+  });
+</script>
+<?php 
+echo $this->headMeta();
+?>
+</head>
+
+<body class="inner-page">
+<div id="header">
+  <div class="container">
+<div class="logo"><a href="/"><img src="/images/ace2jak/logo.png"></a></div>
+<div class="header-menu">
+    <div class="top-ribbon">
+    	<?php
+    		if($sessionData)
+    		{
+    			$playerId = $sessionData['id'];
+    			$imageName = md5("image" . $playerId) . '.jpg';
+    			$loginName = $sessionData['authDetails'][0]['login'];
+    			$firstName = $sessionData['authDetails'][0]['first_name'];
+    			
+    			$cash = $sessionData['authDetails'][0]['bank'] + $sessionData['authDetails'][0]['winnings'] + $sessionData['authDetails'][0]['bonus_bank'] + $sessionData['authDetails'][0]['bonus_winnings'];
+    			$bonus = $sessionData['authDetails'][0]['bonus_due'];
+    			$buddyBonus = $sessionData['authDetails'][0]['buddy_earnings'];
+    			
+    			$loyaltyPoints = $sessionData['authDetails'][0]['loyalty_points_left'];
+    			
+    			$currency = new Zend_Currency();
+    			$currencySession = new Zend_Session_Namespace('currency');
+    			$source = $currency->getShortName('', $currencySession->oldValue);
+    			$destination = $currency->getShortName('', $currencySession->newValue);
+    			$currConv = new CurrencyConversion();
+    			$cash = $currConv->getConvertedValue($source, $destination, $cash);
+    			$bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+    			$buddyBonus = $currConv->getConvertedValue($source, $destination, $buddyBonus);
+    			$sessionData['cash'] = $cash;
+    			$sessionData['bonus'] = $bonus;
+    			$authSession->write($sessionData);
+    			$joinUrl = "/";
+    			$accountVariable = new AccountVariable();
+    			$varData = $accountVariable->getData($playerId, 'freeMoney');
+    			if($varData)
+    			{
+    				$freeMoney = floatval($varData['varValue']);
+    			}
+    			
+    			$bonusLevel = new BonusLevel();
+    			$bonusPercent = $bonusLevel->getBonusPercentage($playerId);
+    			$level = $bonusPercent['levelPercent'];
+
+    			?>
+    			<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+				<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+				<script>
+			        $(document).ready(function() {
+			        	$("#progressbar").progressbar({
+			                value: <?=$level ?>
+			        	});
+			        });
+				</script>
+    			<div class="top-replace">
+	    			<p>Cash :&nbsp;<span>Rs. <?=round($cash, 2);?></span></p>
+	    			<p>Coins :&nbsp;<span>T¢ <?=round($freeMoney, 2);?></span></p>
+    			</div>
+    			<div class="top-replace">
+    				<p>Bonus Due :&nbsp;<span>Rs. <?=round($bonus, 2);?></span></p>
+    			</div>
+    			<div class="top-replace level">
+	    			<p>Level :</p><br>
+	    			<div id="progressbar"></div>
+    			</div>
+    			<?php 
+    		}
+	    	else
+	    	{
+	    		$decorator = new Decorator();
+	    		$loginForm = new Player_LoginForm();
+	    		$loginForm = $decorator->addDecorators($loginForm, 'login');
+	    		$request = Zend_Controller_Front::getInstance()->getRequest();
+	    		if($request->getParam('format') == 'json')
+	    		{
+	    			$loginForm->setAction('/auth/login/format/json');
+	    		}
+	    		else
+	    		{
+	    			$loginForm->setAction('/auth/login');
+	    		}
+	    		echo $loginForm;
+	    	}
+        ?>
+        <p class="live-tab">Live Tables: &nbsp;<span><?php 
+              $onlineTable = new OnlineTable();
+              echo $onlineTable->getLiveTables();
+              ?></span></p>
+             <?php 
+       if($sessionData)
+       {
+       	?>
+       	<p class="log-out"><a id="" href="/auth/logout" onclick="()" class="dropdown-toggle" data-hover="dropdown">Log Out</a></p>
+       	<?php 
+       }
+       ?>
+              
+    </div>
+    <?php 
+    	$partial = array('menu.phtml','player');
+		$this->navigation()->menu()->setPartial($partial);
+		echo $this->navigation()->menu()->render();
+	?>
+    </div>
+    <div style="padding-left: 20px;"><a href="https://taashtime.com" target="_blank"><img src="/images/ace2jak/tn_small.png"></a></div>
+</div>
+  </div>
+<div class="page-wrapper">
+	<div class="page-inner">
+		<?php 
+		if($page == 'game-index')
+		{
+			echo $this->flashMessenger();
+			echo $this->layout()->content;
+		}
+		else
+		{
+			?>
+			<div class="top-ban">
+			<a class="button-red" onclick="openGame('/game', 1000, 675)" href="#" id="">PLAYNOW</a>
+			<p>Claim <span>Rs 500*</span> of FREE game play on your first purchase. To start playing on Ace2Jak</p>
+			<?php 
+			if($sessionData)
+			{
+				?>
+				<a onclick="openGame('/game', 1000, 675)" href="#" class="button-green">PLAYNOW</a>
+				<?php 
+			}
+			else
+			{
+				?>
+				<a href="/auth/signup" class="button-green">SIGNUP</a>
+				<?php 
+			}
+			?>
+			</div>
+			<div class="sidebar-first" id="inner-nav">
+				<ul class="side-nav" id="sub-menu">
+					<!-- <li><a href="">Current Bonus Offers</a></li>
+					<li><a href="">Promo Tournaments</a></li>
+					<li><a href="">Double Your Acepoints</a></li>
+					<li><a href="">Refer and Earn</a></li>
+					<li><a href="">Poke and Earn</a></li>
+					<li><a href="">FAQs</a></li> -->
+				</ul>
+			</div>
+			<div class="content-right">
+			<div class="error-message">
+			<!-- <div class="top-section">
+			<h1>OFFERS &amp; EVENTS</h1>
+			<ul class="small-nav">
+			<li><a href="">Home</a>&nbsp;/&nbsp;</li>
+			<li><a href="">Promotions</a>&nbsp;/&nbsp;</li>
+			<li><a href="">Double Your Acepoints</a></li>
+			</ul>
+			</div> -->
+			<?php
+			echo $this->flashMessenger();
+			echo $this->layout()->content;
+			?></div>
+					</div>
+			<?php 
+		}
+		?>
+	</div>	
+</div>
+<div id="footer">
+<div class="container">
+	<div class="foot1">
+    	<a href=""><img src="/images/ace2jak/img21.png" alt=""></a>
+        <a href=""><img src="/images/ace2jak/know.png" alt=""></a>
+    </div>
+    <div class="foot2">
+    	<div class="foot2-inner">
+            <a href=""><img src="/images/ace2jak/visa.png" alt=""></a>
+            <a href=""><img src="/images/ace2jak/master.png" alt=""></a>
+            <a href=""><img src="/images/ace2jak/tech.png" alt=""></a>
+            <a href=""><img src="/images/ace2jak/cit.png" alt=""></a>
+            <!-- <a href=""><img src="/images/ace2jak/paypal.png" alt=""></a> -->
+        </div>
+    </div>
+    <div class="foot3">
+    	<!-- <a href=""><img src="/images/ace2jak/rng.png" alt=""></a>
+        <a href="" class="foot-last"><img src="/images/ace2jak/secured.png" alt=""></a> -->
+        <a href="http://taashnetwork.com" target="_blank" class="foot-last"><img src="/images/ace2jak/tn.png" alt="Taashnetwork"></a>
+    </div>
+</div>
+<div class="footer-bottom">
+<div class="container">
+<a href="/content/about">About Us</a>
+<a href="/faq/security">Security</a>
+<a href="/content/contact">Contact Us</a>
+<a href="/content/privacypolicy">Privacy Policy</a>
+<a href="/content/terms">Terms & Conditions</a>
+</div>
+</div>
+</div>
+
+
+</body></html>

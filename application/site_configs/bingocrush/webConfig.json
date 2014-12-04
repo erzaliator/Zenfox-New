@@ -1,0 +1,9 @@
+{
+	"viewDir":"bingocrush.tld/",
+	"htmlTitle":"Online Bingo",
+	"cssDir":"bingocrush/",
+	"jsDir":"bingocrush/",
+	"imagesDir":"bingocrush/",
+	"flashDir":"/games/taashtime",
+	"cdnImageServer":"http://play.taashtime.com"
+}

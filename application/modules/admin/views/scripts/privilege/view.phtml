@@ -1,0 +1,123 @@
+<a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a>
+<br></br>
+<br></br>
+<?php
+/*
+$roles = $this->roles;
+if($roles)
+{
+	echo '<b>select a role</b>'.'<br><br>';
+	foreach($roles as $role)
+	{?>
+		<a href = "<?php echo $this->url(array(
+							'controller' => 'privilege',
+							'action' => 'view',
+							'id' => $role['id']));
+			?>">
+			<?php  print($role['name']);?>
+		</a>
+	<?php echo '<br></br>';
+	}
+}*/ 
+?>
+<?php /*
+<table border='1'>
+	<tr>
+		<th>
+			Privilege Id
+		</th>
+		<th>
+			Privilege Name
+		</th>
+	</tr>
+<?php
+$privileges = $this->privileges;
+foreach($privileges as $privilege)
+{?>
+	<tr>
+		<td>
+			<?=$privilege['id']?>
+		</td>
+		<td>
+			<a href = "<?php echo $this->url(array(
+							'controller' => 'privilege',
+							'action' => 'viewdetails',
+							'id' => $privilege['id']));
+			?>">
+			<?php  print($privilege['resource_name']);?>
+		</a>
+		</td>
+	</tr>
+<?}?>
+</table> */?>
+<?php
+/*
+$privileges = $this->privileges;
+if($privileges)
+{
+	echo '<b>Click on the resource Name to view the privilege Details<b>'.'<br><br>';
+	foreach($privileges as $privilege)
+	{?>
+		<a href = "<?php echo $this->url(array(
+							'controller' => 'privilege',
+							'action' => 'viewdetails',
+							'id' => $privilege['id']));
+			?>">
+			<?php  print($privilege['resource_name']);?>
+		</a>
+	<?php echo '<br></br>';}
+}*/ 
+?>
+
+<?php
+$roles = $this->roles;
+$privileges = $this->privileges;
+foreach($roles as $role)
+{
+	echo '<br><b>Privileges for the role : '.$role['name'].'</b><br>';?>
+	<table border='1'>
+		<tr>
+			<th>
+				Role Name
+			</th>
+			<th>
+				Resource Name
+			</th>
+			<th>
+				Mode
+			</th>
+		</tr>
+			
+	  <?foreach($privileges as $privilege)
+		{
+			if($privilege['role_name'] == $role['name'])
+			{?>
+				<tr>
+					<td>
+						<?=$privilege['role_name']?>
+					</td>
+					<td>
+						<?=$privilege['resource_name']?>
+					</td>
+					<td>
+						<?=$privilege['mode']?>
+					</td>
+					<td>
+						<a href = "<?php echo $this->url(array(
+							'controller' => 'privilege',
+							'action' => 'edit',
+							'id' => $privilege['id']));
+							?>">
+							<?php  print('edit');?>
+						</a>
+					</td>
+				</tr>			
+	<?php 
+			}
+		}?>
+	</table>
+	
+<?php
+} 
+?>

@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+.menu
+{
+	float: left;
+	
+}
+.main-menu
+{
+	list-style:none;
+	position:relative;
+	margin:0;
+	padding:0;
+	float:left;
+	cursor: pointer;
+	background:url(/images/bingocrush/white.png) no-repeat!important;
+	width: 708px;
+	padding-left:10px!important;
+	display:block;
+}
+.main-menu li
+{
+	float:left;
+	margin-top: 13px;
+}
+.main-menu li a
+{
+	text-decoration:none;
+	padding: 24px 24px!important;
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 25px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.main-menu li a:hover
+{
+	color:#fbee23;
+}
+
+.submenu
+{
+	list-style:none;
+	display:none;
+	position:absolute;
+	top:51px;
+	margin:0;
+	/*float:left;*/
+	z-index: 1000;
+	background: #8c0000;
+	-webkit-border-bottom-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	
+}
+
+.main-menu li:hover .submenu
+{
+	display:block;
+}
+.submenu li
+{
+	float:none;
+	margin-top:0!important;
+	padding: 5px 25px!important;
+}
+.submenu li a
+{
+	text-decoration:none;
+	color:white!important;
+	padding:10px 0!important; 
+	font-size: 13px;
+	font-weight: normal;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.submenu li a:hover
+{
+	color: #fbee23!important;
+}
+li.active a
+{
+	color: #fbee23;
+}

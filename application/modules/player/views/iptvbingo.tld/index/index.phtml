@@ -1,0 +1,206 @@
+<div id="body-part">
+	<div class="flash-banner"><img src="/images/banner.jpg" alt="" width="720" height="300" hspace="0" vspace="0" border="0" />
+	</div>
+	<div class="login">
+    	<!-- This is the box that all of the tabs and contents of 
+         the tabs will reside -->
+    <div id="tabs_container">
+
+      <!-- These are the tabs -->
+      <ul class="tabs">
+        <li class="active" >
+          <a  rel="#tab_1_contents" class="tab">Sign Up Now!</a>
+        </li >
+        <li ><a rel="#tab_2_contents" class="tab">Login Here</a></li>
+      </ul>
+
+      <!-- This is used so the contents don't appear to the 
+           right of the tabs -->
+      
+
+      <!-- This is a div that hold all the tabbed contents -->
+      <div class="tab_contents_container">
+
+        <!-- Tab 1 Contents -->
+        <div id="tab_1_contents" class="tab_contents tab_contents_active">
+          <div class="register-box">
+	      				<div class="register-form">
+	            			<?php
+                   	    		echo $this->form;
+            	   			?>
+	     				</div>
+	   				</div>
+        </div>
+
+        <!-- Tab 2 Contents -->
+        <div id="tab_2_contents" class="tab_contents">
+          <div class="login-box">
+						<div class="login-form">
+						<?php
+                    		echo $this->loginForm;
+                		?>
+						</div>
+					</div>
+        </div>
+
+      </div>
+    </div>
+	</div>
+</div>
+  
+<div id="break">&nbsp; &nbsp; 
+</div>
+<div id="body-part2">
+   	<div class="box-games">
+   		<div><img src="/images/strip.jpg" alt="" width="701" height="33" border="0" />
+   		</div>
+        <div class="box-img">
+        	<div><img src="/images/roulette.jpg" alt="" width="190" height="372" hspace="0" vspace="0" border="0" />
+        	</div>
+            <div><img src="/images/slots-img.jpg" alt="" width="336" height="372" hspace="0" vspace="0" />
+            </div>
+            <div><img src="/images/keno.jpg" alt="" width="174" height="372" hspace="0" vspace="0" border="0" />
+            </div>
+      	</div>
+    </div>
+	<div class="accordion-box">
+    	
+    	
+    	<div class="accordion-box">
+	<div id="accordion">
+
+	<h2 class="tab1"><strong>Top Winners</strong></h2>
+	 
+	<div class="pane" style="display:block">
+
+	
+		<div class="winners">
+						<ul class="winner-list">
+	    					<?php
+	    						foreach($this->topWinners as $i => $topWinner)
+	    						{
+	    					?>
+	    					<li>
+	    						<div class="win-img">
+	    							<span>
+										<?php
+											if($i == 0)
+											{
+										?>
+										<img src="/images/win-img.gif" alt="win" /><img src="/images/win-img.gif" alt="win" /><img src="/images/win-img.gif" alt="win" />
+										<?php
+											}
+											elseif($i == 1)
+											{
+										?>
+										<img src="/images/win-img.gif" alt="win" /><img src="/images/win-img.gif" alt="win" />
+										<?php
+											}
+											elseif($i == 2)
+											{
+										?>
+										<img src="/images/win-img.gif" alt="win" />
+										<?php
+											}
+											else
+											{
+										?>
+										<img src="/images/win-img-s.gif" alt="win" />
+										<?php
+											} 
+										?>
+									</span>
+								</div>
+	            				<div class="win-name"><span><?=$topWinner['login']?></span>
+	            				</div>
+	            				<div class="win-amount"><span><?=$topWinner['amount']?></span>
+	            				</div>
+	       					</li>
+	       					<?php
+	    						}
+	    					?>
+	    				</ul>
+					</div>
+		
+	</div>
+	
+	<h2 class="tab2"><strong>Recent Winners</strong></h2>
+	
+	<div class="pane">
+		<div class="winners">
+						<ul class="winner-list">
+		    				<?php
+		    					foreach($this->recentWinners as $i => $recentWinner)
+		    					{
+		    				?>
+		    				<li>
+		    					<div class="win-img">
+		    						<span>
+										<?php
+											if($i == 0)
+											{
+										?>
+										<img src="/images/win-img.gif" alt="win" /><img src="/images/win-img.gif" alt="win" /><img src="/images/win-img.gif" alt="win" />
+										<?php
+											}
+											elseif($i == 1)
+											{
+										?>
+										<img src="/images/win-img.gif" alt="win" /><img src="/images/win-img.gif" alt="win" />
+										<?php
+											}
+											elseif($i == 2)
+											{
+										?>
+										<img src="/images/win-img.gif" alt="win" />
+										<?php
+											}
+											else
+											{
+										?>
+										<img src="images/win-img-s.gif" alt="win" />
+										<?php
+											} 
+										?>
+									</span>
+								</div>
+		            			<div class="win-name"><span><?=$recentWinner['login']?></span>
+		            			</div>
+		            			<div class="win-amount"><span><?=$recentWinner['amount']?></span>
+		            			</div>
+		       				</li>
+	       					<?php
+	    						}
+	    					?>
+	    				</ul>
+					</div>
+	</div>
+
+	<h2 class="tab3"><strong>Bingo Players Oline</strong></h2>
+	
+	<div class="pane">
+		<h3>Curabitur vel dolor</h3>
+		
+		<p>
+			Content 3
+		</p>
+	</div>
+	
+	<h2 class="tab4"><strong>Mine Game List</strong></h2>
+	
+	<div class="pane">
+		<h3>Curabitur vel dolor</h3>
+		
+		<p>
+			Content 4
+		</p>
+	</div>	
+
+</div>
+	</div>
+
+
+    	
+    	
+	</div>
+</div>

@@ -1,0 +1,86 @@
+<?
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LanguageForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Playdorm: The most fun dorm online</title>
+  <?$this->headLink()->appendStylesheet('/css/bingo.tld/playdorm-style.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/bingo.tld/menu.css') ?> 
+	<?$this->headLink()->appendStylesheet('/css/bingo.tld/forms.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/bingo.tld/typography.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/bingo.tld/reset.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/bingo.tld/left_nav.css') ?>
+	<?$this->headLink()->appendStylesheet('/css/bingo.tld/test.css') ?>
+  <?$this->headLink()->appendStylesheet('/SpryAssets/SpryAccordion.css') ?>
+  
+
+  <?=$this->headLink()?>
+  <? $this->headScript()->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'); ?>
+  
+  <?= $this->headScript()->appendFile('/SpryAssets/SpryAccordion.js') ?>  
+<?= $this->headScript()?>
+</head>
+<body>
+<div id="fb-root"></div>
+  <script src="/js/facebook.js"></script>
+<div class="nav-bt-strip">&nbsp;</div>
+<div id="mainDiv">
+  <div id="header">
+    <div class="logo">
+   <a href="<?= $this->baseUrl()?>">
+      <h2>Playdorm</h2>
+    </a>
+    </div>
+    <?php 
+		$form = new Player_LanguageForm();
+		echo $form;
+	?>
+    <div class="toplinks"><a href="#">HELP</a> | <a href="#">CONTACT</a> | <a href="#">ABOUT YOURGAMES</a></div>
+    <div class="menuNav">
+
+      <?php echo $this->navigation()->menu(); 
+      		//$this->jQuery()->enable();
+			//echo $this->JQuery();?>
+    </div>
+  </div>
+  <?=$this->layout()->content ?>
+  <div id="footer"> <br />
+    <br />
+    <br />
+    <br />
+    <br />
+     </div>
+</div>
+
+  <?php //$this->jQuery()->setLocalPath("http://zenfox.tld/js/testing.js");
+  //echo $this->JQuery();?>
+
+<!-- Including JQuery -->
+  <?php
+  $this->JQuery()->enable();
+    if($this->JQuery()->isEnabled())
+    {
+        //TODO:: Change the ui css depending on the frontend
+        $this->JQuery()->setUiLocalPath($this->baseUrl()."/js/jquery/js/jquery-ui.js")
+                        ->addStylesheet($this->baseUrl()."/js/jquery/css/custom-theme/jquery-ui.css");
+        echo $this->JQuery();
+        //echo $this->headMeta();
+    }
+  ?>
+<script type="text/javascript" src="/js/jquery_tabs.js"></script>
+<script type="text/javascript">
+<!--
+
+var Accordion1 = new Spry.Widget.Accordion("Accordion1");
+//-->
+</script>
+</body>
+</html>
+

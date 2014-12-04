@@ -1,0 +1,26 @@
+<?php 
+ 
+echo $this->form;
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->result as $playerData)
+		{
+			$linkArray[$playerData['Player Id']] = array(
+										'controller' => 'player',
+										'action' => 'view',
+										'playerId' => $playerData['Player Id']);
+		}
+		$this->table($this->result, array('Player Id'), $linkArray);
+	}
+	
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	$this->pagination($pages, array(
+							'starttime' => $this->starttime,
+							'endtime' => $this->endtime,
+							'status' => $this->status));
+	
+}

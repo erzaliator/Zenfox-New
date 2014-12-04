@@ -1,0 +1,51 @@
+<a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a>
+<br></br><br></br>
+<b>Role Details</b>
+<br></br>
+<table border='1'>
+<?php
+$role = $this->roleData;
+$parentId = $this->parentData['id'];
+
+foreach($role as $key => $value)
+{
+	if($key != 'id')
+	{?>
+		<tr>
+			<td>
+				<?=$key?>
+			</td>
+			<td>
+				<?php 
+				if($key == 'parentId')
+				{?>
+					<a href = "<?php echo $this->url(array(
+								'controller' => 'role',
+								'action' => viewdetails,
+								'id' => $parentId
+								));
+							?>">
+							<?php echo $this->parentData['name']?></a>
+					
+				<?}
+				else
+				{?>
+					<?= $value?>	
+				<?}?>
+			</td>
+		</tr>
+	<?php 
+	}
+}?>
+</table>
+
+<br></br>
+<br></br>
+
+<a href="<?php echo $this->url(array('controller' => 'role', 
+									'action' => 'edit',
+									'id' => $this->roleData['id']
+										)
+										);?>"
+										> edit</a>

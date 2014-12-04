@@ -1,0 +1,44 @@
+function refreshParent(url) 
+{
+	window.opener.location.href = url;
+	if (window.opener.progressWindow)
+	{
+		window.opener.progressWindow.close()
+	}
+	window.close();
+}
+$(document).ready(function()
+{
+	$('#connect').hide();
+	$('#userForm').hide();
+	$('#link').hide();
+	$('#user').click(function()
+	{
+		if($('input[value=yes]').is(':checked'))
+		{
+			$('#link').hide();
+			$('#connect').show();
+			$('#connect').click(function()
+			{
+				if($('input[value=ok]').is(':checked'))
+				{
+					$('#userForm').show();
+					$('#link').hide();
+				}
+				else
+				{
+					$('#userForm').hide();
+					$('#link').show();
+				}
+			});
+		}
+		else
+		{
+			$('#connect').hide();
+			$('#userForm').hide();
+			$('#link').show();
+		}
+		//alert($('#user').value);
+		//$('#connect').show();
+	});
+});

@@ -1,0 +1,35 @@
+<div class="ttdepol">
+<div class="ttdepolcont">
+   			<div class="withdrawalm">
+			<div id="identityverification">
+			<div id="inner-box">
+<?php 
+if(!empty($this->form))
+{
+	if(!$this->withdrawalForm)
+	{
+		?>
+		<div class="verification"> IDENTITY VERIFICATION</div>
+		<div class="details">Personal Details</div>
+		<?php
+	}
+	echo $this->form;
+}
+
+if($this->verified =="yes")
+{
+	echo $this->table($this->table1);
+	echo $this->table($this->table2);
+?>
+
+<a href = "/withdrawal/modify/type/updateidentity">  UPDATE IDENTITY  </a>&nbsp;&nbsp;
+<a href = "/withdrawal/modify/type/addbankdetails">  ADD BANK DETAILS  </a>&nbsp;&nbsp;
+<a href = "/withdrawal/modify/type/mydetails">  MY DETAILS  </a><br/><br/>
+<?php }?>
+</div>
+</div>
+</div>
+</div></div>
+<script type="text/javascript" >
+changeIdProof()
+</script>

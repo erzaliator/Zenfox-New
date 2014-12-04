@@ -1,0 +1,521 @@
+<?php
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LanguageForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/RegistrationForm.php';
+
+//$frontendDetails = Zend_Registry::getInstance()->isRegistered('frontendDetails-' . $_SERVER['HTTP_HOST'])?Zend_Registry::getInstance()->get('frontendDetails-' . $_SERVER['HTTP_HOST']):'';
+
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+//$webConfig = isset($frontendDetails['webConfig'])?$frontendDetails['webConfig']:'';
+$this->viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+$this->cssDir = isset($webConfig['cssDir'])?$webConfig['cssDir']:$this->viewDir;
+$this->jsDir = isset($webConfig['jsDir'])?$webConfig['jsDir']:$this->viewDir;
+$this->imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:$this->viewDir;
+$this->htmlTitle = isset($webConfig['htmlTitle'])?$webConfig['htmlTitle']:'null';
+
+$frontController = Zend_Controller_Front::getInstance();
+$controllerName = $frontController->getRequest()->getControllerName();
+$actionName = $frontController->getRequest()->getActionName();
+$session = new Zend_Auth_Storage_Session();
+$store = $session->read();
+		    
+$isLoggedIn = isset($store)?true:false;
+if($isLoggedIn)
+{
+	$pageAddress = $controllerName . '-' . $actionName;	
+}
+else
+{
+	$pageAddress = $controllerName;
+}
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php 
+$this->metatags();
+?>
+<title><? echo $this->htmlTitle; echo isset($this->pageTitle)? "-".$this->pageTitle:""; ?></title>
+<?$this->headLink()->appendStylesheet('/css/'. $this->viewDir .'/css/blueprint/new_screen.css') ?>
+  <?=$this->headLink()?>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27546725-1']);
+  _gaq.push(['_setDomainName', 'taashtime.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="/js/slides.min.jquery.js"></script>
+<script>
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: 'img/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true,
+				animationStart: function(current){
+					$('.caption').animate({
+						bottom:-35
+					},100);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationStart on slide: ', current);
+					};
+				},
+				animationComplete: function(current){
+					$('.caption').animate({
+						bottom:0
+					},200);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationComplete on slide: ', current);
+					};
+				},
+				slidesLoaded: function() {
+					$('.caption').animate({
+						bottom:0
+					},200);
+				}
+			});
+		});
+	</script>
+</head>
+<body class="<?php echo $pageAddress; ?>">
+<div style="position:fixed; right:0px; top:448px;"><a href="/game/quickjoin"><img src="/css/rummy.tld/images/playasguest.png" width="173" height="62" /></a></div>
+<div class="container">
+  <div class="span-24" id="login-header">
+    <div class="span-6 "><a href="/index/index"><img width="238" height="51" alt="Taash Logo" src="/css/rummy.tld/images/logo-animation.gif"></a></div>
+    <div class="span-13 login-container">
+      <div class="login-box">
+        <?php 
+		
+		if($isLoggedIn)
+		    {
+		    	$playerId = $store['id'];
+		    	$imageName = md5("image" . $playerId) . '.jpg';
+			    $loginName = $store['authDetails'][0]['login'];
+			    $firstName = $store['authDetails'][0]['first_name'];
+			    $cash = $store['authDetails'][0]['cash'];
+			    $bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+			    $loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+	    
+			    $currency = new Zend_Currency();
+			    $currencySession = new Zend_Session_Namespace('currency');
+			 //   if($currencySession->oldValue != $currencySession->newValue)
+			 //   {
+				$source = $currency->getShortName('', $currencySession->oldValue);
+				$destination = $currency->getShortName('', $currencySession->newValue);
+				$currConv = new CurrencyConversion();
+				$cash = $currConv->getConvertedValue($source, $destination, $cash);
+				$bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+				$store['cash'] = $cash;
+				$store['bonus'] = $bonus;
+				$session->write($store);
+				$joinUrl = "/";
+		    	?>
+		    	 <div class="left login-controls color-blue welcome-box"> <strong>Welcome back, <?php echo empty($firstName)?$loginName:$firstName;?>! </strong></div>
+        <div class="right login-controls small black-link"><a href="/auth/edit"><strong>Profile</strong></a> | <a href="/auth/changepwd"><strong>Change Password</strong></a> | <a href="/auth/logout"><strong>Logout</strong></a></div>
+		    	<?php 
+		    }
+		    else
+		    {
+			$joinUrl = "/auth/signup";
+		    	$loginForm = new Player_LoginForm();
+				$request = Zend_Controller_Front::getInstance()->getRequest();
+				if($request->getParam('format') == 'json')
+				{
+					$loginForm->setAction('/auth/login/format/json');
+				}
+				else
+				{
+					$loginForm->setAction('/auth/login');
+				}
+				echo $loginForm;
+		    }
+		?>
+      </div>
+    </div>
+    <div class="span-4 live-tables">
+      <div class="left pad-t-9 pad-l-5">Live Tables:</div>
+      <div class="live-tables-number right pad-r-5">
+      <?php 
+      $onlineTable = new OnlineTable();
+      echo $onlineTable->getLiveTables();
+      ?>
+      </div>
+    </div>
+  </div>
+  <div class="span-24" id="nav-bar">
+    <div class="span-25 ">
+      <?php 
+    	$partial = array('menu.phtml','player');
+		$this->navigation()->menu()->setPartial($partial);
+		echo $this->navigation()->menu()->render();
+	?>
+    </div>
+  </div>
+  <?php 
+  
+  if(!$isLoggedIn)
+  {
+  	?>
+  	<div>
+  	<div id="slideml" >
+  	<div id="container">
+  	<div id="example">
+  	<div id="slides">
+  	<div class="slides_container">
+  	<div class="slide"> <a href="http://taashtime.com/" title="Play Rummy for Free & 1000 Taash Coins Free" target="_blank"><img src="/css/rummy.tld/images/b6.jpg" width="675" height="365" alt="Play Rummy for Free & 1000 Taash Coins Free" title="Play Rummy for Free & 1000 Taash Coins Free"></a> </div>
+  	<div class="slide"> <a href="http://taashtime.com/" title="Follow,Like & Friend Us!" target="_blank"><img src="/css/rummy.tld/images/b2.jpg" width="675" height="365" alt="Follow,Like & Friend Us!" title="Follow,Like & Friend Us!"></a> </div>
+  	<div class="slide"> <a href="http://taashtime.com/" title="3TypesofGames" target="_blank"><img src="/css/rummy.tld/images/b3.jpg" width="675" height="365" alt="3TypesofGames" title="3TypesofGames"></a> </div>
+  	<div class="slide"> <a href="http://taashtime.com/" title="Announcing" target="_blank"><img src="/css/rummy.tld/images/b4.jpg" width="675" height="365" alt="Announcing" title="Announcing"></a> </div>
+  	<div class="slide"> <a href="http://taashtime.com/" title="Secure Payments" target="_blank"><img src="/css/rummy.tld/images/b5.jpg" width="675" height="365" alt="Secure Payments" title="Secure Payments"></a> </div>
+  	<div class="slide"> <a href="http://taashtime.com/" title="GoiningReferalDepositBonus" target="_blank"><img src="/css/rummy.tld/images/b1.jpg" width="675" height="365" alt="GoiningReferalDepositBonus" title="GoiningReferalDepositBonus"></a> </div>
+  	<div class="slide"> <a href="http://taashtime.com/" title="GoiningReferalDepositBonus" target="_blank"><img src="/css/rummy.tld/images/b7.jpg" width="675" height="365" alt="GoiningReferalDepositBonus" title="GoiningReferalDepositBonus"></a> </div>
+  	</div>
+  	</div>
+  	<img src="/css/rummy.tld/images/example-frame.png" width="739" height="341" alt="Example Frame" id="frame"> </div>
+  	</div>
+  	<map name="Map" id="Map">
+  	<area shape="rect" coords="88,200,170,259" href="#" alt="visacard" title="visacard" />
+  	</map>
+  	</div>
+  	<div id="slidemr">
+  	<div id="slidemrbg">
+  	<h2 >Play Now for Free!</h2>
+  	<div id="regForm" class="reg">
+  	<?php 
+  	$form = new Player_RegistrationForm();
+	$form->setAction('/auth/signup');
+	echo $form->registration('registration');
+  	?>
+  	</div>
+  	</div>
+  	</div>
+  	</div>
+  	<?php
+  }
+  else
+  {
+  	?>
+  	<div id="after-banner"><img src="/css/rummy.tld/images/web-banner-01.jpg" alt="Play Now!"/></div>
+  	<?php
+  }
+  
+  ?>
+  <div id="ttbotblk">
+    <div  class="span-10">
+      <div class="ttbotblkbg">
+        <h2 class="color-pink">What Is TAASH Time?</h2>
+        <p>Taashtime is a site dedicated to providing the best online card playing experience. The traditional Indian Rummy is their first game and it will be followed up by several others. The primary purpose of taashtime is to provide whole entertainment for the individual and their family, friends and colleagues. Taashtime is conceived as and created to be a means of entertainment and not a means for earning large amounts of money nor enabling players to do so.</p>
+        <p> Taashtime is building an exciting rewards program for all their players. Players can earn gifts, vouchers and many more thrilling prizes. As the site grows, so will the number and size of the 
+          prizes distributed.</p>
+      </div>
+      <div class="ttbotblkbg margin">
+        <h2 class="color-pink">Get Social With TaashTime</h2>
+        <div class="ttsocialm">
+        <div class="ttsociall"><h3>Like Us!<br>
+
+On</h3>
+          <a href="#"><img src="/css/rummy.tld/images/fbbig.png" width="177" height="48"></a></div>
+         <div class="ttsocialr"><h3>Follow Us!<br>
+
+On</h3>
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 4,
+  interval: 30000,
+  width: 250,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#333333',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#000000',
+      color: '#ffffff',
+      links: '#4aed05'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    behavior: 'all'
+  }
+}).render().setUser('taashtime').start();
+</script>
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: 'taashtime',
+  interval: 30000,
+  title: 'It\'s a double rainbow',
+  subject: 'Across the sky',
+  width: 250,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#8ec1da',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+    <!-- a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          <a href="#"><img src="/css/rummy.tld/images/twitterbig.png" width="177" height="48"></a-->
+          
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    <div class="span-7">
+      <div class="ttbotblkbgfb">
+        <div cla ss="home-content left">
+          <!-- <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script> -->
+          <fb:like-box href="http://www.facebook.com/taashtime" width="267" show_faces="true" border_color="" stream="true" header="true"></fb:like-box>
+        </div>
+      </div>
+    </div>
+    <div class="span-7 lastb">
+      
+        <?php 
+        echo $this->action('view', 'testimonial', 'player', array('scroll' => true));
+        ?>
+        <!-- div class="ttplyspks">
+          <div class="ttplyspksimg"><img src="/css/rummy.tld/images/spkimg.gif" width="77" height="98" /></div>
+          <div class="ttplyspkscont">This site is great. I have played on other sites but the feel of this site is fantastic! I wish them all the success going forward!
+            <p class="ttplyspksname"> Geetha Madhuri</p>
+          </div>
+        </div>
+        <div class="ttplyspks">
+          <div class="ttplyspksimg"><img src="/css/rummy.tld/images/spkimg.gif" width="77" height="98" /></div>
+          <div class="ttplyspkscont">This site is great. I have played on other sites but the feel of this site is fantastic! I wish them all the success going forward!
+            <p class="ttplyspksname"> Geetha Madhuri</p>
+          </div>
+        </div-->
+        
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="container pad-t-20">
+    <div class="span-4 append-1 black-link line-links">
+      <p class="bottom"><strong>TAASH Time</strong></p>
+      <p class="bottom"><a href="/content/about">About TAASH Time</a></p>
+      <p class="bottom"><a href="/content/legal">Legality</a></p>
+      <p class="bottom"><a href="/content/terms">Terms And Conditions</a></p>
+      <p class="bottom"><a href="/content/withdrawterms">Withdrawal Terms</a></p>
+      <p><a href="/content/contact">Contact Us</a></p>
+    </div>
+    <div class="span-4 append-1 black-link line-links">
+      <p class="bottom"><strong>Games</strong></p>
+      <p class="bottom"><a href="/game">Play Rummy</a></p>
+      <p class="bottom"><a href="/index/winner">Winners Zone</a></p>
+      <p class="bottom"><a href="/faq">Taash FAQ</a></p>
+      <p class="bottom"><a href="/content/awards">Taash Awards</a></p>
+      <p class="bottom"><a href="http://taashtime.com/blog">Blogs</a></p>
+      <p class="bottom"><a href="/affiliate/program">Affiliate Program</a></p>
+      <p><a href="/help/howtoplay">Players Guide</a></p>
+    </div>
+    <div class="span-6 line-links">
+      <p class="bottom">Credit & Debit Cards</p>
+      <p><img width="233" height="43" src="/css/rummy.tld/images/visamastercard.png"></p>
+      <p class="bottom">-Cash on Delivery </p>
+      <p class="bottom">-Netbanking Supported & Trusted by</p>
+      <p ><img src="/css/rummy.tld/images/sbi_axis_icici.png" width="241" height="68" /></p>
+    </div>
+    <div class="span-7 last prepend-1">
+      <p><img src="/css/rummy.tld/images/taashlogo-bottom.png"></p>
+      <p class="small line-small">Taashtime is a site dedicated to providing the best online card playing experience. The traditional Indian Rummy is their first game and it will be followed up by several others.</p>
+      <p class="small line-small">Copyright &copy; 2011 TaashTime.com - All rights reserved. </p>
+      <p class="small black-link"><a href="/content/privacypolicy">Privacy Policy</a> | <a href="#">Site Map</a> </p>
+      <div class="tt21" ><img src="/css/rummy.tld/images/21.png" width="41" height="40" /></div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="/css/rummy.tld/jquery-ui-1.8.9.custom.css" type="text/css" media="screen">
+<script type="text/javascript" src="/js/jquery_zenfox.js"></script>
+<div id="fb-root"></div>
+<script type='text/javascript' src = 'https://connect.facebook.net/en_US/all.js' async = true></script>
+<script type="text/javascript">
+
+window.fbAsyncInit = function() {
+  FB.init({appId: '204326862920157', status: true, cookie: true, xfbml: true,
+          session : null  });
+
+  FB.Event.subscribe('auth.logout', function(response) {
+	  if(get_cookie('facebook'))
+	  {
+		  var i;
+		  for(i = 0; i < 5; i++)
+		  {
+			  if(!get_cookie('facebook'))
+			  {
+				  break;
+			  }
+			  delete_cookie('facebook');
+		  }
+		  var loggedOut = confirm ("You have been logged out from Facebook. Do you wanna log out from Taashtime?");
+		  if(loggedOut)
+		  {
+			  window.location.href = "/auth/logout";
+		  }
+	  }
+  });
+
+};
+
+function facebookLogin() {
+    FB.login( function (response) {
+      if(response.authResponse) {
+    	  var accessToken = response.authResponse.accessToken;
+    	  var userId = response.authResponse.userID;
+    	  window.location.href = "/facebook/facebooklogin/userId/"+userId+"/accessToken/"+accessToken;
+      } else  {
+        // not logged in.
+      }
+    }, {scope:'email'});
+}
+
+function set_cookie ( name, value, exp_y, exp_m, exp_d, path, domain, secure )
+{
+  var cookie_string = name + "=" + escape ( value );
+
+  if ( exp_y )
+  {
+    var expires = new Date ( exp_y, exp_m, exp_d );
+    cookie_string += "; expires=" + expires.toGMTString();
+  }
+
+  if ( path )
+        cookie_string += "; path=" + escape ( path );
+
+  if ( domain )
+        cookie_string += "; domain=" + escape ( domain );
+  
+  if ( secure )
+        cookie_string += "; secure";
+  
+  document.cookie = cookie_string;
+  return true;
+}
+
+function delete_cookie ( cookie_name )
+{
+  var cookie_date = new Date ( );  // current date & time
+  cookie_date.setTime ( cookie_date.getTime() - 1 );
+  document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+}
+
+function get_cookie ( cookie_name )
+{
+  var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+
+  if ( results )
+    return ( unescape ( results[2] ) );
+  else
+    return null;
+}
+
+</script>
+<!-- Server Code -->
+<!-- Piwik
+			<script type="text/javascript">
+			var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.playdorm.com/" : "http://piwik.playdorm.com/");
+			document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+			</script><script type="text/javascript">
+			try {
+			var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", );
+			piwikTracker.trackPageView();
+			piwikTracker.enableLinkTracking();
+			} catch( err ) {}
+			</script><noscript><p><img src="http://piwik.playdorm.com/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+		End Piwik Tag -->
+<!-- Piwik 
+			<script type="text/javascript">
+			var pkBaseURL = (("https:" == document.location.protocol) ? "/piwik/" : "/piwik/");
+			document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+			</script><script type="text/javascript">
+			try {
+			var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", );
+			piwikTracker.trackPageView();
+			piwikTracker.enableLinkTracking();
+			} catch( err ) {}
+			</script><noscript><p><img src="/piwik/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+			 End Piwik Tag -->
+<script type="text/javascript">
+			var pkBaseURL = "http://taashtime.com/piwik/";
+			document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+<script type="text/javascript">
+			try {
+			var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+						piwikTracker.trackPageView();
+
+						
+			piwikTracker.enableLinkTracking();
+			} catch( err ) {}
+			</script>
+<noscript>
+<p><img src="http://taashtime.com/piwik/piwik.php?idsite=1" style="border:0" alt="" /></p>
+</noscript>
+<!-- begin olark code -->
+<script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length;while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])}c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d);(function(){function l(){return["<head></head><",z,' onload="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"}D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});olark.identify('8609-194-10-7825');/*]]>{/literal}*/</script>
+<!-- end olark code -->
+<!-- Begin Olark Addon Code -->
+<script type='text/javascript'>/*Updating the nickname*/olark('api.chat.updateVisitorNickname', {snippet:'' })</script>
+<!-- EndOlark Addon Code -->
+<!-- Start of the Pzyche Tag 
+<script type="text/javascript">
+    var pzy = document.createElement('script');
+    pzy.type = 'text/javascript';
+    var method = 'pzyche';
+    pzy.async = false;
+    pzy.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's3.amazonaws.com/embed.j.im/' + method + '.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(pzy, s);
+</script>
+ End of the Pzyche Tag -->
+<script type="text/javascript" src="https://www.startssl.com/seal.js"></script>
+<!-- Tracker Script -->
+<script type ="text/javascript" src="http://static.adohana.com/oa.js?usr=befa5c621cbbceace92907c751f8d506"></script>
+</body>
+</html>

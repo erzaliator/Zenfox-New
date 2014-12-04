@@ -1,0 +1,250 @@
+<div class="span7a">
+  <div class="span7a >
+    <div class="ttdeprofilet">
+      <div class="ttdeprofilel">
+        <div class="ttdeprofilepic"><img src="<?=$this->imagePath ?>" width="110" height="110" />
+          <p><a href="/auth/image">Choose Avatar</a></p>
+        </div>
+        <div class="ttdeprofilename"><?=$this->name ?></div>
+      </div>
+      <div class="ttdeprofiler" style="border:0px solid" id="ttdeprofiler">
+        <div class="ttdeprofilelbg">
+          <div class="pad-t-10 clear">
+            <div class="left"><strong>Number of Buddies Referred:</strong></div>
+            <div class="left"><?=$this->noOfBuddies ?></div>
+          </div>
+          <div class="pad-t-10 clear">
+            <div class="clear left"><strong>Loyalty Bonus %	:</strong></div>
+            <div class="left"><?=$this->loyaltyBonus ?></div>
+          </div>
+          <div class="pad-t-10 clear">
+            <div class="clear left"><strong>Bonus2Cash %	:</strong></div>
+            <div class="left"><?=$this->bonus2Cash ?></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ttdeprofileb">
+      <div class="ttdeprofilel">
+        <table class="ttdeprofilel">
+          <tr>
+            <td><div><strong>
+                <?=$this->translate("First Name ")?>
+                </strong> </div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['firstName']; ?></td>
+          </tr>
+          <tr>
+            <td><div><strong>
+                <?=$this->translate("Last Name ")?>
+                </strong></div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['lastName']; ?></td>
+          </tr>
+          <tr>
+            <td><div> <strong>
+                <?=$this->translate("Sex ")?>
+                </strong></div></td>
+            <td>:</td>
+            <td><?php 
+			if(strtolower($this->playerData['sex']) == 'm')
+			{
+				print("Male");
+			}
+			elseif(strtolower($this->playerData['sex']) == 'f')
+			{
+				print("Female");
+			} 
+			?></td>
+          </tr>
+          <tr>
+            <td><div><strong>
+                <?=$this->translate("Date Of Birth ")?>
+                </strong> </div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['dateOfBirth']; ?></td>
+          </tr>
+          <tr>
+            <td><div><strong>
+                <?=$this->translate("Email ID ")?>
+                </strong></div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['email']; ?></td>
+          </tr>
+          <!-- tr>
+            <td><div><strong>
+                <?=$this->translate("Phone Number ")?>
+                </strong></div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['phone']; ?></td>
+          </tr-->
+        </table>
+      </div>
+      <div class="ttdeprofiler" id="ttdeprofiler">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><div><strong>
+                <?=$this->translate("Address :")?>
+                </strong></div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['address']; ?></td>
+          </tr>
+          <tr>
+            <td><div><strong>
+                <?=$this->translate("City :")?>
+                </strong></div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['city']; ?></td>
+          <tr>
+            <td><div> <strong>
+                <?=$this->translate("State :")?>
+                </strong> </div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['state']; ?></td>
+          </tr>
+          <tr>
+            <td><div><strong>
+                <?=$this->translate("Country ")?>
+                </strong> </div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['country']; ?></td>
+          </tr>
+          <tr>
+            <td><div><strong>
+                <?=$this->translate("Phone Number ")?>
+                </strong></div></td>
+            <td>:</td>
+            <td><?php echo $this->playerData['phone']; ?></td>
+          </tr>
+          <!-- tr>
+            <td><strong>PAN</strong></td>
+            <td>:</td>
+            <td>BLLKJI21</td>
+          </tr-->
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ttdepolnextback">
+  <?php 
+  if($this->completed)
+  {
+  	?>
+  	<div class="ttdepolback"> Profile: <strong><span class="ttclrgreen"> Completed</span></strong><a href="/auth/edit" class="pad-l-15">Update Profile</a><br />
+  	<?php 
+  }
+  else
+  {
+  	?>
+  	<div class="ttdepolback"> Profile: <strong><span class="ttclrred"> Incomplete</span></strong> <a href="/auth/edit" class="pad-l-15">Edit Profile</a><br />
+  	<?php 
+  } 
+      if(($this->verified == 'Incomplete') || ($this->verified == 'Rejected'))
+      {
+      	?>
+      	<div class="pad-t-10">Verification Status:<span class="ttclrred"><strong> <?=$this->verified ?> </strong></span><a href="/withdrawal/verification" class="pad-l-15 ">Request Verification</a></div>
+      	<?php 
+      }
+      else
+      {
+      	?>
+      	<div class="pad-t-10">Verification Status:<span class="ttclrgreen"><strong> <?=$this->verified ?> </strong></span><a href="/withdrawal/verification" class="pad-l-15 ">Update Documents</a></div>
+      	<?php 
+      }
+      ?>
+    </div>
+    <div class="ttdepolnext">
+   		<a href="/auth/changepwd" class="pad-l-15 ">Change Password</a>
+      <!-- input name="input2" type="button" value="Confirm Order" class="ttdepolconfbtn" />
+      <input name="" type="button" value="Submit" class="ttdepolnextbackbtn" id="submit"-->
+    </div>
+  </div>
+</div>
+<!--<table class="paly-report-forms">
+  <tr class="even-style">
+    <td width="50%"><div>
+        <?=$this->translate("User  Name:")?>
+      </div></td>
+    <td width="50%"><?php echo $this->playerData['login']; ?></td>
+  </tr>
+  <tr class="odd-style">
+    <td><div>
+        <?=$this->translate("First Name :")?>
+      </div></td>
+    <td><?php echo $this->playerData['firstName']; ?></td>
+  </tr>
+  <tr class="even-style">
+    <td><div>
+        <?=$this->translate("Last Name :")?>
+      </div></td>
+    <td><?php echo $this->playerData['lastName']; ?></td>
+  </tr>
+  <tr class="odd-style">
+    <td><div>
+        <?=$this->translate("Email ID :")?>
+      </div></td>
+    <td><?php echo $this->playerData['email']; ?></td>
+  </tr>
+  <tr class="even-style">
+    <td><div>
+        <?=$this->translate("Date Of Birth :")?>
+      </div></td>
+    <td><?php echo $this->playerData['dateOfBirth']; ?></td>
+  </tr>
+  <tr class="odd-style">
+    <td><div>
+        <?=$this->translate("Sex :")?>
+      </div></td>
+    <td><?php 
+			if($this->playerData['sex'] == 'M')
+			{
+				print("Male");
+			}
+			elseif($this->playerData['sex'] == 'F')
+			{
+				print("Female");
+			} 
+			?></td>
+  </tr>
+  <tr class="even-style">
+    <td><div>
+        <?=$this->translate("Address :")?>
+      </div></td>
+    <td><?php echo $this->playerData['address']; ?></td>
+  </tr>
+  <tr class="odd-style">
+    <td><div>
+        <?=$this->translate("City :")?>
+      </div></td>
+    <td><?php echo $this->playerData['city']; ?></td>
+  </tr>
+  <tr class="even-style">
+    <td><div>
+        <?=$this->translate("State :")?>
+      </div></td>
+    <td><?php echo $this->playerData['state']; ?></td>
+  </tr>
+  <tr class="odd-style">
+    <td><div>
+        <?=$this->translate("Country :")?>
+      </div></td>
+    <td><?php echo $this->playerData['country']; ?></td>
+  </tr>
+  <tr class="even-style">
+    <td><div>
+        <?=$this->translate("Pin :")?>
+      </div></td>
+    <td><?php echo $this->playerData['pin']; ?></td>
+  </tr>
+  <tr class="odd-style">
+    <td><div>
+        <?=$this->translate("Phone Number :")?>
+      </div></td>
+    <td><?php echo $this->playerData['phone']; ?></td>
+  </tr>
+</table>-->

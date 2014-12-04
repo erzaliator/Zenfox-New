@@ -1,0 +1,19 @@
+<a href = "<?php echo $this->url(array('controller' => 'home', 'action' => 'index'));?>">
+Home</a>
+<br></br><br></br>
+<b>Available resources</b>
+<br></br><br></br>
+<?php
+$resources = $this->resources;
+foreach($resources as $resource)
+{?>
+	<a href = "<?php echo $this->url(array(
+						'controller' => 'resource',
+						'action' => 'viewdetails',
+						'id' => $resource['id']));
+		?>">
+		<?php  print($resource['name']);?>
+	</a>
+	<br></br>
+		
+<?}?>

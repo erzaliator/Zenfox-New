@@ -1,0 +1,132 @@
+<?php
+/**
+ * Copyright 2010 Stefan Des
+ *
+ * This file is part of WP Footer Ad
+ */
+?>
+<div class="wrap">
+	
+	<div class="icon32" id="icon-plugins"><br/></div>
+	<h2><?php echo wp_specialchars($this->heading) ?></h2>
+	
+	<div class="postbox-container">
+		<div class="metabox-holder">
+			<div class="meta-box-sortables ui-sortable">
+				
+				<form id="settings" method="post" action="">
+					
+					<div id="generalsettings-conf-box" class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>General Settings</span></h3>
+						<div class="inside">
+							<p>
+								<label for="generalPluginActive">Enable Plugin:</label>
+								<input type="checkbox" id="generalPluginActive" name="generalPluginActive"<?php if ($this->generalPluginActive): ?> checked="checked"<?php endif ?> />
+								<em>(Uncheck to disable)</em>
+							</p>
+							
+							<p class="note">
+								You can disable banners, using the <strong>Enable Plugin</strong> option, even if this plugin is active in WordPress.
+								Make sure the <strong>Enable Plugin</strong> option is checked, if you want to display advertisements.
+							</p>
+						</div>
+					</div>
+				
+					<div id="simplebanner-conf-box" class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>Plain Text or Image Banner</span></h3>
+						<div class="inside">
+							<p>
+								<label for="simpleBackgroundColor">Background Color:</label>
+								<span>#</span><input type="text" id="simpleBackgroundColor" class="color {required:true}" name="simpleBackgroundColor" value="<?php echo attribute_escape($this->simpleBackgroundColor) ?>" size="6" maxlength="6" />
+							</p>
+							
+							<p>
+								<label for="simpleFontColor">Font Color:</label>
+								<span>#</span><input type="text" id="simpleFontColor" class="color {required:true}" name="simpleFontColor" value="<?php echo attribute_escape($this->simpleFontColor) ?>" size="6" maxlength="6" />
+							</p>
+							
+							<p>
+								<label for="simpleFontSize">Font Size:</label>
+								<input type="text" id="simpleFontSize" name="simpleFontSize" value="<?php echo attribute_escape($this->simpleFontSize) ?>" size="3" maxlength="3" /> <span>px</span>
+							</p>
+							
+							<p>
+								<label for="simpleLinkTarget">Link Target:</label>
+								<select id="simpleLinkTarget" name="simpleLinkTarget">
+									<option value="local"<?php if ($this->simpleLinkTarget == 'local'): ?> selected="selected"<?php endif ?>>The Same Tab/Window</option>
+									<option value="external"<?php if ($this->simpleLinkTarget == 'external'): ?> selected="selected"<?php endif ?>>New Tab/Window</option>
+								</select>
+							</p>
+							
+							<p>
+								<label for="simpleDestinationUrl">Destination Url:</label>
+								<input type="text" id="simpleDestinationUrl" name="simpleDestinationUrl" value="<?php echo attribute_escape($this->simpleDestinationUrl) ?>" size="80" />
+							</p>
+							
+							<p>
+								<label for="simpleImageUrl">Image Url:</label>
+								<input type="text" id="simpleImageUrl" name="simpleImageUrl" value="<?php echo attribute_escape($this->simpleImageUrl) ?>" size="80" /> or
+							</p>
+							
+							<p><label for="simplePlainText">Plain Text:</label></p>
+							<textarea id="simplePlainText" name="simplePlainText" rows="2" cols="50"><?php echo htmlspecialchars($this->simplePlainText) ?></textarea>
+							
+							<p class="note">
+								You can specify the <strong>Background Color</strong> and the <strong>Font Color</strong> for this type of banner.<br/>
+								The <strong>Link Target</strong> determines how a click on the <strong>Destination Url</strong> should be processed, either link will be opened in the same tab/window, or the new tab/window.<br/>
+								Set up the <strong>Destination Url</strong> <em>(this Url will be opened when user has clicked on the advertisement)</em>.<br/>
+								Add the <strong>Image Url</strong> <em>(maximum height: 60px)</em> or set the <strong>Plain Text</strong> <em>(no HTML)</em>,
+								that will be displayed as advertisement.
+							</p>
+						</div>
+					</div>
+					
+					<div id="generalsettings-conf-box" class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>WP Footer Ad Pro</span></h3>
+						<div class="inside">
+							<p>
+							The pro version of wp footer ad, add advanced features to the plugin.
+							</p>
+							<p>The banner of the footer will not only be clickable, but when the user 
+							clicks on it, it will open a popup, which displays information in your own.</p>
+							<p>Here the screenshots of WP footer Pro:</p>
+							<p><img src="<?php bloginfo('url'); ?>/wp-content/plugins/wp-footer-ad/images/wp-footer-ad-pro.png"></p>
+							
+							<p><a href="http://www.stefandes.com/wordpress-plugin/wp-footer-ad/" target="_blank">Watch this short video</a> for a real example.</p>
+							<p>As you see in the second screenshot, you can use this plugin to advertise 
+							your products, add video, and add a form to increase the subscribers of the Mailing List.</p>
+							<p>WP Footer Ad Pro is not intrusive to your users, and always strikes their attention.</p>
+							
+							<p>The price of WP Footer Ad Pro is only $ 7, the download is immediately at any time of day.</p>
+							<p><a href="http://www.stefandes.com/go/buy_wp_footer_ad/" target="blank"><img src="<?php bloginfo('url'); ?>/wp-content/plugins/wp-footer-ad/images/button.png"></a></p>
+					<p><img src="<?php bloginfo('url'); ?>/wp-content/plugins/wp-footer-ad/images/paypal.gif"></p>
+					
+						</div>
+					</div>
+				
+					<p class="submit">
+						<?php wp_nonce_field($this->onceAction) ?>
+						<input type="hidden" name="action" value="save" />
+						<input class="button-primary" type="submit" name="submit" value="Save Settings" />
+					</p>
+					
+				</form>
+				
+			
+		<div id="generalsettings-conf-box" class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>WP Footer Ad Link</span></h3>
+						<div class="inside">
+						<p><a href="http://www.stefandes.com/wordpress-plugin/wp-footer-ad/" target="_blank" title="Homepage Plugin">WP Footer Ad Homepage</a></p>
+						<p><a href="http://www.stefandes.com/" target="_blank" title="Web Marketing">Web Marketing</a></p>
+						<p>Like this Plugin?<a href="http://www.stefandes.com/wordpress-plugin/wp-footer-ad/" target="_blank" title="Homepage Plugin">Consider a donation!</a></p>
+						<p><a href="http://www.twitter.com/stefandes/" target="_blank" title="Follow Me!">Follow Me on Twitter</a></p>
+						</div>
+					</div>	
+     </div>
+	</div>
+	
+</div>

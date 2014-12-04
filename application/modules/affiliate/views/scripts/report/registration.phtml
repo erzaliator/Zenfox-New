@@ -1,0 +1,18 @@
+<?php
+echo $this->form;
+if($this->paginator)
+{
+	$this->table($this->content);
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	$this->pagination($pages, array(
+								'from' => $this->from,
+								'to' => $this->to,
+								'trackerId' => $this->trackerId));
+	?>
+	<a href = "/report/registration/from/<?= $this->from?>/to/<?= $this->to?>/trackerId/<?= $this->trackerId?>/download/true">Download</a>
+	<?php 
+}
+if($this->download)
+{
+	$this->excel($this->excelReport, $this->fromDate, $this->toDate);
+}

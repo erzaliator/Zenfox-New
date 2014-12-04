@@ -1,0 +1,93 @@
+<?php 
+$log = $this->log;
+$data = array();
+
+if($log)
+{
+	if($this->of == 'slot')
+	{
+		/*print_r($log);
+		exit();*/
+		foreach($log as $key=>$value)
+		{
+			$data[$key]['log_id'] = $log[$key]['log_id'];
+            $data[$key]['session_id'] =  $log[$key]['session_id'] ;
+            $data[$key]['player_id'] = $log[$key]['player_id'] ;
+            $data[$key]['wagered_currency'] =$log[$key]['wagered_currency'];
+            $data[$key]['machine_id'] = $log[$key]['machine_id'] ;
+            $data[$key]['bet_coins'] = $log[$key]['bet_coins'];
+            $data[$key]['bet_lines'] = $log[$key]['bet_lines'];
+            $data[$key]['bet_amount'] =  $log[$key]['bet_amount'];
+            $data[$key]['win_lines'] = $log[$key]['win_lines'];
+            $data[$key]['win_amount'] = $log[$key]['win_amount'];
+            $data[$key]['datetime'] = $log[$key]['datetime'];
+            $data[$key]['amount_type'] =   $log[$key]['amount_type'];
+            $data[$key]['pjp_winstatus'] = $log[$key]['pjp_winstatus'];
+            $data[$key]['pjp_id'] =  $log[$key]['pjp_id'];
+            $data[$key]['pjp_rng'] =  $log[$key]['pjp_rng']; 
+            $data[$key]['pjp_win_amount'] = $log[$key]['pjp_win_amount'];
+            $data[$key]['running_machine_id'] = $log[$key]['running_machine_id'];
+            $data[$key]['game_flavour'] = $log[$key]['game_flavour'];
+            $data[$key]['spin_type'] =  $log[$key]['spin_type'];
+            $data[$key]['win_string'] = $log[$key]['win_string'];
+            $data[$key]['frontend_id'] = $log[$key]['frontend_id'];
+		}
+	}
+	else
+	{
+		foreach($log as $key=>$value)
+		{
+			$data[$key]['log_id'] = $log[$key]['log_id'];
+			$data[$key]['session_id'] = $log[$key]['session_id'];
+			$data[$key]['player_id'] = $log[$key]['player_id'];
+			$data[$key]['machine_id'] = $log[$key]['machine_id'];
+			$data[$key]['frontend_id'] = $log[$key]['frontend_id'];
+			$data[$key]['bet_amount'] = $log[$key]['bet_amount'];
+			$data[$key]['generated_numbers'] = $log[$key]['generated_numbers'];
+			$data[$key]['selected_numbers'] = $log[$key]['selected_numbers'];
+			$data[$key]['win_string'] = $log[$key]['win_string'];
+			$data[$key]['win_amount'] = $log[$key]['win_amount'];
+			$data[$key]['datetime'] = $log[$key]['datetime'];
+			$data[$key]['amount_type'] = $log[$key]['amount_type'];
+			$data[$key]['wagered_currency'] = $log[$key]['wagered_currency'];
+			$data[$key]['running_machine_id'] = $log[$key]['running_machine_id'];
+			$data[$key]['spin_type'] = $log[$key]['spin_type'];
+			$data[$key]['extra_data'] = $log[$key]['extra_data'];
+			if($this->of == 'roulette')
+			$data[$key]['bet_string'] = $log[$key]['bet_string'];
+		}
+	}	//print_r($data); exit();
+}
+
+else
+{		$key = 0;
+		$msg = 'Nothing to display'; 
+		$data[$key]['log_id'] = $msg;
+		$msg = '';
+		$data[$key]['session_id'] = $msg;
+		$data[$key]['player_id'] = $msg;
+		$data[$key]['machine_id'] = $msg;
+		$data[$key]['frontend_id'] = $msg;
+		$data[$key]['bet_amount'] = $msg;
+		$data[$key]['generated_numbers'] = $msg;
+		$data[$key]['selected_numbers'] = $msg;
+		$data[$key]['win_string'] = $msg;
+		$data[$key]['win_amount'] = $msg;
+		$data[$key]['datetime'] = $msg;
+		$data[$key]['amount_type'] = $msg;
+		$data[$key]['wagered_currency'] = $msg;
+		$data[$key]['running_machine_id'] = $msg;
+		$data[$key]['spin_type'] = $msg;
+		$data[$key]['extra_data'] = $msg;
+}
+$final = array(
+				'totalCount'=> count($data),
+				 'data'=>$data
+				);
+
+echo json_encode($final);
+
+?>
+
+
+						

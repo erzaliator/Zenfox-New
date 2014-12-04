@@ -1,0 +1,22 @@
+<?php
+if($this->completeRegistrationForm)
+{
+	?>
+	<div style="border:1px solid #CD222B;border-radius:5px;">
+		<div class="TTBingogameName TTBingoBtnmargt">Registration Form</div>
+		<?php
+			echo $this->completeRegistrationForm;
+			//echo $this->submitButton;
+			echo $this->message;
+			//$this->facebook();
+		?>
+	</div>
+	<?php 
+}
+if($this->link)
+{
+	$this->headMeta()->appendHttpEquiv('Refresh',
+	                                   '3;URL=' . $this->link);
+}
+?>
+          

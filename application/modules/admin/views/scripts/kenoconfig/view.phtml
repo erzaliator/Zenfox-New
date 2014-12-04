@@ -1,0 +1,16 @@
+<?php
+//Zenfox_Debug::dump($this->machines, 'game details', true, true);
+foreach($this->machines as $machine)
+{
+	?>
+	<a href = "<?php echo $this->url(array(
+							'controller' => 'roulette',
+							'action' => 'edit',
+							'id' => $machine['id'],
+							'pjp' => $machine['pjp_enabled']));
+			?>">
+	<?php print("Machine Id --> "); print($machine['id']);?></a>
+	<?php print("Machine Name --> "); print($machine['machine_name']);
+	echo '<br>';
+}
+?>

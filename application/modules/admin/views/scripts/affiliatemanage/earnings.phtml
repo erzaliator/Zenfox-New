@@ -1,0 +1,22 @@
+<?php
+echo '<b>Earning Summary</b><br><br>';
+$subAffiliateEarnings = $this->subAffiliateEarnings;
+$totalSubEarnings = $this->totalSubEarnings;
+$earnings = $this->earnings;
+
+echo '<b>Total Earnings : </b>'.$earnings.'<br><br>';
+echo '<b>Sub Affiliate Earnings:</b><br>';
+echo '<table border = "1">';
+echo '<tr>';
+echo '<th align = "left">Affiliate</th>';
+echo '<th align = "left">Earnings</th>';
+echo '</tr>';
+foreach($subAffiliateEarnings as $subAffiliateEarning)
+{
+	echo '<tr>';
+	echo '<td>'.$subAffiliateEarning['alias'].'</td>';
+	echo '<td>'.$subAffiliateEarning['earnings'].'</td>';
+	echo '</tr>';
+}
+echo '</table><br>';
+echo '<b>Total Sub Affiliate Earnings : </b>'.$totalSubEarnings;

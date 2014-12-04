@@ -1,0 +1,14 @@
+<?php $session = new Zend_Auth_Storage_Session();
+				$storedData = $session->read();
+				$affiliateId = $storedData['id'];?>
+<div align="center" style="margin-top:30px;">
+<?php if($affiliateId)
+	 { ?>
+	<a href="http://affiliate.bingocrush.co.uk/tracker/create">
+	 <img src = "http://bingocrush.co.uk/images/bingocrush/payment_algn.jpg"/></a>
+
+<?php }else { ?>
+    <a href="http://affiliate.bingocrush.co.uk/auth/signup">
+	 <img src = "http://bingocrush.co.uk/images/bingocrush/payment.jpg" /></a>
+	<?php } ?>
+	</div>

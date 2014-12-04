@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.simplyscroll-1.0.4.js"></script>
+		<link rel="stylesheet" href="/css/jquery.simplyscroll-1.0.4.css" media="all" type="text/css">
+		<script type="text/javascript">
+			(function($) {
+				$(function() { //on DOM ready
+					$("#scroller").simplyScroll({
+					autoMode: 'loop',
+					horizontal: false
+					});
+				});
+			})(jQuery);
+		</script>
+	</head>
+	<body>
+		<?php 
+		if($this->testies)
+		{
+			?>
+			<h3>Player Speaks</h3>
+			<ul id="scroller">
+			<ul class="speaks">
+			<?php
+			$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+			$viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+			$imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:$viewDir;
+			foreach($this->testies as $testimonial)
+			{
+				$imageName = md5("image" . $testimonial['playerId']) . '.jpg';
+				$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+				if(!file_exists($imagePath))
+				{
+					$imagePath = "/images/" . $imagesDir . "../profiles/profile-m1.jpg";
+				}
+				else
+				{
+					$imagePath = "/images/" . $imagesDir . "../profiles/" . $imageName;
+				}
+				?>
+									<li><img src="<?php echo $imagePath;?>" alt="" width="70" height="70" hspace="0" vspace="0" border="0" /> <div><?php echo $testimonial['testi'];?><strong><?php echo $testimonial['name'];?></strong> </div></li>
+								<?php
+							}
+							?>
+						</ul>
+					</ul>
+			<?php
+		}
+		else
+		{
+			echo "No testimonial to display";
+		}
+		?>
+	</body>
+</html>
+

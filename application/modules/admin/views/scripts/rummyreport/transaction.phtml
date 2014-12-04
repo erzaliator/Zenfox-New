@@ -1,0 +1,25 @@
+<?php
+echo $this->form;
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArray = array();
+		foreach($this->contents as $transactionData)
+		{
+			$linkArray[$transactionData['Player Id']] = array(
+										'controller' => 'player',
+										'action' => 'view',
+										'playerId' => $transactionData['Player Id']);
+		}
+		$this->table($this->contents, array('Player Id'), $linkArray);
+	}
+
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	
+	$this->pagination($pages, array(
+							'from' => $this->from,
+							'playerid' => $this->playerid,
+							'paymentmethod' => $this->paymentmethod,
+							'to' => $this->to));
+}

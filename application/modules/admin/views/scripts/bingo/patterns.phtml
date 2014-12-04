@@ -1,0 +1,23 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<?php 
+echo $this->form;
+?>
+<script>
+document.getElementById('flashdata').style.display = "none";
+function loadpattern()
+{
+	document.getElementById('flashdata').style.display = "block";
+	value = document.getElementById('patterntype').value;
+	swfobject.embedSWF("/patterns/"+value+".swf", "flashdata", "660", "400", "10.0", null,null, null, {name:"flashdata"})
+	swfobject.addParam("wmode", "transparent"); 
+}
+
+function updatePattern(pattern)
+{
+	document.getElementById("patterndata").value = pattern;
+}
+
+</script>
+
+
+

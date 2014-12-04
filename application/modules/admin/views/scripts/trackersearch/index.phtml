@@ -1,0 +1,30 @@
+<?php
+echo $this->form;
+
+if($this->paginator)
+{
+	if(count($this->paginator))
+	{		
+		$linkArrays = array();
+		//Temp is used to print the table headings only for one time
+		foreach($this->contents as $tableData)
+		{
+			$linkArrays[$tableData['Link Id']] = array(
+					'controller' => 'affiliatetracker',
+					'action' => 'viewtracker',
+			        'id' => $tableData['Link Id']);								
+		}
+		$this->table($this->contents, 'Link Id', $linkArrays);		
+	}		
+	echo $this->paginationControl(
+						$this->paginator,
+						'Sliding',
+						'playerPaginator.phtml',
+						array(
+							'searchField' => $this->searchField,
+							'match' => $this->match,						 	
+							'accountType' => '',
+							'order' => $this->order,
+							'searchString' => $this->searchStr));
+}
+

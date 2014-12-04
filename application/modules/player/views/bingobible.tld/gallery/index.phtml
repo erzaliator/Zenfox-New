@@ -1,0 +1,78 @@
+<div style="border:1px solid #CD222B;border-radius:5px;">
+<div class="TTBingogameName TTBingoBtnmargt">Gallery</div>
+<?php
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+	 $i=0;$j=0;
+?>  
+
+<table border="0">
+<tr>
+<?php
+		foreach($this->recentJoiners as $joiner)
+		{
+		if($i!=4){
+		
+		 ?>
+		
+		<td>
+
+ 	 	<?php
+			$imageName = md5("image" . $joiner['id']) . '.jpg';
+			$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+			if(!file_exists($imagePath))
+			{
+				$imagePath = "/images/profiles/profile-m1.jpg";
+			}
+			else
+			{
+				$imagePath = "/images/profiles/" . $imageName;
+			}
+			?>
+			<div style="width:150px;height:175px;border:3px solid #CD222B">
+			<table border="0" width="150" height="150" cellspacing="15">
+			<tr>
+				<td>
+					<img src = "<?=$imagePath?>" width="120" height="120" />
+				</td>
+				
+			</tr>
+			<tr>
+				<td align="center">
+					<?=$joiner['Name']?>
+				</td>
+			</tr>
+			
+			</table>
+			</div>
+			
+			</td>
+			<?php 
+			$i++;
+			
+			if($i == 4)
+			{
+			  $i=0; ?>
+			  </tr>
+			<?php }
+			}
+		}//foreach
+		?>
+			</tr>
+			</table>
+		
+		
+		<?php
+		
+	}
+
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	
+	$this->pagination($pages);
+}
+
+?>
+</div>

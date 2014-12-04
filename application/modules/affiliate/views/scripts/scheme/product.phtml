@@ -1,0 +1,24 @@
+<?php //echo "hi";?>
+<!--<img src = "http://bingocrush.co.uk/images/bingocrush/coming-soon-vector-sticker.jpg" widht="407" height="407"/>-->
+<?php $session = new Zend_Auth_Storage_Session();
+				$storedData = $session->read();
+				$affiliateId = $storedData['id'];?>
+				
+				<div align="center" style="margin-top:30px;">
+			    <div style="float:left;font-size:25px;border:0px solid;width:670px">
+				<span style="float:left">Bingocrush</span>
+				<span style="float:right">Offers</span>
+				</div>
+			    <img src = "http://bingocrush.co.uk/images/bingocrush/product_page.png" />	
+		<div style="float:right;margin-top:20px;">		
+<?php if($affiliateId)
+	 { ?>
+	<a href="http://affiliate.bingocrush.co.uk/tracker/create">
+	 <img src = "http://bingocrush.co.uk/images/bingocrush/button_promot.png"/></a>
+
+<?php }else { ?>
+    <a href="http://affiliate.bingocrush.co.uk/auth/signup">
+	 <img src = "http://bingocrush.co.uk/images/bingocrush/button_join.png" /></a>
+	<?php } ?>
+	</div>
+	</div>

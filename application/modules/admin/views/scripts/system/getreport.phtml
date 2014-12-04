@@ -1,0 +1,69 @@
+<?php
+echo $this->form;
+if($this->finalReports)
+{
+	$counter = 0;
+	$contentData = array();
+	$tagName = '';
+	foreach($this->finalReports as $report)
+	{
+		if(count($report['paginator']))
+		{
+			$i = 0;
+			if($counter < count($report['paginator']))
+			{
+				$counter = count($report['paginator']);
+				$paginator = $report['paginator'];
+				$query = $report['query'];
+			}
+			//Zenfox_Debug::dump($report['tagData'], 'tagData');
+			//$this->table($report['tagData']);
+			
+			foreach($report['tagData'] as $tag)
+			{
+				foreach($tag as $index => $value)
+				{
+					$contentData[$i][$index] = $value;
+					$tagName = $tagName . $index . ',';
+				}
+				$i++;
+			}
+			
+			/*Zenfox_Debug::dump($report['tagData'], 'tag');
+			print('tagName - ' . $tagName);*/
+//			echo $this->paginationControl($report['paginator'], 'Sliding', 'system_paginator.phtml', array(
+//																							'tag' => $tagName,
+//																							'myFromDate' => $this->fromDate,
+//																							'myToDate' => $this->toDate,
+//																							'reportType' => $this->reportType));
+		}
+	}
+	//print('tag ' . $tagName);
+	$newStr = substr($tagName, 0, strlen($tagName) - 1);
+	//print('new - ' . $newStr);
+	//Zenfox_Debug::dump($contentData, 'content', true, true);
+	if($contentData)
+	{
+		$this->table($contentData);
+		//$temp = array();
+		/*$adapter = new Zenfox_Paginator_Adapter_DoctrineQuery($query, 0);
+		$paginator = new Zend_Paginator($adapter);
+		$paginator->setItemCountPerPage($this->item);
+		$paginator->setPageRange(2);
+		$paginator->setCurrentPageNumber($this->currentPage);*/
+		//Zenfox_Debug::dump($paginator, 'paginator');
+		echo $this->paginationControl($paginator, 'Sliding', 'system_paginator.phtml', array(
+																					'tag' => NULL,
+																					'myFromDate' => $this->fromDate,
+																					'myToDate' => $this->toDate,
+																					'reportType' => $this->reportType));
+		
+		?>
+		<a href = "/system/download/tags/<?= $newStr?>/rType/<?= $this->reportType?>/from/<?= $this->fromDate?>/to/<?= $this->toDate?>">Download</a>
+		<?php
+	}
+	else
+	{
+		echo "No report data";
+	}
+}

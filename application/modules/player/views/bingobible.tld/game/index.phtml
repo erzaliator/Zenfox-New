@@ -1,0 +1,88 @@
+<script type="text/javascript">
+function goToBingo(session_id, currency,windowName ,game_type, game_id, amount_type, game_flavour){
+	window.open("/bingo/index/sessionId/" + session_id + "/currency/" + currency + "/gameType/" + game_type + "/gameId/" + game_id + "/amountType/" + amount_type + "/flavour/" + game_flavour, game_flavour + game_id,'width=800%,height=600%,scrollbars=no,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false;
+}
+</script>
+<div id="box">
+	<?php 
+	foreach($this->allRunningRooms as $runningRoom)
+	{
+		$box = 1;
+		if($runningRoom['game_type'] == 75)
+		{
+			$box = 2;
+		}
+		
+		?>
+		<div id="game-box-<?=$box ?>">
+			<div class="game-box-<?=$box ?>-text">
+				<p class="gb-<?=$box ?>-txt-1"><span>£ <?=$runningRoom['pool_price'] ?></span><br>Game Pot</p>
+				<p class="gb-<?=$box ?>-txt-2"><span>£ <?=$runningRoom['jackpot'] ?></span><br>Jack Pot</p>
+				<p class="gb-<?=$box ?>-txt-3">Players: <?=$runningRoom['players'] ?><br>Price: £ <?=$runningRoom['price'] ?></p>
+				<p class="play-box" onclick='goToBingo("<?=$runningRoom['session_id'] ?>","<?=$runningRoom['currency'] ?>","<?=$runningRoom['room_name'] ?> ","<?=$runningRoom['game_type'] ?> ","<?=$runningRoom['game_id'] ?>","<?=$runningRoom['amount_type'] ?>","<?=$runningRoom['flavour'] ?>")'>Play</p>
+			</div>
+		</div>
+		<?php 
+	}
+	?> 
+	<!-- <div id="game-box-1">
+		<div class="game-box-1-text">
+			<p class="gb-1-txt-1"><span>£ 199.88</span><br>Game Pot</p>
+			<p class="gb-1-txt-2"><span>£ 2000</span><br>Jack Pot</p>
+			<p class="gb-1-txt-3">Players: 999<br>Price: £ 1.99</p>
+			<p class="play-box">Play</p>
+		</div>
+	</div>
+	<div id="game-box-2">
+		<div class="game-box-2-text">
+			<p class="gb-2-txt-1"><span>£ 199.88</span><br>Game Pot</p>
+			<p class="gb-2-txt-2"><span>£ 2000</span><br>Jack Pot</p>
+			<p class="gb-2-txt-3">Players: 999<br>Price: £ 1.99</p>
+			<p class="play-box-2">Play</p>
+		</div>
+	</div> -->
+	<div id="game-box-3">
+		<p class="game-text">City Ville</p>
+		<p class="Play-for-real">Play for Real</p>
+		<p class="Play-for-bonus">Play for Bonus</p>
+	</div>
+	<div id="game-box-4">
+		<p class="game-text"></p>
+	</div>
+	<div id="game-box-5">
+	<div class="containerbox"><span style="padding-left:16px;float: left;padding-top: 3px;">New</span></div>
+		<p class="game-text">Christmas Bells</p>
+       <div id="christmasgift"><img src="/images/bingobible/christmas_gift.png"/><p>£2,000 <br/> Jack Pot </p></div>
+	</div>
+	<div id="game-box-6">
+		<p class="game-text">Potter Ville Form</p>
+	</div>
+	<div id="game-box-7">
+		<p class="game-text">Fruit Fantasy</p>
+	</div>
+	<div id="game-box-8">
+		<p class="game-text">Go Gorgeous</p>
+	</div>
+	<div id="game-box-9">
+		<div class="containerbox"><span style="padding-left:10px;  float: left;padding-top: 3px;">Keno</span></div>
+		<p class="game-text">Treasures of Agrabah</p>
+	</div>
+	<div id="game-box-10">
+		<p class="game-text">Mysteries of Egypt</p>
+	</div>
+	<div id="game-box-11">
+		<p class="game-text">Witches Fortune</p>
+	</div>
+	<div id="game-box-12">
+	<div class="containerbox"><span style="padding-left:3px;  float:left;padding-top: 3px;">Featured</span></div>
+		<p class="game-text">Roman Riches</p>
+	</div>
+	<div id="game-box-13">
+		<p class="game-text">Sheriff Saloon</p>
+	</div>
+	<div id="game-box-14">
+	<div class="containerbox"><span style="padding-left:3px;  float:left;padding-top: 3px;">Roulette</span></div>
+		<p class="game-text">Unicorn</p>
+	</div>
+</div>
+<div class="game-page-btns"><a href="#">Download</a> <a href="#" class="free-btn">Play Now</a></div>

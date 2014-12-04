@@ -1,0 +1,37 @@
+<?php 
+
+
+	echo "<br/>";
+	?>
+	
+	<h3 style="text-align:center">Tournament Details</h3>
+	<?php 
+	foreach($this->tournamentdetails as $playerData)
+	{
+		$linkArray[$playerData['config_name']] = array(
+				'controller' => 'tournamentscheduling',
+				'action' => 'viewconfigs',
+				'config_id' => $playerData['config_id']
+				);
+	}
+	$this->table($this->tournamentdetails, array('config_name'), $linkArray);
+	
+
+if(!empty($this->check))
+{
+	
+	?>
+	
+
+<h3 style="text-align:center">Game Details</h3>
+	<?php $this->table($this->gamedetails);echo "<br/>";?>
+	<h3 style="text-align:center">Prize Details</h3>
+	<?php $this->table($this->prizedetails);echo "<br/>";?>
+	<h3 style="text-align:center">Consolation Details</h3>
+		<?php $this->table($this->consolationdetails);echo "<br/>";
+}
+
+	
+
+		
+

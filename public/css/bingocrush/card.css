@@ -1,0 +1,233 @@
+.skeuocard.js {
+}
+.skeuocard.js * {
+    -moz-box-sizing: border-box;
+}
+.skeuocard.js html, .skeuocard.js body, .skeuocard.js div, .skeuocard.js span, .skeuocard.js applet, .skeuocard.js object, .skeuocard.js iframe, .skeuocard.js h1, .skeuocard.js h2, .skeuocard.js h3, .skeuocard.js h4, .skeuocard.js h5, .skeuocard.js h6, .skeuocard.js p, .skeuocard.js blockquote, .skeuocard.js pre, .skeuocard.js a, .skeuocard.js abbr, .skeuocard.js acronym, .skeuocard.js address, .skeuocard.js big, .skeuocard.js cite, .skeuocard.js code, .skeuocard.js del, .skeuocard.js dfn, .skeuocard.js em, .skeuocard.js img, .skeuocard.js ins, .skeuocard.js kbd, .skeuocard.js q, .skeuocard.js s, .skeuocard.js samp, .skeuocard.js small, .skeuocard.js strike, .skeuocard.js strong, .skeuocard.js sub, .skeuocard.js sup, .skeuocard.js tt, .skeuocard.js var, .skeuocard.js b, .skeuocard.js u, .skeuocard.js i, .skeuocard.js center, .skeuocard.js dl, .skeuocard.js dt, .skeuocard.js dd, .skeuocard.js ol, .skeuocard.js ul, .skeuocard.js li, .skeuocard.js fieldset, .skeuocard.js form, .skeuocard.js label, .skeuocard.js legend, .skeuocard.js table, .skeuocard.js caption, .skeuocard.js tbody, .skeuocard.js tfoot, .skeuocard.js thead, .skeuocard.js tr, .skeuocard.js th, .skeuocard.js td, .skeuocard.js article, .skeuocard.js aside, .skeuocard.js canvas, .skeuocard.js details, .skeuocard.js figcaption, .skeuocard.js figure, .skeuocard.js footer, .skeuocard.js header, .skeuocard.js hgroup, .skeuocard.js menu, .skeuocard.js nav, .skeuocard.js section, .skeuocard.js summary, .skeuocard.js time, .skeuocard.js mark, .skeuocard.js audio, .skeuocard.js video {
+    border: 0 none;
+    font: inherit;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+.skeuocard.js input, .skeuocard.js fieldset {
+    height: auto;
+    line-height: normal;
+}
+.skeuocard.js {
+    font: 14px/1.5 Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 15.6em;
+    width: 24.8em;
+}
+.skeuocard.js .card-body {
+    position: relative;
+    transform: perspective(1000px);
+    transform-style: preserve-3d;
+}
+.skeuocard.js .card-body .face {
+    backface-visibility: hidden;
+    background-color: #EEEEEE;
+    background-size: cover;
+    border: 1px solid #DDDDDD;
+    border-radius: 1.15em 1.15em 1.15em 1.15em;
+    height: 15.6em;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease 0s, background-image 0.25s ease 0s;
+    width: 24.8em;
+}
+.skeuocard.js .card-body .face.front {
+    z-index: 2;
+}
+.skeuocard.js .card-body .face.back {
+    transform: rotateY(-180deg);
+}
+.skeuocard.js .card-body.flip .face.back {
+    transform: rotateY(0deg);
+}
+.skeuocard.js .card-body.flip .face.front {
+    transform: rotateY(180deg);
+}
+.skeuocard.js.valid .card-body .face {
+    box-shadow: 0 0 10px #00CFA7;
+}
+.skeuocard.js .flip-tab {
+    background: none repeat scroll 0 0 / 1.375em 1.725em #666666;
+    border-radius: 3.55em 3.55em 3.55em 3.55em;
+    cursor: pointer;
+    display: block;
+    height: 3.55em;
+    position: absolute;
+    transition: all 0.25s ease 0s;
+    width: 13em;
+}
+.skeuocard.js .flip-tab p {
+    color: #FFFFFF;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    line-height: 1.2em;
+    margin: 0.6em;
+}
+.skeuocard.js .flip-tab.front {
+    right: -1.25em;
+    top: 1em;
+}
+.skeuocard.js .flip-tab.front:hover{
+	right: -1.8em;
+}
+.skeuocard.js .flip-tab.back {
+    left: -1.25em;
+    top: 1em;
+}
+.skeuocard.js .flip-tab.back:hover{
+	left: -1.8em;
+}
+.skeuocard.js .flip-tab.valid-anim {
+    background: url("/images/bingocrush/card/card-valid-anim.gif") no-repeat scroll 0 0 / 2.3em 2.3em #00CFA7;
+}
+.skeuocard.js .flip-tab.valid-anim.front {
+    background-position: 10.05em 0.6em;
+}
+.skeuocard.js .flip-tab.valid-anim.front p {
+    margin-left: 1.25em;
+    margin-right: 2.9em;
+    margin-top: 0.6em;
+}
+.skeuocard.js .flip-tab.valid-anim.back {
+    background-position: 0.6em 0.6em;
+}
+.skeuocard.js .flip-tab.valid-anim.back p {
+    margin-left: 2.9em;
+    margin-right: 1.25em;
+    margin-top: 0.6em;
+}
+.skeuocard.js .flip-tab.prompt {
+    background-color: #00CFA7;
+}
+.skeuocard.js input {
+    border: medium none;
+    border-radius: 3px 3px 3px 3px;
+    outline: medium none;
+}
+.skeuocard.js .face.front {
+    background-color: #EEEEEE;
+    background-image: url("/images/bingocrush/card/products/generic-front.png"), url("/images/bingocrush/card/card-front-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.skeuocard.js .face.back {
+    background-color: #EEEEEE;
+    background-image: url("/images/bingocrush/card/products/generic-back.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.skeuocard.js .cc-number {
+    display: block;
+    left: 1.8em;
+    position: absolute;
+    top: 8.05em;
+}
+.skeuocard.js .cc-number input {
+    background-color: #FFFFFF;
+    color: #333333;
+    font-family: "ocraregular","OCR A Std","OCR A",Courier,"Courier New",monospace;
+    font-size: 1.5em;
+}
+.skeuocard.js .cc-number input.group4 {
+    width: 3.2em;
+}
+.skeuocard.js .cc-number input + input {
+    margin-left: 0.4em;
+}
+.skeuocard.card-product .face.front, .skeuocard.product-visa .face.front, .skeuocard.product-amex .face.front, .skeuocard.product-dinersclubintl .face.front, .skeuocard.product-mastercard .face.front, .skeuocard.product-discover .face.front {
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+}
+.skeuocard.card-product .face.back, .skeuocard.product-visa .face.back, .skeuocard.product-amex .face.back, .skeuocard.product-dinersclubintl .face.back, .skeuocard.product-mastercard .face.back, .skeuocard.product-discover .face.back {
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+}
+.skeuocard.card-product .cc-number, .skeuocard.product-visa .cc-number, .skeuocard.product-amex .cc-number, .skeuocard.product-dinersclubintl .cc-number, .skeuocard.product-mastercard .cc-number, .skeuocard.product-discover .cc-number {
+    background-color: transparent;
+    padding: 0.1em;
+}
+.skeuocard.card-product .cc-number input, .skeuocard.product-visa .cc-number input, .skeuocard.product-amex .cc-number input, .skeuocard.product-dinersclubintl .cc-number input, .skeuocard.product-mastercard .cc-number input, .skeuocard.product-discover .cc-number input {
+    background-color: transparent;
+    border: medium none;
+    color: #333333;
+}
+.skeuocard.card-product .cc-exp, .skeuocard.product-visa .cc-exp, .skeuocard.product-amex .cc-exp, .skeuocard.product-dinersclubintl .cc-exp, .skeuocard.product-mastercard .cc-exp, .skeuocard.product-discover .cc-exp {
+    display: block;
+    position: absolute;
+}
+.skeuocard.card-product .cc-exp input, .skeuocard.product-visa .cc-exp input, .skeuocard.product-amex .cc-exp input, .skeuocard.product-dinersclubintl .cc-exp input, .skeuocard.product-mastercard .cc-exp input, .skeuocard.product-discover .cc-exp input, .skeuocard.card-product .cc-exp .separator, .skeuocard.product-visa .cc-exp .separator, .skeuocard.product-amex .cc-exp .separator, .skeuocard.product-dinersclubintl .cc-exp .separator, .skeuocard.product-mastercard .cc-exp .separator, .skeuocard.product-discover .cc-exp .separator {
+    background-color: transparent;
+    border: medium none;
+    color: #333333;
+    font-family: "ocraregular","OCR A Std","OCR A",Courier,"Courier New",monospace;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.skeuocard.card-product .cc-exp input.group2, .skeuocard.product-visa .cc-exp input.group2, .skeuocard.product-amex .cc-exp input.group2, .skeuocard.product-dinersclubintl .cc-exp input.group2, .skeuocard.product-mastercard .cc-exp input.group2, .skeuocard.product-discover .cc-exp input.group2, .skeuocard.card-product .cc-exp .separator.group2, .skeuocard.product-visa .cc-exp .separator.group2, .skeuocard.product-amex .cc-exp .separator.group2, .skeuocard.product-dinersclubintl .cc-exp .separator.group2, .skeuocard.product-mastercard .cc-exp .separator.group2, .skeuocard.product-discover .cc-exp .separator.group2 {
+    width: 2em;
+}
+.skeuocard.card-product .cc-name, .skeuocard.product-visa .cc-name, .skeuocard.product-amex .cc-name, .skeuocard.product-dinersclubintl .cc-name, .skeuocard.product-mastercard .cc-name, .skeuocard.product-discover .cc-name {
+    background-color: transparent;
+    border: medium none;
+    display: block;
+    font-family: "ocraregular","OCR A Std","OCR A",Courier,"Courier New",monospace;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    text-transform: uppercase;
+}
+.skeuocard.card-product .cc-cvc, .skeuocard.product-visa .cc-cvc, .skeuocard.product-amex .cc-cvc, .skeuocard.product-dinersclubintl .cc-cvc, .skeuocard.product-mastercard .cc-cvc, .skeuocard.product-discover .cc-cvc {
+    background-color: transparent;
+    border: medium none;
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.skeuocard.product-visa {
+}
+.skeuocard.js input:focus{
+	outline: none;
+	box-shadow: 0 0 10px #0096de;
+	-webkit-box-shadow: 0 0 10px #0096de;
+	-ms-box-shadow: 0 0 10px #0096de;
+	-moz-box-shadow: 0 0 10px #0096de;
+	-o-box-shadow: 0 0 10px #0096de;
+}
+.skeuocard.product-visa .face.front {
+    background-image: url("/images/bingocrush/card/products/visa-front.png"), url("/images/bingocrush/card/card-front-background.png");
+}
+.skeuocard.product-visa .face.back {
+    background-image: url("/images/bingocrush/card/products/visa-back.png"), url("/images/bingocrush/card/products/generic-back.png");
+}
+.skeuocard.product-visa .cc-number {
+    left: 1.8em;
+    top: 8.05em;
+}
+.skeuocard.product-visa .cc-exp {
+    left: 10.9em;
+    top: 11.2em;
+    width: 5em;
+}
+.skeuocard.product-visa .cc-name {
+    left: 1.8em;
+    top: 13em;
+}
+.skeuocard.product-visa .cc-cvc {
+    left: 18.1em;
+    top: 7.15em;
+    width: 3em;
+}

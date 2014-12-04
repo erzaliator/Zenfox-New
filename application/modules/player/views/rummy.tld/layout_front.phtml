@@ -1,0 +1,705 @@
+<?php
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LanguageForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/InviteFriendForm.php';
+
+//$frontendDetails = Zend_Registry::getInstance()->isRegistered('frontendDetails-' . $_SERVER['HTTP_HOST'])?Zend_Registry::getInstance()->get('frontendDetails-' . $_SERVER['HTTP_HOST']):'';
+
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+//$webConfig = isset($frontendDetails['webConfig'])?$frontendDetails['webConfig']:'';
+$this->viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+$this->cssDir = isset($webConfig['cssDir'])?$webConfig['cssDir']:"rummy/";
+$this->jsDir = isset($webConfig['jsDir'])?$webConfig['jsDir']:"rummy/";
+$this->imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:"rummy/";
+$this->htmlTitle = isset($webConfig['htmlTitle'])?$webConfig['htmlTitle']:'null';
+$this->cdnImageServer = $webConfig['cdnImageServer'];
+
+$frontController = Zend_Controller_Front::getInstance();
+$controllerName = $frontController->getRequest()->getControllerName();
+$actionName = $frontController->getRequest()->getActionName();
+$session = new Zend_Auth_Storage_Session();
+$store = $session->read();
+		    
+$isLoggedIn = isset($store)?true:false;
+if($isLoggedIn)
+{
+	$pageAddress = $controllerName . '-' . $actionName;	
+}
+else
+{
+	$pageAddress = $controllerName;
+}
+$language = $frontController->getRequest()->getParam('lang');
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<link rel="shortcut icon" href="/favicon.ico?"></link>
+<?php 
+if($controllerName . '-' . $actionName == 'index-index')
+{
+	?>
+	<link href="http://<?=$_SERVER['HTTP_HOST'] ?>/" rel="canonical"></link>
+	<?php 
+}
+ 
+elseif($language)
+{
+	?>
+	<link href="http://<?=$_SERVER['HTTP_HOST'] . '/' . $controllerName . '/' . $actionName ?>" rel="canonical"></link>
+	<?php 
+}
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<?php
+$this->title();
+//$this->metatags();
+$this->title();
+//$this->metatags();
+$this->headLink()->appendStylesheet($this->cdnImageServer . '/css/rummy.tld/css/blueprint/screen.css');
+$this->headLink()->appendStylesheet($this->cdnImageServer . '/css/rummy.tld/css/blueprint/bootstrap.css');
+$this->headLink()->appendStylesheet($this->cdnImageServer . '/css/rummy.tld/css/blueprint/style.css');
+$this->headLink()->appendStylesheet($this->cdnImageServer . '/css/rummy.tld/css/blueprint/bootstrap-responsive.css');
+echo $this->headLink();
+echo $this->facebook();
+?>
+
+<!-- 
+<link rel="stylesheet" href="<?=$this->cdnImageServer ?>/css/rummy.tld/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+
+<link rel="stylesheet" href="<?=$this->cdnImageServer ?>/css/rummy.tld/css/style.css" type="text/css" />
+ -->
+<!-- <script src="script/jquery.min.js" type="text/javascript"></script>
+<script src="script/custom.js" type="text/javascript"></script>
+<script type="text/javascript" src="iepngfix_tilebg.js"></script>
+-->
+<!--[if lt IE 7]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+<![endif]-->
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="/css/rummy.tld/css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" href="/css/rummy.tld/css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+<!--Google Analytics-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27546725-1']);
+  _gaq.push(['_setDomainName', 'taashtime.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+function slideSwitch() {
+    var $active = $('#ttslideshow IMG.active');
+    if ( $active.length == 0 ) $active = $('#ttslideshow IMG:last'); 
+    var $next =  $active.next().length ? $active.next()
+        : $('#ttslideshow IMG:first');
+    $active.addClass('last-active');
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 1000, function() {
+            $active.removeClass('active last-active');
+        });
+}
+$(function() {
+    setInterval( "slideSwitch()", 5000 );
+    setInterval( "getLiveTables()", 120000);
+});
+
+function gotoTournamentList(){
+	window.location = "/tournament/list";
+}
+
+
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+   $('#tttestimonials')
+	//.before('<div id="nav">')
+	.cycle({
+        fx: 'fade', // choose your transition type, ex: fade, scrollUp, scrollRight, shuffle
+		//pager:  '#nav'
+     });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+   $('#tttestimonials')
+	//.before('<div id="nav">')
+	.cycle({
+        fx: 'fade', // choose your transition type, ex: fade, scrollUp, scrollRight, shuffle
+		//pager:  '#nav'
+     });
+	$('#home').click(function() {
+    window.location.href = '/index';
+    return false;
+	});
+	$('#playrummy').click(function() {
+    window.location.href = '/game';
+    return false;
+	});
+	/*$('#tournament').click(function() {
+    window.location.href = '/tournament/list';
+    return false;
+	});
+	$('#offers').click(function() {
+    window.location.href = '/promotions';
+    return false;
+	});
+	$('#banking').click(function() {
+    window.location.href = '/banking/deposit';
+    return false;
+	});
+	$('#help').click(function() {
+    window.location.href = '/faq';
+    return false;
+	});*/
+
+
+});
+</script>
+<script type="text/javascript">
+      var flashvars = {};
+      flashvars.cssSource = "<?=$this->cdnImageServer ?>/css/piecemaker.css";
+      flashvars.xmlSource = "<?=$this->cdnImageServer ?>/js/piecemaker_js/piecemaker.xml";		
+      var params = {};
+      params.play = "true";
+      params.menu = "false";
+      params.scale = "showall";
+      params.wmode = "transparent";
+      params.allowfullscreen = "true";
+      params.allowscriptaccess = "always";
+      params.allownetworking = "all";	  
+      swfobject.embedSWF('<?=$this->cdnImageServer ?>/js/piecemaker_js/piecemaker.swf', 'piecemaker', '650', '360', '2', null, flashvars,    
+      params, null);
+    
+    </script>
+    <script type="text/javascript">
+
+	/*$(document).ready(function(){
+		$('.dropdown-menu').mouseover(function(){
+			$(this).prev('a').attr({
+			       style: "color:#FFF"});
+		});
+		$('.dropdown-menu').mouseout(function(){
+			$(this).prev('a').attr({
+			       style: "color:#595959"});
+		});
+		$('.dropdown').mouseover(function(){
+			$(this).children('a').attr({
+			       style: "color:#FFF"});
+		});
+		$('.dropdown').mouseout(function(){
+			$(this).children('a').attr({
+			       style: "color:#595959"});
+		});
+		if($.browser.mozilla){
+			document.getElementById("live-tables").style.marginTop="15px";
+		}
+	});*/
+</script>
+</head>
+<body class="<?php echo $pageAddress; ?>">
+    <div class="container" id="main_div" style="padding-bottom:10px">
+         <!--Header First Row-->
+         <div class="row" style="border:0px solid;background:#D9D9D9;padding:5px 0px 10px 0px">
+             <div class="span3" style="border:0x solid;">
+                   <a href="/index/index"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/logo-animation.gif" alt="Taash Logo"></img></a>
+             </div>	
+             
+             <div class="span5" id="login-head" style="border:0px solid">
+             	
+          <div class="login-box" style="border:0px solid">
+            <?php 
+            
+            if($isLoggedIn)
+                {
+                    $playerId = $store['id'];
+                    $imageName = md5("image" . $playerId) . '.jpg';
+                    $loginName = $store['authDetails'][0]['login'];
+                    $firstName = $store['authDetails'][0]['first_name'];
+    
+    
+    
+                    /* $cash = $store['authDetails'][0]['cash'];
+                    $bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings']; */
+                    $cash = $store['authDetails'][0]['bank'] + $store['authDetails'][0]['winnings'] + $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+                    $bonus = $store['authDetails'][0]['bonus_due'];
+                    $buddyBonus = $store['authDetails'][0]['buddy_earnings'];
+                    
+                    $loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+            
+                    $currency = new Zend_Currency();
+                    $currencySession = new Zend_Session_Namespace('currency');
+                 //   if($currencySession->oldValue != $currencySession->newValue)
+                 //   {
+                    $source = $currency->getShortName('', $currencySession->oldValue);
+                    $destination = $currency->getShortName('', $currencySession->newValue);
+                    $currConv = new CurrencyConversion();
+                    $cash = $currConv->getConvertedValue($source, $destination, $cash);
+                    $bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+                    $buddyBonus = $currConv->getConvertedValue($source, $destination, $buddyBonus);
+                    $store['cash'] = $cash;
+                    $store['bonus'] = $bonus;
+                    $session->write($store);
+                    $joinUrl = "/";
+                    $accountVariable = new AccountVariable();
+                    $varData = $accountVariable->getData($playerId, 'freeMoney');
+                    if($varData)
+                    {
+                        $freeMoney = floatval($varData['varValue']);
+                    }
+                    ?>
+            <div class="tttashcashtbg" >
+              <div class=" left tttashcashl">
+                <div>TaashCash: <span>Rs.
+                  <?=round($cash, 2);//$currency->setValue($cash) ?>
+                  </span></div>
+                <div>TaashCoins: <span>T&cent;
+                  <?=round($freeMoney, 2);//$currency->setValue($freeMoney) ?>
+                  </span></div>
+              </div>
+              <div class=" left tttashcashm">
+                <div>Bonus Due: <span>Rs.
+                  <?=round($bonus, 2);//$currency->setValue($bonus) ?>
+                  </span></div>
+              </div>
+              <div class=" left tttashcashr">
+                <div class="ttafterlogin" > <div class="left "> <?php echo empty($firstName)?$loginName:$firstName;?> </div>
+            &nbsp;|&nbsp;<a href="/auth/logout"><strong>Logout</strong></a></div>
+                <div class="tttashcashbar">
+                  <?php 
+          $bonusLevel = new BonusLevel();
+          $bonusPercent = $bonusLevel->getBonusPercentage($playerId);
+          $level = $bonusPercent['levelPercent'];
+          ?>
+                  <script>
+        $(function() {
+            /*$( "#progressbar" ).progressbar({
+                value: <?=$level ?>
+            });*/
+            //showInviteFriend();
+        });
+        </script>
+                  <!--<div id="progressbar">
+                    <p>slide show</p>
+                  </div>-->
+                </div>
+              </div>
+            </div>
+              
+            <!--<div class="left login-controls color-blue welcome-box"> <strong>Welcome back, <?php echo empty($firstName)?$loginName:$firstName;?>! </strong></div>
+            <div class="right login-controls small black-link"><a href="/auth/edit"><strong>Profile</strong></a> | <a href="/auth/changepwd"><strong>Change Password</strong></a> | <a href="/auth/logout"><strong>Logout</strong></a></div>-->
+            
+            <?php 
+                }
+                else
+                {
+                	$joinUrl = "/auth/signup";
+                    $decorator = new Decorator();
+		    		$loginForm = new Player_LoginForm();
+		    		$loginForm = $decorator->addDecorators($loginForm, 'login');
+		    		$request = Zend_Controller_Front::getInstance()->getRequest();
+		    		if($request->getParam('format') == 'json')
+		    		{
+		    			$loginForm->setAction('/auth/login/format/json');
+		    		}
+		    		else
+		    		{
+		    			$loginForm->setAction('/auth/login');
+		    		}
+		    		echo $loginForm;
+                }
+            ?>
+          </div>
+          
+        </div>
+             <div class="span2 live-tables right" id="tables" style="border:0px solid" >   
+		<div class="fb-like" data-href="http://www.facebook.com/taashtime.rummy" data-send="false" data-height="40" data-width="80" data-show-faces="false"></div>
+
+             <!--div id="social-icons">
+              		<a href="https://www.facebook.com/taashtime.rummy"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/fb.png" id="FB"  alt="FB"/></a>
+                    <a href=""><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/g+.png" id="Google"  alt="Google"/></a>
+                    <a href=""><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/tw.png" id="Twitter"  alt="Twitter0"/></a>
+              </div-->	
+            <div  style="border:0px solid" class="live-tables-number right pad-r-5" >
+            	<p style="margin:5px 0px 0px 18px">Live Tables :
+                	<span id="live-tables" style="color:#B40263;font-size:2em">
+						<?php 
+                            $onlineTable = new OnlineTable();
+                          echo $onlineTable->getLiveTables();
+                          ?>
+                     </span>
+                </p>
+            
+            </div>	
+            	
+            <!--<div class="ttlivetbl live-tables right" id="ttlivetbl"  >
+           	
+              <div class="live-tables-number right" id="live-tables" >
+                <?php 
+              $onlineTable = new OnlineTable();
+              echo $onlineTable->getLiveTables();
+              ?>
+              </div>
+              <div class="" >Live Tables: </div>
+            </div>-->
+          </div>
+         </div>
+         <!--Header 2nd Row-->
+         <div class="row" style="background-image: url('http://taashtime.com/css/rummy.tld/images/ttnav_bar_bg.gif');background-repeat: repeat-x;"> 
+                    <div class="span7a"  id="menu-bar">
+                            <div class="navbar">
+                                <div class="navbar-inner" style="border:0px solid">
+                                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                        <div class="nav-collapse collapse">
+                                              <div class="navbar-inner" style="border:0px solid">
+                                 					<div class="container">
+                                 					<?php 
+    	$partial = array('menu.phtml','player');
+		$this->navigation()->menu()->setPartial($partial);
+		echo $this->navigation()->menu()->render();
+	?>
+                                     <!--<ul class="nav">
+                                    <li  class="dropdown">
+                                        <a class="dropdown-toggle"  href="/auth/view" data-hover="dropdown">Home </a>
+                                          <ul class="dropdown-menu">  
+                                                <li><a href="/promotions">Profile</a></li>  
+                                                <li><a href="/promotions/referfriend">Problem?</a></li>
+                                                <li><a href="#">Transactions</a></li>
+                                                <li><a href="#">Games Played</a></li>
+                                                <li><a href="#">Invite</a></li>
+                                            </ul>
+                                     </li>
+                                    <li  class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="/game">Play Rummy </a>
+                                           
+                                        </li>
+                                    <li  class="dropdown" >
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="https://taashtime.com/">Tournament </a>
+                                           <ul class="dropdown-menu">
+                                                 <li><a href="/tournament/list">Tournament</a></li>
+                                           </ul>
+                                        </li>
+                                    <li  class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" href="/index/winners">Offers </a>
+                                            <ul class="dropdown-menu">  
+                                                <li><a href="/promotions">Promotions</a></li>  
+                                                <li><a href="/promotions/referfriend">Refer A Friend</a></li>
+                                                <li><a href="#">Special Promotions</a></li>
+                                            </ul>
+                                        </li>
+                                    <li  class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="/banking/deposit">Banking </a>
+                                            <ul class="dropdown-menu">  
+                                                <li><a href="/banking/deposit">Purchase</a></li>  
+                                                <li><a href="/withdrawal/verification">Withdrawal</a></li>
+                                                <li><a href="/banking/detail">Detail</a></li>
+                                            </ul>
+                                        </li>
+                                    <li  class="dropdown" id="hlp">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" href="#">Help </a>
+                                            <ul class="dropdown-menu">  
+                                                <li><a href="/faq">FAQ</a></li>     
+                                            </ul>
+                                        </li>
+                                </ul>--> 
+                                 </div>
+                       		 				   </div>
+                                        </div>
+                                </div>
+                            </div>
+                    </div>              
+        <div class="span4d pull-right"><a href="/index/invite"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/invite-friend.gif" id="invite-friend" style="width:300px" height="60" alt="get500"></img></a></div>
+      </div>     
+         <!--Header 3rd Row--> 
+        <?php 
+        if($isLoggedIn)
+        {
+        	?>
+        	<div  class="container" style="border:0px solid;margin-bottom:10px">
+        	<img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/web-banner-02.jpg" alt="Play Now!"  border="0" usemap="#main-banner"></img>
+			<map name="main-banner">
+				<area shape="rect" coords="79,296,240,340" href="/tournament/list"></area>
+				<area shape="rect" coords="392,198,553,239" href="/game/quickjoin/amountType/FREE"></area>
+				<area shape="rect" coords="393,296,553,338" href="/game"></area>
+				<area shape="rect" coords="725,296,882,339" href="/index/invite"></area>
+				<area shape="rect" coords="867,356,940,369" href="/promotions/referfriend"></area>
+				<area shape="rect" coords="519,356,624,368" href="/banking/deposit"></area>
+			</map>
+        	</div>
+        	<?php 
+        }
+        else
+        {
+        	?>
+        	<div class="row" style="border:0px solid" id="row-4">
+        	<div class="span7a" style="border:0px solid" id="3rd-row">
+        	<img alt="Main Banner" src="http://play.taashtime.com/css/rummy.tld/images/main_banner_3.jpg" id="main_banner" style="width:650px" usemap="#main-offer"></img>
+		<map name="main-offer">
+			<area shape="rect" coords="35,303,179,337"  href="/game/"></area>
+			<area shape="rect" coords="284,303,426,337"  href="/game/"></area>
+			<area shape="rect" coords="486,303,628,337"  href="/game/"></area>
+		</map>
+        	</div>
+        	<div class="span3 pull-right" id="join_now">
+        	<div class="row">
+        	<?php 
+        	echo $this->layout()->content;
+        	?>
+        	
+        	</div>
+        	</div>
+        	</div>
+        	<?php 
+        }
+        ?>	
+         <?php 
+         /*
+         <div class="row" style="border:0px solid" id="row-4">
+                
+                     if($isLoggedIn)
+                     {
+                        //$this->allimages($pageAddress);
+                        $this->team($this->team_1_name, $this->team_2_name, $this->team_1_image, $this->team_2_image, $this->team_1_checked, $this->team_2_checked, $this->voteCast, $this->noTeam, $this->noPlayerId, $this->team_1_value, $this->team_2_value, true);
+                     }
+              
+                
+            <div class="span7a" style="border:0px solid" id="3rd-row">
+                            <img alt="Main Banner" src="http://play.taashtime.com/css/rummy.tld/images/main_banner_3.jpg" usemap="#diwali-offer" id="main_banner" style="width:650px" />
+                      
+                  
+                             $this->team($this->team_1_name, $this->team_2_name, $this->team_1_image, $this->team_2_image, $this->team_1_checked, $this->team_2_checked, $this->voteCast, $this->noTeam, $this->noPlayerId, $this->team_1_value, $this->team_2_value);
+                        
+                      
+                  <!-- div id="piecemaker"></div-->
+                </div>
+            <div class="span3 pull-right" id="join_now">
+                <div class="row">
+                  <!-- 
+                    <h2 class="pad-t-10 join-nowfont" ><strong>Join Now!</strong></h2>
+                     <div id="get-blurb" class="right"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/get-25-blurb.png"  alt="Get Rs. 25/-!"  width="139" height="76"/></div>
+                     -->
+                  echo $this->layout()->content;
+                  
+                      $class = "";
+                      if($isLoggedIn)
+                      {
+                        $class = "loggedin";
+                      }
+                 
+                  <!-- div class="fb-like-box" data-href="http://www.facebook.com/playrummynow" data-width="292" data-show-faces="true" data-stream="true" data-header="true"></div-->
+                 
+                </div> 
+            </div>
+        </div>	
+        */
+         ?>
+        
+         <!--Header 4th Row--> 
+         <div class="row-fluid" style="background:#FFF;border:0px solid" id="tournaments1">
+            
+              <div class="span4" style="height:250px;border:1px solid #868484" id="teamrummy">
+              
+                <?php 
+                echo $this->action('rummyteams', 'leaderboard', 'player', array('home' => true,'leaderboardId' => 2,'scroll' => true));
+                ?>
+              </div>
+              <div class="span4" style="height:280px;border:1px solid #868484" id="vijay">
+                    
+                <div class="tt_th_blue_bg">
+                  <h1 id="heading">Winners List</h1>
+                </div>
+                <div class="tttournwinrbg">
+                  <div class="tt_winner_hed">Weekly TaashCash<span class="WebRupee"> </span> Winners</div>
+                  <div class="tt_winner_cont">
+                    <ul>
+                      <?php 
+            echo $this->action('winner', 'index', 'player', array('home' => true));
+            ?>
+                    </ul>
+                  </div>
+                  <div class=" tt_more_dtls"><a href="/index/winner">More Details</a></div>
+              </div>
+              </div>
+              <div class="span3" style="border:1px solid #868484" id="player-div">
+                    <div class="tt_tbl_border <?=$class ?>" style="border:0px solid">
+                        <div class="tt_th_blue_bg">
+                          <h1 id="heading">Player Speaks</h1>
+                        </div>
+                <?php 
+                    echo $this->action('view', 'testimonial', 'player', array('scroll' => true));
+                    $downloadFileName = "TaashTime.exe";
+                    if(strpos($_SERVER['HTTP_USER_AGENT'], 'Linux'))
+                    {
+                        $downloadFileName = "TaashTime.air";
+                    }
+                ?>
+          </div>	
+                
+              </div>
+              
+            
+        </div>  
+         <!--Header 5th Row--> 	
+         <div id="layout" class="row" style="margin-top:10px">
+           <div class="span7a" style="border: 1px solid #868484;">
+                <div class="tt_th_grey_bg">
+                    <h1 id="heading">What is Taashtime?</h1>
+                </div>
+                <div class="joinnowpad1">
+                    <div>
+                          <p>Taashtime is India's most trusted online rummy site! Taash means "playing cards" in Hindi. The site is dedicated to providing the best card games experience and currently you can play online rummy. You get 5000 FunCoins to play free, fun rummy games and 25 TaashCash as a welcome bonus to try out cash games! Taashtime is truly cash time as it allows rummy players to win cash prizes. </p>
+                          <p> The primary purpose of Taashtime is to provide wholesome entertainment to individuals, their family, friends and colleagues. Taashtime is meant for time pass and provides you the ability to earn money - a completely different approach to most free card game sites. Taashtime is not a means to earn large amounts, nor does it enable players to do so. </p>
+                          <p>At Taashtime, we are proud of our stringent policies as it keeps players' safe, secure and ensures high quality entertainment on the site. We have created a great rummy enthusiast community of ardent rummy lovers who play on our site regularly. It is a great opportunity to build rummy skill and play with skilled rummy players from across the country. </p>
+                          <p>Taashtime provides true Indian rummy, a classic rummy experience and provides the most real feel to on line rummy. Taashtime provides the largest variety of rummy: Syndicate games (Pool rummy), Stake games (Points rummy), Best of Three, Best of Five, Summit (a forward ladder pool rummy). Taashtime also has rummy tournaments with both free entry and paid entry! </p>
+                          <p>Enjoy the experience of playing cards, on line rummy, with the best game of rummy in India. Play rummy, have fun - Taashtime is Cash time! </p>
+                          <p><a href="/content/about"><strong>Learn More</strong></a></p>
+                </div>
+                </div>
+           </div>
+           <div class="span3" id="desktop">
+                <div class="tt_tbl_border" id="yourdesktop">
+                    <div class="tt_th_pink_bg">
+                        <h1 id="heading">Your Desktop!</h1>
+                    </div>
+                    <div class="ttdeskdownload">
+                    <div>TaashTime.com Now on your Desktop! Download Now</div>
+                </div>
+                    <div>
+                    <a href = "http://taashtime.com/downloads/taashtime/desktop/rummy/offline-version/<?=$downloadFileName ?>">
+                    <img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/ttfreedownload.png" border="0" style="width:170px" id="ttfreedownload"></img></a>
+               </div>
+                </div>
+           </div>  		 
+           <div class="span3" id="desktop">
+                <div class="tt_ad_300"><a href="/index/invite"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/ttrefeRafriend.png" border="0" id="ttrefeRafriend" style="width:300px"></img></a></div>
+              
+            </div>
+            
+            
+            
+         
+          </div>  
+    
+            <div class="ttlegalm left" style="padding-top:10px">
+            
+              <div class="ttlegalml"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/legal.png"></img></div>
+              <div class="span5a">According to supreme court ruling, now rummy is fully legal in India. So continue Taashtiming, Play more, and Earn more!! :)</div>
+            </div>
+            </div>
+      
+
+		<!--Footer-->
+			<div class="container" style="width:auto;border:1px solid;color:#FFF;background-color:#D5D5D5;">
+            	<div class="container" style="background-color:#D5D5D5">
+                	<div class="row" style="color:#000"><h4 style="text-align:center">Supported by</h4></div>
+                    <div class="row" style="margin-left:0px"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/tt_supportedby.png"></img></div>
+                	<div class="row" >
+                    	<p class="links" style="text-align:center">
+                            	<a href="/content/about">About Us</a>
+                                	<span id="pipe"> &nbsp;|&nbsp;</span> 
+                        	    <a href="/content/legal">Legality </a>
+									<span id="pipe">  &nbsp;|&nbsp;</span>  
+                                <a href="/content/terms">Terms of Service</a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                            	<a href="/content/withdrawterms">Withdrawal Terms</a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                                <a href="/content/privacypolicy">Privacy Policy </a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                                <a href="/index/winner">Winners</a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                                <a href="/blog">Blog</a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                                <a href="/content/contact">Contact Us </a>                            
+                            </p>
+                    </div>	
+                    <div class="row" style="margin-left:0px">
+                    	<div class="span2"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/tt_18plus.png"></img></div>
+                        <div class="span7a">
+                        	<p style="text-align:inherit;color:#000">
+                            	Taashtime is a site dedicated to providing the best online rummy playing experience.
+                                 The traditional Indian Rummy is the best game to bet and Taashtime is the best place to bet and play rummy online.
+                            </p>
+                        	
+                        </div>
+                    </div>
+					<div class="row" style="color:#000"><p style="text-align:center">Copyright © 2011 TaashTime.com - All rights reserved.</p></div>                
+                </div>
+            </div>
+			<div  style="width:auto;border:0px solid;color:#222222">
+            	<p style="text-align:center">Served from Taashtime-Zenfox-Web2</p>
+            </div>
+
+<?php
+  
+	$frontController = Zend_Controller_Front::getInstance();
+	$siteUrl = $frontController->getRequest()->getBaseUrl();
+	//echo $this->piwiktracker();
+	if(Zend_Registry::get('piwikEnabled'))
+        {
+                $this->piwiktracker();
+        }
+
+  ?>
+  <?php
+$this->title();
+//$this->metatags();
+$this->headScript()->appendFile($this->cdnImageServer . '/js/jquery.min.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/wr.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/bootstrap-button.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/twitter-bootstrap-hover-dropdown.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/bootstrap-collapse.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/jquery.cycle.all.latest.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/jquery_comments.js');
+echo $this->headScript();
+
+?>
+  <script type="text/javascript">
+function closeDailyWinner(){
+	document.getElementById("daily-winner").style.display = "none";
+}
+</script>
+
+<!-- begin olark code -->
+<script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length;while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])}c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d);(function(){function l(){return["<head></head><",z,' onload="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"}D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});olark.identify('8609-194-10-7825');/*]]>{/literal}*/</script>
+<!-- end olark code -->
+<!-- Begin Olark Addon Code -->
+<script type='text/javascript'>/*Updating the nickname*/olark('api.chat.updateVisitorNickname', {snippet:'<?php echo isset($loginName)?$loginName:null?>' })</script>
+<!-- EndOlark Addon Code -->
+
+<script type="text/javascript" src="https://www.startssl.com/seal.js"></script>
+<!-- Tracker Script -->
+<script type ="text/javascript" src="http://static.adohana.com/oa.js?usr=befa5c621cbbceace92907c751f8d506"></script>
+
+<div id="jwt_overlay" style="background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.6); z-index: 999998; position: fixed; width: 1488px; height: 800px; top: 0px; left: 0px; display: none;"></div>
+                                <div id="ttlightbox" style="display: none; z-index: 999999; position: fixed; height: auto; overflow: visible; top: 125px; left: 413px;">
+                                <div id="ttlogin-box">
+                                <div id="ttclose"><a ss="jwt_close" cla="" href=""><img width="35" height="35" border="0" src="/css/rummy.tld/images/ttlightboxclose.png"></a></div>
+                                <div id="ttlgtboxentry">Select Entry Level</div>
+                                <div id = "lgtboxmsg"></div>
+                                <table  width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px; margin-top:20px;">
+                                <tbody id = "ttldislevel">
+                                </tbody></table>
+                                </div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?php
+
+echo $this->form;
+
+if($this->paginator)
+{
+		$linkArrays = array();
+		//Temp is used to print the table headings only for one time
+		foreach($this->contents as $tableData)
+		{
+			$linkArrays[$tableData['Withdrawal Id']] = array(
+					'controller' => 'withdrawal',
+					'action' => 'listdetails',
+			        'withdrawal_id' => $tableData['Withdrawal Id']);
+			
+		}
+		$this->table($this->contents, array('Withdrawal Id'), $linkArrays);
+		
+	echo $this->paginationControl($this->paginator, 'Sliding', 'my_paginator_control.phtml');
+}
+?>

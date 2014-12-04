@@ -1,0 +1,47 @@
+<?
+/**
+ * Main layout2 file. Modify this to alter whole look of the site
+ */
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?//= $this->doctype() ?>
+<?//<html xmlns="http://www.w3.org/1999/xhtml"> -- This causes problems in flash loading?>
+<html>
+<head>
+<?=$this->title() ?>
+<!--Google Analytics-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27546725-1']);
+  _gaq.push(['_setDomainName', 'taashtime.com']);
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>  
+
+</head>
+<body >
+<div class="game" align="center">
+<?=$this->layout()->content ?>
+<?php 
+$session = new Zend_Auth_Storage_Session();
+$store = $session->read();
+$isLoggedIn = isset($store)?true:false;
+if($isLoggedIn)
+{
+	$loginName = $store['authDetails'][0]['login'];
+}
+if(Zend_Registry::get('piwikEnabled'))
+	{
+		$this->piwiktracker();
+	}
+?>
+</div>
+</body>
+</html>

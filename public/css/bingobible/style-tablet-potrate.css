@@ -1,0 +1,44 @@
+@media only screen and (min-width:481px) and (max-width:768px)
+{
+{
+.content
+{
+width: 100%;
+}
+.nav{
+float: right;
+}
+.rect {
+width: 90% ;
+}
+.content-top {
+    float: left;
+    padding-top: 5px;
+    width: 100%;
+}
+#box-1 {
+    background: url("../images/night-special.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 554px;
+    width: 33%;
+}
+.menu, .footer-content
+{
+width:100%;
+}
+.login-sec {
+    display: none;
+}
+.menu
+{
+	display:none;
+}
+.menu-icon
+{
+display: block;
+}
+.menu ul li
+{
+width: 100%;
+text-align: left;
+}
+}

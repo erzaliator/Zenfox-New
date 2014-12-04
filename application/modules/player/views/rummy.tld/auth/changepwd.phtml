@@ -1,0 +1,8 @@
+<?php
+echo $this->changePasswordForm;
+if($this->message)
+{
+	echo $this->message;
+	$this->headMeta()->appendHttpEquiv('Refresh',
+                                   '3;URL=' . $this->link);
+}

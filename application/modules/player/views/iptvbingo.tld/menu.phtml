@@ -1,0 +1,59 @@
+<?php
+$authSession = new Zenfox_Auth_Storage_Session();
+$sessionData = $authSession->read();
+
+$html = array ();
+
+$iterator = new RecursiveIteratorIterator ( $this->container, RecursiveIteratorIterator::SELF_FIRST );
+$prevDepth = - 1;
+foreach ( $iterator as $page )
+{
+	$depth = $iterator->getDepth ();
+	if($sessionData && strpos($page->getHref (), 'banking/detail'))
+	{
+		continue;
+	}
+	if ($page->isVisible() && $this->navigation()->accept($page))
+	{
+		$isActive = $page->isActive ( true );
+		if (($depth != 1) && ($depth > $prevDepth))
+		{
+			//$html [] = '<ul id="main-menu"> <li><a href="/home" class="first" ><p class="menu-pad">Home</p></a></li>' . "\n";
+			$html [] = '<div class="menu"><ul id="main-menu" class="main-menu">' . "\n";
+		}
+		else if($depth > $prevDepth)
+		{
+			$html [] = '<ul class="submenu" id="nav-menu-sub">' . "\n";
+		}
+		else if ($prevDepth > $depth)
+		{
+			for($i = $prevDepth; $i > $depth; $i --)
+			{
+				$html [] = '</li>' . "\n";
+				$html [] = '</ul>' . "\n";
+			}
+			$html [] = '    </li>' . "\n";
+		}
+		else
+		{
+			$html [] = '    </li>' . "\n";
+		}
+		if ($page->haspages ()) {
+			$liClass = $isActive ? ' class="active"' : '';
+		} else {
+			$liClass = $isActive ? ' class="active"' : '';
+		}
+		$html [] = '<li' . $liClass . '>' . "\n";
+		//$html [] = '<li' . $liClass . '>' . "\n";
+		$html [] = '<a href="' . $page->getHref () . '"><span>'  . $page->getLabel () . '</span></a>' . "\n";
+		$prevDepth = $depth;
+	}
+}
+if($depth != 0)
+{
+	$html [] = '</li>' . "\n";
+    $html [] = '</ul>' . "\n";
+}
+$html [] = '</li>';
+$html [] = '</ul></div>';
+echo join ( PHP_EOL, $html );

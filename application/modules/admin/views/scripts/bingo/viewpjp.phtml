@@ -1,0 +1,18 @@
+<?php 
+if($this->details)
+{
+	echo '<a href = "/bingo/pjp/createpjp/true"> Create PJP </a>';
+	echo "<br/>"."<br/>";
+	
+	foreach($this->details as $playerData)
+	{
+		$linkArray[$playerData['Name']] = array(
+										'controller' => 'bingo',
+										'action' => 'pjp',
+										'PJPId' => $playerData['Id']);
+	}
+	$this->table($this->details, array('Name'), $linkArray);
+	
+}
+
+?>

@@ -1,0 +1,2042 @@
+@charset utf-8;
+
+body {
+font-family:"Times New Roman";
+font-size:14px;
+color:#030000;
+background:#fff url(/images/bingocrush/bg.png) top center no-repeat;  /*easter_bg.jpg*/ 
+margin:0;
+padding:0;
+}
+
+.content_logo li {
+list-style-type:disc;
+margin-left:-13px;
+line-height:24px;
+font-size:15px;
+}
+
+.weeknames {
+height:30px;
+width:100px;
+border-right:1px solid;
+float:left;
+line-height:30px;
+text-align:center;
+cursor:pointer;
+border-color:#90C;
+}
+
+.aboutus_div {
+border:1px solid;
+height:600px;
+width:750px;
+border-radius:5px;
+border-color:#CD222B;
+}
+
+#TTBingoM {
+width:1024px;
+margin:0 auto;
+}
+
+#TTBingoHedBg {
+height:210px;
+position:relative;
+}
+
+#TTBingoLogo {
+position:absolute;
+top:28px;
+left:6px;
+width:246px;
+height:262px;
+z-index:5;
+}
+
+#TTBingoHedNav {
+position:absolute;
+z-index:4;
+bottom:3px;
+right:0;
+height:42px;
+border:2px solid #ff444b;
+-webkit-border-radius:60px;
+-moz-border-radius:60px;
+border-radius:60px;
+font-size:18px;
+font-family:Verdana, Geneva, sans-serif;
+text-shadow:-1px -1px 0 rgba(0,0,0,0.3);
+font-weight:700;
+text-align:center;
+color:#fff;
+background-color:#ce222b;
+cursor:pointer;
+background-image: -moz-linear-gradient(center top , #F27D5D, #CE222B);
+padding:5px 5px 10px 20px;
+}
+
+#TTBingoHedNavinn {
+height:6px;
+margin:0 5px 10px 25px;
+padding:3px 20px 10px;
+}
+
+*/
+#TTBingoHedNav ul li a {
+color:#fff;
+text-decoration:none;
+text-shadow:0 2px 3px rgba(0,0,0,1);
+padding:5px 25px;
+}
+
+#TTBingoHedNav ul li a.active {
+color:#fbee23;
+font-weight:700;
+font-size:20px;
+}
+
+#TTBingosubNav {
+width:850px;
+bottom:-38px;
+right:1px;
+height:50px;
+margin-top:10px;
+position:absolute;
+z-index:3;
+background:#8c0000;
+-webkit-border-bottom-right-radius:10px;
+-webkit-border-bottom-left-radius:10px;
+-moz-border-radius-bottomright:10px;
+-moz-border-radius-bottomleft:10px;
+border-bottom-right-radius:10px;
+border-bottom-left-radius:10px;
+padding:16px 0 0;
+}
+
+#TTBingosubNav ul {
+margin:0 0 0 106px;
+padding:0;
+}
+
+#TTBingosubNav ul li {
+display:inline;
+float:left;
+color:#fff;
+font-size:13px;
+font-weight:400;
+line-height:65px;
+font-family:Verdana, Geneva, sans-serif;
+margin:0;
+padding:0;
+}
+
+#TTBingosubNav ul li a {
+color:#fff;
+text-decoration:none;
+text-shadow:0 2px 3px rgba(0,0,0,1);
+line-height:48px;
+padding:5px 15px;
+}
+
+.TTBingoBanner {
+width:720px;
+margin-left:5px;
+}
+
+.TTBingoBtnBlk {
+position:relative;
+clear:both;
+height:60px;
+margin-top:5px;
+}
+
+.TTBingoExploBtn,.TTBingoPlayBtn,.TTBingoLikeBtn {
+height:45px;
+position:absolute;
+top:5px;
+left:50px;
+border:2px solid #ff444b;
+-webkit-border-radius:60px;
+-moz-border-radius:60px;
+border-radius:60px;
+font-size:18px;
+font-family:Verdana, Geneva, sans-serif;
+font-weight:700;
+text-align:center;
+color:#fff;
+background-color:#c50000;
+cursor:pointer;
+background-image:0;
+padding:0 5px;
+}
+
+.TTBingoPlayBtn {
+left:300px;
+height:45px;
+-webkit-border-radius:60px;
+-moz-border-radius:60px;
+border-radius:60px;
+font-size:18px;
+font-family:Verdana, Geneva, sans-serif;
+text-shadow:-1px -1px 0 rgba(0,0,0,0.3);
+font-weight:700;
+text-align:center;
+color:#fff;
+background-color:#00680a;
+cursor:pointer;
+background-image:0;
+border:#5fa943 solid 1px;
+margin:5px;
+}
+
+.TTBingoLikeBtn {
+left:575px;
+top:10px;
+height:36px;
+text-align:center;
+color:#fff;
+cursor:pointer;
+background:none;
+border:0;
+}
+
+.TTBingoBtninn {
+height:21px;
+-webkit-border-radius:60px;
+-moz-border-radius:60px;
+border-radius:60px;
+font-size:18px;
+font-family:Verdana, Geneva, sans-serif;
+margin:5px;
+}
+
+.TTBingoJoin,.TTBingoJoinl {
+width:270px;
+border:#CD222B solid 1px;
+margin:10px 0 0 10px;
+padding:10px 5px 0;
+}
+
+.TTBingoJoinl {
+width:auto!important;
+margin:0;
+padding:10px 10px 0;
+}
+
+.TTBingoJoinTitle {
+font-family:'Berlin Sans FB Demi';
+text-align:center;
+color:#C50000;
+font-size:32px;
+}
+
+.TTBingoJoinTitleSmall {
+font-family:'Berlin Sans FB Demi';
+color:#000;
+text-align:right;
+font-size:16px;
+}
+
+.TTBingoBnrTitle {
+text-align:right;
+padding:83px 10px 10px;
+}
+
+.TTBingoBnrTitle h1,.TTBingoBnrTitle h2,.TTBingoBnrTitle h3 {
+font-family:'Berlin Sans FB Demi';
+text-align:left;
+font-size:16px;
+color:#000;
+font-smooth:always;
+-webkit-font-smoothing:antialiased;
+margin:0;
+padding:0;
+}
+
+.TTBingoBnrTitle h1 {
+color:#00680a;
+font-size:120px;
+line-height:100px;
+font-weight:700;
+font-family:Verdana, Geneva, sans-serif;
+}
+
+.TTBingoBnrTitle h2 {
+font-size:50px;
+}
+
+.TTBingoBnrTitle h3 {
+font-size:15px;
+line-height:22px;
+}
+
+.TTBingoBnrTitlen {
+margin-top:80px;
+width:340px;
+}
+
+.TTBingoBnrTitlen span {
+font-size:30px;
+color:#000;
+}
+
+.TTBingoBnrTitlen h5 {
+font-size:42px;
+text-align:center;
+color:green;
+margin:0;
+}
+
+.TTBingoBnrTitlen h6 {
+font-size:38px;
+text-align:center;
+color:green;
+margin:0;
+}
+
+.TTBingoJoinForm {
+margin:0 auto;
+padding:0 0 0 20px;
+}
+
+.TTBingoJoinForm ul li {
+list-style:none;
+clear:both;
+margin:0;
+padding:6px 0;
+}
+
+.TTBingoJoinForm ul li span {
+width:100px;
+display:inline-block;
+text-align:center;
+}
+
+.TTBingoJoinForm input[type=text]:focus,.TTBingoJoinForm input[type=password]:focus,.TTBingoJoinForm input[type=email]:focus {
+border:1px solid #fff;
+-webkit-box-shadow:inset 0 1px 3px rgba(0,0,0,.05), 0 0 8px rgba(000,000,000,.7);
+-moz-box-shadow:inset 0 1px 3px rgba(0,0,0,.05), 0 0 8px rgba(000,000,000,.7);
+box-shadow:inset 0 1px 3px rgba(0,0,0,.05), 0 0 8px rgba(000,000,000,.7);
+}
+
+.TTBingoJoinForm input[type=checkbox] {
+width:20px!important;
+}
+
+.TTBingoJoinForm input[type=submit] {
+margin-top:18px;
+}
+
+.TTBingoJoinForm .text {
+border:1px solid #b296c7;
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+border-radius:6px;
+width:200px;
+padding:5px;
+}
+
+.TTBingoJoinForm .button {
+background:url(/images/bingocrush/ttbingosubmit.gif);
+border:1px solid #d79701;
+cursor:pointer;
+font-size:14px;
+margin:0;
+padding:4px 15px;
+}
+
+.TTBingoJoinForm p {
+margin:0;
+padding:5px 0 0 20px;
+}
+
+.TTBingoFooter {
+background:#1a1a1a;
+color:#fff;
+border-top:#909 solid 3px;
+margin-top:20px;
+padding:20px;
+}
+
+.TTBingoFooterinn {
+width:1024px;
+margin:0 auto;
+}
+
+.TTBingoFooterNav {
+width:430px;
+height:200px;
+border:#000 double 1px;
+border-top:none;
+border-bottom:none;
+margin:0 10px;
+padding:0 20px;
+}
+
+.TTBingoFooterRight {
+width:160px;
+margin-left:15px;
+}
+
+.TTBingoFooterNav ul li a {
+color:#FFF;
+text-decoration:none;
+font-size:16px;
+font-weight:700;
+line-height:50px;
+}
+
+.TTBingoPlayBlk {
+background:none;
+}
+
+.TTBingoPlaymorebg {
+border-bottom:solid 2px #CD222B;
+font-family:'Berlin Sans FB Demi';
+font-size:30px;
+padding:0 0 10px;
+}
+
+.TTBingoPlaymorebot {
+padding:25px 10px 10px;
+}
+
+.TTBingooffer {
+width:300px;
+height:220px;
+background:none;
+position:relative;
+text-align:center;
+}
+
+.TTBingoofferin {
+padding:11px 0 0;
+}
+
+.TTBingoofferhed {
+height:10px;
+text-align:justify;
+color:#fff;
+-webkit-border-radius:80px;
+-moz-border-radius:80px;
+border-radius:80px;
+font-size:18px;
+font-family:Verdana, Geneva, sans-serif;
+text-shadow:0 4px 3px rgba(0,0,0,1);
+font-weight:700;
+padding:5px 5px 10px 20px;
+}
+
+.TTBingoofferimg {
+font-family:'Berlin Sans FB Demi';
+text-align:justify;
+color:#C50000;
+font-size:26px;
+position:relative;
+padding:10px 0 0;
+}
+
+.TTBingogamesbot {
+padding:12px 10px 10px;
+}
+
+.TTBingogamesimg {
+width:280px;
+height:180px;
+background:url(/images/bingocrush/h_game_1.png);
+padding:10px;
+}
+
+.TTBingogamesplaybtn {
+height:26px;
+background:url(/images/bingocrush/ttbingocontplaybtnbg.gif) repeat-x;
+border:#cb9a34 solid 1px;
+cursor:pointer;
+}
+
+.TTBingogamesblkm {
+width:662px;
+height:220px;
+background:#FFF;
+border:#90c solid 2px;
+}
+
+.TTBingogamesblkR {
+width:324px;
+height:220px;
+background:#FFF;
+border:#90c solid 2px;
+margin-left:10px;
+}
+
+.TTBingogameName {
+font-family:'Berlin Sans FB Demi';
+text-align:justify;
+color:#c50000;
+font-size:26px;
+}
+
+.TTBingoWeaccepthed {
+font-size:14px;
+font-weight:700;
+color:#fff;
+}
+
+.TTBingogamesbot p {
+line-height:18px;
+height:130px;
+margin:5px 0 10px;
+}
+
+.TTBingoMidPad {
+border-right:2px solid #FFD6DD;
+border-left:2px solid #FFD6DD;
+margin:0 25px;
+padding:0 25px;
+}
+
+.TTBingoMidPad_noborder {
+margin:0 25px;
+padding:0 25px;
+}
+
+#TTBingoslideshow {
+position:relative;
+height:220px;
+}
+
+#TTBingoslideshow DIV {
+position:absolute;
+top:0;
+left:0;
+z-index:8;
+opacity:0.0;
+height:220px;
+background-color:#FFF;
+}
+
+#TTBingoslideshow DIV.active {
+z-index:10;
+opacity:1.0;
+}
+
+#TTBingoslideshow DIV.last-active {
+z-index:9;
+}
+
+#TTBingoslideshow DIV IMG {
+height:220px;
+display:block;
+border:0;
+margin-bottom:10px;
+}
+
+#ttbingotestim {
+padding-top:10px;
+text-align:left;
+}
+
+pre {
+display:block;
+font:12px "Courier New", Courier, monospace;
+border:1px solid #bae2f0;
+background:#e3f4f9;
+width:306px;
+margin:.5em 0;
+padding:10px;
+}
+
+.graphic,#prevBtn,#nextBtn,#slider1prev,#slider1next {
+display:block;
+overflow:hidden;
+text-indent:-8000px;
+margin:0;
+padding:0;
+}
+
+#container {
+position:relative;
+text-align:left;
+width:328px;
+background:#fff;
+margin:0 auto 2em;
+}
+
+#content,#contentban {
+position:relative;
+}
+
+#content {
+margin-left:28px;
+}
+
+#slider2 {
+margin-top:1em;
+}
+
+#slider2 li,#sliderban li {
+width:250px;
+height:160px;
+overflow:hidden;
+}
+
+#slider li {
+width:280px;
+height:160px;
+overflow:hidden;
+margin-left:0;
+}
+
+#sliderban li {
+width:720px;
+height:323px;
+}
+
+#prevBtn,#nextBtn,#slider1next,#slider1prev {
+display:block;
+width:36px;
+height:38px;
+position:absolute;
+left:-37px;
+top:60px;
+z-index:1000;
+}
+
+#nextBtn,#slider1next {
+left:264px;
+}
+
+#prevBtn a,#nextBtn a,#slider1next a,#slider1prev a {
+display:block;
+position:relative;
+width:36px;
+height:38px;
+background:url(/images/bingocrush/btn_prev1.png) no-repeat 0 0;
+}
+
+#nextBtn a,#slider1next a {
+background:url(/images/bingocrush/btn_next1.png) no-repeat 0 0;
+}
+
+ol#controls {
+height:28px;
+margin:1em 0;
+padding:0;
+}
+
+ol#controls li {
+float:left;
+list-style:none;
+height:28px;
+line-height:28px;
+margin:0 10px 0 0;
+padding:0;
+}
+
+ol#controls li a {
+float:left;
+height:28px;
+line-height:28px;
+border:1px solid #ccc;
+background:#DAF3F8;
+color:#555;
+text-decoration:none;
+padding:0 10px;
+}
+
+ol#controls li.current a {
+background:#5DC9E1;
+color:#fff;
+}
+
+ol#controls li a:focus,#prevBtn a:focus,#nextBtn a:focus {
+outline:none;
+}
+
+.TTBingoRadius {
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+border-radius:6px;
+}
+
+.clearfix:after {
+content:".";
+display:block;
+clear:both;
+visibility:hidden;
+line-height:0;
+height:0;
+}
+
+.clearfix {
+display:inline-block;
+}
+
+* html .clearfix {
+height:1%;
+}
+
+.TTBingoBtnPad {
+padding:0 10px 5px;
+}
+
+.TTBingoBtnmarg {
+margin:0 10px;
+}
+
+.TTBingoBtnmargl_40 {
+margin-left:40px;
+}
+
+.TTBingoBtnmargl_40e {
+margin-top:55px;
+}
+
+.TTBingoBtnmarg_45 {
+margin:0 45px;
+}
+
+.TTBingomarg_10 {
+margin:10px;
+}
+
+.TTBingomargt_30 {
+margin-top:30px;
+}
+
+.TTBingomargt_50 {
+margin-top:50px;
+}
+
+.TTBingomargl {
+margin-left:10px;
+}
+
+.TTBingoborder {
+border:solid 1px #cd222b;
+}
+
+.TTBingopad_10 {
+padding:10px;
+}
+
+.TTBingopad_5 {
+padding:5px;
+}
+
+.TTBingoGradentBtn,.TTBingoGradentBtn1,.TTBingoGradentBtn2 {
+background:transparent;
+border:0 solid #fff;
+font-size:20px;
+text-align:center;
+color:#fff;
+cursor:pointer;
+text-shadow:0 2px 3px rgba(0,0,0,1);
+font-weight:700;
+padding:5px 40px;
+}
+
+.TTBingoGradentBtn:hover,.TTBingoGradentBtn1:hover,.TTBingoGradentBtn2:hover,.TTBingoGradentBtn3:hover {
+background-color:transparent;
+color:#000;
+text-shadow:0 2px 3px rgba(255,255,255,1);
+}
+
+.TTBingoGradentBtn2 {
+padding:5px 25px;
+}
+
+.TTBingoGradentBtn3 {
+height:35px;
+-webkit-border-radius:60px;
+-moz-border-radius:60px;
+border-radius:60px;
+font-size:18px;
+font-family:Verdana, Geneva, sans-serif;
+text-align:center;
+color:#fff;
+background-color:#096F13;
+cursor:pointer;
+border:#5fa943 solid 1px;
+font-weight:700;
+text-shadow:0 2px 3px rgba(0,0,0,1);
+margin:5px;
+padding:2px 10px;
+}
+
+.TTBingoGradentBtn3 a {
+text-decoration:none;
+color:#484848;
+}
+
+.TTBingoGradentBtn3:hover {
+text-decoration:none;
+cursor:pointer;
+padding:2px 10px;
+background-color:#FDE6EA;
+
+}
+
+.TTBingoGradentBtn4 {
+border:0 solid #5c3b08;
+-webkit-box-shadow:#B4B5B5 2px 2px 2px;
+-moz-box-shadow:#B4B5B5 2px 2px 2px;
+box-shadow:#B4B5B5 2px 2px 2px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px;
+font-size:18px;
+font-family:arial, helvetica, sans-serif;
+text-shadow:-1px -1px 0 rgba(0,0,0,0.3);
+font-weight:700;
+text-align:center;
+color:#fff;
+background-color:#46982c;
+cursor:pointer;
+background-image:linear-gradient(top,#5aa53e,#43962a);
+filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5aa53e,endColorstr=#43962a);
+padding:5px 10px;
+}
+
+.TTBingoGradentBtn4:hover {
+border:0 solid #5c3b08;
+-webkit-box-shadow:#B4B5B5 2px 2px 2px;
+-moz-box-shadow:#B4B5B5 2px 2px 2px;
+box-shadow:#B4B5B5 2px 2px 2px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px;
+font-size:20px;
+font-family:arial, helvetica, sans-serif;
+text-shadow:-1px -1px 0 rgba(0,0,0,0.3);
+font-weight:700;
+text-align:center;
+color:#fff;
+background-color:#46982c;
+cursor:pointer;
+background-image:linear-gradient(top,#5aa53e,#43962a);
+filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5aa53e,endColorstr=#43962a);
+padding:8px 10px;
+}
+
+.TTBingoGradentBtn6 {
+border:0 solid #5c3b08;
+-webkit-box-shadow:#B4B5B5 2px 2px 2px;
+-moz-box-shadow:#B4B5B5 2px 2px 2px;
+box-shadow:#B4B5B5 2px 2px 2px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px;
+font-size:18px;
+font-family:arial, helvetica, sans-serif;
+text-shadow:-1px -1px 0 rgba(0,0,0,0.3);
+font-weight:700;
+text-align:center;
+color:#000;
+background-color:#fffc00;
+cursor:pointer;
+background-image:linear-gradient(top,#fffc00,#efec04);
+filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#fffc00,endColorstr=#efec04);
+padding:5px 10px;
+}
+
+.TTBingoGradentBtn6:hover {
+border:0 solid #5c3b08;
+-webkit-box-shadow:#B4B5B5 2px 2px 2px;
+-moz-box-shadow:#B4B5B5 2px 2px 2px;
+box-shadow:#B4B5B5 2px 2px 2px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px;
+font-size:20px;
+font-family:arial, helvetica, sans-serif;
+text-shadow:-1px -1px 0 rgba(0,0,0,0.3);
+font-weight:700;
+text-align:center;
+color:#000;
+background-color:#f6ff00;
+cursor:pointer;
+background-image:linear-gradient(top,#f6ff00,#ecf502);
+filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f6ff00,endColorstr=#ecf502);
+padding:7px;
+}
+
+.TTBingoGradentBtn5 {
+border:0 solid #5c3b08;
+-webkit-box-shadow:#B4B5B5 2px 2px 2px;
+-moz-box-shadow:#B4B5B5 2px 2px 2px;
+box-shadow:#B4B5B5 2px 2px 2px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px;
+font-size:18px;
+text-align:center;
+color:#fff;
+background-color:#00680A;
+cursor:pointer;
+text-shadow:0 2px 3px rgba(150,150,150,1);
+font-weight:700;
+padding:3px 10px;
+}
+
+.TTBingoGradentBtn5:hover {
+border:0 solid #5c3b08;
+-webkit-box-shadow:#B4B5B5 2px 2px 2px;
+-moz-box-shadow:#B4B5B5 2px 2px 2px;
+box-shadow:#B4B5B5 2px 2px 2px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px;
+font-size:18px;
+text-shadow:-1px -1px 0 rgba(0,0,0,0.3);
+font-weight:700;
+text-align:center;
+color:#fff;
+background-color:#46982c;
+cursor:pointer;
+background-image:linear-gradient(top,#5aa53e,#43962a);
+filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5aa53e,endColorstr=#43962a);
+padding:3px 10px;
+}
+
+.tttournwinrbg {
+text-align:left;
+margin-top:15px;
+}
+
+.tt_winner_hed {
+height:24px;
+color:#004298;
+font-size:14px;
+font-weight:700;
+padding:6px 0 0 10px;
+}
+
+.tt_winner_cont {
+height:150px;
+overflow:auto;
+color:#004298;
+}
+
+.tt_winner_cont ul {
+margin:0 0 0 12px;
+padding:0;
+}
+
+.tt_winner_cont ul li {
+list-style:none;
+font-weight:700;
+position:relative;
+color:#000;
+line-height:24px;
+margin:0;
+padding:0;
+}
+
+.tt_winner_cont ul li div {
+position:absolute;
+right:10px;
+top:0;
+}
+
+.ttbingomoredtls {
+padding:10px 10px 0 0;
+}
+
+.ttbingomoredtls a {
+color:#C0272C;
+font-weight:700;
+text-decoration:none;
+}
+
+.ttbingomoredtls a:hover {
+color:#90C;
+}
+
+.TTBingoRight,.right {
+float:right;
+}
+
+.TTBingoGameL {
+width:241px;
+float:left;
+margin-left:10px;
+}
+
+.TTBingoGameR {
+width:755px;
+}
+
+.TTBingoGameNav ul li {
+list-style:none;
+text-align:center;
+background:url(/images/bingocrush/tthednavbg.gif) repeat-x;
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+border-radius:6px;
+margin:0;
+padding:0;
+}
+
+.TTBingoGameNav ul li span {
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+border-radius:6px;
+border:inset 2px #90c;
+display:block;
+}
+
+.TTBingoGameNav ul li a {
+color:#fff;
+font-weight:700;
+font-size:14px;
+text-decoration:none;
+display:block;
+line-height:26px;
+padding:10px 10px 5px;
+}
+
+.TTBingoGameNav ul li a:hover {
+color:#FF0;
+}
+
+.TTBingoTodaysProm {
+width:367px;
+height:125px;
+}
+
+.TTBingoContentNav {
+border-bottom:solid 1px #90c;
+padding-bottom:2px;
+height:35px;
+}
+
+.TTBingoContentNav ul li {
+display:inline;
+font-size:18px;
+margin:0;
+padding:0;
+}
+
+.TTBingoContentNav ul li a {
+color:#000;
+text-decoration:none;
+font-size:14px;
+padding:10px 10px 10px 20px;
+}
+
+.TTBingoContentNav ul li a:hover {
+color:#90c;
+}
+
+.TTBingoUserInfo {
+background:#ffd6dd;
+cursor:pointer;
+padding:5px;
+}
+
+.TTBingoUserInfoT {
+background:#fff;
+padding:5px;
+}
+
+.TTBingoUserPic {
+float:left;
+width:60px;
+height:70px;
+}
+
+.TTBingoLogOut {
+color:#cd222b;
+font-weight:700;
+}
+
+.TTBingoLogOut a {
+color:#cd222b;
+}
+
+.TTBingoLogOut a:hover {
+color:#f5303a;
+}
+
+.TTBingoWelcome {
+color:#000;
+padding:5px 0;
+}
+
+.TTBingoBalnce {
+height:30px;
+}
+
+.TTBingoBalncecont {
+width:110px;
+}
+
+.TTBingoThBg {
+background:#cd222b;
+color:#FFF;
+font-size:14px;
+border:1px solid;
+}
+
+.TTBingoTrBg {
+background:#ffd6dd;
+font-family:Verdana, Geneva, sans-serif;
+text-align:center;
+color:#000;
+backgsround-color:#ce222b;
+cursor:pointer;
+border:1px solid;
+}
+
+.TTBingoTrhoverBg {
+background:#e7d8ef;
+font-family:Verdana, Geneva, sans-serif;
+text-align:center;
+color:#000;
+background-color:#ce222b;
+cursor:pointer;
+background-image:linear-gradient(top,#ffd6de,#fe797c);
+filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ffd6de,endColorstr=#fe797c);
+}
+
+.TTBingoTroutBg {
+background:#ffd6dd;
+cursor:pointer;
+font-family:Verdana, Geneva, sans-serif;
+text-align:center;
+color:#000;
+}
+
+.TTBingoBonanza {
+color:#8a0000;
+font-size:14px;
+font-weight:700;
+}
+
+.TTBingoGameImg {
+width:100px;
+float:left;
+margin:10px;
+padding:10px;
+}
+
+#TTBingosubNavHover {
+position:relative;
+top:0;
+z-index:1;
+left:17%;
+}
+
+#TTBingosubNavHover ul {
+position:absolute;
+top:18px;
+margin:0;
+padding:0;
+}
+
+#TTBingosubNavHover ul li {
+display:block;
+background:red;
+border:#999;
+float:none;
+margin:0;
+padding:0;
+}
+
+.TabbedPanel {
+float:left;
+clear:none;
+width:100%;
+margin:0;
+padding:0;
+}
+
+.TabbedPanelTab {
+position:relative;
+top:1px;
+float:left;
+font:bold 1.2em sans-serif;
+background-color:#EFC8CF;
+list-style:none;
+border-left:solid 1px #cd222b;
+border-bottom:solid 1px #cd222b;
+border-top:solid 1px #cd222b;
+border-right:solid 1px #cd222b;
+-moz-user-select:none;
+-khtml-user-select:none;
+cursor:pointer;
+-moz-border-radius:10px 10px 0 0;
+-webkit-border-radius:10px 10px 0 0;
+-khtml-border-radius:10px 10px 0 0;
+margin:0 1px 0 0;
+padding:4px 30px;
+}
+
+.TabbedPanelTabHover {
+background-color:#dc798b;
+}
+
+.TabbedPanelTabSelected {
+background-color:#FFF;
+border-bottom:none;
+padding-bottom:5px;
+}
+
+.TabbedPanelTab a {
+color:#000;
+text-decoration:none;
+}
+
+.TabbedPanelContentGroup {
+clear:both;
+border:solid 1px #cd222b;
+}
+
+.TabbedPanelContent {
+padding:0;
+}
+
+.TabbedPanelContentVisible {
+background-color:#FFF;
+}
+
+.VTabbedPanel .TabbedPanelTabGroup {
+float:left;
+width:10em;
+height:20em;
+background-color:#EEE;
+position:relative;
+border-top:solid 1px #999;
+border-right:solid 1px #999;
+border-left:solid 1px #CCC;
+border-bottom:solid 1px #CCC;
+}
+
+.VTabbedPanel .TabbedPanelTab {
+float:none;
+border-top:none;
+border-left:none;
+border-right:none;
+margin:0;
+}
+
+.VTabbedPanel .TabbedPanelTabSelected {
+background-color:#900;
+border-bottom:solid 1px #999;
+}
+
+.VTabbedPanel .TabbedPanelContentGroup {
+clear:none;
+float:left;
+width:30em;
+height:20em;
+padding:0;
+}
+
+.game-list {
+/*overflow:hidden;*/
+left:15px;
+position:relative;
+top:0;
+-moz-border-radius:10px;
+-khtml-border-radius:10px 10px 10px 10px;
+-webkit-border-radius:10px 10px 10px 10px;
+padding:10px;
+}
+
+.game-list ul {
+list-style:none outside none;
+overflow:hidden;
+margin:0;
+padding:0;
+}
+
+.game-list ul li {
+float:left;
+text-align:center;
+margin-bottom:25px;
+}
+
+.game-list ul li p {
+margin:8px 0 0;
+padding:0;
+}
+
+.game-list ul li p.dotted span {
+color:#971c8e;
+line-height:0;
+margin:0;
+}
+
+.game-list ul li p span {
+font-weight:700;
+text-align:center;
+display:block;
+margin:10px;
+}
+
+.game-list ul li div {
+list-style-position:outside;
+background-color:#FFF;
+height:110px;
+width:90px;
+text-align:center;
+margin:0 7px;
+padding:7px;
+}
+
+.game-list a {
+color:#333;
+text-decoration:none;
+}
+
+.game-list a:hover {
+color:#900;
+text-decoration:underline;
+}
+
+div.nav-wrapper {
+overflow:hidden;
+}
+
+div.clearfix {
+clear:both;
+}
+
+.prev,.next {
+cursor:pointer;
+color:#90C;
+font-size:18px;
+}
+
+.ttbingologin {
+margin:0 0 0 20px;
+padding:0;
+}
+
+.ttbingologin ul li {
+list-style:none;
+margin:0;
+padding:5px;
+}
+
+.ttbingologin ul li label {
+width:100px;
+display:inline-block;
+vertical-align:middle;
+}
+
+.ttbingologin ul li input {
+border:#999 solid 1px;
+}
+
+.ttcolactive {
+background:#F8B4BF;
+font-size:12px;
+font-weight:700;
+vertical-align:middle;
+margin:0;
+padding:5px 0 5px 5px;
+}
+
+#ttwidget-docs h2,#ttwidget-docs h3,#ttwidget-docs h4,#ttwidget-docs p,#ttwidget-docs ul,#ttwidget-docs code {
+clear:both;
+font-weight:400;
+line-height:18px;
+margin:0;
+padding:0;
+}
+
+#ttwidget-docs h2 {
+font-size:16px;
+}
+
+#ttwidget-docs h3 {
+font-size:14px;
+color:#e6820E;
+}
+
+#ttwidget-docs ul.options-list li,#ttwidget-docs ul.methods-list li {
+list-style:none;
+background:url(../../images/bingocrush/bg-demo-docs-param.gif);
+}
+
+#ttwidget-docs ul.options-list code {
+display:inline;
+font-size:1em;
+}
+
+#ttwidget-docs .option-header {
+width:100%;
+border-top:1px solid #e6e6e6;
+padding:5px 0;
+}
+
+#ttwidget-docs .option-header h3 {
+width:98%;
+line-height:1;
+background:url(../../images/bingocrush/demo-spindown-closed.gif) no-repeat left;
+cursor:hand;
+margin:0 0 0 10px;
+padding:0 0 0 15px;
+}
+
+#ttwidget-docs .header-open h3 {
+background:url(../../images/bingocrush/demo-spindown-open.gif) no-repeat left;
+}
+
+#ttwidget-docs .option-description,#ttwidget-docs .event-description,#ttwidget-docs .method-description,#ttwidget-docs .option-examples,#ttwidget-docs .event-examples {
+padding:0 10px 5px 25px;
+}
+
+#ttwidget-docs a:visited,#ttwidget-docs a {
+color:#000;
+font-weight:700;
+text-decoration:none;
+}
+
+#player-date-selection-form .zend_form {
+margin-top:20px;
+float:left;
+}
+
+#player-date-selection-form .zend_form ul li {
+padding-bottom:20px;
+float:left;
+clear:both;
+font-size:13px;
+}
+
+#player-date-selection-form .zend_form ul li label {
+text-align:left;
+float:left;
+width:120px;
+}
+
+#player-date-selection-form .zend_form ul li input[type=text] {
+float:left;
+height:25px;
+}
+
+#player-date-selection-form .zend_form ul li input[type=submit] {
+width:80px;
+height:30px;
+font-weight:700;
+cursor:pointer;
+border:0 solid;
+}
+
+.TTBingonew,.TTBingonew_before {
+width:210px;
+height:630px;
+background:#ffd6dd;
+border:solid 1px #cd222b;
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+border-radius:6px;
+float:left;
+margin-left:17px;
+margin-bottom:20px;
+padding:5px;
+}
+
+.TTBingonew_before1 {
+width:230px;
+height:280px;
+background:#ffd6dd;
+border:solid 1px #cd222b;
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+border-radius:6px;
+float:right;
+margin-bottom:20px;
+margin-top:20px;
+padding:5px;
+}
+
+.paly-report-forms {
+border:none;
+font-size:14px;
+float:left;
+}
+
+#TTBingosubNavHover:nth-child(2) ul {
+left:0;
+}
+
+#TTBingosubNavHover:nth-child(3) ul {
+left:10%;
+}
+
+#TTBingosubNavHover:nth-child(4) ul {
+left:20%;
+}
+
+#TTBingosubNavHover:nth-child(6) ul {
+left:30%;
+}
+
+.stick-main {
+float:left;
+position:relative;
+z-index:0;
+top:13px;
+}
+
+#sticky {
+background:#8c0000;
+list-style:none;
+float:left;
+}
+
+#sticky li {
+float:left;
+font-size:13px;
+font-weight:400;
+line-height:65px;
+font-family:Verdana, Geneva, sans-serif;
+padding:0 10px;
+}
+
+#sticky li a {
+text-decoration:none;
+color:#fff;
+}
+
+.frnd-inner p {
+text-align:left;
+margin-bottom:0;
+}
+
+.frnd-inner p a {
+color:#000;
+}
+
+.gap {
+margin-bottom:30px;
+}
+
+#banners {
+float:right;
+width:299px;
+}
+
+#banners img {
+border:1px solid #CD222B;
+padding:7px;
+}
+
+#banners ul {
+display:block;
+overflow:hidden;
+}
+
+#banners li {
+display:block;
+list-item-style:none;
+}
+
+#banners li img {
+width:280px;
+height:390px;
+margin:0;
+}
+
+.nav-wrapper #banners {
+float:left;
+width:740px;
+}
+
+.nav-wrapper #banners li img {
+width:710px;
+height:600px;
+margin:0;
+}
+
+.nav-wrapper #banners img {
+border:none;
+}
+
+.TTBingoUserPic1 {
+width:27px;
+height:27px;
+float:left;
+}
+
+.TTBingoRight1 {
+width:175px;
+}
+
+.prof-arrow {
+float:right;
+margin-top:12px;
+margin-right:10px;
+cursor:pointer;
+}
+
+.TTBingo-index {
+position:relative;
+z-index:1000;
+}
+
+.profile-complete {
+position:absolute;
+}
+
+.nav-wrapper #slider li {
+width:720px;
+height:600px;
+}
+
+.r-strip {
+background:#cd222b;
+color:#fff;
+font-size:17px;
+font-weight:700;
+float:right;
+position:relative;
+z-index:99;
+margin-top:5px;
+width:25%;
+padding:7.5px 5px;
+}
+
+.tb-real {
+margin-top:-25px;
+float:left;
+position:relative;
+z-index:5;
+width:755px;
+}
+
+#captcha-element b {
+font-size:20px;
+}
+
+#captcha-input-label {
+height:0;
+}
+
+.ttdeprofilelbg {
+border:2px solid #CD222B;
+float:left;
+width:340px;
+background:none repeat scroll 0 0 #FFD6DD;
+height:100px;
+padding:5px;
+}
+
+.ttdeprofiler {
+border:0 solid #CD222B;
+float:left;
+width:352px;
+height:160px;
+margin-top:25px;
+line-height:30px;
+margin-left:19px;
+}
+
+.ttdepolnextback {
+float:left;
+clear:both;
+height:10px;
+width:700px;
+padding:0;
+}
+
+.ttdepolnextback1 {
+float:left;
+clear:both;
+height:50px;
+border:0 solid;
+width:735px;
+padding:10px;
+}
+
+.pad-t-10 clear {
+border:0 solid;
+float:left;
+width:100px;
+}
+
+#prof_bonus {
+border:0 solid;
+line-height:30px;
+float:left;
+width:200px;
+}
+
+#profloy_info {
+float:left;
+border:0 solid;
+height:135px;
+width:228px;
+margin-top:20px;
+}
+
+.ttdeprofilepic {
+float:left;
+border:0 solid;
+height:155px;
+width:120px;
+}
+
+.ttdeprofilename {
+border:0 solid;
+float:left;
+margin-left:-20px;
+width:218px;
+}
+
+.loyinfo {
+float:left;
+margin-left:10px;
+width:218px;
+font-weight:700;
+}
+
+.ttdeprofileb {
+clear:both;
+height:185px;
+}
+
+.ttdepolback {
+float:left;
+width:108px;
+line-height:20px;
+margin-left:-25px;
+}
+
+.profile_details tbody tr:nth-child(2n-1) td,tbody tr.even td {
+background:none repeat scroll 0 0 #FFD6DD;
+}
+
+.profile_details th,td,caption {
+padding:0 0 0 5px;
+}
+
+.profile_details table,th,td {
+vertical-align:middle;
+}
+
+.profile_details caption,th,td {
+float:none!important;
+font-weight:700;
+text-align:left;
+}
+
+.ttdepolplz {
+background:none repeat scroll 0 0 #CD222B;
+border:1px solid;
+height:35px;
+line-height:37px;
+text-align:center;
+color:#FFF;
+font-weight:700;
+}
+
+.ttdepolinnnav {
+background:none repeat scroll 0 0 #FFF;
+border:1px solid #CD222B;
+display:inline-block;
+margin-top:15px;
+width:750px;
+padding:0 0 10px;
+}
+
+.steps li.step a.current {
+background:url(../../images/bingocrush/step_over.png) no-repeat scroll right center transparent;
+color:#B30F5D;
+font-weight:700;
+}
+
+.steps li.step-1 a,.steps li.step-2 a,.steps li.step-3 a,.steps li.step-4 a {
+background:url(../../images/bingocrush/step.png) no-repeat scroll right center transparent;
+padding-right:25px;
+}
+
+.steps li.step-2,.steps li.step-2 a {
+z-index:3;
+}
+
+.steps li.step,.steps li.step a {
+cursor:default;
+height:29px;
+line-height:26px;
+position:relative;
+width:240px;
+float:left;
+padding:0;
+}
+
+.steps li a {
+background:none repeat scroll 0 0 #D0D0D0;
+color:#FFF;
+display:block;
+line-height:1.5em;
+text-decoration:none;
+padding:15px 20px;
+}
+
+.steps {
+background:none repeat scroll 0 0 #AAA;
+overflow:hidden;
+padding:0;
+}
+
+.steps ul,.steps li {
+list-style:none outside none;
+margin:0;
+padding:0;
+}
+
+.steps li.step-4 a {
+background-position:left center;
+padding-left:45px;
+padding-right:10px;
+}
+
+.steps li.step-4,.steps li.step-4 a {
+z-index:1;
+}
+
+.steps li.step-3,.steps li.step-3 a {
+z-index:2;
+}
+
+.steps li.step-1,.steps li.step-1 a {
+z-index:5;
+}
+
+.with_note {
+width:500px;
+}
+
+.ttdepolnextbackbtn {
+background:#0C7116;
+border:0 solid #FFF;
+color:#FFF;
+cursor:pointer;
+font-size:18px;
+font-weight:700;
+border-radius:10px;
+width:90px;
+padding:4px 20px 3px;
+}
+
+.ttdepolbackbtns {
+background:#0C7116;
+border:0 solid #FFF;
+color:#FFF;
+cursor:pointer;
+font-size:18px;
+font-weight:700;
+border-radius:10px;
+width:90px;
+padding:4px 20px 3px;
+}
+
+.ttdepolback_1 {
+background:#0C7116;
+border:0 solid #FFF;
+color:#FFF;
+cursor:pointer;
+font-size:15px;
+border-radius:10px;
+width:165px;
+padding:4px 20px 3px;
+}
+
+.ttdepolnext1 {
+float:right;
+margin-top:0;
+}
+
+.ttdepolconfbtn {
+background:#0C7116;
+border-radius:10px;
+color:#FFF;
+cursor:pointer;
+font-size:18px;
+border:0 solid;
+width:150px;
+padding:4px 20px 3px;
+}
+
+.ttdepolconf_1 {
+background:#0C7116;
+border-radius:10px;
+color:#FFF;
+cursor:pointer;
+font-size:15px;
+border:0 solid;
+width:115px;
+padding:0 0 4px;
+}
+
+#deposit-section-2 {
+margin-top:20px;
+margin-bottom:20px;
+}
+
+.errors {
+color:red;
+margin-left:-40px;
+}
+
+.zend_form ul li #submit {
+background:#0C7116;
+border:2px solid #FFF;
+color:#FFF;
+cursor:pointer;
+border-radius:10px;
+width:90px;
+font-weight:700;
+height:30px;
+}
+
+.main-menu {
+list-style:none;
+position:relative;
+float:left;
+cursor:pointer;
+background:url(/images/bingocrush/white.png) no-repeat!important;
+width:708px;
+display:block;
+margin:0;
+padding:0 0 0 10px !important;
+}
+
+.main-menu li {
+float:left;
+margin-top:13px;
+}
+
+.main-menu li a {
+text-decoration:none;
+color:#fff;
+font-size:15px;
+font-weight:700;
+line-height:25px;
+font-family:Verdana, Geneva, sans-serif;
+padding:24px!important;
+}
+
+.submenu {
+list-style:none;
+display:none;
+position:absolute;
+top:51px;
+z-index:1000;
+background:#8c0000;
+-webkit-border-bottom-right-radius:10px;
+-webkit-border-bottom-left-radius:10px;
+-moz-border-radius-bottomright:10px;
+-moz-border-radius-bottomleft:10px;
+border-bottom-right-radius:10px;
+border-bottom-left-radius:10px;
+margin:0;
+}
+
+.submenu li {
+float:none;
+margin-top:0!important;
+padding:5px 25px!important;
+}
+
+.submenu li a {
+text-decoration:none;
+color:#FFF!important;
+font-size:13px;
+font-weight:400;
+font-family:Verdana, Geneva, sans-serif;
+padding:10px 0!important;
+}
+
+.submenu li a:hover {
+color:#fbee23!important;
+}
+
+li,#player-date-selection-form .zend_form ul {
+list-style:none;
+}
+
+#TTBingoLogin,.TTBingoBtnmargt,.frnd-inner {
+margin-top:10px;
+}
+
+#TTBingoHedNav ul,.TTBingoJoinTitle p,.TTBingoJoinForm ul,.TTBingoFooterNav ul,#ttbingotestim ul,.TTBingoGameNav ul,.TTBingoContentNav ul,.TabbedPanelTabGroup,.ttbingologin ul,#banners ul,#banners li,#banners a {
+margin:0;
+padding:0;
+}
+
+#TTBingoHedNav ul li a:hover,#TTBingosubNav ul li a:hover,.TTBingoFooterNav ul li a:hover,.main-menu li a:hover,li.active a {
+color:#fbee23;
+}
+
+.TTBingoJoinTitleSmall p,#captcha-input {
+margin-top:5px;
+}
+
+.TTBingoBnrmargint,.TTBingoBtnmargt_20,.TTBingonew_before {
+margin-top:20px;
+}
+
+.TTBingoFooterAccept,.TTBingogamesm {
+width:300px;
+}
+
+.TTBingoFooterNav ul li,#ttbingotestim ul li,#slider ul,#sliderban ul,#slider li,#sliderban li,#slider2 ul,#slider2 li {
+list-style:none;
+margin:0;
+padding:0;
+}
+
+#contentban #prevBtn,#contentban #nextBtn,#affId-label,#trackerId-label,#buddyId-label,#ttwidget-docs h2.top-header,.stick-menu1,.stick-menu2,.stick-menu3,.prof-inactive,#confirm-order,#deposit-back,#deposit-next-1,#bank-list,#valid_month,#valid_year,#issue_number {
+display:none;
+}
+
+.TTBingoLeft,.left,.steps ul,.ttdepolback1,.paginationControl,.menu {
+float:left;
+}
+
+html[xmlns] .clearfix,.prof-active,.main-menu li:hover .submenu {
+display:block;
+}
+
+.TTBingoMargin,.TTBingoJoinForm dd,#ttwidget-docs,.r-strip p {
+margin:0;
+}
+
+#selectoption,#from_date,#to_date,#page,.report_time {
+border:1px solid #bbb;
+padding:10px;
+}
+
+.terms-new ol li,.options-list li,.terms-new ul li {
+padding-bottom:15px;
+}
+
+.required,.optional,.clear .optional {
+width:280px;
+display:inline-block;
+}
+
+.zend_form ul li,.zend_form li {
+padding-top:10px;
+}
+
+.ttdeprofilel,.ttdeprofile2 {
+border:0 solid #CD222B;
+float:left;
+width:352px;
+height:160px;
+margin-top:25px;
+line-height:30px;
+}
+
+.steps li.step-3 a,.steps li.step-2 a,.steps li.step-1 a {
+padding-left:45px;
+}

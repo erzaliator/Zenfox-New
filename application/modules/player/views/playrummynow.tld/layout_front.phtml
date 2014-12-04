@@ -1,0 +1,317 @@
+<?php
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LanguageForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+
+//$frontendDetails = Zend_Registry::getInstance()->isRegistered('frontendDetails-' . $_SERVER['HTTP_HOST'])?Zend_Registry::getInstance()->get('frontendDetails-' . $_SERVER['HTTP_HOST']):'';
+
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+//$webConfig = isset($frontendDetails['webConfig'])?$frontendDetails['webConfig']:'';
+$this->viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+$this->cssDir = isset($webConfig['cssDir'])?$webConfig['cssDir']:$this->viewDir;
+$this->jsDir = isset($webConfig['jsDir'])?$webConfig['jsDir']:$this->viewDir;
+$this->imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:$this->viewDir;
+$this->htmlTitle = isset($webConfig['htmlTitle'])?$webConfig['htmlTitle']:'null';
+
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+<html xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="/images/rummy.tld/favicon.ico" mce_href="/images/rummy.tld/favicon.ico" type="image/x-icon"/>
+<title><? echo $this->htmlTitle; echo isset($this->pageTitle)? "-".$this->pageTitle:""; ?></title>
+<?$this->headLink()->appendStylesheet('/css/'. $this->cssDir .'style.css') ?>
+<?=$this->headLink()?>
+<script src="/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/easySlider1.7.js"></script>
+<script type="text/javascript">
+		$(document).ready(function(){	
+			$("#sliderban").easySlider({
+				auto: true, 
+				continuous: true
+			});
+		});	
+	</script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#firstSlide').fadeIn();
+    $('#ttbingotestim .slide');
+    setInterval(function(){
+        $('#ttbingotestim .slide').filter(':visible').fadeOut(500,function(){
+            if($(this).next('li.slide').size()){
+                $(this).next().fadeIn(500);
+            }
+            else{
+                $('#ttbingotestim .slide').eq(0).fadeIn(500);
+            }
+        });
+    },10000);  
+}); 
+
+</script>
+</head>
+<body>
+<!--
+<div id="fb-root"><script src="/js/facebook.js"></script></div>
+-->
+<div id="container">
+  <div class="left-block">
+    <div class="logo"><a href="<?= $this->baseUrl()?>"><img src="<?php echo "/images/" . $this->imagesDir. "logo.png"?>" alt="Your pastime is now cash time!" width="205" height="161" hspace="0" vspace="0" border="0"></a></div>
+    <div class="pro-tabs">
+      <ul>
+        <li><span><img src="<?php echo "/images/" . $this->imagesDir . "ace.png"?>" width="15" height="15" alt="Taash Tip"></span> <strong>Get 25 TaashCash Sign-up Bonus for Rummy Players</strong></li>
+        <li><span><img src="<?php echo "/images/" . $this->imagesDir . "diamond.png"?>" width="15" height="15" alt="Taash Tip"></span> <strong>Get 100% deposit bonus on every deposit.</strong></li>
+        <li><span><img src="<?php echo "/images/" . $this->imagesDir . "Clubs.png"?>" width="15" height="15" alt="Taash Tip"></span> <strong>Refer your friend and get 25 TaashCash Free</strong></li>
+        <li><span><img src="<?php echo "/images/" . $this->imagesDir . "Hearts.png"?>" width="15" height="15" alt="Taash Tip"></span> <strong>Play with your friends and family online</strong></li>
+        <li><span><img src="<?php echo "/images/" . $this->imagesDir . "ace.png"?>" width="15" height="15" alt="Taash Tip"></span> <strong>Invite your friends and have a private room</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="right-block">
+    <!-- Top Strip -->
+    <div class="topstrip">
+      <div class="live-count"><span class="labely">Live Tables</span> <span class="count">30</span></div>
+      <div class="login">
+        <div class="login-box">
+          <?php 
+			/*
+			 * TODO:: Check if player is logged. If so display account balance otherwise display loginform 
+			 */
+
+			$session = new Zend_Auth_Storage_Session();
+		    $store = $session->read();
+		    
+		    $isLoggedIn = isset($store)?true:false;
+		    if($isLoggedIn)
+		    {
+		    	$playerId = $store['id'];
+		    	$imageName = md5("image" . $playerId) . '.jpg';
+			    $loginName = $store['authDetails'][0]['login'];
+			    $firstName = $store['authDetails'][0]['first_name'];
+			    $cash = $store['authDetails'][0]['cash'];
+			    $bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+			    $loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+	   			$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+	    	    if(!file_exists($imagePath))
+    	        {
+        	    	$imagePath = "/images/" . $this->imagesDir . "../profiles/profile-m1.jpg";
+	            }
+    	        else
+          		{
+		            $imagePath = "/images/" . $this->imagesDir . "../profiles/" . $imageName;
+          		} 
+			    $currency = new Zend_Currency();
+			    $currencySession = new Zend_Session_Namespace('currency');
+			 //   if($currencySession->oldValue != $currencySession->newValue)
+			 //   {
+				$source = $currency->getShortName('', $currencySession->oldValue);
+				$destination = $currency->getShortName('', $currencySession->newValue);
+				$currConv = new CurrencyConversion();
+				$cash = $currConv->getConvertedValue($source, $destination, $cash);
+				$bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+				$store['cash'] = $cash;
+				$store['bonus'] = $bonus;
+				$session->write($store);
+		    	?>
+          <div class="userlogin-details">
+            <div class="user-img"> <a href = "/auth/image"><img src="<?php echo $imagePath;?>" alt="" width="70" height="70" hspace="0" vspace="0" border="0" /></a> </div>
+            <div class="user-profile">
+              <ul>
+                <li class="name"><?php echo empty($firstName)?$loginName:$firstName;?></li>
+                <li><a href="/auth/edit">Edit Profile</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+              </ul>
+            </div>
+            <div class="user-b-details">
+              <ul>
+                <li><span>Balance</span> :<b>
+                  <?php 
+		    			if($cash)
+			            {
+			                echo $currency->setValue($cash);
+			            }
+			            else
+			            {
+			                echo $currency->setValue(0);
+			            }
+						?>
+                  </b></li>
+                <li><span>Bonus</span> :<b>
+                  <?php 
+		    			if($bonus)
+			            {
+			                echo $currency->setValue($bonus);
+			            }
+			            else
+			            {
+			                echo $currency->setValue(0);
+			            }
+						?>
+                  </b></li>
+                <li><span>Points</span> :<b>
+                  <?php 
+		    			if($loyaltyPoints)
+			            {
+			                echo $loyaltyPoints;
+			            }
+			            else
+			            {
+			                echo '0';
+			            }
+						?>
+                  </b></li>
+              </ul>
+            </div>
+          </div>
+          <?php 
+		    }
+			else
+			{
+				$loginForm = new Player_LoginForm();
+				$request = Zend_Controller_Front::getInstance()->getRequest();
+				if($request->getParam('format') == 'json')
+				{
+					$loginForm->setAction('/auth/login/format/json');
+				}
+				else
+				{
+					$loginForm->setAction('/auth/login');
+				}
+				echo $loginForm;
+			}
+		?>
+        </div>
+      </div>
+    </div>
+    <!-- @Top Strip -->
+    <div class="clear">&nbsp;</div>
+    <!-- Menu -->
+    <div id="menu"> <?php echo $this->navigation()->menu()->setMaxDepth(1); 
+      		//$this->jQuery()->enable();
+			//echo $this->JQuery();
+			//$this->facebook();
+?> </div>
+<div class="TTPlaynowLeft "><img src="/images/playrummynow/invite-friend.gif" class="TTPlayAd" /></div>
+    <!-- @Menu -->
+    <div class="clear">&nbsp;</div>
+    <!-- Content -->
+    <?=$this->layout()->content ?>
+    <!-- @Content -->
+  </div>
+</div>
+<div class="clear">&nbsp;</div>
+<div class="bottom-panel ttplaynowclear">
+  <div class="text-block-1">
+    <h3>Why Play Rummy at National Rummy.com?</h3>
+    <p> Ever wished for a site that would bring your favourite classic family game - Indian rummy to your doorstep? Ever wondered how to make your pastime more worthwhile and rewarding? Then look no more as your rummy prayers have just been answered! <a href="http://nationalrummy.com/game/">National Rummy</a>, an exclusive site dedicated to Indian rummy lovers in the country, dishes out the much loved game of taash in its .</p>
+    <!-- <p>This unpretentious online rummy site, National Rummy, has been successful in keeping all the vital components of Indian Rummy intact, making it a more convenient and accessible option for players all across the nation. Players are rewarded with an enticing opportunity to play online rummy with their loved ones, irrespective of geographical barriers. They can also expand their rummy skills by interacting with skilled taash players from all across the region! Players brush up their rummy skills and can relish the cherished opportunity of interacting with rummy and online rummy enthusiasts from different parts of the country.</p>
+    <p>National Rummy also proves to be a big hit among people due to its benevolence factor, as they turn your favourite pastime of rummy into cash time! Players are rewarded for each online rummy game played with several exciting offers including cash prizes, gift vouchers and merchandise that will make your head spin with glee. Get rid of all your worries, and make way for your new best friend - <a href="http://nationalrummy.com/game/">National Rummy</a>, where your beloved game of Indian rummy turns into a stress relieving episode of fun and cash time! </p>-->
+    <div class="TTPlaynowReadMore"><a href="#">Read More</a></div>
+  </div>
+  <div class="block-2">
+    <h3>Player Speaks</h3>
+    <div class="TTPlaynowSpeakbg" id="ttbingotestim">
+      <div style="height:170px;">
+      <ul class="speaks">
+        <li class="slide" id="firstSlide" style="display:none;"><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>This site is great. I have played on other sites but the feel of this site is fantastic! I wish them all the success going forward! <strong>Madhu Avasthi</strong> </div>
+        </li>
+        <li class="slide" style="display: none"><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>I like playing rummy with my family and this site lets me do that in a great way! The private rooms are just awesome!<strong>Sreeram Vinoth</strong></div>
+        </li>
+         <li class="slide" style="display: none"><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>Living in small towns, I could play rummy in the local ladies clubs. After moving to Mumbai, I have been cut off from my friends and missed rummy. This site has allowed me to connect with them again. Thanks nationalrummy.com!<strong>Neeraja Thakur</strong></div>
+        </li>
+        <li class="slide" style="display: none"><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>I love rummy and I love this site. It is great!<strong>Sumit Narayan</strong></div>
+        </li>
+        <li class="slide" style="display: none"><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>I like playing rummy with my family and this site lets me do that in a great way! The private rooms are just awesome!<strong>Sreeram Vinoth</strong></div>
+        </li>  
+       <!-- <li><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>I like playing rummy with my family and this site lets me do that in a great way! The private rooms are just awesome!<strong>Sreeram Vinoth</strong></div>
+        </li>
+         <li><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>Living in small towns, I could play rummy in the local ladies clubs. After moving to Mumbai, I have been cut off from my friends and missed rummy. This site has allowed me to connect with them again. Thanks nationalrummy.com!<strong>Neeraja Thakur</strong></div>
+        </li>
+        <li><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>I love rummy and I love this site. It is great!<strong>Sumit Narayan</strong></div>
+        </li>
+        <li><img src="<?php echo "/images/" . $this->imagesDir . "/profiles/pic24.png"?>" width="50" height="50" alt="">
+          <div>I like playing rummy with my family and this site lets me do that in a great way! The private rooms are just awesome!<strong>Sreeram Vinoth</strong></div>
+        </li>-->
+      </ul></div>
+      <div  class="TTPlaynowViewAll"><a href="">View All</a></div>
+      <div class="TTPlaynowSpeakbgbot"><img src="/images/playrummynow/ttplaynowspeakbgbot.png" /></div>
+    </div>
+  </div>
+  <div class="text-block-3">FaceBook Block
+   <!-- <fb:like-box href="http://www.facebook.com/nationalrummy" width="295" show_faces="true" stream="true" header="true"></fb:like-box>-->
+  </div>
+</div>
+<!--  Harish Ends -->
+<!-- Div Before end of Body -->
+</div>
+<!--  Old Content -->
+<div id="footer">
+  <?= $this->render('footer.phtml') ?>
+</div>
+</div>
+<!-- Including JQuery -->
+<?php
+  $this->JQuery()->enable();
+    if($this->JQuery()->isEnabled())
+    {
+        //TODO:: Change the ui css depending on the frontend
+        $this->JQuery()->setUiLocalPath($this->baseUrl()."/js/jquery/js/jquery-ui.js")
+                        ->addStylesheet($this->baseUrl()."/js/jquery/css/custom-theme/jquery-ui.css");
+        echo $this->JQuery();
+		$this->facebook();
+        //echo $this->headMeta();
+    }
+
+	$frontController = Zend_Controller_Front::getInstance();
+	$siteUrl = $frontController->getRequest()->getBaseUrl();
+	if(Zend_Registry::get('piwikEnabled'))
+	{
+		echo $this->piwiktracker();
+	}
+  ?>
+<!--  End of Old Content -->
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22630875-1']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- Beginning of meebo me widget code.
+Want to talk with visitors on your page?  
+Go to http://www.meebome.com/ and get your widget! -->
+<!--embed src="http://widget.meebo.com/mm.swf?kiqvByRnfV" type="application/x-shockwave-flash" width="250" height="300"></embed-->
+<!-- begin olark code -->
+<script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length;while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])}c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d);(function(){function l(){return["<head></head><",z,' onload="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"}D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});olark.identify('8609-194-10-7825');olark('api.chat.updateVisitorNickname', {snippet: '<?=isset($loginName)?$loginName:"Guest"?>'})/*]]>{/literal}*/</script>
+<!-- end olark code -->
+</body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+<body>
+</body>
+</html> 

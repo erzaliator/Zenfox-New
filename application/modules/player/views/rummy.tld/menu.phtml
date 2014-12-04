@@ -1,0 +1,168 @@
+<?php
+$frontend = Zend_Controller_Front::getInstance();
+$controller = $frontend->getRequest()->getControllerName();
+$action = $frontend->getRequest()->getActionName();
+$currentPage = $controller . '-' . $action;
+$authSession = new Zenfox_Auth_Storage_Session();
+$sessionData = $authSession->read();
+$isLoggedIn = false;
+if($sessionData)
+{
+	$isLoggedIn = true;
+}
+$addFaq = true;
+/* if($controller == 'faq')
+{
+	$addFaq = true;
+} */
+$html = array ();
+$index = 1;
+
+$iterator = new RecursiveIteratorIterator ( $this->container, RecursiveIteratorIterator::SELF_FIRST );
+$prevDepth = - 1;
+foreach ( $iterator as $page ) {
+	if($addFaq)
+	{
+		if($isLoggedIn)
+		{
+			$depth = $iterator->getDepth ();
+			/* Zenfox_Debug::dump($depth, 'depth');
+			Zenfox_Debug::dump($prevDepth, 'prev');
+			Zenfox_Debug::dump($page->getHref (), 'href');   */
+			if(($page->getHref () != '/') && (!strpos($page->getHref (), 'banking/detail') || $depth != 0))
+			{
+				if ($page->isVisible() && $this->navigation()->accept($page)) {
+					$isActive = $page->isActive ( true );
+					if (($depth != 1) && ($depth > $prevDepth)) {
+						//$html [] = '<ul id="main-menu"> <li><a href="/home" class="first" ><p class="menu-pad">Home</p></a></li>' . "\n";
+						//$html [] = '<ul id="main-menu">' . "\n";
+						$html [] = '<ul class="nav">' . "\n";
+					} else if($depth > $prevDepth){
+						//$html [] = '<ul id="nav-menu-sub" style="display:none;">' . "\n";
+						$html [] = '<ul class="dropdown-menu sub-menu">' . "\n";
+					}	else if ($prevDepth > $depth) {
+						for($i = $prevDepth; $i > $depth; $i --) {
+							$html [] = '</li>' . "\n";
+							$html [] = '</ul>' . "\n";
+						}
+						$html [] = '    </li>' . "\n";
+					} else {
+						$html [] = '    </li>' . "\n";
+					}
+					/* if ($page->haspages ()) {
+						$liClass = $isActive ? ' class="active"' : '';
+					} else {
+						$liClass = $isActive ? ' class="active"' : '';
+					}
+					if(($page->getLabel () == 'Profile' && $currentPage == 'auth-edit') || ($page->getLabel () == 'Complaints' && $currentPage == 'ticket-create'))
+					{
+						$liClass = ' class="active"';
+					} */
+					//$html [] = '<li' . $liClass . '>' . "\n";
+					if($depth != 0 && $depth >= $prevDepth){
+						$html [] = '<li>';
+						$html [] = '<a href="' . $page->getHref () . '">'  . $page->getLabel () . '</a>' . "\n";
+					}
+					else{
+						$html [] = '<li class="dropdown">';
+						$html [] = '<a href="' . $page->getHref () . '" class="dropdown-toggle"  data-hover="dropdown">'  . $page->getLabel () . '</a>' . "\n";
+					}
+					
+					$prevDepth = $depth;
+				}
+			}
+		}
+		else
+		{
+			if(($page->getHref () != '/auth/view') && (!strpos($page->getHref (), 'banking/deposit')))
+			{
+				if ($page->isVisible() && $this->navigation()->accept($page)) {
+					$depth = $iterator->getDepth ();
+					$isActive = $page->isActive ( true );
+					if (($depth != 1) && ($depth > $prevDepth)) {
+						//$html [] = '<ul id="main-menu"> <li><a href="/home" class="first" ><p class="menu-pad">Home</p></a></li>' . "\n";
+						$html [] = '<ul class="nav">' . "\n";
+					} else if($depth > $prevDepth){
+						$html [] = '<ul class="dropdown-menu sub-menu">' . "\n";
+					}	else if ($prevDepth > $depth) {
+						for($i = $prevDepth; $i > $depth; $i --) {
+							$html [] = '</li>' . "\n";
+							$html [] = '</ul>' . "\n";
+						}
+						$html [] = '    </li>' . "\n";
+					} else {
+						$html [] = '    </li>' . "\n";
+					}
+					if($depth != 0 && $depth >= $prevDepth){
+						$html [] = '<li>';
+						$html [] = '<a href="' . $page->getHref () . '">'  . $page->getLabel () . '</a>' . "\n";
+					}
+					else{
+						$html [] = '<li class="dropdown">';
+						$html [] = '<a href="' . $page->getHref () . '" class="dropdown-toggle"  data-hover="dropdown">'  . $page->getLabel () . '</a>' . "\n";
+					}
+					/* if ($page->haspages ()) {
+						$liClass = $isActive ? ' class="active"' : '';
+					} else {
+						$liClass = $isActive ? ' class="active"' : '';
+					}
+					$html [] = '<li' . $liClass . '>' . "\n";
+					//$html [] = '<li>';
+					$html [] = '<a href="' . $page->getHref () . '"><p class="menu-pad">'  . $page->getLabel () . '</p></a>' . "\n"; */
+					$prevDepth = $depth;
+				}
+			}
+		}
+		$index++;
+	}
+	else
+	{
+		if(strpos($page->getHref(),'faq') == 0)
+		{
+			if ($page->isVisible() && $this->navigation()->accept($page)) {
+		    $depth = $iterator->getDepth ();
+		    $isActive = $page->isActive ( true );
+		    if (($depth != 1) && ($depth > $prevDepth)) {
+		        //$html [] = '<ul id="main-menu"> <li><a href="/home" class="first"  ><p class="menu-pad">Home</p></a></li>' . "\n";
+		    	$html [] = '<ul class="nav">' . "\n";
+		    } else if($depth > $prevDepth){
+		    	$html [] = '<ul class="dropdown-menu sub-menu">' . "\n";
+		    }	else if ($prevDepth > $depth) {
+		        for($i = $prevDepth; $i > $depth; $i --) {
+		            $html [] = '</li>' . "\n";
+		            $html [] = '</ul>' . "\n";
+		        }
+		        $html [] = '    </li>' . "\n";
+		    } else {
+		        $html [] = '    </li>' . "\n";
+		    }
+		   /*  if ($page->haspages ()) {
+		        $liClass = $isActive ? ' class="active"' : '';
+		    } else {
+		        $liClass = $isActive ? ' class="active"' : '';
+		    }
+		    $html [] = '<li' . $liClass . '>' . "\n";
+		    //$html [] = '<li>';
+		    $html [] = '<a href="' . $page->getHref () . '"><p class="menu-pad">'  . $page->getLabel () . '</p></a>' . "\n"; */
+		    if($depth != 0 && $depth >= $prevDepth){
+		    	$html [] = '<li>';
+		    	$html [] = '<a href="' . $page->getHref () . '">'  . $page->getLabel () . '</a>' . "\n";
+		    }
+		    else{
+		    	$html [] = '<li class="dropdown">';
+		    	$html [] = '<a href="' . $page->getHref () . '" class="dropdown-toggle"  data-hover="dropdown">'  . $page->getLabel () . '</a>' . "\n";
+		    }
+		    $prevDepth = $depth;
+			}
+		}
+	}
+}
+if($depth != 0)
+{
+	$html [] = '</li>' . "\n";
+    $html [] = '</ul>' . "\n";
+}
+$html [] = '</li>';
+$html [] = '</ul>';
+echo join ( PHP_EOL, $html );
+//exit();

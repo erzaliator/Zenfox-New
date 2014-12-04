@@ -1,0 +1,168 @@
+<html>
+	<head>
+		<link href="/css/app.css" media="screen" rel="stylesheet" type="text/css" >
+		<script type = "text/javascript">
+			function popitup(url, parameters)
+			{
+				if(parameters)
+				{
+					newwindow=window.open(url,'name','height=500,width=500,resizable=0,status=1,scrollbars=1');
+				}
+				else
+				{
+					newwindow=window.open(url,'name','resizable=1,status=1,scrollbars=1');
+				}
+				if (window.focus) 
+				{
+					newwindow.focus()
+				}
+				return false;
+			}
+			function getResponse(response)
+			{
+				confirm(response);
+			}
+		</script>
+	</head>
+	<?php
+		if($this->response)
+        {
+           	?>
+               	<body onload='JavaScript:getResponse("<?php echo $this->response;?>")'>
+            <?php
+		}
+		else
+		{
+			?>
+               	<body>
+            <?php
+		}
+    ?>
+		<div id="mainDiv">
+			<table id="page-layout" width="100%">
+				<tr>
+					<td class="body-content" valign="top">
+						<h2 style="text-align:center;"><b> Get TaashCoins </b></h2>
+						<?php
+							echo $this->form;
+						?>
+					</td>
+					<?php
+						$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+						$this->viewDir = $webConfig['viewDir']?$webConfig['viewDir']:'null';
+						$this->htmlTitle = $webConfig['htmlTitle']?$webConfig['htmlTitle']:'null';
+						$this->jsDir = $webConfig['jsDir']?$webConfig['jsDir']:'null';
+						$this->cssDir = $webConfig['cssDir']?$webConfig['cssDir']:'null';
+						$this->imagesDir = $webConfig['cssDir']?$webConfig['cssDir']:'null';
+						
+						$session = new Zend_Auth_Storage_Session();
+						$store = $session->read();
+						$isLoggedIn = isset($store)?true:false;
+						$currency = new Zend_Currency();
+						
+						$playerId = $store['id'];
+						$imageName = md5("image" . $playerId) . '.jpg';
+						$loginName = $store['authDetails'][0]['login'];
+						$firstName = $store['authDetails'][0]['first_name'];
+						$cash = $store['authDetails'][0]['cash'];
+						$bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+						$loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+						$currencySession = new Zend_Session_Namespace('currency');
+						$source = $currency->getShortName('', $currencySession->oldValue);
+						$destination = $currency->getShortName('', $currencySession->newValue);
+						$currConv = new CurrencyConversion();
+						$cash = $currConv->getConvertedValue($source, $destination, $cash);
+						$bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+						$store['cash'] = $cash;
+						$store['bonus'] = $bonus;
+						$session->write($store);
+						$imagePath = APPLICATION_PATH . "/../public/images/profiles/" . $imageName;
+						if(!file_exists($imagePath))
+						{
+							$imagePath = "/images/profiles/profile-m1.jpg";
+						}
+						else
+						{
+							$imagePath = "/images/profiles/" . $imageName;
+						}
+					?>
+					<td id="my-account-box">
+						<div id="profile-photo" class="right">
+							<a href = "/auth/image"><img src="<?php echo $imagePath;?>" width="53" height="52" alt="Profile Photo"></a>
+						</div>
+						<h3 class="pad-t-20"><strong>My Account</strong></h3>
+						<div id="my-account">
+							<p class="left pad-t-20 my-acc-left"><strong>Real Chips:</strong></p>
+							<p class="left color-blue pad-t-20"><strong>Rs. 
+							<?php
+								if($cash)
+								{
+									echo $cash;
+								}
+								else
+								{
+									echo 0;
+								}
+							?>
+							</strong></p>
+							<div class="clear"></div>
+							<p class="left my-acc-left"><strong>Bonus Chips:</strong></p>
+                            <p class="left color-blue"><strong>Rs. 
+                            <?php
+                            	if($bonus)
+                                {
+                                	echo $bonus;
+                                }
+                                else
+                                {
+                                	echo 0;
+                                }
+							?>
+                            </strong></p>
+                            <div class="clear"></div>
+                            <p class="left my-acc-left"><strong>Free Chips:</strong></p>
+                            <p class="left color-blue"><strong>
+                            <?php
+                             	$freeMoney = 0;
+                              	if($playerId)
+                               	{
+                               		$accountVariable = new AccountVariable();
+                               		$varData = $accountVariable->getData($playerId, 'freeMoney');
+                               		if($varData)
+                               		{
+                               			$freeMoney = floatval($varData['varValue']);
+                               		}
+                               	}
+                              	echo $freeMoney;
+                            ?>
+                            </strong></p>
+                            <div class="clear"></div>
+                            <p class="left my-acc-left"><strong>Points:</strong></p>
+                            <p class="left color-blue"><strong>
+                            <?php
+                              	if($loyaltyPoints)
+                               	{
+                               		echo $loyaltyPoints;
+                               	}
+                               	else
+                               	{
+                               		echo '0';
+                               	}
+                            ?>
+                            </strong></p>
+                            <div class="clear"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div id="bottom-content">
+            	<h4 style="text-align:center; margin-top:0px;"><b> How To Get TaashCoins </b></h4>
+                <h5>Step - 1 : <a href = "#" onclick='return popitup("http://icoins.ibibo.com/icoins/itopup/default.php?itemname=79921&appid=79921&surl=javascript%3ABuyICoinsCallback%28%29%3B", 1)'>Get Coins</a></h5>
+                <h5>Step - 2 : Convert Icoins to TaashCoins</h5>
+                <h5>Step - 3 : Click on Play tab and enjoy the game</h5>
+            </div>
+        </div>
+    </body>
+</html>
+                                                                
+                                                        	

@@ -1,0 +1,292 @@
+<?php 
+$authSession = new Zenfox_Auth_Storage_Session();
+$sessionData = $authSession->read();
+$frontendController = Zend_Controller_Front::getInstance();
+$request = $frontendController->getRequest();
+$controller = $request->getControllerName();
+$action = $request->getActionName();
+$pageAddress = $controller . '-' . $action;
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Untitled Document</title>
+<link rel="stylesheet" href="/css/rummybazaar/colorbox.css">
+<link rel="stylesheet" href="/css/rummybazaar/sai.css" type="text/css" />
+<link rel="stylesheet" href="/css/rummybazaar/tj.css" type="text/css" />
+<link rel="stylesheet" href="/css/rummybazaar/jquery.bxslider.css" type="text/css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/css/rummybazaar/mobile.css">
+<link rel="stylesheet" href="/css/rummybazaar/tab-port.css">
+<link rel="stylesheet" href="/css/rummybazaar/tab-land.css">
+<script type="text/javascript" src="/js/rummybazaar/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/js/rummybazaar/jquery.bxslider.js"></script>
+<script type="text/javascript" src="/js/rummybazaar/custom.js"></script>
+<script type="text/javascript" src="/js/rummybazaar/menu.js"></script>
+<script type="text/javascript" src="/js/rummybazaar/jquery.colorbox.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+function openGame(url, width, height) {
+	var leftPosition, topPosition;
+	//Allow for borders.
+	leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+	//Allow for title and status bars.
+	topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+	//Open the window.
+	window.open(url, "game","status=no,height=" + height + ",width=" + width + ",resizable=yes,left="
+	+ leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY="
+	+ topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no");
+}
+</script>
+<?=$this->headMeta()?>
+</head>
+
+<body class="inner-page">
+	<div class="wrap">
+	<div class="test-btn">
+                <div id="btn"><img src="/images/rummybazaar/home/quick.png" /></div>
+                <div id="div1"><p>This is the content were we get the sliding effect</p></div>
+            </div>
+    	<div class="wrap-inner">
+            <div class="header">
+            	<div class="logo">
+                	<a href="/"><img src="/images/rummybazaar/home/logo.png" alt="logo" /></a>
+                </div>
+				<div class="menu-icon"><img src="/images/rummybazaar/menu-icon.png"></div>
+                <div class="main-menu">
+                <?php 
+				    	$partial = array('menu.phtml','player');
+						$this->navigation()->menu()->setPartial($partial);
+						echo $this->navigation()->menu()->render(); 
+						//echo $this->navigation()->menu();
+					?>
+                	<!-- <ul>
+                    	<li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Play Rummy</a></li>
+                        <li><a href="#">Winners</a></li>
+                        <li><a href="#">Tournaments</a></li>
+                        <li><a href="#">Promotions</a></li>
+                        <li><a href="#">Support </a></li>
+                        <li><a href="#">News</a></li>
+                    </ul> -->
+                    <?php 
+                    if(!$sessionData)
+                    {
+                    	?>
+                    	<a class="login">Login</a>
+                    	<!-- Login Form -->
+                    	<div class="login-popup" id="inline_content">
+                    	<div class="form-close"><img src="/images/rummybazaar/home/form-close.png" alt="close" /></div>
+                    	<?php 
+$decorator = new Decorator();
+	   $loginForm = new Player_LoginForm();
+	    		$loginForm = $decorator->addDecorators($loginForm, 'login');
+$request = Zend_Controller_Front::getInstance()->getRequest();
+if($request->getParam('format') == 'json')
+{
+	$loginForm->setAction('/auth/login/format/json');
+}
+else
+{
+	$loginForm->setAction('/auth/login');
+}
+echo $loginForm;
+?>
+                    	</div>
+                    	<?php 
+                    }
+                    ?>
+                    <div class="sub-menu-home">
+				  	<ul id="sub-menu">
+				      <!-- <li><a href="#">Promotions </a></li>
+					  <li><a href="#">Refer A Friend </a></li>                 
+					  <li><a href="#">Leader Board</a></li>
+					  <li><a href="#">Loyalty Rewards</a></li> -->
+				  	</ul>
+				
+				</div>
+                </div>
+            </div>
+            <?php 
+            if($pageAddress != 'game-index')
+            {
+            	?>
+            	<div class="top-ribbon"><p><span>Upcoming Tournments : </span><marquee onmouseover="this.setAttribute('scrollamount', 3, 0);" onmouseout="this.setAttribute('scrollamount', 5, 0);" >Trnm ID : JC012234, Entry : 200, Cash Prize : TBA, Start Date : Wed, 19, 2014, Des : Bronze Only, Players : 16/20   Deal :</marquee></p><p><a href="/auth/signup" class="register">Register</a></p></div>
+            	<div class="featured">
+            	<h1><span>Refer a friend</span><br/>
+            	GET BONUS up to 2000</h1>
+            	<!--div class="test-btn">
+            	<div id="btn"><img src="/images/rummybazaar/home/quick.png" /></div>
+            	<div id="div1"><p>This is the content were we get the sliding effect</p></div>
+            	</div-->
+            	</div>
+            	<div class="sidebar-left">
+            	            <ul class="side-menu">
+            	             <li class="displayed-menu plus-img"><span class="icon-one">Getting Started</span>
+            	<ul class="sub-menu hidden-menu">
+            	               <li><a href="/content/about">About Rummy Bazaar</a></li>
+            	<li><a href="#">Rummy Bazaar Rules</a></li>
+            	<li><a href="#">Rummy Variants</a></li>
+            	<li><a href="#">How to Play</a></li>
+            	<li><a href="#">Lobby and Table</a></li>
+            	<li><a href="#">Demo Videos</a></li>
+            	</ul>
+            	</li>
+            	</li>
+            	<li><a href="/faq/security" class="icon-two">Security</a></li>
+            	<li><a href="/content/legal" class="icon-three">Legality</a></li>
+            	             <li><a href="#" class="icon-four">Certification</a></li>
+            	<li><a href="#" class="icon-five">Responsible Gaming</a></li>
+            	<li><a href="/faq" class="icon-six">FAQs</a></li>
+            	</ul>
+            	<div class="side-playnow"><a href="/game">Play Now!</a></div>
+            	<div class="side-join"><a href="/auth/signup">Free Join Now!</a></div>
+            	</div>
+            	<div class="content">
+            	<div class="bread-crumb"><a href="/">Home</a> &gt; <?php echo $this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0)->render(); ?></div>
+            	<?php 
+            }
+            else
+            {
+            	?>
+            	<div class="content">
+            	
+            	<?php 
+            }
+            ?>
+            
+            
+            <div class="content-block">
+
+           <?=$this->flashMessenger(); ?>
+            <?php 
+            echo $this->layout()->content;
+            ?>
+            </div>
+            <?php 
+            if($pageAddress != 'game-index')
+            {
+            	?>
+            	<div class="play-now-btn"><a href="/game"><img src="/images/rummybazaar/playnow-btn.png"/></a></div>
+            	<?php 
+            }
+            ?>
+            </div>
+                       <div class="footer">
+            	<div class="foot-left">
+                	<div class="tabs">
+                    	<div class="slide-tabs">
+                        	<ul>
+                            	<li class="one">Rummy Rules</li>
+                                <li class="two">How to Play</li>
+                                <li class="three">Legality</li>
+                                <li class="four">Certification</li>
+                            </ul>
+                        </div>
+                        <ul class="bxslider">
+                          <li>
+                          <div class="slide-content">
+                        	<img src="/images/rummybazaar/home/bx-img.png" />
+                            <ul>
+                            	<li><label>Rummy has been declared a skill-based game by the Honorable Supreme Court of India. </label></li>
+                                <li><label>Under Indian law, any game that requires skill is legal.</label></li>
+                                <li><label>To be played for cash, and so are the various kinds of rummy games that we offer at RummyCircle.com.</li>
+               </label>             </ul>
+                        </div>
+                        </li>
+                          <li>
+                            <div class="slide-content">
+                        <img src="/images/rummybazaar/home/bx-img.png" />
+                        <ul>
+                            <li><label>Rummy has been declared a skill-based game by the Honorable Supreme Court of India. </label></li>
+                            <li><label>Under Indian law, any game that requires skill is legal.</label></li>
+                            <li><label>To be played for cash, and so are the various kinds of rummy games that we offer at RummyCircle.com.</li>
+           </label>             </ul>
+                        </div>
+                          </li>
+                          <li>
+                          		<div class="slide-content">
+                        	<img src="/images/rummybazaar/home/bx-img.png" />
+                            <ul>
+                            	<li><label>Rummy has been declared a skill-based game by the Honorable Supreme Court of India. </label></li>
+                                <li><label>Under Indian law, any game that requires skill is legal.</label></li>
+                                <li><label>To be played for cash, and so are the various kinds of rummy games that we offer at RummyCircle.com.</li>
+               </label>             </ul>
+                        </div>
+                          </li>
+                          <li>
+                          		<div class="slide-content">
+                        	<img src="/images/rummybazaar/home/bx-img.png" />
+                            <ul>
+                            	<li><label>Rummy has been declared a skill-based game by the Honorable Supreme Court of India. </label></li>
+                                <li><label>Under Indian law, any game that requires skill is legal.</label></li>
+                                <li><label>To be played for cash, and so are the various kinds of rummy games that we offer at RummyCircle.com.</li>
+               </label>             </ul>
+                        </div>
+                          </li>
+                        </ul>
+                        
+                    </div>
+                    <div class="foot-links">
+                    	<h5>Quick links</h5>
+                        <ul>
+                        	<li><a href="/content/about">About Us</a></li>
+                            <li><a href="/faq">FAQs</a></li>
+                            <li><a href="/content/legal">Legality</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+						</ul>	
+                        <ul> 
+						    <li><a href="/index/winner">Winners</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Certification</a></li>
+							<li><a href="/content/privacypolicy">Privacy Policy</a></li>
+					    </ul>
+						<ul>
+							<li><a href="#">Testimonials	</a></li>
+                            <li><a href="#">News	</a></li>
+                            <li><a href="/faq/security">Security</a></li>
+                            <li><a href="/content/terms">Terms and Conditions</a></li>
+                        </ul>
+						<ul class="last-list">
+							<li><a href="#">Support</a></li>
+                            <li><a href="#">Social Media</a></li>
+                            <li><a href="#">Sitemap</a></li>
+							<li><a href="/content/contact">Contact Us</a></li>
+                        </ul>
+                        <span class="copy">Copyrights ©  2014  All Rights Reserved by Rummy Bazaar  Pvt Ltd.</span>
+                    </div>
+                </div>
+                <div class="foot-right">
+                	<h5>Newsletter</h5>
+                	<form action="/newsletter/subscribe" method="post">
+                    <input type="text" Placeholder="Enter your email here" name="nlEmail">
+                    <input type="submit" value="Subscribe">
+                    </form>
+                    <div class="foot-logo"><a href="#"><img src="/images/rummybazaar/home/foot-logo.png" /></a></div>
+                    <div class="foot-share">
+                    	<h5>Follow us on</h5>
+                    	<ul>
+                        	<li><a href="#" class="fb"></a></li>
+                            <li><a href="#" class="twitt"></a></li>
+                            <li><a href="#" class="ln"></a></li>
+                            <li><a href="#" class="gp"></a></li>
+                        </ul>
+                    </div>
+                    <div class="payment">
+                    	<h5>Our Payment Partners</h5>
+                        <img src="/images/rummybazaar/home/bill.png" />
+                    	<img src="/images/rummybazaar/home/paypal.png" />                      
+                    </div>
+                    <div id="tn_logo">
+                    	<a href="http://taashnetwork.com/" target="_blank"><img src="/images/rummybazaar/tn.png" width="127" height="53"/></a>
+                    </div>
+                </div>
+            </div>
+    	 </div>
+    </div>
+
+</body>
+</html>

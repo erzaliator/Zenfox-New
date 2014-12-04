@@ -1,0 +1,213 @@
+<style>
+.payment-structure
+{
+	width: 100%;
+	float: left;
+	margin-bottom: 15px;
+	max-width: 450px;
+	margin-left: 19%;
+	margin-top: 5%;
+	padding: 4% 0;
+	background: #055c35;
+	border-radius: 4px;
+	border: 1px solid;
+	box-shadow: 0 0 15px;
+}
+.payment-btn
+{
+	margin: 3% auto 5%;
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+}
+.payment-inner
+{
+	width: 100%;
+	float: left;
+	padding-bottom: 5px;
+	color:#fff;
+}
+.pay-left
+{
+	width: 45%;
+	float: left;
+	text-align: right;
+	margin-right: 5%;
+}
+.pay-right
+{
+	width: 50%;
+	float: left;
+}
+</style>
+
+<script type="text/javascript">
+	function process(){
+		var transactionId = document.getElementById("merchantTxnId").value;
+		var current_gateway = document.getElementById("gateway").value;
+		var post_vars = "ajax=true&gateway=" + current_gateway + "&transId=" + transactionId;
+		$.ajax({
+			  type: "POST",
+			  url: "/transaction",
+			  data: post_vars,
+			  success: function(data){
+				  var form = document["transaction-form"];
+				  form.submit();
+			  	}
+			});
+	}
+</script>
+
+<form method="post" action="<?=$this->action?>" name="transaction-form">
+	<input type="hidden" name="gateway" id="gateway" value="<?=$this->gateway ?>">
+	<?php 
+	if($this->gateway == 'TECHPROCESS')
+	{
+		?>
+		<input type="hidden" name="transId" id="transId" value="<?=$this->transactionId ?>">
+		<input type="hidden" name="txtTranID" id="txtTranID" value="<?=$this->transactionId ?>">
+		<input type="hidden" name="txtMarketCode" id="txtMarketCode" value="L2636">
+		<input type="hidden" name="txtAcctNo" id="txtAcctNo" value="1">
+		<input type="hidden" name="txtTxnAmount" id="txtTxnAmount" value="<?=$this->amount ?>">
+		<input type="hidden" name="txtBankCode" id="txtBankCode" value="<?=$this->code ?>">
+		<input type="hidden" name="txtPropPath" id="txtPropPath" value="/var/zenfox/taashtime_new/application/../public/MerchantDetails.properties">
+		<?php
+	}
+	elseif($this->gateway == 'CITRUSPAY')
+	{
+		?>
+		<input type="hidden" name="merchantTxnId" id="merchantTxnId" value="<?=$this->transactionId ?>">
+		<input type="hidden" name="addressState" id="addressState" value="<?=$this->state ?>">
+		<input type="hidden" name="addressCity" id="addressCity" value="<?=$this->city ?>">
+		<input type="hidden" name="addressStreet1" id="addressStreet1" value="<?=$this->address ?>">
+		<input type="hidden" name="addressCountry" id="addressCountry" value="IN">
+		<input type="hidden" name="addressZip" id="addressZip" value="<?=$this->pin ?>">
+		<input type="hidden" name="firstName" id="firstName" value="<?=$this->firstName ?>">
+		<input type="hidden" name="lastName" id="lastName" value="<?=$this->lastName ?>">
+		<input type="hidden" name="phoneNumber" id="phoneNumber" value="<?=$this->contact ?>">
+		<input type="hidden" name="email" id="email" value="<?=$this->email ?>">
+		<input type="hidden" name="paymentMode" id="paymentMode" value="<?=$this->mode ?>">
+		<input type="hidden" name="issuerCode" id="issuerCode" value="<?=$this->issuerCode ?>">
+		<!-- input type="hidden" name="cardHolderName" id="cardHolderName" value="<?=$this->cardHolder ?>">
+		<input type="hidden" name="cardNumber" id="cardNumber" value="<?=$this->cardNumber ?>">
+		<input type="hidden" name="expiryMonth" id="expiryMonth" value="<?=$this->expiryMonth ?>">
+		<input type="hidden" name="cardType" id="cardType" value="<?=$this->type ?>">
+		<input type="hidden" name="cvvNumber" id="cvvNumber" value="<?=$this->cvvNumber ?>">
+		<input type="hidden" name="expiryYear" id="expiryYear" value="<?=$this->expiryYear ?>"-->
+		<input type="hidden" name="returnUrl" id="returnUrl" value="http://www.ace2jak.com/transaction/confirm">
+		<input type="hidden" name="orderAmount" id="orderAmount" value="<?=$this->amount ?>">
+		<input type="hidden" name="reqtime" id="reqtime" value="<?=$this->reqTime ?>">
+		<input type="hidden" name="secSignature" id="secSignature" value="<?=$this->signature ?>">
+		<input type="hidden" name="currency" id="currency" value="INR">
+		<?php 
+	}
+	elseif($this->gateway == 'MOBIKWIK')
+	{
+		?>
+		<input type="hidden" name="orderid" id="merchantTxnId" value="<?=$this->transactionId ?>">
+		<input type="hidden" name="merchantname" id="merchantname" value="mobikwik">
+		<input type="hidden" name="mid" id="mid" value="MBK9002">
+		<input type="hidden" name="secret_key" id="secret_key" value="ju6tygh7u7tdg554k098ujd5468o">
+		<input type="hidden" name="cell" id="cell" value="<?=$this->contact ?>">
+		<input type="hidden" name="redirecturl" id="redirecturl" value="http://secure.taashnetwork.com/return_process.php">
+		<?php
+	}
+	?>
+	
+	<div class="payment-structure">
+	    <div class="payment-inner">
+	        <div class="pay-left">Amount :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="amount" id="amount" value="<?=$this->amount ?>">
+	        	RS. <?=$this->amount ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">First Name :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="name" id="amount" value="<?=$this->firstName ?>">
+	        	<?=$this->firstName ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">Last Name :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="lastName" id="amount" value="<?=$this->lastName ?>">
+	        	<?=$this->lastName ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">Sex :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="sex" id="amount" value="<?=$this->sex ?>">
+	        	<?=$this->sex ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">Email ID :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="email" id="amount" value="<?=$this->email ?>">
+	        	<?=$this->email ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">Address :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="address" id="amount" value="<?=$this->address ?>">
+	        	<?=$this->address ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">City :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="city" id="amount" value="<?=$this->city ?>">
+	        	<?=$this->city ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">State :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="state" id="amount" value="<?=$this->state ?>">
+	        	<?=$this->state ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">Pincode :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="postalCode" id="amount" value="<?=$this->pin ?>">
+	        	<?=$this->pin ?>
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">Country :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="country" id="amount" value="IN">
+	        	IN
+	        </div>
+	    </div>
+	    <div class="payment-inner">
+	        <div class="pay-left">Phone Number :</div>
+	        <div class="pay-right">
+	        	<input type="hidden" name="phone" id="amount" value="<?=$this->contact ?>">
+	        	<?=$this->contact ?>
+	        </div>
+	    </div>
+	</div>
+	
+	<div class="payment-btn">
+		<?php 
+		if($this->gateway != 'TECHPROCESS')
+		{
+			?>
+			<input type="button" class="ttdepolconfbtn button-green" value="Make Payment" onclick = "process()" name="confirm">
+			<?php
+		}
+		else
+		{
+			?>
+			<input type="submit" class="ttdepolconfbtn button-green" value="Make Payment" name="confirm">
+			<?php
+		}
+		?>
+	</div>
+</form>

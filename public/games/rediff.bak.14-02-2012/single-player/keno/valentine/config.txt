@@ -1,0 +1,1 @@
+[{"languages":{"en_US":{"label1":"Label 1","label2":"Label 2","symbol":"$","helpUrl":"/help/games/single-player/keno/ValentineKeno.json"},"en_GB":{"label1":"Label 1","label2":"Label 2","symbol":"£","helpUrl":"/help/games/single-player/keno/ValentineKeno.json"}},"gameConfig":{"machineName":"Keno Machine","defaults":{"minNums":1,"maxNums":15},"sfsDetails":{"extension":"kenoSP"}}}]

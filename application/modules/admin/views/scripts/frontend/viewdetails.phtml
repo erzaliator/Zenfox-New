@@ -1,0 +1,51 @@
+<?php echo 'Details of Frontend: '.$this->frontendDetails['name'];?>
+<br></br>
+<br></br>
+<table border='1'>
+<?php
+//Zenfox_Debug::dump($this->machines, 'game details', true, true);
+$id = $this->frontendDetails['id'];
+$frntends = $this->allowedFrntends;
+foreach($this->frontendDetails as $key => $value)
+{ ?>
+	<tr>
+		<td>
+			<?php echo $key?>
+		</td>
+		<td><?php if($key == 'url' || $key == 'ams_url' || $key == 'gms_url')
+					{?>
+						<a href="<?php echo $value?>">
+			<?php echo $value?></a>
+			<?php }
+			
+				else if($key == 'allowed_frontend_ids') 
+				  {
+					foreach($frntends as $frntend)
+					{?>
+						<a href = "<?php echo $this->url(array(
+							'controller' => 'frontend',
+							'action' => viewdetails,
+							'id' => $frntend['id']
+							));
+						?>">
+						<?php echo $frntend['name']?></a>
+						
+					<?php }
+					}else
+						  {?>
+							<?php echo $value?>
+							<?php 
+						  }?>
+		</td>
+	</tr>
+	
+<?php }?>
+</table>
+<br></br>
+<a href="<?php echo $this->url(array('controller' => 'frontend', 
+									'action' => 'edit',
+									'id' => $id
+										)
+										);?>"
+										> edit</a>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE>
+ <html>
+ <head></head>
+ <body>
+ <div id="fb-root"></div>
+        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+        <script type="text/javascript">
+            FB.init({
+                appId  : '191295980888105',
+                status : true, // check login status
+                cookie : true, // enable cookies to allow the server to access the session
+                xfbml  : true  // parse XFBML
+            });
+        </script>
+ 
+    <fb:serverfbml width="615">
+  <script type="text/fbml">
+    <fb:request-form action="http://taashtime.tld/facebook"
+                     method="POST"
+                     invite="true"
+                     type="Echo Type"
+                     content="Echo Content. <fb:req-choice url='http://fbrell.com/echo?choice=echo' label='Echo Label' />">
+      <fb:multi-friend-selector showborder="false"
+                                bypass="cancel"
+                                cols=4
+                                actiontext="Echo Action Text"/>
+    </fb:request-form>
+  </script>
+</fb:serverfbml>
+</body>
+</html>

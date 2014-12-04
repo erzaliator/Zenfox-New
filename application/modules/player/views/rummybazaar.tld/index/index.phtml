@@ -1,0 +1,40 @@
+<script>
+function openGame(url, width, height) {
+    var leftPosition, topPosition;
+    //Allow for borders.
+    leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+    //Allow for title and status bars.
+    topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+    //Open the window.
+    window.open(url, "game","status=no,height=" + height + ",width=" + width + ",resizable=yes,left="
+    + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY="
+    + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no");
+}
+</script>
+
+<?php 
+	if($this->form)
+    {
+	   	?>
+		<div class="join-head">JOIN FREE NOW!</div>
+		
+		<!-- <form method="post" action="/auth/signup" enctype="application/x-www-form-urlencoded" name="player-signup" id="player-registration-form">
+			<div class="input-feilds">
+                        	<input type="text" Placeholder="Enter Username" id="login" name="login"/>
+                            <input type="password" Placeholder="Enter Password" id="password" name="password"/>
+                            <input type="text" Placeholder="Enter Email Address" id="email" name="email"/>
+                        </div>
+                        <div class="checkbox">
+                        	<input type="checkbox" />
+                            <p><small>I am above 18 years and agree to the </small><a href="#">Terms and Conditions</a></p>
+                        </div>
+                        <div class="already">
+                        	<a class="member" href="#">Already a Memeber?</a>
+                            <input type="submit" value="Join Now!" id="Signup" name="Signup">
+                        </div>
+                        </form> -->
+                        
+	    	
+	    <?php 
+	    echo $this->form;
+    }

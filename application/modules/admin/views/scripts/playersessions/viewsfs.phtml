@@ -1,0 +1,38 @@
+<a href = "<?php echo $this->url(array(
+							'controller' => 'playersessions',
+							'action' => 'index',
+							'page' => $this->page));
+							?>">
+							<?php  echo 'Back';?>
+						</a>
+<br></br>
+<b>Sfs Logins</b>
+<br></br><br></br>
+<?php
+$sfsLogins = $this->sfsLogins;
+$headings = $this->headings;
+if($sfsLogins)
+{
+	echo "<table border = '1'>"."<tr>";
+	foreach($headings as $heading)
+	{
+		if($heading != 'sfs_roomid' && $heading != 'sfs_hashkey')
+		{
+			echo '<th>'.$heading.'</th>';
+		}
+	}
+	echo '</tr>';
+	foreach($sfsLogins as $sfsLogin)
+	{
+		echo '<tr>';
+		foreach($sfsLogin as $key => $value)
+		{
+			if($key != 'sfs_roomid' && $key != 'sfs_hashkey')
+			{
+				echo '<td>'.$value.'</td>';
+			}
+		}
+		echo '</tr>';
+	}
+	echo '</table>';
+}

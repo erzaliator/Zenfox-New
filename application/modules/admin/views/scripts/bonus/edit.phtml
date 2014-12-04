@@ -1,0 +1,25 @@
+<?php
+//echo $this->form;
+
+/* $linkArray = array();
+foreach($this->contents as $playerData)
+{
+	$linkArray[$playerData['Player Id']] = array(
+						'controller' => 'player',
+						'action' => 'view',
+						'playerId' => $playerData['Player Id']);
+}
+$this->table($this->contents, array('Player Id'), $linkArray); */
+foreach($this->allLevelsData as $levelData)
+{
+	$linkArray[$levelData['Id']] = array(
+						'controller' => 'bonus',
+						'action' => 'edit',
+						'id' => $this->schemeId,
+						'levelId' => $levelData['Id']);
+}
+$this->table($this->allLevelsData, array('Id'), $linkArray);
+if($this->form)
+{
+	echo $this->form;
+}

@@ -1,0 +1,69 @@
+<?php
+$counter = 0;
+if($this->messages)
+{
+	?>
+
+<div id="viewtickts">
+  <div class="ttdepolcont" >
+    <div class="ttmsgblk pad-t-5">
+      <div id="player-ticket-create">If you have any queries, suggestions or issues, raise a <a  href="/ticket/create">New Complaint</a></div>
+      <div class="right"><img src="/css/rummy.tld/images/ttmsagicon.png" width="37" height="16" /></div>
+    </div>
+    <div class="ttmsgblksubj" >
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+          <th width="80" >From</th>
+          <th width="255" >Subjet</th>
+          <th width="222" >Date and Time</th>
+          <th width="60" >Status</th>
+        </tr>
+</table>
+
+    </div>
+    <div class="ttmsgblkcont" >
+    
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr class="hide">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      
+        <?php 
+	foreach($this->messages as $message)
+	{
+		?>
+        <tr>
+          <td id = "username-<?=$message['ticketId'] ?>" onclick="getTicketData('<?=$message['ticketId'] ?>', '<?=$message['subject'] ?>')" href="javascript:void(0)"><span class="ttunreadmsg">
+            <?=$message['userName'] ?>
+            </span></td>
+          <td id = "subject-<?=$message['ticketId'] ?>" onclick="getTicketData('<?=$message['ticketId'] ?>', '<?=$message['subject'] ?>')" href="javascript:void(0)"><div  class="ttsubjoverflow">
+              <?=$message['subject'] ?>
+            </div></td>
+          <td id = "time-<?=$message['ticketId'] ?>" onclick="getTicketData('<?=$message['ticketId'] ?>', '<?=$message['subject'] ?>')" href="javascript:void(0)"><?=$message['startDate'] ?></td>
+          <td id = "cross-<?=$message['ticketId'] ?>" class="ticket-cross"><div class="ttmsgiconact"><a href="javascript:void(0)" onclick="deletemessage('<?=$message['ticketId'] ?>')"></a></div></td>
+        </tr>
+        <?php
+	}
+	?>
+      </table>
+    </div>
+    <div id = "view-msg" class="ttfrommsg"><div><strong>Message</strong></div>
+	<div>Content</div>
+	
+	 </div>
+  </div>
+</div>
+<?php
+}
+else
+{
+	//echo "No Tickets";
+}
+?>
+</table>
+<script type="text/javascript">
+getTicketData('<?=$this->messages[0]['ticketId'] ?>', '<?=$this->messages[0]['subject'] ?>');
+</script>

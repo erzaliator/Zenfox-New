@@ -1,0 +1,131 @@
+<?php
+if($this->homePage)
+{
+	foreach($this->realWinnerList as $index => $winners)
+	{
+		if($index < 7)
+		{
+			?>
+		     <li><?=$winners['login'] ?><div>T Rs <?=$winners['amount'] ?></div></li>
+		          	<?php
+		          	}
+		          }
+
+	?>
+	<?php 
+}
+else
+{
+	?>
+	
+	<div class="ttltm">
+	<div class="ttlthedbg"> Leader Boards</div>
+	<div class="ttfuncoinsrsltm_l">
+	<div class="ttfuncoinsrsltbot">
+	<div class="ttfuncoinsrsltm">
+	 
+	 
+	<div class="ttfuncoinshed">Weekly T<span class="WebRupee">RS </span> Winners</div>
+	<div class="ttfuncoinsdatetime"><b>From :</b> <?=$this->startTime ?> - <b>To :</b> <?=$this->endTime ?></div>
+	          <div class="ttresultgthedbg" >
+	            <div class="ttresultgthedbgl">Rank</div>
+	            <div class="ttresultgthedbgm">Login Name</div>
+	            <div class="ttresultgthedbgr">Amount Won</div>
+	          </div>
+	          <div  class="ttresultrankm">
+	          <?php 
+	          foreach($this->realWinnerList as $index => $winners)
+	          {
+	          	if($index < 3)
+	          	{
+	          	?>
+	          	<div class="ttresult<?=($index+1) ?>rankbg1">
+	          	<div class="ttresultusername"><?=$winners['login'] ?></div>
+	          	<div class="ttresultamtwon"><?=$winners['amount'] ?></div>
+	          	</div>
+	          	<?php
+	          	}
+	          }
+	          ?>
+	            
+	          </div>
+	          <div class="ttfuncoinsrslt"  >
+	            <ol  start="4">
+	            <?php 
+	            foreach($this->realWinnerList as $index => $winners)
+	            {
+	            	if($index > 2)
+	            	{
+	            	?>
+	            	<li><?=$winners['login'] ?><span ><?=$winners['amount'] ?></span></li>
+	                      	
+	                      	<?php
+	            	}
+	                      }
+	            ?>
+	             
+	            </ol>
+	          </div>
+	      
+	        
+	      </div>
+	      <div class="ttfuncoinsgoldbg"></div>
+	    </div>
+	  </div>
+	  <div class="ttfuncoinsrsltm_r">
+	    <div class="ttfuncoinsrsltbotr">
+	      <div class="ttfuncoinsrsltm">
+	       
+	        
+	      <div class="ttfuncoinshed">Weekly F&cent; Winners</div>
+	       <div class="ttfuncoinsdatetime"><b>From :</b> <?=$this->startTime ?> - <b>To :</b> <?=$this->endTime ?></div>
+	          <div class="ttresultgthedbg" >
+	            <div class="ttresultgthedbgl">Rank</div>
+	            <div class="ttresultgthedbgm">Login Name</div>
+	            <div class="ttresultgthedbgr">Amount Won</div>
+	          </div>
+	          <div  class="ttresultrankm">
+	          <?php 
+	          foreach($this->bonusWinnerList as $index => $winners)
+	          {
+	          	if($index < 3)
+	          	{
+	          	?>
+	                    	<div class="ttresult<?=($index+1) ?>rankbg1">
+	                    	<div class="ttresultusername"><?=$winners['login'] ?></div>
+	                    	<div class="ttresultamtwon"><?=$winners['amount'] ?></div>
+	                    	</div>
+	                    	<?php
+	                    }
+	          }
+	          ?>
+	            
+	          </div>
+	          <div class="ttfuncoinsrslt"  >
+	            <ol  start="4">
+	            <?php 
+	            foreach($this->bonusWinnerList as $index => $winners)
+	            {
+	            	if($index > 2)
+	            	{
+	            	?>
+	            	<li><?=$winners['login'] ?><span ><?=$winners['amount'] ?></span></li>
+	                      	
+	                      	<?php
+	            	}
+	                      }
+	            ?>
+	             
+	            </ol>
+	          </div>
+	     
+	      </div>
+	      <div class="ttfuncoinsgoldbg"></div>
+	    </div>
+	    
+	  </div>
+	</div>
+	<?php
+	//$this->table($this->winners);?>
+	<?php 
+}

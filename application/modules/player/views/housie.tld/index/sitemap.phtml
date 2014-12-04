@@ -1,0 +1,14 @@
+<?php 
+
+$menu = new Menu("player");
+//Decide on the role and current request in the Menu class
+$navigation = $menu->getNavigation();
+//$this->navigation($navigation);
+echo $this->navigation()->sitemap();
+//Zenfox_Debug::dump($this->navigation());
+//Zend_Layout::getMvcInstance()->disableLayout();
+
+/*foreach ($this->container as $page) 
+{
+	echo $this->navigation()->menu()->htmlify($page), PHP_EOL;
+}*/

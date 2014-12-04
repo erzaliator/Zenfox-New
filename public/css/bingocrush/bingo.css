@@ -1,0 +1,1179 @@
+@charset "utf-8";
+/* CSS Document */
+body{ margin:0px; padding:0px; font-family:"Times New Roman"; font-size:14px; color:#030000;background: #fff url(/images/bingocrush/bg.png) repeat-x top center ;/*webkit-background-size: cover;
+    moz-background-size: cover;
+    o-background-size: cover;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/bingocrush/ttbingobg.jpg',     sizingMethod='scale');
+    -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/bingocrush/ttbingobg.jpg', sizingMethod='scale'); */ }
+li{list-style:none;}
+.content_logo li{list-style-type:disc;margin-left:-13px;line-height:24px;font-size:15px;}
+.weeknames{height:30px;width:100px;border-right:1px solid;float:left;border-color:#9900CC;line-height:30px;text-align:center;cursor:pointer;}
+/*Added by naveen*/
+.aboutus_div{border:1px solid;height:600px;width:750px;border-radius:5px;border-color:#CD222B;}
+/*Added by naveen*/
+#TTBingoM{ width:1024px; margin:0px auto; }
+#TTBingoHedBg{ height:210px; position:relative}
+#TTBingoLogo{ position:absolute; top:8px;  left:6px; width:246px; height:262px; z-index:5 }
+#TTBingoLogin{ margin-top:10px; }
+#TTBingoHedNav { position:absolute; z-index:4; bottom:3px; right:0px; /*width:804px;*/  height:42px; border:2px solid #ff444b; -webkit-border-radius:60px; -moz-border-radius:60px;border-radius: 60px;font-size:18px;font-family:Verdana, Geneva, sans-serif; padding: 5px 5px 10px 20px; te xt-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #fff; background-color: #ce222b;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f27d5d), color-stop(100%, #ce222b));background-image: -webkit-linear-gradient(top, #f27d5d, #ce222b); background-image: -moz-linear-gradient(top, #f27d5d, #ce222b); background-image: -ms-linear-gradient(top, #f27d5d, #ce222b); background-image: -o-linear-gradient(top, #f27d5d, #ce222b); background-image: linear-gradient(top, #f27d5d, #ce222b);}
+#TTBingoHedNavinn{ margin:0px 5px 10px 25px; height:6px;  padding-left:185px;  padding: 3px 20px 10px 20px;  }
+#TTBingoHedNav ul{ margin:0px; padding:0px; }
+/*#TTBingoHedNav ul li{ /*margin:0px;*/ padding:0px; display:inline; color:#fff; font-size:15px; font-weight:bold; line-height:25px; font-family:Verdana, Geneva, sans-serif; position:relative   }*/
+#TTBingoHedNav ul li a{ color:#fff; text-decoration:none; padding:5px 25px 5px 25px ; text-shadow: 0px 2px 3px rgba(0, 0, 0, 1);  }
+#TTBingoHedNav ul li a:hover{  color:#fbee23 }
+#TTBingoHedNav ul li a.active{  color:#fbee23; font-weight:bold; font-size:20px }
+
+#TTBingosubNav{ width:850px; bottom:-38px; right:1px; height:50px; margin-top:10px; padding:16px 0px 0px 0px; position:absolute; z-index:3; background:#8c0000; -webkit-border-bottom-right-radius: 10px;
+-webkit-border-bottom-left-radius: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;}
+#TTBingosubNav ul{ margin:0px 0px 0px 106px; padding:0px;}
+#TTBingosubNav ul li{ margin:0px; padding:0px; display: inline; float:left; color:#fff; font-size:13px; font-weight:normal; line-height:65px; font-family:Verdana, Geneva, sans-serif; }
+#TTBingosubNav ul li a{ color:#fff; text-decoration:none; padding:5px 15px; text-shadow: 0px 2px 3px rgba(0, 0, 0, 1); line-height:48px; }
+#TTBingosubNav ul li a:hover{color:#fbee23;  }
+
+.TTBingoBanner{ width:720px; margin-left:5px;}
+.TTBingoBtnBlk{ position:relative; clear:both; height:60px ; margin-top:5px; }
+.TTBingoExploBtn, .TTBingoPlayBtn, .TTBingoLikeBtn{ height:45px; position:absolute; top:5px; left:50px; padding:0px 5px;   cursor:pointer; border:2px solid #ff444b; -webkit-border-radius:60px; -moz-border-radius:60px;border-radius: 60px;font-size:18px;font-family:Verdana, Geneva, sans-serif;  font-weight:bold; text-align: center; color: #fff; background-color: #c50000;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d20c0c), color-stop(100%, #c50000));background-image: -webkit-linear-gradient(top, #d20c0c, #c50000); background-image: -moz-linear-gradient(top, #d20c0c, #c50000); background-image: -ms-linear-gradient(top, #d20c0c, #c50000); background-image: -o-linear-gradient(top, #d20c0c, #c50000); } 
+.TTBingoPlayBtn{ left:300px; height:45px; -webkit-border-radius:60px; -moz-border-radius:60px;border-radius: 60px;font-size:18px;font-family:Verdana, Geneva, sans-serif; margin:5px;  te xt-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #fff; background-color: #00680a;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #096612), color-stop(100%, #379325));background-image: -webkit-linear-gradient(top, #096612, #00680a); background-image: -moz-linear-gradient(top, #096612, #00680a); background-image: -ms-linear-gradient(top, #096612, #00680a); background-image: -o-linear-gradient(top, #096612, #00680a);  border:#5fa943 solid 1px;     }
+.TTBingoLikeBtn{ left:575px; top:10px; height:36px;  text-align: center; color: #fff; cursor:pointer; background:none; border:0px;     }
+.TTBingoBtninn{ height:21px; -webkit-border-radius:60px; -moz-border-radius:60px;border-radius: 60px;font-size:18px;font-family:Verdana, Geneva, sans-serif; margin:5px;  /*background-color: #fce5e0;cursor:pointer; background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+/*background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+/*background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+/*background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+/*background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fce5e0', endColorstr='#F2B2A9',GradientType=0 ); *//* IE6-9 */ }
+/*.TTBingoExploBtnBg{ background:url(/images/bingocrush/ttbingoexplorebtnbg.gif) repeat-x; border:0px;  cursor:pointer; font-size:22px; color:#000; font-weight:bold}
+.TTBingoPlayBtnBg{ background:url(/images/bingocrush/ttbingoplaybtnbg.gif) repeat-x; border:0px;  cursor:pointer ; font-size:22px; color:#000; font-weight:bold}
+.TTBingoLikeBtnBg{ background:url(/images/bingocrush/ttbingolikebtnbg.gif) repeat-x; border:0px;  cursor:pointer; font-size:18px; color:#000; font-weight:bold; height:25px }*/
+.TTBingoJoin, .TTBingoJoinl{ width:270px; border:#CD222B solid 1px; padding:10px 5px 0px 5px; margin:10px 0px 0px 10px}
+.TTBingoJoinl{ width:auto !important; margin:0px 0px 0px 0px ; padding:10px 10px 0px 10px; }
+.TTBingoJoinTitle{ font-family:'Berlin Sans FB Demi'; text-align:center; color:#C50000; font-size:32px;}
+.TTBingoJoinTitleSmall{ font-family:'Berlin Sans FB Demi'; text-align:right; color:#000; text-align:right; font-size:16px;}
+.TTBingoJoinTitleSmall p{ margin-top:5px;}
+.TTBingoJoinTitle p{ margin:0px; padding:0px;}
+.TTBingoBnrTitle{ text-align:right;  padding:83px 10px 10px 10px }
+.TTBingoBnrTitle h1, .TTBingoBnrTitle h2, .TTBingoBnrTitle h3{ font-family:'Berlin Sans FB Demi'; text-align:left;  font-size:16px; margin:0px; padding:0px; color:#000000 ; font-smooth:always; -webkit-font-smoothing: antialiased; }
+.TTBingoBnrTitle h1{ color:#00680a; font-size:120px; line-height:100px;  font-weight:bold; font-family:Verdana, Geneva, sans-serif}
+.TTBingoBnrTitle h2{ font-size:50px;  }
+.TTBingoBnrTitle h3{ font-size:15px; line-height:22px;  }
+.TTBingoBnrmargint{ margin-top:20px;}
+.TTBingoBnrTitlen{ margin-top:80px;}
+.TTBingoBnrTitlen span{ font-size:30px;color:#000;}
+.TTBingoBnrTitlen h5{ font-size:42px; margin:0; text-align:center; color:green;}
+.TTBingoBnrTitlen h6{ font-size:38px; margin:0; text-align:center; color:green;}
+.TTBingoBnrTitlen{width:340px;}
+.TTBingoJoinForm {margin:0 auto; padding:0px 0px 0px 20px}
+.TTBingoJoinForm ul{ margin:0px; padding:0px;}
+.TTBingoJoinForm ul li{ margin:0px; padding:0px; list-style:none; clear:both; padding:6px 0px 6px 0px }
+.TTBingoJoinForm ul li span{ width:100px; display:inline-block;  text-align:center  }
+.TTBingoJoinForm input[type=text]:focus, .TTBingoJoinForm input[type=password]:focus, .TTBingoJoinForm input[type=email]:focus{ border:1px solid #fff;
+	-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, .05), 0 0 8px rgba(000, 000, 000, .7);	-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, .05), 0 0 8px rgba(000, 000, 000, .7);	box-shadow:inset 0 1px 3px rgba(0, 0, 0, .05), 0 0 8px rgba(000, 000, 000, .7);}
+.TTBingoJoinForm input[type=checkbox]{ width:20px !important ;}
+.TTBingoJoinForm input[type=submit]{ margin-top:18px; }
+.TTBingoJoinForm .text {padding:5px;border: 1px solid #b296c7;  -webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px; width:200px; }
+.TTBingoJoinForm .button{margin:0px;padding:4px 15px;background:url(/images/bingocrush/ttbingosubmit.gif);border:0px;border: 1px solid #d79701; cursor:pointer; font-size:14px; }
+.TTBingoJoinForm p{ padding:5px 0px 0px 20px; margin:0px;}
+.TTBingoFooter{ background:#1a1a1a; padding:20px; color:#fff ; border-top:#990099 solid 3px; margin-top:20px;  }
+.TTBingoFooterinn{ margin:0px auto; width:1024px;}
+.TTBingoFooterAccept{ width:300px}
+.TTBingoFooterNav{ width:430px; height:200px; border:#000000  double 1px; border-top:none; border-bottom:none; padding:0px 20px 0px 20px; margin:0px 10px 0px 10px}
+.TTBingoFooterRight{ width:160px; margin-left:15px;}
+.TTBingoFooterNav ul{ margin:0px; padding:0px}
+.TTBingoFooterNav ul li{ margin:0px; padding:0px; list-style:none}
+.TTBingoFooterNav ul li a{ color:#FFF ; text-decoration:none; font-size:16px; font-weight:bold; line-height:50px;}
+.TTBingoFooterNav ul li a:hover{  color:#fbee23}
+.TTBingoPlayBlk{  background:none; }
+.TTBingoPlaymorebg{ border-bottom: solid 2px #CD222B ; font-family:'Berlin Sans FB Demi'; font-size:30px; padding:0px 0px 10px 0px;   }
+.TTBingoPlaymorebot{ padding:25px 10px 10px 10px;}
+.TTBingooffer{ width:300px; height:220px; background:none; position:relative ; text-align:center}
+.TTBingoofferin{ padding:11px 0px 0px 0px; }
+.TTBingoofferhed{  height:10px; font-family:Verdana, Geneva, sans-serif; text-align:justify; color:#fff; font-size:30px; -webkit-border-radius:80px; -moz-border-radius:80px;border-radius: 80px;font-size:18px;font-family:Verdana, Geneva, sans-serif; padding: 5px 5px 10px 20px; te xt-shadow: -1px -1px 0 rgba(0,0,0,0.3);text-shadow: 0px 4px 3px rgba(0, 0, 0, 1); font-weight:bold;   }
+.TTBingoofferimg{ font-family:'Berlin Sans FB Demi'; text-align:justify; color:#C50000; font-size:26px; position:relative; padding:10px 0px 0px 0px;}
+.TTBingogamesbot{ padding:12px 10px 10px 10px;}
+.TTBingogamesm{  width:300px;  }
+.TTBingogamesimg{ width:280px; height:180px; background:url(/images/bingocrush/h_game_1.png); padding:10px;   }
+.TTBingogamesplaybtn{ height:26px; background:url(/images/bingocrush/ttbingocontplaybtnbg.gif) repeat-x; border:#cb9a34 solid 1px; cursor:pointer}
+.TTBingogamesblkm{ width:662px;  height:220px; background:#FFF; border:#9900cc solid 2px; }
+.TTBingogamesblkR{ width:324px;  height:220px; background:#FFF; border:#9900cc solid 2px; margin-left:10px; }
+.TTBingogameName{ font-family:'Berlin Sans FB Demi'; text-align:justify; color:#c50000; font-size:26px;}
+.TTBingoWeaccepthed{ font-size:14px; font-weight:bold; color:#fff}
+.TTBingogamesbot p{ margin:5px 0px 10px 0px; line-height:18px;height:130px;}
+
+.TTBingoMidPad{ padding:0px 25px 0px 25px;  border-right:2px solid #FFD6DD;  border-left:2px solid #FFD6DD; margin:0px 25px 0px 25px  }
+.TTBingoMidPad_noborder{ padding:0px 25px 0px 25px; margin:0px 25px 0px 25px  }
+/* Slide Show CSS  */
+#TTBingoslideshow {position:relative;height:220px;}
+#TTBingoslideshow DIV { position:absolute;    top:0;    left:0;    z-index:8;    opacity:0.0;    height: 220px;    background-color: #FFF;}
+#TTBingoslideshow DIV.active {z-index:10;    opacity:1.0;}
+#TTBingoslideshow DIV.last-active { z-index:9;}
+#TTBingoslideshow DIV IMG {height: 220px;display: block;   border: 0;    margin-bottom: 10px;}
+
+/* Testimonials CSS  */
+#ttbingotestim{ padding-top:10px; text-align:left}
+#ttbingotestim ul{ margin:0px; padding:0px}
+#ttbingotestim ul li{ margin:0px; padding:0px; list-style:none}
+
+/* Easy Slider */
+pre{display:block;font:12px "Courier New", Courier, monospace;padding:10px;	border:1px solid #bae2f0;background:#e3f4f9;margin:.5em 0;wi dth:306px;}
+ .graphic, #prevBtn, #nextBtn, #slider1prev, #slider1next{ margin:0; padding:0; display:block; overflow:hidden; text-indent:-8000px; }
+#container{	margin:0 auto;position:relative;text-align:left;width:328px;background:#fff;margin-bottom:2em;}					
+#content, #contentban{position:relative;}
+#content{ margin-left:28px;}
+#slider ul, #sliderban ul, #slider li, #sliderban li,
+#slider2 ul, #slider2 li{margin:0;padding:0;list-style:none;}
+#slider2{margin-top:1em;}
+#slider2 li, #sliderban li{width:250px;height:160px;overflow:hidden; }
+#slider li{width:280px;height:160px;overflow:hidden; margin-left:0px}	
+#sliderban li{ width:720px; height:323px; }
+#prevBtn, #nextBtn,	#slider1next, #slider1prev{ display:block;width:36px;height:38px;position:absolute;left:-37px;top:60px;z-index:1000;}	
+#nextBtn, #slider1next{left:264px;}														
+#prevBtn a, #nextBtn a,	#slider1next a, #slider1prev a{ display:block;position:relative;width:36px;	height:38px;background:url(/images/bingocrush/btn_prev1.png) no-repeat 0 0;}	
+#nextBtn a, #slider1next a{ background:url(/images/bingocrush/btn_next1.png) no-repeat 0 0;}	
+#contentban #prevBtn, #contentban #nextBtn{ display:none}
+ol#controls{margin:1em 0;padding:0;	height:28px;}
+ol#controls li{	margin:0 10px 0 0; padding:0;float:left;list-style:none;height:28px;line-height:28px;}
+ol#controls li a{float:left;height:28px;line-height:28px;border:1px solid #ccc;	background:#DAF3F8;	color:#555;	padding:0 10px;	text-decoration:none;}
+ol#controls li.current a{background:#5DC9E1;color:#fff;}
+ol#controls li a:focus, #prevBtn a:focus, #nextBtn a:focus{outline:none;}
+/* Globel Styles */
+.TTBingoLeft{ float:left}
+.TTBingoRight{ float:right}
+.TTBingoRadius{ -webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px; }
+.clearfix:after {	content: ".";	display: block;	clear: both;	visibility: hidden;	line-height: 0;	height: 0;} 
+.clearfix {	display: inline-block;}
+ html[xmlns] .clearfix {	display: block;} 
+* html .clearfix {	height: 1%;}
+.TTBingoBtnPad{ padding:0px 10px 5px 10px}
+
+.TTBingoBtnmarg{ margin:0px 10px}
+.TTBingoBtnmargt{ margin-top:10px}
+.TTBingoBtnmargt_20{ margin-top:20px}
+.TTBingoBtnmargl_40{ margin-left:40px;}
+.TTBingoBtnmargl_40e {margin-top:55px;}
+.TTBingoBtnmarg_45{ margin:0px 45px 0px 45px}
+.TTBingoMargin{ margin:0px;}
+.TTBingomarg_10{ margin:10px;}
+.TTBingomargt_30{ margin-top:30px; }
+.TTBingomargt_50{ margin-top:50px;}
+.TTBingomargl{ margin-left:10px;}
+.TTBingoborder{ border:solid 1px #cd222b}
+.TTBingopad_10{ padding:10px;}
+.TTBingopad_5{ padding:5px;}
+
+/* Button Styles */
+.TTBingoGradentBtn, .TTBingoGradentBtn1, .TTBingoGradentBtn2{background:transparent; border:0px solid #fff;font-size:20px; padding: 5px 40px 5px 40px;  text-align: center; color: #fff; cursor:pointer; text-shadow: 0px 2px 3px rgba(0, 0, 0, 1); font-weight:bold; 
+	 }
+
+.TTBingoGradentBtn:hover, .TTBingoGradentBtn1:hover , .TTBingoGradentBtn2:hover, .TTBingoGradentBtn3:hover{	background-color:transparent; color:#000; text-shadow: 0px 2px 3px rgba(255, 255, 255, 1);}
+.TTBingoGradentBtn2{ padding: 5px 25px 5px 25px; }
+
+.TTBingoGradentBtn3{ height:35px; 	padding:2px 10px; -webkit-border-radius:60px; -moz-border-radius:60px;border-radius: 60px;font-size:18px;font-family:Verdana, Geneva, sans-serif; margin:5px;  font-weight:bold; text-align: center; color: #fff; background-color: #fce5e0;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0c7116), color-stop(100%, #379325));background-image: -webkit-linear-gradient(top, #0c7116, #379325); background-image: -moz-linear-gradient(top, #0c7116, #00680a); background-image: -ms-linear-gradient(top, #0c7116, #00680a); background-image: -o-linear-gradient(top, #0c7116, #00680a);  border:#5fa943 solid 1px;  text-shadow: 0px 2px 3px rgba(150, 150, 150, 1); font-weight:bold; text-shadow: 0px 2px 3px rgba(0, 0, 0, 1);	}
+.TTBingoGradentBtn3 a{  text-decoration:none; color:#484848}
+.TTBingoGradentBtn3:hover{	padding:2px 10px;	text-decoration:none;cursor:pointer;  }
+.TTBingoGradentBtn4{border:0px solid #5c3b08;-webkit-box-shadow: #B4B5B5 2px 2px 2px  ;-moz-box-shadow: #B4B5B5 2px 2px 2px ; box-shadow: #B4B5B5 2px 2px 2px  ; -webkit-border-radius:4px; -moz-border-radius: 4px;border-radius: 4px;font-size:18px;font-family:arial, helvetica, sans-serif; padding: 5px 10px 5px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #fff; background-color: #46982c;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5aa53e), color-stop(100%, #43962a));background-image: -webkit-linear-gradient(top, #5aa53e, #43962a); background-image: -moz-linear-gradient(top, #5aa53e, #43962a); background-image: -ms-linear-gradient(top, #5aa53e, #43962a); background-image: -o-linear-gradient(top, #5aa53e, #43962a); background-image: linear-gradient(top, #5aa53e, #43962a);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5aa53e, endColorstr=#43962a);}
+
+.TTBingoGradentBtn4:hover{border:0px solid #5c3b08;-webkit-box-shadow: #B4B5B5 2px 2px 2px  ;-moz-box-shadow: #B4B5B5 2px 2px 2px ; box-shadow: #B4B5B5 2px 2px 2px  ; -webkit-border-radius:4px; -moz-border-radius: 4px;border-radius: 4px;font-size:20px;font-family:arial, helvetica, sans-serif; padding:8px 10px 8px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #fff; background-color: #46982c;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5aa53e), color-stop(100%, #43962a));background-image: -webkit-linear-gradient(top, #5aa53e, #43962a); background-image: -moz-linear-gradient(top, #5aa53e, #43962a); background-image: -ms-linear-gradient(top, #5aa53e, #43962a); background-image: -o-linear-gradient(top, #5aa53e, #43962a); background-image: linear-gradient(top, #5aa53e, #43962a);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5aa53e, endColorstr=#43962a);}
+
+.TTBingoGradentBtn6{border:0px solid #5c3b08;-webkit-box-shadow: #B4B5B5 2px 2px 2px  ;-moz-box-shadow: #B4B5B5 2px 2px 2px ; box-shadow: #B4B5B5 2px 2px 2px  ; -webkit-border-radius:4px; -moz-border-radius: 4px;border-radius: 4px;font-size:18px;font-family:arial, helvetica, sans-serif; padding: 5px 10px 5px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #000; background-color: #fffc00;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fffc00), color-stop(100%, #efec04));background-image: -webkit-linear-gradient(top, #fffc00, #efec04); background-image: -moz-linear-gradient(top, #fffc00, #efec04); background-image: -ms-linear-gradient(top, #fffc00, #efec04); background-image: -o-linear-gradient(top, #fffc00, #efec04); background-image: linear-gradient(top, #fffc00, #efec04);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#fffc00, endColorstr=#efec04);}
+
+.TTBingoGradentBtn6:hover{border:0px solid #5c3b08;-webkit-box-shadow: #B4B5B5 2px 2px 2px  ;-moz-box-shadow: #B4B5B5 2px 2px 2px ; box-shadow: #B4B5B5 2px 2px 2px  ; -webkit-border-radius:4px; -moz-border-radius: 4px;border-radius: 4px;font-size:20px;font-family:arial, helvetica, sans-serif; padding: 7px 7px 7px 7px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #000; background-color: #f6ff00;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f6ff00), color-stop(100%, #ecf502));background-image: -webkit-linear-gradient(top, #f6ff00, #ecf502); background-image: -moz-linear-gradient(top, #f6ff00, #ecf502); background-image: -ms-linear-gradient(top, #f6ff00, #ecf502); background-image: -o-linear-gradient(top, #f6ff00, #ecf502); background-image: linear-gradient(top, #f6ff00, #ecf502);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f6ff00, endColorstr=#ecf502);}
+
+
+.TTBingoGradentBtn5{border:0px solid #5c3b08;-webkit-box-shadow: #B4B5B5 2px 2px 2px  ;-moz-box-shadow: #B4B5B5 2px 2px 2px ; box-shadow: #B4B5B5 2px 2px 2px  ; -webkit-border-radius:4px; -moz-border-radius: 4px;border-radius: 4px;font-size:18px; padding: 3px 10px 3px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #fff; background-color: #00680A;cursor:pointer;  text-shadow: 0px 2px 3px rgba(150, 150, 150, 1); font-weight:bold;}
+
+.TTBingoGradentBtn5:hover{border:0px solid #5c3b08;-webkit-box-shadow: #B4B5B5 2px 2px 2px  ;-moz-box-shadow: #B4B5B5 2px 2px 2px ; box-shadow: #B4B5B5 2px 2px 2px  ; -webkit-border-radius:4px; -moz-border-radius: 4px;border-radius: 4px;font-size:18px;padding: 3px 10px 3px 10px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #fff; background-color: #46982c;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5aa53e), color-stop(100%, #43962a));background-image: -webkit-linear-gradient(top, #5aa53e, #43962a); background-image: -moz-linear-gradient(top, #5aa53e, #43962a); background-image: -ms-linear-gradient(top, #5aa53e, #43962a); background-image: -o-linear-gradient(top, #5aa53e, #43962a); background-image: linear-gradient(top, #5aa53e, #43962a);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#5aa53e, endColorstr=#43962a);}
+
+.tttournwinrbg{  text-align:left; margin-top:15px;  }
+
+.tt_winner_hed{ height:24px; color:#004298; padding:6px 0px 0px 10px ; font-size:14px; font-weight:bold  }
+.tt_winner_cont{ he ight:150px;  overflow:auto; color:#004298 }
+.tt_winner_cont ul{ margin:0px 0px 0px 12px; padding:0px;}
+.tt_winner_cont ul li{ margin:0px; padding:0px; list-style:none; font-weight:bold; position:relative; color:#000; line-height:24PX;}
+.tt_winner_cont ul li div{ position:absolute; right:10px; top:0px;   }
+.ttbingomoredtls{ padding:10px 10px 0px 0px; }
+.ttbingomoredtls a{ color:#C0272C ; font-weight:bold; text-decoration:none }
+.ttbingomoredtls a:hover{ color:#9900CC;  }
+
+
+.TTBingoJoinForm dd {margin: 0;}
+#affId-label {display: none;}
+#trackerId-label {display: none;}
+#buddyId-label {display: none;}
+
+/* Game Page Styles */
+.TTBingoGameL{ width:241px;float:left;margin-left:10px;}
+.TTBingoGameR{ width:755px;}
+.TTBingoGameNav{}
+.TTBingoGameNav ul{ margin:0px; padding:0px;}
+.TTBingoGameNav ul li{ margin:0px; padding:0px; list-style:none; text-align:center;  background:url(/images/bingocrush/tthednavbg.gif) repeat-x;  -webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px; /*background-image: linear-gradient(bottom, #420048 50%, #420048 0%, #AF56CA 0%);
+background-image: -o-linear-gradient(bottom, #420048 50%, #420048 0%, #AF56CA 0%);
+background-image: -moz-linear-gradient(bottom, #420048 50%, #420048 0%, #AF56CA 0%);
+background-image: -webkit-linear-gradient(bottom, #420048 50%, #420048 0%, #AF56CA 0%);
+background-image: -ms-linear-gradient(bottom, #420048 50%, #420048 0%, #AF56CA 0%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.5, #420048),
+	color-stop(0, #420048),
+	color-stop(0, #AF56CA)
+);*/}
+.TTBingoGameNav ul li span{ -webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;   border:inset 2px #9900cc ; display:block  }
+.TTBingoGameNav ul li a{ color:#fff; font-weight:bold; font-size:14px; text-decoration:none; display:block; line-height:26px; padding:10px 10px 5px 10px; }
+.TTBingoGameNav ul li a:hover{ color:#FF0}
+.TTBingoTodaysProm{ width:367px; height:125px;}
+.TTBingoContentNav{ border-bottom:solid 1px #9900cc; padding-bottom:2px; height:35px}
+.TTBingoContentNav ul{ margin:0px; padding:0px;}
+.TTBingoContentNav ul li{ margin:0px; padding:0px;  display: inline; font-size:18px; }
+.TTBingoContentNav ul li a{ color:#000000; text-decoration:none; padding:10px 10px 10px 20px; font-size:14px;   }
+.TTBingoContentNav ul li a:hover{ color:#9900cc; }
+.TTBingoUserInfo{  padding:5px; background:#ffd6dd;  }
+.TTBingoUserInfoT{ background:#fff ; padding:5px;    }
+.TTBingoUserPic{ float:left; width:60px; height:70px }
+.TTBingoLogOut{  color:#cd222b; font-weight:bold  }
+.TTBingoLogOut a{ color:#cd222b; }
+.TTBingoLogOut a:hover{ color:#f5303a; }
+.TTBingoWelcome{ color:#000; padding:5px 0px 5px 0px}
+.TTBingoBalnce{ height:30px; }
+.TTBingoBalncecont{ width:110px; }
+.TTBingoThBg{ background:#cd222b; color:#FFF; font-size:14px;border:1px solid }
+.TTBingoTrBg{ background:#ffd6dd; cursor:pointer; text-align:center; font-family:Verdana, Geneva, sans-serif;  text-align: center; color: #000; backg sround-color: #ce222b;cursor:pointer;border:1px solid }
+.TTBingoTrhoverBg{ background:#e7d8ef; cursor:pointer; text-align:center;   font-family:Verdana, Geneva, sans-serif;  text-align: center; color: #000; background-color: #ce222b;cursor:pointer; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffd6de), color-stop(100%, #fe797c));background-image: -webkit-linear-gradient(top, #ffd6de, #fe797c); background-image: -moz-linear-gradient(top, #ffd6de, #fe797c); background-image: -ms-linear-gradient(top, #ffd6de, #fe797c); background-image: -o-linear-gradient(top, #ffd6de, #fe797c); background-image: linear-gradient(top, #ffd6de, #fe797c);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ffd6de, endColorstr=#fe797c); }
+.TTBingoTroutBg{   background:#ffd6dd; cursor:pointer; text-align:center; font-family:Verdana, Geneva, sans-serif;  text-align: center; color: #000;  }
+.TTBingoBonanza{ color:#8a0000; font-size:14px; font-weight:bold}
+.TTBingoGameImg{ width:100px; padding:10px; float:left;  margin:10px;}
+
+#TTBingosubNavHover{ position:relative; top:0px; z-index:1;left: 17%;}
+#TTBingosubNavHover ul{ margin:0px; padding:0px; position:absolute; top:18px   }
+#TTBingosubNavHover ul li{ margin:0px; padding:0px; display:block; background:#F00; border:#999; float:none   }
+
+.TabbedPanel {	margin: 0px;	padding: 0px;	float: left;	clear: none;width: 100%; }
+.TabbedPanelTabGroup {	margin: 0px;	padding: 0px;}
+.TabbedPanelTab {position: relative;	top: 1px;	float: left;	padding: 4px 30px;	margin: 0px 1px 0px 0px;	font: bold 1.2em sans-serif;	background-color: #EFC8CF;	list-style: none;	border-left: solid 1px #cd222b;	border-bottom: solid 1px #cd222b;	border-top: solid 1px #cd222b;	border-right: solid 1px #cd222b;	-moz-user-select: none;	-khtml-user-select: none;	cursor: pointer;	-moz-border-radius:10px 10px 0 0;	-webkit-border-radius:10px 10px 0 0;	-khtml-border-radius:10px 10px 0 0;}
+.TabbedPanelTabHover {	background-color: #dc798b;}
+.TabbedPanelTabSelected {	background-color: #FFF;	border-bottom:none;	padding-bottom:5px;}
+.TabbedPanelTab a {	color: black;	text-decoration: none;}
+.TabbedPanelContentGroup {	clear: both;	border: solid 1px #cd222b;/*background-color: #EEE;*/}
+.TabbedPanelContent {padding: 0px;}
+.TabbedPanelContentVisible {background-color:#FFF}
+.VTabbedPanel .TabbedPanelTabGroup {float: left;width: 10em;height: 20em;	background-color: #EEE;	position: relative;	border-top: solid 1px #999;	border-right: solid 1px #999;	border-left: solid 1px #CCC;	border-bottom: solid 1px #CCC;}
+.VTabbedPanel .TabbedPanelTab {	float: none;	margin: 0px;	border-top: none;border-left: none;	border-right: none;}
+.VTabbedPanel .TabbedPanelTabSelected {	background-color: #900;	border-bottom: solid 1px #999;}
+.VTabbedPanel .TabbedPanelContentGroup {clear: none;float: left;padding: 0px;width: 30em;height: 20em;}
+.game-list{	overflow:hidden;left:15px;position:relative;top:0px;padding:10px;-moz-border-radius:10px 10px 10px 10px;-khtml-border-radius:10px 10px 10px 10px;-webkit-border-radius:10px 10px 10px 10px;}
+.game-list ul{list-style:none outside none;margin:0;overflow:hidden;padding:0;}
+.game-list ul li {	float:left;	  text-align:center;	  margin-bottom:25px;}
+.game-list ul li p{ margin:8px 0px 0px 0px; padding:0px;}
+.game-list ul li p.dotted span{ margin:0px; color:#971c8e;line-height:0px; }
+.game-list ul li p span{ margin:10px;font-weight:bold; text-align:center; display:block;}
+.game-list ul li div{ margin:0px 7px;	 list-style-position:outside; 	 	 padding:7px 7px 7px 7px;	 background-color:#FFF;	height:110px;	width:90px;	text-align:center; }
+.game-list a{ color:#333; text-decoration:none; }
+.game-list a:hover{ color:#900; text-decoration:underline; }
+div.nav-wrapper {   overflow: hidden;}
+div.clearfix {clear: both;}
+div.nav-wrapper div { /*margin: 5px;  padding: 5px 10px;*/ }
+.prev, .next {cursor: pointer;    font-size: bold;	color:#9900CC;	font-size:18px;}
+
+.ttbingologin{ margin:0px 0px 0px 20px; padding:0px;}
+.ttbingologin ul{ margin:0px; padding:0px;}
+.ttbingologin ul li{ margin:0px; padding:0px; list-style:none; padding:5px;  }
+.ttbingologin ul li label{ width:100px; display:inline-block; vertical-align:middle;   }
+.ttbingologin ul li input{ border:#999 solid 1px;  } 
+/*.ttbingologin ul li input[type=submit]{ margin-left:104px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ebd17d), color-stop(1, #e9b702) );	background:-moz-linear-gradient( center top, #ebd17d 5%, #e9b702 100% );	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebd17d', endColorstr='#e9b702');	background-color:#ebd17d;	-moz-border-radius:4px;	-webkit-border-radius:4px;
+border-radius:4px;	display:inline-block;	color:#0f0f05;	font-family:arial;	font-size:15px;	font-weight: normal;	padding:2px 12px;	text-decoration:none;cursor:pointer; border: solid 1px #d79701  }*/
+
+/* Faq  css */
+.ttcolactive {background:#F8B4BF;  margin:0px ; padding:5px 0px 5px 5px; font-size:12px; font-weight:bold;  vertical-align:middle  } 
+#ttwidget-docs h2.top-header{ display:none; }
+#ttwidget-docs { margin:0px; }
+#ttwidget-docs h2, #ttwidget-docs h3, #ttwidget-docs h4, #ttwidget-docs p, #ttwidget-docs ul, #ttwidget-docs code { margin:0; padding:0; clear:both ; font-weight:normal; line-height:18px;}
+#ttwidget-docs h2 { font-size:16px; }
+#ttwidget-docs h3 { font-size:14px; color:#e6820E;  }
+#ttwidget-docs ul.options-list li,
+
+#ttwidget-docs ul.methods-list li { list-style:none; background:url(../../images/bingocrush/bg-demo-docs-param.gif)  }
+#ttwidget-docs ul.options-list code{ display:inline; font-size:1em; }
+#ttwidget-docs .option-header {  width:100%; padding:5px 0 5px; bo rder-top:1px solid #e6e6e6;  }
+#ttwidget-docs .option-header h3{ width:98%; margin:0 0 0 10px; padding:0 0 0 15px; line-height: 1; background: url(../../images/bingocrush/demo-spindown-closed.gif) no-repeat left; cursor: pointer; cursor: hand;  }
+#ttwidget-docs .header-open h3 { background: url(../../images/bingocrush/demo-spindown-open.gif) no-repeat left; }
+#ttwidget-docs .option-description, 
+#ttwidget-docs .event-description, 
+#ttwidget-docs .method-description,
+#ttwidget-docs .option-examples,
+#ttwidget-docs .event-examples { padding:0px 10px 5px 25px; }
+#ttwidget-docs a:visited , #ttwidget-docs a{ color:#000; font-weight:bold; text-decoration:none; }
+/*-----reports form------*/
+#player-date-selection-form .zend_form
+{
+	margin-top: 20px;
+	float: left;
+}
+#player-date-selection-form .zend_form ul
+{
+	list-style:none;
+}
+#player-date-selection-form .zend_form ul li
+{
+	padding-bottom:20px;
+	float:left;
+	clear:both;
+	font-size:13px;
+}
+#player-date-selection-form .zend_form ul li label
+{
+	text-align:left;
+	float:left;
+	width: 120px;
+}
+#player-date-selection-form .zend_form ul li input[type="text"]
+{
+	float:left;
+	height:25px;
+}
+#player-date-selection-form .zend_form ul li input[type="submit"]
+{
+	width: 80px;
+	height: 30px;
+	font-weight: bold;
+	cursor:pointer;
+	border:0px solid;
+}
+.TTBingonew, .TTBingonew_before
+{
+	width:230px;
+	height:592px;
+	padding: 5px;
+	background: #ffd6dd;
+	border: solid 1px #cd222b;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	float:left;
+	margin-left:17px;
+	/*clear:left;*/ 
+	/*margin-top: 20px;*/
+	margin-bottom: 20px;
+}
+.TTBingonew_before1
+{
+	width:230px;
+	height:280px;
+	padding: 5px;
+	background: #ffd6dd;
+	border: solid 1px #cd222b;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	float:right;
+	/*clear:left;*/ 
+	/*margin-top: 20px;*/
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.TTBingonew_before
+{
+	margin-top: 20px;
+}
+.paly-report-forms
+{
+	border:none;
+	font-size:14px;
+	float:left;
+}
+#TTBingosubNavHover:nth-child(2) ul
+{
+	left:0%;
+}
+#TTBingosubNavHover:nth-child(3) ul
+{
+	left:10%;
+}
+#TTBingosubNavHover:nth-child(4) ul
+{
+	left:20%;
+}
+#TTBingosubNavHover:nth-child(6) ul
+{
+	left:30%;
+}
+#selectoption,#from_date,#to_date,#page
+{
+	padding: 10px;
+	border: 1px solid #bbb;
+}
+.report_time
+{
+    padding: 10px;
+	border: 1px solid #bbb;
+}
+/*-----sticky menu----*/
+.stick-main
+{
+	float:left;
+	position: relative;
+	z-index: 0;
+	top:13px;
+}
+#sticky
+{
+	background: #8c0000;
+	list-style:none;
+	float:left;
+}
+#sticky li
+{
+	float:left;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 65px;
+	font-family: Verdana, Geneva, sans-serif;
+	padding: 0px 10px;
+}
+#sticky li a
+{
+	text-decoration:none;
+	color: #fff;
+}
+.stick-menu1,.stick-menu2,.stick-menu3
+{
+	display:none;
+}
+.frnd-inner
+{
+	margin-top:10px;
+}
+.frnd-inner p
+{
+	text-align:left;
+	margin-bottom:0;
+}
+.frnd-inner p a
+{
+	color:#000;
+	}
+/*----terms page css --*/
+.terms-new ol li,.options-list li
+{
+	padding-bottom:15px;
+}
+.terms-new ul li
+{
+	padding-bottom:15px;
+}
+.gap
+{
+	margin-bottom:30px;
+}
+/*----banner images CSS---*/
+	#banners
+		{
+		  float:right;
+		  width:299px;
+		}
+	
+	#banners img
+		{
+		  border: 1px solid #CD222B;
+		  padding:7px;
+		
+		}
+	
+	#banners ul, #banners li, #banners a
+		{ margin: 0;
+		padding: 0;
+		}
+	#banners ul
+		{ 
+		display: block;
+		overflow: hidden;
+		}
+	
+	#banners li
+		{ display: block;
+		list-item-style: none;
+		}  
+	#banners li img
+		{
+		  width:280px;
+		  height:390px;
+		  margin:0;
+		}
+	.nav-wrapper #banners
+	{
+		float:left;
+		width:740px;
+	}
+	.nav-wrapper  #banners li img
+		{
+		  width:710px;
+		  height:600px;
+		  margin:0;
+		}
+	.nav-wrapper #banners img
+	{
+		border:none;
+	}
+	
+/*---------- Login Css--*/
+.TTBingoUserPic1
+{
+	width:27px;
+	height:27px;
+	float:left;
+}
+.TTBingoRight1
+{
+	width:175px;
+	
+}
+.prof-arrow
+{
+	float: right;
+	margin-top: 12px;
+	margin-right: 10px;
+	cursor:pointer;
+}
+.TTBingo-index
+{
+	position:relative;
+	z-index:1000;
+}
+.prof-inactive
+{
+	display:none;
+}
+.prof-active
+{
+	display:block;
+}
+.profile-complete
+{
+	position: absolute;
+}
+.TTBingoUserInfo
+{
+	cursor:pointer;
+}
+/*-------slider for promotions page---*/
+.nav-wrapper #slider li
+{
+	width:720px;
+	height:600px;
+}
+.nav-wrapper #nextBtn a
+{
+	/*background:url(/images/bingocrush/next.png) no-repeat;
+	width:45px;
+	height:20px;
+	*/
+}
+.nav-wrapper #prevBtn a
+{
+	/*background:url(/images/bingocrush/prev.png) no-repeat;
+	width: 70px;
+	height:20px;*/
+}
+.nav-wrapper #nextBtn
+{
+	/*left:890px;
+	top:485px;
+	width:45px;
+	*/
+}
+.nav-wrapper #prevBtn
+{
+	/*left: 192px;
+	top: 483px;	
+	width: 75px;*/
+}
+.r-strip
+
+{
+	background:#cd222b;
+	color:#fff;
+	font-size:17px;
+	font-weight: bold;
+	padding: 7.5px 5px;
+	float: right;
+	position: relative;
+	z-index: 100;
+	margin-top: 5px;
+	width: 25%;
+}
+.r-strip p
+{
+	margin:0;
+}
+.left
+{
+	float:left;
+}
+.right
+{
+	float:right;
+}
+.tb-real
+{
+	margin-top: -25px;
+	float: left;
+	position: relative;
+	z-index: 5;
+	width:755px;
+}
+.required
+{
+/*margin-left:40px;
+margin-right:80px;*/
+width:280px; display:inline-block;
+}
+.optional
+{
+width:280px; display:inline-block;
+}
+.clear .optional
+{
+width:280px; display:inline-block;
+
+}
+.zend_form ul li
+{
+padding-top:10px;
+}
+.zend_form li
+{
+padding-top:10px;
+}
+
+
+
+/*#sliderFrame {position:relative;background-color:White;}      
+        
+
+#slider 
+{
+    width:960px;height:400px;/* Make it the same size as your images */
+	/*background:transparent url(loading.gif) no-repeat 50% 50%;
+	position:relative;
+	margin:0 auto;*//*this makes the image slider center-aligned. Remove this line if you want to align the whole slider to the left side*/
+/*}
+/*#slider img {
+	position:absolute;
+	border:none;
+	visibility:hidden;
+}*/
+
+/* the link style (if slide image is wrapped in a link) */
+/*#slider a.imgLink {
+	z-index:2;
+	display:none;position:absolute;
+	top:0px;left:0px;border:0;padding:0;margin:0;
+	width:100%;height:100%;
+}*/
+
+/* Caption styles */
+/*div.mc-caption-bg, div.mc-caption-bg2 {
+	position:absolute;
+	width:190px;
+	height:auto;
+	padding:20px;
+	right:30px; /* or left: ??px; */
+	/*bottom:30px;/* or top: ??px; */
+	/*z-index:3;
+	overflow:hidden;
+	font-size:0;*/
+/*}
+/*div.mc-caption-bg {
+	background-color:White; /*Caption background color. Can be set to "background:transparent;", or set to semi-transparent through the sliderOptions.captionOpacity setting in the javascript.*/
+	/*border-radius: 5px;
+}
+div.mc-caption {
+	font:bold 15px/20px Arial;
+	color:#000000;
+	z-index:4;
+	padding:0px;
+	text-align:center;
+}
+div.mc-caption a { 
+	color:#66FFFF;
+}
+
+
+
+
+/* ----------- thumbnails ----------- */
+/*#thumbs 
+{
+    background:white url(thumbs-bar.gif) repeat-x 0 0; 
+    border:1px solid white; text-align:center; 
+    font-size:0px;
+    line-height:45px;/*Setting the expected height to line-height fixes many IE8 erratic behaviours*/
+/*}
+#thumbs .thumb 
+{
+    width:60px;height:45px;
+    cursor:pointer;
+    text-align:center;
+    border-left:1px solid #FFF; border-right:1px solid #DDD; 
+    
+    display:inline-block;
+    *display:inline;zoom:1; /*IE Hack*/
+/*}
+#thumbs .thumb-on {background-image: url(active-bg.png);}
+#thumbs .thumb img {vertical-align:middle;}
+
+
+
+
+
+/* ------ built-in navigation bullets wrapper ------*/
+/*div.navBulletsWrapper  {
+	top:420px; left:700px; /* Its position is relative to the #slider. Don't set #slider "overflow:hidden;" if bullets are to be positioned outside of the #slider. */
+	/*width:150px;
+	background:none;
+	position:relative;
+	z-index:5;
+	cursor:pointer;
+}
+
+/* each bullet */
+/*div.navBulletsWrapper div 
+{
+    width:11px; height:11px;
+    background:transparent url(bullet.png) no-repeat 0 0;
+    float:left;overflow:hidden;vertical-align:middle;cursor:pointer;
+    margin-right:20px;/* distance between each bullet*/
+  /*  _position:relative;/*IE6 hack*/
+/*}
+
+div.navBulletsWrapper div.active {background-position:0 -11px;}
+
+
+/*----------- navigation buttons on both sides of the slider -----------*/
+/*.group1-Wrapper 
+{
+    position:absolute;
+    z-index:20;
+    top:120px;
+    margin-left:50%;/* position it in the middle of #sliderFrame */
+ /*   width:1px;
+}
+a.group1-Prev, a.group1-Next
+{
+    width:50px;height:150px;
+    background:transparent url(navButtons2.gif); 
+    display:block; 
+    cursor:pointer;
+    position:absolute;
+    top:0;
+    user-select: none;
+}
+a.group1-Prev{background-position:0 0; left: -510px;}
+a.group1-Next {background-position:0 -150px;left:460px;}
+
+a.group1-Prev:hover{background-position:50px 0;}
+a.group1-Next:hover {background-position:50px -150px;}
+
+
+/* ----------- navigation buttons in the thumbnails bar ---------- */
+/*a.group2-Prev, a.group2-Next, a.group2-Play, a.group2-Pause 
+{
+    width:20px; height:20px; 
+    background:transparent url(navButtons.gif); 
+    display:inline-block; 
+    *display:inline;zoom:1;/*IE hack*/
+  /*  margin-right:8px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+a.group2-Pause{background-position:0 0;}
+a.group2-Play {background-position:0 -20px;}
+a.group2-Next {background-position:0 -40px;}
+a.group2-Prev {background-position:0 -60px;} 
+
+a.group2-Pause:hover{background-position:20px 0;}
+a.group2-Play:hover {background-position:20px -20px;}
+a.group2-Next:hover {background-position:20px -40px;}
+a.group2-Prev:hover {background-position:20px -60px;} 
+
+
+
+
+/* --------- Others ------- */
+/*#slider 
+{
+	transform: translate3d(0,0,0);
+    -ms-transform:translate3d(0,0,0);
+    -moz-transform:translate3d(0,0,0);
+    -o-transform:translate3d(0,0,0);
+}*/
+
+#captcha-element b{
+	font-size:20px;
+}
+
+#captcha-input-label{
+	height:0px;
+}
+#captcha-input{
+	margin-top:5px;
+}
+/*profile*/
+.ttdeprofilel
+{
+float:left;
+border:0px solid;
+width:360px;
+height:150px;
+}
+
+.ttdeprofilelbg
+{
+border:2px solid #CD222B;
+float:left;
+width:340px;
+background: none repeat scroll 0 0 #FFD6DD;
+height: 100px;
+padding: 5px;
+}
+
+.ttdeprofilel
+{
+border:0px solid #CD222B;
+float:left;
+width:352px;
+height:160px;
+margin-top:25px;
+line-height:30px;
+}
+.ttdeprofile2
+{
+border:0px solid #CD222B;
+float:left;
+width:352px;
+height:160px;
+margin-top:25px;
+line-height:30px;
+}
+.ttdeprofiler
+{
+border:0px solid #CD222B;
+float:left;
+width:352px;
+height:160px;
+margin-top:25px;
+line-height:30px;
+margin-left:19px;
+}
+.ttdepolnextback
+{
+
+float:left;
+/*background: none repeat scroll 0 0 #FFD6DD;*/
+clear: both;
+height: 10px;
+padding: 0px;
+/*border:2px solid #CD222B;*/
+width:700px;
+}
+.ttdepolnextback1
+{
+
+float:left;
+
+clear: both;
+height: 50px;
+padding: 10px;
+border:0px solid;
+width:735px;
+}
+.pad-t-10 clear
+{
+border:0px solid;
+float:left;
+width:100px;
+}
+#prof_bonus
+{
+border:0px solid;
+line-height:30px;
+float:left;
+width:200px;
+}
+#profloy_info
+{
+float:left;
+border:0px solid;
+height:135px;
+width:228px;
+margin-top:20px;
+}
+.ttdeprofilepic
+{
+float:left;
+border:0px solid;
+height:155px;
+width:120px;
+}
+.ttdeprofilename
+{
+border:0px solid;
+float:left;
+margin-left:-20px;
+width:218px;
+}
+.loyinfo
+{
+float:left;
+margin-left:10px;
+width:218px;
+font-weight:bold;
+}
+.ttdeprofileb {
+    clear: both;
+    height: 185px;
+}
+.ttdepolback {
+    float: left;
+	width:108px;
+	line-height:20px;
+	margin-left:-25px;
+}
+.profile_details tbody tr:nth-child(2n-1) td, tbody tr.even td {
+    background: none repeat scroll 0 0 #FFD6DD;
+ }
+.profile_details th, td, caption {
+    padding: 0px 0px 0px 5px;*/
+}
+.profile_details table, th, td {
+    vertical-align: middle;
+}
+.profile_details caption, th, td {
+    float: none !important;
+    font-weight: bold;
+    text-align: left;
+}
+
+/*deposit*/
+.ttdepolplz {
+    background: none repeat scroll 0 0 #CD222B;
+    border: 1px solid ;
+    height: 35px;
+	line-height: 37px;
+    text-align: center;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+
+.ttdepolinnnav {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CD222B;
+    display: inline-block;
+    margin-top: 15px;
+    padding: 0 0 10px;
+	width:750px;
+}
+.steps li.step a.current {
+    background: url("../../images/bingocrush/step_over.png") no-repeat scroll right center transparent;
+    color: #B30F5D;
+    font-weight: bold;
+}
+.steps li.step-1 a, 
+.steps li.step-2 a, 
+.steps li.step-3 a, 
+.steps li.step-4 a {
+    background: url("../../images/bingocrush/step.png") no-repeat scroll right center transparent;
+    padding-right: 25px;
+}
+.steps li.step-2,
+.steps li.step-2 a {
+    z-index: 3;
+}
+.steps li.step, .steps li.step a {
+    cursor: default;
+    height: 29px;
+    line-height: 26px;
+    padding: 0;
+    position: relative;
+    /*z-index: 4;*/
+	width:240px;
+	float:left;
+}
+.steps li a {
+    background: none repeat scroll 0 0 #D0D0D0;
+    color: #FFFFFF;
+    display: block;
+    line-height: 1.5em;
+    padding:15px 20px;
+    text-decoration: none;
+}
+.steps {
+    background: none repeat scroll 0 0 #AAAAAA;
+    overflow: hidden;
+    padding: 0;
+}
+.steps ul {
+    float: left;
+}
+.steps ul, .steps li {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.steps li.step-4 a {
+    background-position: left center;
+    padding-left: 45px;
+    padding-right: 10px;
+}
+.steps li.step-4, .steps li.step-4 a {
+    z-index: 1;
+}
+.steps li.step-3 a {
+    padding-left: 45px;
+}
+.steps li.step-3, .steps li.step-3 a {
+    z-index: 2;
+}
+.steps li.step-2 a {
+    padding-left: 45px;
+}
+.steps li.step-1 a {
+    padding-left: 45px;
+}
+.steps li.step-1, .steps li.step-1 a {
+    z-index: 5;
+}
+
+/*withdrawl note*/
+.with_note
+{
+   width:500px;
+}
+
+#confirm-order{
+	display:none;
+}
+#deposit-back{
+	display:none;
+}
+#deposit-next-1{
+	display:none;
+}
+#bank-list{
+	display:none;
+}
+.ttdepolnextbackbtn {
+    background: #0C7116;
+    border: 0px solid #FFFFFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+	border-radius:10px;
+	width:90px;
+    padding: 4px 20px 3px;
+	/*margin-left:635px;*/
+	
+}
+.ttdepolbackbtns {
+    background: #0C7116;
+    border: 0px solid #FFFFFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+	border-radius:10px;
+     padding: 4px 20px 3px;
+	width:90px;
+}
+.ttdepolback_1 {
+    background: #0C7116;
+    border: 0px solid #FFFFFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 15px;
+    
+	 border-radius:10px;
+     padding: 4px 20px 3px;
+	 width:165px;
+}
+.ttdepolback1 {
+    float: left;
+}
+.ttdepolnext1 {
+    float:right;
+   margin-top:0px;
+}
+.ttdepolconfbtn {
+    background: #0C7116;
+    border-radius:10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 18px;
+   
+   padding: 4px 20px 3px;
+   border:0px solid;
+   width:150px;
+}
+.ttdepolconf_1 {
+    background: #0C7116;
+    border-radius:10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 0px 0px 4px;
+    border:0px solid;
+    width:115px;
+	/*margin-left:-25px;*/
+}
+
+#deposit-section-2
+{
+margin-top:20px;
+margin-bottom:20px;
+}
+.errors
+{
+color:#FF0000;
+margin-left:-40px;
+}
+
+.zend_form ul li #submit {
+    background: #0C7116;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    cursor: pointer;
+     border-radius:10px;
+	width:90px;
+	 font-weight: bold;
+    height: 30px;
+   /* padding: 5px 10px;*/
+   }
+
+ /*.zend_form ul li.ttsaveprofilelibg {
+    /*background: none repeat scroll 0 0 #DDDDDD;
+    padding: 5px 10px 5px 0;
+    text-align: right;
+	width:715px;
+	height:15px;
+}*/
+
+.paginationControl
+{
+float:left;
+}
+#valid_month{
+	display:none;
+}
+#valid_year{
+	display:none;
+}
+#issue_number{
+	display:none;
+}

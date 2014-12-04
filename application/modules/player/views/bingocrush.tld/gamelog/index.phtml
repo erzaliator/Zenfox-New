@@ -1,0 +1,23 @@
+<div style="border:1px solid #CD222B;border-radius:5px;height:620px;">
+<div class="TTBingogameName TTBingoBtnmargt">Game Logs</div>
+<div class="ttdeprofilepad " id="reconcileli">
+<?php
+//echo $this->form;
+$this->dateform($this->fromDate, $this->toDate, $this->fromHour, $this->toHour, $this->fromMinute, $this->toMinute, $this->fromPM, $this->toPM, $this->items, 'gamelog');
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$this->table($this->contents);
+	}
+	//Pass the Paginator to Pagination Control
+	echo $this->paginationControl($this->paginator, 'Sliding', 'transactionPaginator.phtml', array(
+						'myFromDate' => $this->from,
+						'myToDate' => $this->to
+					));
+}
+?>
+</div>
+
+
+</div>

@@ -1,0 +1,69 @@
+<?php 
+echo $this->form;
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArrays = array();
+		//Temp is used to print the table headings only for one time
+		foreach($this->contents as $tableData)
+		{
+			$linkArrays['player_id'.$tableData['player_id']] = array(
+					'controller' => 'player',
+					'action' => 'view',
+					'playerId' => $tableData['player_id'],					
+					);
+			$linkArrays['withdrawal_id'.$tableData['player_id'] . '-' . $tableData['withdrawal_id']] = array(
+					'controller' => 'withdrawal',
+					'action' => 'listdetails',
+					'player_id' => $tableData['player_id'],
+					'withdrawal_id' => $tableData['withdrawal_id'],
+					'status' => $tableData['status'],
+					);
+			$linkFields[] = 'player_id'.$tableData['player_id'];
+			$linkFields[] = 'withdrawal_id'.$tableData['player_id'] . '-' . $tableData['withdrawal_id'];
+							
+			$newTable[] = array(
+			'player_id'.$tableData['player_id'] => $tableData['player_id'],
+			'withdrawal_id'.$tableData['player_id'] . '-' . $tableData['withdrawal_id'] => $tableData['withdrawal_id'],
+			'requested_amount' => $tableData['initial_requested'],
+			'remaining_amount' => $tableData['remaining_amount'],
+			'status' => $tableData['status'],
+			'date_time' => $tableData['datetime']);		
+		}
+	//	print_r($this->contents);
+	//	print_r($newTable);exit();
+		//$this->newTable($this->contents, array('Player Id','Withdrawal Id'), $linkArrays);
+		$translate = Zend_Registry::get('Zend_Translate');
+		$fieldHeads = array(
+			$translate->translate('Player Id'),
+			$translate->translate('Withdrawal Id'),
+			$translate->translate('Requested Amount'),
+			$translate->translate('Remaining Amount'),
+			$translate->translate('Status'),
+			$translate->translate('Date & Time'),
+			
+		);
+		$this->newtable($newTable, $fieldHeads ,$linkFields, $linkArrays);
+		
+	}
+	else
+	{	
+		echo "No matching records found";
+	}
+	
+	
+	echo $this->paginationControl($this->paginator, 'Sliding', 'listallpaginator.phtml', array('myFromDate' => $this->fromDate,
+																					  'myToDate' => $this->toDate,
+																					  'player_id' => $this->player_id,
+																					  'processed' => $this->processed));
+	?>
+	<a href = "/download/index/rType/withdrawal/from/<?= $this->fromDate?>/to/<?= $this->toDate?>/playerId/<?=$this->player_id ?>/processed/<?=$this->processed ?>">Download</a>
+	<?php
+}
+else
+{
+		echo "Nothing to display";
+}
+
+?>

@@ -1,0 +1,59 @@
+<h3 style = "text-align:center;">Confirm Password</h3>
+<?php 
+if(!empty($this->empty))
+{
+	echo $this->empty;
+}
+echo $this->form ;?>
+<?php 
+
+
+	if ( !empty($this->id))
+	{
+		$length = count($this->confirmation);
+		if($length == 1)
+		{
+			if($this->confirmation[$length-1] == "YES") 
+				{
+					echo "already confirmed";
+				}
+			elseif($this->confirmation[$length-1] == "NO")
+				{
+					echo "ID = ".($this->id[$length-1]);echo"<br/>";
+					echo "email = ".($this->email[$length-1]);echo"<br/>";
+					echo "login = ".($this->login[$length-1]);echo"<br/>";
+					echo "link = http://admin.taashtime.tld/en_GB/link/confirmation/".($this->code[$length-1]);echo"<br/>";
+					echo "confirmation = ".($this->confirmation[$length-1]);echo"<br/>";
+					
+					echo"<br/>";
+					
+				}
+				else
+				{
+					echo "no data found in database for the value entered";	
+					
+				}
+				
+		}
+		else 
+		{
+			while($length>0)
+			{
+				if($this->confirmation[$length-1]!="YES")
+				{
+					echo "ID = ".($this->id[$length-1]);echo"<br/>";
+					echo "email = ".($this->email[$length-1]);echo"<br/>";
+					echo "login = ".($this->login[$length-1]);echo"<br/>";
+					echo "link = http://admin.taashtime.tld/en_GB/link/confirmation/".($this->code[$length-1]);echo"<br/>";
+					echo "confirmation = ".($this->confirmation[$length-1]);echo"<br/>";
+			
+					echo"<br/>";
+				}
+				$length--;
+			}
+		}
+		//print_r($this->confirmation);
+		
+	}
+
+?>

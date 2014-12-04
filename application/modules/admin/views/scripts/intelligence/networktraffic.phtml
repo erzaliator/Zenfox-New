@@ -1,0 +1,239 @@
+<?php
+echo $this->form;
+if($this->finalReports)
+{
+	if($this->reportType == 'EOH') {
+		$incrementDate = '+1 hours';
+	}
+	else if($this->reportType == 'EOD') {
+		$incrementDate = '+1 days';
+	}
+	else if($this->reportType == 'EOM') {
+		$incrementDate = '+1 months';
+	}
+	$snapshot = new Snapshot();
+	
+	
+	$counter = 0;
+	//$tc = 0;
+	$tagNameArray = array();
+	$contentData = array();
+	$tagDataArray = array();
+	$tagCountArray = array();
+	
+	print '<table border="1">';
+	print '<tr><td>'.$this->translate('Date').'</td>';
+	foreach($this->finalReports as $report)
+	{
+		if(count($report['paginator']))
+		{
+			$i = 0;
+			if($counter < count($report['paginator']))
+			{
+				$counter = count($report['paginator']);
+				$paginator = $report['paginator'];
+				$query = $report['query'];
+			}
+			
+		//	print 'Here';
+			print '<td>'.$report['tagName'].'</td>';			
+			$date = $this->fromDate;			
+			//while(strtotime($date) <= strtotime($this->toDate)) 
+			{
+				foreach ($report['tagData'] as $tagName => $data) {
+				//	print 'Here2';
+					if(!$data) {
+						continue;
+					}
+					foreach ($data as $date => $value) {
+				//		print 'Here3';
+					if(!$snapshot->isNetworkJsonTag($tagName)) {
+						if($data[$date]) {
+							$tagDataArray[$tagName] += $data[$date];
+							$tagCountArray[$tagName] += 1;
+						}
+						
+					}  
+					else {
+						
+						if($tagName == 'networkDepositorsCount' || $tagName == 'networkDepositsCount')
+						{
+							if($data[$date]) {
+								$tagDataArray[$tagName] += $data[$date];
+								$tagCountArray[$tagName] += 1;
+							}
+						}
+				
+						else if($tagName == 'networkDepositsAmount' || $tagName == 'frontendDepositsAmount')
+						{
+							//print 'Here4';
+							if($data[$date]) {
+								foreach ($data[$date] as $currency => $value) {
+									$tagDataArray[$tagName][$currency] += $value;
+									$tagCountArray[$tagName] += 1;
+								}
+							}	
+						}
+						else if($tagName == 'networkDepositsPerTransaction' || $tagName == 'frontendDepositsPerTransaction')
+						{
+							if($data[$date]) {
+								$tagDataArray[$tagName] += $data[$date];
+								$tagCountArray[$tagName] += 1;
+							}
+						}
+						else if($tagName == 'networkDepositsPerPlayer' || $tagName == 'frontendDepositsPerPlayer')
+						{
+							if($data[$date]) {
+								$tagDataArray[$tagName] += $data[$date];
+								$tagCountArray[$tagName] += 1;
+							}			
+						}
+						
+					}
+					}
+					
+				}
+			
+				$date = date('Y-m-d H:i:s',strtotime($date.' '.$incrementDate));
+			}
+	
+			
+			/*foreach($report['tagData'] as $tag)
+			{
+				foreach($tag as $index => $value)
+				{
+					$contentData[$i][$index] = $value;
+					$tagName = $index;
+				}
+				$i++;
+			}*/
+		
+		}
+	}
+	
+	//print_r($tagDataArray);
+	//exit();
+	print '</tr>';
+	
+	$date = $this->fromDate;
+	
+	
+	foreach ($this->dateTime as $date) {
+			print '<tr>';
+			print '<td>'.$date.'</td>';
+		foreach ($this->finalReports as $report) {
+				print '<td>';
+				if($report['tagData']) {
+					$tag = $report['tagName'];
+					
+					if(!$snapshot->isNetworkJsonTag($tag)) {
+						print $report['tagData'][$tag][$date];
+						continue;
+					}
+					
+					
+					
+					if($tag == 'networkDepositorsCount' || $tag == 'frontendDepositorsCount')
+					{
+						print $report['tagData'][$tag][$date];					
+					}
+					else if($tag == 'networkDepositsCount' || $tag == 'frontendDepositsCount')
+					{
+						print $report['tagData'][$tag][$date];				
+					}
+					else if($tag == 'networkDepositsAmount' || $tag == 'frontendDepositsAmount')
+					{
+						//print 'HERE'.$date;
+						//print_r($report['tagData'][$tag]);
+						print '<table border="1">'; 
+						if($report['tagData'][$tag][$date]) {
+						foreach ($report['tagData'][$tag][$date] as $currency => $value) {
+							print '<tr><td>';
+							print $currency.':'.$value;
+							//exit();
+							print '</td></tr>';
+						}
+						}
+						print '</table>';
+					
+					}
+					else if($tag == 'networkDepositsPerTransaction' || $tag == 'frontendDepositsPerTransaction')
+					{
+						print $report['tagData'][$tag][$date];
+					}
+					else if($tag == 'networkDepositsPerPlayer' || $tag == 'frontendDepositsPerPlayer')
+					{
+						print $report['tagData'][$tag][$date];		
+					}
+					
+				}
+				print '</td>';		
+		}
+		
+		print '</tr>';
+		//$date = date('Y-m-d H:i:s',strtotime($date.' '.$incrementDate));
+	}
+	
+	print '<tr>';
+	print '<td>'.$this->translate('Total').'</td>';
+	
+	foreach ($this->finalReports as $report) {
+		print '<td>';
+		
+		if($report['tagData']) {
+			$tag = $report['tagName'];
+			
+				if($tag == 'networkDepositorsCount' || $tag == 'frontendDepositorsCount')
+				{
+					print $tagDataArray[$tag];					
+				}
+				else if($tag == 'networkDepositsCount' || $tag == 'frontendDepositsCount')
+				{
+					print $tagDataArray[$tag];
+				}
+				else if($tag == 'networkDepositsAmount' || $tag == 'networkDepositsPerTransaction' || $tag == 'networkDepositsPerPlayer')
+				{
+					//print_r($tagDataArray[$tag]);
+					print '<table border="1">';
+					if($tagDataArray[$tag])
+					{
+						foreach($tagDataArray[$tag] as $currency => $value) {
+							print '<tr><td>';
+							print $currency.':'.$value;
+							print '</td></tr>';
+						}
+					}
+					print '</table>'; 
+					
+				}
+				
+				else 
+				{
+					print $tagDataArray[$tag];
+				}
+		}
+		
+		print '</td>';
+	}
+	print '</tr>';
+	print '</table>';
+	
+	
+	
+	
+
+	if(count($report['tagData']) > 0)
+	{
+		//$this->table($contentData);
+		
+		echo $this->paginationControl($paginator, 'Sliding', 'network_traffic_paginator.phtml', array(
+																					'tag' => NULL,
+																					'myFromDate' => $this->fromDate,
+																					'myToDate' => $this->toDate,
+																					'reportType' => $this->reportType));
+	}
+	else
+	{
+		echo "No report data";
+	}
+}

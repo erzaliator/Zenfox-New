@@ -1,0 +1,68 @@
+<br><h1><strong>FRAUD CHECKING REPORT</strong></h1>
+<?php 
+if(!empty($this->mydetails))
+{
+	?>
+	
+	<br><h2 style="text-align:center"><strong>MY Details</strong></h2>
+	<?php
+	foreach($this->mydetails as $playerData)
+	{
+		$linkArray[$playerData['PLAYER ID']] = array(
+				'controller' =>'player',
+				'action' => 'view',
+				'playerId' => $playerData['PLAYER ID']
+		);
+	}
+	$this->table($this->mydetails, array('PLAYER ID'), $linkArray);
+}
+
+
+if(!empty($this->rake))
+{
+	?>
+	<br><h2 style="text-align:center"><strong>Realrake , Bonusrake </strong></h2>
+	<?php
+	echo $this->table($this->rake)."<br/>";
+}
+else
+{
+	?>
+	<br><h2 style="text-align:center"><strong>NO Real or Bonus Rake</strong></h2>
+	<?php
+}
+
+if(!empty($this->playerdata))
+{
+	?>
+	<br><h2 style="text-align:center"><strong> Flavour Wise Player Details </strong></h2>
+	<?php
+	foreach($this->playerdata as $playerData)
+	{
+		$linkArray[$playerData['OPPONENT ID']] = array(
+				'controller' =>'fraudcheck',
+				'action' => 'checking',
+				'playerId' => $playerData['OPPONENT ID']
+		);
+	}
+	$this->table($this->playerdata, array('OPPONENT ID'), $linkArray);
+	
+}
+
+if(!empty($this->realplayerslist))
+{
+	?>
+	<br><h2 style="text-align:center"><strong> Flavour Wise OPPONENT Details </strong></h2>
+	<?php
+	foreach($this->realplayerslist as $playerData)
+	{
+		$linkArray[$playerData['OPPONENT ID']] = array(
+				'controller' =>'fraudcheck',
+				'action' => 'checking',
+				'playerId' => $playerData['OPPONENT ID']
+		);
+	}
+	$this->table($this->realplayerslist, array('OPPONENT ID'), $linkArray);
+	
+}
+?>

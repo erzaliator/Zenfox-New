@@ -1,0 +1,19 @@
+<?php 
+if($this->details)
+{
+	echo '<a href = "/bingo/categories/createcategory/true"> Create Category </a>';
+	echo "<br/>"."<br/>";
+	
+	foreach($this->details as $playerData)
+	{
+		$linkArray[$playerData['name']] = array(
+										'controller' => 'bingo',
+										'action' => 'categories',
+										'CategoryId' => $playerData['id']);
+	}
+	$this->table($this->details, array('name'), $linkArray);
+	
+}
+
+
+?>

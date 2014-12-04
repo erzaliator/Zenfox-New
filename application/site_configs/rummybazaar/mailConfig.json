@@ -1,0 +1,15 @@
+{
+	"authentication":
+	{
+		"auth":"login",
+		"username":"postmaster@msg.ace2jak.com",
+        	"password":"1-lry4q0jr96",
+		"smtp":"smtp.mailgun.org"
+	},
+	"displayname":
+	{
+		"name":"Ace2Jak",
+		"email":"no-reply@ace2jak.com",
+		"reply-to":"support@ace2jak.com"
+	}
+}

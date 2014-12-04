@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright 2010 Stefan Des
+ *
+ * This file is part of WP Footer Ad
+ */
+?>
+<a href="<?php echo attribute_escape($this->pluginHref) ?>"
+	title="<?php echo attribute_escape($this->pluginText) ?>">
+	<?php echo wp_specialchars($this->pluginText) ?>
+</a>
+Plugin | Version <?php echo wp_specialchars($this->pluginVersion) ?> | By
+<a href="<?php echo attribute_escape($this->authorHref) ?>"
+	title="<?php echo attribute_escape($this->authorText) ?>">
+	<?php echo wp_specialchars($this->authorText) ?>
+</a>
+<br/>

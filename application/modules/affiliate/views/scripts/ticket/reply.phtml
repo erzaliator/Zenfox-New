@@ -1,0 +1,24 @@
+<?php
+echo '<table>';
+echo '<tr>';
+echo '<th align = "left">From</th>';
+echo '<th align = "left">Message</th>';
+echo '<th align = "left">Date Time</th>';
+echo '</tr>';
+$i = 0;
+foreach($this->messages as $message)
+{
+	echo '<tr>';
+	echo '<td>'.$this->sender[$i].'</td>';
+	echo '<td>'.$message['reply_msg'].'</td>';
+	echo '<td>'.$message['time'].'</td>';
+	echo '</tr>';
+	//echo $this->translate("From: ") . $this->sender[$i] . "  ";
+	//echo $this->translate("Message: ") . $message['reply_msg'] . "  " . $message['time'];
+	$i++;
+	?><br></br><?php
+}
+echo '</table>';
+echo $this->form;
+echo $this->message;
+?>

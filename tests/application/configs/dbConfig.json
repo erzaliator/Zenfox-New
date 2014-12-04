@@ -1,0 +1,40 @@
+{
+    "server":
+        [
+            {
+                "type":"master",
+                "name":"master",
+                "ip":"127.0.0.1",
+                "port":3306,
+                "login":"web",
+                "password":"iiit123",
+                "dbtype":"mysql",
+                "dbname":"test"
+            },
+            {
+                "type":"partition",
+                "name":"partition 1",
+                "ip":"127.0.0.1",
+                "port":3306,
+                "login":"web",
+                "password":"iiit123",
+                "dbtype":"mysql",
+                "dbname":"test"
+            },
+            {
+                "type":"partition",
+                "name":"partition 2",
+                "ip":"127.0.0.1",
+                "port":3306,
+                "login":"web",
+                "password":"iiit123",
+                "dbtype":"mysql",
+                "dbname":"test"
+            }
+        ],
+    "serverTypes":
+        {
+            "master":[0], 
+            "partition":[1,2]
+        }
+}

@@ -1,0 +1,22 @@
+<?php
+$index = 0;
+foreach($this->testies as $testimonial)
+{
+	if($index == 0)
+	{
+		?>
+		<li class="slide" id="firstSlide" style="display:none;">
+		<?php
+	}
+	else
+	{
+		?>
+		<li class="slide" style="display:none;">
+		<?php
+	}
+	?>
+			<blockquote><?= $testimonial['testi']; ?></blockquote>
+		</li>
+	<?php
+	$index++;
+}

@@ -1,0 +1,502 @@
+<?php
+//header("Cache-Control: no-cache, must-revalidate");
+/**
+ * Main layout file. Modify this to alter whole look of the site
+ */
+require_once APPLICATION_PATH . '/modules/player/forms/LanguageForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/LoginForm.php';
+require_once APPLICATION_PATH . '/modules/player/forms/RegistrationForm.php';
+
+//$frontendDetails = Zend_Registry::getInstance()->isRegistered('frontendDetails-' . $_SERVER['HTTP_HOST'])?Zend_Registry::getInstance()->get('frontendDetails-' . $_SERVER['HTTP_HOST']):'';
+
+$webConfig = Zend_Registry::getInstance()->isRegistered('webConfig')?Zend_Registry::getInstance()->get('webConfig'):'';
+//$webConfig = isset($frontendDetails['webConfig'])?$frontendDetails['webConfig']:'';
+$this->viewDir = isset($webConfig['viewDir'])?$webConfig['viewDir']:'zenfox.tld/';
+$this->cssDir = isset($webConfig['cssDir'])?$webConfig['cssDir']:"rummy/";
+$this->jsDir = isset($webConfig['jsDir'])?$webConfig['jsDir']:"rummy/";
+$this->imagesDir = isset($webConfig['imagesDir'])?$webConfig['imagesDir']:"rummy/";
+$this->htmlTitle = isset($webConfig['htmlTitle'])?$webConfig['htmlTitle']:'null';
+$this->cdnImageServer = $webConfig['cdnImageServer'];
+
+$frontController = Zend_Controller_Front::getInstance();
+$controllerName = $frontController->getRequest()->getControllerName();
+$actionName = $frontController->getRequest()->getActionName();
+$pageAddress = $controllerName . '-' . $actionName;
+
+$language = $frontController->getRequest()->getParam('lang');
+
+?>
+<? /* This line outputs the doctype we set in the bootstrap */ ?>
+<?= $this->doctype() ?>
+
+<!-- html manifest = "http://taashtime.tld/cache.appcache" xmlns="http://www.w3.org/1999/xhtml"-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="shortcut icon" href="/favicon.ico?"></link>
+<?php 
+if($language)
+{
+	?>
+	<link href="http://<?=$_SERVER['HTTP_HOST'] . '/' . $controllerName . '/' . $actionName ?>" rel="canonical"></link>
+	<?php 
+}
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
+<?php 
+$pixelSession = new Zend_Session_Namespace('pixelTracker');
+if($pixelSession->value)
+{
+	echo $pixelSession->value;
+    ?>
+<!-- Google Code for RegistrationConversion Conversion Page -->
+<script type="text/javascript">
+		/* <![CDATA[ */
+		var google_conversion_id = 1013384491;
+		var google_conversion_language = "en";
+		var google_conversion_format = "1";
+		var google_conversion_color = "ffffff";
+		var google_conversion_label = "sAKBCPXxzAIQq4qc4wM";
+		var google_conversion_value = 0;
+		if (1) {
+	 		google_conversion_value = 1;
+		}
+	/* ]]> */
+	</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js"></script>
+<noscript>
+<div style="display:inline;"><img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1013384491/?value=1&amp;label=sAKBCPXxzAIQq4qc4wM&amp;guid=ON&amp;script=0"></img></div>
+</noscript>
+<?php
+    $pixelSession->unsetAll();
+}
+$this->title();
+//$this->metatags();
+
+$this->headScript()->appendFile($this->cdnImageServer. '/js/jquery.min.js');
+//$this->headScript()->appendFile($this->cdnImageServer. '/js/custom.js');
+$this->headScript()->appendFile($this->cdnImageServer.'/js/jquery_comments.js');
+$this->headLink()->appendStylesheet($this->cdnImageServer . '/css/rummy.tld/css/blueprint/screen.css');
+$this->headLink()->appendStylesheet($this->cdnImageServer . '/css/rummy.tld/css/blueprint/bootstrap.css');
+$this->headLink()->appendStylesheet($this->cdnImageServer . '/css/rummy.tld/css/blueprint/style.css');
+$this->headLink()->appendStylesheet($this->cdnImageServer . '/css/rummy.tld/css/blueprint/bootstrap-responsive.css');
+
+$this->headScript()->appendFile($this->cdnImageServer . '/js/jquery.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/bootstrap-button.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/twitter-bootstrap-hover-dropdown.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/bootstrap-collapse.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/bootstrap-dropdown.js');
+$this->headScript()->appendFile($this->cdnImageServer . '/js/wr.js');
+?>
+
+<?=$this->headLink()?>
+<?php echo $this->headScript();
+echo $this->facebook();?>
+<!-- 
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<script src="script/jquery.min.js" type="text/javascript"></script>
+<script src="script/custom.js" type="text/javascript"></script>
+<script type="text/javascript" src="iepngfix_tilebg.js"></script>
+-->
+<!--[if lt IE 7]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+<![endif]-->
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="<?=$this->cdnImageServer ?>/css/rummy.tld/css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" href="/css/rummy.tld/css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+<!--Google Analytics-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27546725-1']);
+  _gaq.push(['_setDomainName', 'taashtime.com']);
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$(document).ready(function(){
+		/*$('.dropdown-menu').mouseover(function(){
+			$(this).prev('a').attr({
+			       style: "color:#FFF"});
+		});
+		$('.dropdown-menu').mouseout(function(){
+			$(this).prev('a').attr({
+			       style: "color:#595959"});
+		});
+		$('.dropdown').mouseover(function(){
+			$(this).children('a').attr({
+			       style: "color:#FFF"});
+		});
+		$('.dropdown').mouseout(function(){
+			$(this).children('a').attr({
+			       style: "color:#595959"});
+		});*/
+	if($.browser.mozilla){
+		document.getElementById("live-tables").style.marginTop="15px";
+	}
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+ 
+	$('#home').click(function() {
+    window.location.href = '/index';
+    return false;
+	});
+	$('#playrummy').click(function() {
+    window.location.href = '/game';
+    return false;
+	});
+	/*$('#tournament').click(function() {
+    window.location.href = '/tournament/list';
+    return false;
+	});
+	$('#offers').click(function() {
+    window.location.href = '/promotions';
+    return false;
+	});
+	$('#banking').click(function() {
+    window.location.href = '/banking/deposit';
+    return false;
+	});
+	$('#help').click(function() {
+    window.location.href = '/faq';
+    return false;
+	});*/
+
+});
+</script>
+</head>
+<body class=" <?php echo $pageAddress; ?>">
+<div class="container " id="main_div">
+  		<div class="row" style="border:0px solid;background:#D9D9D9;padding:5px 0px 10px 0px">
+   			 <div class="span3" style="border:0x solid;">
+                   <a href="/index/index"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/logo-animation.gif" alt="Taash Logo"></img></a>
+             </div>	
+		<div class="span5" id="login-head" style="border:0px solid">
+        	  <div class="login-box" style="border:0px solid">        
+					  <?php 
+                            $session = new Zend_Auth_Storage_Session();
+                            $store = $session->read();
+                                
+                            $isLoggedIn = isset($store)?true:false;
+                            if($isLoggedIn)
+                                {
+                                    $playerId = $store['id'];
+                                    $imageName = md5("image" . $playerId) . '.jpg';
+                                    $loginName = $store['authDetails'][0]['login'];
+                                    $firstName = $store['authDetails'][0]['first_name'];
+                                    $cash = $store['authDetails'][0]['cash'];
+                                    $bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+                                    $loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+                            
+                                    $currency = new Zend_Currency();
+                                    $currencySession = new Zend_Session_Namespace('currency');
+                                 //   if($currencySession->oldValue != $currencySession->newValue)
+                                 //   {
+                                    $source = $currency->getShortName('', $currencySession->oldValue);
+                                    $destination = $currency->getShortName('', $currencySession->newValue);
+                                    $currConv = new CurrencyConversion();
+                                    $cash = $currConv->getConvertedValue($source, $destination, $cash);
+                                    $bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+                                    $store['cash'] = $cash;
+                                    $store['bonus'] = $bonus;
+                                    $session->write($store);
+                        ?>
+                            <div class="left login-controls color-blue welcome-box"> <strong>Welcome back, <?php echo empty($firstName)?$loginName:$firstName;?>! </strong></div>
+                            <div class="right login-controls small black-link"><a href="/auth/edit"><strong>Profile</strong></a> | <a href="/auth/changepwd">
+                                <strong>Change Password</strong></a> | <a href="/auth/logout"><strong>Logout</strong></a></div>
+                        <?php 
+                            }
+                            else
+                            {
+                                $decorator = new Decorator();
+					    		$loginForm = new Player_LoginForm();
+					    		$loginForm = $decorator->addDecorators($loginForm, 'login');
+					    		$request = Zend_Controller_Front::getInstance()->getRequest();
+					    		if($request->getParam('format') == 'json')
+					    		{
+					    			$loginForm->setAction('/auth/login/format/json');
+					    		}
+					    		else
+					    		{
+					    			$loginForm->setAction('/auth/login');
+					    		}
+					    		echo $loginForm;
+                            }
+                        ?>
+                
+      </div>
+   		</div>
+		<script type = "text/javascript">
+        setInterval( "getLiveTables()", 30000);
+        </script>
+   		  <div class="span2 live-tables right" id="tables">   
+		<div class="fb-like" data-href="https://www.facebook.com/pages/Funtaash/626757937368522" data-send="false" data-height="80" data-width="280" data-show-faces="false"></div>
+             <!--div>
+              		<a href="https://www.facebook.com/taashtime.rummy"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/fb.png" id="FB"  alt="FB"/></a>
+                    <a href=""><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/g+.png" id="Google"  alt="Google"/></a>
+                    <a href=""><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/tw.png" id="Twitter"  alt="Twitter0"/></a>
+              </div-->	
+            <div>
+            	<p style="margin:5px 0px 0px 18px">Live Tables:
+                	<span id="live-tables" style="color:#B40263;font-size:2em">
+						<?php 
+                            $onlineTable = new OnlineTable();
+                          echo $onlineTable->getLiveTables();
+                          ?>
+                     </span>
+                </p>
+            
+            </div>
+          </div>
+      </div>    
+        <div class="row" style="background-image: url('http://taashtime.com/css/rummy.tld/images/ttnav_bar_bg.gif');background-repeat: repeat-x;"> 
+                            <div class="span7a"  id="menu-bar">
+                            <div class="navbar">
+                                <div class="navbar-inner" style="border:0px solid">
+                                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                        <div class="nav-collapse collapse">
+                                              <div class="navbar-inner" style="border:0px solid">
+                                 					<div class="container">
+                                 					<?php 
+    	$partial = array('menu.phtml','player');
+		$this->navigation()->menu()->setPartial($partial);
+		echo $this->navigation()->menu()->render();
+	?>
+                                     <!-- <ul class="nav" id="main-me">
+                                    <li  class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="home">Home <b class="caret"></b> </a>
+                                          <ul class="dropdown-menu sub-menu">  
+                                                <li><a href="/promotions">Profile</a></li>  
+                                                <li><a href="/promotions/referfriend">Problem?</a></li>
+                                                <li><a href="#">Transactions</a></li>
+                                                <li><a href="#">Games Played</a></li>
+                                                <li><a href="#">Invite</a></li>
+                                            </ul>
+                                          
+                                     </li>
+                                    <li  class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="playrummy">Play Rummy </a>
+                                           
+                                        </li>
+                                    <li  class="dropdown" >
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="https://taashtime.com/" id="tournment">Tournament <b class="caret" id="cart"></b></a>
+                                           <ul class="dropdown-menu">
+                                                 <li><a href="/tournament/list">Tournament</a></li>
+                                           </ul>
+                                        </li>
+                                    <li  class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="offers">Offers <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">  
+                                                <li><a href="/promotions">Promotions</a></li>  
+                                                <li><a href="/promotions/referfriend">Refer A Friend</a></li>
+                                                <li><a href="#">Special Promotions</a></li>
+                                            </ul>
+                                        </li>
+                                    <li  class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="banking">Banking <b class="caret"></b> </a>
+                                            <ul class="dropdown-menu">  
+                                                <li><a href="/banking/deposit">Purchase</a></li>  
+                                                <li><a href="/withdrawal/verification">Withdrawal</a></li>
+                                                <li><a href="/banking/detail">Detail</a></li>
+                                            </ul>
+                                        </li>
+                                    <li  class="dropdown" id="hlp">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="help">Help <b class="caret"></b> </a>
+                                            <ul class="dropdown-menu">  
+                                                <li><a href="/faq">FAQ</a></li>     
+                                            </ul>
+                                        </li>
+                                </ul> -->
+                                 </div>
+                       		 				   </div>
+                                        </div>
+                                </div>
+                            </div>
+                    </div>                     
+                <div class="span4d pull-right"><a href="/index/invite"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/invite-friend.gif" id="invite-friend" style="width:300px" height="60" alt="get500"></img></a></div>
+              </div>     
+  	    
+        <div id="layout" class="container">
+  <?php 
+  if($pageAddress == 'coupon-redeem')
+  {
+  	?>
+  	<div id="left-column"  class="span7a">
+  	<?php 
+  }
+  else
+  {
+  	?>
+  	<div id="left-column" class="span7a" >
+  	<?php 
+  }
+
+        if((Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'promotions') || (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'tournament'))
+        {
+        	?>
+      <div id="inner-iframe-box" >
+        <?php 
+        }
+        else
+        {
+        	?>
+        <div id="inner-box" >
+          <?php 
+        }
+        ?>               
+          <div class="inner-content">
+            <?=$this->flashMessenger(); ?>
+            <?php echo $this->layout()->content;?>
+            
+          </div>
+        </div>
+      
+      </div>
+    <?php 
+		if($pageAddress != 'coupon-redeem')
+		{
+			?>
+			<div id="right-column">
+            	<div class="span3 pull-right" id="join_now" >
+			<div class="joinnowbg" >
+			<div class="joinnowpad">	
+			<?php
+			if($pageAddress == 'help-howtoplay')
+			{
+				/*
+				?>
+			            <img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/Login-strip-ad.png" width="270" height="550" border="0" usemap="#map"></img>
+			            <map name="map">
+			              <area shape="rect" coords="35,419,232,443"  href="/game/quickjoin"></area>
+			            </map>
+			            <?php
+			            */
+			    }
+			    else
+			    {
+			    	?>
+			            <div id="join-now">
+			              <h2 class="pad-t-10 join-nowfont"><strong>JOIN NOW!</strong></h2>
+			              <div id="get-blurb-home" class="right">
+			                <div class="get-blurb-bfont">FREE </div>
+			                <div class="get-blurb-sfont">&nbsp; Rs. 25/-</div>
+			              </div>
+			              <div id="regForm" class="reg">
+			                <?php 
+			                	$decorator = new Decorator();
+								$form = new Player_RegistrationForm();
+						        $form->setAction('/auth/signup');
+						        $form->registration('registration');
+						        $form = $decorator->addDecorators($form, 'signup');
+							 	echo $form;
+			?>
+			                <?php 
+			        //Signing up means you agree to the <a href="/content/terms">Terms & Conditions</a>
+			        ?>
+			              </div>
+			            </div>
+			            <?php
+			    }
+			      ?>
+			            
+			          </div>
+			        </div>
+			      </div>
+             </div>     
+			<?php 
+		}    
+    ?>
+    </div>
+  </div>
+</div>
+</div>
+<div class="clear"></div>
+<!--Footer-->
+    <div class="container" style="width:auto;border:1px solid;color:#FFF;background-color:#D5D5D5;">
+            	<div class="container" style="background-color:#D5D5D5">
+                	<div class="row" style="color:#000"><h4 style="text-align:center">Supported by</h4></div>
+                    <div class="row" style="margin-left:0px"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/tt_supportedby.png"></img></div>
+                	<div class="row" >
+                    	<p class="links" style="text-align:center">
+                            	<a href="/content/about">About Us</a>
+                                	<span id="pipe"> &nbsp;|&nbsp;</span> 
+                        	    <a href="/content/legal">Legality </a>
+									<span id="pipe">  &nbsp;|&nbsp;</span>  
+                                <a href="/content/terms">Terms of Service</a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                            	<a href="/content/withdrawterms">Withdrawal Terms</a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                                <a href="/content/privacypolicy">Privacy Policy </a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                                <a href="/index/winner">Winners</a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                                <a href="/blog">Blog</a>
+                                 <span id="pipe"> &nbsp;|&nbsp;</span> 
+                                <a href="/content/contact">Contact Us </a>                            
+                            </p>
+                    </div>	
+                    <div class="row" style="margin-left:0px">
+                    	<div class="span2"><img src="<?=$this->cdnImageServer ?>/css/rummy.tld/images/tt_18plus.png"></img></div>
+                        <div class="span7a">
+                        	<p style="text-align:inherit;color:#000">
+                            	Taashtime is a site dedicated to providing the best online rummy playing experience.
+                                 The traditional Indian Rummy is the best game to bet and Taashtime is the best place to bet and play rummy online.
+                            </p>
+                        	
+                        </div>
+                    </div>
+					<div class="row" style="color:#000"><p style="text-align:center">Copyright © 2011 TaashTime.com - All rights reserved.</p></div>                
+                </div>
+            </div>
+			<div  style="width:auto;border:0px solid;color:#222222">
+            	<p style="text-align:center">Served from Taashtime-Zenfox-Web2</p>
+            </div>
+<script type="text/javascript">
+function closeDailyWinner(){
+	document.getElementById("daily-winner").style.display = "none";
+}
+</script>
+
+<?php 
+ $this->JQuery()->enable();
+    if($this->JQuery()->isEnabled())
+    {
+        //TODO:: Change the ui css depending on the frontend
+        /*$this->JQuery()//->setUiLocalPath($this->baseUrl()."/js/jquery-ui-1.8.10.custom.min.js")
+        		//->addStylesheet($this->baseUrl()."/css/rummy.tld/jquery-ui-1.8.9.custom.css");*/
+        echo $this->JQuery();
+        //$this->facebook();
+	if(Zend_Registry::get('piwikEnabled'))
+	{
+		$this->piwiktracker();
+	}
+        //echo $this->headMeta();
+    }
+ ?>
+<!-- begin olark code -->
+<script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length;while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])}c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d);(function(){function l(){return["<head></head><",z,' onload="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"}D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});olark.identify('8609-194-10-7825');/*]]>{/literal}*/</script>
+<!-- end olark code -->
+<!-- Tracker Script -->
+<script type ="text/javascript" src="http://static.adohana.com/oa.js?usr=befa5c621cbbceace92907c751f8d506"></script>
+
+</body>
+</html>

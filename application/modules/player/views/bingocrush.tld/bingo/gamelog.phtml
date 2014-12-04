@@ -1,0 +1,27 @@
+<?php
+$this->dateform($this->from, $this->to, $this->fromHour, $this->toHour, $this->fromMinute, $this->toMinute, $this->fromPM, $this->toPM, $this->items);
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArrays = array();
+		//Temp is used to print the table headings only for one time
+		foreach($this->contents as $tableData)
+		{
+			$linkArrays[$tableData['Game Id']] = array(
+							'controller' => 'bingo',
+							'action' => 'showlog',
+							'logId' => $tableData['Game Id']);
+		}
+		//$linkField = array('Game Id', 'Outcome');
+		//$this->table($this->contents, $linkField, $linkArrays, '', array('Outcome' => 'Game Id'), true);
+		$this->table($this->contents);
+		echo $this->paginationControl($this->paginator, 'Sliding', 'my_paginator_control.phtml', array('myFromDate' => $this->fromDate, 'myToDate' => $this->toDate));
+	}
+	else
+	{
+		?>
+		<div style="font-size: 20px; font-weight: bold; margin-top: 15px; text-align: center">No records found.</div>
+		<?php 
+	}
+}

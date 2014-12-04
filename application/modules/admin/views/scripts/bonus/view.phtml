@@ -1,0 +1,18 @@
+<?php
+if($this->schemeData)
+{
+	foreach($this->schemeData as $schemeData)
+	{
+		?>
+		<a href = "<?php echo $this->url(array(
+							'controller' => 'bonus',
+							'action' => 'edit',
+							'id' => $schemeData['scheme_id']));?>">
+		<?php 
+		print('Scheme Id-->' . $schemeData['scheme_id']);
+		print('Name-->' . $schemeData['name']);
+		echo '<br>';
+	}
+}
+?>
+</a>

@@ -1,0 +1,121 @@
+<style>
+.profile-structure
+{
+	width: 100%;
+	float: left;
+	margin-bottom: 15px;
+	max-width: 450px;
+	margin-left: 19%;
+	margin-top: 5%;
+	padding: 4% 0;
+	background: #055c35;
+	border-radius: 4px;
+	border: 1px solid;
+	box-shadow: 0 0 15px;
+}
+.profile-inner
+{
+	width: 100%;
+	float: left;
+	padding-bottom: 5px;
+	color:#fff;
+}
+.profile-left
+{
+	width: 45%;
+	float: left;
+	text-align: right;
+	margin-right: 5%;
+}
+.profile-right
+{
+	width: 50%;
+	float: left;
+}
+</style>
+
+
+<div class="profile-structure">
+	<div class="profile-inner">
+		<div class="profile-left">Username :</div>
+	    <div class="profile-right">
+	      	<?=$this->playerData['login'] ?>
+	    </div>
+	</div>
+	<div class="profile-inner">
+		<div class="profile-left">First Name :</div>
+	    <div class="profile-right">
+	       	<?=$this->playerData['firstName'] ?>
+	    </div>
+	</div>
+	    <div class="profile-inner">
+	        <div class="profile-left">Last Name :</div>
+	        <div class="profile-right">
+	        	<?=$this->playerData['lastName'] ?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">Email ID :</div>
+	        <div class="profile-right">
+	        	<?=$this->playerData['email'] ?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">Sex :</div>
+	        <div class="profile-right">
+	        	<?php
+				if($this->playerData['sex'] == 'M')
+				{
+					echo "Male";
+				}
+				elseif($this->playerData['sex'] == 'F')
+				{
+					echo "Female";
+				}
+				?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">DOB :</div>
+	        <div class="profile-right">
+	        	<?=$this->playerData['dateOfBirth'] ?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">Address :</div>
+	        <div class="profile-right">
+	        	<?=$this->playerData['address'] ?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">City :</div>
+	        <div class="profile-right">
+	        	<?=$this->playerData['city'] ?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">State :</div>
+	        <div class="profile-right">
+	        	<?=$this->playerData['state'] ?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">Pincode :</div>
+	        <div class="profile-right">
+	        	<?=$this->playerData['pin'] ?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">Country :</div>
+	        <div class="profile-right">
+	        	<input type="hidden" name="country" id="amount" value="IN">
+	        	<?=$this->playerData['country'] ?>
+	        </div>
+	    </div>
+	    <div class="profile-inner">
+	        <div class="profile-left">Phone Number :</div>
+	        <div class="profile-right">
+	        	<?=$this->playerData['phone'] ?>
+	        </div>
+	    </div>
+	</div>

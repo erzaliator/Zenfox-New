@@ -1,0 +1,75 @@
+<?php
+$form = new Zend_Form();
+$items = $form->createElement('select','items');
+$items->setLabel('Select Items per page');
+for($i=1;$i<=30;$i++)
+{
+	$items->addMultiOption($i,$i);
+	if($i==20)
+	
+		$items->setValue($i);
+	
+	
+}
+$submit = $form->createElement('submit','submit');
+$form->addElements(array(
+					$items,
+					$submit));
+$form->setMethod('post');
+echo '<b>Player Sessions</b>'.'<br><br>';
+$paginator = $this->paginator;
+$headings = $this->headings;
+$items = $this->items;
+if(count($paginator))
+{
+	//$headings = array_keys($paginator[0]);
+	echo "<table border = '1'>"."<tr>";
+	foreach($headings as $heading)
+	{
+		if($heading != 'phpsessid')
+		{?>
+			<th>
+			<?=$heading?>
+			</th>
+	<?php 	
+		}	
+	}
+	echo '</tr>';
+	foreach($items as $item)
+	{
+		echo '<tr>';
+		foreach($item as $key => $value)
+		{
+			if($key == 'login')
+			{?>
+				<td>
+				<a href = "<?php echo $this->url(array(
+							'controller' => 'playersessions',
+							'action' => 'viewsfs',
+							'id' => $item['player_id'],
+							'page' => $paginator->getCurrentPageNumber()));
+							?>">
+							<?php  echo $value;?>
+						</a>
+				</td>
+			<?php 
+			}
+			elseif($key != 'phpsessid')
+			{
+				echo '<td>'.$value.'</td>';
+			}
+		}
+		echo '</tr>';
+	}
+	echo '</table>'.'<br><br><br>';
+	
+	echo $form;
+	
+	echo $this->paginationControl(
+						$this->paginator,
+						'Sliding',
+						'paginator_control.phtml'
+						);
+	
+}
+?>

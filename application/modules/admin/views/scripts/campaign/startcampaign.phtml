@@ -1,0 +1,22 @@
+<?php
+echo $this->form;
+if(!empty($this->data))
+{
+	echo "<br/>";
+	echo $this->table($this->data);
+	?>
+
+	<?php echo "<form action = '/campaign/startcampaign/data/true' method ='post'>" ;
+    foreach ($this->data[0] as $value){
+echo '<input type="hidden" name="data[]" value='.$value.'>';
+}
+echo "<br/>";
+echo "<center><input type = 'submit' name = 'proceed' value = 'submit'></form>";
+}
+
+if(!empty($this->redirectlink))
+{
+	$this->headMeta()->appendHttpEquiv('Refresh',
+                                   '3;URL=' . $this->redirectlink);
+}
+

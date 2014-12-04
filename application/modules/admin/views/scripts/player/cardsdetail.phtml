@@ -1,0 +1,14 @@
+<form name="player-cards-detail" id="player-cards-detail" action="/player/cardsdetail" method="post">
+	<ul>
+		<li style="list-style:none">
+			<label for="playerId">Player Id</label>
+			<input type="text" name="playerId" id="playerId" value="" />
+		</li>
+		<li style="list-style:none">
+			<input type="submit" name="submit" id="submit" value="Submit" />
+		</li>
+	</ul>
+</form>
+<?php 
+$this->table($this->cardDetails);
+?>

@@ -1,0 +1,44 @@
+<style>
+.notice{
+	color: #A29F9F;
+	font-size: 16px;
+	margin-top: 15px;
+}
+</style>
+
+<?php
+$this->acedateform($this->fromDate, $this->toDate, $this->fromHour, $this->toHour, $this->fromMinute, $this->toMinute, $this->fromPM, $this->toPM, $this->items);		
+
+if($this->paginator)
+{
+	if (count($this->paginator))
+	{
+		$linkArrays = array();
+
+		foreach($this->contents as $tableData)
+		{
+			$ids = explode('-', $tableData['Gamelog Id']);
+			$linkArrays[$tableData['Gamelog Id']] = array(
+					'controller' => 'rummylog',
+					'action' => 'log',
+					'sessId' => $ids[0],
+					'gameId' => $ids[1],
+					'flavour' => $ids[2]);
+		}
+
+		$linkField = array('Gamelog Id', 'Outcome');
+		$this->acetable($this->contents, $linkField, $linkArrays, '', array('Outcome' => 'Gamelog Id'), true);
+	}
+	?>
+	<div class="tresultpagination">
+	<?php
+	$pages = get_object_vars($this->paginator->getPages('Sliding'));
+	$this->acepagination($pages, array(
+			'from' => $this->fromDate,
+			'to' => $this->toDate));
+	?>
+		</div>
+	<?php 
+}
+
+?>

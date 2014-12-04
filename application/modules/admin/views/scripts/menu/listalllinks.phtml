@@ -1,0 +1,19 @@
+<?php
+
+if($this->results)
+{
+	$linkArrays = array();
+		
+	//Temp is used to print the table headings only for one time
+	foreach($this->results as $tableData)
+	{
+		
+		$linkArrays[$tableData['Edit'].$ind] = array(
+				'controller' => 'menu',
+				'action' => 'editlink',
+		        'id' => $tableData['Id']);
+		$ind++;
+		
+	}
+	$this->table($this->results,array('Edit'),$linkArrays,'not_primary');
+}

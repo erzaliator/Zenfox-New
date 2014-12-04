@@ -1,0 +1,351 @@
+<html>
+<!-- <link href="/css/bingocrush/bingo.css" rel="stylesheet" type="text/css" />
+<script src="/js/bingocrush/jquery-1.8.3.min.js" type="text/javascript"></script> -->
+<script type="text/javascript" src="/js/bingocrush/easySlider1.7.js"></script>
+
+<script type="text/javascript">
+
+//chaitu
+$(document).ready(function(){
+var my_day=new Date()
+var day_name=new Array(7);
+day_name[0]="Sunday"
+day_name[1]="Monday"
+day_name[2]="Tuesday"
+day_name[3]="Wednesday"
+day_name[4]="Thursday"
+day_name[5]="Friday"
+day_name[6]="Saturday"
+
+
+/*Promotion changing onclick */
+if(my_day.getDay() == 1 )
+ {
+ $("#mon").css('display','block');
+ $("#monday").css('background-color','#CE222B');
+ //$("#monday").css('color','#FFF');
+ }
+ if(my_day.getDay() == 2)
+  {
+   $("#tue").css('display','block');
+   $("#tuesday").css('background-color','#CE222B');
+  // $("#tuesday").css('color','#FFF');
+  }
+  if(my_day.getDay() == 0)
+  {
+   $("#sun").css('display','block');
+   $("#sunday").css('background-color','#CE222B');
+  // $("#sunday").css('color','#FFF');
+  }
+ if(my_day.getDay() == 3)
+ {
+ $("#wed").css('display','block');
+ $("#wednesday").css('background-color','#CE222B');
+// $("#wednesday").css('color','#FFF');
+ }
+ 
+ if(my_day.getDay() == 4)
+ {
+ $("#thurs").css('display','block');
+ $("#thursday").css('background-color','#CE222B');
+ //$("#thursday").css('color','#FFF');
+ }
+ 
+ if(my_day.getDay() == 5)
+ {
+ $("#fri").css('display','block');
+ $("#friday").css('background-color','#CE222B');
+ //$("#friday").css('color','#FFF');
+ }
+ 
+ if(my_day.getDay() == 6)
+ {
+ $("#sat").css('display','block');
+ $("#saturday").css('background-color','#CE222B');
+ //$("#saturday").css('color','#FFF');
+ }
+
+$("#mini1").click(function(){
+
+ $("#mon").css('display','none');
+ $("#tue").css('display','none');
+ $("#wed").css('display','none');
+ $("#thurs").css('display','none');
+ $("#fri").css('display','none');
+ $("#sat").css('display','none');
+ $("#sun").css('display','none');
+ $("#minipromo1").css('display','block');
+ $("#minipromo2").css('display','none');
+
+
+  $("#monday").css('background-color','#fff');
+  $("#tuesday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#fff');
+  $("#thursday").css('background-color','#fff');
+  $("#friday").css('background-color','#fff');
+  $("#saturday").css('background-color','#fff');
+  $("#sunday").css('background-color','#fff');
+
+ });
+
+$("#mini2").click(function(){
+
+ $("#mon").css('display','none');
+ $("#tue").css('display','none');
+ $("#wed").css('display','none');
+ $("#thurs").css('display','none');
+ $("#fri").css('display','none');
+ $("#sat").css('display','none');
+ $("#sun").css('display','none');
+ $("#minipromo1").css('display','none');
+ $("#minipromo2").css('display','block');
+
+
+
+  $("#monday").css('background-color','#fff');
+  $("#tuesday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#fff');
+  $("#thursday").css('background-color','#fff');
+  $("#friday").css('background-color','#fff');
+  $("#saturday").css('background-color','#fff');
+  $("#sunday").css('background-color','#fff');
+
+ });
+
+
+
+
+ $("#monday").click(function(){
+
+ $("#mon").css('display','block');
+ $("#tue").css('display','none');
+ $("#wed").css('display','none');
+ $("#thurs").css('display','none');
+ $("#fri").css('display','none');
+ $("#sat").css('display','none');
+ $("#sun").css('display','none');
+ $("#minipromo1").css('display','none');
+ $("#minipromo2").css('display','none');
+
+  $("#monday").css('background-color','#CE222B');
+  $("#tuesday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#fff');
+  $("#thursday").css('background-color','#fff');
+  $("#friday").css('background-color','#fff');
+  $("#saturday").css('background-color','#fff');
+  $("#sunday").css('background-color','#fff');
+
+ });
+ $("#tuesday").click(function(){
+
+  $("#mon").css('display','none');
+  $("#tue").css('display','block');
+  $("#tuesday").css('background-color','#CE222B');
+  $("#wed").css('display','none');
+  $("#thurs").css('display','none');
+  $("#fri").css('display','none');
+  $("#sat").css('display','none');
+  $("#minipromo1").css('display','none');
+  $("#minipromo2").css('display','none');
+  
+  $("#monday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#fff');
+  $("#thursday").css('background-color','#fff');
+  $("#friday").css('background-color','#fff');
+  $("#saturday").css('background-color','#fff');
+  $("#sunday").css('background-color','#fff');
+
+ $("#sun").css('display','none');
+});
+$("#wednesday").click(function(){
+
+ $("#wednesday").css('background-color','#CE222B');
+ $("#mon").css('display','none');
+ $("#tue").css('display','none');
+ $("#wed").css('display','block');
+ $("#thurs").css('display','none');
+ $("#fri").css('display','none');
+  $("#sat").css('display','none');
+ $("#sun").css('display','none');
+ $("#minipromo1").css('display','none');
+ $("#minipromo2").css('display','none');
+
+  $("#monday").css('background-color','#fff');
+  $("#tuesday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#CE222B');
+  $("#thursday").css('background-color','#fff');
+  $("#friday").css('background-color','#fff');
+  $("#saturday").css('background-color','#fff');
+  $("#sunday").css('background-color','#fff');
+
+});
+$("#thursday").click(function(){
+ $("#mon").css('display','none');
+ $("#tue").css('display','none');
+ $("#wed").css('display','none');
+ $("#thurs").css('display','block');
+$("#thursday").css('background-color','#CE222B');
+
+ $("#fri").css('display','none');
+  $("#sat").css('display','none');
+ $("#sun").css('display','none');
+ $("#minipromo1").css('display','none');
+ $("#minipromo2").css('display','none');
+
+ $("#monday").css('background-color','#fff');
+  $("#tuesday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#fff');
+  $("#friday").css('background-color','#fff');
+  $("#saturday").css('background-color','#fff');
+  $("#sunday").css('background-color','#fff');
+
+});
+$("#friday").click(function(){
+ $("#mon").css('display','none');
+ $("#tue").css('display','none');
+ $("#wed").css('display','none');
+ $("#thurs").css('display','none');
+ $("#fri").css('display','block');
+$("#friday").css('background-color','#CE222B');
+  $("#sat").css('display','none');
+ $("#sun").css('display','none');
+ $("#minipromo1").css('display','none');
+ $("#minipromo2").css('display','none');
+
+  $("#monday").css('background-color','#fff');
+  $("#tuesday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#fff');
+  $("#thursday").css('background-color','#fff');
+  $("#saturday").css('background-color','#fff');
+  $("#sunday").css('background-color','#fff');
+
+
+});
+$("#saturday").click(function(){
+ $("#sat").css('display','block');
+$("#saturday").css('background-color','#CE222B');
+ $("#mon").css('display','none');
+ $("#tue").css('display','none');
+ $("#wed").css('display','none');
+ $("#thurs").css('display','none');
+ $("#fri").css('display','none');
+ $("#sun").css('display','none');
+ $("#minipromo1").css('display','none');
+ $("#minipromo2").css('display','none');
+
+  $("#monday").css('background-color','#fff');
+  $("#tuesday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#fff');
+  $("#thursday").css('background-color','#fff');
+  $("#friday").css('background-color','#fff');
+  $("#saturday").css('background-color','#CE222B');
+  $("#sunday").css('background-color','#fff');
+
+
+});
+
+ $("#sunday").click(function(){
+ $("#mon").css('display','none');
+ $("#tue").css('display','none');
+ $("#wed").css('display','none');
+ $("#thurs").css('display','none');
+ $("#fri").css('display','none');
+  $("#sat").css('display','none');
+ $("#sun").css('display','block');
+$("#sunday").css('background-color','#CE222B');
+$("#minipromo1").css('display','none');
+ $("#minipromo2").css('display','none');
+
+$("#monday").css('background-color','#fff');
+  $("#tuesday").css('background-color','#fff');
+  $("#wednesday").css('background-color','#fff');
+  $("#thursday").css('background-color','#fff');
+  $("#friday").css('background-color','#fff');
+  $("#saturday").css('background-color','#fff');
+ 
+});
+
+});
+
+</script>
+<style>
+/*chaitu*/
+#banners ul li
+{
+display:none;
+}
+.nav-wrapper #banners li #turkey{
+height:100px;
+width:100px;
+}
+</style>
+
+<script type="text/javascript">
+			
+			$(document).ready(function(){	
+			$("#slider").easySlider({
+				auto: false, 
+				continuous: true,
+				speed: 	1500,			
+			    pause:	1000,
+				
+			});
+		 });	
+		</script>
+<body>
+  <div class="clearfix">
+    
+    <div class=" TTBingoGameR TTBingoLeft TTBingomargl">
+      <div class="clearfix">
+      <!--  <div class="TTBingoTodaysProm TTBingoLeft TTBingoRadius TTBingoborder" id="mini1" style="border:0px solid">
+		<a><img src="/images/bingocrush/monthly_reffle_mania_small.jpg"></a>
+		</div>
+        <div class="TTBingoTodaysProm TTBingoLeft TTBingoRadius TTBingoborder TTBingomargl" id="mini2" style="border:0px solid">
+		<a><img src="/images/bingocrush/weekly_special_small.png"></a>
+		</div>-->
+      </div>
+      <div class="clearfix TTBingoBtnmargt TTBingoRadius TTBingoborder TTBingopad_10" >
+        <div class="TTBingoContentNav" >
+          <ul>
+		  	<div id="sunday" class="weeknames" >SUNDAY</div>
+		  	<div id="monday" class="weeknames">MONDAY</div>
+			<div id="tuesday" class="weeknames">TUESDAY</div>
+			<div id="wednesday"  class="weeknames" style="width:120px;">WEDNESDAY</div>
+			<div id="thursday" class="weeknames" style="width:105px;">THURSDAY</div>
+			<div id="friday"  class="weeknames">FRIDAY</div>
+			<div id="saturday"  class="weeknames" style=" border-right:0px">SATURDAY</div>
+			
+		  </ul>
+		  
+        </div>
+		<!--<img src="/images/bingocrush/egg1.png"  alt="Bingo" />-->
+        <div class="TTBingoRadius TTBingoBtnmargt" >
+          <div class="nav-wrapper clearfix" >
+          	 <div id="banners">
+              <ul>
+                <li id="mon"><a href=""><img src="/images/bingocrush/Main_Promo_Mon.jpg" alt="" width="720" height="600" border="0" /></a></li>
+				<li id="tue"><a href=""><img src="/images/bingocrush/Main_Promo_Tues.jpg" alt="" width="720" height="600" border="0" /></a></li>
+                <li id="thurs"><a href=""><img src="/images/bingocrush/Main_Promo_Thu.jpg" alt="" width="720" height="600"  border="0" /></a></li>
+                <li id="fri"><a href=""><img src="/images/bingocrush/Main_Promo_Fri.jpg" alt="" width="720" height="600"  border="0" /></a></li>
+                <li id="sat"><a href=""><img src="/images/bingocrush/Main_Promo_Sat.jpg" alt="" width="720" height="600" border="0" /></a></li>
+                <li id="sun"><a href="">
+				<!--<img id="turkey" src="/images/bingocrush/turkey.png" alt="" width="100" height="100" border="0" />-->
+				<img src="/images/bingocrush/Main_Promo_Sun.jpg" alt="" width="720" height="600"  border="0" /></a></li>
+                <li id="wed"><a href=""><img src="/images/bingocrush/Main_Promo_Wed.jpg" alt="" width="720" height="600"  border="0" /></a></li>
+		       <li id="minipromo1"><a href=""><img src="/images/bingocrush/monthly_reffle_mania-01.jpg" alt="" width="720" height="600"  border="0" /></a></li>
+		       <li id="minipromo2"><a href=""><img src="/images/bingocrush/weekly special-01.png" alt="" width="720" height="600"  border="0" /></a></li>
+
+	
+              </ul>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+</body>
+</html>

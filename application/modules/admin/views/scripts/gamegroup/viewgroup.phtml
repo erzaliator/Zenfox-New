@@ -1,0 +1,30 @@
+<?php
+$groupData = $this->groupData;
+$groupName = $this->groupName;
+$groupId = $this->groupId;
+
+echo '<b>'.$groupName.'</b><br>';
+foreach($groupData as $flavour => $machines)
+{
+	echo '<br><b>'.$flavour.'</b><br>';
+	foreach($machines as $id => $data)
+	{
+		if($flavour != 'slots' && $flavour != 'bingo')
+		{
+			//echo $data.'<br>';
+			echo $data['machineName'].'<br>';
+		}
+		elseif($flavour == 'slots')
+		{
+			echo $data['id'].'<br>';
+		}
+	}
+}?>
+<br></br>
+<a href = "<?php echo $this->url(array(
+						'controller' => 'gamegroup',
+						'action' => 'editgroup',
+						'id' => $groupId));
+		?>">
+		<?php  print('edit');?>
+	</a>

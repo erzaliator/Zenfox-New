@@ -1,0 +1,1806 @@
+/* -----------------------------------------------------------------------
+
+
+ Blueprint CSS Framework 1.0.1 
+ http://blueprintcss.org
+
+   * Copyright (c) 2007-Present. See LICENSE for more info.
+   * See README for instructions on how to use Blueprint.
+   * For credits and origins, see AUTHORS.
+   * This is a compressed file. See the sources in the 'src' directory.
+
+----------------------------------------------------------------------- */
+
+/* reset.css */
+html {margin:0;padding:0;border:0;}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section {display:block;}
+body {line-height:1.5;background:white;}
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;float:none !important;}
+table, th, td {vertical-align:middle;}
+blockquote:before, blockquote:after, q:before, q:after {content:'';}
+blockquote, q {quotes:"" "";}
+a img {border:none;}
+:focus {outline:0;}
+
+/* typography.css */
+html {font-size:100.01%;}
+body {font-size:75%;color:#222;background:#fff;font-family:Verdana, Arial, Helvetica;}
+h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
+h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
+h2 {font-size:2em;margin-bottom:0.75em;}
+h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
+h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;}
+h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
+h6 {font-size:1em;font-weight:bold;}
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+p {margin:0 0 1.5em;}
+.left {float:left !important;}
+p .left {margin:1.5em 1.5em 1.5em 0;padding:0;}
+.right {float:right !important;}
+p .right {margin:1.5em 0 1.5em 1.5em;padding:0;}
+a:focus, a:hover {color:#09f;}
+a {color:#06c;text-decoration:underline;}
+blockquote {margin:1.5em;color:#666;font-style:italic;}
+strong, dfn {font-weight:bold;}
+em, dfn {font-style:italic;}
+sup, sub {line-height:0;}
+abbr, acronym {border-bottom:1px dotted #666;}
+address {margin:0 0 1.5em;font-style:italic;}
+del {color:#666;}
+pre {margin:1.5em 0;white-space:pre;}
+pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
+li ul, li ol {margin:0;}
+ul, ol {margin:0 1.5em 1.5em 0;padding-left:1.5em;}
+ul {list-style-type:disc;}
+ol {list-style-type:decimal;}
+dl {margin:0 0 1.5em 0;}
+dl dt {font-weight:bold;}
+dd {margin-left:1.5em;}
+table {margin-bottom:1.4em;width:100%;}
+th {font-weight:bold;}
+thead th {background:#c3d9ff;}
+th, td, caption {padding:4px 10px 4px 5px;}
+tbody tr:nth-child(2n) td, tbody tr.even td {background:#fff;}
+tbody tr:nth-child(2n-1) td, tbody tr.even td {background:#E2E2E2;}
+
+tfoot {font-style:italic;}
+caption {background:#eee;}
+.small {font-size:0.8em;margin-bottom:1.875em;line-height:1.875em;}
+.large {font-size:1.2em;line-height:2.5em;margin-bottom:1.25em;}
+.hide {display:none;}
+.quiet {color:#666;}
+.loud {color:#000;}
+.highlight {background:#ff0;}
+.added {background:#060;color:#fff;}
+.removed {background:#900;color:#fff;}
+.first {margin-left:0;padding-left:0;}
+.last {margin-right:0;padding-right:0;}
+.top {margin-top:0;padding-top:0;}
+.bottom {margin-bottom:0;padding-bottom:0;}
+
+/* forms.css */
+label {font-weight:bold;}
+fieldset {padding:0 1.4em 1.4em 1.4em;margin:0 0 1.5em 0;border:1px solid #ccc;}
+legend {font-weight:bold;font-size:1.2em;margin-top:-0.2em;margin-bottom:1em;}
+fieldset, #IE8#HACK {padding-top:1.4em;}
+legend, #IE8#HACK {margin-top:0;margin-bottom:0;}
+input[type=text], input[type=password], input[type=url], input[type=email], input.text, input.title, textarea {background-color:#fff;border:1px solid #bbb;color:#000;}
+input[type=text]:focus, input[type=password]:focus, input[type=url]:focus, input[type=email]:focus, input.text:focus, input.title:focus, textarea:focus {border-color:#666;}
+select {background-color:#fff;border-width:1px;border-style:solid;}
+input[type=text], input[type=password], input[type=url], input[type=email], input.text, input.title, textarea, select {margin:0.5em 0;}
+input.text, input.title {width:300px;padding:5px;}
+input.title {font-size:1.5em;}
+textarea {width:390px;height:250px;padding:5px;}
+form.inline {line-height:3;}
+form.inline p {margin-bottom:0;}
+.error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error, .alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
+.notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
+.success {background:#e6efc2;color:#264409;border-color:#c6d880;}
+.info {background:#d5edf8;color:#205791;border-color:#92cae4;}
+.error a, .alert a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+.info a {color:#205791;}
+
+/* grid.css */
+.container {width:950px;margin:0 auto; background:#fff}
+.showgrid {background:url(src/grid.png);}
+.column, .span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11, .span-12, .span-13, .span-14, .span-15, .span-16, .span-17, .span-18, .span-19, .span-20, .span-21, .span-22, .span-23, .span-24 {float:left;margin-right:10px;}
+.last {margin-right:0;}
+.span-1 {width:30px;}
+.span-2 {width:70px;}
+.span-3 {width:110px;}
+.span-4 {width:150px;}
+.span-5 {width:190px;}
+.span-6 {width:230px;}
+.span-7 {width:270px;}
+.span-8 {width:310px;}
+.span-9 {width:350px;}
+.span-10 {width:390px;}
+.span-11 {width:430px;}
+.span-12 {width:470px;}
+.span-13 {width:510px;}
+.span-14 {width:550px;}
+.span-15 {width:590px;}
+.span-16 {width:630px;}
+.span-17 {width:670px;}
+.span-18 {width:738px;}
+.span-19 {width:750px;}
+.span-20 {width:790px;}
+.span-21 {width:830px;}
+.span-22 {width:870px;}
+.span-23 {width:910px;}
+.span-24 {width:950px;margin-right:0;}
+.span-25 {width:710px;}
+input.span-1, textarea.span-1, input.span-2, textarea.span-2, input.span-3, textarea.span-3, input.span-4, textarea.span-4, input.span-5, textarea.span-5, input.span-6, textarea.span-6, input.span-7, textarea.span-7, input.span-8, textarea.span-8, input.span-9, textarea.span-9, input.span-10, textarea.span-10, input.span-11, textarea.span-11, input.span-12, textarea.span-12, input.span-13, textarea.span-13, input.span-14, textarea.span-14, input.span-15, textarea.span-15, input.span-16, textarea.span-16, input.span-17, textarea.span-17, input.span-18, textarea.span-18, input.span-19, textarea.span-19, input.span-20, textarea.span-20, input.span-21, textarea.span-21, input.span-22, textarea.span-22, input.span-23, textarea.span-23, input.span-24, textarea.span-24 {border-left-width:1px;border-right-width:1px;padding-left:5px;padding-right:5px;}
+input.span-1, textarea.span-1 {width:18px;}
+input.span-2, textarea.span-2 {width:58px;}
+input.span-3, textarea.span-3 {width:98px;}
+input.span-4, textarea.span-4 {width:138px;}
+input.span-5, textarea.span-5 {width:178px;}
+input.span-6, textarea.span-6 {width:218px;}
+input.span-7, textarea.span-7 {width:258px;}
+input.span-8, textarea.span-8 {width:298px;}
+input.span-9, textarea.span-9 {width:338px;}
+input.span-10, textarea.span-10 {width:378px;}
+input.span-11, textarea.span-11 {width:418px;}
+input.span-12, textarea.span-12 {width:458px;}
+input.span-13, textarea.span-13 {width:498px;}
+input.span-14, textarea.span-14 {width:538px;}
+input.span-15, textarea.span-15 {width:578px;}
+input.span-16, textarea.span-16 {width:618px;}
+input.span-17, textarea.span-17 {width:658px;}
+input.span-18, textarea.span-18 {width:698px;}
+input.span-19, textarea.span-19 {width:738px;}
+input.span-20, textarea.span-20 {width:778px;}
+input.span-21, textarea.span-21 {width:818px;}
+input.span-22, textarea.span-22 {width:858px;}
+input.span-23, textarea.span-23 {width:898px;}
+input.span-24, textarea.span-24 {width:938px;}
+input.span-25, textarea.span-25 {width:938px;}
+.append-1 {padding-right:40px;}
+.append-2 {padding-right:80px;}
+.append-3 {padding-right:120px;}
+.append-4 {padding-right:160px;}
+.append-5 {padding-right:200px;}
+.append-6 {padding-right:240px;}
+.append-7 {padding-right:280px;}
+.append-8 {padding-right:320px;}
+.append-9 {padding-right:360px;}
+.append-10 {padding-right:400px;}
+.append-11 {padding-right:440px;}
+.append-12 {padding-right:480px;}
+.append-13 {padding-right:520px;}
+.append-14 {padding-right:560px;}
+.append-15 {padding-right:600px;}
+.append-16 {padding-right:640px;}
+.append-17 {padding-right:680px;}
+.append-18 {padding-right:720px;}
+.append-19 {padding-right:760px;}
+.append-20 {padding-right:800px;}
+.append-21 {padding-right:840px;}
+.append-22 {padding-right:880px;}
+.append-23 {padding-right:920px;}
+.prepend-1 {padding-left:40px;}
+.prepend-2 {padding-left:80px;}
+.prepend-3 {padding-left:120px;}
+.prepend-4 {padding-left:160px;}
+.prepend-5 {padding-left:200px;}
+.prepend-6 {padding-left:240px;}
+.prepend-7 {padding-left:280px;}
+.prepend-8 {padding-left:320px;}
+.prepend-9 {padding-left:360px;}
+.prepend-10 {padding-left:400px;}
+.prepend-11 {padding-left:440px;}
+.prepend-12 {padding-left:480px;}
+.prepend-13 {padding-left:520px;}
+.prepend-14 {padding-left:560px;}
+.prepend-15 {padding-left:600px;}
+.prepend-16 {padding-left:640px;}
+.prepend-17 {padding-left:680px;}
+.prepend-18 {padding-left:720px;}
+.prepend-19 {padding-left:760px;}
+.prepend-20 {padding-left:800px;}
+.prepend-21 {padding-left:840px;}
+.prepend-22 {padding-left:880px;}
+.prepend-23 {padding-left:920px;}
+.border {padding-right:4px;margin-right:5px;border-right:1px solid #ddd;}
+.colborder {padding-right:24px;margin-right:25px;border-right:1px solid #ddd;}
+.pull-1 {margin-left:-40px;}
+.pull-2 {margin-left:-80px;}
+.pull-3 {margin-left:-120px;}
+.pull-4 {margin-left:-160px;}
+.pull-5 {margin-left:-200px;}
+.pull-6 {margin-left:-240px;}
+.pull-7 {margin-left:-280px;}
+.pull-8 {margin-left:-320px;}
+.pull-9 {margin-left:-360px;}
+.pull-10 {margin-left:-400px;}
+.pull-11 {margin-left:-440px;}
+.pull-12 {margin-left:-480px;}
+.pull-13 {margin-left:-520px;}
+.pull-14 {margin-left:-560px;}
+.pull-15 {margin-left:-600px;}
+.pull-16 {margin-left:-640px;}
+.pull-17 {margin-left:-680px;}
+.pull-18 {margin-left:-720px;}
+.pull-19 {margin-left:-760px;}
+.pull-20 {margin-left:-800px;}
+.pull-21 {margin-left:-840px;}
+.pull-22 {margin-left:-880px;}
+.pull-23 {margin-left:-920px;}
+.pull-24 {margin-left:-960px;}
+.pull-1, .pull-2, .pull-3, .pull-4, .pull-5, .pull-6, .pull-7, .pull-8, .pull-9, .pull-10, .pull-11, .pull-12, .pull-13, .pull-14, .pull-15, .pull-16, .pull-17, .pull-18, .pull-19, .pull-20, .pull-21, .pull-22, .pull-23, .pull-24 {float:left;position:relative;}
+.push-1 {margin:0 -40px 1.5em 40px;}
+.push-2 {margin:0 -80px 1.5em 80px;}
+.push-3 {margin:0 -120px 1.5em 120px;}
+.push-4 {margin:0 -160px 1.5em 160px;}
+.push-5 {margin:0 -200px 1.5em 200px;}
+.push-6 {margin:0 -240px 1.5em 240px;}
+.push-7 {margin:0 -280px 1.5em 280px;}
+.push-8 {margin:0 -320px 1.5em 320px;}
+.push-9 {margin:0 -360px 1.5em 360px;}
+.push-10 {margin:0 -400px 1.5em 400px;}
+.push-11 {margin:0 -440px 1.5em 440px;}
+.push-12 {margin:0 -480px 1.5em 480px;}
+.push-13 {margin:0 -520px 1.5em 520px;}
+.push-14 {margin:0 -560px 1.5em 560px;}
+.push-15 {margin:0 -600px 1.5em 600px;}
+.push-16 {margin:0 -640px 1.5em 640px;}
+.push-17 {margin:0 -680px 1.5em 680px;}
+.push-18 {margin:0 -720px 1.5em 720px;}
+.push-19 {margin:0 -760px 1.5em 760px;}
+.push-20 {margin:0 -800px 1.5em 800px;}
+.push-21 {margin:0 -840px 1.5em 840px;}
+.push-22 {margin:0 -880px 1.5em 880px;}
+.push-23 {margin:0 -920px 1.5em 920px;}
+.push-24 {margin:0 -960px 1.5em 960px;}
+.push-1, .push-2, .push-3, .push-4, .push-5, .push-6, .push-7, .push-8, .push-9, .push-10, .push-11, .push-12, .push-13, .push-14, .push-15, .push-16, .push-17, .push-18, .push-19, .push-20, .push-21, .push-22, .push-23, .push-24 {float:left;position:relative;}
+div.prepend-top, .prepend-top {margin-top:1.5em;}
+div.append-bottom, .append-bottom {margin-bottom:1.5em;}
+.box {padding:1.5em;margin-bottom:1.5em;background:#e5eCf9;}
+hr {background:#ddd;color:#ddd;clear:both;float:none;width:100%;height:1px;margin:0 0 17px;border:none;}
+hr.space {background:#fff;color:#fff;visibility:hidden;}
+.clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
+.clearfix, .container {display:block;}
+.clear {clear:both;}
+
+
+
+/*STYLE CSS*/
+body {background:url(/images/rummy/home-page-back.png) repeat-x;	background-attachment:fixed; font-family:Verdana, Geneva, sans-serif}
+#login-header{height: 62px;padding-top:10px;background:#d9d9d9; position:relative} 
+#login-box input.text {width:100px;color:#b8b8b8;padding:5px;margin-right:5px;} 
+.login-controls{margin-right:5px;margin-top:9px;}
+.black-link a{color:#000000;}
+.black-link a:hover{color:#000000;text-decoration:none;}
+.live-tables{height:35px;font-weight:bold; text-align:center;}
+.live-tables-number{font-size:2em;color:#B40263;margin-top:-10px; }
+#nav-bar{height: 73px;background:url(/images/rummy/ttnav_bar_bg.gif) repeat-x}
+.nav-barl{width:660px;}
+.home-banner{backgr ound:url(/images/rummy/home-banner-back.png) repeat-x;} 
+.pad-t-5{padding-top:5px;}
+.pad-t-9{padding-top:9px;}
+.pad-t-10{padding-top:10px;}
+.pad-t-20{padding-top:20px;}
+.pad-l-5{padding-left:5px;} 
+.mar-r-10{margin-left:10px;}
+.pad-r-20{padding-right:20px;}
+.pad-r-5{padding-right:5px;}
+.mar-n-l-10{margin-left:-15px;}
+.pad-l-15{padding-left:15px;}
+
+
+/*MAIN MENU*/
+#main-menu{height:20px;width:auto;margin:auto;}
+.height-100{height:100px;overflow:hidden;}
+ul#main-menu{margin:0 auto;padding:0;list-style-type:none;display:block;font-size:12px;font-weight:bold;}
+ul#main-menu li{display:inline;margin-left: 0px;pading:0;}	
+ul#main-menu li a{ width:109px; display:block;float:left;color:#595959;text-decoration:none;font-weight:bold;/* Top, Right, Bottom, Left */padding:0px;height:60px;
+ background: url(/images/rummy/top-menu-grey.png); text-align:center}
+ul#main-menu li a.first{ display:block;float:left;color:#595959;text-decoration:none;font-weight:bold;/* Top, Right, Bottom, Left */padding:0px;
+height:60px;background:#fff}
+ul#main-menu li a:hover{color:#FFFFFF;background: url(/images/rummy/top-menu-blue.png);}	
+ul#main-menu li a.selected-tab{color:#FFFFFF;background:#004298;}
+ul#main-menu1 {display: none;position:absolute;top: 205px;left: 80px;width: auto 0;border:none;border-top: solid 1px #CCCCCC;border-left: solid 1px #CCCCCC;border-right: solid 1px #CCCCCC;}
+ul#main-menu1 li {display:block;list-style-type:none;width: 160px;overflow:hidden;padding:0px;height: 30px;border-bottom: solid 1px #CCCCCC;}
+ul#main-menu1 li a{float:left;color:#595959 !important;text-decoration:none;font-weight:bold;height:24px;border:none;width:160px;text-align:left;padding-top:7px;padding-left:5px;background:white !important;}
+ul#main-menu1 li a:hover {background:#f1f1f1 !important;}	
+.menu-pad{padding-top:25px;} 
+/* HOME PAGE BANNER */
+#home-banner-left{
+	height:360px;
+/*width:602px;
+height:324px;
+padding-left:25px;
+padding-top:50px;*/
+/*padding-left:2px;
+padding-top:1px;*/
+color:#ffffff;
+/*background: url(/images/rummy/home-center-image.png) no-repeat 100% 100%;*/
+}
+.color-white{
+color:#ffffff;	
+}
+
+.color-blue{
+color:#2e5190;	
+}
+#home-bullet li{padding: 5px 10px 4px 27px; list-style:none; background: url(/images/rummy/home-bullet.png) 3px 7px no-repeat; behavior: url(iepngfix.htc);}
+
+/* IE6 PNG Fix */
+img{ behavior: url(iepngfix.htc) }
+#home-banner-left{
+behavior: url(iepngfix.htc);
+}
+#home-bullet li{
+behavior: url(iepngfix.htc);
+}
+
+/* Home Page Join Now */
+
+#join-now{
+
+/*height:430px;*/
+/*padding:0px 0px 10px 20px;*/
+padding: 10px 0 0 20px;
+position:relative
+}
+
+#join-now-top{
+background: url(/images/rummy/join-now-top.png) no-repeat;
+height:6px;
+}
+
+#join-now-bottom{
+background: url(/images/rummy/join-now-bottom.png) no-repeat;
+height:23px;
+}
+.join-nowfont{ font-size:20px; color:#fff}
+#player-registration-form input.text {
+width:200px;
+color:#686868;
+/*padding:10px;*/
+}
+
+#reg-form{
+z-index:50;
+}
+
+
+#get-blurb-home{
+
+z-index:1000;
+display:inline-block;
+position:absolute;
+top:8px;
+right:-30px;
+width:129px;
+height:66px;
+background:url(/images/rummy/get-25-blurb.png) no-repeat;
+text-align:center;
+color:#fff; 
+padding:10px 0px 0px 10px;
+line-height:20px
+}
+.get-blurb-bfont{ font-size:22px; font-weight:bold }
+.get-blurb-sfont{ font-size:14px; font-weight:bold }
+
+.home-index #get-blurb
+
+{
+margin-top:-250px;
+margin-left:145px;
+z-index:1000;
+position:relative;
+overflow:hidden;
+float:right;
+}
+
+
+/*Home Page Promos*/
+
+.home-content{
+width:100%;
+padding-top:10px;
+display:block;
+}
+
+.inner-content{
+width:100%;
+padding-top:0px;
+display:block;
+}
+
+.promo-box{
+width:200px;
+margin:0;
+/*padding:0;*/
+padding-top:1px;
+}
+
+.promo-top{
+padding:0px;
+margin:0px;
+height:94px;
+}
+
+.promo-content{
+height:159px;
+background:url(/images/rummy/promo-back.png) repeat-y;
+padding-top:30px;
+padding-left:30px;
+padding-right:30px;
+}
+
+.promo-content h3{
+color:#464646;
+line-height:1.2em;
+}
+
+
+
+#wit-title{
+background:url(/images/rummy/what-taash-top.png) no-repeat;
+height:44px;
+padding-top:15px;
+padding-left:25px;
+}
+
+#wit-body{
+background:url(/images/rummy/what-taash-back.png) repeat-x;
+display:block;
+min-height:250px;
+padding-top:30px;
+padding-left:30px;
+padding-right:30px;
+}
+
+#wit-body-left{
+width:375px;
+}
+
+.color-pink{
+color:#89265b;
+}
+
+#testi-title{
+background:url(/images/rummy/player-speaks.png) no-repeat;
+height:59px;
+}
+
+#testi-left, #testi-right{
+width:265px;
+margin-top:20px;
+}
+
+#testi-content{
+width:180px;
+line-height:1.2em;
+}
+/* Footer */
+.footer{background:#d5d5d5;height:200px;text-align:center; clear:both}
+.line-small{line-height:1.2em;font-size:1em;}
+.line-big{line-height:1.2em;}
+.line-links{line-height:1.9em;}
+
+/* INTERNAL LAYOUT SPECIFIC */
+
+body.internal {
+background:url(/images/rummy/internal-page-back.png) repeat-x;	
+}
+
+body.internal-al {
+background:url(/images/rummy/internal-al-page-back.png) repeat-x;	
+}
+
+#inner-nav {
+
+height:40px;
+background: #004298 url(/images/rummy/submenubg.gif) repeat-x;	
+margin-top:-13px;
+margin-bottom:5px;
+}
+
+.welcome-box{
+width:295px;
+text-align:right;
+}
+
+.inner-content{
+width:100%;
+display:block;
+}
+
+#inner-welcome{
+background:#ececec;
+height:47px;
+padding-left:20px;
+padding-top:10px;
+margin-top:5px;
+}
+
+#inner-welcome-back{
+background:url(/images/rummy/inner-welcome-back.png) repeat-x;
+height:300px;
+padding-top:20px;
+}
+
+#inner-welcome-back-left{
+width:307px;
+padding-left:20px;
+
+}
+
+#inner-welcome-back-right{
+width:242px;
+padding-top:50px;
+
+}
+
+#inner-buttons-box{
+padding-left:20px;
+padding-top:20px;
+}
+
+
+#button-edit-profile{
+background:url(/images/rummy/edit-profile-back.png) no-repeat;
+width:175px;
+height:55px;
+padding-left:105px;
+padding-top:35px;
+}
+
+#button-support{
+background:url(/images/rummy/contact-support-back.png) no-repeat;
+width:175px;
+height:55px;
+padding-left:105px;
+padding-top:35px;
+}
+
+#button-password{
+background:url(/images/rummy/change-password-back.png) no-repeat;
+width:175px;
+height:55px;
+padding-left:105px;
+padding-top:35px;
+}
+
+#button-funds{
+background:url(/images/rummy/deposit-funds-back.png) no-repeat;
+width:175px;
+height:55px;
+padding-left:105px;
+padding-top:35px;
+}
+
+#game-history{
+border: 2px solid #e2e2e2;
+padding-top:20px;
+padding-left:10px;
+padding-right:10px;
+padding-bottom:20px;
+}
+
+#game-history-top{
+background:url(/images/rummy/game-history.png) no-repeat;
+margin-top:35px;
+height:38px;
+width:199px;
+}
+
+th{
+background:#C8C8C8;
+height:40px;
+}
+
+#my-account{
+width:223px;
+}
+
+#my-account-box{
+background: #004298;
+padding-left:25px;
+color:#fff
+}
+#my-account-box h3{ color:#fffs}
+
+#profile-photo{
+margin-top:0px;
+z-index:1000;
+position:relative;
+padding-right:20px;
+padding-top:10px;
+}
+
+.my-acc-left{
+width:75px;
+}
+
+#player-invite-form input.text, #player-invite-form textarea.text {
+width:200px;
+color:#b8b8b8;
+padding:10px;
+}
+
+#player-invite-form textarea.text{
+height:100px;
+}
+
+
+/*Sub Menu*/
+
+#sub-menu{
+height:15px;
+width:auto;
+margin:auto;}
+
+ul#sub-menu{
+margin:0 auto;
+padding:0;
+list-style-type:none;
+display:block;
+font-size:12px;
+font-weight:bold;
+}
+ul#sub-menu li{
+display:inline;
+margin-left: 0px;
+pading:0;}
+	
+ul#sub-menu li a{
+display:block;
+float:left;
+color:#85aaeb;
+text-decoration:none;
+font-weight:bold;
+/* Top, Right, Bottom, Left */
+padding:0px 19px 0px 19px;
+padding-top:0px;
+height:40px;
+}
+
+ul#sub-menu li a:hover{
+color:#a8005a;
+background:url(/images/rummy/ttactivebg.gif) no-repeat  ;
+background-position:5px 5px;
+}
+	
+ul#sub-menu li a.selected-tab{
+color:#a8005a;
+background:url(/images/rummy/ttactivebg.gif) no-repeat  ;
+background-position:5px 5px;
+}
+
+.menu-pad-1{
+padding-top:22px;}
+#sub-menu .menu-pad{ padding-top:12px;}
+
+/* Bullets */
+
+ul.bullet-normal {padding-left:35px;}
+ul.bullet-normal li{padding: 5px 10px 5px 8px; list-style-type:disc; font-weight:normal;}
+ul.bullet-normal li p{color:black; font-weight:normal;}
+
+ul.bullet-normal-1 {padding-left:35px; margin-top:10px;}
+ul.bullet-normal-1 li{padding: 5px 10px 5px 8px; list-style-type:square; font-weight:normal;}
+ul.bullet-normal-1 li p{color:black; font-weight:normal;}
+
+/* Home page Top Login */
+.login-box .zend_form {
+	margin-top:0px; 
+	/*float:right*/
+}	
+.login-box {margin-top:0px; vertical-align:top;}
+.login-box .zend_form ul{margin: 0px;padding:0px; list-style: none outside none;}
+.login-box .zend_form ul li{float:left;margin-right:6px; width:auto; vertical-align:middle;}
+
+.login-box .zend_form a{color:#000; font-size: 11px; display:block; margin-top:14px;}
+.login-box .zend_form .fb_button_text {font-size: 9px; }
+.login-box .facebook_button{width:150px; height:20px; margin-left:30px;}
+
+
+.login-box dl{margin:0 0 0 0;}
+.login-box .zend_form label {display:block; font-size:9px;}
+.login-box .zend_form  input.text {width:100px; color:#b8b8b8; padding:2px; margin-right:5px; margin-top:0px;}	
+.login-box .zend_form #submit {background:#B40263; border:none;   width:60px; height:24px; cursor: pointer; color:#ffffff; font-weight:bold; border:2px solid #ebebeb; padding:0px; font-size:90%; margin-top:12px;}
+
+/* Firefox Button Padding Fix */
+input[type="submit"]::-moz-focus-inner {border: 0; padding: 0;}
+
+/* Home Page Register Form */
+.reg .zend_form ul{margin: 0px;padding:0px; list-style: none outside none;}
+.reg .zend_form ul li{display:block;margin-bottom: 0px;}
+.reg .zend_form ul li label{display:block; font-size:10px;}
+/*.reg .zend_form ul li input.text{width:200px; color:#b8b8b8; padding:10px;}
+.reg .zend_form ul li #submit{background:url(/images/rummy/join-now.png) no-repeat; border:none; font-size: 0; line-height: 0; width:132px; height:43px; cursor: pointer; margin-top:40px; margin-bottom:20px;}*/
+.reg .zend_form ul li input.text{width:200px; color:#b8b8b8;}
+.reg .zend_form ul li #submit{background:url(/images/rummy/join-now.png) no-repeat; border:none; font-size: 0; line-height: 0; width:132px; height:43px; cursor: pointer; margin-top:21px;}
+.reg dd{margin:0 0 0 0;}
+.reg dl{margin:0 0 0 0;}
+
+.reg .zend_form ul li #terms{width:20px !important; border:none;}
+
+.reg .facebook_button {margin-top:20px; width:180px;}
+
+#trackerId-label{display:none;}	
+#buddyId-label{display:none;}
+
+
+/* Registration Form Page - Test
+.reg #player-login-form .zend_form ul{margin: 0px;padding:0px; list-style: none outside none;}
+.reg #player-login-form .zend_form ul li{display:block;margin-bottom: 0px;}
+.reg #player-login-form .zend_form ul li label{display:none}
+.reg #player-login-form .zend_form ul li input.text{width:200px; color:#b8b8b8; padding:0px;}
+.reg #player-login-form .zend_form ul li #submit{background:url(/images/rummy/join-now.png) no-repeat; border:none; font-size: 0; line-height: 0; width:132px; height:43px; cursor: pointer; margin-top:0px; margin-bottom:0px;}
+.reg #player-login-form dl{margin:0px;}
+.reg #player-login-form .zend_form ul li input.text {width:100px; color:#b8b8b8; padding:10px; margin-right:5px; margin-top:0px;}
+.reg #player-login-form .zend_form ul li label{display:block;}
+.reg #player-login-form .facebook_button {margin-top:0px; width:180px;} */
+
+
+#inner-box #player-registration-form .zend_form ul li #terms{width:20px !important; border:0px; margin-left:150px;}
+#inner-box #player-registration-form .facebook_button{margin-left:150px;}
+#inner-box #player-registration-form ul li #submit{margin-left:150px;}
+
+
+/* General Form Formatting */
+#inner-box .zend_form label {width:150px; display:inline-block; line-height:100%; }
+#inner-box .zend_form ul label  {margin-bottom:10px; vertical-align:middle;}
+#inner-box .zend_form .chkbox {padding:0px; border:none; font-weight:normal; overflow:hidden; margin-left:150px; margin-top:-17px;}
+#inner-box .zend_form .chkbox label{font-weight:normal; margin-top:0px;}
+#inner-box .zend_form ul li {padding-bottom:10px; padding-top:10px;list-style-type:none; border-bottom: 0px solid #f3e1ea; vertical-align:middle; }
+#inner-box .zend_form ul{padding-left:0px;}
+#inner-box .zend_form ul li input.text{width:200px; padding:10px;}
+#inner-box .zend_form ul li select{padding:10px; border:1px solid #bbb;}
+#inner-box .zend_form ul li #submit{background:url(/images/rummy/ttnextbtn.gif) repeat-x; border:#fff solid 2px;  height:30px; cursor: pointer; color:#ffffff; font-weight:bold;  padding:5px 10px 5px 10px; font-size:120%;}
+
+#inner-box .zend_form ul li #fundButton{background:url(/images/rummy/ttnextbtn.gif) repeat-x; border:#fff solid 2px;width:auto; height:30px; cursor: pointer; color:#ffffff; font-weight:bold; border:2px solid #ebebeb; padding:0px; padding-left: 10px; padding-right:10px;font-size:120%;}
+
+#inner-box .zend_form .errors li{padding:0px;}
+#inner-box .zend_form ul .errors{font-size:10px; color:red; margin-left:150px; font-weight:bold;}
+#inner-box .zend_form ul {padding:0px; margin:0px;}
+#inner-box .zend_form {padding:0px; margin:0px;}
+#inner-box .zend_form ul li textarea{vertical-align:middle;}
+
+/* Login Form Page*/
+.reg #player-login-form .zend_form ul li #submit{margin-left:150px; background:url(/images/rummy/ttnextbtn.gif) repeat-x; border:#fff solid 2px;font-size: 0; line-height: 0; width:78px; height:30px; cursor: pointer; margin-top:0px; margin-bottom:0px; color:#ffffff; font-weight:bold; border:2px solid #ebebeb; padding:0px; font-size:120%;}
+.reg #player-login-form .facebook_button {margin-top:0px; width:auto;}
+.reg #player-login-form .zend_form ul li{padding:10px;}
+.reg #player-login-form .zend_form ul .errors{font-size:10px; color:red;}
+.reg #player-login-form .zend_form .errors li{padding:0px;}
+.reg #player-login-form .zend_form ul li a {margin-left:150px;}
+
+/* Registration Form Page*/
+
+#inner-box #player-registration-form .zend_form ul li #submit{margin-left:150px; background:url(/images/rummy/ttnextbtn.gif) repeat-x; border:#fff solid 2px;font-size: 0; line-height: 0; width:78px; height:30px; cursor: pointer; margin-top:0px; margin-bottom:0px; color:#ffffff; font-weight:bold; border:2px solid #ebebeb; padding:0px; font-size:120%;}
+
+
+/* Edit Profile Page */
+
+.auth-edit #inner-box .zend_form ul li #newsletter {width:20px !important; float:left; margin:10px 0px 0px 0px } 
+
+.auth-edit #inner-box .zend_form ul li label[for="newsletter"] {
+font-weight: normal;
+width:300px;
+margin-top:5px;
+}
+
+
+.reg #player-invite-form .zend_form ul li #submit{background:url(/images/rummy/send-small.png) no-repeat; border:none; font-size: 0; line-height: 0; width:78px; height:30px; cursor: pointer; margin-top:0px; margin-bottom:0px;}
+
+
+
+#player-registration-form input[type=text]:focus, #player-registration-form input[type=password]:focus, #player-registration-form input[type=email]:focus{ border:1px solid #fff;
+	-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, .05), 0 0 8px rgba(255, 255, 255, .7);
+	-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, .05), 0 0 8px rgba(255, 255, 255, .7);
+	box-shadow:inset 0 1px 3px rgba(0, 0, 0, .05), 0 0 8px rgba(255, 255, 255, .7);}
+
+
+
+/* AFTER LOGIN - ADDITIONAL */
+
+#inner-title{
+height:57px;
+padding-left:20px;
+padding-top:20px;
+background:url(/images/rummy/inner-title.png) repeat-x;
+}
+
+#inner-box{
+
+border-top: 0px;
+padding:20px 0x 0px 0px;
+
+}
+
+#inner-iframe-box{
+
+border-top: 0px;
+}
+
+.home-index #inner-box{
+border: 0px solid #f3e1ea;
+border-top: 0px;
+padding-top:0px;
+padding-left:0px;
+padding-right:0px;
+padding-bottom:0px;
+}
+
+
+
+#help-top{
+background:url(/images/rummy/help-top.png) no-repeat;
+height:33px;
+font-size:17px;
+font-weight:bold;
+color:#ffffff;
+padding-left:20px;
+padding-top:14px;
+}
+
+#platform-top{
+background:url(/images/rummy/platform-top.png) no-repeat;
+height:47px;
+font-size:17px;
+font-weight:bold;
+color:#ffffff;
+padding-left:20px;
+}
+
+#help-back{
+background:url(/images/rummy/help-back.png) repeat-y;
+padding-left:20px;
+padding-top:10px;
+padding-right:30px;
+font-size:11px;
+line-height:1.2em;
+color:#ffffff;
+}
+
+#help-bottom{
+background:url(/images/rummy/help-bottom.png) no-repeat;
+height:28px;
+}
+
+/*ZENFOX CONTENT*/
+
+.zenfox-content{
+    font-size:13px;
+    color:#666;
+    
+}
+
+.zenfox-content .heading1,
+.zenfox-content .heading2,
+.zenfox-content .heading3{
+	font-size:14px;
+	padding-top:10px;
+	color:#333;
+	font-weight: bold;
+}
+.zenfox-content p{
+	line-height: 20px;
+	    padding-bottom: 5px;
+    text-indent: 0;
+	
+}
+
+.zenfox-content .main-header{
+	font-size:16px;
+	padding-top:10px;
+	color:#333;
+	font-weight: bold;
+	text-align: center;
+}
+
+.zenfox-content ul{list-style:decimal inside none; line-height: 18px}
+.zenfox-content ul li {
+    list-style: decimal outside none;
+    margin-left: 30px;
+    padding-bottom: 5px;
+}
+
+.fb_button_medium{
+	font-size:10px;
+}
+
+/* MESSAGES */
+
+.warning {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
+.warning {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
+
+/*OFFERS*/
+
+#offer-top{
+background:url(/images/rummy/offers-top.png) no-repeat;
+width:270px;
+height:54px;
+}
+
+#offer-top h2{
+color:#fff;
+font-weight:bold;
+padding-top:10px;
+padding-left:20px;
+}
+
+#offer-back{
+background:url(/images/rummy/offers-back.png) repeat-y;
+width:270px;
+height:auto;
+}
+
+#offer-back h2{
+color:#1f4588;
+font-weight:bold;
+padding-left:20px;
+font-size:25px;
+margin-bottom:0px;
+}
+
+
+#offer-back h3{
+color:#676565;
+font-weight:bold;
+padding-left:20px;
+}
+
+#offer-back p{
+padding-left:20px;
+}
+
+#offer-bottom{
+background:url(/images/rummy/offers-bottom.png) no-repeat;
+width:270px;
+height:23px;
+}
+
+/* TO SHIFT RIGHT COLOUMN DOWN ON HOME PAGE */
+
+.index-index #right-column{
+margin-top:10px;
+}
+
+.index-index #home-banner-left{
+display:none;
+}
+
+.index #after-banner{
+display:none;
+}
+
+/* HOME ICON */
+
+.home-icon .menu-pad{
+padding-top:20px;
+}
+
+/* LOBBY */
+
+.game-index #right-column, .bingo-index #right-column
+{
+display:none;
+}
+
+.game-index #left-column, .bingo-index #left-column
+{
+width:960px;
+}
+
+.game-index #inner-box, .bingo-index #inner-box
+{
+padding:0px;
+margin:0px;
+}
+
+.game-index .top, .bingo-index .top
+{
+display:none;
+}
+
+/* Reconciliation Report */
+
+.transaction-confirm #right-column{display:none;}
+
+.transaction-confirm #left-column{width:950px;}
+
+/* Payment Form */
+#player-getpayment-form .zend_form .customchkbox #customAmt{
+	display : none;
+}
+#inner-box #player-getpayment-form .chkbox {
+    margin-left: 21px;
+    margin-top: -4px;
+}
+#inner-box #player-getpayment-form .customchkbox {
+	border: medium none;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 0;
+    margin-left: 28px;
+    margin-top: -36px;
+}
+#inner-box #player-getpayment-form ul li{
+	float:left;
+	padding-left:34px;
+	padding-bottom:10px; 
+	padding-top:10px;
+	list-style-type:none; 
+	border-bottom: 0px solid #f3e1ea; 
+	vertical-align:middle; 
+}
+#inner-box #player-getpayment-form ul li select{
+	margin-top:-10px;
+}
+
+#inner-box #player-getpayment-form{
+    height: 535px;
+}
+#inner-box #player-getpayment-form br{
+    display:none;
+}
+#inner-box #player-getpayment-form label {
+    width: 94px;
+    display:block;
+}
+#inner-box #player-getpayment-form #submit{
+	margin-left: 150px;
+	display:none;
+}
+
+#inner-box #player-getpayment-form .li_tag{
+    clear:both;
+}
+/*
+#inner-box #player-getpayment-form #payment{
+	display:none;
+}
+*/
+#inner-box #player-getpayment-form #bank_list{
+	display:none;
+}
+#inner-box #player-getpayment-form #city_list{
+	display:none;
+}
+#inner-box #player-getpayment-form #address_box{
+	display:none;
+}
+#inner-box #player-getpayment-form #pin_code{
+	display:none;
+}
+#inner-box #player-getpayment-form #contact_no{
+	display:none;
+}
+#inner-box #player-getpayment-form #coupon_no{
+	clear:both;
+	margin-top: -30px;
+}
+#inner-box #player-getpayment-form #coupon_no label{
+	width: 111px;
+}
+#inner-box #player-getpayment-form #player_name{
+	display:none;
+}
+#inner-box #player-getpayment-form #player_contact{
+	display:none;
+}
+#inner-box #player-getpayment-form #player_email{
+	display:none;
+}
+
+
+/** Home Promo Image */
+
+.promo-box .deposite {	background-color: #fff;				padding:5px;	border: 1px solid #2a0403;	-moz-border-radius: 11px;	-webkit-border-radius: 11px;	border-radius: 11px;	behavior: url(/images/rummy/border-radius.htc);}
+.promo-box .deposite .depositebg { text-align:center; color:#FFF;	background: url(/images/rummy/play_guest_p.png) no-repeat ; width:177px;		height:264px;	padding:20px 5px 0px 5px;				-moz-border-radius: 5px;	-webkit-border-radius: 5px;	border-radius: 5px;	behavior: url(/images/rummy/border-radius.htc);}
+.promo-box .deposite .referbg {  text-align:center; color:#FFF;	background: url(/images/rummy/play_guest_b.png) no-repeat ; width:177px;		height:264px; padding:20px 5px 0px 5px;				-moz-border-radius: 5px;	-webkit-border-radius: 5px;	border-radius: 5px;	behavior: url(/images/rummy/border-radius.htc);}
+.promo-box .deposite .taashplay {  text-align:center; color:#FFF;	background: url(/images/rummy/play_guest_g.png) no-repeat ; width:177px;		height:264px; padding:20px 5px 0px 5px;				-moz-border-radius: 5px;	-webkit-border-radius: 5px;	border-radius: 5px;	behavior: url(/images/rummy/border-radius.htc);}
+
+.promo-box .depositein{ padding-top:5px;}
+.promo-box .deposite h2{ color:#344BA2; font-family:Arial, Helvetica, sans-serif; font-weight:bold; }
+.promo-box .deposite h3{ color:#fff; font-family:Arial, Helvetica, sans-serif; font-weight:bold; margin-bottom:10px; font-size:16px; }
+.promo-box .deposite h3 span{ color:#f7cd09; font-family:Arial, Helvetica, sans-serif; font-weight:bold; margin-bottom:10px; font-size:22px }
+.promo-box .deposite .btn{ text-align:center; margin-bottom: 5px; }
+.promo-box .deposite .btnm{ text-align:right; padding:28px 10px 0px 0px }
+.promo-box .deposite .btnlast{ text-align:right; padding:34px 10px 0px 0px }
+
+#slideml {
+    float: left;
+    height: 400px;
+    width: 684px;
+}
+#container {
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    z-index: 0;
+}
+#example {
+    height: 350px;
+    position: relative;
+    width: 600px;
+}
+#slides {
+    left: 5px;
+    position: absolute;
+    top: 5px;
+    z-index: 100;
+}
+/*	Bank Deposite Page*/
+.ttdepol{ width:100%; float:left;  backgro und:url(/images/rummy/ttdepobg.gif) repeat-x #e4e4e1 }
+.ttdepolnav{ height:27px; background:#273d8b}
+.ttdepolnav ul{ margin:0px; padding:0px;}
+.ttdepolnav ul li{ margin:0px; padding:0px; display:inline; }
+.ttdepolnav ul li a{  color:#FFF; text-decoration:none; font-weight:bold; font-size:11px; float:left; display:block; padding:5px 25px 5px 25px;}
+.ttdepolnav ul li a:hover{ color:#b30f5d;  background:url(/images/rummy/ttactivebg.gif)}
+.ttdepolnav ul li a.active{ color:#b30f5d;  background:url(/images/rummy/ttactivebg.gif)}
+.ttdepolcont{ padding:0px}
+#ttdepolcont{ padding:0px; clear:both}
+.ttdepolconttop{ padding:20px}
+
+.ttdeprofilet{ height:140px; clear:both}
+.ttdeprofileb{ height:180px;  clear:both}
+.ttdeprofilel{ float:left; width:308px; backgr ound:#F00}
+.ttdeprofilelbg{ background:#dddddd; height:100px; padding:5px}
+.ttdeprofilepic{ float:left; width:120px; height:110px; backgro und:#F00}
+.ttdeprofilename{ float:left; color:#004298; font-weight:bold  }
+.ttdeprofiler{ float:left; width:308px;  margin-left:19px}
+.ttdeprofilepad{ padding:10px 0px 0px 5px;}
+
+.ttdeprofilopenm{ margin:10px 0px 0px 0px}
+.ttdeprofilopenbg{ background:#c8c8c8; padding:5px 20px 5px 20px; margin:0px 0px 0px 20px}
+.ttdeprofilopenb{ clear:both; margin:30px 0px 0px 0px   }
+
+.ttmsgblk{ background:#c8c8c8; height:25px; font-weight:bold; padding:5px 5px 0px 5px ; position:relative}
+.ttmsgblkcont{ height:150px; overflow:auto ; padding-bottom:20px; }
+.ttunreadmsg{ font-weight:bold}
+.ttsubjoverflow{ max-width:330px; overflow:hidden; text-overflow: '' ellipsis; white-space:nowrap;  display:inline-block }
+.ttmsgblkcont a{  color:#003399 ; text-decoration:underline; overflow:hidden; text-overflow:'' ellipsis ; white-space:nowrap;  display:inline-block }
+.ttmsgblkcont a:hover{ color:#333 ; text-decoration: underline; overflow:hidden;  white-space:nowrap;  display:inline-block}
+.ttmsgblkcont a.current{ color:#fff ;  overflow:hidden; text-overflow: ' ' ellipsis; white-space:nowrap;  display:inline-block}
+
+
+.ttcurrentmsg{ background:#1f4588 !important; color:#fff}
+.ttfrommsg{ padding:10px 10px 10px 10px; margin:0px; background:#d9e3f0 ; border-top:solid #004298 10px  }
+.ttfrommsgbg{ padding:10px 36px 10px 10px; background:#E2E2E2 ; margin-top:5px }
+
+.ttfrommsg p{ padding:0px; margin:0px; font-weight:bold }
+.ttreplaymsg{ padding:5px;}
+.ttmsgtextarea{ width:568px; height:150px;}
+.ttmsgicon{ position:relative; width:11px; height:11px; }
+.ttmsgicon a{width:11px; height:11px; position:absolute; top:0px; left:0px; background:url(/images/rummy/ttmsg_icon.png); overflow:hidden }
+.ttmsgicon a:hover{ position:absolute; top:0px; left:0px; background:url(/images/rummy/ttmsg_icon.png) 0px -11px  }
+.ttmsgiconact{ position:relative; width:11px; height:11px; }
+.ttmsgiconact a{width:11px; height:11px; position:absolute; top:0px; left:0px; background:url(/images/rummy/ttmsg_icon.png)0px -11px ; overflow:hidden }
+.ttmsgiconact a:hover{width:11px; height:11px; position:absolute; top:0px; left:0px; background:url(/images/rummy/ttmsg_icon.png)0px -11px ; overflow:hidden }
+
+
+
+.ttmsgclr{color:#838282}
+.ttmsgblkcont td{ border-bottom:#c8c8c8 solid 1px ; overflow:hidden; height:20px; cursor:pointer}
+.ttmsgblksubj { height:35px; margin:0px; border:#666 solid 1px; border-left:0px; border-right:0px; background:#afafaf ; padding:0px 0px 0px 5px}
+.ttmsgblksubj table{ margin:0px;}
+.ttmsgblksubj th{ text-align:left; background:none }
+.ttmsgblkcont .ticket-cross{cursor:inherit}
+.ttfrommsg th{ background:#b3c7e0 ; text-align:left; padding-left:5px  }
+.ttfrommsg .ttfrommsgtdbg{ background: #d9e3f0   }
+
+.ttdepolplz{ border:#a4a3a3 solid 1px; background:#c9c9c9; height:21px; text-align:center}
+.ttdepolinnnav{ border:#a4a3a3 solid 1px; background:#FFF; margin-top:15px; display:inline-block; padding:0px 0px 10px 0px }
+.ttdepolflowback{ padding:5px; }
+.ttdepolflowbackt{ height:50px; background:#273d8b; text-align:center ; color:#fff; font-size:18px; font-weight:bold; padding-top:10px;}
+.ttdepolflrupee{ font-family:WebRupee; font-size:18px; color:#fff; font-weight:bold}
+.ttdepolflrupees{ font-family:WebRupee; font-size:16px; color:#000; font-weight:bold}
+.ttdepolflrupeebtn{ background:url(/images/rummy/ttflowbackbtn.gif) repeat-x; border:2px solid #fff; color:#fff; font-size:18px; font-weight:bold; padding:5px 20px 5px 20px; cursor:pointer; margin-left:20px  }
+.ttdepolfloinn{ margin-top:3px; padding-top:15px }
+.ttdepolnextback{  height:40px; padding:10px; clear:both; background:#dddddd}
+.ttclrgreen{ color:#027d02 }
+.ttclrred{ color:#990404}
+
+.ttdepolback{ float:left;}
+.ttdepolnext{ float:right;}
+.ttdepolnextbackbtn{ background:url(/images/rummy/ttnextbtn.gif) repeat-x; border:2px solid #fff; color:#fff; font-size:18px; font-weight:bold; padding:4px 20px 3px 20px; cursor:pointer;   }
+.ttdepolconfbtn{ background:url(/images/rummy/ttconfbtnbg.gif) repeat-x; border:2px solid #fff; color:#fff; font-size:18px;font-weight:bold; padding:5px 15px 5px 15px; cursor:pointer}
+.ttdepolbackbtns{ background:url(/images/rummy/ttnextbtn.gif) repeat-x; border:2px solid #fff; color:#fff; font-size:15px; font-weight:bold; padding:2px 13px 2px 13px; cursor:pointer;   }
+.ttdepolnextbackbtn1{ width:109px; height:53px; background:url(/images/rummy/ttsubmitbynshadow.png) no-repeat ; border:none; color:#fff; font-size:18px; font-weight:bold; padding:5px 20px 5px 20px; cursor:pointer; margin-right:20px; padding:5px 20px 10px 20px    }
+
+.ttselectoffer{ margin-top:20px ; clear:both}
+.ttselectofferb1{ width:163px;  float:left;  margin-left:35px }
+.ttselectofferbbg{ height:174px;  background:url(/images/rummy/bonus_scheme_2.png) no-repeat; text-align:center; padding-top:30px }
+.ttselectofferbbgblue{ height:174px; background:url(/images/rummy/bonus_scheme_1.png) no-repeat; text-align:center;  padding-top:30px}
+.ttselectofferb1 h1, .ttselectofferb1 h2{ color:#fff; font-family:Copperplate Gothic Bold; font-size:22px; font-smooth:always; margin:0px;}
+.ttselectofferb1 h1{ font-size:40px; font-weight:bold}
+
+.withdrawalm{   font-family:Verdana, Geneva, sans-serif}
+.withdrawalm input{ width:143px}
+.withdrawalm td, th{ padding:0px;}
+.withdrawalm textarea{ width:139px; height:35px;}
+/* .verification{ font-size:15px; font-weight:bold;  text-align:center; height:25px }
+.withdrawalm select{ width:150px; height:30px;} */
+.withdrawalm select {   height: 22px;    width: 150px;}
+.verification {    font-size: 15px;    font-weight: bold;    height: 20px;    text-align: center; padding:15px 0px 0px 0px}
+.verificationm{ padding:20px; color:#3a3220;  }
+.details{ font-size:15px; font-weight:bold; padding:5px 0px 5px 15px; margin:10px 0px 10px 0px; background:#c8c8c8   }
+.detailsbank{ font-size:15px; font-weight:normal; padding:10px 0px 5px 15px;  background:#c8c8c8   }
+.withdrawh{ font-size:15px; font-weight:normal; padding-bottom:5px; border-bottom:#cdc8bf dashed 2px; margin:10px 0px 10px 0px;  }
+.withdrawhN{ font-size:15px; font-weight:normal; padding-bottom:5px; margin:10px 0px 10px 0px;  }
+.ttbtnpink{ background:url(/images/rummy/withdrawbtnbg.gif) repeat-x ; color:#FFF ; cursor:pointer; font-size:14px; font-weight:bold; border:none; border:#FFF solid 2px; padding:3px 8px 3px 8px}
+.withdrawbox{ width:250px; margin:0px auto; background:url(/images/rummy/withdrawboxbg.png) repeat-x #e1e2e4;  border:#aaabaf solid 1px; 			padding: 10px 15px 5px 15px;		-moz-border-radius: 10px;	-webkit-border-radius: 10px;	border-radius: 10px; behavior: url(../..images/border-radius.htc); font-size:14px; line-height:20px}
+.withdrawboxh{ font-size:18px; text-align:center; padding:20px 0px 10px 0px; margin:0px }
+.ttpaymentnavm{ margin:10px 0px 0px 0px; clear:both   }
+.ttpaymentnav{ width:150px; float:left; margin-left:10px  }
+.ttpaymentnav ul{ margin:0px; padding:0px  }
+.ttpaymentnav ul li{ margin:0px; padding:0px; list-style:none ; height:29px; background:#c9c9c9;  height:29px; margin-top:5px }
+.ttpaymentnav ul li a{ text-decoration:none; background:url(/images/rummy/ttpaymentnavdbg.png) no-repeat  right; display:block ; height:24px; padding:5px 0px 0px 15px; color:#333 }
+.ttpaymentnav ul li a:hover{ background: #273d8b url(/images/rummy/ttpaymentnavactivebg.png) no-repeat right  ; color:#fff   }
+.ttpaymentnav ul li a.current{ background: #273d8b url(/images/rummy/ttpaymentnavactivebg.png) no-repeat right  ; color:#fff   }
+.ttpaymentcont{ float:left;  margin-left:25px; padding-top:5px  }
+.ttdepor{ width:264px; float:left; margin-left:10px; }
+.ttpurchaseorder {background: none repeat scroll 0 0 #FF9900;  padding: 3px;}
+.ttuserdtlsl{ float:left;}
+.ttuserdtlsr{ float:left; margin-left:20px}
+
+.ttdepolcont  #inner-box { margin:0px; padding:0px; border:0px;}
+.ttdepolcont  #inner-box ul li  { margin:0px; padding:0px; border:0px; font-weight:bold; color:#484848; line-height:35px; }
+.ttdepolcont  #inner-box label{ wi dth:93px}
+.ttbankpad{ padding:20px;}
+.ttdepolcont  #inner-box  ul li input.ttbankmarg{ margin:10px;}
+.ttdepolcont  #inner-box label, .ttdepolcont  #inner-box input{ margin:0px; padding:3px}
+.ttdepolcont  #inner-box  ul li input.text{ margin:0px; padding:1px; }
+.ttdepolcont  #inner-box  ul li input.inpwidth{ width:150px }
+.ttdepolcont  #inner-box  ul li select{ padding:0px;}
+.ttdepolcont  #inner-box  ul li select.selwidth{ width:155px}
+.ttdepolcont  #inner-box  ul li.ttdepopad_15{ padding-right:15px; }
+.ttdepolcont  #inner-box  dd{ margin:0px }
+.ttdepolcont  #inner-box  fieldset{ border:0px; background:#e6e6e6 ; margin:0px;  }
+.ttdepolcont #inner-box dt{	  margin: 0px; clear:both; background:#C8C8C8; font-size:15px; padding:5px 0px 5px 15px }
+.ttdepolcont #inner-box .zend_form ul li #submit, .ttdepolcont #inner-box #player-registration-form .zend_form ul li #submit{ background:url(/images/rummy/ttnextbtn.gif) repeat-x; margin:0px;   border:#fff solid 2px; padding:5px 10px 5px 10px}
+.ttdepolcont #inner-box #player-registration-form .zend_form ul li #submit{ width:auto; }
+
+
+.ttdepolcont  #inner-box  .upload{  }
+.ttdepolcont  #inner-box  .upload label{ float:left; width:154px; clear:both    }
+.ttdepolcont  #inner-box  .lipading{ margin:10px 0px 10px 0px    }
+.ttdepolcont input[type="file"]{ width:auto !important; }
+.ttdepolcont #inner-box  .auth-edit #inner-box .zend_form ul li label[for="newsletter"]
+.ttdepolcont #inner-box .zend_form ul .errors{font-size:9px; color:red; margin-left:160px;  }
+.ttdepolcont #inner-box .zend_form .errors li{ color:#fb3919; line-height:15px;  }
+
+
+.ttdepolbg{ background:#c9c9c9; min-height:180px; }
+.ttpurordt{ height:50px;}
+.ttpurordbg{ background:#F60; padding:2px 10px 2px 10px; margin-left:10px}
+.ttdepositrsbg{ background:#fff}
+
+
+/*---------------------GetFunCoins--------------------------*/
+/*.ttfuncoins{ border:#a4a3a3 solid 1px; }*/
+.ttfuncoinstbg{ background:#273d8b; height:28px; color:#fff; text-align:center; font-weight:bold; font-size:16px; padding-top:5px; }
+.ttfuncoinsb{ clear:both }
+.ttfuncoinsb #inner-box label{ width:80px  }
+
+
+.ttfuncoinsbl{ width:300px; float:left; padding:15px}
+.ttfuncoinsbr{ width:300px; float:left; padding:15px;}
+.ttfuncoinsborder{ border-left:solid 1px #304590}
+.ttfuncoinsconvert{ color:#273d8b; font-size:14px; text-align:center; font-weight:bold  }
+.ttfuncoinsrupeem{ clear:both ; height:33px }
+.ttfuncoinsrupee{ width:120px; padding-left:5px; }
+
+
+.steps {background: #aaa;	padding: 0px;	overflow: hidden;}
+.steps ul, .steps li {	margin: 0;	padding: 0;	list-style: none;}
+.steps ul {	float: left;}
+.steps li {	float: left;	width: 236px; text-align:center; }
+.steps li a {	display: block;	padding: 15px 20px;	background: #d0d0d0;	color: #fff;	line-height: 1.5em;	text-decoration: none;}
+.steps li a:hover {	background: #666;}
+.steps li.step, .steps li.step a {	position: relative;	z-index: 3;	padding:0px;	height:29px; line-height:26px;  cursor: default;}
+.steps li.step-2, .steps li.step-2 a {	z-index: 2;}
+.steps li.step-3, .steps li.step-3 a {	z-index: 1;}
+.steps li.step-1 a, .steps li.step-2 a, .steps li.step-3 a {	background: transparent url(/images/rummy/step.png) center right no-repeat;	padding-right: 25px;}
+.steps li.step-2, .steps li.step-3 {	margin-left: -30px;}
+.steps li.step-2 a {	padding-left: 45px;}
+.steps li.step-3 a {	padding-left: 45px;	padding-right: 10px;	background-position: center left;}
+.steps li.step a:hover {color:#fff}
+.steps li.step a.current {	background: transparent url(/images/rummy/step_over.png) center right no-repeat;	color:#b30f5d; font-weight:bold}
+.steps li.step-3 a:hover {	background-position: center left;}
+.steps li.step-3 a.current {	background-position: center left;}
+
+/*	Testmonials css*/
+.ttplyspks{ clear:both;  margin:10px 0px 10px 0px; }
+.ttplyspksimg{ width:70px;  float:left; padding-right:10px;}
+.ttplyspkscont{   padding:0px; font-style:normal; text-align:justify }
+.ttplyspksname{ font-weight:bold; text-align:right; margin:10px 0px 0px 0px}
+.ttplyspkmore{ color:#44619c; text-align:right; font-weight:bold; clear:both }
+.tttestimonim{ padding-top:10px; clear:both}
+.tttestimoniphoto{ float:left; margin-right:15px; width:80px}
+.tttestimonicont{ float:left; width:471px }
+.tttestimonicontbrd{border-bottom:#bcbcbc solid 1px; clear:both; margin:5px 0px 5px 0px }
+.ttplyspkscont a.adjust{padding:1px ;	display:block; font-weight:bold; background:#999; color:#333; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px;width:65px;		text-align:center;	text-decoration:none; margin:-36px 0px 0px 100px;  }
+.ttplyspkscont a.adjust:hover{	background:#333;color:#FFF;-webkit-transition: all 400ms; /*safari and chrome */-moz-transition: all 400ms ease; /* firefox */	-o-transition: all 400ms ease; /* opera */transition: all 400ms ease;	}
+.ttplyspkscont p.continued{margin-top:0;}
+.ttplyspkscont img{padding:10px;background:#FFF;border-radius: 12px;-webkit-box-shadow: 0 1px 13px rgba(0,0,0,.25);-moz-box-shadow: 0 1px 13px rgba(0,0,0,.25);box-shadow: 0 1px 13px rgba(0,0,0,.25);width:400px;margin-left:20px; }
+
+
+
+
+/** Deposit Form */
+#confirm-order{
+	display:none;
+	margin-top:-43px;
+}
+#deposit-back{
+	display:none;
+}
+#cod-form{
+	display:none;
+}
+#debit-form{
+	display:none;
+}
+#credit-form{
+	display:none;
+}
+#mol-form{
+	display:none;
+}
+.payment-error{
+	margin-left: 8px;
+    margin-right: 8px;
+}
+#tttestimonim {
+    clear: both;
+    /*margin-top: 10px;*/
+    padding: 10px 0 0;
+}
+#tttestimoniphoto {
+    float: left;
+   /* margin-right: 15px;*/
+    width: 70px;
+	padding-right:10px;
+}
+#tttestimonicont {
+    
+    
+	padding:0px ;
+}
+#testi-write{
+	margin-top:5px;
+}
+/* #withdraw{
+	display:none;
+} */
+#WITHDRAWAL-REQUEST{
+	display:none;
+}
+
+/**Tournament**/
+#tournamentM{ }
+#tournamentM h1{ margin:0px; padding:10px 0px 15px 0px; font-size:22px; font-weight:bold; text-align:center}
+#tournamentM h2{ margin:0px; padding:0px 0px 10px 0px; font-size:18px;}
+.pop-up {
+	padding:0px;
+	width:668px;
+}
+.pop-up .close-windo {
+	background:url("close-bt.png") no-repeat scroll right 4px transparent;
+	color:#FFFFFF;
+	cursor:pointer;
+	display:block;
+	font-size:10px;
+	height:18px;
+	line-height:18px;
+	width:85px;
+}
+.tttournmentbg{ background:#9e1515; font-size:14px; padding:5px; text-align:center}
+/* TaashTime List Of Tournament css */
+.ttltm{ background:#fff ; font-family:Arial, Helvetica, sans-serif;  }
+
+.ttlthedbg{  height:50px; text-align:center; color:#000; font-size:28px; font-weight:bold ; padding-top:10px;}
+.ttltbot{ background:#1B4183   }
+.ttltbot table{ margin-bottom:0px;   }
+
+
+.ttltbot td{ text-align:center; padding:0px; height:27px}
+.ttltbot th{ text-align:center; padding:0px; height:27px}
+.ttltbot .ttltbg { background:#fff; height:28px; color:#000; font-weight:bold;}
+
+
+
+.ttltbot .ttltmoredtls{ font-size:10px}
+.ttltcurrent{ height:30px; color:#FFF; padding-top:10px; background:#1b4183  }
+.ttltcurrentl{ float:left; width:76%; text-align:left;  font-size:20px; font-weight:bold; padding-left:20px}
+.ttltcurrentr{ float:left; width:20%; width:22; text-align:right;  font-size:13px; font-weight:bold; padding-top:5px;}
+.ttltcurrentr span{ color:#fff; }
+.ttltcurrentr span.closed{ color:#fff;  margin:0px; padding:0px }
+.ttltbotwebrupee{ font-family:WebRupee; font-size:14px;  font-weight:normal}
+/* TaashTime  Tournament  Result css */
+.ttresultm{  margin:0px; height:330px; padding:5px ;}
+.ttresultdate{ text-align:right; height:30px;}
+.ttresultbfont{ font-size:14px; padding:5px;  color:#fff; font-weight:normal; position:relative  }
+.ttresultdatetime{ position:absolute; top:5px; right:7px; font-size:13px }
+.ttresultgt{ clear:both }
+.ttresultgtl{ width:334px; float:left;}
+.ttresultgtr{ width:286px; float:left; margin-left:10px}
+.ttresultgthedbg{ background:#fff;  height:30px;  font-size:14px; font-weight:bold; color:#000 ; padding:10px 0px 0px 5px; text-align:center}
+.ttresultgthedbgl{ float:left; width:16%; }
+.ttresultgthedbgm{ float:left; width:40%; }
+.ttresultgthedbgr{ float:left; width:44%; }
+.ttresultrankm{ height:158px; overflow:auto}
+.ttresult1rankbg, .ttresult2rankbg, .ttresult3rankbg, .ttresult1rankbg1, .ttresult2rankbg1, .ttresult3rankbg1{ height:50px; background:url(/images/rummy/ttresult1strankbg.png) no-repeat; margin:2px; position:relative}
+.ttresult2rankbg{ background:url(/images/rummy/ttresult2ndtrankbg.png) no-repeat}
+.ttresult3rankbg{ background:url(/images/rummy/ttresult3rdrankbg.png)}
+.ttresult1rankbg1{ background:url(/images/rummy/ttresult1strankbg1.png) no-repeat;}
+.ttresult2rankbg1{ background:url(/images/rummy/ttresult2ndrankbg1.png) no-repeat;}
+.ttresult3rankbg1{ background:url(/images/rummy/ttresult3rdrankbg1.png) no-repeat;}
+.ttresultusername{ position:absolute; top:10px; left:83px; color:#000; font-size:14px; }
+.ttresultamtwon{ position:absolute; top:5px; left:230px; color:#000; font-size:24px; font-weight:bold }
+.ttresultgold{ height:90px; background:url(/images/rummy/ttresultgoldbg.png) no-repeat; float:left; width:340px}
+.ttresultNexttourn{ text-align:right; color:#ffbc17; clear:both;  padding-top:5px; clear:both}
+.ttresultNexttourn a{  color:#ffbc17; }
+.ttresultPrizewin{ height:126px;   background: #b7b7b7;  border-top:none ; padding:8px 0px 10px 0px;  overflow:auto; margin-top:8px }
+.ttresultPrizewin ul{ margin:0px 0px 0px 20px; padding:0px;}
+.ttresultPrizewin ul li{ margin:0px; padding:0px; color:#000}
+.ttresultPrizewinl{ float:left; width:115px;}
+.ttresultPrizewinr{ float:left; width:115px;}
+.ttresultamoutwin{ width:250px; float:left; height:46px; position:relative; background:#fff;  margin-top:10px;  margin-left:5px }
+.ttresultamoutwinimg{ position:absolute; left:10px; top:10px; width:63px; height:26px; background:url(/images/rummy/ttamountimg.png);  }
+.ttresultconsolm{ clear:both; padding-top:10px;}
+.ttresultamoutwincont{ position:absolute; left:80px; top:0px;  }
+.ttresultamoutwincont p{color:#000; font-size:14px; margin:0px; padding:0px; line-height:20px;}
+.ttresultamoutwincont p span{ font-size:20px; font-weight:bold; font-family:Arial, Helvetica, sans-serif}
+.ttresultback{ margin:5px; text-align:right}
+.ttfuncoinsrsltm{   height:390px; }
+.ttfuncoinsrsltm_l{ float:left; width:325px; }
+.ttfuncoinsrsltm_r{ float:left; width:325px; }
+.ttfuncoinsrsltbot{ background:#1B4183 ; padding:10px    }
+.ttfuncoinsrsltbotr{ background:#bb2f79 ; padding:10px    }
+.ttfuncoinsrslt{ background: #fff}
+.ttfuncoinshed{ color:#FFF; font-size:22px; text-align:center; font-weight:bold; font-family: Copperplate Gothic Bold; border-bottom:#999 solid 1px}
+.ttfuncoinsdatetime{ color:#FFF;  font-size:12px ; padding:0px 10px 0px 0px; text-align:right}
+.ttfuncoinsrslt ol{ margin:0px 0px 0px 40px; padding:0px; }
+.ttfuncoinsrslt ol li{ margin:0px; padding:0px 0px 0px 20px; position:relative ; font-size:15px; }
+.ttfuncoinsrslt ol li span{ position:absolute; right:10px; top:0px }
+.ttfuncoinsgoldbg{ width:291px; height:80px; background:url(/images/rummy/ttresultgoldbg1.png) no-repeat; clear:both; margin-top:20px;}
+
+/* Name Of Tournament Deatails */
+.tournadtlsin { clear:both; margin-left:10px; }
+.tournadtlsinl { float:left; width:320px;}
+.tournadtlsinr { float:left; width:290px; margin-left:10px}
+.tournadtlshedbg{ background:#fff; bo rder:#8497b7 solid 1px; height:20px; font-size:12px; font-weight:bold; color:#000; padding-top:3px; text-align:center }
+.tournadtlstblbg{ }
+.tournadtlstrbga{ background:#572e0f}   
+.tournadtlsbotbg{background:#85aaeb; height:5px; margin-bottom:5px }
+.tournadtadiinfo{ background:url(/images/rummy/ttadiinfobg.gif) repeat-x; height:59px; border:#778cab solid 1px; clear:both; margin:10px; color:#000; text-align:left; padding-left:15px; font-weight:bold}
+.tournadtadiinfo p{ color:#000; font-weight:normal; padding:0px; margin:0px }
+.tournadtlstandc{ margin:10px; clear:both; color:#fff; text-align:left; padding:0px 10px 0px 10px}
+.tcregibtn{ text-align:right; padding-right:10px;}
+.tournadtlstandc p{ margin:0px; padding:0px; font-size:11px; line-height:20px}
+/* Vip Taash page CSS */
+#vipttm{ width:610px; margin:0px auto; background:url(/images/rummy/ttvipmbg.gif) #e4e4e4  repeat-x; padding:10px; min-height:700px}
+#viptttitle{ border-bottom:#666 solid 1px; padding-bottom:5px; text-align:center; font-size:16px; font-weight:bold; margin-bottom:40px;}
+.vipbighed{ margin:0px 0px 5px 0px; padding:0px; text-align:left; font-size:14px; padding:5px 0px 5px 0px; border-bottom:#dedede solid 1px; font-weight:bold }
+.viptttitle{ background:url(/images/rummy/ttlthedbg.png) repeat-x ; font-size:28px; height:50px;   padding-top:10px; text-align:center;  font-weight:bold; margin-bottom:40px; font-family:Copperplate Gothic Bold}
+.getvipttm{  clear:both; margin-top:10px;}
+.vipttl{ float:left; width:305px; position:relative; padding-right:10px  }
+.vipttimg{ text-align:center   }
+.vipttgetbtn{ position:absolute; bottom:-30px; left:28%    }
+.vipttr{ float:left; width:295px; position:relative}
+.vipttrblk{ width:220px; margin:10px auto;}
+.vipttr1{-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px; background:#85add9 ; position:relative; font-weight:bold; margin:5px 0px 18px 0px}
+.vipttr1pad{ padding:8px 0px 8px 0px;}
+.vipttr1new{ position:absolute; top:-14px; left:-12px; width:50px; height:50px; }
+.vipttr1b{-moz-border-radius-bottomright: 10px; border-bottom-right-radius: 10px; -moz-border-radius-bottomleft: 10px; border-bottom-left-radius: 10px;  background:url(/images/rummy/ttvip.png) #dedede center center no-repeat; back ground:; border:#373737 solid 1px; border-top:none; position:relative; width:295px; margin:0px auto}
+.vipttr1bimg{ position:absolute; top:-35px; left:4px; height:100px; z-index:1}
+.vipttplaygame{ height:150px; padding:0px; font-weight:bold}
+.vipttplaygame p{ margin:0px; padding:0px; }
+.vipttplaygamel{ text-align:center; float:left; width:100px; padding-top:65px;}
+.vipttplaygamer{ text-align:center; float:left; width:100px; margin-left:82px; padding-top:50px}
+.vipttbonus{ text-align:center; padding:0px 0px 10px 0px;}
+.vipttlevel{ height:40px;}
+.vipttlevell{ float:left; width:38%; font-weight:bold; padding-top:9px; font-size:14px; }
+.vipttlevelr{ float:left; width:50%; }
+.vipgetbonus{  text-align:center; margin:10px}
+.vipgetbonuspad{ padding-top:20px   }
+#vipttm ul{ margin:0px; padding:0px}
+#vipttm ul li{ margin:0px; padding:0px; line-height:25px; margin-left:16px}
+
+/* Light box css */
+/*#ttlight_bg{width:100%;height:100%;position:absolute;top:0%;left:0%;background:#000;opacity:0.5;display:none;  }
+#ttlogin{	padding:10px;	width:150px;	text-align:center; margin:20% auto	}*/
+#ttlogin-box{ width:400px;		background:#1d3f87;	posi tion:absolute;	top:0px;left:38%;padding:10px;	dis play:none; font-size:16px; color:#000; text-align:center;   }
+ #ttlogin-box td{ text-align:center; font-size:16px;	 }
+#ttclose{ text-align:right	 }
+#ttlgtboxentry{  font-size:26px; color:#fff; font-weight:bold; margin:-30px 0px 5px 0px; text-align:center   }
+.ttlgtboxlvlbtn{ width:80px; height:28px; background:#bb2f78; border:2px solid #000; cursor:pointer; color:#fff; font-size:16px; font-weight:bold}
+#ttlgtboxentry, #ttlgtboxlvlcontm, #ttlgtboxlvlcont, .ttlgtboxlvlcontl, .ttlgtboxlvlcontm, .ttlgtboxlvlcontr, .ttlgtboxlvlbtn{ font-family:Arial, Helvetica, sans-serif}
+#page-wrap {width: 400px;	margin: 0 auto;}
+#ttlightbox {	width: 527px; display: none; z-index: 999999; position: fixed; height: auto; overflow: visible; top: 78.4091px; left: 614.5px;}
+
+#lgtboxmsg{
+	color:#FFF;
+}
+
+
+/*-------------winners Zone    --------*/
+.winnerszonem{ margin:-10px -20px 0px -20px}
+.winnerszonem td, th{ text-align:center}
+
+/*------------game play--------------*/
+.ttspade, .ttclub{ color:#000; font-size:28px;}
+.ttheart, .ttdiamond{ color:#F00; font-size:28px;}
+
+/*--------------100% legal--------------------*/
+.ttlegalm{ clear:both; background:#e2e2e2;	padding:5px 0px 0px 117px;	 border:solid 1px #868484; height:45px ; margin-top:20px; position:relative}
+.ttlegalml{ position:absolute; top:-17px; left:10px }
+.ttlegalmcont{ }
+
+
+.tresultpagination{
+	float:right;
+	margin-top: 10px;
+}
+
+#player-idproof{
+	display:none;
+}
+#player-banking-details{
+	display:none;
+}
+
+
+
+/* Download page */
+.ttdownloadm{ width:600px; margin:0px auto; background:#f3f6ff; color:#372f36}
+.ttdownloadm h2{ margin:10px 0px 20px 0px; text-align:left; padding:0px; font-size:15px; font-weight:bold }
+.ttdownloadt{ padding:10px; clear:both ; height:220px}
+.ttdownloadinstt{ padding:10px; clear:both ;}
+.ttdownloadl{ width:280px;}
+.ttdownloadr{ width:280px; }
+.ttdownloadinst{ background:#234487; padding:5px 0px 5px 10px; color:#fff; font-weight:bold}
+.ttsystemreq{ padding:10px 20px 10px 20px; height:200px;}
+.ttdownloadm ol{ margin:0px 0px 0px 20px; padding:0px;}
+.ttdownloadm ol li{ margin:0px; padding:0px; line-height:25px; font-size:14px }
+.ttdownloadiconm{ float:right }
+.ttdownloadicon{ width:70px }
+
+
+/* New Withdrawal Form */
+#player_idproofother, #player_idproofnumber, #player_idproofauthority, #player_idproofexpiry, #player_otheraddressproof, #player_addressproofnumber, #player_addressproofauthority, #player_addressproofexpiry{
+	display:none;
+}
+
+/* promotions page  promo=promtions */
+.ttpromom{ margin:0px auto; background:#e2e2e2; padding:10px ; margin-top:10px}
+.ttpromot{ padding:0px 0px 0px 0px;  }
+.ttpromoprizes{ background: url(/images/rummy/ttpromoprizesbg.gif) repeat-x; padding:15px 15px 15px 10px; font-size:18px; color:#fff;font-family: Copperplate Gothic Bold; height:146px;}
+.ttpromoprizes_l{ float:left; width:290px; text-align:center; padding-right:8px}
+.ttpromopercent{ margin:10px 0px 0px 0px}
+.ttpromowelbonus{ font-size:13px; font-weight:normal; font-family:Arial, Helvetica, sans-serif }
+.ttpromowinamount{ padding:20px 0px 30px 0px   }
+.ttpromotime{ background: url(/images/rummy/ttpromoprizesbg.gif) repeat-x; padding:2px 15px 5px 30px ; color:#fff;font-family: Copperplate Gothic Bold; height:140px; margin-top:20px}
+.ttpromotime_l{ width:278px; float:left; text-align:center}
+.ttpromotime_r{ width:260px; padding-left:30px; float:left;  border-left:#FFF solid 1px; text-align:center}
+.ttpromotime2pm{ height:110px }
+.ttpromotime2pm_l{ float:left; width:110px; padding-top:46px  }
+.ttpromotime2pm_r{ float:left; width:130px; text-align:center; color:#000000; font-size:16px; margin-top:5PX ; font-family:Arial, Helvetica, sans-serif; line-height:22px }
+.ttpromoentry{ height:50px; background:url(/images/rummy/ttpromostar.png) no-repeat center center; padding:20PX 20PX 0PX 20PX  }
+.ttpromoentry span{ font-size:20px; font-weight:bold ; }
+.ttpromoworth{ font-size:18px; font-family:Arial, Helvetica, sans-serif;  padding:3px 0px 0px 0px }
+.ttpromoreadmore{ text-align:right;}
+.ttpromoprizes_r{ float:left; width:268px; border-left:#FFF solid 1px; padding-left:20px; text-align:center}
+.ttpromob{ height:120px;  }
+.ttpromotandc{ width:100px; height:100px; float:left;  color:#000;	writing-mode:tb-rl;	-webkit-transform:rotate(270deg);	-moz-transform:rotate(270deg);	-o-transform: rotate(270deg);	white-space:nowrap;	display:block;	bottom:0;		font-family: Arial, Helvetica, sans-serif ;	font-size:11px;	font-weight:normal;	 }
+.ttpromocards{ float:left; width:250px;}
+.ttpromoplay{ float:left; width:240px; padding-top:30px}
+/* Ticket View Page */
+.ticket-submit {padding-right:0px; text-align:right;}
+/*--------------New Home Page--------------------*/
+.tt_container_m{background:#fff; padding:0px 3px 20px 3px }
+.tt_contai_wid{ width:960px}
+.ttlogo{ width:240px; float:left}
+/*.ttlivetbl{ width:195px;}*/
+
+.joinnowbg{ background:#004298; color:#fff}
+.joinnowbg h3{ color:#fff}
+.joinnowpad{ padding:10px;}
+.join_r_colum{ width:300px;} 
+.tt_l_colum{ width:650px; float:left;}
+.tt_th_blue_bg, .tt_th_grey_bg, .tt_th_pink_bg{ background: #004298; height:30px ; color:#fff; font-size:16px; font-weight:bold; padding:10px 0px 0px 10px}
+.tt_th_grey_bg{ background: #ababab;}
+/*.tt_th_blue_bg h1, .tt_th_grey_bg h1, .tt_th_pink_bg h1{ color:#FFF;  font-family:Franklin Gothic Book; font-size:18px;  font-weight:bold }*/
+.tt_th_blue_bg h1, .tt_th_grey_bg h1, .tt_th_pink_bg h1{ color:#FFF;  font-family:tahoma, Arial,Helvetica,sans-serif,Verdana,Arial,Helvetica,sans-serif; font-size:16px;  font-weight:bold }
+.tt_th_grey_bg h1{ color:#000}
+.tt_th_pink_bg{ background: #B40263; height:33px; }
+.tt_tbl_border{ border:solid 1px #868484; margin-top:10px; display:block; width:100%; }
+.tt_tbl_border td{ text-align:center}
+.tt_web_rs{font-family:WebRupee; font-size:24px; }
+.tt_content_l{ width:442px;}
+.tt_cards{ margin-top:-40px; }
+.tt_winner_list{ background: url(/images/rummy/tt_winner_list.jpg) no-repeat #0f305f; height:209px; color:#fff}
+.tt_winner_hed{ height:24px; color:#004298; padding:6px 0px 0px 10px ; font-size:14px; font-weight:bold  }
+.tt_winner_cont{ height:150px;  overflow:auto; color:#004298 }
+.tt_winner_cont ul{ margin:0px 0px 0px 12px; padding:0px;}
+.tt_winner_cont ul li{ margin:0px; padding:0px; list-style:none; font-weight:bold; position:relative; color:#000; line-height:24PX;}
+.tt_winner_cont ul li div{ position:absolute; right:10px; top:0px;   }
+
+.tt_more_dtls{ padding:6px 0px 0px 10px}
+.tt_more_dtls a{ color:#fff;  }
+.tt_ad_300{ margin-top:10px;}
+.tt_supportby{ padding:10px 0px 0px 0px; color:#2e2e2e; }
+.tt_supportby h4{ margin:0px; font-weight:bold; font-size:13px }
+.footerin{width:966px; margin:0px auto}
+.footernav{ padding:10px;  }
+
+.footernav ul{ margin:0px; padding:0px}
+.footernav ul li{ margin:0px; padding:0px 3px 0px 3px; list-style:none; display:inline;}
+.footernav ul li a{ color:#2e2e2e }
+.footernav ul li a:hover{ color:#000}
+.tt_18plus{ position:absolute; left:20px; top:10px;} 
+.tt-copyr{  position:relative; padding:10px 0px 0px 0px }   
+.tttourntime{ margin:10px 0px 0px 0px; height:250px;  }
+.tttourntimel{ width:310px; float:left; border:solid 1px #868484;   }
+.tttourntimer{ width:326px; height:248px;  float:left; border:solid 1px #868484; margin-left:10px;    }
+.tttournwinrbg{ height:209px; background:url(/images/rummy/ttwinnerlist_bg.png) no-repeat   }
+.tttournentryhed{ height:23px; font-weight:bold ; font-size:12px; padding-top:5px; }
+.tttournblue{ color:#004298; font-size:16px; font-weight:bold; padding-top:10px }
+.tttournwidth{ width:99px; text-align:center}
+.tttournentryfee{ height:45px; background:url(/images/rummy/tttournamentfee.gif) repeat-x ; border:#07479b solid 1px; border-left:none; border-right:none ; padding:5px 0px 0px 0px ;  cursor: pointer;}
+.tttournentryfree{ height:39px; background:#d9d9d9; border:#00F solid 1px; margin:2px 0px 0px 0px; border:#8c8c8c solid 1px; border-left:none; border-right:none; cursor: pointer; }
+.tttournentrypad{ pa}
+.tttournentryfree.last{ border-bottom:none  }
+.ttdeskdownload{ text-align:center; padding:10px 0px 10px 0px; font-weight:bold; font-size:13px}
+.tttashcashtbg{ width:535px; height:60px;  margin:0px 0px 0px 10px; padding:0px ; color:#a8005a; font-weight:bold; line-height:22px   }
+.tttashcashtbg span{ color:#000; font-weight:normal}
+.tttashcashl{ width:190px; }
+.tttashcashm{ width:190px;}
+.tttashcashr{ width:150px;}
+.tttashcashbar{ bac kground:url(/images/rummy/ttprogressbar.gif) no-repeat  ;}
+.tttashcashbar .ui-progressbar { height:20px; text-align: left; border-radius:0px; border:0px; }
+.tttashcashbar .ui-progressbar .ui-progressbar-value {margin:0px; height:100%; border-radius:0px; border:0px }
+.tttashcashbar .ui-widget-header{ background:#004298}
+.ttafterlogin{ position:absolute; top:-2px; right:6px; padding:0px; line-height:18px; font-weight:normal}
+.ttafterlogin a{ font-weight:normal; text-decoration:none; font-size:11px;}
+.ttinnnerpad{ padding:10px;}
+#inner-box #reconcileli  ul{}
+#inner-box #reconcileli  ul li{ clear:both;  line-height:35px;}
+#inner-box #reconcileli  ul li input{  padding:5px 0px 5px 5px}
+#inner-box #reconcileli  ul li select{ height:25px ; padding:0px 0px 0px 5px}
+.paginationControl{ background:#dddddd ; text-align:right; padding:10px; margin-top:10px}
+
+.paginationControl span{ background:#FFF; border:#999898 solid 1px; padding:3px 8px 3px 8px}
+.paginationControl span.ttpaginationnext{  background:#004298; color:#FFF; }
+.ttcomplete{ color:#027d02}
+.ttoffer{ margin:0px }
+
+#inner-box #createprofile ul li input{ width:397px }
+.ttcolactive {background:#9cb6d7;  margin:0px ; padding:5px 0px 5px 5px; font-size:12px; font-weight:bold;  vertical-align:middle  } 
+.loggedin{
+	margin-top: 0px;
+}
+#ttwidget-docs a:visited , #ttwidget-docs a{ color:#1b75bb; text-decoration:none; }
+
+#ttslideshow {  position:relative;      height:374px;}
+#ttslideshow IMG {      position:absolute;      top:0;  left:0; z-index:8;      opacity:0.0;}
+#ttslideshow IMG.active {       z-index:10;     opacity:1.0;}
+#ttslideshow IMG.last-active {  z-index:9;}
+/* Faq  css */
+#ttwidget-docs h2.top-header{ display:none; }
+#ttwidget-docs { margin:0px; }
+#ttwidget-docs h2, #ttwidget-docs h3, #ttwidget-docs h4, #ttwidget-docs p, #ttwidget-docs ul, #ttwidget-docs code { margin:0; padding:0; clear:both }
+#ttwidget-docs h2 { font-size:16px; }
+#ttwidget-docs h3 { font-size:14px; color:#e6820E;  }
+#ttwidget-docs ul.options-list li,
+
+#ttwidget-docs ul.methods-list li { list-style:none; background:url(/images/rummy/bg-demo-docs-param.gif)  }
+#ttwidget-docs ul.options-list code{ display:inline; font-size:1em; }
+#ttwidget-docs .option-header {  width:100%; padding:5px 0 5px; border-top:1px solid #e6e6e6;  }
+#ttwidget-docs .option-header h3{ width:98%; margin:0 0 0 10px; padding:0 0 0 15px; line-height: 1; background: url(/images/rummy/demo-spindown-closed.gif) no-repeat left; cursor: pointer; cursor: hand;  }
+#ttwidget-docs .header-open h3 { background: url(/images/rummy/demo-spindown-open.gif) no-repeat left; }
+#ttwidget-docs .option-description, 
+#ttwidget-docs .event-description, 
+#ttwidget-docs .method-description,
+#ttwidget-docs .option-examples,
+#ttwidget-docs .event-examples { padding:0px 10px 5px 25px; }
+#ttwidget-docs a:visited , #ttwidget-docs a{ color:#1b75bb; text-decoration:none; }
+
+#player-ticket-create{ position:absolute; right:60px; top:5px;  font-size: 14px;	}
+#player-ticket-create a{ text-decoration:none; font-size: 13px;	}
+
+
+#tttestimonials { height:180px	}
+#tttestimonials blockquote { margin:0px; padding:0px;			display:block;  }
+#tttestimonials blockquote p {	margin: 0px;	padding:0px; }
+#tttestimonials .tttextoverflow{ height:140px; overflow:hidden}
+#inner-box #reconcileli .zend_form ul li{ padding:0px;}
+#inner-box ul li.ttsaveprofilelibg, #inner-box #reconcileli .zend_form ul li.ttsaveprofilelibg{ background:#DDDDDD; padding:5px 10px 5px 0px; text-align:right; }
+.ttloginmargin{ margin-left:152px;}
+.ttbankdtls{}
+.ttbankdtls ul{ margin-left:50px}
+
+.ttbankdtls p{ margin:5px 0px 5px 0px}
+.ttbankdtls td { back ground:#fff !important;  border:#484848 solid 1px; }
+.ttbankdtls th{ padding-left:5px; text-align:left }
+.ttbankdtls table{ border-collapse:collapse; border:1px solid #484848;}
+
+#payment-form .zend_form .ttsaveprofilelibg{
+	text-align:left;
+}
+
+.special-promo{	margin-top:10px;}
+/*#invite-friends-form{	display: none;     left: 50%;    overflow: visible;    position: fixed;    top:50%;    z-index: 999999;	width:486px;	height:366px;	margin:-183px 0px 0px -243px}*/
+#invite-friends-form{	display: block; }
+.ttinvitebg{ padding:5px; background:#0d3686; }
+.ttinvitebginn{   background:#fff; padding:5px;  }
+.ttinvitehead{ color:#fff; text-align:center; height:30px;  padding:5px 0px 0px 0px; font-size:16px; font-weight:bold; position:relative }
+.ttclosebtn{ position:absolute; top:0px; right:0px;}
+.ttgetfive{ border-top:#FFF solid 10px; text-align:center; }
+#invite-friends-form #inner-box ul li.ttsaveprofilelibg{ background:none; text-align:center;}
+#invite-friends-form #inner-box ul li #submit{height:45px; background:#0e692e; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d52185', endColorstr='#830046'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#d52185), to(#830046)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #d52185,  #830046); /* for firefox 3.6+ */; padding:10px ; font-size:18px;}
+	#invite-friends-form #inner-box ul li textarea{ width:285px;}
+	
+.daily-winner{
+	background-color: #FFFFFF;
+    border: 5px solid #CCD0D5;
+    border-radius: 2px 2px 2px 2px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    position: fixed;
+    text-align: center;
+    top: 250px;
+    width: 180px;
+}
+
+.winner-name{
+	font-size:18px;
+}
+
+.daily-winner-detail{
+	text-align:right;
+}
+
+.daily-winner-close{
+	text-align:right;
+	margin-top:-15px;
+	cursor:pointer;
+	margin-bottom:5px;
+	color:#ff0000;
+	font-size:12px;
+}
+
+/*
+	Remove float right property from .login-box .zend-form
+*/
+.login-container{
+	margin-left:10px;
+	width:425px;
+}
+.ttlivetbl{ width:260px;}
+
+.promotion-special td{
+	padding:0px;
+}
+
+/* .team-vote-message{
+	text-align:center;
+	color:blue;
+	font-size:20px
+}
+.team-error-message{
+	background:#000;
+} */
+
+#promotion-refer #inner-box ul li.ttsaveprofilelibg{
+	text-align:center;
+}

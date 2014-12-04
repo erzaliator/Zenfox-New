@@ -1,0 +1,35 @@
+<head>
+<script src="jquery.js"></script>
+<script>
+window.onload = setupRefresh;
+
+function setupRefresh() {
+  setTimeout("refreshPage();", 30000); // milliseconds
+}
+function refreshPage() {
+   window.location = location.href;
+}
+
+</script>
+</head>
+
+<?php
+echo $this->form;
+if(!empty($this->value))
+{
+	foreach($this->value as $Data)
+	{
+		$linkArray[$Data['campaign_name']] = array(
+				'controller' => 'campaign',
+				'action' => 'trackcampaign',
+				'campaign_name' => $Data['campaign_name']
+		);
+	}
+	$this->table($this->value, array('campaign_name'), $linkArray);
+}
+
+if(!empty($this->list))
+{
+	echo $this->table($this->list);
+}
+?>

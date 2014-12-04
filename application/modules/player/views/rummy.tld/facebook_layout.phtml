@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Play Rummy</title>
+	<link href="/css/playrummynow/fbnav.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/playrummynow/f_tab.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.10.custom.min.js"></script>
+	<script type="text/javascript">
+	function playRummy()
+	{
+		$('#tabs_container > .tabs > li.active').removeClass('active');
+		$("#rummy").parent().addClass('active');
+		$('#tabs_container > .tabs > li.active > a.tab_hover').removeClass('tab_hover');
+		$('#tabs_container > .tab_contents_container > div.tab_contents_active').removeClass('tab_contents_active');
+		$("#tab_2_contents").addClass('tab_contents_active');
+	}
+	</script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+</head>
+<body>
+
+
+<?php 
+if($this->tutorialRead)
+{
+	?>
+	<!-- <form action = "/facebook/gameindex" method="post">
+	<input type="submit" name="submit" value="facebook"></input>
+	</form>
+	-->
+	<div id="fb-root"></div>
+	<script type="text/javascript" src="/js/playrummynow/all.js"></script>
+	<script type="text/javascript">
+	FB.init({
+	appId  : '<?php echo $this->appId; ?>',
+	            status : true, // check login status
+	cookie : true, // enable cookies to allow the server to access the session
+	xfbml  : true  // parse XFBML
+	});
+	</script>
+	<script>
+	// calling the API ...
+	function postToFeed(postName,postCaption,postLink,postPicture,postDescription,friendId) {
+	// calling the API ...
+	var obj = {
+	method: 'feed',
+		redirect_uri: 'http://apps.facebook.com/playrummynow/',
+		link: postLink,
+		picture: postPicture,
+					name: postName,
+		caption: postCaption,
+		description: postDescription,
+		to: friendId
+		};
+		function callback(response) {
+		//document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+			if(response != undefined){
+			//top.location.href = "http://apps.facebook.com/taash-time/gameindex";
+		}
+		}
+			FB.ui(obj, callback);
+			}
+			</script>
+			<div class="ttfbmain">
+			<div><img src="/images/playrummynow/fb_banner.jpg" width="960" height="120" /></div>
+	  	<div class="ttfbnav" id="tabs_container">
+			<ul class="tabs">
+				<!--li>
+			<a  rel="#tab_1_contents" class="tab">About Us</a>
+		    	</li -->
+			<li class="active">
+			<a rel="#tab_2_contents" class="tab" id="rummy">Play Rummy</a>
+			</li>
+			<li >
+		       		<a rel="#tab_3_contents" class="tab">Rummy Guide</a>
+		    	</li>
+			<li >
+			<a rel="#tab_4_contents" onclick="sendRequestViaMultiFriendSelector()" class="tabi">Invite Friends</a>
+			</li>
+			<li >
+		       		<a rel="#tab_5_contents" onclick="goToApp()" class="tabi">App Page</a>
+			</li>
+			<li >
+			<a rel="#tab_6_contents"  class="tab">Add f-Coins</a>
+		    	</li>
+			</ul>
+			</div>
+			<div class="ttfbbdyclr">
+			<div id="tab_1_contents" class="tab_contents">
+			<div class="edit-form">
+			<ul class="tabs">
+			<li>
+			<img src="/images/rummy.tld/Facebook_app_page.jpg"  usemap="#playButton" border=0></img>
+			<map name="playButton">
+			<area shape="rect" coords="416,207,503,244" onclick="playRummy()" href="#">
+	 							</map>
+			</li>
+			</ul>
+			</div>
+				</div>
+				<div id="tab_2_contents" class="tab_contents tab_contents_active">
+					<div class="edit-form">
+			<?php
+			//$hostName = $_SERVER['HTTP_HOST'];
+			//$hostAddress = 'http://' . $hostName;
+							$hostAddress = "";
+							$session = new Zend_Auth_Storage_Session();
+			$store = $session->read();
+			if($store)
+			{
+			$playerId = $store['id'];
+			$currency = new Zend_Currency();
+			$imageName = md5("image" . $playerId) . '.jpg';
+			$loginName = $store['authDetails'][0]['login'];
+			$firstName = $store['authDetails'][0]['first_name'];
+			$cash = $store['authDetails'][0]['cash'];
+			$bonus = $store['authDetails'][0]['bonus_bank'] + $store['authDetails'][0]['bonus_winnings'];
+			$loyaltyPoints = $store['authDetails'][0]['loyalty_points_left'];
+			$currencySession = new Zend_Session_Namespace('currency');
+								if(!$currencySession->oldValue)
+								{
+									$currencySession->oldValue = 'en_IN';
+			$currencySession->newValue = 'en_IN';
+								}
+								$source = $currency->getShortName('', $currencySession->oldValue);
+			$destination = $currency->getShortName('', $currencySession->newValue);
+			$currConv = new CurrencyConversion();
+			$cash = $currConv->getConvertedValue($source, $destination, $cash);
+			$bonus = $currConv->getConvertedValue($source, $destination, $bonus);
+			$imagePath = "http://graph.facebook.com/" . $loginName . "/picture";
+			$name = empty($firstName)?$loginName:$firstName;
+			$freeChips = 0;
+			$accountVariable = new AccountVariable();
+			$varData = $accountVariable->getData($playerId, 'freeMoney');
+			if($varData)
+								{
+									$freeChips = floatval($varData['varValue']);
+			}
+			$gameConfig = $hostAddress . '/games/playrummynow/multi-player/rummy/indian-rummy/config.txt';
+			$swfFile = $hostAddress . '/games/playrummynow/multi-player/rummy/indian-rummy/game.swf';
+			$winner = $hostAddress . "/games/playrummynow/container/components/winner/winner.swf";
+			$settings = $hostAddress . "/games/playrummynow/container/components/settings/settings.swf";
+								$login = $loginName . '|-1|Lobby';
+			$passKey = md5(-1 . md5(Zend_Session::getId()));
+								//echo "Passkey:: $passKey";
+			}
+			?>
+	<?php /*
+						<!--object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="760" height="570" id="WebContainerLobby" align="top">
+							<param name="allowScriptAccess" value="always" />
+							<param name="allowFullScreen" value="false" />
+							<param name="movie" value="<?=$hostAddress?>/games/ibibo/container/web-container.swf" />
+							<param name="FlashVars" value="base_url=<?=$hostAddress?>&xml_config=<?=$hostAddress?>/games/ibibo/container/config.txt&lobby_swf_path=<?=$hostAddress?>/games/ibibo/container/components/lobby/rummy-lobby/lobby.swf&user_name=<?php echo $name;?>&balance=<?php echo $cash;?>&bonus=<?php echo $bonus;?>&loyalty_points=<?php echo $loyaltyPoints;?>&image_path=<?php echo $imagePath;?>&free_chips=<?php echo $freeChips;?>&open_popup=false&game_config=<?php echo $gameConfig; ?>&game_swf_path=<?php echo $swfFile;?>&winner=<?php echo $winner;?>&settings=<?php echo $settings;?>&login=<?php echo $login;?>&pass_key=<?php echo $passKey;?>&locale=en_IN" />
+							<param name="quality" value="high" />
+							<param name="bgcolor" value="#ffffff" />
+							<embed src="<?=$hostAddress?>/games/ibibo/container/web-container.swf" flashVars = "base_url=<?=$hostAddress?>&xml_config=<?=$hostAddress?>/games/ibibo/container/config.txt&lobby_swf_path=<?=$hostAddress?>/games/ibibo/container/components/lobby/rummy-lobby/lobby.swf&user_name=<?php echo $name;?>&balance=<?php echo $cash;?>&bonus=<?php echo $bonus;?>&loyalty_points=<?php echo $loyaltyPoints;?>&free_chips=<?php echo $freeChips;?>&image_path=<?php echo $imagePath;?>&open_popup=false&game_config=<?php echo $gameConfig; ?>&game_swf_path=<?php echo $swfFile;?>&winner=<?php echo $winner;?>&settings=<?php echo $settings;?>&login=<?php echo $login;?>&pass_key=<?php echo $passKey;?>&locale=en_IN" quality="high" bgcolor="#000000"
+										width="760" height="570" name="Keno" align="top"
+										play="true"
+										loop="false"
+										quality="high"
+										allowScriptAccess="sameDomain"
+										type="application/x-shockwave-flash"
+										pluginspage="http://www.adobe.com/go/getflashplayer">
+							</embed>
+						</object-->
+	*/
+	?>
+	<?php
+	/*
+	 * SWFObject specific code for facebook 
+	 */
+	
+	$containerSwfFile = $hostAddress."/games/playrummynow/container/web-container.swf";
+	/*
+	$baseUrl = $hostAddress;
+	$xmlConfig = $hostAddress."/games/ibibo/container/config.txt";
+	$lobbySwfPath = $hostAddress. '/games/ibibo/container/components/lobby/rummy-lobby/lobby.swf';
+	$userName=$name;
+	$balance = $cash;
+	$bonus = $bonus;//Yeah it's defined!
+	$loyaltyPoints = $loyaltyPoints;
+	$freeChips = 
+	*/
+	$xmlConfig = $hostAddress."/games/playrummynow/container/config.txt";
+	$inviteFriends = $hostAddress."/games/playrummynow/container/components/invitefriends/invitefriends.swf";
+	
+	//This is useless!
+	$flashVarString = "base_url=".$hostAddress."&xml_config=".$xmlConfig."&lobby_swf_path=".$hostAddress."/games/playrummynow/container/components/lobby/rummy-lobby/blue-table/lobby.swf&user_name=".$name."balance=".$cash."&bonus=".$bonus."loyalty_points=".$loyaltyPoints."&free_chips=".$freeChips."&image_path=".$imagePath."&open_popup=false&game_config=".$gameConfig."&game_swf_path="."&winner=".$winner."&settings=".$settings."&login=". $login."&pass_key="."$passKey"."&locale=en_IN";
+	
+	$params = array('FlashVars' => $flashVarString);
+	
+	$tabbedSettings = "flashvars.lobby_swf_path='/games/playrummynow/container/components/lobby/rummy-lobby/blue-table/lobby.swf';flashvars.lobby_config='/games/playrummynow/container/components/lobby/rummy-lobby/lobby-config.txt';flashvars.open_popup='false';flashvars.user_name='"."$loginName"."';flashvars.balance='"."$cash"."';flashvars.bonus='".$bonus."';";
+	
+	?><div id="flashContent">
+				<h1>You need at least Flash Player 9.0 to view this page.</h1>
+				<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+			</div>  
+			<script type="text/javascript">
+				//Dynamic publishing with swfObject 
+				var params = {
+					  wmode: "transparent",
+					  allowfullscreen: "true"
+					};
+				var flashvars = {};
+				//flashvars.base_url = '<?php echo $hostAddress; ?>';
+				flashvars.login = '<?php echo $login; ?>';
+				flashvars.pass_key = '<?php echo $passKey; ?>';
+				flashvars.xml_config = '<?php echo $xmlConfig; ?>';
+				flashvars.game_config = '<?php echo $gameConfig; ?>';
+				//flashvars.game_swf_path = '<?php echo $swfFile; ?>';
+				//flashvars.settings = '<?php echo $settings;?>';
+				//flashvars.winner = '<?php echo $winner; ?>';
+				flashvars.user_name = '<?php echo $name;?>';
+							flashvars.balance = '<?php echo $cash;?>';
+							flashvars.bonus = '<?php echo $bonus;?>';
+							flashvars.loyalty_points = '<?php echo $loyaltyPoints;?>';
+							flashvars.free_chips = '<?php echo $freeChips;?>';
+							flashvars.image_path = '<?php echo $imagePath;?>';
+				<?=$tabbedSettings;?>
+				flashvars.currency = 'INR';
+				flashvars.frontend_id = '1';
+				flashvars.locale = 'en_US';
+				flashvars.theme = 'blue_table';
+				flashvars.login_type = 'facebook';
+				flashvars.ticker_data = '<?php echo $this->tickerData;?>'
+				flashvars.dailybonus = '<?php echo $this->dailybonus;?>';
+				//flashvars.invitefriends = '<?php echo $inviteFriends?>';
+				//A 'name' attribute with the same value as the 'id' is REQUIRED for Chrome/Mozilla browsers
+				swfobject.embedSWF('<?php echo $containerSwfFile;?>', "flashContent", "960", "795", "9.0", null,flashvars, params, {name:"flashContent"});
+				//swfobject.addParam("wmode", "transparent"); 			
+				//alert("Container SWF" + '<?php echo $containerSwfFile;?>');
+			</script>
+				</div>
+				</div>
+				<div id="tab_3_contents" class="tab_contents">
+					<div class="edit-form">
+						<?php
+						/*
+						<div style="width:560px; margin-left:175px;" id="__ss_8682464"> 
+							<!--strong style="display:block;margin:12px 0 4px">
+								<a href="http://www.slideshare.net/theConfluence/guide-toindianrumy-slideshare110725061827phpapp01-1" title="A beginner's guide to indian rummy slideshare" target="_blank">A beginner's guide to indian rummy slideshare</a>
+							</strong> 
+							<iframe src="http://www.slideshare.net/slideshow/embed_code/15686753" width="550" height="480" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+							</iframe-->
+							<iframe src="http://www.slideshare.net/slideshow/embed_code/15687655" width="560" height="450" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+						</div>
+						*/
+						?>
+	
+						<div class="ttfbbdyclr">
+	   <div class="ttfbbdyclrpad"><h3>What is Rummy?</h3>
+	<ul>
+	<li>Rummy is a game of cards, where each player is randomly given 13 cards to play with.</li>
+	<li>The remaining cards are kept on the table as a "DECK" with a "OPEN CARD" and a randomly selected card called a "JOKER"</li>
+	<li>When a player gets a turn, he should pick up a card from the "DECK" or the "OPEN CARD"</li>
+	<li>The whole idea of the game is, the player who makes his cards count to zero is the winner. This is called a "SHOW"</li>
+	<li>Every time the player picks a card, he needs to dispose a unnecessary card, which is called a "DISCARD" and that becomes the "OPEN CARD" for the next player</li>
+	</ul>
+	<br>
+	<img src="/images/playrummynow/Deck_OpenCard_IMG.png" class="ttfbbdypadleft">
+	<br>
+	
+	<h3>How to arrange your cards?</h3>
+	<ul>
+	<li> All cards must be arranged as sequences of <b> 3 or more cards of same suite</b> and triplets/quadraplets of <b>of different suites</b></li>
+	<li>If you have cards with same number as "JOKER", it is considered as joker and the player can use it to substitute for any other card to complete a sequence or a triplet/quadraplet</li>
+	</ul>
+	<br>
+	 <img src="/images/playrummynow/LIFE_AND_COUNT.png" class="ttfbbdypadleft">
+	<br>
+	<h3>How is the counting done?</h3>
+	<ol>
+	<li> One proper sequence without a joker in your cards is mandatory, and is called a "LIFE"</li>
+	<li> Then there should be a second sequence with/without a joker "SECOND LIFE"</li>
+	<li> Rest of the cards can be triplets or sequences.</li>
+	<li> If you have cards as in 1 and 2 above, then all other sequences and triplets/quadraplets are counted to zero. </li>
+	<li> Rest of the cards which are not part of a sequence or a triplet are counted based on their face values.</li>
+	<li> If the count turns to be ZERO, it is called a "SHOW"</li></ol>
+	
+	<p>For more information, <a href="http://taashtime.com/blog"><b>Blog</b></a> should have tutorial videos and the PPT</p></div>
+	  </div>
+					</div>
+				</div>
+				<div id="tab_4_contents" class="tab_contents">
+					<div class="edit-form">
+						<?php
+							$ids = '100001475168399';
+						?>
+						<script type="text/javascript">
+						function sendRequestViaMultiFriendSelector() {
+					        FB.ui({method: 'apprequests',
+					          message: 'Come and play with me on Play Rummy',
+						  //filters: ['app_non_users'],
+						  exclude_ids: [<?=$this->appUsers?>],
+						  //data: 'Hello Nikhil',
+					        }, requestCallback);
+					      }
+					      
+					      function requestCallback(response) {
+							if(response != undefined){
+								//alert(response['request']);
+								//alert(response['to']);
+						        	//top.location.href = "http://apps.facebook.com/playrummynow/gameindex";
+						        }	
+					      }
+						</script>
+						<!--fb:serverfbml width="615">
+	  						<script type="text/fbml">
+	    						<fb:request-form action="http://playrummynow.com/facebook/gameindex"
+	                     			method="POST"
+	                     			invite="true"
+	                     			type="TaashTime"
+	                     			content="TaashTime is India's first Indian Rummy on Facebook. It combines social elements and seamless gameplay for the game of 13 card Rummy. It is 1000 years old and Indians have loved it since! Experience history being remade, digitally - Join Now! . <?php echo htmlentities("<fb:req-choice url=\"http://playrummynow.com/facebook/index/buddyId/$this->buddyId\" label=\"Authorize My Application\"") ?>">
+	      							<fb:multi-friend-selector showborder="false"
+	                                	bypass="cancel"
+	                                	cols=4
+	                                	actiontext="Echo Action Text"
+										exclude_ids="<? echo $this->friends; ?>"/>
+	    						</fb:request-form>
+	  						</script>
+						</fb:serverfbml-->
+					</div>
+				</div>
+				<div id="tab_5_contents" class="tab_contents">
+					<div class="edit-form">
+						<script type="text/javascript">
+							function goToApp()
+							{
+								//top.location.href = 'https://www.facebook.com/pages/Play-Rummy/449358081789122';
+								window.open('https://www.facebook.com/pages/Play-Rummy/449358081789122', '_blank');
+								window.focus();
+							}
+						</script>
+					</div>
+				</div>
+				<div id="tab_6_contents" class="tab_contents">
+					<div class="edit-form">
+						<div class="ttfbfuncoinsbg">
+	    <div class="ttfbbdyclrpad ">
+	      
+	      <div class="ttfbfuncoinm" >
+	      <div class="ttfbfuncoinstbg ttfbclear">
+	      <div class="ttfbfuncoinsttxt"><div style="margin-left:40px;">Experience No.1 </div><div>Rummy Game On Facebook</div></div>
+	      
+	      </div>
+	        <div id = "playrummy-deposit">
+	         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ttfbfuncoinnav">
+	  <tr>
+	    <td width="7%">&nbsp;</td>
+	    <td width="5%" height="55"><input type="radio" id="radio-2-1" value = "50" name="radio-2-set" class="regular-radio big-radio active" /><label for="radio-2-1"></label>
+	    </label></td>
+	    <td width="15%">10,00,000</td>
+	    <td width="15%" align="center"><img src="/images/playrummynow/ttgetfunicon.png" width="37" height="43" /></td>
+	    <td width="30%">500 f-Credits ($ 50)</td>
+	    <td width="30%">Super Value</td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td><input type="radio" id="radio-2-2" value = "25" name="radio-2-set" class="regular-radio big-radio" /><label for="radio-2-2"></label></td>
+	    <td height="55">3,50,000</td>
+	    <td align="center"><img src="/images/playrummynow/ttgetfunicon1.png" width="34" height="38" /></td>
+	    <td>250 f-Credits ($ 25)</td>
+	    <td>Best Value</td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td><input type="radio" id="radio-2-3" value = "10" name="radio-2-set" class="regular-radio big-radio" checked /><label for="radio-2-3"></label></td>
+	    <td height="55">1,25,000</td>
+	    <td align="center"><img src="/images/playrummynow/ttgetfunicon2.png" width="33" height="33" /></td>
+	    <td>100 f-Credits ($ 10)</td>
+	    <td>Better Value</td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td><input type="radio" id="radio-2-4" value = "5" name="radio-2-set" class="regular-radio big-radio" /><label for="radio-2-4"></label></td>
+	    <td height="55">60,000</td>
+	    <td align="center"><img src="/images/playrummynow/ttgetfunicon3.png" width="31" height="29" /></td>
+	    <td>50 f-Credits ($ 5)</td>
+	    <td>Good Value</td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td><input type="radio" id="radio-2-5" value = "2" name="radio-2-set" class="regular-radio big-radio" /><label for="radio-2-5"></label></td>
+	    <td height="55">25,000</td>
+	    <td align="center"><img src="/images/playrummynow/ttgetfunicon4.png" width="32" height="22" /></td>
+	    <td>20 f-Credits ($ 2)</td>
+	    <td>Value</td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td><input type="radio" id="radio-2-6" value = "1" name="radio-2-set" class="regular-radio big-radio" /><label for="radio-2-6"></label></td>
+	    <td height="55">10,000</td>
+	    <td align="center"><img src="/images/playrummynow/ttgetfunicon4.png" width="32" height="22" /></td>
+	    <td>10 f-Credits ($ 1)</td>
+	    <td>Low Value</td>
+	  </tr>
+	</table>
+	
+	        </div>
+	        <div align="center" class="ttfbbdyclrpad ttfbbdyclrpadr"><img src="/images/playrummynow/ttfbarrow.png" width="49" height="40" /></div>
+	        <div align="center" class="ttfbbdyclrpad ttfbbdyclrpadr"><a href="#" onclick="goToPayment(false)"><img src="/images/playrummynow/ttfbbuynow.png" width="115" height="48" border="0" /></a></div>
+	        <div align="center" class="ttfbbdyclrpad"><img src="/images/playrummynow/ttfbmastercard.png" width="276" height="33" /></div>
+		<div class="ttfbfuncoinfooter ttfbbdyclrpad"><span>Note</span>: Once you complete your purchase, click on the <b>Refresh Button</b> in Lobby.<div style="margin-left:90px;">Your new Fun Coins will be reflected in your account.</div></div>
+	      </div>
+	    </div>
+	  </div>
+						<script type="text/javascript">
+							function goToPayment(amount){
+								if(!amount){
+									var amountOptions = document.getElementById('playrummy-deposit').getElementsByTagName('input');
+									for(var i = 0; i < amountOptions.length; i++){
+										if(amountOptions[i].checked){
+											amount = amountOptions[i].value;;
+										}
+									}
+								}
+								FB.ui(
+										  {
+										    method: 'pay',
+										    action: 'buy_item',
+										    // order_info can be anything you want; it will be passed to your 
+										    // Payments callback's payments_get_items function, which should 
+										    // be able to process and respond to this data.
+										    order_info: {'item_id': amount}, // Maximum of 31 chars
+										  },
+										  callback_function
+										);
+									function callback_function(response){
+										if(response['order_id']){
+											var amount = 0;
+											var amountOptions = document.getElementById('playrummy-deposit').getElementsByTagName('input');
+	                                                                		for(var i = 0; i < amountOptions.length; i++){
+	                                                                        		if(amountOptions[i].checked){
+	                                                                                		amount = amountOptions[i].value;;
+	                                                            		            	}
+	                                                                		}
+											var freeChips = 0;
+											switch(amount){
+												case '1':
+									                                freeChips = 10000;
+									                                break;
+									                        case '2':
+									                                freeChips = 25000;
+									                                break;
+									                        case '5':
+									                                freeChips = 60000;
+										                        break;
+									                        case '10':
+									                                freeChips = 125000;
+									                                break;
+									                        case '25':
+									                                freeChips = 350000;
+									                                break;
+									                        case '50':
+									                                freeChips = 1000000;
+									                                break;
+									                        case '100':
+									                                freeChips = 5000000;
+									                                break;
+									                  }
+											alert('Congratulations!! Transaction is successfull. Your account has been credited by ' + freeChips + ' Fun Coins.');
+											//alert(response['order_id']);
+											//alert(response['status']);
+										}
+										else if(response['error_code']){
+											//alert('error');
+											//alert(response['error_code']);
+											//alert(response['error_message']);
+										}
+										//alert(response['order_id']);
+									}
+							}
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<script type="text/javascript">
+			var TabbedPanels1 = new Spry.Widget.TabbedPanel("TabbedPanels1");
+		</script>
+	<?php 
+}
+else
+{
+	?>
+	<div style="text-align:center;">
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="550" height="400" id="Container" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<param name="movie" value="/games/playrummynow/multi-player/rummy/indian-rummy/theme/blue-table/tutorial/tutorial.swf" />
+	<param name="quality" value="high" />
+	<param name="bgcolor" value="#ffffff" />
+	<embed src="/games/playrummynow/multi-player/rummy/indian-rummy/theme/blue-table/tutorial/tutorial.swf" flashVars = "game_config=/games/playrummynow/multi-player/rummy/indian-rummy/theme/blue-table/tutorial/config.txt&log_id=123&flavour=MPPRummy&game_id=3&session_id=62778&player_id=39&wagered_currency=INR&locale=en_IN&theme=blue_table&responses=/games/playrummynow/multi-player/rummy/indian-rummy/theme/blue-table/tutorial/responses.txt" quality="high" bgcolor="#ffffff"
+	width="960" height="640" name="Rummy" align="middle"
+	play="true"
+	loop="false"
+	quality="high"
+	allowScriptAccess="sameDomain"
+	type="application/x-shockwave-flash"
+	pluginspage="http://www.adobe.com/go/getflashplayer">
+	</embed>
+	</object>
+	</div>
+	<?php 
+}
+?>
+</body>
+</html>
